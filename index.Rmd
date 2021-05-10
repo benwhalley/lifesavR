@@ -1,0 +1,86 @@
+---
+title: 'lifesavR'
+author: 'Ben Whalley, ... '
+# date: "April 2021"
+bibliography: [references.bib]
+biblio-style: apa6
+link-citations: yes
+output:
+  webex::html_clean
+---
+
+
+```{r, include=F, echo=F, message=F}
+source('_first_chunk.R')
+```
+
+
+> LifesaveR is a short course in statistics and data visualisation R.
+
+
+R is a bit like a martial art (yes, this is a bit corny, but we think the parallels are real. If you don't find the analogy useful feel free to ignore it, but it might be helpful to some).
+
+- As a beginner you learn basic moves and simple techniques for self defence. If an attacker does _just_ what you expect you can block or counter-attack. But if something unexpected happens you might be confused or overwhelmed.
+
+- As you gain expertise you learn general principles of movement and strategy. These let you to respond flexibly — so when things don't unfold as you expect you are able to adapt and make good decisions.
+
+- Finally, you become a master. You begin to see connections between techniques and can suggest new combinations or patterns to defeat even sophisticated attacks.
+
+
+This is all the same with R. To begin with we show you the basics, but if the data aren't in the right format, or something unexpected happens you can end up stuck. In this course we aim to give you more general principles for working with data. Over time you will develop understanding and expertise that lets you combine techniques to solve new problems.
+
+Another way R and martial arts are similar is that there's no substitute for practice. It's not possible to 'fake it'. A punch to the face is direct and effective feedback that basic skills like blocking or footwork need practice. In R, error messages and broken code can also feel unforgiving. The solution (in both cases) is to ensure the basics are correct, and more deliberate practice. 
+
+-----
+
+
+## Mindset matters
+
+Zen philosophy and many Japanese martial arts talk about several 'minds' of the learner, and a broader system which integrates the practice of martial arts.  We think these ideas are useful to guide your approach to the course, so we've organised our sessions around them:
+
+
+1. [Beginners mind (Shoshin)](session-1.html): Openness, eagerness and lack of preconceptions when studying a subject, just as a beginner would. Students arrive in varying states of readiness and with different skills, but openness and 'readiness' are always valuable.
+
+2. [Freedom to act (Mushin)](session-2.html): Achieved when free from thoughts of anger, fear, or ego during combat or everyday life.
+
+3. [Awareness of surroundings (Zanshin)](session-3.html): A continued state of alertness and readiness to meet the situation.
+
+4. [The immovable mind (Fudōshin)](session-4.html): Composure under pressure or in challenging situations.
+
+5. [The way of the warrior (Bushido)](session-4.html): A coprehensive moral code regulating attitudes, behaviour and lifestyle. 
+
+
+
+
+TODO - perhaps spell out the analogy exactly for each session.
+
+TODO - decide whether this analogy actually helps or is too corny.
+
+TODO - perhaps change lifeSavr to something else
+
+
+
+
+# Access to R
+
+Throughout the module we use R for data processing and analysis.
+
+If you are taking this course at Plymouth University, the easiest way to run the code
+examples here is to the school's RStudio Server.
+
+-   [Login to your account on the server here](https://rstudio.plymouth.ac.uk)
+
+
+### Installing at home
+
+If you want to install R on your own machine, instructions are available here:
+
+-   <https://github.com/plymouthPsychology/installR/>
+
+Be sure to install the recommended packages or the examples given here won't work.
+
+
+# License
+
+All content on this site distributed under a
+[Creative Commons](https://creativecommons.org/) licence. CC-BY-SA 4.0.

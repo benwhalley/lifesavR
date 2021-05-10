@@ -1,0 +1,57 @@
+---
+title: 'Awareness of surroundings (Zanshin)'
+author: 'Ben Whalley, Paul Sharpe, Sonja Heintz'
+# date: "April 2021"
+bibliography: [references.bib]
+biblio-style: apa6
+link-citations: yes
+output:
+  webex::html_clean
+---
+
+
+```{r, include=F, echo=F}
+source('_first_chunk.R')
+```
+
+
+THIS STILL A WIP
+
+![](images/zanshin.jpg)
+
+
+> The lingering mind/The lingering mind: alertness and readiness to meet the situation. (Zanshin)
+
+Zanshin is a continuing state of alertness and readiness to meet the situation. To stretch our metaphor a little — when working with data it's 
+important to remain open to alternative explanations and to provide the best possible summary of our data.
+
+
+- Sub-setting data: sensitivity analysis for outliers (filter, group_by)
+- Summary tables to reveal patterns in data (use Simpson's paradox as teaching example)
+- Facets in graphs; ggsave
+
+
+
+
+
+
+# Making new datasets with `filter`
+
+Sometimes it's useful to create copies or subsets of your data. 
+
+```{r}
+idealdiamonds <- diamonds %>% filter(cut=="Ideal")
+idealdiamonds %>% 
+  head
+```
+
+Now show when we use this new dataframe in a plot:
+
+```{r}
+idealdiamonds %>% ggplot(aes(carat, price)) + geom_jitter()
+```
+
+
+
+
+

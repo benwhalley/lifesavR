@@ -1,0 +1,65 @@
+---
+title: "Example of template"
+output: html_document
+---
+
+```{r}
+# remember to always load the tidyverse at the top of your file
+# you also need to 'run' this line of code
+library(tidyverse)
+```
+
+
+
+[this is an example]
+
+
+EXPLANATION HERE ABOUT HOW TO USE THE FILE. WHAT `...` means etc
+
+
+
+# Loading data
+
+We asked you to load a datafile and make a plot
+
+```{r}
+# load the file here
+thedata <- read_csv[???]
+
+# use glimpse to check the data loaded
+thedata %>% glimpse()
+```
+
+
+
+# Making a plot
+
+Using the data we asked you to make a scatter plot with foo on the x axis and bar on the y axis:
+
+```{r}
+mydata %>% 
+  ggplot ...
+```
+
+
+
+
+# Filtering data
+
+Filter the mtcars data to unclude only 4 cylinder cars and save the result in a new variable:
+
+```{r}
+newvarname <-  mtcars %>% ...
+```
+
+
+Now make a scatter plot using only these data...
+
+```{r}
+# make a plot
+newvarname %>% 
+  ggplot(aes(VARIABLE, VARIABLE)) + 
+  geom_point()
+```
+
+

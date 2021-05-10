@@ -1,0 +1,291 @@
+---
+title: 'Freedom to act (Mushin)'
+author: 'Ben Whalley, Paul Sharpe, Sonja Heintz'
+# date: "April 2021"
+bibliography: [references.bib]
+biblio-style: apa6
+link-citations: yes
+output:
+  webex::html_clean
+---
+
+
+```{r, include=F, echo=F}
+source('_first_chunk.R')
+```
+
+
+![](images/mushin.png)
+
+
+
+
+A literal translation of Mushin is something like 'mind without mind', but in karate and other martial arts the term
+denotes the state of mind achieved when free from thoughts of anger, fear, or ego during combat, or in everyday life. 
+
+To achieve mushin takes **repeated practice** and complete familiarity with the technique required to act, such that 
+technical details can fade into the background. This leaves the student free to act, responding effortlessly to 
+the challenge at hand.
+
+We think the analogy to using R is clear:
+
+- If you are anxious, stressed or avoidant you will be distracted
+- Getting confident with the basics makes more complex techniques possible 
+
+
+
+
+<!-- - Provide stereotyped examples of the sorts of students positive/negative traits which relate to the theme of session - make it all more concrete -->
+<!-- - Provide quotes from previous students illustrating? -->
+
+
+
+
+In this session we cover:
+
+- Loading data from files
+- Using simple techniques to answer research questions with data
+
+
+Principles/ideas 
+
+- Using data to answer questions
+- Precision and literal-mindedness of R
+- Paths and directories
+
+
+R techniques: 
+
+- Assign variable  (keyword: **"assignment operator"**) and find it in the Env window
+- `read_csv` (from a url)
+- the files window; loading a datafile from the same directory as the Rmd file (created by bootstrap script)
+- uploading a datafile from your own computer  read_csv it; importance of file extensions
+- `filter`, `group_by`, `summarise`, `arrange` (remind them they know how to make scatter and boxplots)
+- making a variable containing a subset of a dataframe (sing ` <- ` again)
+
+
+Activity:
+
+???  set up the teaching as a kind of treasure hunt where students have to find use data to answer questions, gather clues and spell out a word?
+Alternatively, just ask them to make LOTs of different plots using the techniques above, not just one:
+
+
+# Arrange
+
+- "what is the size of the largest diamond (by carat) in the `diamonds` dataset? 
+- "what cut were the three largest diamonds in that dataset?"
+
+```{r}
+diamonds %>% arrange(-carat) %>% head(3)
+```
+
+
+
+# Filter
+
+- Introduce operators ` < > = `
+
+```{r}
+gapminder::gapminder %>% filter(country=="Kenya")
+```
+
+Combined filters
+
+```{r}
+gapminder::gapminder %>% 
+  filter(country=="Kenya") %>% 
+  filter(year > 2000)
+```
+
+
+
+
+# Filter and arrange
+
+What was the year Kenyans had the lowest life exp:
+
+```{r}
+gapminder::gapminder %>% filter(country=="Kenya") %>% 
+  arrange(lifeExp) %>% 
+  head(6)
+```
+
+
+What was the highest year? All that changes is the minus sign (reverse sorting)
+
+```{r}
+gapminder::gapminder %>% 
+  filter(country=="Kenya") %>% 
+  arrange(-lifeExp) 
+
+```
+
+
+
+
+# `summarise`
+
+TODO make sure to emphasise giving the summary a name (`average_mpg`)
+
+- This is where we fist encounter the need to give things R-legal names so explan about spaces and special characters
+- Emphasise everything should be lower case with underscores
+
+```{r}
+mtcars %>% summarise(average_mpg = mean(mpg))
+```
+
+
+
+# `filter and summarise` together
+
+
+```{r}
+mtcars %>% filter(am==1) %>% summarise(mean(mpg))
+```
+
+# `group_by` (with `summarise`)
+
+We might make a plot like this:
+
+```{r}
+mtcars %>% 
+  ggplot(aes(factor(cyl), mpg)) + 
+  geom_boxplot()
+```
+
+What if we want these numbers in a table (or to report in our report)?
+
+```{r}
+mtcars %>% 
+  group_by(cyl) %>% 
+  summarise(average_mpg = mean(mpg))
+```
+
+
+We can group by two variables at once and get a row for each combination:
+
+```{r}
+mtcars %>% group_by(cyl, am) %>% summarise(mean(mpg))
+```
+
+
+
+# Dividing up graphs
+
+In our previous plot we only showed the difference between cars of 4, 6 and 8 cylinders. We can break the plot down
+into multiple panels using '**facets**':
+
+
+```{r}
+mtcars %>% 
+  ggplot(aes(factor(cyl), mpg)) + 
+  geom_boxplot() + 
+  facet_wrap(vars(am))   # note to paul... use vars here to avoid quoting of variable names which is confusing/inconsistent with other use
+```
+
+
+
+
+
+
+# Practice problems
+
+Additional questions
+
+- what country had the highest life expectancy in  1952?
+
+
+```{r}
+gapminder::gapminder %>% filter(year == 1952) %>% 
+  arrange(-lifeExp) %>% 
+  head(1)
+```
+
+- what continent had the highest GDP in 2011?
+
+```{r}
+gapminder::gapminder %>% 
+  group_by(continent) %>% 
+  summarise(average_gdp = mean(gdpPercap)) %>% 
+  arrange(-average_gdp)
+```
+
+
+
+- make a boxplot showing life expectancy by continent
+
+```{r}
+gapminder::gapminder %>% 
+  filter(year > 2000) %>% 
+  ggplot(aes(continent, lifeExp)) + 
+  geom_boxplot()
+
+```
+
+
+
+# "Mega problem"
+
+
+Describe these as the 'end of level boss characters'. You need to combine all your skills to beat them...
+
+
+Make a table which shows the average life expectancy for each continent, sorted from highest to lowest:
+
+
+```{r}
+gapminder::gapminder %>% 
+  group_by(continent) %>% 
+  summarise(life_expectancy = mean(lifeExp)) %>% 
+  arrange(-life_expectancy)
+```
+
+
+
+
+# Broken script to fix
+
+- Fix a 'broken' script: Start a NEW R session and make this code work:
+ 
+
+```{r, eval=F}
+liibrary(todyverse)
+
+# make a density plot of of life expectacy with different color lines for each continent
+gapminder::gapminder %>% 
+  ggplote(aes("lifeExp", colr = "Continent"))  geom_density()
+
+# select only years after 1990
+gapminder::gapminder %>% 
+  filter(year > 1990)
+
+ggplot(aes(year, lifeExp, color=continent)) + 
+  geom_jitter()
+  
+```
+
+
+NOTE - we will know all the errors they will see so can provide hints for each of them
+
+
+Correct version would be: 
+
+```{r}
+library(tidyverse)
+
+# make a density plot of of life expectacy with different color lines for each continent
+gapminder::gapminder %>% 
+  ggplot(aes(lifeExp, color = continent))  + 
+  geom_density()
+
+# select only years after 1990
+gapminder::gapminder %>% 
+  filter(year > 1990) %>%
+  ggplot(aes(year, lifeExp, color=continent)) + 
+  geom_jitter()
+```
+
+
+
+
+

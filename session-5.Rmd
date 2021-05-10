@@ -1,0 +1,24 @@
+---
+title: 'The way of the warrior (Bushido)'
+author: 'Ben Whalley, Paul Sharpe, Sonja Heintz'
+# date: "April 2021"
+bibliography: [references.bib]
+biblio-style: apa6
+link-citations: yes
+output:
+  webex::html_clean
+---
+
+
+```{r, include=F, echo=F}
+source('_first_chunk.R')
+```
+
+
+
+![](images/bushido.png)
+
+
+> The way of the warrior; a moral code regulating attitudes, behaviour and lifestyle.
+
+

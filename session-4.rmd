@@ -1,0 +1,39 @@
+---
+title: 'The immovable mind (Fudōshin)'
+author: 'Ben Whalley, Paul Sharpe, Sonja Heintz'
+# date: "April 2021"
+bibliography: [references.bib]
+biblio-style: apa6
+link-citations: yes
+output:
+  webex::html_clean
+---
+
+
+```{r, include=F, echo=F}
+source('_first_chunk.R')
+```
+
+
+
+
+> Fudōshin: The immovable mind; composure under pressure or in challenging situations.
+
+
+
+
+
+
+
+
+
+![](images/fudoshin.png)
+
+
+
+
+![](images/bushido.png)
+
+
+
+

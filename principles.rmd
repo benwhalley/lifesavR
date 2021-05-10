@@ -1,0 +1,182 @@
+---
+title: "principles.Rmd"
+output: html_document
+---
+
+
+
+GENERAL PRINCIPLE - use existing explanations/code from VBGR where possible (and don't do things a different way unless for good reason)
+
+```{r}
+library(tidyverse)
+```
+
+
+# Overview of each session 
+
+
+Materials to be created for each session
+
+- Worksheet, including MCQ example questions
+
+- Problems of 3 types:
+  - examples introducing the technique
+  - examples with a video solution
+  - examples without a solution (or solution might be answer-only but not workings)
+
+- Video with commentary demoing in 'real time' but with think aloud
+
+- Template Rmd file with scaffolded examples and blank spaces for each question to promote good organisation
+
+
+
+
+#  Outline for worksheets:
+
+
+- Overview of the session
+
+- Introduce techniques
+- Technique 1
+- Technique 2
+- Technique ...
+
+- Example of all techniques combined (and the video based on this embedded at this point)
+
+
+- Problems to complete
+- Problem 1 (with hints+ complete answer)
+- Problem 2 (with hints+ complete answer)
+- .... one problem per technique
+
+- Problem 3 (with hints+ answer only - no code)
+- Problem 4 (with hints+ answer only - no code)
+- ...
+
+- Problem X - combines multiple techniques for single problem
+
+
+- "Fix the broken code" activity
+
+
+For each worksheet - create 3-4 MCQ questions too with unused material
+
+
+
+
+# Datasets
+
+Use mtcars, diamonds, iris and gapminder for initial examples
+
+Use kaggle?
+
+- Student alcohol consumption: https://www.kaggle.com/uciml/student-alcohol-consumption
+
+- Personality and movie preferences: https://www.kaggle.com/arslanali4343/top-personality-dataset This is a good example of needing to merge data to analyse it... probably don't need it in first 5 sessions but could use later on
+
+
+```{r}
+personality <- read_csv('~/Downloads/archive/2018-personality-data.csv')
+ratings <- read_csv('~/Downloads/archive/2018_ratings.csv') %>% rename(userid=useri)
+combined <- left_join(ratings, personality) %>% 
+  select(userid, movie_id, rating, agreeableness:extraversion) %>% 
+  mutate(movie_id=factor(movie_id))
+
+combined %>% filter(as.numeric(movie_id)<=20) %>% 
+  ggplot(aes(rating, agreeableness)) + geom_jitter() + geom_smooth(method="lm") + facet_wrap("movie_id")
+
+```
+
+
+```{r}
+`<-` <- function(e1, e2) {
+  sc <- sys.call()
+  if(identical(sc[[2]], quote(foo)))
+     stop("Don't re-use variable names!!!")
+  else
+    eval.parent(do.call(substitute, list(sc, list(`<-` = base::`<-`))))
+}
+
+
+a <- 1
+a <- 2
+```
+
+```{r}
+# for use in 754 later?
+library(lmerTest)
+m1 <- lmer(rating ~ agreeableness + (1|userid)+(1|movie_id), data=combined %>% sample_n(10e3)) 
+m1 %>% summary()
+```
+
+
+- US Police shootings: https://www.kaggle.com/ahsen1330/us-police-shootings (interesting to think about normalising by population, also reasons for patterns =  e.g. why more black people shot when on foot vs whites?)
+
+
+```{r}
+read_csv('~/Downloads/shootings.csv') %>% 
+  group_by(race, flee) %>% 
+  count() %>% 
+  ggplot(aes(flee, n, fill=race)) + geom_bar(stat='identity', position="fill")
+```
+
+
+- British School Success Survey https://www.kaggle.com/brsdincer/schooldata
+
+```{r}
+schools <- read_csv('~/Downloads/schoolpredict.csv')
+
+schools %>% 
+  ggplot(aes(Total_Teachers, GPS_AVERAGE)) + geom_jitter()
+
+
+# useful to show a dataset that is bimodal with zeros?
+schools %>% 
+  ggplot(aes(PNORB, GPS_AVERAGE)) + geom_jitter()
+
+
+schools %>% 
+  group_by(cut(PNORB, 5)) %>% 
+  summarise(mean(GPS_AVERAGE, na.rm=T))
+
+schools %>% 
+  mutate(school_sex = recode(PNORB, `100`="boys", `0`="girls", .default="mixed" )) %>% 
+  ggplot(aes(PNORB, GPS_AVERAGE, color=school_sex)) + geom_jitter()
+
+
+
+```
+
+
+
+
+If using other data make it:
+
+- real world
+- low cognitive overhead (e.g. remembering study designs)
+- clinical/health/educational where possible
+
+
+
+#Using Webex
+
+ADD EXAMPLES OF WEBEX
+
+
+
+# Fixing  broken code
+
+Do this in every workshop
+Code to fix will be simila to that shown in the demo video 
+
+Possible idea:
+
+- Write a plug-in for rmarkdown which uses this: https://neil.fraser.name/software/diff_match_patch/demos/diff.html to diff their code with an ideal version
+
+
+
+
+
+# Helpers 
+
+- RESEARCH IMMUTABLE STATES - [have posted on stackoverflow... not sure it's possible/reliable]
