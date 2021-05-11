@@ -9,33 +9,24 @@ output:
   webex::html_clean
 ---
 
-
 ```{r, include=F, echo=F}
 source("_first_chunk.R")
 ```
-
-
-
 
 ![](images/shoshin.jpg)
 
 
 > Beginners mind (Shoshin) denotes openness, eagerness and lack of preconceptions when studying a subject, just as a beginner would, no matter what level of expertise the student has. 
 
-
 Even black belt martial artists practice basic techniques like blocks and punches every time they train. 
 
-This session doesn't assume any prior knowledge of R, and introduces the basics. 
-For some this will be revision from last year, but we provide additional
-material for advanced students test their knowledge and extend familiar skills. 
-
-
+This session doesn't assume any prior knowledge of R, and introduces the basics. For some this will be revision from
+last year, but we provide additional material for advanced students test their knowledge and extend familiar skills.
 
 ## General principles
 
-Reproducibility and transparency in science (as a motivation for using R)
-Precision and attention to detail as an important skill.
-
+- Reproducibility and transparency in science (as a motivation for using R)
+- Precision and attention to detail as an important skill.
 
 ## R techniques covered 
 
@@ -46,43 +37,26 @@ Precision and attention to detail as an important skill.
 - `glimpse`, `head` and clicking on the Environment window to look at data
 - the pipe `%>%`
 - Introduce `ggplot`; demonstrate `geom_point` and `geom_boxplot`
-- highlight types of data shown in glimpse (dbl, ord) and show the problem in a continuous color scale
-
-
+- highlight types of data shown in `glimpse` (dbl, ord) and show the problem in a continuous color scale
 
 # Before you start
 
-Write a script to bootstrap everthing the student needs
-
-```{r, eval=F}
-# I think this will work... TODO check
-source("WEBURL/lifesavr/bootstrap.R")
-```
-
-
 This will 
 
-- Create a directory called lifesavr (everything stored in this single directory)
-- Create some Rmd files for you to work in (please do use these to store your work)
+- Create a directory called `lifesavr` (everything stored in this single directory)
+- Create some Rmd files for you to work in (use these to store your work)
 - Download some data we will use in the module
-
-
-
 
 :::{.exercise}
 
-TODO some task which verifies they have run bootstrap.R successfully
+* TODO some task which verifies they have run bootstrap.R successfully
 
 :::
-
-
-
 
 # Using the RStudio interface, environment and files panes
 
 - Basic tour
 - Won't be anything in env yet so we need to return to this in later section
-
 
 # Rmarkdown
 
@@ -95,13 +69,9 @@ meaningoflife <- 40 + 2
 meaningoflife
 ```
 
-
-At this point check the Env window again to see it there
-
-
+At this point check the Environment window again to see it there
 
 # Loading packages
-
 
 - loading packages, especially `tidyverse`, before anything else
 
@@ -113,33 +83,29 @@ At this point check the Env window again to see it there
 - show mtcars, diamonds (by show I just mean type name and run it to see data in rmd window interactively)
 - show that you can click around in this (e.g. to see all columns and all rows - only 10 shown on first page)
 
-
 ```{r}
 mtcars
 ```
 
-
 - show other datasets inside packages: gapminder
-
-
 
 # Exploring and checking data
 
 - `glimpse`, `head` and clicking on the Environment window to look at data
 - highlight types of data shown in glimpse (dbl, ord)  (we will come back to this below)
 
-
-
-# Ggplot and the pipe
+# ggplot and the pipe
 
 ## Scatter plots
 
 - the pipe `%>%` sends data to the next bit of code
 
-- Introduce/recall `ggplot`; demonstrate `geom_point` and geom_jitter .. TODO find an example dataset which requires geom_jitter because on integer scale
+- Introduce/recall `ggplot`
+  - demonstrate `geom_point` and geom_jitter
+    - TODO find an example dataset which requires geom_jitter because on integer scale
 
 ```{r}
-# todo find better example for this
+# TODO find better example for this
 attitude %>%
   ggplot(aes(rating, complaints)) +
   geom_point()
@@ -160,7 +126,6 @@ gapminder::gapminder %>%
   geom_boxplot()
 ```
 
-
 ### Problems with x axes
 
 Show this and highlight it's not what we expect
@@ -177,9 +142,7 @@ The reason is visible here:
 mtcars %>% glimpse()
 ```
 
-
 The `am` has type `dbl`...
- 
  
 We must tell R it's a factor:
 
@@ -189,8 +152,6 @@ mtcars %>%
   geom_boxplot()
 ```
 
-
-
 Adding color. This works:
 
 ```{r}
@@ -198,7 +159,6 @@ diamonds %>%
   ggplot(aes(carat, price, colour = clarity)) +
   geom_point()
 ```
-
 
 This doesn't so well:
 
@@ -208,7 +168,6 @@ mtcars %>%
   geom_point()
 ```
 
-
 We can improve it like this:
 
 ```{r}
@@ -216,9 +175,6 @@ mtcars %>%
   ggplot(aes(wt, mpg, color = factor(cyl))) +
   geom_point()
 ```
-
-
-
 
 # Check your knowledge
 
@@ -231,8 +187,6 @@ mtcars %>%
 - How can you convert a variable from a `dbl` to a `fct`
 - What is the difference between `geom_jitter()` and `geom_point()`? 
 - Why is `geom_jitter` useful sometimes?
-
-
 
 # Extensions
 
