@@ -1,8 +1,5 @@
 ## CONFIG
 base_dir <- '~/lifesavr'
-# files you don't want users to see
-rm_files <- c('bootstrap.R', 'Outline for lifesavr.docx', 'principles.rmd', 'template-session-1.rmd',
-               'README.md', 'lifesavr.Rproj', '.gitignore', '*.html')
 
 errfun <-  function(cond) {
   warning(cond)
@@ -13,17 +10,16 @@ tryCatch(
   {
     ## be really picky here to make sure everything is as expected
 
+    setwd('~') # ensure we're in user's home directory
+    
     # don't overwrite an existing directory
     stopifnot(dir.exists('~/lifesavr/') == FALSE) # nice double negative
 
-    # clone the repo to ~/lifesavr
-    system(paste0('git clone https://github.com/benwhalley/lifesavR/ ', base_dir), intern = FALSE)
+    # get ~/lifesavr
+    # why svn? - https://stackoverflow.com/questions/600079/how-do-i-clone-a-subdirectory-only-of-a-git-repository/
+    system('svn export https://github.com/benwhalley/lifesavR/trunk/lifesavr', intern = FALSE)
 
     setwd(base_dir) # put users where their files are (RStudio doesn't refresh)
-
-    # remove development files
-    ## DEBT: check return values
-    file.remove(Sys.glob(rm_files))
 
     # try loading some data
     tibble_you_loaded_to_test <- NULL
