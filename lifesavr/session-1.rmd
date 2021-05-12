@@ -41,17 +41,32 @@ last year, but we provide additional material for advanced students test their k
 
 # Before you start
 
-If you're reading this, then you have successfully run the command which installs all of the files required for this module. The command you ran
+Before starting this module, you need to run an `R` command which:
 
-- Created a directory called `lifesavr` in your `Home` directory
+- Creates a directory called `lifesavr` in your `Home` directory
 
-- Installed some R Markdown files. These have the file extension `.rmd`. You will store your work in one of these files in each session. For example, in session one you will only need to edit `session-1.rmd`.
+- Installs some R Markdown files. These have the file extension `.rmd`. You will store your work in one of these files in each session. For example, in session one you will only need to edit `session-1.rmd`.
 
-- Downloaded the data used in the module into the `lifesavr/data` folder.
+- Downloads the data used in the module into the `lifesavr/data` folder.
+
+1. Click on the **Console** pane
+1. Copy-paste the following command into the console
+
+`source('https://raw.githubusercontent.com/benwhalley/lifesavR/main/bootstrap.R')`
+
+Your console should now look like this:
+
+![](images/bootstrap_command.png)
+2. Press return (enter) to run the command. Your console should now look something like this:
+
+![](images/bootstrap_success.png)
 
 :::{.exercise}
 
-Check that you have all of the files listed above by comparing your **Files** pane in RStudio with the image below.
+Check that you have all of the files listed above by
+
+1. Using the **Files** pane to open the `lifesavr` folder
+1. Comparing the files in the `lifesavr` folder with the image below.
 
 ![](images/bootstrap_files.png)
 
