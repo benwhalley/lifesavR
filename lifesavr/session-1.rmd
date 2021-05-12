@@ -41,15 +41,19 @@ last year, but we provide additional material for advanced students test their k
 
 # Before you start
 
-This will 
+If you're reading this, then you have successfully run the command which installs all of the files required for this module. The command you ran
 
-- Create a directory called `lifesavr` (everything stored in this single directory)
-- Create some Rmd files for you to work in (use these to store your work)
-- Download some data we will use in the module
+- Created a directory called `lifesavr` in your `Home` directory
+
+- Installed some R Markdown files. These have the file extension `.rmd`. You will store your work in one of these files in each session. For example, in session one you will only need to edit `session-1.rmd`.
+
+- Downloaded the data used in the module into the `lifesavr/data` folder.
 
 :::{.exercise}
 
-* TODO some task which verifies they have run bootstrap.R successfully
+Check that you have all of the files listed above by comparing your **Files** pane in RStudio with the image below.
+
+![](images/bootstrap_files.png)
 
 :::
 
@@ -61,6 +65,7 @@ This will
 # Rmarkdown
 
 - Intro to what it's for < 30 words
+
 - Chunks and how to find backticks; shortcut to make chunk
 
 
