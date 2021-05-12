@@ -2,7 +2,7 @@
 title: 'lifesavR'
 author: 'Ben Whalley, ... '
 # date: "April 2021"
-bibliography: [references.bib]
+bibliography: [lifesavr/references.bib]
 biblio-style: apa6
 link-citations: yes
 output:
@@ -11,7 +11,7 @@ output:
 
 
 ```{r, include=F, echo=F, message=F}
-source('_first_chunk.R')
+source('lifesavr/_first_chunk.R')
 ```
 
 
@@ -47,7 +47,7 @@ Zen philosophy and many Japanese martial arts talk about several 'minds' of the 
 
 4. [The immovable mind (Fudōshin)](session-4.html): Composure under pressure or in challenging situations.
 
-5. [The way of the warrior (Bushido)](session-4.html): A coprehensive moral code regulating attitudes, behaviour and lifestyle. 
+5. [The way of the warrior (Bushido)](session-4.html): A comprehensive moral code regulating attitudes, behaviour and lifestyle. 
 
 
 
