@@ -30,14 +30,44 @@ last year, but we provide additional material for advanced students test their k
 
 ## R techniques covered 
 
-- Using the RStudio interface, environment and files panes; 
-- working interactively in Rmarkdown (but not knitting just yet)
+- [Using the RStudio interface, environment and files panes](#using)
+- Working interactively in Rmarkdown
 - loading packages, especially `tidyverse`, before anything else
 - built-in 'dataframes' and tibbles (mtcars, diamonds); other datasets inside packages (gapminder)
 - `glimpse`, `head` and clicking on the Environment window to look at data
 - the pipe `%>%`
 - Introduce `ggplot`; demonstrate `geom_point` and `geom_boxplot`
 - highlight types of data shown in `glimpse` (dbl, ord) and show the problem in a continuous color scale
+
+<a name="using"></a>
+
+# Using the RStudio interface, environment and files panes
+
+These worksheets assume that you are using a web browser to access [the RStudio Server at Plymouth
+University](https://rstudio.plymouth.ac.uk), but they should be easy to follow if you are using the desktop version of
+RStudio.
+
+_NOTE_: RStudio works on most web browsers (e.g. Firefox, Safari, Chrome) but does not work that well on the default web browser in Windows 10 ("Edge"). If you're using Windows, we recommend [downloading Firefox](https://www.mozilla.org/en-US/firefox/new/) and using that. Firefox is free and open source.
+
+## Using RStudio
+
+When you login to RStudio, you'll be greeted with a screen that looks something like the image below. (If you've used RStudio before, you will see some additional folders and files.)
+
+![RStudio on first opening](images/rstudio-new.png)
+
+When you open RStudio for the first time, you can see three parts: 
+
+1. The **Console** - This is the large rectangle on the left. This is where you tell R what to do, and it's also where R prints the answers to your questions. 
+
+2. The **Environment** - This is the rectangle on the top right. This is where R keeps a list of the data it knows about. It's empty at the moment, because we haven't given R any data yet.
+
+3. The **Files** - This is the rectangle on the bottom right. This is a bit like the _File Explorer_ in Windows, or the _Finder_ on a Mac. It shows you what files and folders R can see.
+
+You should also be able to see that the two rectangles on the right have a number of other "tabs". These work like tabs on a web browser.  
+
+The top rectangle has the tabs "Environment" and "History". The **History** tab keeps a record of commands you've recently typed into the Console. This can sometimes be useful.
+
+The bottom rectangle has the tabs "Files", "Plots", "Packages", "Help", and "Viewer". We'll cover what these other tabs do later on. 
 
 # Before you start
 
@@ -72,10 +102,6 @@ Check that you have all of the files listed above by
 
 :::
 
-# Using the RStudio interface, environment and files panes
-
-- Basic tour
-- Won't be anything in env yet so we need to return to this in later section
 
 # Rmarkdown
 
@@ -94,7 +120,6 @@ At this point check the Environment window again to see it there
 # Loading packages
 
 - loading packages, especially `tidyverse`, before anything else
-
 
 # Built in data
 
