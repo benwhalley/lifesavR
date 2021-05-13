@@ -1,5 +1,7 @@
 ## CONFIG
 base_dir <- '~/lifesavr'
+base_url <- 'https://raw.githubusercontent.com/benwhalley/lifesavR/main/lifesavr/'
+files    <- c('session-1.rmd', 'session-2.rmd', 'session-3.rmd', 'session-4.rmd', 'session-5.rmd')
 
 errfun <-  function(cond) {
   warning(cond)
@@ -9,17 +11,19 @@ errfun <-  function(cond) {
 tryCatch(
   {
     ## be really picky here to make sure everything is as expected
-
-    setwd('~') # ensure we're in user's home directory
     
     # don't overwrite an existing directory
-    stopifnot(dir.exists('~/lifesavr/') == FALSE) # nice double negative
-
-    # get ~/lifesavr
-    # why svn? - https://stackoverflow.com/questions/600079/how-do-i-clone-a-subdirectory-only-of-a-git-repository/
-    system('svn export https://github.com/benwhalley/lifesavR/trunk/lifesavr', intern = FALSE)
-
-    setwd(base_dir) # put users where their files are (RStudio doesn't refresh)
+    stopifnot(dir.exists(base_dir) == FALSE) # nice double negative
+    
+    # put files in target dir 
+    dir.create(base_dir)
+    setwd(base_dir) # note that RStudio doesn't refresh the Files pane
+    
+    for (file in files) {
+      cmd <- paste0('wget --quiet ', base_url, file)
+      # system() returns 0 on success, so this will fail, for example, if a file in files can't be got
+      stopifnot(system(cmd) == 0)
+    }
 
     # try loading some data
     tibble_you_loaded_to_test <- NULL
@@ -30,3 +34,5 @@ tryCatch(
   error = errfun,
   warning = errfun
 )
+
+print("Success!")

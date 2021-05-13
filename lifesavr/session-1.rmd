@@ -70,13 +70,10 @@ The bottom rectangle has the tabs "Files", "Plots", "Packages", "Help", and "Vie
 
 # Before you start
 
-Before starting this module, you need to run an `R` command which:
+Before starting this module, you need to run an `R` command which makes a folder and downloads the files you will need
+for each workshop.
 
-- Creates a directory called `lifesavr` in your `Home` directory
-
-- Installs some R Markdown files. These have the file extension `.rmd`. You will store your work in one of these files in each session. For example, in session one you will only need to edit `session-1.rmd`.
-
-- Downloads the data used in the module into the `lifesavr/data` folder.
+:::{.exercise}
 
 1. Click on the **Console** pane
 1. Copy-paste the following command into the console
@@ -89,21 +86,15 @@ Your console should now look like this:
 2. Press return (enter) to run the command. Your console should now look something like this:
 
 ![](images/bootstrap_success.png)
-
-:::{.exercise}
-
-Check that you have all of the files listed above by
-
-1. Using the **Files** pane to open the `lifesavr` folder
-1. Comparing the files in the `lifesavr` folder with the image below.
-
-![](images/bootstrap_files.png)
-
 :::
 
 <a name="rmd"></a>
 
 # R Markdown
+
+TODO: Open the file `session-1.rmd`.
+
+These have the file extension `.rmd`. You will store your work in one of these files in each session. For example, in session one you will only need to edit `session-1.rmd`.
 
 R Markdown is a way of combining R with natural language. It allows you to integrate the results of your data analysis
 into high quality reports, research papers, dissertations or books. Because it's such a powerful tool, this module
