@@ -30,9 +30,9 @@ tryCatch(
     assertive::is_data.frame(as.data.frame(tibble_you_loaded_to_test))
     
     rm(list = ls()) # clear environment
+    
+    print("Success!")
   },
   error = errfun,
   warning = errfun
 )
-
-print("Success!")
