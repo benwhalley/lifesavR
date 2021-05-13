@@ -31,13 +31,13 @@ last year, but we provide additional material for advanced students test their k
 ## R techniques covered 
 
 - [Using the RStudio interface, environment and files panes](#using)
-- Working interactively in Rmarkdown
-- loading packages, especially `tidyverse`, before anything else
-- built-in 'dataframes' and tibbles (mtcars, diamonds); other datasets inside packages (gapminder)
-- `glimpse`, `head` and clicking on the Environment window to look at data
-- the pipe `%>%`
-- Introduce `ggplot`; demonstrate `geom_point` and `geom_boxplot`
-- highlight types of data shown in `glimpse` (dbl, ord) and show the problem in a continuous color scale
+- [Working interactively in R Markdown](#rmd)
+- [loading packages, especially `tidyverse`, before anything else](#packages)
+- [built-in 'dataframes' and tibbles (mtcars, diamonds); other datasets inside packages (gapminder)](#datasets)
+- [`glimpse`, `head` and clicking on the Environment window to look at data](#data)
+- [the pipe `%>%`](#pipe)
+- [Introduce `ggplot`; demonstrate `geom_point` and `geom_boxplot`](#ggplot)
+- [highlight types of data shown in `glimpse` (dbl, ord) and show the problem in a continuous color scale](#types)
 
 <a name="using"></a>
 
@@ -102,20 +102,70 @@ Check that you have all of the files listed above by
 
 :::
 
+<a name="rmd"></a>
 
-# Rmarkdown
+# R Markdown
 
-- Intro to what it's for < 30 words
+R Markdown is a way of combining R with natural language. It allows you to integrate the results of your data analysis
+into high quality reports, research papers, dissertations or books. Because it's such a powerful tool, this module
+provides an early, gentle introduction R Markdown.
 
-- Chunks and how to find backticks; shortcut to make chunk
+To combine R code with written text, RStudio needs to know which is which. This is done by putting the R code inside
+some special characters, creating what's referred to as a `chunk`. A chunk is opened using the symbols `` ```{r} ``, and
+closed using the symbols `` ``` ``. This is what a chunk looks like in RStudio:
 
+![A code chunk in the RMarkdown editor](images/r-code-chunk.png)
 
-```{r}
+_NOTE:_ The symbols which start and end a chunk are _backticks_, not single quotes.
+
+`r hide("Can't find the backtick on your keyboard?")`
+
+![On windows](images/backtick-windows-uk.png)
+
+![On a Mac](images/backtick-mac-uk.png)
+
+`r unhide()`
+
+In the example, notice that when the chunk is opened, there is a space and the word `life` after the `r`. This *names* the chunk. Naming chunks is optional, but it's a good habit to develop, as it allows you to navigate between chunks using a menu in the R Markdown editor:
+
+![Navigating between chunks](images/chunk-navigate.png)
+
+The R code inside a chunk can be run inside the editor, by pressing the green icon on the line where the chunk is
+opened. The results are printed below the chunck.
+
+:::{.exercise}
+Try running the chunk below. The results should look something like this:
+:::
+
+```{r life, class.source = 'numberLines lineAnchors'}
 meaningoflife <- 40 + 2
 meaningoflife
 ```
+Understanding variables is an important first step to writing R code. A variable is a name which can be assigned a value
+using the `<-` operator. In this case, it stores the results of the addition `40 + 2`. Line 1 assigns the value `42` to
+the variable `meaningoflife`. Line 2 displays the value of `meaningoflife`. Line 3 is the output of the `life` chunk.
 
-At this point check the Environment window again to see it there
+Variables that you create are stored in what's called the `Global Environment`. You can see them in the **Environment**
+pane. There is a menu which allows you to view your variables as a list or a grid:
+
+![Environment with list/grid menu](images/environment.png)
+
+As you will be creating lots of chunks in this module, you can save yourself some typing by using a keyboard shortcut
+to insert both the opening and closing chunk characters:
+
+|Windows & Linux   |          macOS        |
+|:---------------------|:------------------|
+|Ctrl+Alt+I      | Command+Option+I |
+
+:::{.exercise}
+1. Create a chunk named `myfirstchunk`
+1. Inside the chunk, create a variable called `myfirstvariable` which stores the result of the addition `2 + 2`
+1. Run the chunk
+:::
+
+After completing these steps, your environment should look like this:
+
+![Environment after running `myfirstchunk`](images/ex1.png)
 
 # Loading packages
 
@@ -128,7 +178,7 @@ At this point check the Environment window again to see it there
 - show mtcars, diamonds (by show I just mean type name and run it to see data in rmd window interactively)
 - show that you can click around in this (e.g. to see all columns and all rows - only 10 shown on first page)
 
-```{r}
+```{r mtcars}
 mtcars
 ```
 
@@ -237,3 +287,7 @@ mtcars %>%
 
 - Lots more practice plots with different datasets?
 - Better plotting worksheet stage 4?
+
+# Further reading
+
+- [R Markdown cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/) and [other resources](https://rmarkdown.rstudio.com/)
