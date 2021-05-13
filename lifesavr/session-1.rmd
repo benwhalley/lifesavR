@@ -83,7 +83,8 @@ for each workshop.
 Your console should now look like this:
 
 ![](images/bootstrap_command.png)
-2. Press return (enter) to run the command. Your console should now look something like this:
+Press return (enter) to run the command. If your console looks like the image below, then you are ready to start the
+session.
 
 ![](images/bootstrap_success.png)
 :::
