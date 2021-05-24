@@ -30,9 +30,10 @@ last year, but we provide additional material for advanced students test their k
 
 ## R techniques covered 
 
-- [Using the RStudio interface, environment and files panes](#using)
+- [Using the RStudio interface](#using)
 - [Working interactively in R Markdown](#rmd)
-- [loading packages, especially `tidyverse`, before anything else](#packages)
+- [Creating a chunk](#chunk)
+- [Loading packages](#packages)
 - [built-in 'dataframes' and tibbles (mtcars, diamonds); other datasets inside packages (gapminder)](#datasets)
 - [`glimpse`, `head` and clicking on the Environment window to look at data](#data)
 - [the pipe `%>%`](#pipe)
@@ -41,14 +42,12 @@ last year, but we provide additional material for advanced students test their k
 
 <a name="using"></a>
 
-# Using the RStudio interface, environment and files panes
+# Using the RStudio interface
 
 These worksheets assume that you are using a web browser to access [the RStudio Server at Plymouth
 University](https://rstudio.plymouth.ac.uk).
 
 _NOTE_: RStudio works on most web browsers (e.g. Firefox, Safari, Chrome) but does not work that well on the default web browser in Windows 10 ("Edge"). If you're using Windows, we recommend [downloading Firefox](https://www.mozilla.org/en-US/firefox/new/) and using that. Firefox is free and open source.
-
-## Using RStudio
 
 When you login to RStudio, you'll be greeted with a screen that looks something like the image below. (If you've used RStudio before, you will see some additional folders and files.)
 
@@ -91,7 +90,7 @@ session.
 
 <a name="rmd"></a>
 
-# R Markdown
+# Working interactively in R Markdown
 
 Click on the `lifesavr` folder in the **Files** pane. Notice than some files have the extension `.rmd`. These are R
 Markdown files. It is important that any R Markdown file you create has the extension `.rmd` (or .`Rmd`), because this
@@ -99,47 +98,68 @@ is how RStudio knows what they contain.
 
 R Markdown is a way of combining R with natural language. It allows you to integrate the results of your data analysis
 into high quality reports, research papers, dissertations or books. Because it's such a powerful tool, this module
-provides an early, gentle introduction R Markdown.
+provides an early, gentle introduction to R Markdown.
 
-To combine R code with written text, RStudio needs to know which is which. This is done by putting the R code inside
-some special characters, creating what's referred to as a `chunk`. A chunk is opened using the symbols `` ```{r} ``, and
-closed using the symbols `` ``` ``. This is what a chunk looks like in RStudio:
+RStudio needs to distinguish `R` code from narrative text. This is done by putting the code inside some special
+characters, creating what's referred to as a `chunk`. A chunk is opened using the symbols `` ```{r} ``, and closed using
+the symbols `` ``` ``. This is what a chunk looks like in RStudio (this chunk has been given the optional name `life`):
 
 ![A code chunk in the RMarkdown editor](images/r-code-chunk.png)
 
 _NOTE:_ The symbols which start and end a chunk are _backticks_, not single quotes.
 
-`r hide("Can't find the backtick on your keyboard?")`
-
+`r hide("Can't find the backticks on your keyboard?")`
 ![On windows](images/backtick-windows-uk.png)
 
 ![On a Mac](images/backtick-mac-uk.png)
-
 `r unhide()`
 
-In each session you will work in a single R Markdown file. Click on `session-1.rmd`, which is the file you need for this
-session.
+## Running R code within a chunk
 
-## Running R code in a chunk
-
-There are two ways to run code within a chunk:
-
-1. Run all of the code
-1. Run a line of code at a time
-
-We'll start with the second method:
+In each session you will work in a single R Markdown file.
 
 :::{.exercise}
-1. Locate the first chunk in `session-1.rmd`.
+Click on `session-1.rmd`, which is the file you need for this session.
+:::
+
+One way to run code within a chunk is to execute the commands one at a time, using the following keys:
+
+```{=html}
+<style>
+ .keyshape {
+    /*Box Properties*/
+    display:inline-block;
+    width:48px;
+    height:48px;
+    margin: 0px 4px;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.5);
+    /*Text Properties*/
+    font: 18px/48px Helvetica, serif;
+    text-align: center;
+    color: #666;
+}
+</style>
+<p>Windows, Linux: <span class="keyshape">Ctrl</span> + <span class="keyshape">↵</span>
+<p>Mac: <span class="keyshape">⌘</span> + <span class="keyshape">↩</span>
+</p>
+```
+
+:::{.exercise}
+1. Locate the first chunk in `session-1.rmd`
 1. Place your cursor (anywhere) on the line that says `library(tidyverse)`
-1. Run this line by pressing `Ctrl+enter` (`command+enter` on a Mac).
+1. Run this line by pressing the keys above
+:::
 
 You will see some output appear in the console. Don't worry about the details for now, we'll explain those later.
 However, one of the effects of the command you have just run is to load some data about diamonds.
 
-Now position your cursor on the line that says `diamonds` and press `Ctrl+enter`. You should see the a scatterplot of the
-diamonds data appear below the chunk:
+:::{.exercise}
+Now position your cursor on the line that says `diamonds` and run the commands.
 :::
+
+You should see the a scatterplot of the diamonds data appear below the chunk:
 
 ```{r diamonds-plot, echo=FALSE}
 diamonds %>%
@@ -147,61 +167,76 @@ diamonds %>%
   geom_point()
 ```
 
-Congratulations! You have just run your first lines of R.
-
-The code you ran to generate the scatterplot consisted of three lines. You can also run a subset of this command:
+Congratulations! You have just run your first lines of R. The code to produce the plot consisted of three lines. You can
+also run part of a line by highlighting the code you want to run:
 
 :::{.exercise}
-1. Select (highlight) the word `diamonds` and then press `Ctrl+enter`.
+1. Select (highlight) the word `diamonds`
+1. Run the code
+:::
 
 This prints the first few lines of the diamonds data:
-:::
 
 ```{r diamonds-data, echo=FALSE}
-diamonds
+diamonds %>% head(10) %>% pander
 ```
 
-Why would you want to run part of a command? In these workshops you will combine simple steps into sequences which do a
-particular job, such as generating a plot. It's natural, especially when you're new to R, that the full sequence won't
-do exactly what you want. Running part of a command allows you to identify the steps which are correct so that you can
-modify subsequent steps until your code produces the required results. Remember this technique as you will be use it
-extensively in these workshops.
+Why would you want to run part of a line of code? In these workshops you will combine simple steps into sequences which
+do a particular job, such as generating a plot. It's natural, especially when you're new to `R`, that the full sequence
+of commands won't do exactly what you want first time. Running part of your code allows you to identify the steps which
+are correct. This allows you to modify subsequent steps until your code produces the required results. Remember this
+technique as you will be using it extensively in these workshops.
+
+## Variables
+
+It is important to understand what a variable is in `R`. A variable is a name which can be assigned a value
+using the assignment operator: `<-`.
 
 :::{.exercise}
-Try running the chunk below. The results should look something like this:
+Run the lines in the chunk named `life`.
 :::
 
+The results should look similar to this:
+ 
 ```{r life, class.source = 'numberLines lineAnchors'}
 meaningoflife <- 40 + 2
 meaningoflife
 ```
-Understanding variables is an important first step to writing R code. A variable is a name which can be assigned a value
-using the `<-` operator. In this case, it stores the results of the addition `40 + 2`. Line 1 assigns the value `42` to
-the variable `meaningoflife`. Line 2 displays the value of `meaningoflife`. Line 3 is the output of the `life` chunk.
 
-## Variables
+This code stores the results of the addition `40 + 2`. Line 1 assigns the value `42` to the variable `meaningoflife`.
+The assignment operator `<-` looks like an arrow that points to the left. This is a reminder that the results of the
+calculation on the right hand side will be assigned to the variable on the left hand side. Line 2 displays the value of
+`meaningoflife`. Line 3 is the output of the `life` chunk.
 
 Variables that you create are stored in what's called the `Global Environment`. You can see them in the **Environment**
-pane. There is a menu which allows you to view your variables as a list or a grid:
+pane. 
 
-![Environment with list/grid menu](images/environment.png)
+<a name="chunk"></a>
 
-As you will be creating lots of chunks in this module, you can save yourself some typing by using a keyboard shortcut
-to insert both the opening and closing chunk characters:
+## Creating a chunk
 
-|Windows & Linux   |          macOS        |
-|:---------------------|:------------------|
-|Ctrl+Alt+I      | Command+Option+I |
+You will be creating many chunks, so learn the following keyboard shortcuts for inserting the opening and closing
+characters:
+
+```{=html}
+<p>Windows, Linux: <span class="keyshape">Ctrl</span> + <span class="keyshape">Alt</span> + <span class="keyshape">I</span>
+<p>Mac: <span class="keyshape">⌘</span> + <span class="keyshape">T</span>
+</p>
+```
 
 :::{.exercise}
-1. Create a chunk named `myfirstchunk`
+Exercise 1
+
+1. Use the keyboard shortcut to create a chunk
 1. Inside the chunk, create a variable called `myfirstvariable` which stores the result of the addition `2 + 2`
 1. Run the chunk
 :::
 
 After completing these steps, your environment should look like this:
 
-![Environment after running `myfirstchunk`](images/ex1.png)
+![Environment after Exercise 1](images/ex1.png)
+
+<a name="packages"></a>
 
 # Loading packages
 
@@ -224,6 +259,12 @@ mtcars
 
 - `glimpse`, `head` and clicking on the Environment window to look at data
 - highlight types of data shown in glimpse (dbl, ord)  (we will come back to this below)
+
+There is a menu which allows you to view your variables as a list or a grid:
+
+![Environment with list/grid menu](images/environment.png)
+
+Grid view shows you the type in the `Type` column.
 
 # ggplot and the pipe
 

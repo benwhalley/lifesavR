@@ -15,13 +15,19 @@ diamonds %>%
   geom_point()
 ```
 
+## Variables
+
+These lines assign the value 42 to the variable `meaningoflife`.
+
+```{r life}
+meaningoflife <- 40 + 2
+meaningoflife
+```
+
 ## Exercise 1
 
 1. Create a chunk
 1. Inside the chunk, create a variable called `myfirstvariable` which stores the result of the addition `2 + 2`
 1. Run the chunk
 
-```{r myfirstchunk}
-myfirstvariable <- 2 + 2
-```
 
