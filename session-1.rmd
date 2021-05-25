@@ -116,13 +116,25 @@ _NOTE:_ The symbols which start and end a chunk are _backticks_, not single quot
 
 ## Running R code within a chunk
 
+Watch the following short video to see how to run code within a chunk.
+
+<video width="100%" controls id="chunks">
+  <source src="videos/chunks.mp4" type="video/mp4" />
+  <track label="English" kind="subtitles" srclang="en" src="videos/chunks.vtt" />
+</video>
+<script>
+v = document.getElementById("chunks")
+v.textTracks[0].mode = "showing";  // or "hidden"
+</script>
+
 In each session you will work in a single R Markdown file.
 
 :::{.exercise}
 Click on `session-1.rmd`, which is the file you need for this session.
 :::
 
-One way to run code within a chunk is to execute the commands one at a time, using the following keys:
+As the video shows, one way to run code within a chunk is to execute the commands one at a time, using the following
+keys:
 
 ```{=html}
 <style>
