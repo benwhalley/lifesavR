@@ -69,7 +69,7 @@ The bottom rectangle has the tabs "Files", "Plots", "Packages", "Help", and "Vie
 
 # Before you start
 
-Before starting this module, you need to run an `R` command which makes a folder and downloads the files you will need
+Before starting this module, you need to run an R command which makes a folder and downloads the files you will need
 for each workshop.
 
 :::{.exercise}
@@ -100,7 +100,7 @@ R Markdown is a way of combining R with natural language. It allows you to integ
 into high quality reports, research papers, dissertations or books. Because it's such a powerful tool, this module
 provides an early, gentle introduction to R Markdown.
 
-RStudio needs to distinguish `R` code from narrative text. This is done by putting the code inside some special
+RStudio needs to distinguish R code from narrative text. This is done by putting the code inside some special
 characters, creating what's referred to as a `chunk`. A chunk is opened using the symbols `` ```{r} ``, and closed using
 the symbols `` ``` ``. This is what a chunk looks like in RStudio (this chunk has been given the optional name `life`):
 
@@ -194,14 +194,14 @@ diamonds %>% head(10) %>% pander
 ```
 
 Why would you want to run part of a line of code? In these workshops you will combine simple steps into sequences which
-do a particular job, such as generating a plot. It's natural, especially when you're new to `R`, that the full sequence
+do a particular job, such as generating a plot. It's natural, especially when you're new to R, that the full sequence
 of commands won't do exactly what you want first time. Running part of your code allows you to identify the steps which
 are correct. This allows you to modify subsequent steps until your code produces the required results. Remember this
 technique as you will be using it extensively in these workshops.
 
 ## Variables
 
-It is important to understand what a variable is in `R`. A variable is a name which can be assigned a value
+It is important to understand what a variable is in R. A variable is a name which can be assigned a value
 using the assignment operator: `<-`.
 
 :::{.exercise}
@@ -252,7 +252,34 @@ After completing these steps, your environment should look like this:
 
 # Loading packages
 
-- loading packages, especially `tidyverse`, before anything else
+A powerful feature of R is that it can be extended to analyse or plot data in any way imaginable. A package (sometimes
+called a library) is an extension to R that adds new commands. Packages are loaded using the `library()` command.
+
+The first command you ran above was `library(tidyverse)`, which loaded the `tidyverse` package. We can now explain some
+of the output that you saw in the console when you ran this command. Part of the output said **"Attaching packages"**.
+Tidyverse is a special package in that it loads some additional packages. One of these packages contains the diamonds
+data. Another, `ggplot2`, contains the commands you used to create the scatterplot.
+
+The `tidyverse` package is so fundamental to this course that `library(tidyverse)` is likely to be the first line of R
+in the first chunk of each of your R Markdown files.
+
+:::{.tip}
+If you've understood what packages are then it should be clear that you can't use the commands provided by `tidyverse`
+(and the additional packages it loads) until you've run the command `library(tidyverse)`.
+
+For example, if you tried to produce the scatterplot before loading `tidyverse` you'd see an error like this in the
+console:
+
+<pre style="color:red">
+Error in diamonds %>% ggplot(aes(carat, price, colour = clarity)) : 
+  could not find function "%>%"
+</pre>
+
+We mention this here, as `could not find function` errors are one of the most common problems that beginners encounter. This is almost always because they have
+
+1. forgotten to include `library(tidyverse)` as the first line in their code, or
+1. forgotten to *run* that line.
+:::
 
 # Built in data
 
