@@ -11,13 +11,14 @@ the second session, you will have learnt how to create similar plots.
 ```{r diamonds-plot}
 library(tidyverse)
 diamonds %>%
-  ggplot(aes(carat, price, colour = clarity)) +
+  ggplot(aes(carat, price)) +
   geom_point()
 ```
 
 ## Variables
 
-These lines assign the value 42 to the variable `meaningoflife`.
+This chunk runs the calculation `40 + 2`, assigns the result to the variable `meaningoflife`, and then prints the value
+of the variable.
 
 ```{r life}
 meaningoflife <- 40 + 2
@@ -26,8 +27,6 @@ meaningoflife
 
 ## Exercise 1
 
-1. Create a chunk
-1. Inside the chunk, create a variable called `myfirstvariable` which stores the result of the addition `2 + 2`
-1. Run the chunk
-
-
+1. Create a chunk below these instructions
+1. Inside the chunk, write a line of code which adds together the numbers 9, 4, 55 and 2, and assigns the result to a variable named `sum`.
+1. Run the the line of code you have written

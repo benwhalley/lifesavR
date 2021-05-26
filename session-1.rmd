@@ -22,6 +22,8 @@ Even black belt martial artists practice basic techniques like blocks and punche
 
 This session doesn't assume any prior knowledge of R, and introduces the basics. For some this will be revision from
 last year, but we provide additional material for advanced students test their knowledge and extend familiar skills.
+**Even if you are quite confident with R Studio from Stage 1, please read the worksheet carefully and complete all of
+the activities in the blue boxes.**
 
 ## General principles
 
@@ -31,10 +33,11 @@ last year, but we provide additional material for advanced students test their k
 ## R techniques covered 
 
 - [Using the RStudio interface](#using)
+- [What can R do?](#cando)
 - [Working interactively in R Markdown](#rmd)
 - [Creating a chunk](#chunk)
 - [Loading packages](#packages)
-- [built-in 'dataframes' and tibbles (mtcars, diamonds); other datasets inside packages (gapminder)](#datasets)
+- [Built-in datasets](#datasets)
 - [`glimpse`, `head` and clicking on the Environment window to look at data](#data)
 - [the pipe `%>%`](#pipe)
 - [Introduce `ggplot`; demonstrate `geom_point` and `geom_boxplot`](#ggplot)
@@ -49,7 +52,7 @@ University](https://rstudio.plymouth.ac.uk).
 
 _NOTE_: RStudio works on most web browsers (e.g. Firefox, Safari, Chrome) but does not work that well on the default web browser in Windows 10 ("Edge"). If you're using Windows, we recommend [downloading Firefox](https://www.mozilla.org/en-US/firefox/new/) and using that. Firefox is free and open source.
 
-When you login to RStudio, you'll be greeted with a screen that looks something like the image below. (If you've used RStudio before, you will see some additional folders and files.)
+When you login to RStudio, you'll be greeted with a screen that looks something like the image below.
 
 ![RStudio on first opening](images/rstudio-new.png)
 
@@ -90,13 +93,29 @@ session.
 
 <a name="rmd"></a>
 
+# What can R do?
+
+Watch the following short video to see a few things that R can do.
+
+<span style="color: red">#todo #video of what R can do to provide context for where we’re going and what we’re doing.</span>
+
+`r hide('Video script')`
+RStudio is a user interface to R, which is a computer language that is primarily designed for data analysis and
+visualisation. R is a text-based language, so you interact with it by typing commands, and then running those commands
+with R. R Studio makes it easy to run R commands and organise your work. For example, you can do simple arithmetic (2 * 221), generate some random numbers (rnorm(10, 0,1)), and plot some random numbers (hist(rnorm(100, 0,1)).
+
+You should think of R as a robot. The robot is extremely fast, powerful and tireless, but it’s also literal-minded, and
+won’t think for itself or take the initiative. You need to tell it *exactly* what to do, by providing very precise
+instructions.
+`r unhide()`
+
 # Working interactively in R Markdown
 
 Click on the `lifesavr` folder in the **Files** pane. Notice than some files have the extension `.rmd`. These are R
 Markdown files. It is important that any R Markdown file you create has the extension `.rmd` (or .`Rmd`), because this
 is how RStudio knows what they contain.
 
-R Markdown is a way of combining R with natural language. It allows you to integrate the results of your data analysis
+R Markdown is a way of combining R with narrative text. It allows you to integrate the results of your data analysis
 into high quality reports, research papers, dissertations or books. Because it's such a powerful tool, this module
 provides an early, gentle introduction to R Markdown.
 
@@ -118,6 +137,8 @@ _NOTE:_ The symbols which start and end a chunk are _backticks_, not single quot
 
 Watch the following short video to see how to run code within a chunk.
 
+<span style="color: red">#todo re-record #video running code in a chunk.</span>
+
 <video width="100%" controls id="chunks">
   <source src="videos/chunks.mp4" type="video/mp4" />
   <track label="English" kind="subtitles" srclang="en" src="videos/chunks.vtt" />
@@ -127,10 +148,11 @@ v = document.getElementById("chunks")
 v.textTracks[0].mode = "showing";  // or "hidden"
 </script>
 
-In each session you will work in a single R Markdown file.
+In each session you will work in a single R Markdown file, which we will refer to as a workbook. The file you need for
+this session is called `session-1.rmd`.
 
 :::{.exercise}
-Click on `session-1.rmd`, which is the file you need for this session.
+Click on `session-1.rmd` in the **Files** pane.
 :::
 
 As the video shows, one way to run code within a chunk is to execute the commands one at a time, using the following
@@ -161,10 +183,11 @@ keys:
 :::{.exercise}
 1. Locate the first chunk in `session-1.rmd`
 1. Place your cursor (anywhere) on the line that says `library(tidyverse)`
-1. Run this line by pressing the keys above
+1. Run the commands by pressing <span class="keyshape">Ctrl</span> + <span class="keyshape">↵</span> (Windows, Linux) or
+<span class="keyshape">⌘</span> + <span class="keyshape">↩</span> (Mac)
 :::
 
-You will see some output appear in the console. Don't worry about the details for now, we'll explain those later.
+You will see some output appear beneath the chunk. Don't worry about the details for now, we'll explain those later.
 However, one of the effects of the command you have just run is to load some data about diamonds.
 
 :::{.exercise}
@@ -175,7 +198,7 @@ You should see the a scatterplot of the diamonds data appear below the chunk:
 
 ```{r diamonds-plot, echo=FALSE}
 diamonds %>%
-  ggplot(aes(carat, price, colour = clarity)) +
+  ggplot(aes(carat, price)) +
   geom_point()
 ```
 
@@ -189,9 +212,7 @@ also run part of a line by highlighting the code you want to run:
 
 This prints the first few lines of the diamonds data:
 
-```{r diamonds-data, echo=FALSE}
-diamonds %>% head(10) %>% pander
-```
+![Example of running highlighted code](images/diamonds.png)
 
 Why would you want to run part of a line of code? In these workshops you will combine simple steps into sequences which
 do a particular job, such as generating a plot. It's natural, especially when you're new to R, that the full sequence
@@ -201,47 +222,50 @@ technique as you will be using it extensively in these workshops.
 
 ## Variables
 
-It is important to understand what a variable is in R. A variable is a name which can be assigned a value
-using the assignment operator: `<-`.
+Using variables lets us store calculations for later. A variable is a name which can be assigned a value using the
+assignment operator: `<-`.
 
 :::{.exercise}
-Run the lines in the chunk named `life`.
+Run the two lines in the chunk named `life`.
 :::
 
-The results should look similar to this:
- 
-```{r life, class.source = 'numberLines lineAnchors'}
-meaningoflife <- 40 + 2
-meaningoflife
-```
+The results should look like this:
 
-This code stores the results of the addition `40 + 2`. Line 1 assigns the value `42` to the variable `meaningoflife`.
-The assignment operator `<-` looks like an arrow that points to the left. This is a reminder that the results of the
-calculation on the right hand side will be assigned to the variable on the left hand side. Line 2 displays the value of
-`meaningoflife`. Line 3 is the output of the `life` chunk.
+![Results of running `life` chunk](images/life.png)
+
+Line 24 runs the calculation `40 + 2`, then assigns the result to the variable `meaningoflife`. The assignment operator
+`<-` looks like an arrow that points to the left. This is a reminder that the results of the calculation on the right
+hand side will be assigned to the variable on the left hand side. Line 25 displays the value of `meaningoflife`.
 
 Variables that you create are stored in what's called the `Global Environment`. You can see them in the **Environment**
-pane. 
+pane.
+
+![Variables that you create are stored in the `Global Environment`](images/global_environment.png)
 
 <a name="chunk"></a>
 
-## Creating a chunk
+## Inserting a chunk
 
-You will be creating many chunks, so learn the following keyboard shortcuts for inserting the opening and closing
-characters:
+You insert a new chunk by positioning your cursor on the line where you want the chunk to appear, and selecting the
+`Code > Insert Chunk` menu option:
+
+![Insert a new chunk](images/insert_chunk.png)
+
+There are also keyboard shortcuts for inserting a chunk:
 
 ```{=html}
 <p>Windows, Linux: <span class="keyshape">Ctrl</span> + <span class="keyshape">Alt</span> + <span class="keyshape">I</span>
-<p>Mac: <span class="keyshape">⌘</span> + <span class="keyshape">T</span>
+<p>Mac: <span class="keyshape">⌘</span> + <span class="keyshape">I</span>
 </p>
 ```
 
 :::{.exercise}
 Exercise 1
 
-1. Use the keyboard shortcut to create a chunk
-1. Inside the chunk, create a variable called `myfirstvariable` which stores the result of the addition `2 + 2`
-1. Run the chunk
+1. Find the instructions for Exercise 1 in your workbook
+1. Create a new chunk below the instructions
+1. Inside the chunk, write a line of code which adds together the numbers 9, 4, 55 and 2, and assigns the result to a variable named `sum`.
+1. Run the the line of code you have written
 :::
 
 After completing these steps, your environment should look like this:
@@ -255,13 +279,9 @@ After completing these steps, your environment should look like this:
 A powerful feature of R is that it can be extended to analyse or plot data in any way imaginable. A package (sometimes
 called a library) is an extension to R that adds new commands. Packages are loaded using the `library()` command.
 
-The first command you ran above was `library(tidyverse)`, which loaded the `tidyverse` package. We can now explain some
-of the output that you saw in the console when you ran this command. Part of the output said **"Attaching packages"**.
-Tidyverse is a special package in that it loads some additional packages. One of these packages contains the diamonds
-data. Another, `ggplot2`, contains the commands you used to create the scatterplot.
-
-The `tidyverse` package is so fundamental to this course that `library(tidyverse)` is likely to be the first line of R
-in the first chunk of each of your R Markdown files.
+The first command you ran above was `library(tidyverse)`. This loaded the commands needed to create the scatterplot, and
+also the diamonds data. The `tidyverse` package is so fundamental to this course that `library(tidyverse)` is likely to
+be the first line of R in the first chunk of each of your R Markdown files.
 
 :::{.tip}
 If you've understood what packages are then it should be clear that you can't use the commands provided by `tidyverse`
@@ -275,18 +295,22 @@ Error in diamonds %>% ggplot(aes(carat, price, colour = clarity)) :
   could not find function "%>%"
 </pre>
 
-We mention this here, as `could not find function` errors are one of the most common problems that beginners encounter. This is almost always because they have
+We mention this here, as `could not find function` errors are one of the most common problems that beginners encounter. They normally mean that you have
 
-1. forgotten to include `library(tidyverse)` as the first line in their code, or
+1. forgotten to include `library(tidyverse)` as the first line in your code, or
 1. forgotten to *run* that line.
 :::
 
-# Built in data
+<a name="datasets"></a>
+
+# Built-in datasets
 
 - explain datasets
 - explain that a data.frame is same as a tibble
 - show mtcars, diamonds (by show I just mean type name and run it to see data in rmd window interactively)
 - show that you can click around in this (e.g. to see all columns and all rows - only 10 shown on first page)
+
+- 'dataframes' and tibbles (mtcars, diamonds); other datasets inside packages (gapminder)
 
 ```{r mtcars}
 mtcars
