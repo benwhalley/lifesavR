@@ -315,9 +315,9 @@ R has a number of built-in datasets, and more can be loaded from packages.
 <span style="color: red">#todo #video of built-in datasets.</span>
 
 `r hide('Video script')`
-One data.frame that is built-in to R is called
-`mtcars`. This is a dataset about cars that was published in a US magazine called Motor Trend. As we did with the
-`diamonds` tibble, if we type `mtcars`, select the variable name and execute it, we can see the data it contains.
+One data.frame that is built-in to R is called `mtcars`. This is a dataset about cars that was published in a US
+magazine called Motor Trend. Let's display this data in using a new chunk. As we did with the `diamonds` tibble, if we
+type `mtcars`, select the variable name and execute it, we can see the data it contains.
 
 By default this displays only the first ten rows and columns of the data. You can see other rows using the `Next`,
 `Previous` and number buttons below the data. You can see additional columns using the arrow next to the final,
@@ -332,7 +332,8 @@ dataset in a the same way we loaded diamonds dataset. We load the `gapminder` pa
 Try this out in your workbook:
 
 :::{.exercise}
-1. After the line of code your wrote in Exercise 1, display the `mtcars` data.frame and try out the navigation buttons
+1. Create a new chunk at the bottom of your worksheet
+1. Display the `mtcars` data.frame and try out the navigation buttons
 1. Load the gapminder package, display the gapminder tibble and explore the data
 :::
 
