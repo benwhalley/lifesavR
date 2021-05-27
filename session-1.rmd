@@ -38,10 +38,11 @@ the activities in the blue boxes.**
 - [Creating a chunk](#chunk)
 - [Loading packages](#packages)
 - [Built-in datasets](#datasets)
-- [`glimpse`, `head` and clicking on the Environment window to look at data](#data)
+- [Exploring and checking data](#exploring)
 - [the pipe `%>%`](#pipe)
 - [Introduce `ggplot`; demonstrate `geom_point` and `geom_boxplot`](#ggplot)
 - [highlight types of data shown in `glimpse` (dbl, ord) and show the problem in a continuous color scale](#types)
+- [Introduction to Markdown](#markdown)
 
 <a name="using"></a>
 
@@ -337,16 +338,59 @@ Try this out in your workbook:
 1. Load the gapminder package, display the gapminder tibble and explore the data
 :::
 
+<a name="exploring"></a>
+
 # Exploring and checking data
 
-- `glimpse`, `head` and clicking on the Environment window to look at data
-- highlight types of data shown in glimpse (dbl, ord)  (we will come back to this below)
+<span style="color: red">#todo #video of built-in datasets.</span>
 
-There is a menu which allows you to view your variables as a list or a grid:
+## The `glimpse` command
+
+`r hide('Video script')`
+Using the `glimpse` command we can have the columns of a dataset run down the page, and data run across. The command
+`mtcars %>% glimpse()` demonstrates this. We'll explain what the `%>%` command means shortly. This is like rotating the
+output you saw earlier anti-clockwise by 90 degrees. The command displays as many observations from the dataset as will
+fit on a single line.
+
+Each column in a data.frame should be thought of as a variable. Variables have an associated type. When you assigned a
+number to a variable earlier, behind the scenes, R assigned the variable as numeric. `glimpse` is useful as the second
+column in the output shows us the type of each variable. As you can see, all variables in mtcars have the type *dbl*.
+This is short for 'double-precision number'; for now, just know that *dbl* means a number.
+
+We can see other variable types using `glimpse` to display the gapminder data.
+
+* *int* is short for 'integer', a variable which contains whole numbers (e.g. a participant id number)
+* *fct* is short for 'factor', a categorical variable (e.g. a specific response to a multiple-choice question)
+
+Other types include:
+
+* *chr* — short for 'character', a variable which contains text (e.g. an email address), and
+* *ord* — short for 'ordered'; a variant of *fct* where the categories have a particular order (e.g. responses like 'Wost' < 'Better' < 'Best')
+
+We'll return to why it's important to know the types of your variables shortly.
+`r unhide()`
+
+:::{.exercise}
+Exercise 2
+
+1. Create a new chunk at the bottom of your worksheet
+1. Use `glimpse` to display the `mtcars`, `gapminder` and `diamonds` datasets
+:::
+
+Now use the output from Exercise 2 to answer the following question. After entering your answer, click outside the box.
+The border will turn turn blue when the answer is correct.
+
+* The `clarity` variable in the `diamonds` tibble is of type `r fitb('ord')`
+
+## `head`
+
+
+## clicking on the Environment window to look at data
+
+There is a menu which allows you to view your variables as a list or a grid. Grid view shows you the type in the `Type` column.
+
 
 ![Environment with list/grid menu](images/environment.png)
-
-Grid view shows you the type in the `Type` column.
 
 # ggplot and the pipe
 
@@ -429,6 +473,10 @@ mtcars %>%
   ggplot(aes(wt, mpg, color = factor(cyl))) +
   geom_point()
 ```
+
+<a name="markdown"></a>
+
+# Introduction to Markdown]
 
 # Check your knowledge
 

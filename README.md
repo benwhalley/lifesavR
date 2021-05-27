@@ -14,6 +14,7 @@ This is WIP
 - use `_first-chunk.R` to load packages and set defaults
 - use https://styler.r-lib.org/ and https://style.tidyverse.org/ to tidy things (there's an R Studio plugin)
 - every `dplyr` verb and `ggplot` layer must be on a new line
+- Include empty parentheses for argumentless verbs in pipelines e.g. `gapminder %>% glimpse()` not `gapminder %>% glimpse`
 
 ## Videos
 
