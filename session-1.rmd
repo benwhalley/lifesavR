@@ -305,18 +305,36 @@ We mention this here, as `could not find function` errors are one of the most co
 
 # Built-in datasets
 
-- explain datasets
-- explain that a data.frame is same as a tibble
-- show mtcars, diamonds (by show I just mean type name and run it to see data in rmd window interactively)
-- show that you can click around in this (e.g. to see all columns and all rows - only 10 shown on first page)
+A dataset is a set of data relating to a particular topic. Most datasets we will be working with consist of rows and
+columns, just like a spreadsheet. In R this type of data is stored in a special type of variable called a
+**data.frame**. You will also see references to datasets as **tibbles**. A tibble is just a special type of data.frame,
+so you can treat the two types of variable as being equivalent.
 
-- 'dataframes' and tibbles (mtcars, diamonds); other datasets inside packages (gapminder)
+R has a number of built-in datasets, and more can be loaded from packages.
 
-```{r mtcars}
-mtcars
-```
+<span style="color: red">#todo #video of built-in datasets.</span>
 
-- show other datasets inside packages: gapminder
+`r hide('Video script')`
+One data.frame that is built-in to R is called
+`mtcars`. This is a dataset about cars that was published in a US magazine called Motor Trend. As we did with the
+`diamonds` tibble, if we type `mtcars`, select the variable name and execute it, we can see the data it contains.
+
+By default this displays only the first ten rows and columns of the data. You can see other rows using the `Next`,
+`Previous` and number buttons below the data. You can see additional columns using the arrow next to the final,
+right-hand column.
+
+You already know that the diamonds dataset was loaded using `library(tidyverse)`. The `gapminder` package includes a
+tibble that contains data about life expectancy, GDP per capita, and population by country. We can load and explore this
+dataset in a the same way we loaded diamonds dataset. We load the `gapminder` package, type the name of the tibble (also
+`gapminder`) and run it. Again, we can use the navigation buttons to explore the data.
+`r unhide()`
+
+Try this out in your workbook:
+
+:::{.exercise}
+1. After the line of code your wrote in Exercise 1, display the `mtcars` data.frame and try out the navigation buttons
+1. Load the gapminder package, display the gapminder tibble and explore the data
+:::
 
 # Exploring and checking data
 

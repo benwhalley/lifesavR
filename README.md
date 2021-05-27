@@ -23,5 +23,9 @@ This is WIP
 ## Language
 
 * Show rather than tell
-  * Good: **Using variables lets us store calculations for later.**
-  * Bad: **It is important to understand what a variable is in R.** 
+  * Good: *Using variables lets us store calculations for later.*
+  * Bad: *It is important to understand what a variable is in R.*
+* Spellings
+  * *datasets* not *data sets*
+  * *data.frame* not *dataframe/data frame*
+  * *built-in* not *built in/builtin*
