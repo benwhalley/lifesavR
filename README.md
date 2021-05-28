@@ -38,3 +38,4 @@ provided online.
   * *datasets* not *data sets*
   * *data.frame* not *dataframe/data frame*
   * *built-in* not *built in/builtin*
+  * *x-axis* not *x axis*

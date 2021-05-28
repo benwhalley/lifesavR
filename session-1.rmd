@@ -15,7 +15,6 @@ source("_first_chunk.R")
 
 ![](images/shoshin.jpg)
 
-
 > Beginners mind (Shoshin) denotes openness, eagerness and lack of preconceptions when studying a subject, just as a beginner would, no matter what level of expertise the student has. 
 
 Even black belt martial artists practice basic techniques like blocks and punches every time they train. 
@@ -39,8 +38,9 @@ the activities in the blue boxes.**
 - [Loading packages](#packages)
 - [Built-in datasets](#datasets)
 - [Exploring and checking data](#exploring)
-- [the pipe `%>%`](#pipe)
-- [Introduce `ggplot`; demonstrate `geom_point` and `geom_boxplot`](#ggplot)
+- [The pipe `%>%`](#pipe)
+- [`ggplot`: scatter plots](#scatterplots)
+- [`ggplot`: boxplots](#boxplots)
 - [highlight types of data shown in `glimpse` (dbl, ord) and show the problem in a continuous color scale](#types)
 - [Introduction to Markdown](#markdown)
 
@@ -91,6 +91,19 @@ session.
 
 ![](images/bootstrap_success.png)
 :::
+
+`r hide('Video script')`
+In each session you will work in a single file, which we will refer to as a workbook. The file you need for this session
+is called `session-1.rmd`. If we click on the file it opens the workbook in a tab of a new pane, called the **Source**
+pane. The commands you will learn to write in this course are called 'R code', which is shorthand for 'R source code'.
+This pane allows you to write R code and explore your data.
+`r unhide()`
+
+:::{.exercise}
+Click on `session-1.rmd` in the **Files** pane.
+:::
+
+You're now ready to start the session.
 
 <a name="rmd"></a>
 
@@ -149,16 +162,6 @@ v = document.getElementById("chunks")
 v.textTracks[0].mode = "showing";  // or "hidden"
 </script>
 
-In each session you will work in a single R Markdown file, which we will refer to as a workbook. The file you need for
-this session is called `session-1.rmd`.
-
-:::{.exercise}
-Click on `session-1.rmd` in the **Files** pane.
-:::
-
-As the video shows, one way to run code within a chunk is to execute the commands one at a time, using the following
-keys:
-
 ```{=html}
 <style>
  .keyshape {
@@ -176,10 +179,29 @@ keys:
     color: #666;
 }
 </style>
-<p>Windows, Linux: <span class="keyshape">Ctrl</span> + <span class="keyshape">↵</span>
-<p>Mac: <span class="keyshape">⌘</span> + <span class="keyshape">↩</span>
-</p>
 ```
+
+`r hide('Video script')`
+This short video shows you three ways to run R code within a chunk. The first is to run a complete line of code. You can
+see here that our cursor is on line 12. The cursor can be anywhere on that line. To run the line, press
+<span class="keyshape">Ctrl</span> + <span class="keyshape">↵</span> on Windows or Linux, or <span
+class="keyshape">⌘</span> + <span class="keyshape">↩</span> on a Mac.
+
+You'll see some output beneath the chunk that you don't need to worry about for now, but one of the effects of running
+this command is to load a dataset about diamonds.
+
+The cursor has been automatically positioned online 13. Lines 13 to 15 are actually part of the same command. We use the
+same keys, <span class="keyshape">Ctrl</span> + <span class="keyshape">↵</span>, to run these lines, which generate a
+scatter plot using the diamonds dataset. Don't worry how these commands work for now.
+
+The second way to run code is to select only the commands you want to execute. If you select just the word diamonds on line
+13 and run that, you will see that it does something different. This prints the contents of the diamonds data. Because
+the dataset is large, it just prints the first few rows.
+
+Finally, you often want to run all of the code in a chunk. This can be done by pressing the green arrow on the right hand side of the chunk. Another way to run all of the code is to position your cursor anywhere within the chunk and press
+<span class="keyshape">Ctrl</span> + <span class="keyshape">⇧</span> + <span class="keyshape">↵</span> (Windows, Linux) or
+<span class="keyshape">⌘</span> + <span class="keyshape">⇧</span> + <span class="keyshape">↩</span> (Mac).
+`r unhide()`
 
 :::{.exercise}
 1. Locate the first chunk in `session-1.rmd`
@@ -189,13 +211,12 @@ keys:
 :::
 
 You will see some output appear beneath the chunk. Don't worry about the details for now, we'll explain those later.
-However, one of the effects of the command you have just run is to load some data about diamonds.
 
 :::{.exercise}
 Now position your cursor on the line that says `diamonds` and run the commands.
 :::
 
-You should see the a scatterplot of the diamonds data appear below the chunk:
+You should see the a scatter plot of the diamonds data appear below the chunk:
 
 ```{r diamonds-plot, echo=FALSE}
 diamonds %>%
@@ -280,7 +301,7 @@ After completing these steps, your environment should look like this:
 A powerful feature of R is that it can be extended to analyse or plot data in any way imaginable. A package (sometimes
 called a library) is an extension to R that adds new commands. Packages are loaded using the `library()` command.
 
-The first command you ran above was `library(tidyverse)`. This loaded the commands needed to create the scatterplot, and
+The first command you ran above was `library(tidyverse)`. This loaded the commands needed to create the scatter plot, and
 also the diamonds data. The `tidyverse` package is so fundamental to this course that `library(tidyverse)` is likely to
 be the first line of R in the first chunk of each of your R Markdown files.
 
@@ -288,7 +309,7 @@ be the first line of R in the first chunk of each of your R Markdown files.
 If you've understood what packages are then it should be clear that you can't use the commands provided by `tidyverse`
 (and the additional packages it loads) until you've run the command `library(tidyverse)`.
 
-For example, if you tried to produce the scatterplot before loading `tidyverse` you'd see an error like this in the
+For example, if you tried to produce the scatter plot before loading `tidyverse` you'd see an error like this in the
 console:
 
 <pre style="color:red">
@@ -342,9 +363,11 @@ Try this out in your workbook:
 
 # Exploring and checking data
 
-<span style="color: red">#todo #video of built-in datasets.</span>
+R Studio has a few different ways to explore datasets.
 
 ## The `glimpse` command
+
+<span style="color: red">#todo #video of `glimpse`.</span>
 
 `r hide('Video script')`
 Using the `glimpse` command we can have the columns of a dataset run down the page, and data run across. The command
@@ -380,43 +403,126 @@ Exercise 2
 Now use the output from Exercise 2 to answer the following question. After entering your answer, click outside the box.
 The border will turn turn blue when the answer is correct.
 
-* The `clarity` variable in the `diamonds` tibble is of type `r fitb('ord')`
+* The `clarity` variable in the `diamonds` tibble is of type `r fitb('ord')`.
 
-## `head`
+## The `head` command and the Environment pane
 
+<span style="color: red">#todo #video of `head`.</span>
 
-## clicking on the Environment window to look at data
+`r hide('Video script')`
+The `head` command allows us to print just a few rows from a dataset. The command `mtcars %>% head()` prints the first
+six rows of `mtcars`. We could also assign this output to a new variable.
 
-There is a menu which allows you to view your variables as a list or a grid. Grid view shows you the type in the `Type` column.
+You can also explore your variables using the **Environment** pane. A data.frame will have an icon that looks like a
+spreadsheet. If you click on the icon, the data.frame is displayed in a new tab in the **Source** pane.
 
+This tab shows you the same information as printing the data.frame, such as the number of rows and columns, but it
+also provides tools for exploring the data interactively.
 
-![Environment with list/grid menu](images/environment.png)
+* The arrows next to the column names allow you to arrange the rows in ascending or descending order based on the column
+values.
+* The `Filter` button allows you to specify a value for one or more columns to filter out non-matching rows. For
+example, we could display just cars with 4 gears. Click the button again to turn off the filter.
+`r unhide()`
 
-# ggplot and the pipe
+:::{.exercise}
+Exercise 3
 
-## Scatter plots
+1. Create a new chunk at the bottom of your worksheet
+1. Use `head` to assign the first six rows of `gapminder` to a variable called `gapminder_head`
+:::
 
-- the pipe `%>%` sends data to the next bit of code
+The population of Afghanistan in 1967 was `r fitb('11537966')`.
 
-- Introduce/recall `ggplot`
-  - demonstrate `geom_point` and geom_jitter
-    - TODO find an example dataset which requires geom_jitter because on integer scale
+<a name="pipe"></a>
+
+# The pipe
+
+The pipe command `%>%` sends data from one piece of code to another. For example, you've already seen that `mtcars %>%
+head()` 'pipes' `mtcars` into `head`, which shows just the first few rows. Think of your data as flowing along a pipe
+with commands which transform it, step by step, until it plops out the end in the format you want. The pipe command is
+designed to remind you of this analogy. The `%` symbols look a bit like two ends of a pipe and the `>` reminds you of
+the direction in which your data is flowing.
+
+Another dataset loaded by the `tidyverse` package is `mpg`. This contains fuel economy data from 1999 to 2008 for 38
+popular models of US cars.
+
+:::{.exercise}
+Exercise 4
+
+1. Create a new chunk at the bottom of your worksheet
+1. Pipe the `mpg` data.frame into `head` and assign the results to a variable called `mpg_head`
+:::
+
+In 1999, a 6 cylinder Audio A4 could cover `r fitb('26')` miles per gallon when driven on the highway.
+
+<a name="scatterplots"></a>
+
+# ggplot: Scatter plots
+
+The other place where you've encountered the pipe is in the code you used to make a scatter plot of the diamonds data.
+You pipe data into `ggplot` to build up plots step by step.
+
+<span style="color: red">#todo scatter plots #video.</span>
+
+`r hide('Video script')`
+This chunk creates a scatter plot by piping the `mpg` data into a `ggplot` command. The plot is built in two steps. The
+first step, `ggplot(aes(cyl, hwy))` selects variables for the x and y axes. In this case, `cyl` will be the x-axis and
+`hwy` the y-axis. We can see this by running just this part of the command.
+
+In `ggplot`, each step is separated by `+` and goes on a new line. Because R Studio knows this is all part of the same
+'pipeline', it automatically indents the code.
+
+The second step `geom_point()` is a command which plots the data as points. If we run the chunk, we see a scatter plot. A
+point is plotted for each row, using the values for the `cyl` and `hwy` variables. The x-axis shows the the number of
+cylinders in the car, and the y-axis shows the miles covered by the car per gallon of fuel when driven on the highway.
+
+A problem with this plot is that there are many cars with the same number of cylinders. Another way of saying this is
+that `cyl` has been plotted using an 'integer (whole number) scale'. Consequently, many of the points are plotted on top
+of each other, making the values hard to see. The overplotting issue is easily solved by replacing `geom_point()` with
+`geom_jitter()`, which spreads the points out where cars have the same number of cylinders.
+`r unhide()`
+
+:::{.exercise}
+Copy the following two chunks into your worksheet and run them.
+:::
+
+This chunk creates a scatter plot. The x-axis shows the number of cylinders in the car. The y-axis shows the miles
+covered by the car per gallon of fuel when driven on the highway.
 
 ```{r}
-# TODO find better example for this
-attitude %>%
-  ggplot(aes(rating, complaints)) +
+mpg %>% ggplot(aes(cyl, hwy)) +
   geom_point()
+```
 
-# vs.
+This chunk plots cylinders against highway miles per gallon but jitters the points on the scatter plot, so the plot is
+easier to read.
 
-attitude %>%
-  ggplot(aes(rating, complaints)) +
+```{r}
+mpg %>% ggplot(aes(cyl, hwy)) +
   geom_jitter()
 ```
 
+:::{.exercise}
+Exercise 5
 
-## Boxplots
+1. Create a new chunk at the bottom of your worksheet
+1. Pipe the `mpg` data.frame into a `ggplot` command which creates a scatter plot showing `mpg` against `cty` (miles per gallon when cars are driven in a city)
+:::
+
+Your plot should look like this:
+
+```{r ex-5, echo=FALSE}
+mpg %>% ggplot(aes(cyl, cty)) +
+  geom_jitter()
+```
+
+Fuel efficiency is better when cars are driven `r mcq(c("in the city", "on the pavement", answer = "on the highway"))`.
+
+<a name="boxplots"></a>
+
+# ggplot: Box plots
+
 
 ```{r}
 gapminder::gapminder %>%
@@ -450,7 +556,7 @@ mtcars %>%
   geom_boxplot()
 ```
 
-Adding color. This works:
+Adding color. Explain `aes`. This works:
 
 ```{r}
 diamonds %>%
@@ -476,7 +582,7 @@ mtcars %>%
 
 <a name="markdown"></a>
 
-# Introduction to Markdown]
+# Introduction to Markdown
 
 # Check your knowledge
 
