@@ -1,6 +1,6 @@
 ---
 title: 'Beginners mind (Shoshin)'
-author: 'Ben Whalley, Paul Sharpe, Sonja Heintz'
+author: 'Ben Whalley, Paul Sharpe, Sonja Heintz, Andy Wills'
 # date: "April 2021"
 bibliography: [references.bib]
 biblio-style: apa6
@@ -112,6 +112,7 @@ You're now ready to start the session.
 Watch the following short video to see a few things that R can do.
 
 <span style="color: red">#todo #video of what R can do to provide context for where we’re going and what we’re doing.</span>
+<!-- TODO VIDEO of what R can do to provide context for where we’re going and what we’re doing. -->
 
 `r hide('Video script')`
 RStudio is a user interface to R, which is a computer language that is primarily designed for data analysis and
@@ -495,8 +496,8 @@ mpg %>% ggplot(aes(cyl, hwy)) +
   geom_point()
 ```
 
-This chunk plots cylinders against highway miles per gallon but jitters the points on the scatter plot, so the plot is
-easier to read.
+This chunk plots cylinders against highway miles per gallon. The points on the scatter plot are 'jittered' to avoid
+overplotting, making the output easier to read.
 
 ```{r}
 mpg %>% ggplot(aes(cyl, hwy)) +
@@ -521,8 +522,9 @@ Fuel efficiency is better when cars are driven `r mcq(c("in the city", "on the p
 
 <a name="boxplots"></a>
 
-# ggplot: Box plots
+# ggplot: Boxplots
 
+The following chunk uses the `gapminder` data to display life expectancy by continent.
 
 ```{r}
 gapminder::gapminder %>%
@@ -530,9 +532,21 @@ gapminder::gapminder %>%
   geom_boxplot()
 ```
 
-### Problems with x axes
+In a boxplot, the thick line is the median. That thick line is enclosed inside a rectangle (the 'box'), and the size of
+the box indicates the inter-quartile range (IQR). The IQR contains the middle 50% of the ordered data. A wider IQR
+indicates greater variation in a dataset.
 
-Show this and highlight it's not what we expect
+The top and bottom of the box are called ‘hinges’. The vertical lines connected to each hinge are called 'whiskers', and
+give some indication of the broader range of the data. Exactly what the whiskers show differs depending on the
+particular command you use to draw a boxplot. In this case, the upper whisker shows the largest data point that is no
+more than 1.5 times the IQR above the upper hinge. The lower whisker is the lowest point no more than 1.5x the IQR below
+the lower hinge. In this version of a boxplot, any data point outside the range of the whiskers is described as an
+'outlying point' and is shown individually as a dot.
+
+## Scales and types
+
+This boxplot uses `mtcars` to display car transmission types (automatic or manual) against fuel consumption (miles per
+gallon).
 
 ```{r}
 mtcars %>%
@@ -540,15 +554,20 @@ mtcars %>%
   geom_boxplot()
 ```
 
-The reason is visible here:
+This does not plot the two boxes (automatic and manual) on the x-axis that we expected. Instead it plots a single box,
+with an x-axis scale ranging from 0--1.
+
+If we check the variable types using `glimpse` we can see why.
 
 ```{r}
 mtcars %>% glimpse()
 ```
 
-The `am` has type `dbl`...
- 
-We must tell R it's a factor:
+The variable `am` has type `dbl`. However, it should be a factor with the values `0` and `1` representing automatic and
+manual transmissions. Because R has been told that it's a number, it plots the x-axis on a continuous scale between
+0--1.
+
+We can use the command `factor(am)` to tell R that the x-axis is a factor. This gives us the boxplot we were expecting.
 
 ```{r}
 mtcars %>%
@@ -556,7 +575,25 @@ mtcars %>%
   geom_boxplot()
 ```
 
-Adding color. Explain `aes`. This works:
+:::{.exercise}
+Exercise 6
+
+Use `mtcars` to max a boxplot showing miles per gallon against number of gears (`gear`).
+:::
+
+Your plot should look like this:
+
+```{r ex6, echo=FALSE}
+mtcars %>%
+  ggplot(aes(factor(gear), mpg)) +
+  geom_boxplot()
+```
+
+<a name="colour"></a>
+
+# ggplot: Colour
+
+* Explain `aes`. This works:
 
 ```{r}
 diamonds %>%
@@ -564,7 +601,7 @@ diamonds %>%
   geom_point()
 ```
 
-This doesn't so well:
+* This doesn't so well:
 
 ```{r}
 mtcars %>%
@@ -579,6 +616,10 @@ mtcars %>%
   ggplot(aes(wt, mpg, color = factor(cyl))) +
   geom_point()
 ```
+
+:::{.exercise}
+Add colour to something after converting to factor
+:::
 
 <a name="markdown"></a>
 
