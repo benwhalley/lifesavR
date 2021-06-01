@@ -39,3 +39,4 @@ provided online.
   * *data.frame* not *dataframe/data frame*
   * *built-in* not *built in/builtin*
   * *x-axis* not *x axis*
+  * *colour* not *colour* (in text and `aes()`)

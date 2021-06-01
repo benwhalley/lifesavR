@@ -41,6 +41,7 @@ the activities in the blue boxes.**
 - [The pipe `%>%`](#pipe)
 - [`ggplot`: scatter plots](#scatterplots)
 - [`ggplot`: boxplots](#boxplots)
+- [`ggplot`: colour](#colour)
 - [highlight types of data shown in `glimpse` (dbl, ord) and show the problem in a continuous color scale](#types)
 - [Introduction to Markdown](#markdown)
 
@@ -593,7 +594,10 @@ mtcars %>%
 
 # ggplot: Colour
 
-* Explain `aes`. This works:
+The command used to define which variable is plotted on the x and y axes is `aes`. This stands for 'aesthetics', and `aes` is the command which maps variables to visual aspects of a plot. The command `ggplot(aes(factor(am), mpg))` converts `am` to a factor, before and maps the result to the x-axis, mapping `mpg` to the y-axis.
+
+You can use the `colour` option in `aes` to map colours to a variable. A good use of colour would be to enhance the
+diamonds scatterplot by representing each diamond's clarity (an ordinal variable) in colour.
 
 ```{r}
 diamonds %>%
@@ -601,15 +605,19 @@ diamonds %>%
   geom_point()
 ```
 
-* This doesn't so well:
+What happens if we use `mtcars` to plot weight against fuel consumption, using colour to show the number of cylinders in
+each car?
 
 ```{r}
 mtcars %>%
-  ggplot(aes(wt, mpg, color = cyl)) +
+  ggplot(aes(wt, mpg, colour = cyl)) +
   geom_point()
 ```
 
-We can improve it like this:
+The number of cylinders are plotted in continuous shades of blue. This isn't terrible, but it would be clearer if each
+number of cylinders had its own colour. This is the same problem we had with some of the other `mtcars` variables. They
+have type `dbl`, when they are actually factors. We can use `factor` to fix the colours in the same way we fixed the
+x-axis:
 
 ```{r}
 mtcars %>%
@@ -617,9 +625,21 @@ mtcars %>%
   geom_point()
 ```
 
+In this plot it's easier to see that cars with more cylinders tend to be heavier, and have worse fuel consumption.
+
 :::{.exercise}
-Add colour to something after converting to factor
+Exercise 7
+
+Make a scatterplot using `mtcars` to show weight on the x-axis, fuel consumption on the y-axis, and one colour for each number of gears.
 :::
+
+Your plot should look like this:
+
+```{r ex7, echo=FALSE}
+mtcars %>%
+  ggplot(aes(wt, mpg, color = factor(gear))) +
+  geom_point()
+```
 
 <a name="markdown"></a>
 
