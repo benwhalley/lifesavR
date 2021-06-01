@@ -42,7 +42,6 @@ the activities in the blue boxes.**
 - [`ggplot`: scatter plots](#scatterplots)
 - [`ggplot`: boxplots](#boxplots)
 - [`ggplot`: colour](#colour)
-- [highlight types of data shown in `glimpse` (dbl, ord) and show the problem in a continuous color scale](#types)
 - [Introduction to Markdown](#markdown)
 
 <a name="using"></a>
