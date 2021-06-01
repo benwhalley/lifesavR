@@ -3,6 +3,10 @@ title: "LifesaveR: Session 1"
 output: html_document
 ---
 
+# lifesaveR: Workbook 1
+
+This R Markdown document is your workbook for session one of the lifesaveR module.
+
 ## An example plot
 
 The following chunk creates a scatterplot of a built-in data set that contains information about diamonds. By the end of

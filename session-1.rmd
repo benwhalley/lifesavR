@@ -645,6 +645,53 @@ mtcars %>%
 
 # Introduction to Markdown
 
+When we introduced R Markdown, we said that it's a way of combining R with narrative text. This section explains
+'markdown', a way to format the narrative text and combine it with your R code into a single document.
+
+Watch the following short video to see a few things that can be done using markdown.
+
+`r hide('Video script')`
+
+Markdown is a language uses particular characters to style text in the same way you might use menus in a word processor to define headings, font styles, lists etc. You can see some examples of this in your workbook.
+
+* The `#` at the start of `# lifesaveR: Workbook 1` assigns the text `lifesaveR: Workbook 1` as a level 1 heading
+* The sentence below that heading is ordinary text 
+* `## An example plot` is a level 2 heading
+* The lines beginning `1.` under `# Exercise 1` create a numbered list, starting at 1
+
+The `Knit` button combines the Markdown and R chunks, 'knitting' them together into an output document. It works through
+your document converting Markdown to formatted text, and running each of your R chunks, *in the order you have written
+them*. We can see that this is the case by 'knitting' the R Markdown workbook for this session.
+
+Other markdown features include:
+
+* `*italic text*` - *italic text*
+* `**bold text**` - **bold text**
+
+The following simple approach will give you regular practice writing markdown:
+
+1. Each time you reach a new section in a worksheet, copy the section name (e.g. 'Exploring and checking data') into a
+level 2 heading in your workbook
+1. Before starting each exercise, create a level 3 heading for the exercise number (e.g. 'Exercise 2')
+1. Copy the exercise instructions below this as a bullet list
+1. Complete the exercise.
+
+This methodical approach will allow you to complete each workbook step by step. At the end of each session, you will
+have written a neat, 'summary' document which will be a useful revision aid. The same approach works for all R
+worksheets at the University of Plymouth. If you get into this habit, you will be adding to your 'reference library'
+whenever you complete a worksheet. These summary documents are invaluable when you are more familiar with R but need to
+quickly remind yourself how to use a particular feature.
+`r unhide()`
+
+:::{.exercise}
+Exercise 8
+
+* For each of the chunks you wrote for Exercises 2-7
+  * Add the section name as a level 2 heading
+  * Add the exercise number as a level 3 heading
+  * Add the instructions as a numbered list (or as plain text if there's only one instruction)
+:::
+
 # Check your knowledge
 
 - What is `mtcars`?
