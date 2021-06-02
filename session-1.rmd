@@ -13,16 +13,16 @@ output:
 source("_first_chunk.R")
 ```
 
-![](images/shoshin.jpg)
 
-> Beginners mind (Shoshin) denotes openness, eagerness and lack of preconceptions when studying a subject, just as a beginner would, no matter what level of expertise the student has. 
+<!-- > Beginners mind (Shoshin) denotes openness, eagerness and lack of preconceptions when studying a subject, just as a beginner would, no matter what level of expertise the student has.  -->
 
-Even black belt martial artists practice basic techniques like blocks and punches every time they train. 
+<!-- Even black belt martial artists practice basic techniques like blocks and punches every time they train.  -->
 
 This session doesn't assume any prior knowledge of R, and introduces the basics. For some this will be revision from
 last year, but we provide additional material for advanced students test their knowledge and extend familiar skills.
 **Even if you are quite confident with R Studio from Stage 1, please read the worksheet carefully and complete all of
 the activities in the blue boxes.**
+
 
 ## General principles
 
@@ -491,46 +491,49 @@ Copy the following two chunks into your worksheet and run them.
 This chunk creates a scatter plot. The x-axis shows the number of cylinders in the car. The y-axis shows the miles
 covered by the car per gallon of fuel when driven on the highway.
 
-```{r}
-mpg %>% ggplot(aes(cyl, hwy)) +
-  geom_point()
-```
 
-This chunk plots cylinders against highway miles per gallon. The points on the scatter plot are 'jittered' to avoid
-overplotting, making the output easier to read.
+THIS SHOULD BE
 
 ```{r}
-mpg %>% ggplot(aes(cyl, hwy)) +
-  geom_jitter()
+mpg %>% 
+  ggplot(aes(cty, hwy)) + geom_point()
+
+
 ```
+
+
 
 :::{.exercise}
+
 Exercise 5
 
 1. Create a new chunk at the bottom of your worksheet
-1. Pipe the `mpg` data.frame into a `ggplot` command which creates a scatter plot showing `mpg` against `cty` (miles per gallon when cars are driven in a city)
+1. FIX THIS Pipe the `mpg` data.frame into a `ggplot` command which creates a scatter plot showing `hwy` against `cty` (miles per gallon when cars are driven in a city)
 :::
 
 Your plot should look like this:
 
 ```{r ex-5, echo=FALSE}
-mpg %>% ggplot(aes(cyl, cty)) +
-  geom_jitter()
+mpg %>% ggplot(aes(hwy, cty)) +
+  geom_point()
 ```
 
-Fuel efficiency is better when cars are driven `r mcq(c("in the city", "on the pavement", answer = "on the highway"))`.
 
-<a name="boxplots"></a>
 
-# ggplot: Boxplots
+FIX THIS - MOVE TO EXTENSIONS? Fuel efficiency is better when cars are driven `r mcq(c("in the city", "on the pavement", answer = "on the highway"))`.
 
-The following chunk uses the `gapminder` data to display life expectancy by continent.
+
+
+# ggplot: Boxplots {#boxplots}
+
+<!-- The following chunk uses the `gapminder` data to display life expectancy by continent. -->
 
 ```{r}
-gapminder::gapminder %>%
-  ggplot(aes(continent, lifeExp)) +
-  geom_boxplot()
+mpg %>% 
+  ggplot(aes(class, cty)) + geom_boxplot()
 ```
+
+
 
 In a boxplot, the thick line is the median. That thick line is enclosed inside a rectangle (the 'box'), and the size of
 the box indicates the inter-quartile range (IQR). The IQR contains the middle 50% of the ordered data. A wider IQR
@@ -543,53 +546,11 @@ more than 1.5 times the IQR above the upper hinge. The lower whisker is the lowe
 the lower hinge. In this version of a boxplot, any data point outside the range of the whiskers is described as an
 'outlying point' and is shown individually as a dot.
 
-## Scales and types
 
-This boxplot uses `mtcars` to display car transmission types (automatic or manual) against fuel consumption (miles per
-gallon).
 
-```{r}
-mtcars %>%
-  ggplot(aes(am, mpg)) +
-  geom_boxplot()
-```
+NEED NEW EXERCISE HERE JUST MAKING SIMPLEST POSSIBLE BOXPLOT
 
-This does not plot the two boxes (automatic and manual) on the x-axis that we expected. Instead it plots a single box,
-with an x-axis scale ranging from 0--1.
 
-If we check the variable types using `glimpse` we can see why.
-
-```{r}
-mtcars %>% glimpse()
-```
-
-The variable `am` has type `dbl`. However, it should be a factor with the values `0` and `1` representing automatic and
-manual transmissions. Because R has been told that it's a number, it plots the x-axis on a continuous scale between
-0--1.
-
-We can use the command `factor(am)` to tell R that the x-axis is a factor. This gives us the boxplot we were expecting.
-
-```{r}
-mtcars %>%
-  ggplot(aes(factor(am), mpg)) +
-  geom_boxplot()
-```
-
-:::{.exercise}
-Exercise 6
-
-Use `mtcars` to max a boxplot showing miles per gallon against number of gears (`gear`).
-:::
-
-Your plot should look like this:
-
-```{r ex6, echo=FALSE}
-mtcars %>%
-  ggplot(aes(factor(gear), mpg)) +
-  geom_boxplot()
-```
-
-<a name="colour"></a>
 
 # ggplot: Colour
 
@@ -599,37 +560,21 @@ You can use the `colour` option in `aes` to map colours to a variable. A good us
 diamonds scatterplot by representing each diamond's clarity (an ordinal variable) in colour.
 
 ```{r}
-diamonds %>%
-  ggplot(aes(carat, price, colour = clarity)) +
+mpg %>% 
+  ggplot(aes(cty, hwy, color=drv)) + 
   geom_point()
 ```
 
 What happens if we use `mtcars` to plot weight against fuel consumption, using colour to show the number of cylinders in
 each car?
 
-```{r}
-mtcars %>%
-  ggplot(aes(wt, mpg, colour = cyl)) +
-  geom_point()
-```
 
-The number of cylinders are plotted in continuous shades of blue. This isn't terrible, but it would be clearer if each
-number of cylinders had its own colour. This is the same problem we had with some of the other `mtcars` variables. They
-have type `dbl`, when they are actually factors. We can use `factor` to fix the colours in the same way we fixed the
-x-axis:
-
-```{r}
-mtcars %>%
-  ggplot(aes(wt, mpg, color = factor(cyl))) +
-  geom_point()
-```
-
-In this plot it's easier to see that cars with more cylinders tend to be heavier, and have worse fuel consumption.
 
 :::{.exercise}
 Exercise 7
 
 Make a scatterplot using `mtcars` to show weight on the x-axis, fuel consumption on the y-axis, and one colour for each number of gears.
+FIX THIS TO BE GAPMINDER? OR SMETHING ELSE
 :::
 
 Your plot should look like this:
@@ -640,14 +585,20 @@ mtcars %>%
   geom_point()
 ```
 
-<a name="markdown"></a>
 
-# Introduction to Markdown
+
+# Introduction to Markdown {#markdown}
 
 When we introduced R Markdown, we said that it's a way of combining R with narrative text. This section explains
 'markdown', a way to format the narrative text and combine it with your R code into a single document.
 
-Watch the following short video to see a few things that can be done using markdown.
+Watch the following short video to see a few things that can be done using markdown, BUT THE MAINONES YOU NEED ARE:
+
+* The `#` at the start of `# lifesaveR: Workbook 1` assigns the text `lifesaveR: Workbook 1` as a first level heading (the largest size)
+* The sentence below that heading is ordinary text 
+* `## An example plot` is a second level heading (next largest). Using `###` and `####` makes even smaller headings.
+* `**bold text**` - **bold text**
+
 
 `r hide('Video script')`
 
@@ -680,6 +631,9 @@ have written a neat, 'summary' document which will be a useful revision aid. The
 worksheets at the University of Plymouth. If you get into this habit, you will be adding to your 'reference library'
 whenever you complete a worksheet. These summary documents are invaluable when you are more familiar with R but need to
 quickly remind yourself how to use a particular feature.
+
+LINKS TO CHEATSHEET HERE
+
 `r unhide()`
 
 :::{.exercise}
@@ -693,20 +647,49 @@ Exercise 8
 
 # Check your knowledge
 
-- What is `mtcars`?
+- What is `mpg`?
+- What is the 5th colun in mpg?
 - Explain what `glimpse` does
+MAKE MORE IF YOU CAN
+
+
+
+MOVE LATER
 - What is the `%>%` symbol called and what does it do?
 - What is the `<-` symbol called and what does it do?
-- What is the difference between a `dbl` and an `ord`/`fct`?
 - Give an example of when the difference between `dbl` and `fct` matters when making a plot
 - How can you convert a variable from a `dbl` to a `fct`
 - What is the difference between `geom_jitter()` and `geom_point()`? 
 - Why is `geom_jitter` useful sometimes?
+- What is the difference between a `dbl` and an `ord`/`fct`?
+
+
 
 # Extensions
 
 - Lots more practice plots with different datasets?
-- Better plotting worksheet stage 4?
+
+```{r}
+# EXTENSION 1
+mpg %>% ggplot(aes(displ, cty)) +
+  geom_point()
+
+# EX 2
+
+gapminder::gapminder %>%
+  ggplot(aes(continent, lifeExp)) +
+  geom_boxplot()
+
+
+# EX 3 
+diamonds %>%
+  ggplot(aes(carat, price, colour = clarity)) +
+  geom_point()
+
+
+```
+
+
 
 # Further reading
 

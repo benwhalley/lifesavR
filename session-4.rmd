@@ -16,23 +16,61 @@ source('_first_chunk.R')
 
 
 
-
-> Fudōshin: The immovable mind; composure under pressure or in challenging situations.
-
-
-
-
-
-
-
-
-
-![](images/fudoshin.png)
+<!-- 4.	Evidence 2 – correlations -->
+<!-- -	Scatter plot -->
+<!-- -	Effect sizes shown in scatter plots (make it a quiz* and/or use http://guessthecorrelation.com ) -->
+<!-- -	Bayesian evidence for a correlation -->
+<!-- -	Colouring a scatterplot*† -->
+<!-- -	Smoothed line plot*† -->
 
 
 
 
-![](images/bushido.png)
+STUFF FROM SESSION 1
+
+We show the benefit of jitter somewhere here now
+
+<!-- he points on the scatter plot are 'jittered' to avoid -->
+<!-- overplotting, making the output easier to read. -->
+
+```{r}
+mpg %>% 
+  ggplot(aes(cty, hwy)) + geom_point()
+
+mpg %>% 
+  ggplot(aes(cty, hwy)) + geom_jitter()
+```
+
+
+
+
+
+
+
+
+
+ALSO SHOW COLOR SCALE PROBLESM (REPEATS FROM PREV SESSION)
+
+```{r}
+mtcars %>%
+  ggplot(aes(wt, mpg, colour = cyl)) +
+  geom_point()
+```
+
+The number of cylinders are plotted in continuous shades of blue. This isn't terrible, but it would be clearer if each
+number of cylinders had its own colour. This is the same problem we had with some of the other `mtcars` variables. They
+have type `dbl`, when they are actually factors. We can use `factor` to fix the colours in the same way we fixed the
+x-axis:
+
+```{r}
+mtcars %>%
+  ggplot(aes(wt, mpg, color = factor(cyl))) +
+  geom_point()
+```
+
+In this plot it's easier to see that cars with more cylinders tend to be heavier, and have worse fuel consumption.
+
+
 
 
 

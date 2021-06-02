@@ -15,17 +15,14 @@ source('_first_chunk.R')
 ```
 
 
-![](images/mushin.png)
 
 
+<!-- A literal translation of Mushin is something like 'mind without mind', but in karate and other martial arts the term -->
+<!-- denotes the state of mind achieved when free from thoughts of anger, fear, or ego during combat, or in everyday life.  -->
 
-
-A literal translation of Mushin is something like 'mind without mind', but in karate and other martial arts the term
-denotes the state of mind achieved when free from thoughts of anger, fear, or ego during combat, or in everyday life. 
-
-To achieve mushin takes **repeated practice** and complete familiarity with the technique required to act, such that 
-technical details can fade into the background. This leaves the student free to act, responding effortlessly to 
-the challenge at hand.
+<!-- To achieve mushin takes **repeated practice** and complete familiarity with the technique required to act, such that  -->
+<!-- technical details can fade into the background. This leaves the student free to act, responding effortlessly to  -->
+<!-- the challenge at hand. -->
 
 We think the analogy to using R is clear:
 
@@ -45,6 +42,7 @@ In this session we cover:
 
 - Loading data from files
 - Using simple techniques to answer research questions with data
+- Saving intermediate steps using variables
 
 
 Principles/ideas 
@@ -57,6 +55,7 @@ Principles/ideas
 R techniques: 
 
 - Assign variable  (keyword: **"assignment operator"**) and find it in the Env window
+<!-- - Explanation of pipes as a way of passing data (an alternative to function arguments) -->
 - `read_csv` (from a url)
 - the files window; loading a datafile from the same directory as the Rmd file (created by bootstrap script)
 - uploading a datafile from your own computer  read_csv it; importance of file extensions

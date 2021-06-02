@@ -20,16 +20,91 @@ THIS STILL A WIP
 ![](images/zanshin.jpg)
 
 
-> The lingering mind/The lingering mind: alertness and readiness to meet the situation. (Zanshin)
+<!-- > The lingering mind/The lingering mind: alertness and readiness to meet the situation. (Zanshin) -->
 
-Zanshin is a continuing state of alertness and readiness to meet the situation. To stretch our metaphor a little — when working with data it's 
-important to remain open to alternative explanations and to provide the best possible summary of our data.
+<!-- Zanshin is a continuing state of alertness and readiness to meet the situation. To stretch our metaphor a little — when working with data it's  -->
+<!-- important to remain open to alternative explanations and to provide the best possible summary of our data. -->
 
 
 - Sub-setting data: sensitivity analysis for outliers (filter, group_by)
 - Summary tables to reveal patterns in data (use Simpson's paradox as teaching example)
 - Facets in graphs; ggsave
 
+
+
+STUFF FROM SESSION 1
+
+- Scales for boxplot
+
+
+## Scales and types
+
+This boxplot uses `mtcars` to display car transmission types (automatic or manual) against fuel consumption (miles per
+gallon).
+
+```{r}
+mtcars %>%
+  ggplot(aes(am, mpg)) +
+  geom_boxplot()
+```
+
+This does not plot the two boxes (automatic and manual) on the x-axis that we expected. Instead it plots a single box,
+with an x-axis scale ranging from 0--1.
+
+If we check the variable types using `glimpse` we can see why.
+
+```{r}
+mtcars %>% glimpse()
+```
+
+The variable `am` has type `dbl`. However, it should be a factor with the values `0` and `1` representing automatic and
+manual transmissions. Because R has been told that it's a number, it plots the x-axis on a continuous scale between
+0--1.
+
+We can use the command `factor(am)` to tell R that the x-axis is a factor. This gives us the boxplot we were expecting.
+
+```{r}
+mtcars %>%
+  ggplot(aes(factor(am), mpg)) +
+  geom_boxplot()
+```
+
+:::{.exercise}
+Exercise 6
+
+Use `mtcars` to max a boxplot showing miles per gallon against number of gears (`gear`).
+:::
+
+Your plot should look like this:
+
+```{r ex6, echo=FALSE}
+mtcars %>%
+  ggplot(aes(factor(gear), mpg)) +
+  geom_boxplot()
+```
+
+<a name="colour"></a>
+
+
+
+
+
+
+
+```{r}
+
+gapminder::gapminder %>% 
+  ggplot(aes(factor(year), lifeExp)) + 
+  geom_point()
+
+gapminder::gapminder %>% 
+  ggplot(aes(year, lifeExp)) + 
+  geom_boxplot()
+
+gapminder::gapminder %>% 
+  ggplot(aes(factor(year), lifeExp)) + 
+  geom_boxplot()
+```
 
 
 
