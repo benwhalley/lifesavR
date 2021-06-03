@@ -70,8 +70,12 @@ mtcars %>%
 
 In this plot it's easier to see that cars with more cylinders tend to be heavier, and have worse fuel consumption.
 
+# Check your knowledge
 
+Write an answer to each of these questions in the `Check your knowledge` section of your workbook. The answers will be
+revealed in Session 5.
 
-
+- What is the difference between `geom_jitter()` and `geom_point()`? 
+- Why is `geom_jitter` useful sometimes?
 
 

@@ -226,10 +226,13 @@ mtcars %>%
   facet_wrap(vars(am))   # note to paul... use vars here to avoid quoting of variable names which is confusing/inconsistent with other use
 ```
 
+# Check your knowledge
 
+Write an answer to each of these questions in the `Check your knowledge` section of your workbook. The answers will be
+revealed in Session 3.
 
-
-
+- What is the `%>%` symbol called and what does it do?
+- What is the `<-` symbol called and what does it do?
 
 # Practice problems
 

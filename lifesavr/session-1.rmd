@@ -45,3 +45,11 @@ Position your cursor on the line that says `diamonds` and run the commands.
 1. Create a chunk below these instructions
 1. Inside the chunk, write a line of code which adds together the numbers 9, 4, 55 and 2
 1. Run the the line of code you have written
+
+# Check your knowledge
+
+## What is `mpg`?
+
+## What is the 5th column in mpg?
+
+## Explain what `glimpse` does

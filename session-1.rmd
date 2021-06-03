@@ -589,19 +589,13 @@ Exercise 11
 
 # Check your knowledge
 
+Write an answer to each of these questions in the `Check your knowledge` section of your workbook. The answers will be
+revealed in Session 2.
+
 - What is `mpg`?
-- What is the 5th colun in mpg?
+- What is the 5th column in mpg?
 - Explain what `glimpse` does
 - <!-- TODO: add 7 more -->
-
-<!-- TODO: MOVE LATER -->
-- What is the `%>%` symbol called and what does it do?
-- What is the `<-` symbol called and what does it do?
-- Give an example of when the difference between `dbl` and `fct` matters when making a plot
-- How can you convert a variable from a `dbl` to a `fct`
-- What is the difference between `geom_jitter()` and `geom_point()`? 
-- Why is `geom_jitter` useful sometimes?
-- What is the difference between a `dbl` and an `ord`/`fct`?
 
 # Extension exercises
 

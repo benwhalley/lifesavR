@@ -34,6 +34,11 @@ update this guide with the approach you took.
 easier for staff and students to refer to particular exercises for which they require support, especially where this is
 provided online.
 
+## "Check your knowledge" sections
+
+Each worksheet and workbook has a "Check your knowledge" section. Students are directed to answer these questions in the
+workbook. The subsequent session begins by revealing the answers to these questions, as a warmup/revision test.
+
 ## Language
 
 * Show rather than tell

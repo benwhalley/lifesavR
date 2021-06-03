@@ -126,7 +126,13 @@ Now show when we use this new dataframe in a plot:
 idealdiamonds %>% ggplot(aes(carat, price)) + geom_jitter()
 ```
 
+# Check your knowledge
 
+Write an answer to each of these questions in the `Check your knowledge` section of your workbook. The answers will be
+revealed in Session 4.
 
+- What is the difference between a `dbl` and an `ord`/`fct`?
+- Give an example of when the difference between `dbl` and `fct` matters when making a plot
+- How can you convert a variable from a `dbl` to a `fct`
 
 

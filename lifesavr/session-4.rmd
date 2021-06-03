@@ -1,0 +1,14 @@
+---
+title: "LifesaveR: Session 4"
+output: html_document
+---
+
+# lifesaveR: Workbook 4
+
+This R Markdown document is your workbook for session four of the lifesaveR module.
+
+# Check your knowledge
+
+## What is the difference between `geom_jitter()` and `geom_point()`? 
+
+## Why is `geom_jitter` useful sometimes?

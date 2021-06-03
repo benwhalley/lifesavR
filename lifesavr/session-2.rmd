@@ -16,3 +16,9 @@ of the variable.
 meaningoflife <- 40 + 2
 meaningoflife
 ```
+
+# Check your knowledge
+
+## What is the `%>%` symbol called and what does it do?
+
+## What is the `<-` symbol called and what does it do?

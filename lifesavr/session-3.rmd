@@ -1,0 +1,16 @@
+---
+title: "LifesaveR: Session 3"
+output: html_document
+---
+
+# lifesaveR: Workbook 3
+
+This R Markdown document is your workbook for session three of the lifesaveR module.
+
+# Check your knowledge
+
+## What is the difference between a `dbl` and an `ord`/`fct`?
+
+## Give an example of when the difference between `dbl` and `fct` matters when making a plot
+
+## How can you convert a variable from a `dbl` to a `fct`
