@@ -1,0 +1,18 @@
+---
+title: "LifesaveR: Session 2"
+output: html_document
+---
+
+# lifesaveR: Workbook 2
+
+This R Markdown document is your workbook for session two of the lifesaveR module.
+
+## Variables
+
+This chunk runs the calculation `40 + 2`, assigns the result to the variable `meaningoflife`, and then prints the value
+of the variable.
+
+```{r life}
+meaningoflife <- 40 + 2
+meaningoflife
+```

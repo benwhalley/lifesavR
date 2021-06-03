@@ -212,7 +212,7 @@ You will see some output appear beneath the chunk. Don't worry about the details
 :::{.exercise}
 Exercise 2
 
-Now position your cursor on the line that says `diamonds` and run the commands.
+Position your cursor on the line that says `diamonds` and run the commands.
 :::
 
 You should see the a scatter plot of the diamonds data appear below the chunk:
@@ -230,12 +230,12 @@ also run part of a line by highlighting the code you want to run:
 Exercise 3
 
 1. Select (highlight) the word `diamonds`
-1. Run the code
-:::
+1. Run the command
 
 This prints the first few lines of the diamonds data:
 
 ![Example of running highlighted code](images/diamonds.png)
+:::
 
 Why would you want to run part of a line of code? In these workshops you will combine simple steps into sequences which
 do a particular job, such as generating a plot. It's natural, especially when you're new to R, that the full sequence
@@ -261,7 +261,7 @@ There are also keyboard shortcuts for inserting a chunk:
 :::{.exercise}
 Exercise 4
 
-1. Find the instructions for Exercise 1 in your workbook
+1. Find the instructions for Exercise 4 in your workbook
 1. Create a new chunk below the instructions
 1. Inside the chunk, write a line of code which adds together the numbers 9, 4, 55 and 2, and assigns the result to a variable named `sum`.
 1. Run the the line of code you have written

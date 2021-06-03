@@ -19,18 +19,29 @@ diamonds %>%
   geom_point()
 ```
 
-## Variables
+# Working interactively in R Markdown {#interactive}
 
-This chunk runs the calculation `40 + 2`, assigns the result to the variable `meaningoflife`, and then prints the value
-of the variable.
+## Running R code within a chunk
 
-```{r life}
-meaningoflife <- 40 + 2
-meaningoflife
-```
+### Exercise 1
 
-## Exercise 1
+1. Locate the first chunk in this workbook
+1. Place your cursor (anywhere) on the line that says `library(tidyverse)`
+1. Run the commands
+
+### Exercise 2
+
+Position your cursor on the line that says `diamonds` and run the commands.
+
+### Exercise 3
+
+1. Select (highlight) the word `diamonds`
+1. Run the command
+
+## Inserting a chunk
+
+### Exercise 4
 
 1. Create a chunk below these instructions
-1. Inside the chunk, write a line of code which adds together the numbers 9, 4, 55 and 2, and assigns the result to a variable named `sum`.
+1. Inside the chunk, write a line of code which adds together the numbers 9, 4, 55 and 2
 1. Run the the line of code you have written
