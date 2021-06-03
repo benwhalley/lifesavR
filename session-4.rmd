@@ -41,15 +41,15 @@ mpg %>%
   ggplot(aes(cty, hwy)) + geom_jitter()
 ```
 
+`r hide('Video script')`
+A problem with this plot is that there are many cars with the same number of cylinders. Another way of saying this is
+that `cyl` has been plotted using an 'integer (whole number) scale'. Consequently, many of the points are plotted on top
+of each other, making the values hard to see. The overplotting issue is easily solved by replacing `geom_point()` with
+`geom_jitter()`, which spreads the points out where cars have the same number of cylinders.
+`r unhide()`
 
 
-
-
-
-
-
-
-ALSO SHOW COLOR SCALE PROBLESM (REPEATS FROM PREV SESSION)
+ALSO SHOW COLOR SCALE PROBLEM (REPEATS FROM PREV SESSION)
 
 ```{r}
 mtcars %>%

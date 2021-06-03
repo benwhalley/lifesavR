@@ -23,6 +23,8 @@ update this guide with the approach you took.
 
 ## Videos
 
+Before each video there should be a 1-2 sentences summarising its content.
+
 1. Write the script for the video with a show/hide button
 1. Record the video and add it above the script button (see session-1.rmd for an HTML example)
 
