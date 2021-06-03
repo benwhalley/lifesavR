@@ -51,11 +51,11 @@ Principles/ideas
 - Precision and literal-mindedness of R
 - Paths and directories
 
-
-R techniques: 
+## R techniques covered
 
 - Assign variable  (keyword: **"assignment operator"**) and find it in the Env window
-<!-- - Explanation of pipes as a way of passing data (an alternative to function arguments) -->
+- [The pipe `%>%`](#pipe)
+
 - `read_csv` (from a url)
 - the files window; loading a datafile from the same directory as the Rmd file (created by bootstrap script)
 - uploading a datafile from your own computer  read_csv it; importance of file extensions
@@ -68,6 +68,50 @@ Activity:
 ???  set up the teaching as a kind of treasure hunt where students have to find use data to answer questions, gather clues and spell out a word?
 Alternatively, just ask them to make LOTs of different plots using the techniques above, not just one:
 
+## Variables
+
+Using variables lets us store calculations for later. A variable is a name which can be assigned a value using the
+assignment operator: `<-`.
+
+:::{.exercise}
+Run the two lines in the chunk named `life`.
+:::
+
+The results should look like this:
+
+![Results of running `life` chunk](images/life.png)
+
+Line 24 runs the calculation `40 + 2`, then assigns the result to the variable `meaningoflife`. The assignment operator
+`<-` looks like an arrow that points to the left. This is a reminder that the results of the calculation on the right
+hand side will be assigned to the variable on the left hand side. Line 25 displays the value of `meaningoflife`.
+
+Variables that you create are stored in what's called the `Global Environment`. You can see them in the **Environment**
+pane.
+
+![Variables that you create are stored in the `Global Environment`](images/global_environment.png)
+
+
+# The pipe {#pipe}
+
+<!-- - Explanation of pipes as a way of passing data (an alternative to function arguments) -->
+
+The pipe command `%>%` sends data from one piece of code to another. For example, you've already seen that `mtcars %>%
+head()` 'pipes' `mtcars` into `head`, which shows just the first few rows. Think of your data as flowing along a pipe
+with commands which transform it, step by step, until it plops out the end in the format you want. The pipe command is
+designed to remind you of this analogy. The `>` reminds you of
+the direction in which your data is flowing. Each step should be read as 'then', e.g. "take the `mgp` data, *then* `ggplot` it".
+
+Another dataset loaded by the `tidyverse` package is `mpg`. This contains fuel economy data from 1999 to 2008 for 38
+popular models of US cars.
+
+:::{.exercise}
+Exercise n
+
+1. Create a new chunk at the bottom of your worksheet
+1. Pipe the `mpg` data.frame into `head` and assign the results to a variable called `mpg_head`
+
+In 1999, a 6 cylinder Audio A4 could cover `r fitb('26')` miles per gallon when driven on the highway.
+:::
 
 # Arrange
 

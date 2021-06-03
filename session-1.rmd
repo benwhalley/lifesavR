@@ -16,13 +16,12 @@ source("_first_chunk.R")
 
 <!-- > Beginners mind (Shoshin) denotes openness, eagerness and lack of preconceptions when studying a subject, just as a beginner would, no matter what level of expertise the student has.  -->
 
-<!-- Even black belt martial artists practice basic techniques like blocks and punches every time they train.  -->
+<!-- Even black belt martial artists practice basic techniques like blocks and punches every time they train. -->
 
 This session doesn't assume any prior knowledge of R, and introduces the basics. For some this will be revision from
 last year, but we provide additional material for advanced students test their knowledge and extend familiar skills.
 **Even if you are quite confident with R Studio from Stage 1, please read the worksheet carefully and complete all of
 the activities in the blue boxes.**
-
 
 ## General principles
 
@@ -33,20 +32,17 @@ the activities in the blue boxes.**
 
 - [Using the RStudio interface](#using)
 - [What can R do?](#cando)
-- [Working interactively in R Markdown](#rmd)
+- [Working interactively in R Markdown](#interactive)
 - [Creating a chunk](#chunk)
 - [Loading packages](#packages)
 - [Built-in datasets](#datasets)
 - [Exploring and checking data](#exploring)
-- [The pipe `%>%`](#pipe)
 - [`ggplot`: scatter plots](#scatterplots)
 - [`ggplot`: boxplots](#boxplots)
 - [`ggplot`: colour](#colour)
 - [Introduction to Markdown](#markdown)
 
-<a name="using"></a>
-
-# Using the RStudio interface
+# Using the RStudio interface {#using}
 
 These worksheets assume that you are using a web browser to access [the RStudio Server at Plymouth
 University](https://rstudio.plymouth.ac.uk).
@@ -105,9 +101,7 @@ Click on `session-1.rmd` in the **Files** pane.
 
 You're now ready to start the session.
 
-<a name="rmd"></a>
-
-# What can R do?
+# What can R do? {#cando}
 
 Watch the following short video to see a few things that R can do.
 
@@ -124,7 +118,7 @@ won’t think for itself or take the initiative. You need to tell it *exactly* w
 instructions.
 `r unhide()`
 
-# Working interactively in R Markdown
+# Working interactively in R Markdown {#interactive}
 
 Click on the `lifesavr` folder in the **Files** pane. Notice than some files have the extension `.rmd`. These are R
 Markdown files. It is important that any R Markdown file you create has the extension `.rmd` (or .`Rmd`), because this
@@ -205,6 +199,8 @@ Finally, you often want to run all of the code in a chunk. This can be done by p
 `r unhide()`
 
 :::{.exercise}
+Exercise 1
+
 1. Locate the first chunk in `session-1.rmd`
 1. Place your cursor (anywhere) on the line that says `library(tidyverse)`
 1. Run the commands by pressing <span class="keyshape">Ctrl</span> + <span class="keyshape">↵</span> (Windows, Linux) or
@@ -214,6 +210,8 @@ Finally, you often want to run all of the code in a chunk. This can be done by p
 You will see some output appear beneath the chunk. Don't worry about the details for now, we'll explain those later.
 
 :::{.exercise}
+Exercise 2
+
 Now position your cursor on the line that says `diamonds` and run the commands.
 :::
 
@@ -229,6 +227,8 @@ Congratulations! You have just run your first lines of R. The code to produce th
 also run part of a line by highlighting the code you want to run:
 
 :::{.exercise}
+Exercise 3
+
 1. Select (highlight) the word `diamonds`
 1. Run the code
 :::
@@ -243,31 +243,7 @@ of commands won't do exactly what you want first time. Running part of your code
 are correct. This allows you to modify subsequent steps until your code produces the required results. Remember this
 technique as you will be using it extensively in these workshops.
 
-## Variables
-
-Using variables lets us store calculations for later. A variable is a name which can be assigned a value using the
-assignment operator: `<-`.
-
-:::{.exercise}
-Run the two lines in the chunk named `life`.
-:::
-
-The results should look like this:
-
-![Results of running `life` chunk](images/life.png)
-
-Line 24 runs the calculation `40 + 2`, then assigns the result to the variable `meaningoflife`. The assignment operator
-`<-` looks like an arrow that points to the left. This is a reminder that the results of the calculation on the right
-hand side will be assigned to the variable on the left hand side. Line 25 displays the value of `meaningoflife`.
-
-Variables that you create are stored in what's called the `Global Environment`. You can see them in the **Environment**
-pane.
-
-![Variables that you create are stored in the `Global Environment`](images/global_environment.png)
-
-<a name="chunk"></a>
-
-## Inserting a chunk
+## Inserting a chunk {#chunk}
 
 You insert a new chunk by positioning your cursor on the line where you want the chunk to appear, and selecting the
 `Code > Insert Chunk` menu option:
@@ -283,7 +259,7 @@ There are also keyboard shortcuts for inserting a chunk:
 ```
 
 :::{.exercise}
-Exercise 1
+Exercise 4
 
 1. Find the instructions for Exercise 1 in your workbook
 1. Create a new chunk below the instructions
@@ -295,9 +271,7 @@ After completing these steps, your environment should look like this:
 
 ![Environment after Exercise 1](images/ex1.png)
 
-<a name="packages"></a>
-
-# Loading packages
+# Loading packages {#packages}
 
 A powerful feature of R is that it can be extended to analyse or plot data in any way imaginable. A package (sometimes
 called a library) is an extension to R that adds new commands. Packages are loaded using the `library()` command.
@@ -324,9 +298,7 @@ We mention this here, as `could not find function` errors are one of the most co
 1. forgotten to *run* that line.
 :::
 
-<a name="datasets"></a>
-
-# Built-in datasets
+# Built-in datasets {#datasets}
 
 A dataset is a set of data relating to a particular topic. Most datasets we will be working with consist of rows and
 columns, just like a spreadsheet. In R this type of data is stored in a special type of variable called a
@@ -355,14 +327,14 @@ dataset in a the same way we loaded diamonds dataset. We load the `gapminder` pa
 Try this out in your workbook:
 
 :::{.exercise}
+Exercise 5
+
 1. Create a new chunk at the bottom of your worksheet
 1. Display the `mtcars` data.frame and try out the navigation buttons
 1. Load the gapminder package, display the gapminder tibble and explore the data
 :::
 
-<a name="exploring"></a>
-
-# Exploring and checking data
+# Exploring and checking data {#exploring}
 
 R Studio has a few different ways to explore datasets.
 
@@ -395,16 +367,16 @@ We'll return to why it's important to know the types of your variables shortly.
 `r unhide()`
 
 :::{.exercise}
-Exercise 2
+Exercise 6
 
 1. Create a new chunk at the bottom of your worksheet
 1. Use `glimpse` to display the `mtcars`, `gapminder` and `diamonds` datasets
-:::
 
-Now use the output from Exercise 2 to answer the following question. After entering your answer, click outside the box.
-The border will turn turn blue when the answer is correct.
+Use the output to answer the following question. After entering your answer, click outside the box. The border will turn
+turn blue when the answer is correct.
 
 * The `clarity` variable in the `diamonds` tibble is of type `r fitb('ord')`.
+:::
 
 ## The `head` command and the Environment pane
 
@@ -427,39 +399,15 @@ example, we could display just cars with 4 gears. Click the button again to turn
 `r unhide()`
 
 :::{.exercise}
-Exercise 3
+Exercise 7
 
 1. Create a new chunk at the bottom of your worksheet
-1. Use `head` to assign the first six rows of `gapminder` to a variable called `gapminder_head`
-:::
+1. Use `head` to show the first six rows of `gapminder`
 
 The population of Afghanistan in 1967 was `r fitb('11537966')`.
-
-<a name="pipe"></a>
-
-# The pipe
-
-The pipe command `%>%` sends data from one piece of code to another. For example, you've already seen that `mtcars %>%
-head()` 'pipes' `mtcars` into `head`, which shows just the first few rows. Think of your data as flowing along a pipe
-with commands which transform it, step by step, until it plops out the end in the format you want. The pipe command is
-designed to remind you of this analogy. The `%` symbols look a bit like two ends of a pipe and the `>` reminds you of
-the direction in which your data is flowing.
-
-Another dataset loaded by the `tidyverse` package is `mpg`. This contains fuel economy data from 1999 to 2008 for 38
-popular models of US cars.
-
-:::{.exercise}
-Exercise 4
-
-1. Create a new chunk at the bottom of your worksheet
-1. Pipe the `mpg` data.frame into `head` and assign the results to a variable called `mpg_head`
 :::
 
-In 1999, a 6 cylinder Audio A4 could cover `r fitb('26')` miles per gallon when driven on the highway.
-
-<a name="scatterplots"></a>
-
-# ggplot: Scatter plots
+# ggplot: Scatter plots {#scatterplots}
 
 The other place where you've encountered the pipe is in the code you used to make a scatter plot of the diamonds data.
 You pipe data into `ggplot` to build up plots step by step.
@@ -485,27 +433,23 @@ of each other, making the values hard to see. The overplotting issue is easily s
 `r unhide()`
 
 :::{.exercise}
-Copy the following two chunks into your worksheet and run them.
+Exercise 8
+
+Copy the following two chunks into your workbook and run them.
 :::
 
 This chunk creates a scatter plot. The x-axis shows the number of cylinders in the car. The y-axis shows the miles
 covered by the car per gallon of fuel when driven on the highway.
-
 
 THIS SHOULD BE
 
 ```{r}
 mpg %>% 
   ggplot(aes(cty, hwy)) + geom_point()
-
-
 ```
 
-
-
 :::{.exercise}
-
-Exercise 5
+Exercise 9
 
 1. Create a new chunk at the bottom of your worksheet
 1. FIX THIS Pipe the `mpg` data.frame into a `ggplot` command which creates a scatter plot showing `hwy` against `cty` (miles per gallon when cars are driven in a city)
@@ -568,14 +512,11 @@ mpg %>%
 What happens if we use `mtcars` to plot weight against fuel consumption, using colour to show the number of cylinders in
 each car?
 
-
-
 :::{.exercise}
-Exercise 7
+Exercise 10
 
 Make a scatterplot using `mtcars` to show weight on the x-axis, fuel consumption on the y-axis, and one colour for each number of gears.
 FIX THIS TO BE GAPMINDER? OR SMETHING ELSE
-:::
 
 Your plot should look like this:
 
@@ -584,8 +525,7 @@ mtcars %>%
   ggplot(aes(wt, mpg, color = factor(gear))) +
   geom_point()
 ```
-
-
+:::
 
 # Introduction to Markdown {#markdown}
 
@@ -626,18 +566,20 @@ level 2 heading in your workbook
 1. Copy the exercise instructions below this as a bullet list
 1. Complete the exercise.
 
+[show outline button]
+
 This methodical approach will allow you to complete each workbook step by step. At the end of each session, you will
 have written a neat, 'summary' document which will be a useful revision aid. The same approach works for all R
 worksheets at the University of Plymouth. If you get into this habit, you will be adding to your 'reference library'
 whenever you complete a worksheet. These summary documents are invaluable when you are more familiar with R but need to
 quickly remind yourself how to use a particular feature.
 
-LINKS TO CHEATSHEET HERE
-
+The [R Markdown Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) is a useful
+quick reference for markdown syntax.
 `r unhide()`
 
 :::{.exercise}
-Exercise 8
+Exercise 11
 
 * For each of the chunks you wrote for Exercises 2-7
   * Add the section name as a level 2 heading
@@ -650,11 +592,9 @@ Exercise 8
 - What is `mpg`?
 - What is the 5th colun in mpg?
 - Explain what `glimpse` does
-MAKE MORE IF YOU CAN
+- <!-- TODO: add 7 more -->
 
-
-
-MOVE LATER
+<!-- TODO: MOVE LATER -->
 - What is the `%>%` symbol called and what does it do?
 - What is the `<-` symbol called and what does it do?
 - Give an example of when the difference between `dbl` and `fct` matters when making a plot
@@ -663,11 +603,9 @@ MOVE LATER
 - Why is `geom_jitter` useful sometimes?
 - What is the difference between a `dbl` and an `ord`/`fct`?
 
+# Extension exercises
 
-
-# Extensions
-
-- Lots more practice plots with different datasets?
+<!-- TODO: practice plots with different datasets -->
 
 ```{r}
 # EXTENSION 1
@@ -675,22 +613,17 @@ mpg %>% ggplot(aes(displ, cty)) +
   geom_point()
 
 # EX 2
-
 gapminder::gapminder %>%
   ggplot(aes(continent, lifeExp)) +
   geom_boxplot()
-
 
 # EX 3 
 diamonds %>%
   ggplot(aes(carat, price, colour = clarity)) +
   geom_point()
-
-
 ```
-
-
 
 # Further reading
 
+- The [R Markdown Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
 - [R Markdown cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/) and [other resources](https://rmarkdown.rstudio.com/)

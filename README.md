@@ -11,10 +11,15 @@ This is WIP
 
 # Style guide (WIP)
 
+Use this guide when you're not sure how to create/edit content these materials. If it doesn't answer your question,
+update this guide with the approach you took.
+
 - use `_first-chunk.R` to load packages and set defaults
 - use https://styler.r-lib.org/ and https://style.tidyverse.org/ to tidy things (there's an R Studio plugin)
 - every `dplyr` verb and `ggplot` layer must be on a new line
+- Refer to R Studio elements using matching markup e.g. bold for the **Environment** pane
 - Include empty parentheses for argumentless verbs in pipelines e.g. `gapminder %>% glimpse()` not `gapminder %>% glimpse`
+- All student activities (exercises, MCQs, fill-in-the-blanks ...) should be in blue boxes
 
 ## Videos
 
