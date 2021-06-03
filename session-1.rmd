@@ -130,7 +130,7 @@ provides an early, gentle introduction to R Markdown.
 
 RStudio needs to distinguish R code from narrative text. This is done by putting the code inside some special
 characters, creating what's referred to as a `chunk`. A chunk is opened using the symbols `` ```{r} ``, and closed using
-the symbols `` ``` ``. This is what a chunk looks like in RStudio (this chunk has been given the optional name `life`):
+the symbols `` ``` ``. This is what a chunk looks like in RStudio:
 
 ![A code chunk in the RMarkdown editor](images/r-code-chunk.png)
 
