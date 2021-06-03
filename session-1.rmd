@@ -338,15 +338,50 @@ Exercise 5
 
 R Studio has a few different ways to explore datasets.
 
+## The `head` command and the Environment pane
+
+The `head` command allows you to explore the first few rows of a dataset.
+
+<span style="color: red">#todo #video of `head`.</span>
+
+`r hide('Video script')`
+The `head` command allows you to explore the first few rows of a dataset. The command `mtcars %>% head()` prints the first
+six rows of `mtcars`.
+
+You can also explore your variables using the **Environment** pane. A data.frame will have an icon that looks like a
+spreadsheet. If you click on the icon, the data.frame is displayed in a new tab in the **Source** pane.
+
+This tab shows you the same information as printing the data.frame, such as the number of rows and columns, but it
+also provides tools for exploring the data interactively.
+
+* The arrows next to the column names allow you to arrange the rows in ascending or descending order based on the column
+values.
+* The `Filter` button allows you to specify a value for one or more columns to filter out non-matching rows. For
+example, we could display just cars with 4 gears. Click the button again to turn off the filter.
+`r unhide()`
+
+:::{.exercise}
+Exercise 6
+
+1. Create a new chunk at the bottom of your worksheet
+1. Use `head` to show the first six rows of `gapminder`
+
+The population of Afghanistan in 1967 was `r fitb('11537966')`.
+:::
+
 ## The `glimpse` command
+
+The `glimpse` command is useful for datasets with lots of columns, as it allows you to see all columns at once.
 
 <span style="color: red">#todo #video of `glimpse`.</span>
 
 `r hide('Video script')`
-Using the `glimpse` command we can have the columns of a dataset run down the page, and data run across. The command
-`mtcars %>% glimpse()` demonstrates this. We'll explain what the `%>%` command means shortly. This is like rotating the
-output you saw earlier anti-clockwise by 90 degrees. The command displays as many observations from the dataset as will
-fit on a single line.
+Using the `glimpse` command we can have the columns of a dataset run down the page, and data run across.
+
+The command `library(causaldata)` loads a data.frame called `nhefs` containing lots of columns relating to health and
+nutrition. Running the command `nhefs %>% glimpse()` shows all of the columns (we'll explain what the `%>%` command
+means in the next session). This is like rotating the output you saw earlier anti-clockwise by 90 degrees. The command
+displays all of the columns as rows, and as many observations from the dataset as will fit on a single line.
 
 Each column in a data.frame should be thought of as a variable. Variables have an associated type. When you assigned a
 number to a variable earlier, behind the scenes, R assigned the variable as numeric. `glimpse` is useful as the second
@@ -367,7 +402,7 @@ We'll return to why it's important to know the types of your variables shortly.
 `r unhide()`
 
 :::{.exercise}
-Exercise 6
+Exercise 7
 
 1. Create a new chunk at the bottom of your worksheet
 1. Use `glimpse` to display the `mtcars`, `gapminder` and `diamonds` datasets
@@ -378,34 +413,6 @@ turn blue when the answer is correct.
 * The `clarity` variable in the `diamonds` tibble is of type `r fitb('ord')`.
 :::
 
-## The `head` command and the Environment pane
-
-<span style="color: red">#todo #video of `head`.</span>
-
-`r hide('Video script')`
-The `head` command allows us to print just a few rows from a dataset. The command `mtcars %>% head()` prints the first
-six rows of `mtcars`. We could also assign this output to a new variable.
-
-You can also explore your variables using the **Environment** pane. A data.frame will have an icon that looks like a
-spreadsheet. If you click on the icon, the data.frame is displayed in a new tab in the **Source** pane.
-
-This tab shows you the same information as printing the data.frame, such as the number of rows and columns, but it
-also provides tools for exploring the data interactively.
-
-* The arrows next to the column names allow you to arrange the rows in ascending or descending order based on the column
-values.
-* The `Filter` button allows you to specify a value for one or more columns to filter out non-matching rows. For
-example, we could display just cars with 4 gears. Click the button again to turn off the filter.
-`r unhide()`
-
-:::{.exercise}
-Exercise 7
-
-1. Create a new chunk at the bottom of your worksheet
-1. Use `head` to show the first six rows of `gapminder`
-
-The population of Afghanistan in 1967 was `r fitb('11537966')`.
-:::
 
 # ggplot: Scatter plots {#scatterplots}
 
