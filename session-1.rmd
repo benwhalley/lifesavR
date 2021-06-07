@@ -350,7 +350,7 @@ Exercise 5
 
 1. Create a new chunk at the bottom of your workbook
 1. Display the `mtcars` data.frame and try out the navigation buttons
-1. Load the gapminder package
+1. Load the `gapminder` package
 1. Display and explore the gapminder tibble
 :::
 
@@ -608,33 +608,92 @@ Exercise 11
 Write an answer to each of these questions in the `Check your knowledge` section of your workbook. The answers will be
 revealed in Session 2.
 
-- What is `mpg`?
-- What is the 5th column in mpg?
-- Explain what `glimpse` does
-- <!-- TODO: add 7 more -->
+- How to you run part of an R command?
+- Which library do you need to load in your first R Markdown chunk?
+- What is `gapminder`?
+- Which command would you use to explore the first few rows of a dataset?
+- What is the 5th column in `gapminder`?
+- Explain what `glimpse` does.
+- Which command makes a plot?
+- Which command defines the axes on a plot?
+- Which command makes a boxplot?
+- How do you use markdown to make a level 3 heading?
 
 # Extension exercises
 
 <!-- TODO: practice plots with different datasets -->
 
-```{r}
-# EXTENSION 1
+## Extension exercise 1
+
+:::{.exercise}
+This scatterplot uses the `mpg` dataset to show `displ` (displacement) on the x-axis against `cty` (mpg when driving in
+a city) on the y-axis.
+
+```{r, echo=FALSE}
 mpg %>% ggplot(aes(displ, cty)) +
   geom_point()
+```
 
-# EX 2
-gapminder::gapminder %>%
+In a new chunk, write the R code to produce this plot.
+:::
+
+## Extension exercise 2
+
+:::{.exercise}
+This boxplot uses the `gapminder` dataset to show `lifeExp` (life expectancy) on the y-axis for each `continent` on the
+x-axis.
+
+```{r, echo=FALSE}
+gapminder %>%
   ggplot(aes(continent, lifeExp)) +
   geom_boxplot()
+```
 
-# EX 3
+In a new chunk, write the R code to produce this plot.
+:::
+
+## Extension exercise 3
+
+:::{.exercise}
+Create a boxplot which shows drivetrain on the x-axis and miles per gallon when a car is driven in the city on the
+y-axis. Your plot should look like this:
+
+```{r, echo=FALSE}
+mpg %>%
+  ggplot(aes(drv, cty)) +
+  geom_boxplot()
+```
+:::
+
+## Extension exercise 4
+
+:::{.exercise}
+Make a scatterplot of the `diamonds` data. Show carat on the x-axis, price on the y-axis and the clarity of the diamond
+in colour. Try to produce your plot before comparing it against the answer using the button below.
+
+`r hide('show answer')`
+```{r, echo=FALSE}
 diamonds %>%
   ggplot(aes(carat, price, colour = clarity)) +
   geom_point()
 ```
+`r unhide()`
+:::
 
+## Extension exercise 5
 
-FIX THIS - MOVE TO EXTENSIONS? Fuel efficiency is better when cars are driven `r mcq(c("in the city", "on the pavement", answer = "on the highway"))`.
+:::{.exercise}
+Make a scatterplot of the `mpg` data. Show city mpg on the x-axis, highway mpg on the y-axis and the vehicle class
+in colour. Try to produce your plot before comparing it against the answer using the button below.
+
+`r hide('show answer')`
+```{r, echo=FALSE}
+mpg %>%
+  ggplot(aes(cty, hwy, colour = class)) +
+  geom_point()
+```
+`r unhide()`
+:::
 
 # Further reading
 
