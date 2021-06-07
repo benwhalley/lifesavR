@@ -12,7 +12,7 @@ This R Markdown document is your workbook for session one of the lifesaveR modul
 The following chunk creates a scatterplot of a built-in data set that contains information about diamonds. By the end of
 the second session, you will have learnt how to create similar plots.
 
-```{r diamonds-plot}
+```{r}
 library(tidyverse)
 diamonds %>%
   ggplot(aes(carat, price)) +
@@ -33,9 +33,15 @@ diamonds %>%
 
 Position your cursor on the line that says `diamonds` and run the commands.
 
+```{r}
+diamonds %>%
+  ggplot(aes(carat, price)) +
+  geom_point()
+```
+
 ### Exercise 3
 
-1. Select (highlight) the word `diamonds`
+1. Select (highlight) the word `diamonds` in the chunk above
 1. Run the command
 
 ## Inserting a chunk
@@ -45,6 +51,8 @@ Position your cursor on the line that says `diamonds` and run the commands.
 1. Create a chunk below these instructions
 1. Inside the chunk, write a line of code which adds together the numbers 9, 4, 55 and 2
 1. Run the the line of code you have written
+
+# Built-in datasets
 
 # Check your knowledge
 
