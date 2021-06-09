@@ -232,7 +232,7 @@ Finally, you often want to run all of the code in a chunk. This can be done by p
 `r unhide()`
 
 :::{.exercise}
-Exercise 1
+**Exercise 1**
 
 1. Locate the first chunk in `session-1.rmd`
 1. Place your cursor (anywhere) on the line that says `library(tidyverse)`
@@ -243,7 +243,7 @@ Exercise 1
 You will see some output appear beneath the chunk. Don't worry about the details for now, we'll explain those later.
 
 :::{.exercise}
-Exercise 2
+**Exercise 2**
 
 Position your cursor on the line that says `diamonds` and run the commands.
 
@@ -260,7 +260,7 @@ Congratulations! You have just run your first lines of R. The code to produce th
 also run part of a line by highlighting the code you want to run:
 
 :::{.exercise}
-Exercise 3
+**Exercise 3**
 
 1. Select (highlight) the word `diamonds`
 1. Run the command
@@ -292,7 +292,7 @@ There are also keyboard shortcuts for inserting a chunk:
 ```
 
 :::{.exercise}
-Exercise 4
+**Exercise 4**
 
 1. Find the instructions for Exercise 4 in your workbook
 1. Create a new chunk below the instructions
@@ -365,7 +365,7 @@ dataset in a the same way we loaded diamonds dataset. We load the `gapminder` pa
 `r unhide()`
 
 :::{.exercise}
-Exercise 5
+**Exercise 5**
 
 1. Create a new chunk at the bottom of your workbook
 1. Display the `mtcars` data.frame and try out the navigation buttons
@@ -402,7 +402,7 @@ example, we could display just cars with 4 gears. Click the button again to turn
 `r unhide()`
 
 :::{.exercise}
-Exercise 6
+**Exercise 6**
 
 1. Create a new chunk at the bottom of your worksheet
 1. Use `head` to show the first six rows of `gapminder`
@@ -444,7 +444,7 @@ The importance of knowing the type associated with a column will become clear in
 `r unhide()`
 
 :::{.exercise}
-Exercise 7
+**Exercise 7**
 
 1. Create a new chunk at the bottom of your worksheet
 1. Use `glimpse` to display the `diamonds` dataset.
@@ -479,7 +479,7 @@ point is plotted for each row, using the values for the `cty` and `hwy` variable
 `r unhide()`
 
 :::{.exercise}
-Exercise 8
+**Exercise 8**
 
 1. Create a new chunk at the bottom of your worksheet
 1. Create a scatterplot with `displ` (engine 'displacement') on the x-axis and `hwy` on the y-axis
@@ -519,7 +519,7 @@ the lower hinge. In this version of a boxplot, any data point outside the range 
 `r unhide()`
 
 :::{.exercise}
-Exercise 9
+**Exercise 9**
 
 1. Create a new chunk at the bottom of your worksheet
 1. Create a boxplot with `drv` (front-wheel/rear-wheel/4-wheel drivetrain) on the x-axis and `hwy` on the y-axis
@@ -553,7 +553,7 @@ mpg %>%
 `r unhide()`
 
 :::{.exercise}
-Exercise 10
+**Exercise 10**
 
 1. Create a new chunk at the bottom of your worksheet
 1. Create a scatterplot using the `gapminder` dataset with `gdpPercap` on the x-axis, `lifeExp` on the y-axis, and `continent` in colour.
@@ -612,7 +612,7 @@ quick reference for markdown syntax.
 `r unhide()`
 
 :::{.exercise}
-Exercise 11
+**Exercise 11**
 
 1. For each of the chunks you wrote for Exercises 4-7
   1. Add the section name as a level 2 heading
@@ -645,6 +645,7 @@ revealed in Session 2.
 ## Extension exercise 1
 
 :::{.exercise}
+
 This scatterplot uses the `mpg` dataset to show `displ` (displacement) on the x-axis against `cty` (mpg when driving in
 a city) on the y-axis.
 
@@ -717,4 +718,5 @@ mpg %>%
 # Further reading
 
 - The [R Markdown Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
-- [R Markdown cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/) and [other resources](https://rmarkdown.rstudio.com/)
+- The [R Markdown cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/)
+- Other [R Markdown resources](https://rmarkdown.rstudio.com/)
