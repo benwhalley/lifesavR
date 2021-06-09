@@ -56,7 +56,6 @@ In this session we cover:
 - [The `arrange` command](#arrange)
 - [The `group_by` command](#groupby)
 - [The ``summarise`` command](#summarise)
-- making a variable containing a subset of a dataframe (using ` <- ` again)
 
 Activity:
 
@@ -112,31 +111,54 @@ Your **Environment** should now look like this:
 
 # The pipe {#pipe}
 
+The pipe command `%>%` sends data from one piece of code to another.
+
+<!-- TODO pipe VIDEO -->
+
+`r hide('Video script')`
 <!-- - Explanation of pipes as a way of passing data (an alternative to function arguments) -->
 
-The pipe command `%>%` sends data from one piece of code to another. For example, you've already seen that `mtcars %>%
-head()` 'pipes' `mtcars` into `head`, which shows just the first few rows. Think of your data as flowing along a pipe
-with commands which transform it, step by step, until it plops out the end in the format you want. The pipe command is
-designed to remind you of this analogy. The `>` reminds you of
-the direction in which your data is flowing. Each step should be read as 'then', e.g. "take the `mgp` data, *then* `ggplot` it".
+The pipe command `%>%` sends data from one piece of code to another. In session 1, you used the command [`mtcars %>%
+head()`] to "pipe" the `mtcars` dataset into `head`, which shows just the first few rows.
 
-Another dataset loaded by the `tidyverse` package is `mpg`. This contains fuel economy data from 1999 to 2008 for 38
-popular models of US cars.
+You can think of your data as flowing along lengths of pipe, joined by commands which transform the data, step by step,
+until it plops out the end in the format you want. Each command should be read as 'then', e.g. "pipe `mtcars` data,
+*then* `head` it". The `>` in the pipe command reminds you of the direction in which your data is flowing.
+
+You will frequently want to store the results of a pipeline in a variable. For example, the command [`mtcars_head <-
+mtcars %>% head()`], assigns the result of the pipeline (a data.frame containing the first few rows of `mtcars`) to a
+new variable called `mtcars_head`.
+
+You can [explore your variables using the **Environment** pane]. A data.frame will have an icon that looks like a
+spreadsheet. If you [click on the icon], the data.frame is displayed in a new tab in the **Source** pane.
+
+This tab shows you the same information as printing the data.frame, such as the number of rows and columns, but it
+also provides tools for exploring the data interactively.
+
+* The arrows next to the column names allow you to arrange the rows in ascending or descending order based on the column
+values.
+* The `Filter` button allows you to specify a value for one or more columns to filter out non-matching rows. For
+example, we could display just cars with 4 gears. Click the button again to turn off the filter.
+`r unhide()`
 
 :::{.exercise}
-Exercise n
+**Exercise 3**
 
-1. Create a new chunk at the bottom of your worksheet
-1. Pipe the `mpg` data.frame into `head` and assign the results to a variable called `mpg_head`
+1. Create a level 3 markdown heading named "Exercise 3" in your workbook. (You should be used to doing this for every exercise by now, so we won't remind you again.)
+1. Create a new chunk beneath the heading
+1. Load the `tidyverse` library
+1. Pipe the `mpg` data.frame into `head()` and assign the results to a variable called `mpg_head`
+1. Use the **Environment** pane to open `mpg_head`
 
-In 1999, a 6 cylinder Audio A4 could cover `r fitb('26')` miles per gallon when driven on the highway.
+In 1999, a 6 cylinder, manual transmission, Audio A4 could cover `r fitb('18')` miles per gallon when driven in the
+city.
 :::
 
 # Reading a CSV file {#csv}
 
 `read_csv` (from a url)
 
-# The **Files** pane {#filespane)
+# The **Files** pane {#filespane}
 
 - loading a datafile from the same directory as the Rmd file (created by bootstrap script)
 

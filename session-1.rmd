@@ -389,17 +389,6 @@ The `head` command allows you to explore the first few rows of a dataset. The co
 first six rows of `mtcars`. The `%>%` command is called the 'pipe'. We'll explain more about how it works in the next
 session. For now, all you need to know is that the command on the right hand side of the pipe (`head`) is applied to
 whatever is on the left hand side (in this case, the `mtcars` dataset).
-
-You can also explore your variables using the **Environment** pane. A data.frame will have an icon that looks like a
-spreadsheet. If you click on the icon, the data.frame is displayed in a new tab in the **Source** pane.
-
-This tab shows you the same information as printing the data.frame, such as the number of rows and columns, but it
-also provides tools for exploring the data interactively.
-
-* The arrows next to the column names allow you to arrange the rows in ascending or descending order based on the column
-values.
-* The `Filter` button allows you to specify a value for one or more columns to filter out non-matching rows. For
-example, we could display just cars with 4 gears. Click the button again to turn off the filter.
 `r unhide()`
 
 :::{.exercise}
@@ -455,7 +444,8 @@ The `clarity` variable in the `diamonds` tibble is of type `r fitb('ord')`.
 
 # ggplot: Scatter plots {#scatterplots}
 
-A scatterplot shows the relationship between two variables by plotting their values as points.
+A scatterplot shows the relationship between two variables by plotting their values as points. The `tidyverse` package
+also loads the `mpg` dataset, which contains fuel economy data from 1999 to 2008 for 38 popular models of US cars.
 
 ```{r}
 mpg %>% ggplot(aes(cty, hwy)) +
