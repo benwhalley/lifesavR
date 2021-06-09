@@ -9,10 +9,14 @@ This R Markdown document is your workbook for session two of the lifesaveR modul
 
 ## Variables
 
-This chunk runs the calculation `40 + 2`, assigns the result to the variable `meaningoflife`, and then prints the value
-of the variable.
+The chunk below runs the calculation `40 + 2`, assigns the result to the variable `meaningoflife`, and then prints the
+value of the variable.
 
-```{r life}
+### Exercise 1
+
+Run the chunk below
+
+```{r}
 meaningoflife <- 40 + 2
 meaningoflife
 ```
