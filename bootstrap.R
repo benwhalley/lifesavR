@@ -1,7 +1,8 @@
 ## CONFIG
 base_dir <- '~/lifesavr'
 base_url <- 'https://raw.githubusercontent.com/benwhalley/lifesavR/main/lifesavr/'
-files    <- c('session-1.rmd', 'session-2.rmd', 'session-3.rmd', 'session-4.rmd', 'session-5.rmd')
+files    <- c('session-1.rmd', 'session-2.rmd', 'session-3.rmd', 'session-4.rmd', 'session-5.rmd',
+              'shootings.csv', 'schoolpredict.csv')
 
 errfun <-  function(cond) {
   warning(cond)

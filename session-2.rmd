@@ -160,12 +160,34 @@ The preferred format for data files in R is comma-separated value (CSV). Data in
 <!-- TODO read_csv VIDEO -->
 
 `r hide('Video script')`
-from a url
+The file [https://raw.githubusercontent.com/benwhalley/lifesavR/main/lifesavr/shootings.csv] is a CSV file containing
+data about US police shootings. The first line is a list of column names separated by columns. Each of the remaining
+lines contain rows of data, matching the column headings. For example, the value of the `arms_category` column in row
+1 is `Guns`.
 
+The `read_csv()` command reads a CSV file, and converts it to a data.frame. The first line is used as the column names,
+and the remain lines are converted to rows. A CSV file can be read directly from the Internet and stored in a variable.
+The URL (the link to the CSV file) needs to be in quotes (single or double quotes both work).
 `r unhide()`
+
+The following chunk reads the US police shootings CSV file from the Internet, and stores the resulting data.frame in the
+variable `shootings`.
+
+```{r}
+shootings <- read_csv('https://raw.githubusercontent.com/benwhalley/lifesavR/main/lifesavr/shootings.csv')
+```
+
+The [British School Success Survey](https://www.kaggle.com/brsdincer/schooldata/) is a dataset used to predict school performance. 
 
 :::{.exercise}
 **Exercise 4**
+
+1. Copy the chunk above into your workbook
+1. Change `shootings.csv` to `schoolpredict.csv`
+1. Read the data into the variable `school_predict`
+1. Open `school_predict` in the **Source** window
+
+The school with the most teaching assistants has `r fitb('141')` teachers.
 :::
 
 # The **Files** pane {#filespane}
@@ -204,7 +226,7 @@ remind them they know how to make scatter and boxplots
 diamonds %>% arrange(-carat) %>% head(3)
 ```
 
-## Filter and arrange
+# Filter and arrange
 
 What was the year Kenyans had the lowest life exp:
 
@@ -224,9 +246,6 @@ gapminder::gapminder %>%
 
 ```
 
-
-
-
 # `summarise`
 
 TODO make sure to emphasise giving the summary a name (`average_mpg`)
@@ -238,16 +257,13 @@ TODO make sure to emphasise giving the summary a name (`average_mpg`)
 mtcars %>% summarise(average_mpg = mean(mpg))
 ```
 
-
-
-# `filter and summarise` together
-
+## `filter and summarise` together
 
 ```{r}
 mtcars %>% filter(am==1) %>% summarise(mean(mpg))
 ```
 
-# `group_by` (with `summarise`)
+## `group_by` (with `summarise`)
 
 We might make a plot like this:
 
@@ -264,7 +280,6 @@ mtcars %>%
   group_by(cyl) %>% 
   summarise(average_mpg = mean(mpg))
 ```
-
 
 We can group by two variables at once and get a row for each combination:
 
