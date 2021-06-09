@@ -62,8 +62,8 @@ Use kaggle?
 
 
 ```{r foo}
-personality <- read_csv('lifesavr/data/2018-personality-data.csv')
-ratings <- read_csv('lifesavr/data/2018_ratings.csv') %>% rename(userid=useri)
+personality <- read_csv('lifesavr/2018-personality-data.csv')
+ratings <- read_csv('lifesavr/2018_ratings.csv') %>% rename(userid=useri)
 combined <- left_join(ratings, personality) %>% 
   select(userid, movie_id, rating, agreeableness:extraversion) %>% 
   mutate(movie_id=factor(movie_id))
@@ -96,12 +96,11 @@ m1 <- lmer(rating ~ agreeableness + (1|userid)+(1|movie_id), data=combined %>% s
 m1 %>% summary()
 ```
 
-
 - US Police shootings: https://www.kaggle.com/ahsen1330/us-police-shootings (interesting to think about normalising by population, also reasons for patterns =  e.g. why more black people shot when on foot vs whites?)
 
 
 ```{r}
-read_csv('lifesavr/data/shootings.csv') %>% 
+read_csv('lifesavr/shootings.csv') %>% 
   group_by(race, flee) %>% 
   count() %>% 
   ggplot(aes(flee, n, fill=race)) + geom_bar(stat='identity', position="fill")
@@ -111,7 +110,7 @@ read_csv('lifesavr/data/shootings.csv') %>%
 - British School Success Survey https://www.kaggle.com/brsdincer/schooldata
 
 ```{r schools, eval=F}
-schools <- read_csv('lifesavr/data/schoolpredict.csv')
+schools <- read_csv('lifesavr/schoolpredict.csv')
 
 # PS: "Error: C stack usage  7971300 is too close to the limit"
 schools %>% 

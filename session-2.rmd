@@ -49,7 +49,7 @@ In this session we cover:
 
 - [Variables](#variables)
 - [The pipe `%>%`](#pipe)
-- [Reading a CSV file](#csv)
+- [The `read_csv` command](#readcsv)
 - [The **Files** pane](#filespane)
 - [Uploading data files](#upload)
 - [The `filter` command](#filter)
@@ -116,8 +116,6 @@ The pipe command `%>%` sends data from one piece of code to another.
 <!-- TODO pipe VIDEO -->
 
 `r hide('Video script')`
-<!-- - Explanation of pipes as a way of passing data (an alternative to function arguments) -->
-
 The pipe command `%>%` sends data from one piece of code to another. In session 1, you used the command [`mtcars %>%
 head()`] to "pipe" the `mtcars` dataset into `head`, which shows just the first few rows.
 
@@ -154,13 +152,25 @@ In 1999, a 6 cylinder, manual transmission, Audio A4 could cover `r fitb('18')` 
 city.
 :::
 
-# Reading a CSV file {#csv}
+# The `read_csv` command {#readcsv}
 
-`read_csv` (from a url)
+The preferred format for data files in R is comma-separated value (CSV). Data in CSV format can be read using the
+`read_csv` command.
+
+<!-- TODO read_csv VIDEO -->
+
+`r hide('Video script')`
+from a url
+
+`r unhide()`
+
+:::{.exercise}
+**Exercise 4**
+:::
 
 # The **Files** pane {#filespane}
 
-- loading a datafile from the same directory as the Rmd file (created by bootstrap script)
+- loading a datafile from the same directory as the rmd file (created by bootstrap script)
 
 # Uploading data files {#upload}
 
