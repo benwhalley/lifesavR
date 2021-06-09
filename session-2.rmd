@@ -9,13 +9,24 @@ output:
   webex::html_clean
 ---
 
-
 ```{r, include=F, echo=F}
 source('_first_chunk.R')
 ```
 
+# Overview
 
+We think the analogy to using R is clear:
 
+- If you are anxious, stressed or avoidant you will be distracted
+- Getting confident with the basics makes more complex techniques possible 
+
+<!-- TODO intro VIDEO -->
+`r hide('Video script')`
+In this session we cover:
+
+- Loading data from files
+- Using simple techniques to answer research questions with data
+- Saving intermediate steps using variables
 
 <!-- A literal translation of Mushin is something like 'mind without mind', but in karate and other martial arts the term -->
 <!-- denotes the state of mind achieved when free from thoughts of anger, fear, or ego during combat, or in everyday life.  -->
@@ -23,73 +34,81 @@ source('_first_chunk.R')
 <!-- To achieve mushin takes **repeated practice** and complete familiarity with the technique required to act, such that  -->
 <!-- technical details can fade into the background. This leaves the student free to act, responding effortlessly to  -->
 <!-- the challenge at hand. -->
-
-We think the analogy to using R is clear:
-
-- If you are anxious, stressed or avoidant you will be distracted
-- Getting confident with the basics makes more complex techniques possible 
-
-
-
+`r unhide()`
 
 <!-- - Provide stereotyped examples of the sorts of students positive/negative traits which relate to the theme of session - make it all more concrete -->
 <!-- - Provide quotes from previous students illustrating? -->
 
-
-
-
-In this session we cover:
-
-- Loading data from files
-- Using simple techniques to answer research questions with data
-- Saving intermediate steps using variables
-
-
-Principles/ideas 
+# Principles/ideas 
 
 - Using data to answer questions
 - Precision and literal-mindedness of R
 - Paths and directories
 
-## R techniques covered
+# R techniques covered
 
-- Assign variable  (keyword: **"assignment operator"**) and find it in the Env window
+- [Variables](#variables)
 - [The pipe `%>%`](#pipe)
-
-- `read_csv` (from a url)
-- the files window; loading a datafile from the same directory as the Rmd file (created by bootstrap script)
-- uploading a datafile from your own computer  read_csv it; importance of file extensions
-- `filter`, `group_by`, `summarise`, `arrange` (remind them they know how to make scatter and boxplots)
-- making a variable containing a subset of a dataframe (sing ` <- ` again)
-
+- [Reading a CSV file](#csv)
+- [The **Files** pane](#filespane)
+- [Uploading data files](#upload)
+- [The `filter` command](#filter)
+- [The `arrange` command](#arrange)
+- [The `group_by` command](#groupby)
+- [The ``summarise`` command](#summarise)
+- making a variable containing a subset of a dataframe (using ` <- ` again)
 
 Activity:
 
-???  set up the teaching as a kind of treasure hunt where students have to find use data to answer questions, gather clues and spell out a word?
-Alternatively, just ask them to make LOTs of different plots using the techniques above, not just one:
+???  set up the teaching as a kind of treasure hunt where students have to find use data to answer questions, gather
+clues and spell out a word? Alternatively, just ask them to make *LOTs* of different plots using the techniques above, not
+just one:
 
-## Variables
+# Variables {#variables}
 
-Using variables lets us store calculations for later. A variable is a name which can be assigned a value using the
-assignment operator: `<-`.
+In R, a variable is the name of a container which stores data. Variables are created using `<-`, which is called the
+**assignment operator**.
 
-:::{.exercise}
-Run the two lines in the chunk named `life`.
-:::
+<!-- TODO variables VIDEO -->
 
-The results should look like this:
+`r hide('Video script')`
+The assignment operator `<-` looks like an arrow that points to the left. This is a reminder that the results of the
+calculation on the right hand side will be assigned to the variable on the left hand side. 
 
-![Results of running `life` chunk](images/life.png)
-
-Line 24 runs the calculation `40 + 2`, then assigns the result to the variable `meaningoflife`. The assignment operator
-`<-` looks like an arrow that points to the left. This is a reminder that the results of the calculation on the right
-hand side will be assigned to the variable on the left hand side. Line 25 displays the value of `meaningoflife`.
+The code in this chunk runs the calculation on the right hand side of the assignment operator, `40 + 2`, and assigns the
+result to a new variable named `meaningoflife`. The output of the chunk is `42`, the value of `meaningoflife`.
 
 Variables that you create are stored in what's called the `Global Environment`. You can see them in the **Environment**
 pane.
+`r unhide()`
 
-![Variables that you create are stored in the `Global Environment`](images/global_environment.png)
+:::{.exercise}
+**Exercise 1**
 
+1. Open `session-2.rmd` using the **Files** pane. This is the workbook you will be using in this session.
+1. Run the first chunk in the workbook.
+
+The output should look like this:
+
+![Results of creating `meaningoflife` variable](images/life.png)
+
+Your **Environment** pane should look like this:
+
+![Environment pane after creating `meaningoflife` variable](images/environment1.png)
+:::
+
+:::{.exercise}
+**Exercise 2**
+
+1. Create a level 3 markdown heading named "Exercise 2" in your workbook
+1. Create a new chunk beneath the heading
+1. Assign the results of the calculation `26 + 44` to the variable `myfirstvariable`
+1. Run the chunk
+
+Your **Environment** should now look like this:
+
+![Environment pane after creating `myfirstvariable`](images/environment2.png)
+:::
 
 # The pipe {#pipe}
 
@@ -113,20 +132,22 @@ Exercise n
 In 1999, a 6 cylinder Audio A4 could cover `r fitb('26')` miles per gallon when driven on the highway.
 :::
 
-# Arrange
+# Reading a CSV file {#csv}
 
-- "what is the size of the largest diamond (by carat) in the `diamonds` dataset? 
-- "what cut were the three largest diamonds in that dataset?"
+`read_csv` (from a url)
 
-```{r}
-diamonds %>% arrange(-carat) %>% head(3)
-```
+# The **Files** pane {#filespane)
 
+- loading a datafile from the same directory as the Rmd file (created by bootstrap script)
 
+# Uploading data files {#upload}
+
+- uploading a datafile from your own computer `read_csv` it
+- importance of file extensions
 
 # Filter
 
-- Introduce operators ` < > = `
+- Introduce operators `< > =`
 
 ```{r}
 gapminder::gapminder %>% filter(country=="Kenya")
@@ -140,10 +161,18 @@ gapminder::gapminder %>%
   filter(year > 2000)
 ```
 
+# Arrange
 
+remind them they know how to make scatter and boxplots
+ 
+- "what is the size of the largest diamond (by carat) in the `diamonds` dataset? 
+- "what cut were the three largest diamonds in that dataset?"
 
+```{r}
+diamonds %>% arrange(-carat) %>% head(3)
+```
 
-# Filter and arrange
+## Filter and arrange
 
 What was the year Kenyans had the lowest life exp:
 
