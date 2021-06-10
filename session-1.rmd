@@ -3,7 +3,8 @@ title: 'Beginners mind (Shoshin)'
 author: 'Ben Whalley, Paul Sharpe, Sonja Heintz, Andy Wills'
 # date: "April 2021"
 bibliography: [references.bib]
-biblio-style: apa6
+csl: apa.csl
+#biblio-style: apa6
 link-citations: yes
 output:
   webex::html_clean
