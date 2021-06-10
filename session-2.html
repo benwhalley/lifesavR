@@ -321,7 +321,7 @@ Video script
 <li>Pipe the <code>mpg</code> data.frame into <code>head()</code> and assign the results to a variable called <code>mpg_head</code></li>
 <li>Use the <strong>Environment</strong> pane to open <code>mpg_head</code></li>
 </ol>
-<p>In 1999, a 6 cylinder, manual transmission, Audio A4 could cover <span id="Q544911" class="webex-fitb"><input class="solveme  nospaces" data-digits="4" size="2" style="width:2em;" data-answer="[&quot;18&quot;]"></input><span class="solvedme"></span></span> miles per gallon when driven in the city.</p>
+<p>In 1999, a 6 cylinder, manual transmission, Audio A4 could cover <span id="Q356560" class="webex-fitb"><input class="solveme  nospaces" data-digits="4" size="2" style="width:2em;" data-answer="[&quot;18&quot;]"></input><span class="solvedme"></span></span> miles per gallon when driven in the city.</p>
 </div>
 </div>
 <div id="readcsv" class="section level1">
@@ -332,35 +332,68 @@ Video script
 <button>
 Video script
 </button>
-<p>The file [<a href="https://raw.githubusercontent.com/benwhalley/lifesavR/main/lifesavr/shootings.csv" class="uri">https://raw.githubusercontent.com/benwhalley/lifesavR/main/lifesavr/shootings.csv</a>] is a CSV file containing data about US police shootings. The first line is a list of column names separated by columns. Each of the remaining lines contain rows of data, matching the column headings. For example, the value of the <code>arms_category</code> column in row 1 is <code>Guns</code>.</p>
+<p>The file [<a href="https://benwhalley.github.io/lifesavR/lifesavr/shootings.csv" class="uri">https://benwhalley.github.io/lifesavR/lifesavr/shootings.csv</a>] is a CSV file containing data about US police shootings. The first line is a list of column names separated by commas. The remaining lines contain rows of data matching the column headings. For example, the value of the <code>arms_category</code> column in row 1 is <code>Guns</code>.</p>
 <p>The <code>read_csv()</code> command reads a CSV file, and converts it to a data.frame. The first line is used as the column names, and the remain lines are converted to rows. A CSV file can be read directly from the Internet and stored in a variable. The URL (the link to the CSV file) needs to be in quotes (single or double quotes both work).</p>
 </div>
-<p>The following chunk reads the US police shootings CSV file from the Internet, and stores the resulting data.frame in the variable <code>shootings</code>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>shootings <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/benwhalley/lifesavR/main/lifesavr/shootings.csv&#39;</span>)</span></code></pre></div>
+<p>The following code reads the US police shootings CSV file from the Internet, and stores the resulting data.frame in the variable <code>shootings</code>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>shootings <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;https://benwhalley.github.io/lifesavR/lifesavr/shootings.csv&#39;</span>)</span></code></pre></div>
 <p>The <a href="https://www.kaggle.com/brsdincer/schooldata/">British School Success Survey</a> is a dataset used to predict school performance.</p>
 <div class="exercise">
 <p><strong>Exercise 4</strong></p>
 <ol style="list-style-type: decimal">
-<li>Copy the chunk above into your workbook</li>
-<li>Change <code>shootings.csv</code> to <code>schoolpredict.csv</code></li>
-<li>Read the data into the variable <code>school_predict</code></li>
+<li>Copy the code above into a new chunk your workbook and run it</li>
+<li>Add a line that reads <code>schoolpredict.csv</code> into the variable <code>school_predict</code></li>
 <li>Open <code>school_predict</code> in the <strong>Source</strong> window</li>
 </ol>
-<p>The school with the most teaching assistants has <span id="Q649929" class="webex-fitb"><input class="solveme  nospaces" data-digits="4" size="3" style="width:3em;" data-answer="[&quot;141&quot;]"></input><span class="solvedme"></span></span> teachers.</p>
+<p>The school with the most teaching assistants has <span id="Q184484" class="webex-fitb"><input class="solveme  nospaces" data-digits="4" size="3" style="width:3em;" data-answer="[&quot;141&quot;]"></input><span class="solvedme"></span></span> teachers.</p>
+</div>
+<div id="filespane" class="section level2">
+<h2>The <strong>Files</strong> pane</h2>
+<p>You can also use <code>read_csv()</code> to read CSV files from within R Studio.</p>
+<!-- TODO read_csv from files pane VIDEO -->
+<div class="solution">
+<button>
+Video script
+</button>
+<p>The CSV files which you read from the Internet are also included in the folder which contains your workbooks. [You can see them using the <strong>Files</strong> pane.]</p>
+<p>The command <code>shootings &lt;- read_csv(&#39;shootings.csv&#39;)</code> reads the US police shootings data <em>from the same folder as the R Markdown file</em> into <code>shootings</code>.</p>
 </div>
 </div>
-<div id="filespane" class="section level1">
-<h1>The <strong>Files</strong> pane</h1>
-<ul>
-<li>loading a datafile from the same directory as the rmd file (created by bootstrap script)</li>
-</ul>
 </div>
 <div id="upload" class="section level1">
 <h1>Uploading data files</h1>
+<p>The <code>Upload</code> button in the <strong>Files</strong> pane lets you upload a data file from your computer to R Studio, so you can read it using <code>read_csv()</code>.</p>
+<!-- TODO Upload from files pane VIDEO -->
+<div class="solution">
+<button>
+Video script
+</button>
+<p>The <code>Upload</code> button in the <strong>Files</strong> pane lets you upload a file from your computer to R Studio. R Studio uses file extensions to guess what the file contains. A file extension is a sequence of characters, starting with a <code>.</code> at the end of a file name.</p>
 <ul>
-<li>uploading a datafile from your own computer <code>read_csv</code> it</li>
-<li>importance of file extensions</li>
+<li><code>.csv</code> - CSV file</li>
+<li><code>.rmd</code> - R Markdown file</li>
 </ul>
+<p>Make sure that any file you upload has the correct file extension.</p>
+<p>We’ll upload a CSV file which contains data about students who took a maths class.</p>
+<ol style="list-style-type: decimal">
+<li>Click the <code>Upload</code> button.</li>
+<li>Ensure the <code>Target directory</code> is where you want the uploaded file to appear. For this module it should read <code>~/lifesavr</code>. The <code>~</code> (pronounced “tilde”) means your <code>Home</code> directory on the R Studio server. The <code>/lifesavr</code> means the folder named <code>lifesaver</code> in <code>Home</code>.</li>
+<li>Click the <code>Choose file</code> button and select the file you want to upload. After you select a file, its name appears next to the button.</li>
+<li>Click the <code>**OK**</code> button.</li>
+</ol>
+<p>The file should appear in the <strong>Files</strong> pane in your <code>lifesavr</code> folder.</p>
+</div>
+<div class="exercise">
+<p><strong>Exercise 5</strong></p>
+<ol style="list-style-type: decimal">
+<li>Open <code>https://benwhalley.github.io/lifesavR/data/student-mat.csv</code> in a web browser</li>
+<li>Use your web browser to save the file as <code>student-mat.csv</code></li>
+<li>Upload <code>student-mat.csv</code> to the folder containing your workbooks</li>
+<li>Read <code>student-mat.csv</code> into the variable <code>student_maths</code></li>
+<li>Open <code>student_maths</code> in the <strong>Source</strong> window</li>
+</ol>
+<p>The oldest student drinks <span id="Q500912" class="webex-fitb"><input class="solveme  nospaces" data-digits="4" size="2" style="width:2em;" data-answer="[&quot;5&quot;]"></input><span class="solvedme"></span></span> units of alcohol (column <code>Walc</code>) at the weekend.</p>
+</div>
 </div>
 <div id="filter" class="section level1">
 <h1>Filter</h1>
@@ -610,8 +643,10 @@ Video script
        <li><a href="#r-techniques-covered">R techniques covered</a></li>
        <li><a href="#variables">Variables</a></li>
        <li><a href="#pipe">The pipe</a></li>
-       <li><a href="#readcsv">The <code>read_csv</code> command</a></li>
+       <li><a href="#readcsv">The <code>read_csv</code> command</a>
+       <ul>
        <li><a href="#filespane">The <strong>Files</strong> pane</a></li>
+       </ul></li>
        <li><a href="#upload">Uploading data files</a></li>
        <li><a href="#filter">Filter</a></li>
        <li><a href="#arrange">Arrange</a></li>
