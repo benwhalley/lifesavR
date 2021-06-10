@@ -262,7 +262,29 @@ column is a factor.
 
 ## The > operator
 
-- Introduce operators `< > ==`
+The "greater than" operator `>` filters numeric data.
+
+```{r}
+gapminder %>% filter(year > 2000)
+```
+
+This chunk filters rows where `year` is greater than 2000.
+
+## The < operator
+
+The opposite of the `>` operator is the `<` operator. This filters numeric columns which are *less than* a value.
+
+:::{.exercise}
+**Exercise 6**
+
+Filter `gapminder` to show rows where life expectancy is less than 35.
+
+The results should look like this:
+
+```{r, echo=FALSE}
+gapminder %>% filter(lifeExp < 35)
+```
+:::
 
 ## Combined filters
 
