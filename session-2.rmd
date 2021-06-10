@@ -160,21 +160,21 @@ The preferred format for data files in R is comma-separated value (CSV). Data in
 <!-- TODO read_csv VIDEO -->
 
 `r hide('Video script')`
-The file [https://raw.githubusercontent.com/benwhalley/lifesavR/main/lifesavr/shootings.csv] is a CSV file containing
-data about US police shootings. The first line is a list of column names separated by columns. Each of the remaining
-lines contain rows of data, matching the column headings. For example, the value of the `arms_category` column in row
-1 is `Guns`.
+The file [https://benwhalley.github.io/lifesavR/lifesavr/shootings.csv] is a CSV file containing
+data about US police shootings. The first line is a list of column names separated by commas. The remaining lines
+contain rows of data matching the column headings. For example, the value of the `arms_category` column in row 1 is
+`Guns`.
 
 The `read_csv()` command reads a CSV file, and converts it to a data.frame. The first line is used as the column names,
 and the remain lines are converted to rows. A CSV file can be read directly from the Internet and stored in a variable.
 The URL (the link to the CSV file) needs to be in quotes (single or double quotes both work).
 `r unhide()`
 
-The following chunk reads the US police shootings CSV file from the Internet, and stores the resulting data.frame in the
+The following code reads the US police shootings CSV file from the Internet, and stores the resulting data.frame in the
 variable `shootings`.
 
 ```{r}
-shootings <- read_csv('https://raw.githubusercontent.com/benwhalley/lifesavR/main/lifesavr/shootings.csv')
+shootings <- read_csv('https://benwhalley.github.io/lifesavR/lifesavr/shootings.csv')
 ```
 
 The [British School Success Survey](https://www.kaggle.com/brsdincer/schooldata/) is a dataset used to predict school performance. 
@@ -182,22 +182,65 @@ The [British School Success Survey](https://www.kaggle.com/brsdincer/schooldata/
 :::{.exercise}
 **Exercise 4**
 
-1. Copy the chunk above into your workbook
-1. Change `shootings.csv` to `schoolpredict.csv`
-1. Read the data into the variable `school_predict`
+1. Copy the code above into a new chunk your workbook and run it
+1. Add a line that reads `schoolpredict.csv` into the variable `school_predict`
 1. Open `school_predict` in the **Source** window
 
 The school with the most teaching assistants has `r fitb('141')` teachers.
 :::
 
-# The **Files** pane {#filespane}
+## The **Files** pane {#filespane}
 
-- loading a datafile from the same directory as the rmd file (created by bootstrap script)
+You can also use `read_csv()` to read CSV files from within R Studio.
+
+<!-- TODO read_csv from files pane VIDEO -->
+
+`r hide('Video script')`
+The CSV files which you read from the Internet are also included in the folder which contains your workbooks. [You can
+see them using the **Files** pane.]
+
+The command `shootings <- read_csv('shootings.csv')` reads the US police shootings data *from the same folder as the R
+Markdown file* into `shootings`.
+`r unhide()`
 
 # Uploading data files {#upload}
 
-- uploading a datafile from your own computer `read_csv` it
-- importance of file extensions
+The `Upload` button in the **Files** pane lets you upload a data file from your computer to R Studio, so you can read it
+using `read_csv()`.
+
+<!-- TODO Upload from files pane VIDEO -->
+
+`r hide('Video script')`
+The `Upload` button in the **Files** pane lets you upload a file from your computer to R Studio. R Studio uses file
+extensions to guess what the file contains. A file extension is a sequence of characters, starting with a `.` at the end
+of a file name.
+
+- `.csv` - CSV file
+- `.rmd` - R Markdown file
+
+Make sure that any file you upload has the correct file extension.
+
+We'll upload a CSV file which contains data about students who took a maths class.
+
+1. Click the `Upload` button.
+1. Ensure the `Target directory` is where you want the uploaded file to appear. For this module it should read `~/lifesavr`. The `~` (pronounced "tilde") means your `Home` directory on the R Studio server. The `/lifesavr` means the folder named `lifesaver` in `Home`.
+1. Click the `Choose file` button and select the file you want to upload. After you select a file, its name appears next to the button.
+1. Click the `**OK**` button.
+
+The file should appear in the **Files** pane in your `lifesavr` folder.
+`r unhide()`
+
+:::{.exercise}
+**Exercise 5**
+
+1. Open `https://benwhalley.github.io/lifesavR/data/student-mat.csv` in a web browser
+1. Use your web browser to save the file as `student-mat.csv`
+1. Upload `student-mat.csv` to the folder containing your workbooks
+1. Read `student-mat.csv` into the variable `student_maths`
+1. Open `student_maths` in the **Source** window
+
+The oldest student drinks `r fitb('5')` units of alcohol (column `Walc`) at the weekend.
+:::
 
 # Filter
 
