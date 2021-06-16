@@ -67,20 +67,33 @@ just one:
 
 # Variables {#variables}
 
-In R, a variable is the name of a container which stores data. Variables are created using `<-`, which is called the
+In R, a **variable** is the name for a *container* which *stores data*. We make variables using `<-`, which is called the
 **assignment operator**.
 
 <!-- TODO variables VIDEO -->
 
 `r hide('Video script')`
-The assignment operator `<-` looks like an arrow that points to the left. This is a reminder that the results of the
-calculation on the right hand side will be assigned to the variable on the left hand side. 
+
+As we work, it's useful to be able to save the results of the code we write. 
+
+As one example, we might have a dataset with multiple columns, each holding participants' answers 
+to an individual questionnaire item. We might want to calculate a new column —— maybe an average of each 
+person's scores on all of the questions —— and keep track of this so we can use it in later calculations. 
+
+Alternatively, we might want to save the result of a specific calculation and use it later on.
+
+To do this we can create a **variable**. 
+
+A variable is just a container to store data in. To make variables we use the assignment operator, which looks like this `<-`
+
+That is, like an arrow that points to the left. This is a reminder that the results of the
+calculation on the right hand side will be assigned (stored) in the variable on the left hand side. 
 
 The code in this chunk runs the calculation on the right hand side of the assignment operator, `40 + 2`, and assigns the
 result to a new variable named `meaningoflife`. The output of the chunk is `42`, the value of `meaningoflife`.
 
-Variables that you create are stored in what's called the `Global Environment`. You can see them in the **Environment**
-pane.
+You might wonder *where* these variables get saved. In most cases, variables you create are stored in what's called the `Global Environment`. You can see them in the **Environment** pane in RStudio. Double-clicking on any variable there will show you what is stored inside the container.
+
 `r unhide()`
 
 :::{.exercise}
@@ -109,6 +122,9 @@ Your **Environment** pane should look like this:
 Your **Environment** should now look like this:
 
 ![Environment pane after creating `myfirstvariable`](images/environment2.png)
+
+1. Use R to calculate your age in the year 2051. Save the result in a variable. Give your variable a descriptive name.
+
 :::
 
 # The pipe %>% {#pipe}
@@ -118,17 +134,52 @@ The pipe command `%>%` sends data from one piece of code to another.
 <!-- TODO pipe VIDEO -->
 
 `r hide('Video script')`
-The pipe command `%>%` sends data from one piece of code to another. In session 1, you used the command [`mtcars %>%
-head()`] to "pipe" the `mtcars` dataset into `head`, which shows just the first few rows.
 
-You can think of your data as flowing along lengths of pipe, joined by commands which transform the data, step by step,
-until it plops out the end in the format you want. Each command should be read as 'then', e.g. "pipe `mtcars` data,
-*then* `head` it". The `>` in the pipe command reminds you of the direction in which your data is flowing.
+Sometimes we need to link together multiple steps in our analysis.
 
-You will frequently want to store the results of a pipeline in a variable. For example, the command [`mtcars_head <-
-mtcars %>% head()`], assigns the result of the pipeline (a data.frame containing the first few rows of `mtcars`) to a
+For example, if we're working with a big dataset we might want to select only some of the columns, and then filter out some of the rows of data, and the finally calculate descriptive statistics.
+
+We could do this by creating lots of variables, each one saving the results at each intermediate step. This can get confusing, though.
+
+Instead we can use what's known as a 'pipe' — it's another way to link together multiple instructions.
+
+The pipe sends data from one piece of code to another. 
+
+<!-- TODO Paul - what are the square brackets below supposed to indciate? -->
+
+The pipe looks like this `%>%`.  
+
+In session 1, you used this command to "pipe" the `mtcars` dataset into `head`, which shows just the first few rows:
+
+```{r}
+mtcars %>% head()
+```
+
+You can think of your data as flowing along lengths of pipe, joined by commands which do things to the data, step by step,
+until the result you want plops out at the end. 
+
+Each command should be read as the word "then", e.g. "pipe `mtcars` data,
+*then* `head` it". 
+
+The `>` in the pipe command reminds you of the direction in which your data is flowing (it only works left to right).
+
+It's important to know that the pipe command *doesn't store the results* of these steps. 
+
+Sometimes that's OK. In our first example we just wanted to look at the first few rows of the `mtcars` data. 
+
+But, you will usually want to save the result of a pipeline in a new variable.  
+For example, if we wanted to save the first few rows of the `mtcars` data  to a *new* variable we would write:
+
+```{r}
+mtcars_head <- mtcars %>% head()
+```
+
+Here we combine *assignment* with a *pipeline*.
+
+The result of the pipeline (a data.frame containing the first few rows of `mtcars`) is saved to a
 new variable called `mtcars_head`.
 
+<!-- TODO ARE SQ BRACKETS SUPPOSED TO BE AN INTERNAL LINK -->
 You can [explore your variables using the **Environment** pane]. A data.frame will have an icon that looks like a
 spreadsheet. If you [click on the icon], the data.frame is displayed in a new tab in the **Source** pane.
 
@@ -139,12 +190,15 @@ also provides tools for exploring the data interactively.
 values.
 * The `Filter` button allows you to specify a value for one or more columns to filter out non-matching rows. For
 example, we could display just cars with 4 gears. Click the button again to turn off the filter.
+
 `r unhide()`
+<!-- END OF VIDEO -->
+
 
 :::{.exercise}
 **Exercise 3**
 
-1. Create a level 3 markdown heading named "Exercise 3" in your workbook. (You should be used to doing this for every exercise by now, so we won't remind you again.)
+1. Create a level 3 markdown heading named "Exercise 3" in your workbook. (You should be used to doing this for every exercise by now, so we won't remind you again.)  <!-- TODO is this true enough yet? -->
 1. Create a new chunk beneath the heading
 1. Load the `tidyverse` library
 1. Pipe the `mpg` data.frame into `head()` and assign the results to a variable called `mpg_head`
@@ -154,22 +208,86 @@ In 1999, a 6 cylinder, manual transmission, Audio A4 could cover `r fitb('18')` 
 city.
 :::
 
-# The `read_csv` command {#readcsv}
+# Loading data from elsewhere
 
-The preferred format for data files in R is comma-separated value (CSV). Data in CSV format can be read using the
-`read_csv` command.
+- The preferred format for data files in R is comma-separated value (CSV). 
+- Data in CSV format can be read using the `read_csv` command.
+- You can load data either from an internet address (URL) or from a file uploaded to the RStudio server
+
+
 
 <!-- TODO read_csv VIDEO -->
 
-`r hide('Video script')`
-The file [https://benwhalley.github.io/lifesavR/lifesavr/shootings.csv] is a CSV file containing
-data about US police shootings. The first line is a list of column names separated by commas. The remaining lines
-contain rows of data matching the column headings. For example, the value of the `arms_category` column in row 1 is
-`Guns`.
+<!-- TODO Paul can you clarify — is the data to be usedf the shooting or school data? Perhaps introducing 2 different files 
+will be confusing? was the idea to have one as example then diff as exercise? -->
 
-The `read_csv()` command reads a CSV file, and converts it to a data.frame. The first line is used as the column names,
-and the remain lines are converted to rows. A CSV file can be read directly from the Internet and stored in a variable.
+### Loading data
+
+`r hide('Video script')`
+
+In a lot of these sessions we use datasets that are built-in to R because it's quick and convenient to illustrate
+the points we make.
+
+Normally, though, you will need to load your own data.
+
+R can read data from two places:
+
+- A URL (web address), if the data file is available on the internet somewhere
+- A file on computer that R is running on
+
+
+The link below is a URL (web address) for a file containing data about US police shootings.
+
+- [https://benwhalley.github.io/lifesavR/lifesavr/shootings.csv](https://benwhalley.github.io/lifesavR/lifesavr/shootings.csv)
+
+
+The final part of the url tells us the name of the file: `shootings.csv`
+
+The final 3 (sometimes 4) letters of the filename is called the file extension.
+
+Here the file *extension* is `.csv`, which stands for 'comma separated values' or CSV.
+
+CSV is a common data type. Most data-oriented programmes (e.g. Excel or Open Office or SPSS) can read and write `.csv` files, so it's a good choice for storing and sharing data.
+<!-- TODO can you find a link to Andy's 'why csv?' explanation? -->
+
+
+If you click on the link you'll see the first line is a list of column names separated by commas. 
+
+The remaining lines contain rows of data matching the column headings. For example, the value of the `arms_category` column in row 1 is `Guns`.
+
+The `read_csv()` command reads a CSV file, and converts it to a data.frame, which is the format we use in R. 
+
+We can use `read_csv()` to load data from either a file, or over the internet, which is shown in the next video.
+
+`r unhide()`
+
+
+
+### Reading CSV files from the internet
+
+`r hide('Video script')`
+
+CSV files are a common format to store and share data. As shown in the previous video, the first line of a CSV file tells the column names, and the remaining lines are rows of data. 
+
+The `read_csv()` command reads a CSV file, and converts it to a data.frame, which is the format we use in R.  We can load data either from a file, or over the internet.
+
+
+In this example, I'm reading a CSV directly over the Internet and storing the resulting data.frame in a variable.
+
 The URL (the link to the CSV file) needs to be in quotes (single or double quotes both work).
+
+```{r}
+shootings <- read_csv('https://benwhalley.github.io/lifesavR/lifesavr/shootings.csv')
+```
+
+Because we made a new variable, the result is stored in the Environment, and we can double-click it to have a look at the data.
+
+An alternative (and recommnded) way is to type the name of the variable as a very simple command:
+
+```{r}
+shootings
+```
+
 `r unhide()`
 
 The following code reads the US police shootings CSV file from the Internet, and stores the resulting data.frame in the
@@ -244,10 +362,16 @@ The file should appear in the **Files** pane in your `lifesavr` folder.
 The oldest student drinks `r fitb('5')` units of alcohol (column `Walc`) at the weekend.
 :::
 
-# The `filter()` command {#filter}
 
-The `filter()` command returns a subset of rows from a data.frame based on column values. The simplest way to filter
-data is using `==`.
+
+# Selecting rows with `filter()` {#filter}
+
+- `filter()` selects rows from a dataset which match the criteria we set
+- the simplest way to filter is to use `==`, to test if the row is an exact match
+- we can use other filters like `<` or `>` too, for numeric columns
+- we can combine multiple filters to get exactly the rows we need
+
+
 
 ```{r}
 library(gapminder)
@@ -294,7 +418,8 @@ gapminder::gapminder %>%
   filter(year > 2000)
 ```
 
-# Arrange
+
+# Sorting data using `arrange()` {#sorting}
 
 remind them they know how to make scatter and boxplots
  
@@ -305,7 +430,8 @@ remind them they know how to make scatter and boxplots
 diamonds %>% arrange(-carat) %>% head(3)
 ```
 
-# Filter and arrange
+
+# Combine filtering and sorting
 
 What was the year Kenyans had the lowest life exp:
 
@@ -325,24 +451,91 @@ gapminder::gapminder %>%
 
 ```
 
-# `summarise`
 
-TODO make sure to emphasise giving the summary a name (`average_mpg`)
+# Combining rows using `summarise()`
 
-- This is where we fist encounter the need to give things R-legal names so explan about spaces and special characters
-- Emphasise everything should be lower case with underscores
+- Often you have lots of data and need to make summaries of it — e.g. to calculate the average of a column
+- The `summarise()` function takes many rows and uses a **function** to convert those into fewer rows.
+- We can use many different functions with summarise, but
+- common choices are functions for descriptive statistics, like `mean`, `median`, or `sd` (short for standard deviation)
+
+
+<!-- TODO VIDEO
+
+Show
+
+mtcars %>% summarise(average_mpg = mean(mpg))
+
+and aldo
+
+mtcars %>% summarise(mean(mpg))
+
+emphasising that the former is better
+
+Also show replacing with median, sd etc.
+
+This is where we fist encounter the need to give things R-legal names so explan about spaces and special characters
+Emphasise everything should be lower case with underscores.
+
+
+Then show calculating two new cols at once:
+
+
+mtcars %>% summarise(M = mean(mpg), SD = sd(mpg))
+
+
+Point out the comma between the two in commentary
+-->
+
+
 
 ```{r}
 mtcars %>% summarise(average_mpg = mean(mpg))
 ```
 
-## `filter and summarise` together
+
+<!-- TODO ADD EXERCISE
+
+- Copy the code above into your workbook
+- Amend the code to calculate the median of the mpg 
+- Amend the code to calculate the mean and sd of weight
+
+
+ -->
+ 
+ 
+
+## Using `filter()` and `summarise()` together
+
+
+- Using the pipe (`%>%`), we can combine multiple steps
+- It's common to want to filter out certain rows, before using `summarise`
+
+
 
 ```{r}
-mtcars %>% filter(am==1) %>% summarise(mean(mpg))
+mtcars %>% 
+  filter(am==1) %>% 
+  summarise(mean(mpg))
 ```
 
-## `group_by` (with `summarise`)
+
+
+
+
+
+# Grouping results with `group_by`
+
+
+- In our data we may have categorical variables (e.g. gender, or country)
+- We often want to compute summaries for each group
+- Using `filter()`, we could make a summary for each group, one by one;  the `group_by` function does this for us
+- If you add `group_by()` to a pipeline then all the subsequent steps are run *once for each group*
+- Be careful only to group by categorical variables
+
+
+<!-- TODO make this explanation into a VIDEO -->
+
 
 We might make a plot like this:
 
@@ -352,7 +545,8 @@ mtcars %>%
   geom_boxplot()
 ```
 
-What if we want these numbers in a table (or to report in our report)?
+But what if we want these numbers in a table (or to report in our report)? We can 
+do that using group_by and summarise...
 
 ```{r}
 mtcars %>% 
@@ -360,7 +554,7 @@ mtcars %>%
   summarise(average_mpg = mean(mpg))
 ```
 
-We can group by two variables at once and get a row for each combination:
+We can also group by two variables at once and get a row for each combination:
 
 ```{r}
 mtcars %>% group_by(cyl, am) %>% summarise(mean(mpg))
