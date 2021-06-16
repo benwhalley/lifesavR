@@ -22,32 +22,10 @@ source("_first_chunk.R")
 
 This session doesn't assume any prior knowledge of R, and introduces the basics. For some this will be revision from
 last year, but we provide additional material for advanced students test their knowledge and extend familiar skills.
+
 **Even if you are quite confident with R Studio from Stage 1, please read the worksheet carefully and complete all of
 the activities in the blue boxes.**
 
-# General principles
-
-- Reproducibility and transparency in science (as a motivation for using R)
-- Precision and attention to detail as an important skill.
-
-<!-- TODO intro VIDEO -->
-
-`r hide('Video script')`
-I wonder if a video of Ben explaining success factors might be a replacement for the martial arts simile.
-
-For now, this is a list of success factors observed in previous cohorts:
-
-* 'Light' attitude
-* Perseverence
-* Go slow, don't go on until you've understood current section
-* It's not a race or a competition with your peers
-  * Hare and the tortoise
-* Do all exercises
-* Re-do parts of worksheet if you didn't understand them
-* Work together
-* Many instances of people who overcame initial lack of confidence to enjoy R
-* Practise - learn by doing
-`r unhide()`
 
 # R techniques covered 
 

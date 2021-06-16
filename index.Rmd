@@ -31,32 +31,68 @@ This is all the same with R. To begin with we show you the basics, but if the da
 
 Another way R and martial arts are similar is that there's no substitute for practice. It's not possible to 'fake it'. A punch to the face is direct and effective feedback that basic skills like blocking or footwork need practice. In R, error messages and broken code can also feel unforgiving. The solution (in both cases) is to ensure the basics are correct, and more deliberate practice. 
 
------
+
+
+
+# Using these worksheets
+
+These worksheets are designed based on student feedback over several years. Our strategy is to:
+
+- state and show key techniques with the minimum of explanation
+- give an expanded explanation in a video (video transcripts are available to read)
+- ask you to complete simple exercises to follow along (sometimes by copying an pasting code)
+- ask you to complete additional problems to check your understanding (here, you edit the code)
+
+:::{.exercise}
+
+Exercises and problems are presented in Blue boxes, like this.
+
+**It's important to complete all the exercises.**
+
+:::
+
+
+For each session there is an interactive workbook (explained below) which you should use to organise your work.
 
 
 ## Mindset matters
 
-Zen philosophy and many Japanese martial arts talk about several 'minds' of the learner, and a broader system which integrates the practice of martial arts.  We think these ideas are useful to guide your approach to the course, so we've organised our sessions around them:
+<!-- TODO intro VIDEO -->
+
+`r hide('Video script')`
+I wonder if a video of Ben explaining success factors might be a replacement for the martial arts simile.
+
+For now, this is a list of success factors observed in previous cohorts:
+
+* 'Light' attitude
+* Perseverence
+* Go slow. Don't move on until you've understood each section
+* It's not a race or a competition with your peers (even if workshops can feel that way)
+  * Hare and the tortoise
+* ork iSupport each other, but make sure _you_ are doing the work too.
+* Do all exercises
+* Re-do parts of worksheet if you didn't understand them
+* Work together
+* Many instances of people who overcame initial lack of confidence to enjoy R
+* Practise - learn by doing
+`r unhide()`
 
 
-1. [Beginners mind (Shoshin)](session-1.html): Openness, eagerness and lack of preconceptions when studying a subject, just as a beginner would. Students arrive in varying states of readiness and with different skills, but openness and 'readiness' are always valuable.
 
-2. [Freedom to act (Mushin)](session-2.html): Achieved when free from thoughts of anger, fear, or ego during combat or everyday life.
-
-3. [Awareness of surroundings (Zanshin)](session-3.html): A continued state of alertness and readiness to meet the situation.
-
-4. [The immovable mind (Fudōshin)](session-4.html): Composure under pressure or in challenging situations.
-
-5. [The way of the warrior (Bushido)](session-4.html): A comprehensive moral code regulating attitudes, behaviour and lifestyle. 
+<!-- Zen philosophy and many Japanese martial arts talk about several 'minds' of the learner, and a broader system which integrates the practice of martial arts.  We think these ideas are useful to guide your approach to the course, so we've organised our sessions around them: -->
 
 
+<!-- 1. [Beginners mind (Shoshin)](session-1.html): Openness, eagerness and lack of preconceptions when studying a subject, just as a beginner would. Students arrive in varying states of readiness and with different skills, but openness and 'readiness' are always valuable. -->
+
+<!-- 2. [Freedom to act (Mushin)](session-2.html): Achieved when free from thoughts of anger, fear, or ego during combat or everyday life. -->
+
+<!-- 3. [Awareness of surroundings (Zanshin)](session-3.html): A continued state of alertness and readiness to meet the situation. -->
+
+<!-- 4. [The immovable mind (Fudōshin)](session-4.html): Composure under pressure or in challenging situations. -->
+
+<!-- 5. [The way of the warrior (Bushido)](session-4.html): A comprehensive moral code regulating attitudes, behaviour and lifestyle.  -->
 
 
-TODO - perhaps spell out the analogy exactly for each session.
-
-TODO - decide whether this analogy actually helps or is too corny.
-
-TODO - perhaps change lifeSavr to something else
 
 
 
