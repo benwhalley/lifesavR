@@ -1,0 +1,22 @@
+---
+title: 'lifesavR webex examples'
+bibliography: [references.bib]
+biblio-style: apa6
+link-citations: yes
+output:
+  webex::html_clean
+---
+
+
+```{r, include=F, echo=F, message=F}
+source('_first_chunk.R')
+```
+
+
+```{hint}
+test of this
+
+it's a hint
+```
+
+
