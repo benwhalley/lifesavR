@@ -5,11 +5,19 @@ output: html_document
 
 # lifesaveR: Workbook 1
 
-This R Markdown document is your workbook for session one of the lifesaveR module.
+This is an RMarkdown document. We will use a document like this as a workbook for 
+each of the sessions in the LifesaveR course.
+
+What to do: 
+
+- Use this document to complete and record your answers to the exercises in each session.
+- Edit the code and text below to save your work
+
+
 
 ## An example plot
 
-The following chunk creates a scatterplot of a built-in data set that contains information about diamonds. By the end of
+The following chunk creates a scatter-plot of a built-in data set that contains information about diamonds. By the end of
 the second session, you will have learnt how to create similar plots.
 
 ```{r}

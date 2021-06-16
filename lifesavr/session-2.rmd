@@ -25,4 +25,7 @@ meaningoflife
 
 ## What is the `%>%` symbol called and what does it do?
 
+[Write your answers directly into the notebook here and save it for later]
+
+
 ## What is the `<-` symbol called and what does it do?
