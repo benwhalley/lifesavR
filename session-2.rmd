@@ -562,18 +562,28 @@ mtcars %>% group_by(cyl, am) %>% summarise(mean(mpg))
 
 
 
-# Dividing up graphs
-
-In our previous plot we only showed the difference between cars of 4, 6 and 8 cylinders. We can break the plot down
-into multiple panels using '**facets**':
+<!-- END VIDEO TODO-->
 
 
-```{r}
-mtcars %>% 
-  ggplot(aes(factor(cyl), mpg)) + 
-  geom_boxplot() + 
-  facet_wrap(vars(am))   # note to paul... use vars here to avoid quoting of variable names which is confusing/inconsistent with other use
-```
+<!-- TODO ADD EXERCISE FOR THIS -->
+
+
+
+
+
+<!-- PAUL HAVE COMMENTED THIS OUT>>> IT"S MOVED TO A LTER WORKSHEET -->
+<!-- # Dividing up graphs -->
+
+<!-- In our previous plot we only showed the difference between cars of 4, 6 and 8 cylinders. We can break the plot down -->
+<!-- into multiple panels using '**facets**': -->
+
+
+<!-- ```{r} -->
+<!-- mtcars %>%  -->
+<!--   ggplot(aes(factor(cyl), mpg)) +  -->
+<!--   geom_boxplot() +  -->
+<!--   facet_wrap(vars(am))   # note to paul... use vars here to avoid quoting of variable names which is confusing/inconsistent with other use -->
+<!-- ``` -->
 
 # Check your knowledge
 
