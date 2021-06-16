@@ -71,6 +71,30 @@ mtcars %>%
 
 In this plot it's easier to see that cars with more cylinders tend to be heavier, and have worse fuel consumption.
 
+
+
+
+
+# Dividing up graphs with facets {#facets}
+
+<!-- TODO CHANGE THIS TO EXTEND PREVIOUS EXERCISES IN THIS WORKSHEET -->
+
+In our previous plots we only showed the difference between cars of 4, 6 and 8 cylinders. We can break the plot down
+into multiple panels using '**facets**':
+
+
+```{r}
+mtcars %>%
+  ggplot(aes(factor(cyl), mpg)) +
+  geom_boxplot() +
+  facet_wrap(vars(am))   # note to paul... use vars here to avoid quoting of variable names which is confusing/inconsistent with other use
+```
+
+
+
+
+
+
 # Check your knowledge
 
 Write an answer to each of these questions in the `Check your knowledge` section of your workbook. The answers will be
