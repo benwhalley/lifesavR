@@ -59,11 +59,11 @@ In this session we cover:
 - [The ``summarise`` command](#summarise)
 - [R comments](#comments)
 
-Activity:
+<!-- Activity: -->
 
-???  set up the teaching as a kind of treasure hunt where students have to find use data to answer questions, gather
-clues and spell out a word? Alternatively, just ask them to make *LOTs* of different plots using the techniques above, not
-just one:
+<!-- ???  set up the teaching as a kind of treasure hunt where students have to find use data to answer questions, gather -->
+<!-- clues and spell out a word? Alternatively, just ask them to make *LOTs* of different plots using the techniques above, not -->
+<!-- just one: -->
 
 # Variables {#variables}
 
@@ -210,9 +210,10 @@ city.
 
 # Loading data from elsewhere
 
-- The preferred format for data files in R is comma-separated value (CSV). 
-- Data in CSV format can be read using the `read_csv` command.
-- You can load data either from an internet address (URL) or from a file uploaded to the RStudio server
+- Often we want to load data into R (not just use built in data)
+- The preferred format for data files in R is comma-separated value (CSV)
+- CSV data can be read using the `read_csv` command
+- You can load data from an internet address (URL) or a file uploaded to the server
 
 
 
@@ -228,13 +229,15 @@ will be confusing? was the idea to have one as example then diff as exercise? --
 In a lot of these sessions we use datasets that are built-in to R because it's quick and convenient to illustrate
 the points we make.
 
+[demo opening glancing some built in data like gapminder, iris, mtcars etc]
+
+
 Normally, though, you will need to load your own data.
 
 R can read data from two places:
 
 - A URL (web address), if the data file is available on the internet somewhere
 - A file on computer that R is running on
-
 
 The link below is a URL (web address) for a file containing data about US police shootings.
 
@@ -248,10 +251,8 @@ The final 3 (sometimes 4) letters of the filename is called the file extension.
 Here the file *extension* is `.csv`, which stands for 'comma separated values' or CSV.
 
 CSV is a common data type. Most data-oriented programmes (e.g. Excel or Open Office or SPSS) can read and write `.csv` files, so it's a good choice for storing and sharing data.
-<!-- TODO can you find a link to Andy's 'why csv?' explanation? -->
 
-
-If you click on the link you'll see the first line is a list of column names separated by commas. 
+If you click on the link [click link in vid] you'll see the first line is a list of column names separated by commas. 
 
 The remaining lines contain rows of data matching the column headings. For example, the value of the `arms_category` column in row 1 is `Guns`.
 
@@ -263,9 +264,19 @@ We can use `read_csv()` to load data from either a file, or over the internet, w
 
 
 
-### Reading CSV files from the internet
+## Reading CSV files from the internet
 
-`r hide('Video script')`
+{VIMEO EMBED VIDEO HERE}    MOCKUP WITH SCREENSHOT
+
+Video summary:
+
+- `read_csv('http://...')` can load data from a URL 
+- it converts the data to a `data.frame`
+- you must assign the loaded data to a variable (and give it a descriptive name)
+- once loaded, you can view the data using the Environment pane
+
+
+`r hide('Show full video transcript and code')`
 
 CSV files are a common format to store and share data. As shown in the previous video, the first line of a CSV file tells the column names, and the remaining lines are rows of data. 
 
@@ -282,13 +293,14 @@ shootings <- read_csv('https://benwhalley.github.io/lifesavR/lifesavr/shootings.
 
 Because we made a new variable, the result is stored in the Environment, and we can double-click it to have a look at the data.
 
-An alternative (and recommnded) way is to type the name of the variable as a very simple command:
+An alternative (and recommended) way is to type the name of the variable as a very simple command:
 
 ```{r}
 shootings
 ```
 
-`r unhide()`
+
+XXX TDY UP
 
 The following code reads the US police shootings CSV file from the Internet, and stores the resulting data.frame in the
 variable `shootings`.
@@ -296,6 +308,39 @@ variable `shootings`.
 ```{r}
 shootings <- read_csv('https://benwhalley.github.io/lifesavR/lifesavr/shootings.csv')
 ```
+
+`r unhide()`
+
+
+
+:::{.exercise}
+
+EXERCISES HERE....
+
+- Read the data stored at <https://benwhalley.github.io/lifesavR/lifesavr/shootings.csv>
+- View it useing the Env pane
+- View it using glimpse
+
+:::
+
+
+
+
+## Using data from your computer {#upload}
+
+
+VIDEO (covers these things)
+
+- To use data from your computer you need to upload it to the server
+- The files pane allows this
+- Once on the server, read_csv needs a path
+- Always store data next to your R code
+- you must assign the loaded data to a variable (and give it a descriptive name)
+- once loaded, you can view the data using the Environment pane
+
+
+XXX TODO TIDY THIS
+
 
 The [British School Success Survey](https://www.kaggle.com/brsdincer/schooldata/) is a dataset used to predict school performance. 
 
@@ -323,14 +368,12 @@ The command `shootings <- read_csv('shootings.csv')` reads the US police shootin
 Markdown file* into `shootings`.
 `r unhide()`
 
-# Uploading data files {#upload}
 
-The `Upload` button in the **Files** pane lets you upload a data file from your computer to R Studio, so you can read it
-using `read_csv()`.
 
 <!-- TODO Upload from files pane VIDEO -->
 
 `r hide('Video script')`
+
 The `Upload` button in the **Files** pane lets you upload a file from your computer to R Studio. R Studio uses file
 extensions to guess what the file contains. A file extension is a sequence of characters, starting with a `.` at the end
 of a file name.
@@ -350,7 +393,10 @@ We'll upload a CSV file which contains data about students who took a maths clas
 The file should appear in the **Files** pane in your `lifesavr` folder.
 `r unhide()`
 
+
+
 :::{.exercise}
+
 **Exercise 5**
 
 1. Open `https://benwhalley.github.io/lifesavR/data/student-mat.csv` in a web browser
@@ -364,12 +410,54 @@ The oldest student drinks `r fitb('5')` units of alcohol (column `Walc`) at the 
 
 
 
+
+
+
+
+
 # Selecting rows with `filter()` {#filter}
 
-- `filter()` selects rows from a dataset which match the criteria we set
+VIDEO
+
+
+Video summary:
+
+- `filter()` selects rows from a dataset which match criteria we set
 - the simplest way to filter is to use `==`, to test if the row is an exact match
 - we can use other filters like `<` or `>` too, for numeric columns
 - we can combine multiple filters to get exactly the rows we need
+
+
+TRANSCRIPT AND CODE HERE...
+
+[SHOW ONLY THE COMMENTED CODE]
+
+```{r}
+# THIS IS AN EXAMPLE - DO AFTER VIDEOS DONE - EASY TO DO AT THE END ONCE CODE IS DECIDED
+
+# filter rows where country is equal to the word "Kenya"
+# remember to use two = signs together, ==
+gapminder %>% 
+  filter(country == "Kenya")
+
+# filter only rows where year is greater than 2000
+gapminder %>% 
+  filter(year > 2000)
+
+# show rows with low life expectancy
+gapminder %>% 
+  filter(lifeExp < 35)
+
+# combine multiple filters
+gapminder::gapminder %>% 
+  filter(country=="Kenya") %>% 
+  filter(year > 2000) %>% 
+  filter(lifeExp < 35)
+
+```
+
+
+
 
 
 
@@ -593,20 +681,23 @@ revealed in Session 3.
 - What is the `%>%` symbol called and what does it do?
 - What is the `<-` symbol called and what does it do?
 
+<!-- TODO ADD MORE HERE -->
+
 # Practice problems
 
 Additional questions
 
-- what country had the highest life expectancy in  1952?
+- In the gapminder dataset, what country had the highest life expectancy in  1952?  (Use `arrange`, `filter` and `head`)
 
 
 ```{r}
-gapminder::gapminder %>% filter(year == 1952) %>% 
+gapminder::gapminder %>% 
+  filter(year == 1952) %>% 
   arrange(-lifeExp) %>% 
   head(1)
 ```
 
-- what continent had the highest GDP in 2011?
+- What continent had the highest GDP in 2011? (Use `arrange`, `group_by`, and `summarise`)
 
 ```{r}
 gapminder::gapminder %>% 
@@ -617,7 +708,7 @@ gapminder::gapminder %>%
 
 
 
-- make a boxplot showing life expectancy by continent
+- Make a boxplot showing life expectancy by continent. (Use `filter`, `ggplot` and `geom_boxplot`)
 
 ```{r}
 gapminder::gapminder %>% 
