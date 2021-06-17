@@ -1,5 +1,5 @@
 ---
-title: 'Awareness of surroundings (Zanshin)'
+title: 'Evidence for group differences'
 author: 'Ben Whalley, Paul Sharpe, Sonja Heintz'
 # date: "April 2021"
 bibliography: [references.bib]
@@ -16,16 +16,11 @@ source('_first_chunk.R')
 ```
 
 
+
+
 THIS STILL A WIP
 
-![](images/zanshin.jpg)
-
-
-<!-- > The lingering mind/The lingering mind: alertness and readiness to meet the situation. (Zanshin) -->
-
-<!-- Zanshin is a continuing state of alertness and readiness to meet the situation. To stretch our metaphor a little — when working with data it's  -->
-<!-- important to remain open to alternative explanations and to provide the best possible summary of our data. -->
-
+- Bayesian t test
 
 - Sub-setting data: sensitivity analysis for outliers (filter, group_by)
 - Summary tables to reveal patterns in data (use Simpson's paradox as teaching example)
@@ -89,9 +84,6 @@ mtcars %>%
 
 
 
-
-
-
 ```{r}
 
 gapminder::gapminder %>% 
@@ -127,9 +119,14 @@ Now show when we use this new dataframe in a plot:
 idealdiamonds %>% ggplot(aes(carat, price)) + geom_jitter()
 ```
 
+
+
+
+
+
 # Check your knowledge
 
-Write an answer to each of these questions in the `Check your knowledge` section of your workbook. The answers will be
+Write an answer to each of these questions in the `Check your knowledge` section of your workbook. The answers are
 revealed in Session 4.
 
 - What is the difference between a `dbl` and an `ord`/`fct`?

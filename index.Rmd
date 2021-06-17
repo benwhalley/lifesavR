@@ -57,7 +57,7 @@ For each session there is an interactive workbook (explained below) which you sh
 
 ## Mindset matters
 
-<!-- TODO intro VIDEO -->
+<!-- TODO BEN intro VIDEO -->
 
 `r hide('Video script')`
 I wonder if a video of Ben explaining success factors might be a replacement for the martial arts simile.
@@ -76,23 +76,6 @@ For now, this is a list of success factors observed in previous cohorts:
 * Many instances of people who overcame initial lack of confidence to enjoy R
 * Practise - learn by doing
 `r unhide()`
-
-
-
-<!-- Zen philosophy and many Japanese martial arts talk about several 'minds' of the learner, and a broader system which integrates the practice of martial arts.  We think these ideas are useful to guide your approach to the course, so we've organised our sessions around them: -->
-
-
-<!-- 1. [Beginners mind (Shoshin)](session-1.html): Openness, eagerness and lack of preconceptions when studying a subject, just as a beginner would. Students arrive in varying states of readiness and with different skills, but openness and 'readiness' are always valuable. -->
-
-<!-- 2. [Freedom to act (Mushin)](session-2.html): Achieved when free from thoughts of anger, fear, or ego during combat or everyday life. -->
-
-<!-- 3. [Awareness of surroundings (Zanshin)](session-3.html): A continued state of alertness and readiness to meet the situation. -->
-
-<!-- 4. [The immovable mind (Fudōshin)](session-4.html): Composure under pressure or in challenging situations. -->
-
-<!-- 5. [The way of the warrior (Bushido)](session-4.html): A comprehensive moral code regulating attitudes, behaviour and lifestyle.  -->
-
-
 
 
 

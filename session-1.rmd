@@ -46,7 +46,15 @@ the activities in the blue boxes.**
 These worksheets assume that you are using a web browser to access [the RStudio Server at Plymouth
 University](https://rstudio.plymouth.ac.uk).
 
-_NOTE_: RStudio works on most web browsers (e.g. Firefox, Safari, Chrome) but does not work that well on the default web browser in Windows 10 ("Edge"). If you're using Windows, we recommend [downloading Firefox](https://www.mozilla.org/en-US/firefox/new/) and using that. Firefox is free and open source.
+
+:::{.tip}
+
+If you're using Windows or an older Mac we strongly recommend [downloading Firefox](https://www.mozilla.org/en-US/firefox/new/) and using that.  If you have any issues with RStudio this is likely the first suggestion we will make.
+
+- [Install Firefox now](https://www.mozilla.org/en-US/firefox/new/)
+
+:::
+
 
 When you login to RStudio, you'll be greeted with a screen that looks something like the image below.
 
@@ -355,7 +363,13 @@ dataset in a the same way we loaded diamonds dataset. We load the `gapminder` pa
 
 # Exploring and checking data {#exploring}
 
-R Studio has a few different ways to explore datasets.
+R Studio has lots of different ways to explore datasets. We recommend 3 for the moment:
+
+- the `head()` function, which shows the first 6 rows of a dataset
+- using the Environment pane, which shows the dataset in a spreadsheet-like view
+- `glimpse()`, which shows a list of all the columns in a dataset (useful when there are many columns) 
+
+
 
 ## The `head` command and the Environment pane
 
