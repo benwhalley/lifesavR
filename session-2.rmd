@@ -21,7 +21,8 @@ We think the analogy to using R is clear:
 - If you are anxious, stressed or avoidant you will be distracted
 - Getting confident with the basics makes more complex techniques possible 
 
-<!-- TODO intro VIDEO -->
+![TODO: replace with feelgood video](images/video_placeholder.png)
+
 `r hide('Video script')`
 In this session we cover:
 
@@ -38,7 +39,7 @@ In this session we cover:
 `r unhide()`
 
 <!-- - Provide stereotyped examples of the sorts of students positive/negative traits which relate to the theme of session - make it all more concrete -->
-<!-- - Provide quotes from previous students illustrating? -->
+<!-- Use quotes from previous students illustrating? -->
 
 # Principles/ideas 
 
@@ -48,7 +49,7 @@ In this session we cover:
 
 # R techniques covered
 
-- [Variables](#variables)
+- [Storing data in variables](#variables)
 - [The pipe `%>%`](#pipe)
 - [The `read_csv` command](#readcsv)
 - [The **Files** pane](#filespane)
@@ -65,15 +66,24 @@ In this session we cover:
 <!-- clues and spell out a word? Alternatively, just ask them to make *LOTs* of different plots using the techniques above, not -->
 <!-- just one: -->
 
-# Variables {#variables}
+# Storing data in variables {#variables}
 
-In R, a **variable** is the name for a *container* which *stores data*. We make variables using `<-`, which is called the
-**assignment operator**.
+![TODO: replace with video](images/video_placeholder.png)
 
-<!-- TODO variables VIDEO -->
+Video summary:
+
+- In R, a **variable** is the name for a *container* which *stores data*.
+- We make variables using `<-`, which is called the **assignment operator**.
+- Variables that you create are stored in the `Global Environment`, which you can see using the **Environment** pane.
+
+```{r}
+# calculate 40 + 2 and assign (<-) the result to meaningoflife variable
+meaningoflife <- 40 + 2
+# print meaningoflife variable
+meaningoflife
+```
 
 `r hide('Video script')`
-
 As we work, it's useful to be able to save the results of the code we write. 
 
 As one example, we might have a dataset with multiple columns, each holding participants' answers 
@@ -86,14 +96,15 @@ To do this we can create a **variable**.
 
 A variable is just a container to store data in. To make variables we use the assignment operator, which looks like this `<-`
 
-That is, like an arrow that points to the left. This is a reminder that the results of the
-calculation on the right hand side will be assigned (stored) in the variable on the left hand side. 
+That is, like an arrow that points to the left. This is a reminder that the results of the calculation on the right hand
+side will be assigned (stored) in the variable on the left hand side.
 
 The code in this chunk runs the calculation on the right hand side of the assignment operator, `40 + 2`, and assigns the
 result to a new variable named `meaningoflife`. The output of the chunk is `42`, the value of `meaningoflife`.
 
-You might wonder *where* these variables get saved. In most cases, variables you create are stored in what's called the `Global Environment`. You can see them in the **Environment** pane in RStudio. Double-clicking on any variable there will show you what is stored inside the container.
-
+You might wonder *where* these variables get saved. In most cases, variables you create are stored in what's called the
+`Global Environment`. You can see them in the **Environment** pane in RStudio. Double-clicking on any variable there
+will show you what is stored inside the container.
 `r unhide()`
 
 :::{.exercise}
@@ -129,9 +140,9 @@ Your **Environment** should now look like this:
 
 # The pipe %>% {#pipe}
 
-The pipe command `%>%` sends data from one piece of code to another.
+![TODO: replace with video](images/video_placeholder.png)
 
-<!-- TODO pipe VIDEO -->
+The pipe command `%>%` sends data from one piece of code to another.
 
 `r hide('Video script')`
 
@@ -210,14 +221,12 @@ city.
 
 # Loading data from elsewhere
 
+![TODO: replace with video](images/video_placeholder.png)
+
 - Often we want to load data into R (not just use built in data)
 - The preferred format for data files in R is comma-separated value (CSV)
 - CSV data can be read using the `read_csv` command
 - You can load data from an internet address (URL) or a file uploaded to the server
-
-
-
-<!-- TODO read_csv VIDEO -->
 
 <!-- TODO Paul can you clarify — is the data to be usedf the shooting or school data? Perhaps introducing 2 different files 
 will be confusing? was the idea to have one as example then diff as exercise? -->
@@ -262,11 +271,9 @@ We can use `read_csv()` to load data from either a file, or over the internet, w
 
 `r unhide()`
 
-
-
 ## Reading CSV files from the internet
 
-{VIMEO EMBED VIDEO HERE}    MOCKUP WITH SCREENSHOT
+![TODO: replace with video](images/video_placeholder.png)
 
 Video summary:
 
@@ -408,17 +415,9 @@ The file should appear in the **Files** pane in your `lifesavr` folder.
 The oldest student drinks `r fitb('5')` units of alcohol (column `Walc`) at the weekend.
 :::
 
-
-
-
-
-
-
-
 # Selecting rows with `filter()` {#filter}
 
-VIDEO
-
+![TODO: replace with video](images/video_placeholder.png)
 
 Video summary:
 
@@ -427,13 +426,9 @@ Video summary:
 - we can use other filters like `<` or `>` too, for numeric columns
 - we can combine multiple filters to get exactly the rows we need
 
-
-TRANSCRIPT AND CODE HERE...
-
-[SHOW ONLY THE COMMENTED CODE]
-
 ```{r}
-# THIS IS AN EXAMPLE - DO AFTER VIDEOS DONE - EASY TO DO AT THE END ONCE CODE IS DECIDED
+## code from video with summary as comments
+## EXAMPLE - DO AFTER VIDEOS DONE - EASY TO DO AT THE END ONCE CODE IS DECIDED
 
 # filter rows where country is equal to the word "Kenya"
 # remember to use two = signs together, ==
@@ -453,12 +448,7 @@ gapminder::gapminder %>%
   filter(country=="Kenya") %>% 
   filter(year > 2000) %>% 
   filter(lifeExp < 35)
-
 ```
-
-
-
-
 
 
 ```{r}
@@ -506,7 +496,6 @@ gapminder::gapminder %>%
   filter(year > 2000)
 ```
 
-
 # Sorting data using `arrange()` {#sorting}
 
 remind them they know how to make scatter and boxplots
@@ -514,12 +503,16 @@ remind them they know how to make scatter and boxplots
 - "what is the size of the largest diamond (by carat) in the `diamonds` dataset? 
 - "what cut were the three largest diamonds in that dataset?"
 
+![TODO: replace with video](images/video_placeholder.png)
+
 ```{r}
 diamonds %>% arrange(-carat) %>% head(3)
 ```
 
 
 # Combine filtering and sorting
+
+![TODO: replace with video](images/video_placeholder.png)
 
 What was the year Kenyans had the lowest life exp:
 
@@ -539,8 +532,9 @@ gapminder::gapminder %>%
 
 ```
 
-
 # Combining rows using `summarise()`
+
+![TODO: replace with video](images/video_placeholder.png)
 
 - Often you have lots of data and need to make summaries of it — e.g. to calculate the average of a column
 - The `summarise()` function takes many rows and uses a **function** to convert those into fewer rows.
@@ -607,13 +601,9 @@ mtcars %>%
   summarise(mean(mpg))
 ```
 
-
-
-
-
-
 # Grouping results with `group_by`
 
+![TODO: replace with video](images/video_placeholder.png)
 
 - In our data we may have categorical variables (e.g. gender, or country)
 - We often want to compute summaries for each group
@@ -735,9 +725,6 @@ gapminder::gapminder %>%
   summarise(life_expectancy = mean(lifeExp)) %>% 
   arrange(-life_expectancy)
 ```
-
-
-
 
 # Broken script to fix
 

@@ -21,12 +21,15 @@ update this guide with the approach you took.
 - Include empty parentheses for argumentless verbs in pipelines e.g. `gapminder %>% glimpse()` not `gapminder %>% glimpse`
 - All student activities (exercises, MCQs, fill-in-the-blanks ...) should be in blue boxes
 
-## Videos
+## Level 1 sections
 
-Before each video there should be a 1-2 sentences summarising its content.
+To cater for differing student abilities, each level 1 section should have the following format:
 
-1. Write the script for the video with a show/hide button
-1. Record the video and add it above the script button (see session-1.rmd for an HTML example)
+1. Heading explaining the section content e.g. 'Storing data in variables' not 'Variables'
+1. Video demonstrating the section content (see session-1.rmd for HTML example of including video)
+1. Bullet point summary of the video content
+1. Chunk with code in video and comments explaining what it does
+1. Video (tran)script video with show/hide button
 
 ## Exercises
 
