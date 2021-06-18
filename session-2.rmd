@@ -74,13 +74,14 @@ Video summary:
 
 - In R, a **variable** is the name for a *container* which *stores data*.
 - We make variables using `<-`, which is called the **assignment operator**.
+- Values on the right hand side of `<-` are stored in the variable on the left hand side.
 - Variables that you create are stored in the `Global Environment`, which you can see using the **Environment** pane.
 
 ```{r}
-# calculate 40 + 2 and assign (<-) the result to meaningoflife variable
-meaningoflife <- 40 + 2
-# print meaningoflife variable
-meaningoflife
+# calculate 40 + 2 and assign the result to a variable
+meaning_of_life <- 40 + 2
+# print variable
+meaning_of_life
 ```
 
 `r hide('Video script')`
@@ -101,6 +102,9 @@ side will be assigned (stored) in the variable on the left hand side.
 
 The code in this chunk runs the calculation on the right hand side of the assignment operator, `40 + 2`, and assigns the
 result to a new variable named `meaningoflife`. The output of the chunk is `42`, the value of `meaningoflife`.
+
+Give your variables short names which describe the data they contain. Use the underscore `_` if you need to use more
+than one word e.g. `meaning_of_life`.
 
 You might wonder *where* these variables get saved. In most cases, variables you create are stored in what's called the
 `Global Environment`. You can see them in the **Environment** pane in RStudio. Double-clicking on any variable there
@@ -127,14 +131,17 @@ Your **Environment** pane should look like this:
 
 1. Create a level 3 markdown heading named "Exercise 2" in your workbook
 1. Create a new chunk beneath the heading
-1. Assign the results of the calculation `26 + 44` to the variable `myfirstvariable`
+1. Assign the results of the calculation `2 * 35` to the variable `seventy`
 1. Run the chunk
 
 Your **Environment** should now look like this:
 
 ![Environment pane after creating `myfirstvariable`](images/environment2.png)
 
-1. Use R to calculate your age in the year 2051. Save the result in a variable. Give your variable a descriptive name.
+**Exercise 3**
+
+1. Use R to calculate your age in the year 2051.
+1. Save the result in a variable _with a descriptive name_.
 
 :::
 
