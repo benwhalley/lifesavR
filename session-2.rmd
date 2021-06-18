@@ -50,7 +50,7 @@ In this session we cover:
 # R techniques covered
 
 - [Storing data in variables](#variables)
-- [The pipe `%>%`](#pipe)
+- [Passing data to commands using the pipe `%>%`](#pipe)
 - [The `read_csv` command](#readcsv)
 - [The **Files** pane](#filespane)
 - [Uploading data files](#upload)
@@ -145,14 +145,25 @@ Your **Environment** should now look like this:
 
 :::
 
-# The pipe %>% {#pipe}
+# Passing data to commands using the pipe `%>%` {#pipe}
 
 ![TODO: replace with video](images/video_placeholder.png)
 
-The pipe command `%>%` sends data from one piece of code to another.
+Video summary:
+
+- The pipe command `%>%` sends data from one piece of code to another.
+- You can use the assignment operator to store the results of a pipeline in a variable.
+
+```{r}
+# pipe mtcars into head()
+mtcars %>% head()
+
+# store first few rows of mtcars
+mtcars_head <- mtcars %>%
+  head()
+```
 
 `r hide('Video script')`
-
 Sometimes we need to link together multiple steps in our analysis.
 
 For example, if we're working with a big dataset we might want to select only some of the columns, and then filter out some of the rows of data, and the finally calculate descriptive statistics.
@@ -161,9 +172,7 @@ We could do this by creating lots of variables, each one saving the results at e
 
 Instead we can use what's known as a 'pipe' — it's another way to link together multiple instructions.
 
-The pipe sends data from one piece of code to another. 
-
-<!-- TODO Paul - what are the square brackets below supposed to indciate? -->
+The pipe sends data from one piece of code to another.
 
 The pipe looks like this `%>%`.  
 
@@ -173,11 +182,10 @@ In session 1, you used this command to "pipe" the `mtcars` dataset into `head`, 
 mtcars %>% head()
 ```
 
-You can think of your data as flowing along lengths of pipe, joined by commands which do things to the data, step by step,
-until the result you want plops out at the end. 
+You can think of your data as flowing along lengths of pipe, joined by commands which do things to the data, step by
+step, until the result you want plops out at the end.
 
-Each command should be read as the word "then", e.g. "pipe `mtcars` data,
-*then* `head` it". 
+Each command should be read as the word "then", e.g. "pipe `mtcars` data, *then* `head` it".
 
 The `>` in the pipe command reminds you of the direction in which your data is flowing (it only works left to right).
 
@@ -194,24 +202,20 @@ mtcars_head <- mtcars %>% head()
 
 Here we combine *assignment* with a *pipeline*.
 
-The result of the pipeline (a data.frame containing the first few rows of `mtcars`) is saved to a
+The result of the pipeline (a `data.frame` containing the first few rows of `mtcars`) is saved to a
 new variable called `mtcars_head`.
 
-<!-- TODO ARE SQ BRACKETS SUPPOSED TO BE AN INTERNAL LINK -->
-You can [explore your variables using the **Environment** pane]. A data.frame will have an icon that looks like a
-spreadsheet. If you [click on the icon], the data.frame is displayed in a new tab in the **Source** pane.
+You can explore your variables using the **Environment** pane. A `data.frame` will have an icon that looks like a
+spreadsheet. If you [click on the icon], the `data.frame` is displayed in a new tab in the **Source** pane.
 
-This tab shows you the same information as printing the data.frame, such as the number of rows and columns, but it
+This tab shows you the same information as printing the `data.frame`, such as the number of rows and columns, but it
 also provides tools for exploring the data interactively.
 
 * The arrows next to the column names allow you to arrange the rows in ascending or descending order based on the column
 values.
 * The `Filter` button allows you to specify a value for one or more columns to filter out non-matching rows. For
 example, we could display just cars with 4 gears. Click the button again to turn off the filter.
-
 `r unhide()`
-<!-- END OF VIDEO -->
-
 
 :::{.exercise}
 **Exercise 3**
@@ -219,7 +223,7 @@ example, we could display just cars with 4 gears. Click the button again to turn
 1. Create a level 3 markdown heading named "Exercise 3" in your workbook. (You should be used to doing this for every exercise by now, so we won't remind you again.)  <!-- TODO is this true enough yet? -->
 1. Create a new chunk beneath the heading
 1. Load the `tidyverse` library
-1. Pipe the `mpg` data.frame into `head()` and assign the results to a variable called `mpg_head`
+1. Pipe the `mpg` `data.frame` into `head()` and assign the results to a variable called `mpg_head`
 1. Use the **Environment** pane to open `mpg_head`
 
 In 1999, a 6 cylinder, manual transmission, Audio A4 could cover `r fitb('18')` miles per gallon when driven in the
@@ -272,7 +276,7 @@ If you click on the link [click link in vid] you'll see the first line is a list
 
 The remaining lines contain rows of data matching the column headings. For example, the value of the `arms_category` column in row 1 is `Guns`.
 
-The `read_csv()` command reads a CSV file, and converts it to a data.frame, which is the format we use in R. 
+The `read_csv()` command reads a CSV file, and converts it to a `data.frame`, which is the format we use in R. 
 
 We can use `read_csv()` to load data from either a file, or over the internet, which is shown in the next video.
 
@@ -294,7 +298,7 @@ Video summary:
 
 CSV files are a common format to store and share data. As shown in the previous video, the first line of a CSV file tells the column names, and the remaining lines are rows of data. 
 
-The `read_csv()` command reads a CSV file, and converts it to a data.frame, which is the format we use in R.  We can load data either from a file, or over the internet.
+The `read_csv()` command reads a CSV file, and converts it to a `data.frame`, which is the format we use in R.  We can load data either from a file, or over the internet.
 
 
 In this example, I'm reading a CSV directly over the Internet and storing the resulting data.frame in a variable.
@@ -316,7 +320,7 @@ shootings
 
 XXX TDY UP
 
-The following code reads the US police shootings CSV file from the Internet, and stores the resulting data.frame in the
+The following code reads the US police shootings CSV file from the Internet, and stores the resulting `data.frame` in the
 variable `shootings`.
 
 ```{r}

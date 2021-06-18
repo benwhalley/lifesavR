@@ -51,7 +51,7 @@ workbook. The subsequent session begins by revealing the answers to these questi
   * Bad: *It is important to understand what a variable is in R.*
 * Spellings
   * *datasets* not *data sets*
-  * *data.frame* not *dataframe/data frame*
+  * `data.frame` (in backticks) not *dataframe*, or *data frame*
   * *built-in* not *built in/builtin*
   * *x-axis* not *x axis*
   * *colour* not *colour* (in text and `aes()`)

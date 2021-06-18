@@ -335,10 +335,10 @@ R has a number of built-in datasets, and more can be loaded from packages.
 `r hide('Video script')`
 A dataset is a set of data relating to a particular topic. Most datasets we will be working with consist of rows and
 columns, just like a spreadsheet. In R this type of data is stored in a special type of variable called a
-**data.frame**. You will also see references to datasets as **tibbles**. A tibble is just a special type of data.frame,
+`data.frame`. You will also see references to datasets as **tibbles**. A tibble is just a special type of `data.frame`,
 so you can treat the two types of variable as being equivalent.
 
-One data.frame that is built-in to R is called `mtcars`. This is a dataset about cars that was published in a US
+One `data.frame` that is built-in to R is called `mtcars`. This is a dataset about cars that was published in a US
 magazine called Motor Trend. Let's display this data in using a new chunk. As we did with the `diamonds` tibble, if we
 type `mtcars`, select the variable name and execute it, we can see the data it contains.
 
@@ -356,7 +356,7 @@ dataset in a the same way we loaded diamonds dataset. We load the `gapminder` pa
 **Exercise 5**
 
 1. Create a new chunk at the bottom of your workbook
-1. Display the `mtcars` data.frame and try out the navigation buttons
+1. Display the `mtcars` `data.frame` and try out the navigation buttons
 1. Load the `gapminder` package
 1. Display and explore the gapminder tibble
 :::
@@ -407,12 +407,12 @@ The `glimpse` command is useful for exploring datasets with lots of columns, as 
 The `glimpse` command is useful for exploring datasets with lots of columns, as it allows you to see all columns at
 once. Using the `glimpse` command we can have the columns of a dataset run down the page, and data run across.
 
-The command [`library(causaldata)`] loads a data.frame called `nhefs` containing lots of columns relating to health and
+The command [`library(causaldata)`] loads a `data.frame` called `nhefs` containing lots of columns relating to health and
 nutrition. Running the command `nhefs %>% glimpse()` shows all of the columns. This is like rotating the output you saw
 earlier anti-clockwise by 90 degrees. The command displays all of the columns as rows, and as many observations from the
 dataset as will fit on a single line.
 
-Each column in a data.frame has an associated type. The second column of the `glimpse` output shows you the type of each column. The `nhefs` includes columns with various types:
+Each column in a `data.frame` has an associated type. The second column of the `glimpse` output shows you the type of each column. The `nhefs` includes columns with various types:
 
 * *dbl* is short for 'double-precision number', a number with one or more decimal places
 * *int* is short for 'integer', a variable which contains whole numbers (e.g. a participant id number)
