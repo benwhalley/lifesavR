@@ -43,6 +43,10 @@ the activities in the blue boxes.**
 
 # Using the RStudio interface {#using}
 
+![TODO: replace with video](images/video_placeholder.png)
+
+Video summary:
+
 These worksheets assume that you are using a web browser to access [the RStudio Server at Plymouth
 University](https://rstudio.plymouth.ac.uk).
 
@@ -75,6 +79,10 @@ The top rectangle has the tabs "Environment" and "History". The **History** tab 
 The bottom rectangle has the tabs "Files", "Plots", "Packages", "Help", and "Viewer". We'll cover what these other tabs do later on. 
 
 # Before you start
+
+![TODO: replace with video](images/video_placeholder.png)
+
+Video summary:
 
 Before starting this module, you need to run an R command which makes a folder and downloads the files you will need
 for each workshop.
@@ -116,9 +124,11 @@ You're now ready to start the session.
 
 # What can R do? {#cando}
 
-R can do simple arithmetic, generate data and produce plots.
+![TODO: replace with video](images/video_placeholder.png)
 
-<!-- TODO VIDEO of what R can do to provide context for where we’re going and what we’re doing. -->
+Video summary:
+
+- R can do simple arithmetic, generate data and produce plots.
 
 `r hide('Video script')`
 RStudio is a user interface to R, which is a computer language that is primarily designed for data analysis and
@@ -134,9 +144,11 @@ instructions.
 
 # Working interactively in R Markdown {#interactive}
 
-<!-- TODO: VIDEO working interactively -->
+![TODO: replace with video](images/video_placeholder.png)
 
-R Markdown documents can be used interactively to run R code.
+Video summary:
+
+- R Markdown documents can be used interactively to run R code.
 
 `r hide('Video script')`
 R Markdown is a way of combining R with narrative text. It allows you to integrate the results of your data analysis
@@ -294,9 +306,11 @@ After completing these steps, your environment should look like this:
 
 # Loading packages {#packages}
 
-By loading 'packages', you can add commands and datasets to R.
+![TODO: replace with video](images/video_placeholder.png)
 
-<!-- TODO: VIDEO loading packages -->
+Video summary:
+
+- By loading 'packages', you can add commands and datasets to R.
 
 `r hide('Video script')`
 By loading 'packages', you can add commands and datasets to R. Packages are a powerful feature which all R to be
@@ -328,9 +342,11 @@ We mention this here, as `could not find function` errors are one of the most co
 
 # Built-in datasets {#datasets}
 
-R has a number of built-in datasets, and more can be loaded from packages.
+![TODO: replace with video](images/video_placeholder.png)
 
-<!-- TODO: VIDEO built-in datasets -->
+Video summary:
+
+- R has a number of built-in datasets, and more can be loaded from packages.
 
 `r hide('Video script')`
 A dataset is a set of data relating to a particular topic. Most datasets we will be working with consist of rows and
@@ -363,13 +379,14 @@ dataset in a the same way we loaded diamonds dataset. We load the `gapminder` pa
 
 # Exploring and checking data {#exploring}
 
-R Studio has lots of different ways to explore datasets. We recommend 3 for the moment:
+![TODO: replace with video](images/video_placeholder.png)
 
+Video summary:
+
+- R Studio has lots of different ways to explore datasets. We recommend 3 for the moment:
 - the `head()` function, which shows the first 6 rows of a dataset
 - using the Environment pane, which shows the dataset in a spreadsheet-like view
-- `glimpse()`, which shows a list of all the columns in a dataset (useful when there are many columns) 
-
-
+- `glimpse()`, which shows a list of all the columns in a dataset (useful when there are many columns)
 
 ## The `head` command and the Environment pane
 
@@ -437,15 +454,17 @@ The `clarity` variable in the `diamonds` tibble is of type `r fitb('ord')`.
 
 # ggplot: Scatter plots {#scatterplots}
 
-A scatterplot shows the relationship between two variables by plotting their values as points. The `tidyverse` package
+![TODO: replace with video](images/video_placeholder.png)
+
+Video summary:
+
+- A scatterplot shows the relationship between two variables by plotting their values as points. The `tidyverse` package
 also loads the `mpg` dataset, which contains fuel economy data from 1999 to 2008 for 38 popular models of US cars.
 
 ```{r}
 mpg %>% ggplot(aes(cty, hwy)) +
   geom_point()
 ```
-
-<!-- TODO: VIDEO scatter plots -->
 
 `r hide('Video script')`
 A scatterplot shows the relationship between two variables by plotting their values as points.
@@ -479,15 +498,17 @@ mpg %>% ggplot(aes(displ, hwy)) +
 
 # ggplot: Boxplots {#boxplots}
 
-Boxplots are useful for visualising categorical data.
+![TODO: replace with video](images/video_placeholder.png)
+
+Video summary:
+
+- Boxplots are useful for visualising categorical data.
 
 ```{r}
 mpg %>%
   ggplot(aes(class, cty)) +
   geom_boxplot()
 ```
-
-<!-- TODO: VIDEO boxplots -->
 
 `r hide('Video script')`
 Boxplots are useful for visualising categorical data. In a boxplot, the thick line is the median. That thick line is
@@ -520,9 +541,11 @@ mpg %>%
 
 # ggplot: Colour {#colour}
 
-Colour can be added to a scatterplot to categorise the points.
+![TODO: replace with video](images/video_placeholder.png)
 
-<!-- TODO: VIDEO boxplots -->
+Video summary:
+
+- Colour can be added to a scatterplot to categorise the points.
 
 `r hide('Video script')`
 Colour can be added to a scatterplot to categorise the points. So far, you've used the `aes` command to define which variable is plotted on the x and y axes. The `aes` command is short for 'aesthetics', and it is a way to map variables to visual aspects of a plot. In addition to mapping variables to the x and y axes, the `colour` option maps colours to a categorical variable.
@@ -555,9 +578,11 @@ gapminder %>%
 
 # Introduction to Markdown {#markdown}
 
-This section shows you how to use 'markdown' to format the narrative text in your R Markdown files.
+![TODO: replace with video](images/video_placeholder.png)
 
-<!-- TODO: VIDEO rmarkdown -->
+Video summary:
+
+- This section shows you how to use 'markdown' to format the narrative text in your R Markdown files.
 
 `r hide('Video script')`
 Markdown uses special characters to style text in the same way you might use menus in a word processor to define
