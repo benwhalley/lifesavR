@@ -501,6 +501,7 @@ diamonds %>%
 ```
 
 `r hide('Video script')`
+<!-- TODO: Ben, wasn't sure why/where to "remind them they know how to make scatter and boxplots" -->
 
 Sort by carat in ascending order
 
@@ -542,38 +543,60 @@ diamonds %>%
 
 **Exercise 10**
 
-1. Use `arrange()` and `head()` to answer the following question:
+How big is the largest diamond in the `diamonds` dataset? `r fitb('5.01')` carats.
 
-The third cheapest diamond costs $`r fitb('18806')`.
+What was the cut of the three largest diamonds in that dataset? `r fitb('Fair')`.
 :::
 
 # Combining filtering and sorting {#filtersort}
 
 ![TODO: replace with video](images/video_placeholder.png)
 
-What was the year Kenyans had the lowest life exp:
+Video summary:
+
+- Pipelines often combine `filter()` and `arrange()` to answer specific questions.
 
 ```{r}
-gapminder::gapminder %>% filter(country=="Kenya") %>% 
+# show Kenyans with lowest life expectancy
+gapminder::gapminder %>%
+  filter(country=="Kenya") %>% 
   arrange(lifeExp) %>% 
+  head(6)
+
+# show Kenyans with highest life expectancy (just add '-')
+gapminder::gapminder %>% 
+  filter(country=="Kenya") %>% 
+  arrange(-lifeExp) %>%
   head(6)
 ```
 
+`r hide('Video script')`
+What was the year Kenyans had the lowest life exp:
+
+```{r}
+gapminder::gapminder %>%
+  filter(country=="Kenya") %>% 
+  arrange(lifeExp) %>% 
+  head(6)
+```
 
 What was the highest year? All that changes is the minus sign (reverse sorting)
 
 ```{r}
 gapminder::gapminder %>% 
   filter(country=="Kenya") %>% 
-  arrange(-lifeExp) 
-
+  arrange(-lifeExp) %>%
+  head(6)
 ```
 
+`r unhide()`
 
-remind them they know how to make scatter and boxplots
- 
-- "what is the size of the largest diamond (by carat) in the `diamonds` dataset? 
-- "what cut were the three largest diamonds in that dataset?"
+
+
+:::{.exercise}
+**Exercise 11**
+
+:::
 
 # Combining rows using `summarise()`
 
