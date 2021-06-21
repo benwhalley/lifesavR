@@ -123,7 +123,7 @@ The output should look like this:
 
 Your **Environment** pane should look like this:
 
-![Environment pane after creating `meaningoflife` variable](images/environment1.png)
+![Environment pane after creating variable](images/environment1.png)
 :::
 
 :::{.exercise}
@@ -140,9 +140,9 @@ Your **Environment** should now look like this:
 
 **Exercise 3**
 
+1. Create a level 3 markdown heading named "Exercise 3" in your workbook
 1. Use R to calculate your age in the year 2051.
 1. Save the result in a variable _with a descriptive name_.
-
 :::
 
 # Passing data to commands using the pipe `%>%` {#pipe}
@@ -151,7 +151,8 @@ Your **Environment** should now look like this:
 
 Video summary:
 
-- The pipe command `%>%` sends data from one piece of code to another.
+- We pass data from one piece of code to another using **the pipe** command, which looks like this: `%>%`.
+- A **pipeline** is a sequence of two or more commands joined by `%>%`.
 - You can use the assignment operator to store the results of a pipeline in a variable.
 
 ```{r}
@@ -185,7 +186,7 @@ mtcars %>% head()
 You can think of your data as flowing along lengths of pipe, joined by commands which do things to the data, step by
 step, until the result you want plops out at the end.
 
-Each command should be read as the word "then", e.g. "pipe `mtcars` data, *then* `head` it".
+Each command should be read as the word "then", e.g. "pipe `mtcars` data, *then* `head()` it".
 
 The `>` in the pipe command reminds you of the direction in which your data is flowing (it only works left to right).
 
@@ -218,9 +219,9 @@ example, we could display just cars with 4 gears. Click the button again to turn
 `r unhide()`
 
 :::{.exercise}
-**Exercise 3**
+**Exercise 4**
 
-1. Create a level 3 markdown heading named "Exercise 3" in your workbook. (You should be used to doing this for every exercise by now, so we won't remind you again.)  <!-- TODO is this true enough yet? -->
+1. Create a level 3 markdown heading named "Exercise 4" in your workbook. (You should be used to doing this for every exercise by now, so we won't remind you again.)  <!-- TODO is this true enough yet? -->
 1. Create a new chunk beneath the heading
 1. Load the `tidyverse` library
 1. Pipe the `mpg` `data.frame` into `head()` and assign the results to a variable called `mpg_head`
