@@ -51,7 +51,7 @@ In this session we cover:
 
 - [Storing data in variables](#variables)
 - [Passing data to commands using the pipe `%>%`](#pipe)
-- [The `read_csv` command](#readcsv)
+- [Loading data from elsewhere](#loadingdata)
 - [The **Files** pane](#filespane)
 - [Uploading data files](#upload)
 - [The `filter` command](#filter)
@@ -231,19 +231,21 @@ In 1999, a 6 cylinder, manual transmission, Audio A4 could cover `r fitb('18')` 
 city.
 :::
 
-# Loading data from elsewhere
+# Loading data from elsewhere {#loadingdata}
 
 ![TODO: replace with video](images/video_placeholder.png)
 
-- Often we want to load data into R (not just use built in data)
-- The preferred format for data files in R is comma-separated value (CSV)
-- CSV data can be read using the `read_csv` command
-- You can load data from an internet address (URL) or a file uploaded to the server
+Video summary:
 
-<!-- TODO Paul can you clarify — is the data to be usedf the shooting or school data? Perhaps introducing 2 different files 
+- Often we want to load data into R, rather than use built-in datasets.
+- The preferred format for data files in R is comma-separated value (CSV).
+- CSV data can be read using the `read_csv()` command.
+- You can load data from an internet address (URL) or a file uploaded to the server.
+
+<!-- TODO Paul can you clarify — is the data to be used the shooting or school data? Perhaps introducing 2 different files 
 will be confusing? was the idea to have one as example then diff as exercise? -->
 
-### Loading data
+## Loading data
 
 `r hide('Video script')`
 
@@ -251,7 +253,6 @@ In a lot of these sessions we use datasets that are built-in to R because it's q
 the points we make.
 
 [demo opening glancing some built in data like gapminder, iris, mtcars etc]
-
 
 Normally, though, you will need to load your own data.
 
@@ -289,20 +290,27 @@ We can use `read_csv()` to load data from either a file, or over the internet, w
 
 Video summary:
 
-- `read_csv('http://...')` can load data from a URL 
-- it converts the data to a `data.frame`
-- you must assign the loaded data to a variable (and give it a descriptive name)
-- once loaded, you can view the data using the Environment pane
+- `read_csv('http://...')` can load data from a URL.
+- It converts the data to a `data.frame`.
+- You must assign the loaded data to a variable, which you should give a descriptive name.
+- Use the **Environment** pane to view data you load using `read_csv()`.
 
+```{r}
+# load data from a URL into a variable
+shootings <- read_csv('https://benwhalley.github.io/lifesavR/lifesavr/shootings.csv')
+
+# display data
+shootings
+```
 
 `r hide('Show full video transcript and code')`
-
-CSV files are a common format to store and share data. As shown in the previous video, the first line of a CSV file tells the column names, and the remaining lines are rows of data. 
+CSV files are a common format to store and share data. As shown in the previous video, the first line of a CSV file
+defines the column names, and the remaining lines are rows of data.
 
 The `read_csv()` command reads a CSV file, and converts it to a `data.frame`, which is the format we use in R.  We can load data either from a file, or over the internet.
 
-
-In this example, I'm reading a CSV directly over the Internet and storing the resulting data.frame in a variable.
+In this example, I'm reading a CSV directly over the Internet and storing the resulting `data.frame` in the
+variable `shootings`.
 
 The URL (the link to the CSV file) needs to be in quotes (single or double quotes both work).
 
@@ -317,82 +325,31 @@ An alternative (and recommended) way is to type the name of the variable as a ve
 ```{r}
 shootings
 ```
-
-
-XXX TDY UP
-
-The following code reads the US police shootings CSV file from the Internet, and stores the resulting `data.frame` in the
-variable `shootings`.
-
-```{r}
-shootings <- read_csv('https://benwhalley.github.io/lifesavR/lifesavr/shootings.csv')
-```
-
 `r unhide()`
 
-
-
 :::{.exercise}
+**Exercise 5**
 
-EXERCISES HERE....
-
-- Read the data stored at <https://benwhalley.github.io/lifesavR/lifesavr/shootings.csv>
-- View it useing the Env pane
-- View it using glimpse
-
+1. Create a new chunk.
+1. Read the data stored at <https://benwhalley.github.io/lifesavR/lifesavr/shootings.csv>
+1. View it using the **Environment** pane.
+1. View it using `glimpse()`.
 :::
-
-
-
 
 ## Using data from your computer {#upload}
 
+![TODO: replace with video](images/video_placeholder.png)
 
-VIDEO (covers these things)
+Video summary:
 
-- To use data from your computer you need to upload it to the server
-- The files pane allows this
-- Once on the server, read_csv needs a path
-- Always store data next to your R code
-- you must assign the loaded data to a variable (and give it a descriptive name)
-- once loaded, you can view the data using the Environment pane
+- Before you can use data from your computer, you must upload it to the server.
+- Data can be uploaded using the **Files** pane.
+- Always upload data to the same location as your R code.
+- For data you upload, give `read_csv()` the path to the CSV file.
+- You must assign the loaded data to a variable, which you should give a descriptive name.
+- Use the **Environment** pane to view the data.
 
-
-XXX TODO TIDY THIS
-
-
-The [British School Success Survey](https://www.kaggle.com/brsdincer/schooldata/) is a dataset used to predict school performance. 
-
-:::{.exercise}
-**Exercise 4**
-
-1. Copy the code above into a new chunk your workbook and run it
-1. Add a line that reads `schoolpredict.csv` into the variable `school_predict`
-1. Open `school_predict` in the **Source** window
-
-The school with the most teaching assistants has `r fitb('141')` teachers.
-:::
-
-## The **Files** pane {#filespane}
-
-You can also use `read_csv()` to read CSV files from within R Studio.
-
-<!-- TODO read_csv from files pane VIDEO -->
-
-`r hide('Video script')`
-The CSV files which you read from the Internet are also included in the folder which contains your workbooks. [You can
-see them using the **Files** pane.]
-
-The command `shootings <- read_csv('shootings.csv')` reads the US police shootings data *from the same folder as the R
-Markdown file* into `shootings`.
-`r unhide()`
-
-
-
-<!-- TODO Upload from files pane VIDEO -->
-
-`r hide('Video script')`
-
+`r hide('Show full video transcript and code')`
 The `Upload` button in the **Files** pane lets you upload a file from your computer to R Studio. R Studio uses file
 extensions to guess what the file contains. A file extension is a sequence of characters, starting with a `.` at the end
 of a file name.
@@ -402,7 +359,7 @@ of a file name.
 
 Make sure that any file you upload has the correct file extension.
 
-We'll upload a CSV file which contains data about students who took a maths class.
+We'll upload `shootings.csv` from the previous exercise.
 
 1. Click the `Upload` button.
 1. Ensure the `Target directory` is where you want the uploaded file to appear. For this module it should read `~/lifesavr`. The `~` (pronounced "tilde") means your `Home` directory on the R Studio server. The `/lifesavr` means the folder named `lifesaver` in `Home`.
@@ -412,19 +369,15 @@ We'll upload a CSV file which contains data about students who took a maths clas
 The file should appear in the **Files** pane in your `lifesavr` folder.
 `r unhide()`
 
-
-
 :::{.exercise}
+**Exercise 6**
 
-**Exercise 5**
+1. Use your web browser to download <https://benwhalley.github.io/lifesavR/lifesavr/shootings.csv> to your computer.
+1. Upload `shootings.csv` to the server.
+1. Create a new chunk.
+1. Read `shootings.csv` into a variable with a descriptive name.
 
-1. Open `https://benwhalley.github.io/lifesavR/data/student-mat.csv` in a web browser
-1. Use your web browser to save the file as `student-mat.csv`
-1. Upload `student-mat.csv` to the folder containing your workbooks
-1. Read `student-mat.csv` into the variable `student_maths`
-1. Open `student_maths` in the **Source** window
-
-The oldest student drinks `r fitb('5')` units of alcohol (column `Walc`) at the weekend.
+In which city was the earliest recorded shooting? `r fitb('Shelton')`
 :::
 
 # Selecting rows with `filter()` {#filter}
