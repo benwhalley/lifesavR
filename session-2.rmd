@@ -54,9 +54,10 @@ In this session we cover:
 - [Loading data from elsewhere](#loadingdata)
 - [The **Files** pane](#filespane)
 - [Uploading data files](#upload)
-- [The `filter` command](#filter)
-- [The `arrange` command](#arrange)
-- [The `group_by` command](#groupby)
+- [Selecting rows with `filter`](#filter)
+- [Sorting data using `arrange`](#arrange)
+- [Combining filtering and sorting](filtersort)
+- [Grouping data with `group_by`](#groupby)
 - [The ``summarise`` command](#summarise)
 - [R comments](#comments)
 
@@ -297,7 +298,7 @@ Video summary:
 
 ```{r}
 # load data from a URL into a variable
-shootings <- read_csv('https://benwhalley.github.io/lifesavR/lifesavr/shootings.csv')
+shootings <- read_csv('https://benwhalley.github.io/lifesavR/data/shootings.csv')
 
 # display data
 shootings
@@ -386,25 +387,25 @@ In which city was the earliest recorded shooting? `r fitb('Shelton')`
 
 Video summary:
 
-- `filter()` selects rows from a dataset which match criteria we set
-- the simplest way to filter is to use `==`, to test if the row is an exact match
-- we can use other filters like `<` or `>` too, for numeric columns
-- we can combine multiple filters to get exactly the rows we need
+- The `filter()` command selects rows from a dataset which match criteria we set.
+- The simplest filter uses `==` (equals equals), to test if the row is an exact match.
+- We can use other filters like `<` or `>` to match criteria in numeric columns.
+- We can combine multiple filters to get exactly the rows we need.
 
 ```{r}
-## code from video with summary as comments
-## EXAMPLE - DO AFTER VIDEOS DONE - EASY TO DO AT THE END ONCE CODE IS DECIDED
+# load gapminder dataset
+library(gapminder)
 
 # filter rows where country is equal to the word "Kenya"
-# remember to use two = signs together, ==
+# remember to double equals (==) rather than single (=)
 gapminder %>% 
   filter(country == "Kenya")
 
-# filter only rows where year is greater than 2000
+# select rows where year is greater than 2000
 gapminder %>% 
   filter(year > 2000)
 
-# show rows with low life expectancy
+# select rows with low life expectancy
 gapminder %>% 
   filter(lifeExp < 35)
 
@@ -412,22 +413,21 @@ gapminder %>%
 gapminder::gapminder %>% 
   filter(country=="Kenya") %>% 
   filter(year > 2000) %>% 
-  filter(lifeExp < 35)
+  filter(lifeExp < 55)
 ```
+`r hide('Video script')`
 
+The following chunk filters the `gapminder` dataset to include only rows where the `country` column equals "Kenya".
 
 ```{r}
 library(gapminder)
 gapminder %>% filter(country == "Kenya")
 ```
 
-This chunk filters the `gapminder` dataset to include only rows where the `country` column equals "Kenya".
 
 The `==` is called an "operator". It compares values from the column on the left hand side with the value specified on
 the right hand side. The value *must* match the column type. The value `"Kenya"` was in quotes because the country
 column is a factor.
-
-## The > operator
 
 The "greater than" operator `>` filters numeric data.
 
@@ -437,29 +437,41 @@ gapminder %>% filter(year > 2000)
 
 This chunk filters rows where `year` is greater than 2000.
 
-## The < operator
-
 The opposite of the `>` operator is the `<` operator. This filters numeric columns which are *less than* a value.
 
-:::{.exercise}
-**Exercise 6**
-
-Filter `gapminder` to show rows where life expectancy is less than 35.
-
-The results should look like this:
-
-```{r, echo=FALSE}
-gapminder %>% filter(lifeExp < 35)
-```
-:::
-
-## Combined filters
+Combined filters
 
 ```{r}
 gapminder::gapminder %>% 
   filter(country=="Kenya") %>% 
   filter(year > 2000)
 ```
+`r unhide()`
+
+:::{.exercise}
+**Exercise 7**
+
+Filter `gapminder` to show countries with a population greater than 100 million.
+
+The results should look like this:
+
+```{r, echo=FALSE}
+gapminder %>% filter(pop > 100000000)
+```
+
+**Exercise 8**
+
+Show countries with a population greater than 100 million and life expectancy greater than 70.
+
+The results should look like this:
+
+```{r, echo=FALSE}
+gapminder %>%
+  filter(pop > 100000000) %>%
+  filter(lifeExp > 70)
+```
+
+:::
 
 # Sorting data using `arrange()` {#sorting}
 
@@ -475,7 +487,7 @@ diamonds %>% arrange(-carat) %>% head(3)
 ```
 
 
-# Combine filtering and sorting
+# Combining filtering and sorting {filtersort}
 
 ![TODO: replace with video](images/video_placeholder.png)
 
@@ -566,7 +578,7 @@ mtcars %>%
   summarise(mean(mpg))
 ```
 
-# Grouping results with `group_by`
+# Grouping data with `group_by`
 
 ![TODO: replace with video](images/video_placeholder.png)
 
