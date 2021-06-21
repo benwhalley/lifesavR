@@ -56,7 +56,7 @@ In this session we cover:
 - [Uploading data files](#upload)
 - [Selecting rows with `filter()`](#filter)
 - [Sorting data using `arrange()`](#arrange)
-- [Combining filtering and sorting](#filtersort)
+- [Combining `filter()` with `arrange()`](#filterarrange)
 - [Grouping data with `group_by()`](#groupby)
 - [Combining rows using `summarise()`](#summarise)
 - [R comments](#comments)
@@ -453,7 +453,7 @@ gapminder::gapminder %>%
 
 Filter `gapminder` to show countries with a population greater than 100 million.
 
-The results should look like this:
+Your results should look like this:
 
 ```{r, echo=FALSE}
 gapminder %>% filter(pop > 100000000)
@@ -548,7 +548,7 @@ How big is the largest diamond in the `diamonds` dataset? `r fitb('5.01')` carat
 What was the cut of the three largest diamonds in that dataset? `r fitb('Fair')`.
 :::
 
-# Combining filtering and sorting {#filtersort}
+# Combining `filter()` with `arrange()` {#filterarrange}
 
 ![TODO: replace with video](images/video_placeholder.png)
 
@@ -559,13 +559,13 @@ Video summary:
 ```{r}
 # show Kenyans with lowest life expectancy
 gapminder::gapminder %>%
-  filter(country=="Kenya") %>% 
+  filter(country == "Kenya") %>% 
   arrange(lifeExp) %>% 
   head(6)
 
 # show Kenyans with highest life expectancy (just add '-')
 gapminder::gapminder %>% 
-  filter(country=="Kenya") %>% 
+  filter(country == "Kenya") %>% 
   arrange(-lifeExp) %>%
   head(6)
 ```
@@ -575,7 +575,7 @@ What was the year Kenyans had the lowest life exp:
 
 ```{r}
 gapminder::gapminder %>%
-  filter(country=="Kenya") %>% 
+  filter(country == "Kenya") %>% 
   arrange(lifeExp) %>% 
   head(6)
 ```
@@ -584,18 +584,33 @@ What was the highest year? All that changes is the minus sign (reverse sorting)
 
 ```{r}
 gapminder::gapminder %>% 
-  filter(country=="Kenya") %>% 
+  filter(country == "Kenya") %>% 
   arrange(-lifeExp) %>%
   head(6)
 ```
 
 `r unhide()`
 
-
-
 :::{.exercise}
 **Exercise 11**
 
+1. Sort Asian countries in the `gapminder` dataset in ascending population order.
+1. Show only the first 10 rows.
+
+Your results should look like this:
+
+```{r, echo=FALSE}
+gapminder::gapminder %>%
+  filter(continent == "Asia") %>% 
+  arrange(pop) %>% 
+  head(10)
+```
+
+**Exercise 12**
+
+The European country with the highest life expectancy is `r fitb('Iceland')`.
+
+The European country with the fifth largest population was recorded in which year? `r fitb('2007')`.
 :::
 
 # Combining rows using `summarise()`
