@@ -136,7 +136,7 @@ Your **Environment** pane should look like this:
 
 Your **Environment** should now look like this:
 
-![Environment pane after creating `myfirstvariable`](images/environment2.png)
+![Environment pane after creating new variable](images/environment2.png)
 
 **Exercise 3**
 
