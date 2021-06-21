@@ -73,7 +73,7 @@ In this session we cover:
 Video summary:
 
 - In R, a **variable** is the name for a *container* which *stores data*.
-- We make variables using `<-`, which is called the **assignment operator**.
+- We make variables using the **assignment operator**, which looks like this: `<-`.
 - Values on the right hand side of `<-` are stored in the variable on the left hand side.
 - Variables that you create are stored in the `Global Environment`, which you can see using the **Environment** pane.
 
