@@ -57,8 +57,8 @@ In this session we cover:
 - [Selecting rows with `filter()`](#filter)
 - [Sorting data using `arrange()`](#arrange)
 - [Combining `filter()` with `arrange()`](#filterarrange)
+- [Summarising data using `summarise()`](#summarise)
 - [Grouping data with `group_by()`](#groupby)
-- [Combining rows using `summarise()`](#summarise)
 - [R comments](#comments)
 
 <!-- Activity: -->
@@ -613,76 +613,127 @@ The European country with the highest life expectancy is `r fitb('Iceland')`.
 The European country with the fifth largest population was recorded in which year? `r fitb('2007')`.
 :::
 
-# Combining rows using `summarise()`
+# Summarising data using `summarise()` {#summarise}
 
 ![TODO: replace with video](images/video_placeholder.png)
 
-- Often you have lots of data and need to make summaries of it — e.g. to calculate the average of a column
+Video summary:
+
+- Often you have lots of data and need to make summaries of it, e.g. to calculate the average of a column.
 - The `summarise()` function takes many rows and uses a **function** to convert those into fewer rows.
-- We can use many different functions with summarise, but
-- common choices are functions for descriptive statistics, like `mean`, `median`, or `sd` (short for standard deviation)
+- Common summary functions are those which calculate descriptive statistics, like `mean()`, `median()`, and `sd()`, which is short for standard deviation.
+- The output of `summarise()` is a `data.frame` which can be stored in a variable.
 
+```{r}
+# use function mean() to summarise mpg column
+# the result is a data.frame with the a single column named 'mean_mpg'
+mtcars %>%
+  summarise(mean_mpg = mean(mpg))
 
-<!-- TODO VIDEO
+# if you omit the column name, the summarised column is named after summary function used to create it
+# this produces column names which can be awkward to process later in a pipeline
+mtcars %>%
+  summarise(mean(mpg))
 
+# median mpg
+mtcars %>%
+  summarise(median_mpg = median(mpg))
+
+# standard deviation
+mtcars %>%
+  summarise(sd_mpg = sd(mpg))
+
+# summarise two columns at once (functions are separated with a comma)
+# store the resulting data.frame in a variable
+mtcars_summary <- mtcars %>%
+  summarise(M = mean(mpg), SD = sd(mpg))
+```
+
+`r hide('Video script')`
 Show
 
+```{r}
 mtcars %>% summarise(average_mpg = mean(mpg))
+```
 
-and aldo
+and also
 
+```{r}
 mtcars %>% summarise(mean(mpg))
+```
 
 emphasising that the former is better
 
 Also show replacing with median, sd etc.
 
-This is where we fist encounter the need to give things R-legal names so explan about spaces and special characters
+This is where we fist encounter the need to give things R-legal names so explain about spaces and special characters
 Emphasise everything should be lower case with underscores.
-
 
 Then show calculating two new cols at once:
 
-
 mtcars %>% summarise(M = mean(mpg), SD = sd(mpg))
 
-
 Point out the comma between the two in commentary
--->
+`r unhide()`
 
+:::{.exercise}
+**Exercise 13**
 
+1. Copy the code above into your workbook.
+1. Amend the code to calculate the median weight.
+1. Note that `mtcars` stores weight in units of 1000 lbs.
 
-```{r}
-mtcars %>% summarise(average_mpg = mean(mpg))
-```
+The median car weight is `r fitb('3.325')` pounds.
 
+**Exercise 14**
 
-<!-- TODO ADD EXERCISE
+1. Amend the code to calculate the mean and standard deviation of weight.
 
-- Copy the code above into your workbook
-- Amend the code to calculate the median of the mpg 
-- Amend the code to calculate the mean and sd of weight
-
-
- -->
- 
- 
+To the nearest pound, the mean car weight is `r fitb('3217')` pounds, and the standard deviation is `r fitb('978')`
+pounds.
+:::
 
 ## Using `filter()` and `summarise()` together
 
+![TODO: replace with video](images/video_placeholder.png)
 
-- Using the pipe (`%>%`), we can combine multiple steps
-- It's common to want to filter out certain rows, before using `summarise`
+Video summary:
 
+- We often want to filter a dataset before summarising.
+- We can do this by creating a pipeline with `filter()` and `summarise()`.
 
+```{r}
+# calculate the mean for cars with manual transmission (am == 1)
+mtcars %>% 
+  filter(am == 1) %>% 
+  summarise(mean_mpg = mean(mpg))
+```
+
+`r hide('Video script')`
+
+Calculate the mean for cars with manual transmission (am == 1)
 
 ```{r}
 mtcars %>% 
-  filter(am==1) %>% 
-  summarise(mean(mpg))
+  filter(am == 1) %>% 
+  summarise(mean_mpg = mean(mpg))
 ```
 
-# Grouping data with `group_by`
+`r unhide()`
+
+:::{.exercise}
+**Exercise 15**
+
+```{r, echo=FALSE, eval=FALSE}
+mtcars %>% 
+  filter(am == 0) %>% 
+  summarise(sd_mpg = sd(mpg))
+```
+
+To two decimal places, cars with automatic transmission have a standard deviation of `r fitb('3.83')` miles per gallon.
+:::
+
+# Grouping data with `group_by()` {#groupby}
 
 ![TODO: replace with video](images/video_placeholder.png)
 
