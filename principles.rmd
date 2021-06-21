@@ -3,7 +3,10 @@ title: "principles.Rmd"
 output: html_document
 ---
 
-GENERAL PRINCIPLE - use existing explanations/code from VBGR where possible (and don't do things a different way unless for good reason)
+# General principles
+
+- Use existing explanations/code from VBGR where possible (and don't do things a different way unless for good reason)
+- This module *explicitly* avoids the use of R Studio projects, because some students find this concept confusing
 
 ```{r}
 library(tidyverse)
