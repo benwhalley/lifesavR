@@ -54,11 +54,11 @@ In this session we cover:
 - [Loading data from elsewhere](#loadingdata)
 - [The **Files** pane](#filespane)
 - [Uploading data files](#upload)
-- [Selecting rows with `filter`](#filter)
-- [Sorting data using `arrange`](#arrange)
-- [Combining filtering and sorting](filtersort)
-- [Grouping data with `group_by`](#groupby)
-- [The ``summarise`` command](#summarise)
+- [Selecting rows with `filter()`](#filter)
+- [Sorting data using `arrange()`](#arrange)
+- [Combining filtering and sorting](#filtersort)
+- [Grouping data with `group_by()`](#groupby)
+- [Combining rows using `summarise()`](#summarise)
 - [R comments](#comments)
 
 <!-- Activity: -->
@@ -473,21 +473,81 @@ gapminder %>%
 
 :::
 
-# Sorting data using `arrange()` {#sorting}
-
-remind them they know how to make scatter and boxplots
- 
-- "what is the size of the largest diamond (by carat) in the `diamonds` dataset? 
-- "what cut were the three largest diamonds in that dataset?"
+# Sorting data using `arrange()` {#arrange}
 
 ![TODO: replace with video](images/video_placeholder.png)
 
+Video summary:
+
+- The `arrange()` command sorts rows in a dataset.
+- Give `arrange()` a single column name to sort data in ascending order.
+- To sort in descending order, put a `-` before the column name.
+- Use commas between column names to sort by one column within another.
+
 ```{r}
-diamonds %>% arrange(-carat) %>% head(3)
+# sort by carat in ascending order
+diamonds %>%
+  arrange(carat) %>%
+  head(3)
+
+# sort by carat in descending order
+diamonds %>%
+  arrange(-carat) %>%
+  head(3)
+
+# sort by price (descending) within carat (ascending)
+diamonds %>%
+  arrange(carat, -price)
 ```
 
+`r hide('Video script')`
 
-# Combining filtering and sorting {filtersort}
+Sort by carat in ascending order
+
+```{r}
+diamonds %>%
+  arrange(carat) %>%
+  head(3)
+```
+
+Sort by carat in descending order
+
+```{r}
+diamonds %>%
+  arrange(-carat) %>%
+  head(3)
+```
+
+Sort by price (descending) within carat (ascending)
+
+```{r}
+diamonds %>%
+  arrange(carat, -price)
+```
+`r unhide()`
+
+:::{.exercise}
+**Exercise 9**
+
+1. Sort the `diamonds` dataset by ascending price.
+1. Show only the first five rows of the results.
+
+Your answer should look like this:
+
+```{r, echo=FALSE}
+diamonds %>%
+  arrange(price) %>%
+  head(5)
+```
+
+**Exercise 10**
+
+1. Use `arrange()` and `head()` to answer the following question:
+
+The third cheapest diamond costs $`r fitb('18806')`.
+:::
+
+# Combining filtering and sorting {#filtersort}
 
 ![TODO: replace with video](images/video_placeholder.png)
 
@@ -508,6 +568,12 @@ gapminder::gapminder %>%
   arrange(-lifeExp) 
 
 ```
+
+
+remind them they know how to make scatter and boxplots
+ 
+- "what is the size of the largest diamond (by carat) in the `diamonds` dataset? 
+- "what cut were the three largest diamonds in that dataset?"
 
 # Combining rows using `summarise()`
 
@@ -614,17 +680,10 @@ We can also group by two variables at once and get a row for each combination:
 ```{r}
 mtcars %>% group_by(cyl, am) %>% summarise(mean(mpg))
 ```
-
-
-
 <!-- END VIDEO TODO-->
 
 
 <!-- TODO ADD EXERCISE FOR THIS -->
-
-
-
-
 
 <!-- PAUL HAVE COMMENTED THIS OUT>>> IT"S MOVED TO A LTER WORKSHEET -->
 <!-- # Dividing up graphs -->
@@ -656,7 +715,6 @@ Additional questions
 
 - In the gapminder dataset, what country had the highest life expectancy in  1952?  (Use `arrange`, `filter` and `head`)
 
-
 ```{r}
 gapminder::gapminder %>% 
   filter(year == 1952) %>% 
@@ -673,8 +731,6 @@ gapminder::gapminder %>%
   arrange(-average_gdp)
 ```
 
-
-
 - Make a boxplot showing life expectancy by continent. (Use `filter`, `ggplot` and `geom_boxplot`)
 
 ```{r}
@@ -685,7 +741,7 @@ gapminder::gapminder %>%
 
 ```
 
-
+- Answer which requires sorting by 2 columns in different order.
 
 # "Mega problem"
 
