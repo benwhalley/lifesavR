@@ -636,16 +636,16 @@ quick reference for markdown syntax.
 Write an answer to each of these questions in the `Check your knowledge` section of your workbook. The answers will be
 revealed in Session 2.
 
-- How to you run part of an R command?
-- Which library do you need to load in your first R Markdown chunk?
-- What is `gapminder`?
-- Which command would you use to explore the first few rows of a dataset?
-- What is the 5th column in `gapminder`?
-- Explain what `glimpse` does.
-- Which command makes a plot?
-- Which command defines the axes on a plot?
-- Which command makes a boxplot?
-- How do you use markdown to make a level 3 heading?
+1. How to you run part of an R command?
+1. Which library do you need to load in your first R Markdown chunk?
+1. What is `gapminder`?
+1. Which command would you use to explore the first few rows of a dataset?
+1. What is the 5th column in `gapminder`?
+1. Explain what `glimpse` does.
+1. Which command makes a plot?
+1. Which command defines the axes on a plot?
+1. Which command makes a boxplot?
+1. How do you use markdown to make a level 3 heading?
 
 # Extension exercises
 
