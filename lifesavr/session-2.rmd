@@ -29,7 +29,7 @@ meaning_of_life
 
 ## What is the `<-` symbol called and what does it do?
 
-## Which command is used to load data and what are the two places that data can be loaded from?
+## Which function is used to load data and what are the two places that data can be loaded from?
 
 ## How would you select rows from a `data.frame` where values in a numeric column are between 10 and 20?
 
@@ -37,7 +37,7 @@ meaning_of_life
 
 ## How would you select rows from a column which match a word, and then sort those rows in ascending order by a numeric column?
 
-## Which commands would you use to calculate the mean of a numeric column?
+## Which functions would you use to calculate the mean of a numeric column?
 
 ## Which other two functions are commonly used to calculate descriptive statistics?
 

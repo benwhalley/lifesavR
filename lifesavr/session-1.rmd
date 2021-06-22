@@ -33,13 +33,13 @@ diamonds %>%
 
 ### Exercise 1
 
-1. Locate the first chunk in this workbook
-1. Place your cursor (anywhere) on the line that says `library(tidyverse)`
-1. Run the commands
+1. Locate the first chunk in this workbook.
+1. Place your cursor (anywhere) on the line that says `library(tidyverse)`.
+1. Run the code.
 
 ### Exercise 2
 
-Position your cursor on the line that says `diamonds` and run the commands.
+Position your cursor on the line that says `diamonds` and run the code.
 
 ```{r}
 diamonds %>%
@@ -49,8 +49,8 @@ diamonds %>%
 
 ### Exercise 3
 
-1. Select (highlight) the word `diamonds` in the chunk above
-1. Run the command
+1. Select (highlight) the word `diamonds` in the chunk above.
+1. Run the code.
 
 ## Inserting a chunk
 
@@ -64,7 +64,7 @@ diamonds %>%
 
 # Check your knowledge
 
-## How do you run part of an R command?
+## How do you run part of a line of R code?
 
 [Write your answers directly into the workbook here and save it for later]
 
@@ -72,16 +72,16 @@ diamonds %>%
 
 ## What is `gapminder`?
 
-## Which command would you use to explore the first few rows of a dataset?
+## Which function would you use to explore the first few rows of a dataset?
 
 ## What is the 5th column in `gapminder`?
 
 ## Explain what `glimpse` does.
 
-## Which command makes a plot?
+## Which function makes a plot?
 
-## Which command defines the axes on a plot?
+## Which function defines the axes on a plot?
 
-## Which command makes a boxplot?
+## Which function makes a boxplot?
 
 ## How do you use markdown to make a level 3 heading?

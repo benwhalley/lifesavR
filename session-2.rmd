@@ -50,7 +50,7 @@ In this session we cover:
 # R techniques covered
 
 - [Storing data in variables](#variables)
-- [Passing data to commands using the pipe `%>%`](#pipe)
+- [Passing data to functions using the pipe `%>%`](#pipe)
 - [Loading data from elsewhere](#loadingdata)
 - [The **Files** pane](#filespane)
 - [Uploading data files](#upload)
@@ -146,14 +146,14 @@ Your **Environment** should now look like this:
 1. Save the result in a variable _with a descriptive name_.
 :::
 
-# Passing data to commands using the pipe `%>%` {#pipe}
+# Passing data to functions using the pipe `%>%` {#pipe}
 
 ![TODO: replace with video](images/video_placeholder.png)
 
 Video summary:
 
-- We pass data from one piece of code to another using **the pipe** command, which looks like this: `%>%`.
-- A **pipeline** is a sequence of two or more commands joined by `%>%`.
+- We pass data from one piece of code to another using **the pipe** function, which looks like this: `%>%`.
+- A **pipeline** is a sequence of two or more functions joined by `%>%`.
 - You can use the assignment operator to store the results of a pipeline in a variable.
 
 ```{r}
@@ -178,20 +178,20 @@ The pipe sends data from one piece of code to another.
 
 The pipe looks like this `%>%`.  
 
-In session 1, you used this command to "pipe" the `mtcars` dataset into `head`, which shows just the first few rows:
+In session 1, you used this code to "pipe" the `mtcars` dataset into `head()`, which shows just the first few rows:
 
 ```{r}
 mtcars %>% head()
 ```
 
-You can think of your data as flowing along lengths of pipe, joined by commands which do things to the data, step by
+You can think of your data as flowing along lengths of pipe, joined by functions which do things to the data, step by
 step, until the result you want plops out at the end.
 
-Each command should be read as the word "then", e.g. "pipe `mtcars` data, *then* `head()` it".
+Each `%>%` should be read as the word "then", e.g. "pipe `mtcars` data, *then* `head()` it".
 
-The `>` in the pipe command reminds you of the direction in which your data is flowing (it only works left to right).
+The `>` in the pipe function reminds you of the direction in which your data is flowing (it only works left to right).
 
-It's important to know that the pipe command *doesn't store the results* of these steps. 
+It's important to know that the pipe *doesn't store the results* of these steps. 
 
 Sometimes that's OK. In our first example we just wanted to look at the first few rows of the `mtcars` data. 
 
@@ -240,7 +240,7 @@ Video summary:
 
 - Often we want to load data into R, rather than use built-in datasets.
 - The preferred format for data files in R is comma-separated value (CSV).
-- CSV data can be read using the `read_csv()` command.
+- CSV data can be read using the `read_csv()` function.
 - You can load data from an internet address (URL) or a file uploaded to the server.
 
 <!-- TODO Paul can you clarify — is the data to be used the shooting or school data? Perhaps introducing 2 different files 
@@ -279,7 +279,7 @@ If you click on the link [click link in vid] you'll see the first line is a list
 
 The remaining lines contain rows of data matching the column headings. For example, the value of the `arms_category` column in row 1 is `Guns`.
 
-The `read_csv()` command reads a CSV file, and converts it to a `data.frame`, which is the format we use in R. 
+The `read_csv()` function reads a CSV file, and converts it to a `data.frame`, which is the format we use in R. 
 
 We can use `read_csv()` to load data from either a file, or over the internet, which is shown in the next video.
 
@@ -308,7 +308,7 @@ shootings
 CSV files are a common format to store and share data. As shown in the previous video, the first line of a CSV file
 defines the column names, and the remaining lines are rows of data.
 
-The `read_csv()` command reads a CSV file, and converts it to a `data.frame`, which is the format we use in R.  We can load data either from a file, or over the internet.
+The `read_csv()` function reads a CSV file, and converts it to a `data.frame`, which is the format we use in R.  We can load data either from a file, or over the internet.
 
 In this example, I'm reading a CSV directly over the Internet and storing the resulting `data.frame` in the
 variable `shootings`.
@@ -321,7 +321,7 @@ shootings <- read_csv('https://benwhalley.github.io/lifesavR/data/shootings.csv'
 
 Because we made a new variable, the result is stored in the Environment, and we can double-click it to have a look at the data.
 
-An alternative (and recommended) way is to type the name of the variable as a very simple command:
+An alternative (and recommended) way is to simply type the name of the variable:
 
 ```{r}
 shootings
@@ -387,7 +387,7 @@ In which city was the earliest recorded shooting? `r fitb('Shelton')`
 
 Video summary:
 
-- The `filter()` command selects rows from a dataset which match criteria we set.
+- The `filter()` function selects rows from a dataset which match criteria we set.
 - The simplest filter uses `==` (equals equals), to test if the row is an exact match.
 - We can use other filters like `<` or `>` to match criteria in numeric columns.
 - We can combine multiple filters to get exactly the rows we need.
@@ -479,7 +479,7 @@ gapminder %>%
 
 Video summary:
 
-- The `arrange()` command sorts rows in a dataset.
+- The `arrange()` function sorts rows in a dataset.
 - Give `arrange()` a single column name to sort data in ascending order.
 - To sort in descending order, put a `-` before the column name.
 - Use commas between column names to sort by one column within another.
@@ -843,11 +843,11 @@ revealed in Session 3.
 
 1. What is the `<-` symbol called and what does it do?
 1. What is the `%>%` symbol called and what does it do?
-1. Which command is used to load data and what are the two places that data can be loaded from?
+1. Which function is used to load data and what are the two places that data can be loaded from?
 1. How would you select rows from a `data.frame` where values in a numeric column are between 10 and 20?
 1. How would you sort a `data.frame` by a numeric column in descending order? <!-- TODO: too easy? -->
 1. How would you select rows from a column which match a word, and then sort those rows in ascending order by a numeric column?
-1. Which commands would you use to calculate the mean of a numeric column?
+1. Which functions would you use to calculate the mean of a numeric column?
 1. Which other two functions are commonly used to calculate descriptive statistics?
 1. How could you calculate the mean for one level of a factor?
 1. How would you calculate the mean for all levels of a factor?

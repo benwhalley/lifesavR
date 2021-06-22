@@ -68,7 +68,7 @@ You can see three parts:
 
 You should also be able to see that the two rectangles on the right have a number of other "tabs". These work like tabs on a web browser.  
 
-The top rectangle has the tabs **Environment** and **History**. The **History** tab keeps a record of commands you've recently typed into the **Console**. This can sometimes be useful.
+The top rectangle has the tabs **Environment** and **History**. The **History** tab keeps a record of what you've recently typed into the **Console**. This can sometimes be useful.
 
 The bottom rectangle has the tabs **Files**, **Plots**, **Packages**, **Help**, and **Viewer**. We'll cover what these other tabs do later on. 
 
@@ -78,20 +78,20 @@ The bottom rectangle has the tabs **Files**, **Plots**, **Packages**, **Help**, 
 
 Video summary:
 
-- Before starting this module, you need to run an R command which makes a folder and downloads the files you will need
-for each workshop.
+- Before starting this module, you need to run some R code which makes a folder and downloads the files you
+will need for each workshop.
 
 :::{.exercise}
 
 1. Click on the **Console** pane.
-1. Copy-paste the following command into the console:
+1. Copy-paste the following into the console:
 
 `source('https://raw.githubusercontent.com/benwhalley/lifesavR/main/bootstrap.R')`
 
 Your console should now look like this:
 
 ![](images/bootstrap_command.png)
-Press <span class="keyshape">↩</span> to run the command. If your console looks like the image below, then you are ready to start the session.
+Press <span class="keyshape">↩</span> to run the code. If your console looks like the image below, then you are ready to start the session.
 
 ![](images/bootstrap_success.png)
 :::
@@ -105,8 +105,8 @@ Each session has an associated "workbook" file which you will use to complete th
 you need for this session is called `session-1.rmd`.
 
 If you click on the file it opens the workbook in a tab of a new pane, called the **Source** pane. It's called the
-**Source** pane because R commands are also referred to as 'R code', which is shorthand for 'R source code'. The
-**source** pane allows you to write R code and explore your data.
+**Source** pane because statements writting in the R language are often referred to as 'R code', which is shorthand for
+'R source code'. The **source** pane allows you to write R code and explore your data.
 `r unhide()`
 
 :::{.exercise}
@@ -137,9 +137,10 @@ hist(rnorm(100, 0,1))
 
 `r hide('Video script')`
 RStudio is a user interface to R, which is a computer language that is primarily designed for data analysis and
-visualisation. R is a text-based language, so you interact with it by typing and then running commands.
+visualisation. R is a text-based language, so you interact with it by typing and then running statements which have a
+meaning in the R language.
 
-R Studio makes it easy to run R commands and organise your work. For example, you can do simple arithmetic [`2 * 221`],
+R Studio makes it easy to run R code and organise your work. For example, you can do simple arithmetic [`2 * 221`],
 generate some random numbers [`rnorm(10, 0,1)`], and plot some random numbers [`hist(rnorm(100, 0,1))`].
 
 You should think of R as a robot. The robot is extremely fast, powerful and tireless, but it’s also literal-minded, and
@@ -229,13 +230,13 @@ see here that our cursor is on line 12. The cursor can be anywhere on that line.
 class="keyshape">⌘</span> + <span class="keyshape">↩</span> on a Mac.
 
 You'll see some output beneath the chunk that you don't need to worry about for now, but one of the effects of running
-this command is to load a dataset about diamonds.
+this code is to load a dataset about diamonds.
 
-The cursor has been automatically positioned online 13. Lines 13 to 15 are actually part of the same command. We use the
+The cursor has been automatically positioned online 13. Lines 13 to 15 are actually part of the same statement. We use the
 same keys, <span class="keyshape">Ctrl</span> + <span class="keyshape">↵</span>, to run these lines, which generate a
-scatter plot using the diamonds dataset. Don't worry how these commands work for now.
+scatter plot using the diamonds dataset. Don't worry how these statements work for now.
 
-The second way to run code is to select only the commands you want to execute. If you select just the word diamonds on line
+The second way to run code is to select only the parts you want to execute. If you select just the word diamonds on line
 13 and run that, you will see that it does something different. This prints the contents of the diamonds data. Because
 the dataset is large, it just prints the first few rows.
 
@@ -249,14 +250,14 @@ Finally, you often want to run all of the code in a chunk. This can be done by p
 
 1. Locate the first chunk in `session-1.rmd`
 1. Place your cursor (anywhere) on the line that says `library(tidyverse)`
-1. Run the commands by pressing <span class="keyshape">Ctrl</span> + <span class="keyshape">↵</span> (Windows, Linux) or
+1. Run the code by pressing <span class="keyshape">Ctrl</span> + <span class="keyshape">↵</span> (Windows, Linux) or
 <span class="keyshape">⌘</span> + <span class="keyshape">↩</span> (Mac)
 
 You will see some output appear beneath the chunk. Don't worry about the details for now, we'll explain those later.
 
 **Exercise 2**
 
-Position your cursor on the line that says `diamonds` and run the commands.
+Position your cursor on the line that says `diamonds` and run the code.
 
 You should see the following scatter plot of the diamonds data appear below the chunk:
 
@@ -273,8 +274,8 @@ also run part of a line by highlighting the code you want to run:
 :::{.exercise}
 **Exercise 3**
 
-1. Select (highlight) the word `diamonds`
-1. Run the command
+1. Select (highlight) the word `diamonds`.
+1. Run the code.
 
 This prints the first few lines of the diamonds data:
 
@@ -282,8 +283,8 @@ This prints the first few lines of the diamonds data:
 :::
 
 Why would you want to run part of a line of code? In these workshops you will combine simple steps into sequences which
-do a particular job, such as generating a plot. It's natural, especially when you're new to R, that the full sequence of
-commands won't do exactly what you want first time.
+do a particular job, such as generating a plot. It's natural, especially when you're new to R, that your code won't do
+exactly what you want first time.
 
 Running part of your code allows you to identify the steps which are correct. This allows you to modify subsequent steps
 until your code produces the required results. Remember this technique as you will be using it extensively in these
@@ -324,7 +325,7 @@ After completing these steps, your environment should look like this:
 
 Video summary:
 
-- Loading a 'package' adds commands to R.
+- Loading a 'package' adds functionality to R.
 - Some packages (like `tidyverse`) also load datasets.
 
 ```{r}
@@ -334,17 +335,17 @@ library(tidyverse)
 ```
 
 `r hide('Video script')`
-By loading 'packages', you can add commands and datasets to R. Packages are a powerful feature which allow R to be
+By loading 'packages', you can add functions and datasets to R. Packages are a powerful feature which allow R to be
 extended to analyse or plot data in any way imaginable. A package (sometimes called a library) is an extension to R that
-adds new commands and/or datasets. Packages are loaded using the `library()` command.
+adds new functions and/or datasets. Packages are loaded using the `library()` function.
 
-The first command you ran above was `library(tidyverse)`. This loaded the commands needed to create the scatter plot, and
-also the diamonds data. The `tidyverse` package is so fundamental to this course that `library(tidyverse)` is likely to
-be the first line of R in the first chunk of each of your R Markdown files.
+The first function you ran above was `library(tidyverse)`. This loaded additional functions needed to create the scatter
+plot, and also the diamonds data. The `tidyverse` package is so fundamental to this course that `library(tidyverse)` is
+likely to be the first line of R in the first chunk of each of your R Markdown files.
 
 :::{.tip}
-If you've understood what packages are then it should be clear that you can't use the commands provided by `tidyverse`
-(and the additional packages it loads) until you've run the command `library(tidyverse)`.
+If you've understood what packages are then it should be clear that you can't use the functions provided by `tidyverse`
+(and the additional packages it loads) until you've run `library(tidyverse)`.
 
 For example, if you tried to produce the scatter plot before loading `tidyverse` you'd see an error like this in the
 console:
@@ -431,19 +432,17 @@ happiness %>%
 ```
 
 `r hide('Video script')`
-The `head` command allows you to explore the first few rows of a dataset. The command `mtcars %>% head()` prints the
-first six rows of `mtcars`. The `%>%` command is called the 'pipe'. We'll explain more about how it works in the next
-session. For now, all you need to know is that the command on the right hand side of the pipe (`head`) is applied to
+The `head()` function allows you to explore the first few rows of a dataset. The code `mtcars %>% head()` prints the
+first six rows of `mtcars`. The `%>%` function is called the 'pipe'. We'll explain more about how it works in the next
+session. For now, all you need to know is that the function on the right hand side of the pipe (`head()`) is applied to
 whatever is on the left hand side (in this case, the `mtcars` dataset).
 
-The `glimpse` command is useful for exploring datasets with lots of columns, as it allows you to see all columns at
-once. Using the `glimpse` command we can have the columns of a dataset run down the page, and data run across.
-
-<!-- TODO "can we find a simpler dataset, or perhaps do this after you introduce loading a dataset over the web then we could provide a short link to a cut-down version of it?" -->
+The `glimpse()` function is useful for exploring datasets with lots of columns, as it allows you to see all columns at
+once. Using `glimpse()` we can have the columns of a dataset run down the page, and data run across.
 
 The [World Happiness Report](https://www.kaggle.com/ajaypalsinghlo/world-happiness-report-2021) is a survey of the state
-of global happiness. Running the command `happiness %>% glimpse()` shows all of the columns. This is like rotating the
-output you saw earlier anti-clockwise by 90 degrees. The command displays all of the columns as rows, and as many
+of global happiness. Running the code `happiness %>% glimpse()` shows all of the columns. This is like rotating the
+output you saw earlier anti-clockwise by 90 degrees. The code displays all of the columns as rows, and as many
 observations from the dataset as will fit on a single line.
 
 Each column in a `data.frame` has an associated type. The second column of the `glimpse` output shows you the type of each column. This dataset includes columns with two types:
@@ -499,15 +498,15 @@ mpg %>%
 `r hide('Video script')`
 A scatterplot shows the relationship between two variables by plotting their values as points.
 
-This chunk creates a scatter plot by piping the `mpg` data into a `ggplot` command. The plot is built in two steps. The
+This chunk creates a scatter plot by piping the `mpg` data into the `ggplot()` function. The plot is built in two steps. The
 first step, `ggplot(aes(cty, hwy))` selects variables for the x and y axes. In this case, miles per gallon (mpg) when
 cars are driven in the city (`cty`) will be the x-axis, and mpg when cars are driven on the highway (`hwy`) will be the
-y-axis. We can [see the axes by running just this part of the command].
+y-axis. We can [see the axes by running just this part of the function].
 
 In `ggplot`, each step is separated by `+` and goes on a new line. Because R Studio knows this is all part of the same
 'pipeline', it automatically indents the code.
 
-The second step `geom_point()` is a command which plots the data as points. If we [run the chunk], we see a scatter plot. A
+The second step `geom_point()` is a function which plots the data as points. If we [run the chunk], we see a scatter plot. A
 point is plotted for each row, using the values for the `cty` and `hwy` variables.
 `r unhide()`
 
@@ -547,7 +546,7 @@ contains the middle 50% of the ordered data. A wider IQR indicates greater varia
 
 The top and bottom of the box are called ‘hinges’. The vertical lines connected to each hinge are called 'whiskers', and
 give some indication of the broader range of the data. Exactly what the whiskers show differs depending on the
-particular command you use to draw a boxplot. In this case, the upper whisker shows the largest data point that is no
+particular options you use to draw a boxplot. In this case, the upper whisker shows the largest data point that is no
 more than 1.5 times the IQR above the upper hinge. The lower whisker is the lowest point no more than 1.5x the IQR below
 the lower hinge. In this version of a boxplot, any data point outside the range of the whiskers is described as an
 'outlying point' and is shown individually as a dot.
@@ -578,7 +577,7 @@ Video summary:
 - Colour can be added to a scatterplot to categorise the points.
 
 `r hide('Video script')`
-Colour can be added to a scatterplot to categorise the points. So far, you've used the `aes` command to define which variable is plotted on the x and y axes. The `aes` command is short for 'aesthetics', and it is a way to map variables to visual aspects of a plot. In addition to mapping variables to the x and y axes, the `colour` option maps colours to a categorical variable.
+Colour can be added to a scatterplot to categorise the points. So far, you've used the `aes()` function to define which variable is plotted on the x and y axes. The `aes()` function is short for 'aesthetics', and it is a way to map variables to visual aspects of a plot. In addition to mapping variables to the x and y axes, the `colour` option maps colours to a categorical variable.
 
 We could enhance the scatterplot showing mpg for city and highway driving, by adding a colour for each drivetrain.
 
@@ -666,15 +665,15 @@ quick reference for markdown syntax.
 Write an answer to each of these questions in the `Check your knowledge` section of your workbook. The answers will be
 revealed in Session 2.
 
-1. How do you run part of an R command?
+1. How do you run part of a line of R code?
 1. Which library do you need to load in your first R Markdown chunk?
 1. What is `gapminder`?
-1. Which command would you use to explore the first few rows of a dataset?
+1. Which function would you use to explore the first few rows of a dataset?
 1. What is the 5th column in `gapminder`?
 1. Explain what `glimpse` does.
-1. Which command makes a plot?
-1. Which command defines the axes on a plot?
-1. Which command makes a boxplot?
+1. Which function makes a plot?
+1. Which function defines the axes on a plot?
+1. Which function makes a boxplot?
 1. How do you use markdown to make a level 3 heading?
 
 # Extension exercises
