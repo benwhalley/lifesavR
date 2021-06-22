@@ -26,7 +26,6 @@ last year, but we provide additional material for advanced students test their k
 **Even if you are quite confident with R Studio from Stage 1, please read the worksheet carefully and complete all of
 the activities in the blue boxes.**
 
-
 # R techniques covered 
 
 - [Using the RStudio interface](#using)
@@ -47,36 +46,31 @@ the activities in the blue boxes.**
 
 Video summary:
 
-These worksheets assume that you are using a web browser to access [the RStudio Server at Plymouth
-University](https://rstudio.plymouth.ac.uk).
-
+- Using a web browser to access [the RStudio Server at Plymouth University](https://rstudio.plymouth.ac.uk).
 
 :::{.tip}
-
 If you're using Windows or an older Mac we strongly recommend [downloading Firefox](https://www.mozilla.org/en-US/firefox/new/) and using that.  If you have any issues with RStudio this is likely the first suggestion we will make.
 
 - [Install Firefox now](https://www.mozilla.org/en-US/firefox/new/)
-
 :::
-
 
 When you login to RStudio, you'll be greeted with a screen that looks something like the image below.
 
 ![RStudio on first opening](images/rstudio-new.png)
 
-When you open RStudio for the first time, you can see three parts: 
+You can see three parts: 
 
-1. The **Console** - This is the large rectangle on the left. This is where you tell R what to do, and it's also where R prints the answers to your questions. 
+1. The **Console** - This is the large rectangle on the left. It is where you tell R what to do, and where R prints the answers to your questions. 
 
-2. The **Environment** - This is the rectangle on the top right. This is where R keeps a list of the data it knows about. It's empty at the moment, because we haven't given R any data yet.
+2. The **Environment** - This is the rectangle on the top right. It is where R keeps a list of the data it knows about. It's empty at the moment, because we haven't given R any data yet.
 
-3. The **Files** - This is the rectangle on the bottom right. This is a bit like the _File Explorer_ in Windows, or the _Finder_ on a Mac. It shows you what files and folders R can see.
+3. The **Files** - This is the rectangle on the bottom right. It's a bit like the _File Explorer_ in Windows, or the _Finder_ on a Mac. It shows you what files and folders R can see.
 
 You should also be able to see that the two rectangles on the right have a number of other "tabs". These work like tabs on a web browser.  
 
-The top rectangle has the tabs "Environment" and "History". The **History** tab keeps a record of commands you've recently typed into the Console. This can sometimes be useful.
+The top rectangle has the tabs **Environment** and **History**. The **History** tab keeps a record of commands you've recently typed into the **Console**. This can sometimes be useful.
 
-The bottom rectangle has the tabs "Files", "Plots", "Packages", "Help", and "Viewer". We'll cover what these other tabs do later on. 
+The bottom rectangle has the tabs **Files**, **Plots**, **Packages**, **Help**, and **Viewer**. We'll cover what these other tabs do later on. 
 
 # Before you start
 
@@ -84,31 +78,30 @@ The bottom rectangle has the tabs "Files", "Plots", "Packages", "Help", and "Vie
 
 Video summary:
 
-Before starting this module, you need to run an R command which makes a folder and downloads the files you will need
+- Before starting this module, you need to run an R command which makes a folder and downloads the files you will need
 for each workshop.
 
 :::{.exercise}
 
-1. Click on the **Console** pane
-1. Copy-paste the following command into the console
+1. Click on the **Console** pane.
+1. Copy-paste the following command into the console:
 
 `source('https://raw.githubusercontent.com/benwhalley/lifesavR/main/bootstrap.R')`
 
 Your console should now look like this:
 
 ![](images/bootstrap_command.png)
-Press <span class="keyshape">↩</span> to run the command. If your console looks like the image below, then you are ready to start the
-session.
+Press <span class="keyshape">↩</span> to run the command. If your console looks like the image below, then you are ready to start the session.
 
 ![](images/bootstrap_success.png)
 :::
 
 ## Using the workbooks
 
-Each session has an associated 'workbook' file which you will use to complete the exercises in the worksheet.
+Each session has an associated "workbook" file which you will use to complete the exercises in the worksheet.
 
 `r hide('Video script')`
-Each session has an associated 'workbook' file which you will use to complete the exercises in the worksheet. The file
+Each session has an associated "workbook" file which you will use to complete the exercises in the worksheet. The file
 you need for this session is called `session-1.rmd`.
 
 If you click on the file it opens the workbook in a tab of a new pane, called the **Source** pane. It's called the
@@ -129,13 +122,25 @@ You're now ready to start the session.
 Video summary:
 
 - R can do simple arithmetic, generate data and produce plots.
+- You need to tell R *exactly* what to do, by providing precise instructions.
+
+```{r}
+# multiply two numbers
+2 * 221
+
+# generate some random numbers
+rnorm(10, 0,1)
+
+# histogram plot of some random numbers 
+hist(rnorm(100, 0,1))
+```
 
 `r hide('Video script')`
 RStudio is a user interface to R, which is a computer language that is primarily designed for data analysis and
 visualisation. R is a text-based language, so you interact with it by typing and then running commands.
 
 R Studio makes it easy to run R commands and organise your work. For example, you can do simple arithmetic [`2 * 221`],
-generate some random numbers [`(rnorm(10, 0,1))`], and plot some random numbers [`hist(rnorm(100, 0,1))`].
+generate some random numbers [`rnorm(10, 0,1)`], and plot some random numbers [`hist(rnorm(100, 0,1))`].
 
 You should think of R as a robot. The robot is extremely fast, powerful and tireless, but it’s also literal-minded, and
 won’t think for itself or take the initiative. You need to tell it *exactly* what to do, by providing very precise
@@ -148,7 +153,10 @@ instructions.
 
 Video summary:
 
-- R Markdown documents can be used interactively to run R code.
+- R Markdown documents are a way of combining R "chunks" with narrative text.
+- A chunk contains R code which can be run interactively.
+- Chunks are opened using the symbols `` ```{r} ``, and closed using the symbols `` ``` ``.
+- Anything outside a chunk is narrative text.
 
 `r hide('Video script')`
 R Markdown is a way of combining R with narrative text. It allows you to integrate the results of your data analysis
@@ -173,11 +181,10 @@ _NOTE:_ The symbols which start and end a chunk are _backticks_, not single quot
 
 ![On a Mac](images/backtick-mac-uk.png)
 `r unhide()`
+
 `r unhide()`
 
 ## Running R code within a chunk
-
-There are three ways to run R code within a chunk.
 
 <!-- TODO: re-record VIDEO of running code in a chunk -->
 
@@ -209,6 +216,12 @@ v.textTracks[0].mode = "showing";  // or "hidden"
 </style>
 ```
 
+Video summary:
+
+- To run a line of code in a chunk, place your cursor on the line and press <span class="keyshape">Ctrl</span> + <span class="keyshape">↵</span> on Windows or Linux, or <span class="keyshape">⌘</span> + <span class="keyshape">↩</span> on a Mac.
+- You can run part of a line by first selecting only the code you want to run.
+- Pressing the green arrow on the right hand side of the chunk to run all code within a chunk.
+
 `r hide('Video script')`
 There are three ways to run R code within a chunk. The first is to run a complete line of code. You can
 see here that our cursor is on line 12. The cursor can be anywhere on that line. To run the line, press
@@ -238,11 +251,9 @@ Finally, you often want to run all of the code in a chunk. This can be done by p
 1. Place your cursor (anywhere) on the line that says `library(tidyverse)`
 1. Run the commands by pressing <span class="keyshape">Ctrl</span> + <span class="keyshape">↵</span> (Windows, Linux) or
 <span class="keyshape">⌘</span> + <span class="keyshape">↩</span> (Mac)
-:::
 
 You will see some output appear beneath the chunk. Don't worry about the details for now, we'll explain those later.
 
-:::{.exercise}
 **Exercise 2**
 
 Position your cursor on the line that says `diamonds` and run the commands.
@@ -271,19 +282,22 @@ This prints the first few lines of the diamonds data:
 :::
 
 Why would you want to run part of a line of code? In these workshops you will combine simple steps into sequences which
-do a particular job, such as generating a plot. It's natural, especially when you're new to R, that the full sequence
-of commands won't do exactly what you want first time. Running part of your code allows you to identify the steps which
-are correct. This allows you to modify subsequent steps until your code produces the required results. Remember this
-technique as you will be using it extensively in these workshops.
+do a particular job, such as generating a plot. It's natural, especially when you're new to R, that the full sequence of
+commands won't do exactly what you want first time.
+
+Running part of your code allows you to identify the steps which are correct. This allows you to modify subsequent steps
+until your code produces the required results. Remember this technique as you will be using it extensively in these
+workshops.
 
 ## Inserting a chunk {#chunk}
 
-You insert a new chunk by positioning your cursor on the line where you want the chunk to appear, and selecting the
-`Code > Insert Chunk` menu option:
+![TODO: replace with video](images/video_placeholder.png)
 
-![Insert a new chunk](images/insert_chunk.png)
+Video summary:
 
-There are also keyboard shortcuts for inserting a chunk:
+- You insert a new chunk by positioning your cursor on the line where you want the chunk to appear, and selecting the
+`Code > Insert Chunk` menu option.
+- There are also keyboard shortcuts for inserting a chunk:
 
 ```{=html}
 <p>Windows, Linux: <span class="keyshape">Ctrl</span> + <span class="keyshape">Alt</span> + <span class="keyshape">I</span>
@@ -294,10 +308,10 @@ There are also keyboard shortcuts for inserting a chunk:
 :::{.exercise}
 **Exercise 4**
 
-1. Find the instructions for Exercise 4 in your workbook
-1. Create a new chunk below the instructions
+1. Find the instructions for Exercise 4 in your workbook.
+1. Create a new chunk below the instructions.
 1. Inside the chunk, write a line of code which adds together the numbers 9, 4, 55 and 2, and assigns the result to a variable named `sum`.
-1. Run the the line of code you have written
+1. Run the the line of code you have written.
 
 After completing these steps, your environment should look like this:
 
@@ -310,10 +324,17 @@ After completing these steps, your environment should look like this:
 
 Video summary:
 
-- By loading 'packages', you can add commands and datasets to R.
+- Loading a 'package' adds commands to R.
+- Some packages (like `tidyverse`) also load datasets.
+
+```{r}
+# load the tidyverse package
+# also loads the diamonds dataset
+library(tidyverse)
+```
 
 `r hide('Video script')`
-By loading 'packages', you can add commands and datasets to R. Packages are a powerful feature which all R to be
+By loading 'packages', you can add commands and datasets to R. Packages are a powerful feature which allow R to be
 extended to analyse or plot data in any way imaginable. A package (sometimes called a library) is an extension to R that
 adds new commands and/or datasets. Packages are loaded using the `library()` command.
 
@@ -346,12 +367,20 @@ We mention this here, as `could not find function` errors are one of the most co
 
 Video summary:
 
-- R has a number of built-in datasets, and more can be loaded from packages.
+- R has a number of built-in datasets.
+- Many datasets are stored in a type of variable called a `data.frame` (or a similar type of variable called a `tibble`).
+- Additional datasets are included with some packages, for example, `gapminder`.
+- You can display a `data.frame` by typing its name on a line and running that code.
+
+```{r}
+# load the gapminder dataset
+library(gapminder)
+```
 
 `r hide('Video script')`
 A dataset is a set of data relating to a particular topic. Most datasets we will be working with consist of rows and
 columns, just like a spreadsheet. In R this type of data is stored in a special type of variable called a
-`data.frame`. You will also see references to datasets as **tibbles**. A tibble is just a special type of `data.frame`,
+`data.frame`. You will also see references to datasets as `tibbles`. A `tibble` is just a special type of `data.frame`,
 so you can treat the two types of variable as being equivalent.
 
 One `data.frame` that is built-in to R is called `mtcars`. This is a dataset about cars that was published in a US
@@ -371,10 +400,10 @@ dataset in a the same way we loaded diamonds dataset. We load the `gapminder` pa
 :::{.exercise}
 **Exercise 5**
 
-1. Create a new chunk at the bottom of your workbook
-1. Display the `mtcars` `data.frame` and try out the navigation buttons
-1. Load the `gapminder` package
-1. Display and explore the gapminder tibble
+1. Create a new chunk at the bottom of your workbook.
+1. Display the `mtcars` `data.frame` and try out the navigation buttons.
+1. Load the `gapminder` package.
+1. Display and explore the `gapminder` dataset.
 :::
 
 # Exploring and checking data {#exploring}
@@ -383,70 +412,68 @@ dataset in a the same way we loaded diamonds dataset. We load the `gapminder` pa
 
 Video summary:
 
-- R Studio has lots of different ways to explore datasets. We recommend 3 for the moment:
-- the `head()` function, which shows the first 6 rows of a dataset
-- using the Environment pane, which shows the dataset in a spreadsheet-like view
-- `glimpse()`, which shows a list of all the columns in a dataset (useful when there are many columns)
+- R Studio has lots of different ways to explore datasets. We recommend the following three.
+- The `head()` function shows the first few rows of a dataset.
+- The **Environment** pane shows the dataset in a spreadsheet-like view.
+- The `glimpse()` function shows a list of all the columns in a dataset (useful when there are many columns).
 
-## The `head` command and the Environment pane
+```{r}
+# show first 6 rows of mtcars
+mtcars %>%
+  head()
 
-The `head` command allows you to explore the first few rows of a dataset.
+# load happiness data.frame
+happiness <- read_csv('data/world-happiness-report-2021.csv')
 
-<!-- TODO: VIDEO head() -->
+# shows all columns in happiness
+happiness %>%
+  glimpse()
+```
 
 `r hide('Video script')`
 The `head` command allows you to explore the first few rows of a dataset. The command `mtcars %>% head()` prints the
 first six rows of `mtcars`. The `%>%` command is called the 'pipe'. We'll explain more about how it works in the next
 session. For now, all you need to know is that the command on the right hand side of the pipe (`head`) is applied to
 whatever is on the left hand side (in this case, the `mtcars` dataset).
-`r unhide()`
 
-:::{.exercise}
-**Exercise 6**
-
-1. Create a new chunk at the bottom of your worksheet
-1. Use `head` to show the first six rows of `gapminder`
-
-Use the output to answer the following question. After entering your answer, click outside the box. The border will turn
-turn blue when the answer is correct.
-
-The population of Afghanistan in 1967 was `r fitb('11537966')`.
-:::
-
-## The `glimpse` command
-
-The `glimpse` command is useful for exploring datasets with lots of columns, as it allows you to see all columns at once.
-
-<!-- TODO: VIDEO glimpse() -->
-<!-- REVIEW "can we find a simpler dataset, or perhaps do this after you introduce loading a dataset over the web then we could provide a short link to a cut-down version of it?" -->
-
-`r hide('Video script')`
 The `glimpse` command is useful for exploring datasets with lots of columns, as it allows you to see all columns at
 once. Using the `glimpse` command we can have the columns of a dataset run down the page, and data run across.
 
-The command [`library(causaldata)`] loads a `data.frame` called `nhefs` containing lots of columns relating to health and
-nutrition. Running the command `nhefs %>% glimpse()` shows all of the columns. This is like rotating the output you saw
-earlier anti-clockwise by 90 degrees. The command displays all of the columns as rows, and as many observations from the
-dataset as will fit on a single line.
+<!-- TODO "can we find a simpler dataset, or perhaps do this after you introduce loading a dataset over the web then we could provide a short link to a cut-down version of it?" -->
 
-Each column in a `data.frame` has an associated type. The second column of the `glimpse` output shows you the type of each column. The `nhefs` includes columns with various types:
+The [World Happiness Report](https://www.kaggle.com/ajaypalsinghlo/world-happiness-report-2021) is a survey of the state
+of global happiness. Running the command `happiness %>% glimpse()` shows all of the columns. This is like rotating the
+output you saw earlier anti-clockwise by 90 degrees. The command displays all of the columns as rows, and as many
+observations from the dataset as will fit on a single line.
+
+Each column in a `data.frame` has an associated type. The second column of the `glimpse` output shows you the type of each column. This dataset includes columns with two types:
 
 * *dbl* is short for 'double-precision number', a number with one or more decimal places
-* *int* is short for 'integer', a variable which contains whole numbers (e.g. a participant id number)
-* *fct* is short for 'factor', a categorical variable (e.g. a specific response to a multiple-choice question)
+* *chr* — short for 'character', a variable which contains text (e.g. an email address)
 
 Other types include:
 
-* *chr* — short for 'character', a variable which contains text (e.g. an email address), and
+* *fct* is short for 'factor', a categorical variable (e.g. a specific response to a multiple-choice question)
+* *int* is short for 'integer', a variable which contains whole numbers (e.g. a participant id number), and
 * *ord* — short for 'ordered'; a variant of *fct* where the categories have a particular order (e.g. responses like 'Wost' < 'Better' < 'Best')
 
 The importance of knowing the type associated with a column will become clear in a later session.
 `r unhide()`
 
 :::{.exercise}
+**Exercise 6**
+
+1. Create a new chunk at the bottom of your worksheet.
+1. Use `head()` to show the first six rows of `gapminder`.
+
+Use the output to answer the following question. After entering your answer, click outside the box. The border will turn
+turn blue when the answer is correct.
+
+The population of Afghanistan in 1967 was `r fitb('11537966')`.
+
 **Exercise 7**
 
-1. Create a new chunk at the bottom of your worksheet
+1. Create a new chunk at the bottom of your worksheet.
 1. Use `glimpse` to display the `diamonds` dataset.
 
 The `clarity` variable in the `diamonds` tibble is of type `r fitb('ord')`.
