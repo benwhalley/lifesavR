@@ -608,6 +608,8 @@ gapminder::gapminder %>%
 
 **Exercise 12**
 
+Use `filter()`, `arrange()` and `head()` to answer the following questions:
+
 The European country with the highest life expectancy is `r fitb('Iceland')`.
 
 The European country with the fifth largest population was recorded in which year? `r fitb('2007')`.
@@ -729,8 +731,9 @@ mtcars %>%
   filter(am == 0) %>% 
   summarise(sd_mpg = sd(mpg))
 ```
+Use `filter()` and `summarise()` to calculate the standard deviation of cars with automatic transmission.
 
-To two decimal places, cars with automatic transmission have a standard deviation of `r fitb('3.83')` miles per gallon.
+Cars with automatic transmission have a standard deviation (to two decimal places) of `r fitb('3.83')` miles per gallon.
 :::
 
 # Grouping data with `group_by()` {#groupby}
@@ -745,7 +748,27 @@ Video summary:
 - Adding `group_by()` to a pipeline runs the subsequent steps *once for each group*.
 - Be careful only to group by categorical variables.
 
+<!-- TODO: Having made the point about factors, is it misleading that cyl and am are dbl rather than fct in he following? -->
+<!-- C02 is one of the few built-in datasets with > 1 factor. Types are now in session 3, so I'm not sure which is better here, introducing factor() or introducing a different dataset. -->
+
 ```{r}
+# boxplot of C02 uptake grouped by grass type
+CO2 %>%
+  ggplot(aes(Type, uptake)) + 
+  geom_boxplot()
+
+# table of C02 uptake grouped by grass type
+CO2 %>%
+  group_by(Type) %>% 
+  summarise(average_uptake = mean(uptake))
+
+# group by two factors at once: grass type and experimental treatment
+CO2 %>%
+  group_by(Type, Treatment) %>%
+  summarise(mean(uptake))
+```
+
+```{r, echo=FALSE, eval=FALSE}
 # boxplot grouped by number of cylinders
 mtcars %>% 
   ggplot(aes(factor(cyl), mpg)) + 
@@ -757,15 +780,19 @@ mtcars %>%
   summarise(average_mpg = mean(mpg))
 
 # group by two variables at once
-mtcars %>% group_by(cyl, am) %>% summarise(mean(mpg))
+mtcars %>%
+  group_by(cyl, am) %>%
+  summarise(mean(mpg))
 ```
 
 `r hide('Video script')`
+In this video we'll use a dataset about plants rather than cars. Plants photosynthesise by combining sunlight with carbon dioxide to make sugars. The CO2 dataset carbon dioxide update for two species of grass. The species is a factor.
+
 We might make a plot like this:
 
 ```{r}
-mtcars %>% 
-  ggplot(aes(factor(cyl), mpg)) + 
+CO2 %>%
+  ggplot(aes(Type, uptake)) + 
   geom_boxplot()
 ```
 
@@ -773,19 +800,40 @@ But what if we want these numbers in a table (or to report in our report)? We ca
 do that using group_by and summarise...
 
 ```{r}
-mtcars %>% 
-  group_by(cyl) %>% 
-  summarise(average_mpg = mean(mpg))
+CO2 %>%
+  group_by(Type) %>% 
+  summarise(average_uptake = mean(uptake))
 ```
 
-We can also group by two variables at once and get a row for each combination:
+Another factor in this dataset is an experimental treatment -- whether the grasses were `chilled` or `nonchilled`. We
+can also group by two factors at once and get a row for each combination:
 
 ```{r}
-mtcars %>% group_by(cyl, am) %>% summarise(mean(mpg))
+CO2 %>%
+  group_by(Type, Treatment) %>%
+  summarise(mean(uptake))
 ```
 `r unhide()`
 
 :::{.exercise}
+**Exercise 16**
+
+`chickwts` contains data for the weights of chicks (in grams) fed on different diets.
+
+```{r}
+glimpse(chickwts)
+```
+
+Calculate the mean and standard deviation chick weights for each type of feed.
+
+```{r, echo=FALSE, eval=FALSE}
+chickwts %>%
+  group_by(feed) %>%
+  summarise(mean(weight), sd(weight))
+```
+The mean weight of chicks fed on linseed was (to 2 decimal places) `r fitb('218.75')`g.
+
+The standard deviation of chicks fed on sunflower was (to 2 decimal places) `r fitb('48.84')`g.
 :::
 
 # Check your knowledge
