@@ -49,6 +49,8 @@ workbook. The subsequent session begins by revealing the answers to these questi
 * Show rather than tell
   * Good: *Using variables lets us store calculations for later.*
   * Bad: *It is important to understand what a variable is in R.*
+* Technical terms
+  * *function* not *command* (for now!)
 * Spellings
   * *datasets* not *data sets*
   * `data.frame` (in backticks) not *dataframe*, or *data frame*

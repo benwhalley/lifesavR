@@ -35,9 +35,9 @@ the activities in the blue boxes.**
 - [Loading packages](#packages)
 - [Built-in datasets](#datasets)
 - [Exploring and checking data](#exploring)
-- [`ggplot`: scatter plots](#scatterplots)
-- [`ggplot`: boxplots](#boxplots)
-- [`ggplot`: colour](#colour)
+- [Making a scatterplot with `ggplot()`](#scatterplots)
+- [Making a boxplot with `ggplot()`](#boxplots)
+- [Adding colour to a plot](#colour)
 - [Introduction to Markdown](#markdown)
 
 # Using the RStudio interface {#using}
@@ -478,7 +478,7 @@ The population of Afghanistan in 1967 was `r fitb('11537966')`.
 The `clarity` variable in the `diamonds` tibble is of type `r fitb('ord')`.
 :::
 
-# ggplot: Scatter plots {#scatterplots}
+# Making a scatterplot with `ggplot()` {#scatterplots}
 
 ![TODO: replace with video](images/video_placeholder.png)
 
@@ -525,18 +525,19 @@ mpg %>% ggplot(aes(displ, hwy)) +
 ```
 :::
 
-# ggplot: Boxplots {#boxplots}
+# Making a boxplot with `ggplot()` {#boxplots}
 
 ![TODO: replace with video](images/video_placeholder.png)
 
 Video summary:
 
 - Boxplots are useful for visualising categorical data.
+- The function `geom_boxplot()` represents data on the y-axis using boxes, whiskers and points for each category on the x-axis.
 
 ```{r}
 mpg %>%
-  ggplot(aes(class, cty)) +
-  geom_boxplot()
+  ggplot(aes(class, cty)) + # choose data: x = class, y = cty
+  geom_boxplot()            # draw the boxplot
 ```
 
 `r hide('Video script')`
@@ -555,11 +556,11 @@ the lower hinge. In this version of a boxplot, any data point outside the range 
 :::{.exercise}
 **Exercise 9**
 
-1. Create a new chunk at the bottom of your worksheet
-1. Create a boxplot with `drv` (front-wheel/rear-wheel/4-wheel drivetrain) on the x-axis and `hwy` on the y-axis
+1. Create a new chunk at the bottom of your worksheet.
+1. Create a boxplot with `drv` (front-wheel/rear-wheel/4-wheel drivetrain) on the x-axis and `hwy` on the y-axis.
 1. Run the chunk.
 
-The boxplot should look like this:
+Your boxplot should look like this:
 
 ```{r, echo=FALSE}
 mpg %>%
@@ -568,13 +569,21 @@ mpg %>%
 ```
 :::
 
-# ggplot: Colour {#colour}
+# Adding colour to a plot {#colour}
 
 ![TODO: replace with video](images/video_placeholder.png)
 
 Video summary:
 
-- Colour can be added to a scatterplot to categorise the points.
+- The points in a scatterplot can be coloured based on a categorical variable.
+- This is done using by giving `aes()` a `colour` option.
+
+```{r}
+# colour points using a different colour for each drv (drivetrain) category
+mpg %>%
+  ggplot(aes(cty, hwy, color = drv)) +
+  geom_point()
+```
 
 `r hide('Video script')`
 Colour can be added to a scatterplot to categorise the points. So far, you've used the `aes()` function to define which variable is plotted on the x and y axes. The `aes()` function is short for 'aesthetics', and it is a way to map variables to visual aspects of a plot. In addition to mapping variables to the x and y axes, the `colour` option maps colours to a categorical variable.
@@ -591,7 +600,7 @@ mpg %>%
 :::{.exercise}
 **Exercise 10**
 
-1. Create a new chunk at the bottom of your worksheet
+1. Create a new chunk at the bottom of your worksheet.
 1. Create a scatterplot using the `gapminder` dataset with `gdpPercap` on the x-axis, `lifeExp` on the y-axis, and `continent` in colour.
 1. Run the chunk.
 
@@ -611,7 +620,12 @@ gapminder %>%
 
 Video summary:
 
-- This section shows you how to use 'markdown' to format the narrative text in your R Markdown files.
+- 'Markdown' commands allow you to format the narrative text in your R Markdown files.
+  - `#` creates a first level heading (the largest size)
+  - `##` creates a second level heading (next largest). Using `###` and `####` makes even smaller headings.
+  - `**bold text**` makes **bold text**
+  - `*italic text*` makes *italic text*
+- Press the `Knit` button to run your R chunks, format your markdown and combined them into an output document.
 
 `r hide('Video script')`
 Markdown uses special characters to style text in the same way you might use menus in a word processor to define
@@ -652,12 +666,12 @@ quick reference for markdown syntax.
 :::{.exercise}
 **Exercise 11**
 
-1. For each of the chunks you wrote for Exercises 4-7
-  1. Add the section name as a level 2 heading
-  1. Add the exercise number as a level 3 heading
-  1. Add the instructions as a numbered list (or as plain text if there's only one instruction)
-1. Use the outline feature to explore the document
-1. Knit the document
+1. For each of the chunks you wrote for Exercises 4-7:
+  i) Add the section name as a level 2 heading.
+  i) Add the exercise number as a level 3 heading.
+  i) Add the instructions as a numbered list (or as plain text if there's only one instruction).
+2. Use the outline feature to explore the document.
+3. Knit the document.
 :::
 
 # Check your knowledge
@@ -677,8 +691,6 @@ revealed in Session 2.
 1. How do you use markdown to make a level 3 heading?
 
 # Extension exercises
-
-<!-- TODO: practice plots with different datasets -->
 
 ## Extension exercise 1
 
