@@ -636,7 +636,7 @@ quick reference for markdown syntax.
 Write an answer to each of these questions in the `Check your knowledge` section of your workbook. The answers will be
 revealed in Session 2.
 
-1. How to you run part of an R command?
+1. How do you run part of an R command?
 1. Which library do you need to load in your first R Markdown chunk?
 1. What is `gapminder`?
 1. Which command would you use to explore the first few rows of a dataset?

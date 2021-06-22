@@ -841,10 +841,16 @@ The standard deviation of chicks fed on sunflower was (to 2 decimal places) `r f
 Write an answer to each of these questions in the `Check your knowledge` section of your workbook. The answers will be
 revealed in Session 3.
 
-- What is the `%>%` symbol called and what does it do?
-- What is the `<-` symbol called and what does it do?
-
-<!-- TODO ADD MORE HERE -->
+1. What is the `<-` symbol called and what does it do?
+1. What is the `%>%` symbol called and what does it do?
+1. Which command is used to load data and what are the two places that data can be loaded from?
+1. How would you select rows from a `data.frame` where values in a numeric column are between 10 and 20?
+1. How would you sort a `data.frame` by a numeric column in descending order? <!-- TODO: too easy? -->
+1. How would you select rows from a column which match a word, and then sort those rows in ascending order by a numeric column?
+1. Which commands would you use to calculate the mean of a numeric column?
+1. Which other two functions are commonly used to calculate descriptive statistics?
+1. How could you calculate the mean for one level of a factor?
+1. How would you calculate the mean for all levels of a factor?
 
 # Practice problems
 

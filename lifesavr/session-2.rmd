@@ -25,7 +25,22 @@ meaning_of_life
 
 ## What is the `%>%` symbol called and what does it do?
 
-[Write your answers directly into the notebook here and save it for later]
-
+[Write your answers directly into the workbook here and save it for later]
 
 ## What is the `<-` symbol called and what does it do?
+
+## Which command is used to load data and what are the two places that data can be loaded from?
+
+## How would you select rows from a `data.frame` where values in a numeric column are between 10 and 20?
+
+## How would you sort a `data.frame` by a numeric column in descending order? <!-- TODO: too easy? -->
+
+## How would you select rows from a column which match a word, and then sort those rows in ascending order by a numeric column?
+
+## Which commands would you use to calculate the mean of a numeric column?
+
+## Which other two functions are commonly used to calculate descriptive statistics?
+
+## How could you calculate the mean for one level of a factor?
+
+## How would you calculate the mean for all levels of a factor?

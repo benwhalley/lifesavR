@@ -64,8 +64,24 @@ diamonds %>%
 
 # Check your knowledge
 
-## What is `mpg`?
+## How do you run part of an R command?
 
-## What is the 5th column in mpg?
+[Write your answers directly into the workbook here and save it for later]
 
-## Explain what `glimpse` does
+## Which library do you need to load in your first R Markdown chunk?
+
+## What is `gapminder`?
+
+## Which command would you use to explore the first few rows of a dataset?
+
+## What is the 5th column in `gapminder`?
+
+## Explain what `glimpse` does.
+
+## Which command makes a plot?
+
+## Which command defines the axes on a plot?
+
+## Which command makes a boxplot?
+
+## How do you use markdown to make a level 3 heading?
