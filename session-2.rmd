@@ -264,7 +264,7 @@ R can read data from two places:
 
 The link below is a URL (web address) for a file containing data about US police shootings.
 
-- [https://benwhalley.github.io/lifesavR/lifesavr/shootings.csv](https://benwhalley.github.io/lifesavR/lifesavr/shootings.csv)
+- [https://benwhalley.github.io/lifesavR/data/shootings.csv](https://benwhalley.github.io/lifesavR/data/shootings.csv)
 
 
 The final part of the url tells us the name of the file: `shootings.csv`
@@ -316,7 +316,7 @@ variable `shootings`.
 The URL (the link to the CSV file) needs to be in quotes (single or double quotes both work).
 
 ```{r}
-shootings <- read_csv('https://benwhalley.github.io/lifesavR/lifesavr/shootings.csv')
+shootings <- read_csv('https://benwhalley.github.io/lifesavR/data/shootings.csv')
 ```
 
 Because we made a new variable, the result is stored in the Environment, and we can double-click it to have a look at the data.
@@ -332,7 +332,7 @@ shootings
 **Exercise 5**
 
 1. Create a new chunk.
-1. Read the data stored at <https://benwhalley.github.io/lifesavR/lifesavr/shootings.csv>
+1. Read the data stored at <https://benwhalley.github.io/lifesavR/data/shootings.csv>
 1. View it using the **Environment** pane.
 1. View it using `glimpse()`.
 :::
@@ -373,7 +373,7 @@ The file should appear in the **Files** pane in your `lifesavr` folder.
 :::{.exercise}
 **Exercise 6**
 
-1. Use your web browser to download <https://benwhalley.github.io/lifesavR/lifesavr/shootings.csv> to your computer.
+1. Use your web browser to download <https://benwhalley.github.io/lifesavR/data/shootings.csv> to your computer.
 1. Upload `shootings.csv` to the server.
 1. Create a new chunk.
 1. Read `shootings.csv` into a variable with a descriptive name.
@@ -737,16 +737,30 @@ To two decimal places, cars with automatic transmission have a standard deviatio
 
 ![TODO: replace with video](images/video_placeholder.png)
 
-- In our data we may have categorical variables (e.g. gender, or country)
-- We often want to compute summaries for each group
-- Using `filter()`, we could make a summary for each group, one by one;  the `group_by` function does this for us
-- If you add `group_by()` to a pipeline then all the subsequent steps are run *once for each group*
-- Be careful only to group by categorical variables
+Video summary:
 
+- Our data may have categorical or 'grouping' variables (e.g. gender, or country).
+- We often want to create summaries for each group.
+- We could use `filter()` and `summary()` once for each group, but the `group_by()` function does this for all groups.
+- Adding `group_by()` to a pipeline runs the subsequent steps *once for each group*.
+- Be careful only to group by categorical variables.
 
-<!-- TODO make this explanation into a VIDEO -->
+```{r}
+# boxplot grouped by number of cylinders
+mtcars %>% 
+  ggplot(aes(factor(cyl), mpg)) + 
+  geom_boxplot()
 
+# table
+mtcars %>% 
+  group_by(cyl) %>% 
+  summarise(average_mpg = mean(mpg))
 
+# group by two variables at once
+mtcars %>% group_by(cyl, am) %>% summarise(mean(mpg))
+```
+
+`r hide('Video script')`
 We might make a plot like this:
 
 ```{r}
@@ -769,24 +783,10 @@ We can also group by two variables at once and get a row for each combination:
 ```{r}
 mtcars %>% group_by(cyl, am) %>% summarise(mean(mpg))
 ```
-<!-- END VIDEO TODO-->
+`r unhide()`
 
-
-<!-- TODO ADD EXERCISE FOR THIS -->
-
-<!-- PAUL HAVE COMMENTED THIS OUT>>> IT"S MOVED TO A LTER WORKSHEET -->
-<!-- # Dividing up graphs -->
-
-<!-- In our previous plot we only showed the difference between cars of 4, 6 and 8 cylinders. We can break the plot down -->
-<!-- into multiple panels using '**facets**': -->
-
-
-<!-- ```{r} -->
-<!-- mtcars %>%  -->
-<!--   ggplot(aes(factor(cyl), mpg)) +  -->
-<!--   geom_boxplot() +  -->
-<!--   facet_wrap(vars(am))   # note to paul... use vars here to avoid quoting of variable names which is confusing/inconsistent with other use -->
-<!-- ``` -->
+:::{.exercise}
+:::
 
 # Check your knowledge
 
