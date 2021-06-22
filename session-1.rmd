@@ -485,12 +485,15 @@ The `clarity` variable in the `diamonds` tibble is of type `r fitb('ord')`.
 
 Video summary:
 
-- A scatterplot shows the relationship between two variables by plotting their values as points. The `tidyverse` package
-also loads the `mpg` dataset, which contains fuel economy data from 1999 to 2008 for 38 popular models of US cars.
+- A scatterplot shows the relationship between two variables by plotting their values as points.
+- The `tidyverse` package also loads the `mpg` dataset, which contains fuel economy data from 1999 to 2008 for 38 popular models of US cars.
+- The function `aes()` chooses the columns to use as data for the x and y axes.
+- The function `geom_point()` plots each pair of values as a point.
 
 ```{r}
-mpg %>% ggplot(aes(cty, hwy)) +
-  geom_point()
+mpg %>%
+  ggplot(aes(cty, hwy)) + # choose data: x = cty, y = hwy
+    geom_point()          # plot x,y for each row (scatterplot)
 ```
 
 `r hide('Video script')`
@@ -511,8 +514,8 @@ point is plotted for each row, using the values for the `cty` and `hwy` variable
 :::{.exercise}
 **Exercise 8**
 
-1. Create a new chunk at the bottom of your worksheet
-1. Create a scatterplot with `displ` (engine 'displacement') on the x-axis and `hwy` on the y-axis
+1. Create a new chunk at the bottom of your worksheet.
+1. Create a scatterplot with `displ` (engine 'displacement') on the x-axis and `hwy` on the y-axis.
 1. Run the chunk.
 
 The scatterplot should look like this:
