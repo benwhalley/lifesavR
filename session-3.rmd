@@ -81,9 +81,6 @@ mtcars %>%
 
 <a name="colour"></a>
 
-
-
-
 ```{r}
 
 gapminder::gapminder %>% 
@@ -98,10 +95,6 @@ gapminder::gapminder %>%
   ggplot(aes(factor(year), lifeExp)) + 
   geom_boxplot()
 ```
-
-
-
-
 
 # Making new datasets with `filter`
 
@@ -118,11 +111,6 @@ Now show when we use this new dataframe in a plot:
 ```{r}
 idealdiamonds %>% ggplot(aes(carat, price)) + geom_jitter()
 ```
-
-
-
-
-
 
 # Check your knowledge
 

@@ -10,16 +10,11 @@ output:
   webex::html_clean
 ---
 
-
 ```{r, include=F, echo=F}
 source('_first_chunk.R')
 ```
 
 
-
 ![](images/bushido.png)
 
-
 > The way of the warrior; a moral code regulating attitudes, behaviour and lifestyle.
-
-

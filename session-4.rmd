@@ -10,12 +10,9 @@ output:
   webex::html_clean
 ---
 
-
 ```{r, include=F, echo=F}
 source('_first_chunk.R')
 ```
-
-
 
 <!-- 4.	Evidence 2 – correlations -->
 <!-- -	Scatter plot -->
@@ -23,9 +20,6 @@ source('_first_chunk.R')
 <!-- -	Bayesian evidence for a correlation -->
 <!-- -	Colouring a scatterplot*† -->
 <!-- -	Smoothed line plot*† -->
-
-
-
 
 STUFF FROM SESSION 1
 
@@ -72,9 +66,6 @@ mtcars %>%
 In this plot it's easier to see that cars with more cylinders tend to be heavier, and have worse fuel consumption.
 
 
-
-
-
 # Dividing up graphs with facets {#facets}
 
 <!-- TODO CHANGE THIS TO EXTEND PREVIOUS EXERCISES IN THIS WORKSHEET -->
@@ -90,11 +81,6 @@ mtcars %>%
   facet_wrap(vars(am))   # note to paul... use vars here to avoid quoting of variable names which is confusing/inconsistent with other use
 ```
 
-
-
-
-
-
 # Check your knowledge
 
 Write an answer to each of these questions in the `Check your knowledge` section of your workbook. The answers will be
@@ -102,5 +88,3 @@ revealed in Session 5.
 
 - What is the difference between `geom_jitter()` and `geom_point()`? 
 - Why is `geom_jitter` useful sometimes?
-
-
