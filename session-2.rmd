@@ -1,5 +1,5 @@
 ---
-title: 'Freedom to act (Mushin)'
+title: 'Session 1:Title TODO'
 author: 'Ben Whalley, Paul Sharpe, Sonja Heintz'
 # date: "April 2021"
 bibliography: [references.bib]
@@ -16,10 +16,16 @@ source('_first_chunk.R')
 
 # Overview
 
-We think the analogy to using R is clear:
+Some martial arts have a concept called 'Mushin'. A literal translation of this is 'mind without mind'. It denotes a state of mind achieved when free from thoughts of anger, fear, or ego, during combat or in everyday life. To achieve mushin takes **repeated practice** and complete familiarity with the technique required to act, so that technical details can fade into the background. 
 
-- If you are anxious, stressed or avoidant you will be distracted
+We think there is an analogy to learning R here:
+
+- If you are anxious, stressed or avoidant you will be distracted and find it harder to learn
 - Getting confident with the basics makes more complex techniques possible 
+
+This session is about building skills and mastering core techniques. We will use these skills throughout the course.
+If some parts are already familiar to you, that's fine.  If it is all new, be sure to complete all the exercises/pracice problems.
+
 
 ![TODO: replace with feelgood video](images/video_placeholder.png)
 
@@ -30,12 +36,6 @@ In this session we cover:
 - Using simple techniques to answer research questions with data
 - Saving intermediate steps using variables
 
-<!-- A literal translation of Mushin is something like 'mind without mind', but in karate and other martial arts the term -->
-<!-- denotes the state of mind achieved when free from thoughts of anger, fear, or ego during combat, or in everyday life.  -->
-
-<!-- To achieve mushin takes **repeated practice** and complete familiarity with the technique required to act, such that  -->
-<!-- technical details can fade into the background. This leaves the student free to act, responding effortlessly to  -->
-<!-- the challenge at hand. -->
 `r unhide()`
 
 <!-- - Provide stereotyped examples of the sorts of students positive/negative traits which relate to the theme of session - make it all more concrete -->
@@ -71,20 +71,24 @@ In this session we cover:
 
 ![TODO: replace with video](images/video_placeholder.png)
 
-Video summary:
+### Video summary
 
 - In R, a **variable** is the name for a *container* which *stores data*.
 - We make variables using the **assignment operator**, which looks like this: `<-`.
 - Values on the right hand side of `<-` are stored in the variable on the left hand side.
-- Variables that you create are stored in the `Global Environment`, which you can see using the **Environment** pane.
+- Variables that you create are stored in the `Global Environment`. You can see these using the **Environment** pane.
+
+### Code examples
 
 ```{r}
 # calculate 40 + 2 and assign the result to a variable
 meaning_of_life <- 40 + 2
-# print variable
+
+# print the variable we created to the console window
 meaning_of_life
 ```
 
+<!-- START OF VIDEO -->
 `r hide('Video script')`
 As we work, it's useful to be able to save the results of the code we write. 
 
@@ -111,6 +115,7 @@ You might wonder *where* these variables get saved. In most cases, variables you
 `Global Environment`. You can see them in the **Environment** pane in RStudio. Double-clicking on any variable there
 will show you what is stored inside the container.
 `r unhide()`
+<!-- END OF VIDEO -->
 
 :::{.exercise}
 **Exercise 1**
@@ -139,6 +144,10 @@ Your **Environment** should now look like this:
 
 ![Environment pane after creating new variable](images/environment2.png)
 
+:::
+
+:::{.exercise}
+
 **Exercise 3**
 
 1. Create a level 3 markdown heading named "Exercise 3" in your workbook
@@ -146,15 +155,21 @@ Your **Environment** should now look like this:
 1. Save the result in a variable _with a descriptive name_.
 :::
 
-# Passing data to functions using the pipe `%>%` {#pipe}
+
+# Using pipes (`%>%`) to pass data {#pipe}
 
 ![TODO: replace with video](images/video_placeholder.png)
 
-Video summary:
+### Video summary
 
-- We pass data from one piece of code to another using **the pipe** function, which looks like this: `%>%`.
-- A **pipeline** is a sequence of two or more functions joined by `%>%`.
-- You can use the assignment operator to store the results of a pipeline in a variable.
+- We pass data from one piece of code to another using **the pipe** function
+- The pip looks like this: `%>%`
+- The keyboard shortcut to write a pipe is `Cmd` + `Shift` + `M`
+- A **pipeline** is a sequence of functions joined by pipes
+- Store the results of a pipeline in a variable using assignment (`<-`)
+
+
+### Code examples
 
 ```{r}
 # pipe mtcars into head()
@@ -165,6 +180,8 @@ mtcars_head <- mtcars %>%
   head()
 ```
 
+
+<!-- START OF VIDEO -->
 `r hide('Video script')`
 Sometimes we need to link together multiple steps in our analysis.
 
@@ -219,16 +236,17 @@ values.
 example, we could display just cars with 4 gears. Click the button again to turn off the filter.
 `r unhide()`
 
+<!-- END OF VIDEO -->
+
 :::{.exercise}
 **Exercise 4**
 
 1. Create a level 3 markdown heading named "Exercise 4" in your workbook. (You should be used to doing this for every exercise by now, so we won't remind you again.)  <!-- TODO is this true enough yet? -->
-1. Create a new chunk beneath the heading
+1. Create a new code chunk beneath this heading
 1. Load the `tidyverse` library
 1. Pipe the `mpg` `data.frame` into `head()` and assign the results to a variable called `mpg_head`
 1. Use the **Environment** pane to open `mpg_head`
-
-In 1999, a 6 cylinder, manual transmission, Audio A4 could cover `r fitb('18')` miles per gallon when driven in the
+In 1999, a 6-cylinder, manual transmission, Audio A4 could cover `r fitb('18')` miles per gallon when driven in the
 city.
 :::
 
@@ -236,21 +254,23 @@ city.
 
 ![TODO: replace with video](images/video_placeholder.png)
 
-Video summary:
+### Video summary
 
 - Often we want to load data into R, rather than use built-in datasets.
-- The preferred format for data files in R is comma-separated value (CSV).
+- The preferred format for data files in R is comma-separated value (CSV)
+- A CSV file usually includes column names in the first row; each row after that contains the data
+- CSV files should always end in `'.csv'` (this is the file extension)
 - CSV data can be read using the `read_csv()` function.
-- You can load data from an internet address (URL) or a file uploaded to the server.
+- You can load CSV data from an internet address (URL) or a file uploaded to the server.
 
-<!-- TODO Paul can you clarify — is the data to be used the shooting or school data? Perhaps introducing 2 different files 
-will be confusing? was the idea to have one as example then diff as exercise? -->
+
+<!-- THERE IS NO CODE EXAMPLE FOR THIS VIDEO -->
 
 ## Loading data
 
 `r hide('Video script')`
 
-In a lot of these sessions we use datasets that are built-in to R because it's quick and convenient to illustrate
+In a lot of these workshops we use datasets that are built-in to R. This is a convenient way to illustrate 
 the points we make.
 
 [demo opening glancing some built in data like gapminder, iris, mtcars etc]
@@ -285,25 +305,30 @@ We can use `read_csv()` to load data from either a file, or over the internet, w
 
 `r unhide()`
 
+
 ## Reading CSV files from the internet
 
 ![TODO: replace with video](images/video_placeholder.png)
 
-Video summary:
+### Video summary
 
 - `read_csv('http://...')` can load data from a URL.
 - It converts the data to a `data.frame`.
 - You must assign the loaded data to a variable, which you should give a descriptive name.
 - Use the **Environment** pane to view data you load using `read_csv()`.
 
+
+### Code examples
+
 ```{r}
-# load data from a URL into a variable
+# load data from a URL and assign it to a variable, called shootings
 shootings <- read_csv('https://benwhalley.github.io/lifesavR/data/shootings.csv')
 
-# display data
+# display the stored data
 shootings
 ```
 
+<!-- TODO can you make this the default button text everywhere (was shorter above) -->
 `r hide('Show full video transcript and code')`
 CSV files are a common format to store and share data. As shown in the previous video, the first line of a CSV file
 defines the column names, and the remaining lines are rows of data.
@@ -315,17 +340,25 @@ variable `shootings`.
 
 The URL (the link to the CSV file) needs to be in quotes (single or double quotes both work).
 
+<!-- TODO should we adopt doubles everywhere? they have the advantage of not wrapping or hanging the console across line breaks -->
 ```{r}
-shootings <- read_csv('https://benwhalley.github.io/lifesavR/data/shootings.csv')
+shootings <- read_csv("https://benwhalley.github.io/lifesavR/data/shootings.csv")
 ```
 
 Because we made a new variable, the result is stored in the Environment, and we can double-click it to have a look at the data.
 
-An alternative (and recommended) way is to simply type the name of the variable:
+An alternative (and recommended) way is to simply type the name of the variable and run the line:
 
 ```{r}
 shootings
 ```
+
+Or you can select the name of the variable in your code, and hit ctrl+Enter:
+[in this section of the video I select the word "shootings" and press ctrl+Enter. This has the same effect.]
+```{r, eval=F}
+shootings <- read_csv("https://benwhalley.github.io/lifesavR/data/shootings.csv")
+```
+
 `r unhide()`
 
 :::{.exercise}
@@ -337,18 +370,37 @@ shootings
 1. View it using `glimpse()`.
 :::
 
+
+
+
+
+
+
+
 ## Using data from your computer {#upload}
 
 ![TODO: replace with video](images/video_placeholder.png)
 
-Video summary:
+### Video summary
 
-- Before you can use data from your computer, you must upload it to the server.
+- Before using your own data you must upload it to the server.
 - Data can be uploaded using the **Files** pane.
-- Always upload data to the same location as your R code.
+- Always upload data to the same location as your R code  (or rmd file).
 - For data you upload, give `read_csv()` the path to the CSV file.
-- You must assign the loaded data to a variable, which you should give a descriptive name.
-- Use the **Environment** pane to view the data.
+- Assign the data you load to a variable. Give this a descriptive name.
+- Use the **Environment** pane to view data.
+
+
+### Code examples
+
+```{r, eval=F}
+# load a csv file uploaded to the server
+shootings <- read_csv('shootings.csv')
+
+# note - this will only work if the file called shootings.csv is uploaded to the server
+# and in the same place as your .rmd file
+```
+
 
 `r hide('Show full video transcript and code')`
 The `Upload` button in the **Files** pane lets you upload a file from your computer to R Studio. R Studio uses file
@@ -373,9 +425,9 @@ The file should appear in the **Files** pane in your `lifesavr` folder.
 :::{.exercise}
 **Exercise 6**
 
-1. Use your web browser to download <https://benwhalley.github.io/lifesavR/data/shootings.csv> to your computer.
-1. Upload `shootings.csv` to the server.
-1. Create a new chunk.
+1. Use your web browser to download <https://benwhalley.github.io/lifesavR/data/shootings.csv> to your computer
+1. Upload `shootings.csv` to the server
+1. Create a new code chunk in your workbook
 1. Read `shootings.csv` into a variable with a descriptive name.
 
 In which city was the earliest recorded shooting? `r fitb('Shelton')`
@@ -385,39 +437,51 @@ In which city was the earliest recorded shooting? `r fitb('Shelton')`
 
 ![TODO: replace with video](images/video_placeholder.png)
 
-Video summary:
+### Video summary
 
-- The `filter()` function selects rows from a dataset which match criteria we set.
-- The simplest filter uses `==` (equals equals), to test if the row is an exact match.
-- We can use other filters like `<` or `>` to match criteria in numeric columns.
-- We can combine multiple filters to get exactly the rows we need.
+- The `filter()` function selects *rows* from a dataset where values in that row match criteria we set.
+- The simplest filter uses `==` (two equality symbols) to test if values in the row match exactly.
+- When matching text data upper/lower case, spaces and punctuation all matter.
+- We can use other filters like `<` or `>` for numeric data.
+- We can combine multiple filters.
+
+
+### Code examples
 
 ```{r}
 # load gapminder dataset
 library(gapminder)
 
-# filter rows where country is equal to the word "Kenya"
-# remember to double equals (==) rather than single (=)
+# filter rows where country is equal to the word "Kenya" 
+# (double-equality symbols require an exact match)
 gapminder %>% 
   filter(country == "Kenya")
 
-# select rows where year is greater than 2000
+# matches rows where year is greater than 2000
 gapminder %>% 
   filter(year > 2000)
 
-# select rows with low life expectancy
+# matches rows with low life expectancy
 gapminder %>% 
   filter(lifeExp < 35)
 
-# combine multiple filters
+# combines multiple filters
 gapminder::gapminder %>% 
   filter(country=="Kenya") %>% 
   filter(year > 2000) %>% 
   filter(lifeExp < 55)
 ```
+
+
+<!-- TODO LABEL -->
 `r hide('Video script')`
 
+TODO ADD PREAMBLE/EXPLANATION OF AIM OF VIDEO
+
 The following chunk filters the `gapminder` dataset to include only rows where the `country` column equals "Kenya".
+
+<!-- TODO NOT  SURE IF BEST TO LOAD GAPMINDER LIBRARY OR NOT... PERHAPS NOT. EITHER WAY BE CONSOSTENT AND 
+EITHER USE GAPMINDER OR GAPMINDER::GAPMINDER -->
 
 ```{r}
 library(gapminder)
@@ -446,6 +510,11 @@ gapminder::gapminder %>%
   filter(country=="Kenya") %>% 
   filter(year > 2000)
 ```
+
+
+TODO - ADD AN EXAMPLE HERE OF SOMETHING WITH A SPACE OR INCORRECT CAPITALISATION NOT MATCHING
+
+
 `r unhide()`
 
 :::{.exercise}
@@ -458,6 +527,10 @@ Your results should look like this:
 ```{r, echo=FALSE}
 gapminder %>% filter(pop > 100000000)
 ```
+
+:::
+
+:::{.exercise}
 
 **Exercise 8**
 
@@ -477,12 +550,15 @@ gapminder %>%
 
 ![TODO: replace with video](images/video_placeholder.png)
 
-Video summary:
+### Video summary
 
 - The `arrange()` function sorts rows in a dataset.
 - Give `arrange()` a single column name to sort data in ascending order.
 - To sort in descending order, put a `-` before the column name.
-- Use commas between column names to sort by one column within another.
+- Use commas between column names to sort by more than once column at once
+
+
+### Code examples
 
 ```{r}
 # sort by carat in ascending order
@@ -490,7 +566,7 @@ diamonds %>%
   arrange(carat) %>%
   head(3)
 
-# sort by carat in descending order
+# sort by carat in descending order (spot the minus sign in front of 'caret')
 diamonds %>%
   arrange(-carat) %>%
   head(3)
@@ -501,7 +577,9 @@ diamonds %>%
 ```
 
 `r hide('Video script')`
-<!-- TODO: Ben, wasn't sure why/where to "remind them they know how to make scatter and boxplots" -->
+
+TODO ADD PREAMBLE / RATIONALE FOR THIS
+SORTING IS A WAY TO GET MIN/MAX and INSPECT IN A TABLE
 
 Sort by carat in ascending order
 
@@ -541,29 +619,40 @@ diamonds %>%
   head(5)
 ```
 
+:::
+
+
+:::{.exercise}
+
 **Exercise 10**
 
 How big is the largest diamond in the `diamonds` dataset? `r fitb('5.01')` carats.
 
 What was the cut of the three largest diamonds in that dataset? `r fitb('Fair')`.
+
 :::
 
-# Combining `filter()` with `arrange()` {#filterarrange}
+
+# Combine `filter()` with `arrange()` {#filterarrange}
 
 ![TODO: replace with video](images/video_placeholder.png)
 
-Video summary:
+### Video summary
 
-- Pipelines often combine `filter()` and `arrange()` to answer specific questions.
+- Pipelines combine functions to answer specific questions
+- A good example of this is combining `filter()` and `arrange()`
+
+
+### Code examples
 
 ```{r}
-# show Kenyans with lowest life expectancy
+# show which years Kenyans had their lowest life expectancy
 gapminder::gapminder %>%
   filter(country == "Kenya") %>% 
   arrange(lifeExp) %>% 
   head(6)
 
-# show Kenyans with highest life expectancy (just add '-')
+# show which year Kenyans with their life expectancy (just add '-')
 gapminder::gapminder %>% 
   filter(country == "Kenya") %>% 
   arrange(-lifeExp) %>%
@@ -592,9 +681,10 @@ gapminder::gapminder %>%
 `r unhide()`
 
 :::{.exercise}
+
 **Exercise 11**
 
-1. Sort Asian countries in the `gapminder` dataset in ascending population order.
+1. Sort all Asian countries in the `gapminder` dataset in ascending population order.
 1. Show only the first 10 rows.
 
 Your results should look like this:
@@ -614,6 +704,19 @@ The European country with the highest life expectancy is `r fitb('Iceland')`.
 
 The European country with the fifth largest population was recorded in which year? `r fitb('2007')`.
 :::
+
+
+
+PAUL - I'M WORRIED WEAKWR STUDENTS WON'T GET THIS FAR.
+
+PERHAPS WE SHOULD PUSH SUMMARISE INTO SESSION 3? I CERTAINLY THINK THIS IS TRUE FOR GROUP-BY
+
+WE CAN MOTIVATE THIS BY FINDING LONG FORM DATA WE WANT TO SUMMARISE THEN RUN A T TEST ON.
+
+
+
+
+
 
 # Summarising data using `summarise()` {#summarise}
 
