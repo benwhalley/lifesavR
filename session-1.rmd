@@ -44,7 +44,7 @@ the activities in the blue boxes.**
 
 ![TODO: replace with video](images/video_placeholder.png)
 
-Video summary:
+### Video summary
 
 - Using a web browser to access [the RStudio Server at Plymouth University](https://rstudio.plymouth.ac.uk).
 
@@ -76,7 +76,7 @@ The bottom rectangle has the tabs **Files**, **Plots**, **Packages**, **Help**, 
 
 ![TODO: replace with video](images/video_placeholder.png)
 
-Video summary:
+### Video summary
 
 - Before starting this module, you need to run some R code which makes a folder and downloads the files you
 will need for each workshop.
@@ -119,10 +119,12 @@ You're now ready to start the session.
 
 ![TODO: replace with video](images/video_placeholder.png)
 
-Video summary:
+### Video summary
 
 - R can do simple arithmetic, generate data and produce plots.
 - You need to tell R *exactly* what to do, by providing precise instructions.
+
+### Code examples
 
 ```{r}
 # multiply two numbers
@@ -152,7 +154,7 @@ instructions.
 
 ![TODO: replace with video](images/video_placeholder.png)
 
-Video summary:
+### Video summary
 
 - R Markdown documents are a way of combining R "chunks" with narrative text.
 - A chunk contains R code which can be run interactively.
@@ -217,7 +219,7 @@ v.textTracks[0].mode = "showing";  // or "hidden"
 </style>
 ```
 
-Video summary:
+### Video summary
 
 - To run a line of code in a chunk, place your cursor on the line and press <span class="keyshape">Ctrl</span> + <span class="keyshape">↵</span> on Windows or Linux, or <span class="keyshape">⌘</span> + <span class="keyshape">↩</span> on a Mac.
 - You can run part of a line by first selecting only the code you want to run.
@@ -294,7 +296,7 @@ workshops.
 
 ![TODO: replace with video](images/video_placeholder.png)
 
-Video summary:
+### Video summary
 
 - You insert a new chunk by positioning your cursor on the line where you want the chunk to appear, and selecting the
 `Code > Insert Chunk` menu option.
@@ -323,10 +325,12 @@ After completing these steps, your environment should look like this:
 
 ![TODO: replace with video](images/video_placeholder.png)
 
-Video summary:
+### Video summary
 
 - Loading a 'package' adds functionality to R.
 - Some packages (like `tidyverse`) also load datasets.
+
+### Code examples
 
 ```{r}
 # load the tidyverse package
@@ -366,12 +370,14 @@ We mention this here, as `could not find function` errors are one of the most co
 
 ![TODO: replace with video](images/video_placeholder.png)
 
-Video summary:
+### Video summary
 
 - R has a number of built-in datasets.
 - Many datasets are stored in a type of variable called a `data.frame` (or a similar type of variable called a `tibble`).
 - Additional datasets are included with some packages, for example, `gapminder`.
 - You can display a `data.frame` by typing its name on a line and running that code.
+
+### Code examples
 
 ```{r}
 # load the gapminder dataset
@@ -411,12 +417,14 @@ dataset in a the same way we loaded diamonds dataset. We load the `gapminder` pa
 
 ![TODO: replace with video](images/video_placeholder.png)
 
-Video summary:
+### Video summary
 
 - R Studio has lots of different ways to explore datasets. We recommend the following three.
 - The `head()` function shows the first few rows of a dataset.
 - The **Environment** pane shows the dataset in a spreadsheet-like view.
 - The `glimpse()` function shows a list of all the columns in a dataset (useful when there are many columns).
+
+### Code examples
 
 ```{r}
 # show first 6 rows of mtcars
@@ -482,12 +490,14 @@ The `clarity` variable in the `diamonds` tibble is of type `r fitb('ord')`.
 
 ![TODO: replace with video](images/video_placeholder.png)
 
-Video summary:
+### Video summary
 
 - A scatterplot shows the relationship between two variables by plotting their values as points.
 - The `tidyverse` package also loads the `mpg` dataset, which contains fuel economy data from 1999 to 2008 for 38 popular models of US cars.
 - The function `aes()` chooses the columns to use as data for the x and y axes.
 - The function `geom_point()` plots each pair of values as a point.
+
+### Code examples
 
 ```{r}
 mpg %>%
@@ -529,10 +539,12 @@ mpg %>% ggplot(aes(displ, hwy)) +
 
 ![TODO: replace with video](images/video_placeholder.png)
 
-Video summary:
+### Video summary
 
 - Boxplots are useful for visualising categorical data.
 - The function `geom_boxplot()` represents data on the y-axis using boxes, whiskers and points for each category on the x-axis.
+
+### Code examples
 
 ```{r}
 mpg %>%
@@ -573,10 +585,12 @@ mpg %>%
 
 ![TODO: replace with video](images/video_placeholder.png)
 
-Video summary:
+### Video summary
 
 - The points in a scatterplot can be coloured based on a categorical variable.
 - This is done using by giving `aes()` a `colour` option.
+
+### Code examples
 
 ```{r}
 # colour points using a different colour for each drv (drivetrain) category
@@ -618,7 +632,7 @@ gapminder %>%
 
 ![TODO: replace with video](images/video_placeholder.png)
 
-Video summary:
+### Video summary
 
 - 'Markdown' commands allow you to format the narrative text in your R Markdown files.
   - `#` creates a first level heading (the largest size)
