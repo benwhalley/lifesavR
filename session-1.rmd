@@ -86,7 +86,7 @@ will need for each workshop.
 1. Click on the **Console** pane.
 1. Copy-paste the following into the console:
 
-`source('https://raw.githubusercontent.com/benwhalley/lifesavR/main/bootstrap.R')`
+`source("https://raw.githubusercontent.com/benwhalley/lifesavR/main/bootstrap.R")`
 
 Your console should now look like this:
 
@@ -100,7 +100,7 @@ Press <span class="keyshape">↩</span> to run the code. If your console looks l
 
 Each session has an associated "workbook" file which you will use to complete the exercises in the worksheet.
 
-`r hide('Video script')`
+`r hide('Show full video transcript and code')`
 Each session has an associated "workbook" file which you will use to complete the exercises in the worksheet. The file
 you need for this session is called `session-1.rmd`.
 
@@ -135,7 +135,7 @@ rnorm(10, 0,1)
 hist(rnorm(100, 0,1))
 ```
 
-`r hide('Video script')`
+`r hide('Show full video transcript and code')`
 RStudio is a user interface to R, which is a computer language that is primarily designed for data analysis and
 visualisation. R is a text-based language, so you interact with it by typing and then running statements which have a
 meaning in the R language.
@@ -159,7 +159,7 @@ Video summary:
 - Chunks are opened using the symbols `` ```{r} ``, and closed using the symbols `` ``` ``.
 - Anything outside a chunk is narrative text.
 
-`r hide('Video script')`
+`r hide('Show full video transcript and code')`
 R Markdown is a way of combining R with narrative text. It allows you to integrate the results of your data analysis
 into high quality reports, research papers, dissertations or books. Because it's such a powerful tool, this module
 provides an early, gentle introduction to R Markdown.
@@ -223,7 +223,7 @@ Video summary:
 - You can run part of a line by first selecting only the code you want to run.
 - Pressing the green arrow on the right hand side of the chunk to run all code within a chunk.
 
-`r hide('Video script')`
+`r hide('Show full video transcript and code')`
 There are three ways to run R code within a chunk. The first is to run a complete line of code. You can
 see here that our cursor is on line 12. The cursor can be anywhere on that line. To run the line, press
 <span class="keyshape">Ctrl</span> + <span class="keyshape">↵</span> on Windows or Linux, or <span
@@ -334,7 +334,7 @@ Video summary:
 library(tidyverse)
 ```
 
-`r hide('Video script')`
+`r hide('Show full video transcript and code')`
 By loading 'packages', you can add functions and datasets to R. Packages are a powerful feature which allow R to be
 extended to analyse or plot data in any way imaginable. A package (sometimes called a library) is an extension to R that
 adds new functions and/or datasets. Packages are loaded using the `library()` function.
@@ -378,7 +378,7 @@ Video summary:
 library(gapminder)
 ```
 
-`r hide('Video script')`
+`r hide('Show full video transcript and code')`
 A dataset is a set of data relating to a particular topic. Most datasets we will be working with consist of rows and
 columns, just like a spreadsheet. In R this type of data is stored in a special type of variable called a
 `data.frame`. You will also see references to datasets as `tibbles`. A `tibble` is just a special type of `data.frame`,
@@ -424,14 +424,14 @@ mtcars %>%
   head()
 
 # load happiness data.frame
-happiness <- read_csv('data/world-happiness-report-2021.csv')
+happiness <- read_csv("data/world-happiness-report-2021.csv")
 
 # shows all columns in happiness
 happiness %>%
   glimpse()
 ```
 
-`r hide('Video script')`
+`r hide('Show full video transcript and code')`
 The `head()` function allows you to explore the first few rows of a dataset. The code `mtcars %>% head()` prints the
 first six rows of `mtcars`. The `%>%` function is called the 'pipe'. We'll explain more about how it works in the next
 session. For now, all you need to know is that the function on the right hand side of the pipe (`head()`) is applied to
@@ -495,7 +495,7 @@ mpg %>%
     geom_point()          # plot x,y for each row (scatterplot)
 ```
 
-`r hide('Video script')`
+`r hide('Show full video transcript and code')`
 A scatterplot shows the relationship between two variables by plotting their values as points.
 
 This chunk creates a scatter plot by piping the `mpg` data into the `ggplot()` function. The plot is built in two steps. The
@@ -540,7 +540,7 @@ mpg %>%
   geom_boxplot()            # draw the boxplot
 ```
 
-`r hide('Video script')`
+`r hide('Show full video transcript and code')`
 Boxplots are useful for visualising categorical data. In a boxplot, the thick line is the median. That thick line is
 enclosed inside a rectangle (the 'box'), and the size of the box indicates the inter-quartile range (IQR). The IQR
 contains the middle 50% of the ordered data. A wider IQR indicates greater variation in a dataset.
@@ -585,7 +585,7 @@ mpg %>%
   geom_point()
 ```
 
-`r hide('Video script')`
+`r hide('Show full video transcript and code')`
 Colour can be added to a scatterplot to categorise the points. So far, you've used the `aes()` function to define which variable is plotted on the x and y axes. The `aes()` function is short for 'aesthetics', and it is a way to map variables to visual aspects of a plot. In addition to mapping variables to the x and y axes, the `colour` option maps colours to a categorical variable.
 
 We could enhance the scatterplot showing mpg for city and highway driving, by adding a colour for each drivetrain.
@@ -627,7 +627,7 @@ Video summary:
   - `*italic text*` makes *italic text*
 - Press the `Knit` button to run your R chunks, format your markdown and combined them into an output document.
 
-`r hide('Video script')`
+`r hide('Show full video transcript and code')`
 Markdown uses special characters to style text in the same way you might use menus in a word processor to define
 headings, font styles, lists etc. Your workbook contains examples of the main markdown commands you will need:
 

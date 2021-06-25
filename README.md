@@ -20,6 +20,7 @@ update this guide with the approach you took.
 - Refer to R Studio elements using matching markup e.g. bold for the **Environment** pane
 - Include empty parentheses for argumentless verbs in pipelines e.g. `gapminder %>% glimpse()` not `gapminder %>% glimpse`
 - All student activities (exercises, MCQs, fill-in-the-blanks ...) should be in blue boxes
+- Use double quotes for string arguments.
 
 ## Level 1 sections
 

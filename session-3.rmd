@@ -10,13 +10,9 @@ output:
   webex::html_clean
 ---
 
-
 ```{r, include=F, echo=F}
 source('_first_chunk.R')
 ```
-
-
-
 
 THIS STILL A WIP
 
@@ -26,12 +22,9 @@ THIS STILL A WIP
 - Summary tables to reveal patterns in data (use Simpson's paradox as teaching example)
 - Facets in graphs; ggsave
 
-
-
 STUFF FROM SESSION 1
 
 - Scales for boxplot
-
 
 ## Scales and types
 
