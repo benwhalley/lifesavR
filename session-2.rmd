@@ -852,88 +852,101 @@ revealed in Session 3.
 1. How could you calculate the mean for one level of a factor?
 1. How would you calculate the mean for all levels of a factor?
 
-# Practice problems
+# Extension exercises
 
-Additional questions
+## Extension exercise 1
 
-- In the gapminder dataset, what country had the highest life expectancy in  1952?  (Use `arrange`, `filter` and `head`)
-
-```{r}
+```{r, eval=FALSE, echo=FALSE}
 gapminder::gapminder %>% 
   filter(year == 1952) %>% 
   arrange(-lifeExp) %>% 
   head(1)
 ```
 
-- What continent had the highest GDP in 2011? (Use `arrange`, `group_by`, and `summarise`)
+The country with the highest life expectancy in 1952 was `r fitb('Norway')`. (Hint: use `arrange()`, `filter()` and
+`head()` with the `gapminder` dataset.)
 
-```{r}
+## Extension exercise 2
+
+```{r, echo=FALSE, eval=FALSE}
 gapminder::gapminder %>% 
-  group_by(continent) %>% 
+  group_by(continent) %>%
+  filter(year == '1987') %>%
   summarise(average_gdp = mean(gdpPercap)) %>% 
   arrange(-average_gdp)
 ```
 
-- Make a boxplot showing life expectancy by continent. (Use `filter`, `ggplot` and `geom_boxplot`)
+The continent with the highest mean per capita GDP in 1987 was `r fitb('Oceania')`. (Hint: use `filter()`, `arrange()`,
+`group_by()`, and `summarise()`.)
 
-```{r}
+## Extension exercise 3
+
+Make a boxplot showing life expectancy by continent for years greater than 1999. (Hint: use `filter()`, `ggplot()` and `geom_boxplot()`.)
+
+The plot should look like this:
+
+```{r, echo=FALSE}
 gapminder::gapminder %>% 
-  filter(year > 2000) %>% 
+  filter(year > 1999) %>% 
   ggplot(aes(continent, lifeExp)) + 
   geom_boxplot()
-
 ```
 
-- Answer which requires sorting by 2 columns in different order.
+## Extension exercise 4
 
-# "Mega problem"
+The last two exercises are like the end of level "boss characters" in a computer game. To beat them, you need to select
+and combine skills you've learnt so far.
 
+```{r, echo=FALSE, eval=FALSE}
+gapminder %>%
+  filter(continent == 'Africa') %>%
+  filter(year < '2000') %>%
+  arrange(-pop, lifeExp)
+```
 
-Describe these as the 'end of level boss characters'. You need to combine all your skills to beat them...
+Before the year 2000, the African country with the largest population and the lowest life expectancy was
+`r fitb('Nigeria')`.
 
+## Extension exercise 5
 
-Make a table which shows the average life expectancy for each continent, sorted from highest to lowest:
+Make a table which shows the average life expectancy for each continent, sorted from highest to lowest. It should look like this:
 
-
-```{r}
-gapminder::gapminder %>% 
-  group_by(continent) %>% 
-  summarise(life_expectancy = mean(lifeExp)) %>% 
+```{r, echo=FALSE}
+gapminder %>%
+  group_by(continent) %>%
+  summarise(life_expectancy = mean(lifeExp)) %>%
   arrange(-life_expectancy)
 ```
 
+<!-- TODO: Ben: need to chat more to finish this and other "fix script" tasks -->
+
 # Broken script to fix
 
-- Fix a 'broken' script: Start a NEW R session and make this code work:
+Start a NEW R session and make this code work:
  
-
 ```{r, eval=F}
 liibrary(todyverse)
 
 # make a density plot of of life expectacy with different color lines for each continent
-gapminder::gapminder %>% 
+gapminder %>% 
   ggplote(aes("lifeExp", colr = "Continent"))  geom_density()
 
 # select only years after 1990
-gapminder::gapminder %>% 
+gapminder %>% 
   filter(year > 1990)
 
 ggplot(aes(year, lifeExp, color=continent)) + 
   geom_jitter()
-  
 ```
-
 
 NOTE - we will know all the errors they will see so can provide hints for each of them
 
-
-Correct version would be: 
-
 ```{r}
+# correct version 
 library(tidyverse)
 
 # make a density plot of of life expectacy with different color lines for each continent
-gapminder::gapminder %>% 
+gapminder %>% 
   ggplot(aes(lifeExp, color = continent))  + 
   geom_density()
 
@@ -943,8 +956,3 @@ gapminder::gapminder %>%
   ggplot(aes(year, lifeExp, color=continent)) + 
   geom_jitter()
 ```
-
-
-
-
-
