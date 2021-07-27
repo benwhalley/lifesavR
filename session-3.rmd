@@ -16,9 +16,14 @@ source('_first_chunk.R')
 
 THIS STILL A WIP
 
-- Bayesian t test
-
+- Scales for boxplot (using same data as example below)
 - Sub-setting data: sensitivity analysis for outliers (filter, group_by)
+- Summarise to aggregate by-participant
+- Bayesian t test on aggregated data
+
+
+Maybe
+
 - Summary tables to reveal patterns in data (use Simpson's paradox as teaching example)
 - Facets in graphs; ggsave
 
@@ -76,26 +81,26 @@ mtcars %>%
 
 ```{r}
 
-gapminder::gapminder %>% 
-  ggplot(aes(factor(year), lifeExp)) + 
+gapminder::gapminder %>%
+  ggplot(aes(factor(year), lifeExp)) +
   geom_point()
 
-gapminder::gapminder %>% 
-  ggplot(aes(year, lifeExp)) + 
+gapminder::gapminder %>%
+  ggplot(aes(year, lifeExp)) +
   geom_boxplot()
 
-gapminder::gapminder %>% 
-  ggplot(aes(factor(year), lifeExp)) + 
+gapminder::gapminder %>%
+  ggplot(aes(factor(year), lifeExp)) +
   geom_boxplot()
 ```
 
 # Making new datasets with `filter`
 
-Sometimes it's useful to create copies or subsets of your data. 
+Sometimes it's useful to create copies or subsets of your data.
 
 ```{r}
 idealdiamonds <- diamonds %>% filter(cut=="Ideal")
-idealdiamonds %>% 
+idealdiamonds %>%
   head
 ```
 
@@ -113,5 +118,3 @@ revealed in Session 4.
 - What is the difference between a `dbl` and an `ord`/`fct`?
 - Give an example of when the difference between `dbl` and `fct` matters when making a plot
 - How can you convert a variable from a `dbl` to a `fct`
-
-

@@ -1,5 +1,5 @@
 ---
-title: 'Title TODO... Waving not drowning?!'
+title: 'Title TODO...'
 author: 'Ben Whalley, Paul Sharpe, Sonja Heintz, Andy Wills'
 # date: "April 2021"
 bibliography: [references.bib]
@@ -706,9 +706,11 @@ revealed in Session 2.
 
 # Extension exercises
 
-## Extension exercise 1
+
 
 :::{.exercise}
+
+### Extension exercise 1
 
 This scatterplot uses the `mpg` dataset to show `displ` (displacement) on the x-axis against `cty` (mpg when driving in
 a city) on the y-axis.
@@ -721,9 +723,11 @@ mpg %>% ggplot(aes(displ, cty)) +
 In a new chunk, write the R code to produce this plot.
 :::
 
-## Extension exercise 2
+
 
 :::{.exercise}
+### Extension exercise 2
+
 This boxplot uses the `gapminder` dataset to show `lifeExp` (life expectancy) on the y-axis for each `continent` on the
 x-axis.
 
@@ -736,9 +740,11 @@ gapminder %>%
 In a new chunk, write the R code to produce this plot.
 :::
 
-## Extension exercise 3
+
 
 :::{.exercise}
+
+### Extension exercise 3
 Create a boxplot which shows drivetrain on the x-axis and miles per gallon when a car is driven in the city on the
 y-axis. Your plot should look like this:
 
@@ -749,9 +755,11 @@ mpg %>%
 ```
 :::
 
-## Extension exercise 4
+
 
 :::{.exercise}
+
+### Extension exercise 4
 Make a scatterplot of the `diamonds` data. Show carat on the x-axis, price on the y-axis and the clarity of the diamond
 in colour. Try to produce your plot before comparing it against the answer using the button below.
 
@@ -764,9 +772,11 @@ diamonds %>%
 `r unhide()`
 :::
 
-## Extension exercise 5
+
 
 :::{.exercise}
+
+## Extension exercise 5
 Make a scatterplot of the `mpg` data. Show city mpg on the x-axis, highway mpg on the y-axis and the vehicle class
 in colour. Try to produce your plot before comparing it against the answer using the button below.
 
