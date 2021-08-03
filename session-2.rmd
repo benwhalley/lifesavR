@@ -990,10 +990,10 @@ gapminder::gapminder %>%
   geom_boxplot()
 ```
 
-## Extension exercise 4
-
 The last two exercises are like the end of level "boss characters" in a computer game. To beat them, you need to select
 and combine skills you've learnt so far.
+
+## Extension exercise 4
 
 ```{r, echo=FALSE, eval=FALSE}
 gapminder %>%
