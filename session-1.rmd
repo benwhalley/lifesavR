@@ -14,16 +14,28 @@ output:
 source("_first_chunk.R")
 ```
 
+
+
+<style>
+.videowrapper {
+  border:1px solid grey;
+  padding:1em;
+  font-size:120%;
+}
+#transcript { font-size:83.333333333%;}
+</style>
+
+
+
 # Overview
 
 <!-- > Beginners mind (Shoshin) denotes openness, eagerness and lack of preconceptions when studying a subject, just as a beginner would, no matter what level of expertise the student has.  -->
 
 <!-- Even black belt martial artists practice basic techniques like blocks and punches every time they train. -->
 
-This session doesn't assume any prior knowledge of R, and introduces the basics. For some this will be revision from
-last year, but we provide additional material for advanced students test their knowledge and extend familiar skills.
+This session doesn't assume any prior knowledge of R, and introduces the basics. For some students this will include revision of material from stage 1. However we provide additional material for advanced students to test their knowledge and extend familiar skills. 
 
-**Even if you are quite confident with R Studio from Stage 1, please read the worksheet carefully and complete all of
+To be clear, this repetition is intentional: we find most students will benefit from refreshing their knowledge at this stage in the course. **Even if you are quite confident when using RStudio please read the worksheet carefully and complete all of
 the activities in the blue boxes.**
 
 # R techniques covered 
@@ -130,10 +142,10 @@ You're now ready to start the session.
 # multiply two numbers
 2 * 221
 
-# generate some random numbers
+# generate some random numbers with a normal distribution
 rnorm(10, 0,1)
 
-# histogram plot of some random numbers 
+# histogram plot of random numbers 
 hist(rnorm(100, 0,1))
 ```
 
@@ -143,11 +155,12 @@ visualisation. R is a text-based language, so you interact with it by typing and
 meaning in the R language.
 
 R Studio makes it easy to run R code and organise your work. For example, you can do simple arithmetic [`2 * 221`],
-generate some random numbers [`rnorm(10, 0,1)`], and plot some random numbers [`hist(rnorm(100, 0,1))`].
+generate some random numbers with a [normal distribution](https://www.khanacademy.org/math/statistics-probability/modeling-distributions-of-data/normal-distributions-library/a/normal-distributions-review) [`rnorm(10, 0,1)`], and plot some random numbers [`hist(rnorm(100, 0,1))`].
 
-You should think of R as a robot. The robot is extremely fast, powerful and tireless, but it’s also literal-minded, and
+You should think of R as a robot. The robot is extremely fast, powerful and tireless; but it’s also literal-minded, and
 won’t think for itself or take the initiative. You need to tell it *exactly* what to do, by providing very precise
 instructions.
+
 `r unhide()`
 
 # Working interactively in R Markdown {#interactive}
@@ -159,20 +172,27 @@ instructions.
 - R Markdown documents are a way of combining R "chunks" with narrative text.
 - A chunk contains R code which can be run interactively.
 - Chunks are opened using the symbols `` ```{r} ``, and closed using the symbols `` ``` ``.
-- Anything outside a chunk is narrative text.
+- Anything outside a chunk is just narrative (regular) text, and not treated as code.
 
 `r hide('Show full video transcript and code')`
-R Markdown is a way of combining R with narrative text. It allows you to integrate the results of your data analysis
+
+R Markdown is a file format which allows us to combine R code with narrative text. 
+It allows you to integrate the results of your data analysis
 into high quality reports, research papers, dissertations or books. Because it's such a powerful tool, this module
-provides an early, gentle introduction to R Markdown.
+provides an early introduction to R Markdown.
 
-R Markdown documents can be used interactively to run R code. If you [click on the `lifesavr` folder in the **Files**
-pane], you'll notice than some files have the extension `.rmd`. These are R Markdown files. The file extension `.rmd`
-(or .`Rmd`) is important, because this is how R Studio knows that the files contain a mixture of R code and narrative
-text.
+**R Markdown documents can also be used interactively inside RStudio to run R code.**
 
-RStudio needs to distinguish R code from narrative text. This is done by putting the code inside some special
-characters, creating what's referred to as a `chunk`. A chunk is opened using the symbols `` ```{r} ``, and closed using
+If you [click on the `lifesavr` folder in the **Files**
+pane of RStudio], you'll notice that some files have the extension `.rmd`. 
+These are R Markdown files. The file extension `.rmd` (or .`Rmd`) is important, 
+because this is how R Studio knows that the files contain a mixture of R code 
+and narrative text.
+
+RStudio needs to distinguish R code from regular narrative text. 
+This is done by putting the code inside some special
+characters, creating what's referred to as a `chunk`. 
+A chunk is opened using the symbols `` ```{r} ``, and closed using
 the symbols `` ``` ``. This is what a chunk looks like in RStudio:
 
 ![A code chunk in the RMarkdown editor](images/r-code-chunk.png)
@@ -250,7 +270,8 @@ Finally, you often want to run all of the code in a chunk. This can be done by p
 :::{.exercise}
 **Exercise 1**
 
-1. Locate the first chunk in `session-1.rmd`
+
+1. Locate the first chunk in `session-1.rmd` (you find this in the 'files' pane)
 1. Place your cursor (anywhere) on the line that says `library(tidyverse)`
 1. Run the code by pressing <span class="keyshape">Ctrl</span> + <span class="keyshape">↵</span> (Windows, Linux) or
 <span class="keyshape">⌘</span> + <span class="keyshape">↩</span> (Mac)
@@ -284,17 +305,24 @@ This prints the first few lines of the diamonds data:
 ![Example of running highlighted code](images/diamonds.png)
 :::
 
+
+### Section summary
+
 Why would you want to run part of a line of code? In these workshops you will combine simple steps into sequences which
 do a particular job, such as generating a plot. It's natural, especially when you're new to R, that your code won't do
 exactly what you want first time.
 
-Running part of your code allows you to identify the steps which are correct. This allows you to modify subsequent steps
-until your code produces the required results. Remember this technique as you will be using it extensively in these
-workshops.
+Running part of your code allows you to identify whether each individual step is correct. 
+This allows you to modify subsequent steps until your code produces the required results. 
+
+**Remember this technique; you will be using it extensively in these workshops.**
+
 
 ## Inserting a chunk {#chunk}
 
 ![TODO: replace with video](images/video_placeholder.png)
+
+TODO: DO we need video transcript here?
 
 ### Video summary
 
@@ -309,6 +337,7 @@ workshops.
 ```
 
 :::{.exercise}
+
 **Exercise 4**
 
 1. Find the instructions for Exercise 4 in your workbook.
@@ -323,14 +352,34 @@ After completing these steps, your environment should look like this:
 
 # Loading packages {#packages}
 
-![TODO: replace with video](images/video_placeholder.png)
 
-### Video summary
+<div class="videowrapper">
 
+<div style="padding:70.73% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/367784757?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Looking at imported data in the Environment pane"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="summary-tab" data-toggle="tab" href="#packages-summary">Video summary</a>
+  </li>12
+  <li class="nav-item">
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#packages-examples">Code examples</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="transcript-tab" data-toggle="tab" href="#packages-transcript">Full Transcript</a>
+  </li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="packages-summary">
+<!-- Summary -->
 - Loading a 'package' adds functionality to R.
 - Some packages (like `tidyverse`) also load datasets.
+  
+</div>
+<div class="tab-pane fade" id="packages-examples">
+<!-- Code examples -->
 
-### Code examples
+The following R code is used in the video:
 
 ```{r}
 # load the tidyverse package
@@ -338,7 +387,11 @@ After completing these steps, your environment should look like this:
 library(tidyverse)
 ```
 
-`r hide('Show full video transcript and code')`
+
+</div>
+<div class="tab-pane fade" id="packages-transcript">
+<!-- Full transcript of the video -->
+
 By loading 'packages', you can add functions and datasets to R. Packages are a powerful feature which allow R to be
 extended to analyse or plot data in any way imaginable. A package (sometimes called a library) is an extension to R that
 adds new functions and/or datasets. Packages are loaded using the `library()` function.
@@ -348,6 +401,7 @@ plot, and also the diamonds data. The `tidyverse` package is so fundamental to t
 likely to be the first line of R in the first chunk of each of your R Markdown files.
 
 :::{.tip}
+
 If you've understood what packages are then it should be clear that you can't use the functions provided by `tidyverse`
 (and the additional packages it loads) until you've run `library(tidyverse)`.
 
@@ -364,9 +418,39 @@ We mention this here, as `could not find function` errors are one of the most co
 1. forgotten to include `library(tidyverse)` as the first line in your code, or
 1. forgotten to *run* that line.
 :::
-`r unhide()`
+
+
+
+</div>
+</div>
+</div>
+<!--end tabs and video wrapper -->
+
+
+
+
+:::{.exercise}
+
+This section didn't actually have one, but exercises for each section would come below.
+
+:::
+
+
+Other narrative could be interspersed, with more code explained and for students to follow along.
+
+
+
+:::{.exercise}
+
+More exercises
+
+:::
+
+
 
 # Built-in datasets {#datasets}
+
+
 
 ![TODO: replace with video](images/video_placeholder.png)
 
