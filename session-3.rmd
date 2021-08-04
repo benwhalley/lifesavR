@@ -1,5 +1,5 @@
 ---
-title: 'Evidence for group differences'
+title: 'Plotting and comparing groups'
 author: 'Ben Whalley, Paul Sharpe, Sonja Heintz'
 # date: "April 2021"
 bibliography: [references.bib]
@@ -14,48 +14,175 @@ output:
 source('_first_chunk.R')
 ```
 
-THIS STILL A WIP
 
-- Scales for boxplot (using same data as example below)
-- Sub-setting data: sensitivity analysis for outliers (filter, group_by)
-- Summarise to aggregate by-participant
-- Bayesian t test on aggregated data
+![](images/smarties.png)
+
+# Session overview
+
+We often collect data from two or more groups. Group allocations can be stored as categorical variables, and we often want 
+to explore and compare differences between groups, using these variables.
+
+In this session we cover
+
+- how R stores different types of data, 
+- look at how this affects the way we plot and summarise data
+- introduce the Bayesian t-test to quantify the evidence for differences between groups
 
 
-Maybe
 
-- Summary tables to reveal patterns in data (use Simpson's paradox as teaching example)
-- Facets in graphs; ggsave
 
-STUFF FROM SESSION 1
 
-- Scales for boxplot
+# Different types of variables and visual scales 
 
-## Scales and types
 
-This boxplot uses `mtcars` to display car transmission types (automatic or manual) against fuel consumption (miles per
-gallon).
+<div class="videowrapper">
+
+![](images/yt-embed.png)
+
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item active">
+<a class="nav-link active" id="summary-tab" data-toggle="tab" href="#diffVarsScales-summary">Video summary</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" id="contact-tab" data-toggle="tab" href="#diffVarsScales-examples">Code examples</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" id="transcript-tab" data-toggle="tab" href="#diffVarsScales-transcript">Full Transcript</a>
+</li>
+</ul>
+
+<div class="tab-content">
+  
+<!-- Summary -->
+<div class="tab-pane active" id="diffVarsScales-summary">
+
+
+The video introduces the link types of variable (e.g. continuous, categorical, text), 
+the data-types which R uses to store them, and the way that `ggplot` presents them
+on the scales of a plot.
+
+- Common types of variable are: numeric, categorical and text (string)
+- Internally, R stores data in a number of different data *types*. 
+- These data types mostly match up the different types of variable — but not always, so watch out!
+- For example, sometimes numeric data can get stored as text by accident (we would need to convert this)
+- Categorical variables can be stored as either *factors* or as text/strings (again, we can convert between them as needed)
+- `ggplot` (and other R functions) use data-types as a clue to choose *defaults* for the scales of your graphs
+- Normally the defaults are good; sometimes it's helpful to manually adjust the scale by switching the data type
+
+
+</div>
+
+<!-- Code examples -->
+<div class="tab-pane fade" id="diffVarsScales-examples">
+
+The following R code is used in the video:
+
+```{r}
+# load the tidyverse package
+library(tidyverse)
+
+# ... etc etc
+```
+
+
+</div>
+
+<!-- Full transcript of the video -->
+<div class="tab-pane fade" id="diffVarsScales-transcript">
+
+### Data types
+
+Data comes in all shapes and sizes, but and important distinction researchers make is between **types** of variable.
+
+You might have seen terms like these:
+
+- *interval* or *continuous* variables data (also called [real numbers](https://en.wikipedia.org/wiki/List_of_types_of_numbers))
+- *ordinal* variables (e.g. Likert style 1-7 responses, sometimes called factors in experimental designs)
+- *count* variables (whole numbers greater than or equal to zero)
+- *nominal* or *categorical* variables, which are also sometimes 
+  
+
+These data-types mostly match up the different types of variable — and the names will be the same — but it's not *always* the case. Sometimes we need to convert between data types. 
+
+In R there are three main data-types you need to know about:
+
+- Numeric data, which are stored as a 'double', abbreviated `dbl`. 'Double' means 'double precision number', which is computer speak for 'any kind of real number, even a very large one'.
+
+- Categorical data, which is stored as a *factor*
+
+- Text, which is stored with the 'character' data-type (abbreviated `chr`)
+
+
+You might also encounter these data types, but we don't specifically need them for this course: 
+
+- Boolean data (true/false values) 
+- Dates (a special kind of numeric data, which R formats nicely as a date for us)
+- Ordinal variables (a special type of factor where the categories are *ordered*)
+
+
+If you have a variable in R you can use the `typeof` function to check which data-type it is. For example:
+
+```{r}
+typeof(1)
+typeof("apple")
+```
+
+You can also see which data-type is used to store a variable when using the `glimpse` command you saw in session 1 (e.g. [here](session-1.html#exploring)).
+
+```{r}
+iris %>% glimpse
+```
+
+In the `glimpse` output you can see the variable names listed on the left, followed by grey text surrounded by angle brackes, e.g.: `<dbl>` which is the abbreviated data-type.
+
+In this built-in dataset, most of the data is numeric (`dbl`), but the `Species` variable is categorical, and stored as a factor (`fct`).
+
+
+### Data types and scales on graphs
+
+If we look at the mtcars data we can see that all the variables are stored as numeric data (`dbl`):
+
+```{r}
+mtcars %>% glimpse()
+```
+
+
+
+This is fine if we want to make a scatter plot (here of 'miles per gallon' vs weight of the car):
+
+```{r}
+mtcars %>%
+  ggplot(aes(wt, mpg)) +
+    geom_point()       
+```
+
+In this plot both the x and y axes are ***continuous***. That is, they are numeric variables, using real numbers.
+
+
+However, if we want to make a boxplot of the `mpg` variable using `am` as the `x` axis then we have a problem:
 
 ```{r}
 mtcars %>%
   ggplot(aes(am, mpg)) +
   geom_boxplot()
 ```
+We might have expected to see;
 
-This does not plot the two boxes (automatic and manual) on the x-axis that we expected. Instead it plots a single box,
-with an x-axis scale ranging from 0--1.
+- miles per gallon on the y axis
+- two separate boxes, one for automatic cars and another for manual.
 
-If we check the variable types using `glimpse` we can see why.
+This doesn't work as expected though. 
 
-```{r}
-mtcars %>% glimpse()
-```
+Because `ggplot` has seen that `am` is stored as numeric data, it creates a continuous scale on the x axis, and draws a single box at the midpoint of all the values of `am`.  Because `am` ranges from 0 to 1, this box appears at 0.5.
 
-The variable `am` has type `dbl`. However, it should be a factor with the values `0` and `1` representing automatic and
-manual transmissions. Because R has been told that it's a number, it plots the x-axis on a continuous scale between
-0--1.
 
-We can use the command `factor(am)` to tell R that the x-axis is a factor. This gives us the boxplot we were expecting.
+As `glimpse` showed us, the variable `am` is stored as numeric data, with type `dbl` (short . 
+However, we really want to use `am` as a categorical variable.
+So we should store it as a factor.
+If we convert it to a factor then our plot will work properly.
+
+
+We can use the command `factor(am)` to tell R that the x-axis is a factor:
 
 ```{r}
 mtcars %>%
@@ -63,11 +190,48 @@ mtcars %>%
   geom_boxplot()
 ```
 
-:::{.exercise}
-Exercise 6
 
-Use `mtcars` to max a boxplot showing miles per gallon against number of gears (`gear`).
+This gives us the boxplot we were expecting. The only change here is to replace `am` with `factor(am)`. This tells R to convert the variable `am` to a factor.  `ggplot` can then draw the x axis correctly.
+
+
+
+
+</div>
+</div>
+</div>
+<!--end tabs and video wrapper -->
+
+
+
+
+
+:::{.exercise}
+
+You need to learn these datatypes and abbreviations:
+
+------------------------------------------
+| Data type | Abbreviation | Used for |
+------------------------------------------
+| double | dbl | Numeric data (e.g. interval or continuous variables) |
+| character| chr | text data, and sometimes also categorical variables |
+||||
+||||
+||||
+||||
+------------------------------------------
+
+- Hide this page and test a friend or someone next to you in the room on what each of them means. 
+- Repeat this in 20 minutes time to check you still have it ([spaced repetition is effective](https://www.theguardian.com/education/2016/jan/23/spaced-repetition-a-hack-to-make-your-brain-store-information)).
+
 :::
+
+
+
+:::{.exercise}
+
+Exercise XXX
+
+Use `mtcars` to make a boxplot showing miles per gallon on the y axis, and number of gears the car has on the x axis (`gear`).
 
 Your plot should look like this:
 
@@ -77,44 +241,268 @@ mtcars %>%
   geom_boxplot()
 ```
 
-<a name="colour"></a>
+:::
+
+
+
+
+:::{.exercise}
+
+XXX ADD EXTENSION EXERCISES TO DO THE SAME WITH COLOR SCALES>>> E.G.
 
 ```{r}
-
-gapminder::gapminder %>%
-  ggplot(aes(factor(year), lifeExp)) +
+mtcars %>% 
+  ggplot(aes(wt, mpg, color=gear)) + 
   geom_point()
 
-gapminder::gapminder %>%
-  ggplot(aes(year, lifeExp)) +
-  geom_boxplot()
-
-gapminder::gapminder %>%
-  ggplot(aes(factor(year), lifeExp)) +
-  geom_boxplot()
+mtcars %>% 
+  ggplot(aes(wt, mpg, color=factor(gear))) + 
+  geom_point()
 ```
 
-# Making new datasets with `filter`
 
-Sometimes it's useful to create copies or subsets of your data.
+:::
+
+
+
+
+# Exploring grouped data
+
+
+
+
+<div class="videowrapper">
+
+![](images/yt-embed.png)
+
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item active">
+<a class="nav-link active" id="summary-tab" data-toggle="tab" href="#exploGrpDiffs-summary">Video summary</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" id="contact-tab" data-toggle="tab" href="#exploGrpDiffs-examples">Code examples</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" id="transcript-tab" data-toggle="tab" href="#exploGrpDiffs-transcript">Full Transcript</a>
+</li>
+</ul>
+
+<div class="tab-content">
+
+<!-- Summary -->
+<div class="tab-pane active" id="exploGrpDiffs-summary">
+
+The video explains and gives examples showing that:
+
+- Datasets often contain categorical variables
+- We often want to compare statistics (like averages) *between* categories
+- The `group_by` function is a quick way to combine filtering and summarising
+- `group_by` creates a *grouped dataframe*
+- Using grouped dataframes with other functions (e.g. `summarise`) applies them once-per-group
+- The result is always a new dataframe
+
+
+</div>
+
+<!-- Code examples -->
+<div class="tab-pane fade" id="exploGrpDiffs-examples">
+
+The following R code is used in the video:
+
 
 ```{r}
-idealdiamonds <- diamonds %>% filter(cut=="Ideal")
-idealdiamonds %>%
-  head
+# mtcars has the `gear`, `cyl` and `am` variables, which could be treated as 
+# either categorical or numeric
+mtcars %>% select(gear, cyl, am) %>% head
+
+
+# we previously made a box-plot broken down by a category
+mtcars %>%
+  ggplot(aes(factor(gear), mpg)) + 
+  geom_boxplot()
+
+# we can use filter to calculate averages for each category
+mtcars %>%
+  filter(gear == 4 ) %>% 
+  summarise(mean(mpg))
+
+mtcars %>%
+  filter(gear == 5 ) %>% 
+  summarise(mean(mpg))
+
+# ... and so on. However, this gets repetitive with many groups.
+
+
+# Instead we can use group_by to make a table with a row for each group
+mtcars %>% 
+  group_by(gear) %>% 
+  summarise(mean(mpg))
+
+
+# We can add standard deviations (or other stats) to the same table and give each column a name
+mtcars %>% 
+  group_by(gear) %>% 
+  summarise(Mean = mean(mpg), SD = sd(mpg))
+
 ```
 
-Now show when we use this new dataframe in a plot:
+
+
+
+</div>
+
+<!-- Full transcript of the video -->
+<div class="tab-pane fade" id="exploGrpDiffs-transcript">
+
+Complete text of the video here. Markdown can be used. Keep blank lines above and below
+
+</div>
+</div>
+</div>
+<!--end tabs and video wrapper -->
+
+
+
+
+:::{.exercise}
+
+Use the built-in  `iris` dataset
+
+Use `group_by` to calculate the average `Sepal.Length` of each `Species` of flower.
+
+:::
+
+
+
+# Comparing the averages of groups
+
+
+
+
+<div class="videowrapper">
+
+![](images/yt-embed.png)
+
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item active">
+<a class="nav-link active" id="summary-tab" data-toggle="tab" href="#bayesTTest-summary">Video summary</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" id="contact-tab" data-toggle="tab" href="#bayesTTest-examples">Code examples</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" id="transcript-tab" data-toggle="tab" href="#bayesTTest-transcript">Full Transcript</a>
+</li>
+</ul>
+
+<div class="tab-content">
+
+<!-- Summary -->
+<div class="tab-pane active" id="bayesTTest-summary">
+
+
+BSc students will have encountered some of this last year; but there's new stuff too, and important revision.
+
+The video explains that:
+
+- t-tests allow us to *compare the average score for two groups*
+- A Bayes Factor (from a Bayesian t-test) compares two different hypotheses:  H1 (there groups are different) vs. H0 (the groups are identical)
+- Use the `ttestBF` function (remember to load the `BayesFactor` package first)
+- Large Bayes Factors (e.g. > 10) mean we have a lot of evidence there is a difference between groups
+- Very small Bayes Factors (e.g. < .1) mean we have strong evidence there is NO difference
+- Bayes factors $>3$ or < $\frac{1}{3}$ provide limited evidence for one of the hypotheses, v.s. the other.
+- Bayes factors between $\frac{1}{3}$ and $3$ are inconclusive.
+
+
+</div>
+
+<!-- Code examples -->
+<div class="tab-pane fade" id="bayesTTest-examples">
+
+The following R code is used in the video:
 
 ```{r}
-idealdiamonds %>% ggplot(aes(carat, price)) + geom_jitter()
+# how much more fuel efficient are manual cars?
+mtcars %>% 
+  group_by(am) %>% 
+  summarise(mean(mpg))
+
+# about 7 mpg
+
+
+# we can use a boxplot to see how much overlap there is between the groups
+mtcars %>% 
+  ggplot(aes(factor(am), mpg)) +
+  geom_boxplot()
+
+# it looks like they don't overlap too much, which means there probably 
+# is areal difference but we want to use a Bayesian t-test and a 
+# "Bayes Factor" to quantify how much more likely it is that: 
+# H1) there really is a difference vs.
+# H0) there's no real difference (just chance variation)
+
+library(BayesFactor)
+ttestBF(formula = mpg ~ am, data=mtcars)
+
+# the number 86.58973 is our Bayes Factor. This is > 10 so we have strong 
+# evidence for a difference (Hypothesis A)
 ```
+
+
+
+
+</div>
+
+<!-- Full transcript of the video -->
+<div class="tab-pane fade" id="bayesTTest-transcript">
+
+
+XXX FLESH THIS OUT TO BE MORE CONVERSATIONAL AND INTEGRATE/EXPLAIN THE CODE BELOW
+
+- A 'Bayesian t-test' is a procedure which tells us how likely it is that two groups have a *different average* for a *continuous variable*.
+
+- A Bayesian t-test imagines two different worlds: In world A) the groups truly do have a different average. In world B) the groups are really identical, with just chance errors leading to small differences between them in observations we make. 
+
+- We can get an intuition for how much evidence there is for a difference by looking at how much the distributions of the two groups overlap [e.g. a boxplot].
+
+- After collecting data we use a ***Bayes Factor*** to **quantify** how much more likely world A is v.s. world B (or the reverse).
+
+- That is: given the data we have collected and the differences (big or small) that we see, we can estimate *"how much more likely is it that there really is a difference between the groups, v.s. that there is no difference"*
+
+- Another way to think of these alternative worlds (A and B) is as different *hypotheses* about how our data came about.
+
+- Sometimes we talk about comparing an *experimental hypothesis* (H1) with a *null hypothesis* (H0)
+
+- When we compare two groups (with a t-test) we have a very simple experimental hypothesis — simply, that the groups are not identical
+
+- If we run a t test and find a large Bayes Factor, this is evidence for that experimental hypothesis, as compared with the null hypothesis (that the groups are the same)
+
+
+
+
+</div>
+</div>
+</div>
+<!--end tabs and video wrapper -->
+
+
+
+
+
+
+
+
+
+
 
 # Check your knowledge
 
 Write an answer to each of these questions in the `Check your knowledge` section of your workbook. The answers are
 revealed in Session 4.
 
-- What is the difference between a `dbl` and an `ord`/`fct`?
-- Give an example of when the difference between `dbl` and `fct` matters when making a plot
-- How can you convert a variable from a `dbl` to a `fct`
+- What is the difference between a `dbl` and a `fct` or `ord`?
+- Give an example of when the difference between `dbl` and `fct` matters when making a plot? (include code examples for this if you can)
+- How can you convert a variable from a `dbl` to a `fct`?
+
+
+
