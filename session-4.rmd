@@ -1,5 +1,5 @@
 ---
-title: 'The immovable mind (Fudōshin)'
+title: 'Answering questions with data'
 author: 'Ben Whalley, Paul Sharpe, Sonja Heintz'
 # date: "April 2021"
 bibliography: [references.bib]
@@ -13,6 +13,41 @@ output:
 ```{r, include=F, echo=F}
 source('_first_chunk.R')
 ```
+
+
+Descriptive questions:
+
+- Recap on filter, summarise and group_by
+- [Sorting data using `arrange()`](#arrange)
+- [Combining `filter()` with `arrange()`](#filterarrange)
+
+
+
+Testing hypotheses
+
+- Using a Bayesian t-test to quantify the evidence for differences between groups
+
+
+
+
+
+# Testing hypotheses
+
+- Often we see differences between different groups in our data
+- We can describe these differences with plots (e.g. boxplot) or descriptive statistics (e.g. mean, standard deviation)
+
+- The next step, though, is to try and explain how the data came about
+- We might have a theory which generates hypotheses about how the data came about
+- E.g. we might have a theory that being in GROUPA gives you a better chance of scoring highly on TEST-Y than if you are in GROUP-B
+- This theory predicts a difference between GROUPA and B.
+- BUT, in any data we collect there will always be error — sometimes called "noise"
+- If we only see a small difference, how could we be sure it wasn't happening by chance?
+- We want to judge how likely our hypothesis is; that is, how likely is it there really is a difference between A and B
+- To do this we compare two hypotheses: H1, H0
+- We ask: given the data we see, how likely is it that H1 is true. Then we repeat for H0.
+- If the H1 is more likely, given the data, then H0 then we say we have evidence for H1
+
+
 
 <!-- 4.	Evidence 2 – correlations -->
 <!-- -	Scatter plot -->
@@ -29,10 +64,10 @@ We show the benefit of jitter somewhere here now
 <!-- overplotting, making the output easier to read. -->
 
 ```{r}
-mpg %>% 
+mpg %>%
   ggplot(aes(cty, hwy)) + geom_point()
 
-mpg %>% 
+mpg %>%
   ggplot(aes(cty, hwy)) + geom_jitter()
 ```
 
@@ -81,10 +116,133 @@ mtcars %>%
   facet_wrap(vars(am))   # note to paul... use vars here to avoid quoting of variable names which is confusing/inconsistent with other use
 ```
 
+
+
+
+
+# Comparing the averages of groups
+
+
+
+
+<div class="videowrapper">
+
+![](images/yt-embed.png)
+
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item active">
+<a class="nav-link active" id="summary-tab" data-toggle="tab" href="#bayesTTest-summary">Video summary</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" id="contact-tab" data-toggle="tab" href="#bayesTTest-examples">Code examples</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" id="transcript-tab" data-toggle="tab" href="#bayesTTest-transcript">Full Transcript</a>
+</li>
+</ul>
+
+<div class="tab-content">
+
+<!-- Summary -->
+<div class="tab-pane active" id="bayesTTest-summary">
+
+
+BSc students will have encountered some of this last year; but there's new stuff too, and important revision.
+
+The video explains that:
+
+- t-tests allow us to *compare the average score for two groups*
+- A Bayes Factor (from a Bayesian t-test) compares two different hypotheses:  H1 (there groups are different) vs. H0 (the groups are identical)
+- Use the `ttestBF` function (remember to load the `BayesFactor` package first)
+- Large Bayes Factors (e.g. > 10) mean we have a lot of evidence there is a difference between groups
+- Very small Bayes Factors (e.g. < .1) mean we have strong evidence there is NO difference
+- Bayes factors $>3$ or < $\frac{1}{3}$ provide limited evidence for one of the hypotheses, v.s. the other.
+- Bayes factors between $\frac{1}{3}$ and $3$ are inconclusive.
+
+
+</div>
+
+<!-- Code examples -->
+<div class="tab-pane fade" id="bayesTTest-examples">
+
+The following R code is used in the video:
+
+```{r}
+# how much more fuel efficient are manual cars?
+mtcars %>%
+  group_by(am) %>%
+  summarise(mean(mpg))
+
+# about 7 mpg
+
+
+# we can use a boxplot to see how much overlap there is between the groups
+mtcars %>%
+  ggplot(aes(factor(am), mpg)) +
+  geom_boxplot()
+
+# it looks like they don't overlap too much, which means there probably
+# is areal difference but we want to use a Bayesian t-test and a
+# "Bayes Factor" to quantify how much more likely it is that:
+# H1) there really is a difference vs.
+# H0) there's no real difference (just chance variation)
+
+library(BayesFactor)
+ttestBF(formula = mpg ~ am, data=mtcars)
+
+# the number 86.58973 is our Bayes Factor. This is > 10 so we have strong
+# evidence for a difference (Hypothesis A)
+```
+
+
+
+
+</div>
+
+<!-- Full transcript of the video -->
+<div class="tab-pane fade" id="bayesTTest-transcript">
+
+
+XXX FLESH THIS OUT TO BE MORE CONVERSATIONAL AND INTEGRATE/EXPLAIN THE CODE BELOW
+
+- A 'Bayesian t-test' is a procedure which tells us how likely it is that two groups have a *different average* for a *continuous variable*.
+
+- A Bayesian t-test imagines two different worlds: In world A) the groups truly do have a different average. In world B) the groups are really identical, with just chance errors leading to small differences between them in observations we make.
+
+- We can get an intuition for how much evidence there is for a difference by looking at how much the distributions of the two groups overlap [e.g. a boxplot].
+
+- After collecting data we use a ***Bayes Factor*** to **quantify** how much more likely world A is v.s. world B (or the reverse).
+
+- That is: given the data we have collected and the differences (big or small) that we see, we can estimate *"how much more likely is it that there really is a difference between the groups, v.s. that there is no difference"*
+
+- Another way to think of these alternative worlds (A and B) is as different *hypotheses* about how our data came about.
+
+- Sometimes we talk about comparing an *experimental hypothesis* (H1) with a *null hypothesis* (H0)
+
+- When we compare two groups (with a t-test) we have a very simple experimental hypothesis — simply, that the groups are not identical
+
+- If we run a t test and find a large Bayes Factor, this is evidence for that experimental hypothesis, as compared with the null hypothesis (that the groups are the same)
+
+
+
+
+</div>
+</div>
+</div>
+<!--end tabs and video wrapper -->
+
+
+
+
+
+
+
+
+
 # Check your knowledge
 
 Write an answer to each of these questions in the `Check your knowledge` section of your workbook. The answers will be
 revealed in Session 5.
 
-- What is the difference between `geom_jitter()` and `geom_point()`? 
+- What is the difference between `geom_jitter()` and `geom_point()`?
 - Why is `geom_jitter` useful sometimes?

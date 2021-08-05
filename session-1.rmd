@@ -1,5 +1,5 @@
 ---
-title: 'Title TODO...'
+title: 'Getting started'
 author: 'Ben Whalley, Paul Sharpe, Sonja Heintz, Andy Wills'
 # date: "April 2021"
 bibliography: [references.bib]
@@ -33,12 +33,12 @@ source("_first_chunk.R")
 
 <!-- Even black belt martial artists practice basic techniques like blocks and punches every time they train. -->
 
-This session doesn't assume any prior knowledge of R, and introduces the basics. For some students this will include revision of material from stage 1. However we provide additional material for advanced students to test their knowledge and extend familiar skills. 
+This session doesn't assume any prior knowledge of R, and introduces the basics. For some students this will include revision of material from stage 1. However we provide additional material for advanced students to test their knowledge and extend familiar skills.
 
 To be clear, this repetition is intentional: we find most students will benefit from refreshing their knowledge at this stage in the course. **Even if you are quite confident when using RStudio please read the worksheet carefully and complete all of
 the activities in the blue boxes.**
 
-# R techniques covered 
+# R techniques covered
 
 - [Using the RStudio interface](#using)
 - [What can R do?](#cando)
@@ -48,8 +48,6 @@ the activities in the blue boxes.**
 - [Built-in datasets](#datasets)
 - [Exploring and checking data](#exploring)
 - [Making a scatterplot with `ggplot()`](#scatterplots)
-- [Making a boxplot with `ggplot()`](#boxplots)
-- [Adding colour to a plot](#colour)
 - [Introduction to Markdown](#markdown)
 
 # Using the RStudio interface {#using}
@@ -70,9 +68,9 @@ When you login to RStudio, you'll be greeted with a screen that looks something 
 
 ![RStudio on first opening](images/rstudio-new.png)
 
-You can see three parts: 
+You can see three parts:
 
-1. The **Console** - This is the large rectangle on the left. It is where you tell R what to do, and where R prints the answers to your questions. 
+1. The **Console** - This is the large rectangle on the left. It is where you tell R what to do, and where R prints the answers to your questions.
 
 2. The **Environment** - This is the rectangle on the top right. It is where R keeps a list of the data it knows about. It's empty at the moment, because we haven't given R any data yet.
 
@@ -82,7 +80,7 @@ You should also be able to see that the two rectangles on the right have a numbe
 
 The top rectangle has the tabs **Environment** and **History**. The **History** tab keeps a record of what you've recently typed into the **Console**. This can sometimes be useful.
 
-The bottom rectangle has the tabs **Files**, **Plots**, **Packages**, **Help**, and **Viewer**. We'll cover what these other tabs do later on. 
+The bottom rectangle has the tabs **Files**, **Plots**, **Packages**, **Help**, and **Viewer**. We'll cover what these other tabs do later on.
 
 # Before you start
 
@@ -145,7 +143,7 @@ You're now ready to start the session.
 # generate some random numbers with a normal distribution
 rnorm(10, 0,1)
 
-# histogram plot of random numbers 
+# histogram plot of random numbers
 hist(rnorm(100, 0,1))
 ```
 
@@ -176,7 +174,7 @@ instructions.
 
 `r hide('Show full video transcript and code')`
 
-R Markdown is a file format which allows us to combine R code with narrative text. 
+R Markdown is a file format which allows us to combine R code with narrative text.
 It allows you to integrate the results of your data analysis
 into high quality reports, research papers, dissertations or books. Because it's such a powerful tool, this module
 provides an early introduction to R Markdown.
@@ -184,14 +182,14 @@ provides an early introduction to R Markdown.
 **R Markdown documents can also be used interactively inside RStudio to run R code.**
 
 If you [click on the `lifesavr` folder in the **Files**
-pane of RStudio], you'll notice that some files have the extension `.rmd`. 
-These are R Markdown files. The file extension `.rmd` (or .`Rmd`) is important, 
-because this is how R Studio knows that the files contain a mixture of R code 
+pane of RStudio], you'll notice that some files have the extension `.rmd`.
+These are R Markdown files. The file extension `.rmd` (or .`Rmd`) is important,
+because this is how R Studio knows that the files contain a mixture of R code
 and narrative text.
 
-RStudio needs to distinguish R code from regular narrative text. 
+RStudio needs to distinguish R code from regular narrative text.
 This is done by putting the code inside some special
-characters, creating what's referred to as a `chunk`. 
+characters, creating what's referred to as a `chunk`.
 A chunk is opened using the symbols `` ```{r} ``, and closed using
 the symbols `` ``` ``. This is what a chunk looks like in RStudio:
 
@@ -312,8 +310,8 @@ Why would you want to run part of a line of code? In these workshops you will co
 do a particular job, such as generating a plot. It's natural, especially when you're new to R, that your code won't do
 exactly what you want first time.
 
-Running part of your code allows you to identify whether each individual step is correct. 
-This allows you to modify subsequent steps until your code produces the required results. 
+Running part of your code allows you to identify whether each individual step is correct.
+This allows you to modify subsequent steps until your code produces the required results.
 
 **Remember this technique; you will be using it extensively in these workshops.**
 
@@ -374,7 +372,7 @@ After completing these steps, your environment should look like this:
 <!-- Summary -->
 - Loading a 'package' adds functionality to R.
 - Some packages (like `tidyverse`) also load datasets.
-  
+
 </div>
 <div class="tab-pane fade" id="packages-examples">
 <!-- Code examples -->
@@ -409,7 +407,7 @@ For example, if you tried to produce the scatter plot before loading `tidyverse`
 console:
 
 <pre style="color:red">
-Error in diamonds %>% ggplot(aes(carat, price, colour = clarity)) : 
+Error in diamonds %>% ggplot(aes(carat, price, colour = clarity)) :
   could not find function "%>%"
 </pre>
 
@@ -619,98 +617,6 @@ mpg %>% ggplot(aes(displ, hwy)) +
 ```
 :::
 
-# Making a boxplot with `ggplot()` {#boxplots}
-
-![TODO: replace with video](images/video_placeholder.png)
-
-### Video summary
-
-- Boxplots are useful for visualising categorical data.
-- The function `geom_boxplot()` represents data on the y-axis using boxes, whiskers and points for each category on the x-axis.
-
-### Code examples
-
-```{r}
-mpg %>%
-  ggplot(aes(class, cty)) + # choose data: x = class, y = cty
-  geom_boxplot()            # draw the boxplot
-```
-
-`r hide('Show full video transcript and code')`
-Boxplots are useful for visualising categorical data. In a boxplot, the thick line is the median. That thick line is
-enclosed inside a rectangle (the 'box'), and the size of the box indicates the inter-quartile range (IQR). The IQR
-contains the middle 50% of the ordered data. A wider IQR indicates greater variation in a dataset.
-
-The top and bottom of the box are called ‘hinges’. The vertical lines connected to each hinge are called 'whiskers', and
-give some indication of the broader range of the data. Exactly what the whiskers show differs depending on the
-particular options you use to draw a boxplot. In this case, the upper whisker shows the largest data point that is no
-more than 1.5 times the IQR above the upper hinge. The lower whisker is the lowest point no more than 1.5x the IQR below
-the lower hinge. In this version of a boxplot, any data point outside the range of the whiskers is described as an
-'outlying point' and is shown individually as a dot.
-`r unhide()`
-
-:::{.exercise}
-**Exercise 9**
-
-1. Create a new chunk at the bottom of your worksheet.
-1. Create a boxplot with `drv` (front-wheel/rear-wheel/4-wheel drivetrain) on the x-axis and `hwy` on the y-axis.
-1. Run the chunk.
-
-Your boxplot should look like this:
-
-```{r, echo=FALSE}
-mpg %>%
-  ggplot(aes(drv, hwy)) +
-  geom_boxplot()
-```
-:::
-
-# Adding colour to a plot {#colour}
-
-![TODO: replace with video](images/video_placeholder.png)
-
-### Video summary
-
-- The points in a scatterplot can be coloured based on a categorical variable.
-- This is done using by giving `aes()` a `colour` option.
-
-### Code examples
-
-```{r}
-# colour points using a different colour for each drv (drivetrain) category
-mpg %>%
-  ggplot(aes(cty, hwy, color = drv)) +
-  geom_point()
-```
-
-`r hide('Show full video transcript and code')`
-Colour can be added to a scatterplot to categorise the points. So far, you've used the `aes()` function to define which variable is plotted on the x and y axes. The `aes()` function is short for 'aesthetics', and it is a way to map variables to visual aspects of a plot. In addition to mapping variables to the x and y axes, the `colour` option maps colours to a categorical variable.
-
-We could enhance the scatterplot showing mpg for city and highway driving, by adding a colour for each drivetrain.
-
-```{r}
-mpg %>%
-  ggplot(aes(cty, hwy, color = drv)) +
-  geom_point()
-```
-`r unhide()`
-
-:::{.exercise}
-**Exercise 10**
-
-1. Create a new chunk at the bottom of your worksheet.
-1. Create a scatterplot using the `gapminder` dataset with `gdpPercap` on the x-axis, `lifeExp` on the y-axis, and `continent` in colour.
-1. Run the chunk.
-
-Your plot should look like this:
-
-```{r ex10, echo=FALSE}
-library(gapminder)
-gapminder %>%
-  ggplot(aes(gdpPercap, lifeExp, color = continent)) +
-  geom_point()
-```
-:::
 
 # Introduction to Markdown {#markdown}
 
@@ -785,7 +691,6 @@ revealed in Session 2.
 1. Explain what `glimpse` does.
 1. Which function makes a plot?
 1. Which function defines the axes on a plot?
-1. Which function makes a boxplot?
 1. How do you use markdown to make a level 3 heading?
 
 # Extension exercises
@@ -794,7 +699,7 @@ revealed in Session 2.
 
 :::{.exercise}
 
-### Extension exercise 1
+### Extension exercise XXX
 
 This scatterplot uses the `mpg` dataset to show `displ` (displacement) on the x-axis against `cty` (mpg when driving in
 a city) on the y-axis.
@@ -809,69 +714,13 @@ In a new chunk, write the R code to produce this plot.
 
 
 
-:::{.exercise}
-### Extension exercise 2
 
-This boxplot uses the `gapminder` dataset to show `lifeExp` (life expectancy) on the y-axis for each `continent` on the
-x-axis.
+### ADD NEW EXTENSION EXERCISE...
 
-```{r, echo=FALSE}
-gapminder %>%
-  ggplot(aes(continent, lifeExp)) +
-  geom_boxplot()
-```
-
-In a new chunk, write the R code to produce this plot.
-:::
+(removed the ones which used color)
 
 
 
-:::{.exercise}
-
-### Extension exercise 3
-Create a boxplot which shows drivetrain on the x-axis and miles per gallon when a car is driven in the city on the
-y-axis. Your plot should look like this:
-
-```{r, echo=FALSE}
-mpg %>%
-  ggplot(aes(drv, cty)) +
-  geom_boxplot()
-```
-:::
-
-
-
-:::{.exercise}
-
-### Extension exercise 4
-Make a scatterplot of the `diamonds` data. Show carat on the x-axis, price on the y-axis and the clarity of the diamond
-in colour. Try to produce your plot before comparing it against the answer using the button below.
-
-`r hide('show answer')`
-```{r, echo=FALSE}
-diamonds %>%
-  ggplot(aes(carat, price, colour = clarity)) +
-  geom_point()
-```
-`r unhide()`
-:::
-
-
-
-:::{.exercise}
-
-## Extension exercise 5
-Make a scatterplot of the `mpg` data. Show city mpg on the x-axis, highway mpg on the y-axis and the vehicle class
-in colour. Try to produce your plot before comparing it against the answer using the button below.
-
-`r hide('show answer')`
-```{r, echo=FALSE}
-mpg %>%
-  ggplot(aes(cty, hwy, colour = class)) +
-  geom_point()
-```
-`r unhide()`
-:::
 
 # Further reading
 

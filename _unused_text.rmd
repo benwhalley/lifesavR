@@ -1,0 +1,380 @@
+
+
+
+# Making a boxplot with `ggplot()` {#boxplots}
+
+![TODO: replace with video](images/video_placeholder.png)
+
+### Video summary
+
+- Boxplots are useful for visualising categorical data.
+- The function `geom_boxplot()` represents data on the y-axis using boxes, whiskers and points for each category on the x-axis.
+
+### Code examples
+
+```{r}
+mpg %>%
+  ggplot(aes(class, cty)) + # choose data: x = class, y = cty
+  geom_boxplot()            # draw the boxplot
+```
+
+`r hide('Show full video transcript and code')`
+Boxplots are useful for visualising categorical data. In a boxplot, the thick line is the median. That thick line is
+enclosed inside a rectangle (the 'box'), and the size of the box indicates the inter-quartile range (IQR). The IQR
+contains the middle 50% of the ordered data. A wider IQR indicates greater variation in a dataset.
+
+The top and bottom of the box are called ‘hinges’. The vertical lines connected to each hinge are called 'whiskers', and
+give some indication of the broader range of the data. Exactly what the whiskers show differs depending on the
+particular options you use to draw a boxplot. In this case, the upper whisker shows the largest data point that is no
+more than 1.5 times the IQR above the upper hinge. The lower whisker is the lowest point no more than 1.5x the IQR below
+the lower hinge. In this version of a boxplot, any data point outside the range of the whiskers is described as an
+'outlying point' and is shown individually as a dot.
+`r unhide()`
+
+:::{.exercise}
+**Exercise 9**
+
+1. Create a new chunk at the bottom of your worksheet.
+1. Create a boxplot with `drv` (front-wheel/rear-wheel/4-wheel drivetrain) on the x-axis and `hwy` on the y-axis.
+1. Run the chunk.
+
+Your boxplot should look like this:
+
+```{r, echo=FALSE}
+mpg %>%
+  ggplot(aes(drv, hwy)) +
+  geom_boxplot()
+```
+:::
+
+
+
+
+
+
+
+1. Which function makes a boxplot?
+
+
+
+
+
+## Extension exercise 1
+
+Make a boxplot showing life expectancy by continent for years greater than 1999. (Hint: use `filter()`, `ggplot()` and `geom_boxplot()`.)
+
+The plot should look like this:
+
+```{r, echo=FALSE}
+gapminder::gapminder %>%
+  filter(year > 1999) %>%
+  ggplot(aes(continent, lifeExp)) +
+  geom_boxplot()
+```
+
+
+
+
+
+:::{.exercise}
+### Extension exercise 2
+
+This boxplot uses the `gapminder` dataset to show `lifeExp` (life expectancy) on the y-axis for each `continent` on the
+x-axis.
+
+```{r, echo=FALSE}
+gapminder %>%
+  ggplot(aes(continent, lifeExp)) +
+  geom_boxplot()
+```
+
+In a new chunk, write the R code to produce this plot.
+:::
+
+
+
+:::{.exercise}
+
+### Extension exercise 3
+Create a boxplot which shows drivetrain on the x-axis and miles per gallon when a car is driven in the city on the
+y-axis. Your plot should look like this:
+
+```{r, echo=FALSE}
+mpg %>%
+  ggplot(aes(drv, cty)) +
+  geom_boxplot()
+```
+:::
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Sorting data using `arrange()` {#arrange}
+
+![TODO: replace with video](images/video_placeholder.png)
+
+### Video summary
+
+- The `arrange()` function sorts rows in a dataset.
+- Give `arrange()` a single column name to sort data in ascending order.
+- To sort in descending order, put a `-` before the column name.
+- Use commas between column names to sort by more than once column at once
+
+
+### Code examples
+
+```{r}
+# sort by carat in ascending order
+diamonds %>%
+  arrange(carat) %>%
+  head(3)
+
+# sort by carat in descending order (spot the minus sign in front of 'caret')
+diamonds %>%
+  arrange(-carat) %>%
+  head(3)
+
+# sort by price (descending) within carat (ascending)
+diamonds %>%
+  arrange(carat, -price)
+```
+
+`r hide('Show full video transcript and code')`
+
+TODO ADD PREAMBLE / RATIONALE FOR THIS
+SORTING IS A WAY TO GET MIN/MAX and INSPECT IN A TABLE
+
+Sort by carat in ascending order
+
+```{r}
+diamonds %>%
+  arrange(carat) %>%
+  head(3)
+```
+
+Sort by carat in descending order
+
+```{r}
+diamonds %>%
+  arrange(-carat) %>%
+  head(3)
+```
+
+Sort by price (descending) within carat (ascending)
+
+```{r}
+diamonds %>%
+  arrange(carat, -price)
+```
+`r unhide()`
+
+:::{.exercise}
+**Exercise 9**
+
+1. Sort the `diamonds` dataset by ascending price.
+1. Show only the first five rows of the results.
+
+Your answer should look like this:
+
+```{r, echo=FALSE}
+diamonds %>%
+  arrange(price) %>%
+  head(5)
+```
+
+:::
+
+
+:::{.exercise}
+
+**Exercise 10**
+
+How big is the largest diamond in the `diamonds` dataset? `r fitb('5.01')` carats.
+
+What was the cut of the three largest diamonds in that dataset? `r fitb('Fair')`.
+
+:::
+
+
+# Combine `filter()` with `arrange()` {#filterarrange}
+
+![TODO: replace with video](images/video_placeholder.png)
+
+### Video summary
+
+- Pipelines combine functions to answer specific questions.
+- A good example of this is combining `filter()` and `arrange()`.
+
+### Code examples
+
+```{r}
+# show which years Kenyans had their lowest life expectancy
+gapminder %>%
+  filter(country == "Kenya") %>%
+  arrange(lifeExp) %>%
+  head(6)
+
+# show which year Kenyans with their life expectancy (just add '-')
+gapminder %>%
+  filter(country == "Kenya") %>%
+  arrange(-lifeExp) %>%
+  head(6)
+```
+
+`r hide('Show full video transcript and code')`
+What was the year Kenyans had the lowest life exp:
+
+```{r}
+gapminder %>%
+  filter(country == "Kenya") %>%
+  arrange(lifeExp) %>%
+  head(6)
+```
+
+What was the highest year? All that changes is the minus sign (reverse sorting)
+
+```{r}
+gapminder %>%
+  filter(country == "Kenya") %>%
+  arrange(-lifeExp) %>%
+  head(6)
+```
+
+`r unhide()`
+
+:::{.exercise}
+
+**Exercise 11**
+
+1. Sort all Asian countries in the `gapminder` dataset in ascending population order.
+1. Show only the first 10 rows.
+
+Your results should look like this:
+
+```{r, echo=FALSE}
+gapminder::gapminder %>%
+  filter(continent == "Asia") %>%
+  arrange(pop) %>%
+  head(10)
+```
+
+**Exercise 12**
+
+Use `filter()`, `arrange()` and `head()` to answer the following questions:
+
+The European country with the highest life expectancy is `r fitb('Iceland')`.
+
+The European country with the fifth largest population was recorded in which year? `r fitb('2007')`.
+:::
+
+
+
+PAUL - I'M WORRIED WEAKER STUDENTS WON'T GET THIS FAR.
+
+PERHAPS WE SHOULD PUSH SUMMARISE INTO SESSION 3? I CERTAINLY THINK THIS IS TRUE FOR GROUP-BY
+
+WE CAN MOTIVATE THIS BY FINDING LONG FORM DATA WE WANT TO SUMMARISE THEN RUN A T TEST ON.
+
+
+CAN YOU HAVE A THINK ABOUT HOW LONG EACH OF THE VIDEOS MIGHT RUN FOR? IF STUDENTS WATCHED ALL OF THEM WOULD IT TAKE > 1 HOUR? I THINK WE SHOULD PERHAPS AIM FOR VIDEOS TOTALLING <40 MINS, THEN EXPECT EXERCISES TO TAKE 40 MINS....
+I WILL HAVE ANOTHER READ THROUGH TOO
+
+
+
+ALTERNATIVELY, WE CAN SHOW THIS HERE AND THEN REPEAT AGAIN IN SESSION 3 TO DO THE T TEST... THAT WOULD ALSO BE GOOD
+
+
+
+The last two exercises are like the end of level "boss characters" in a computer game. To beat them, you need to select
+and combine skills you've learnt so far.
+
+
+## Extension exercise 1
+
+```{r, eval=FALSE, echo=FALSE}
+gapminder::gapminder %>%
+  filter(year == 1952) %>%
+  arrange(-lifeExp) %>%
+  head(1)
+```
+
+The country with the highest life expectancy in 1952 was `r fitb('Norway')`. (Hint: use `arrange()`, `filter()` and
+`head()` with the `gapminder` dataset.)
+
+## Extension exercise 2
+
+```{r, echo=FALSE, eval=FALSE}
+gapminder::gapminder %>%
+  group_by(continent) %>%
+  filter(year == "1987") %>%
+  summarise(average_gdp = mean(gdpPercap)) %>%
+  arrange(-average_gdp)
+```
+
+The continent with the highest mean per capita GDP in 1987 was `r fitb('Oceania')`. (Hint: use `filter()`, `arrange()`,
+`group_by()`, and `summarise()`.)
+
+## Extension exercise 4
+
+```{r, echo=FALSE, eval=FALSE}
+gapminder %>%
+  filter(continent == "Africa") %>%
+  filter(year < "2000") %>%
+  arrange(-pop, lifeExp)
+```
+
+Before the year 2000, the African country with the largest population and the lowest life expectancy was
+`r fitb('Nigeria')`.
+
+## Extension exercise 5
+
+Make a table which shows the average life expectancy for each continent, sorted from highest to lowest. It should look like this:
+
+```{r, echo=FALSE}
+gapminder %>%
+  group_by(continent) %>%
+  summarise(life_expectancy = mean(lifeExp)) %>%
+  arrange(-life_expectancy)
+```
+
+
+#### SORT AND ARRANGE CHECK YOUR KNOWLEDGE QUESTIONS
+1. How would you sort a `data.frame` by a numeric column in descending order? <!-- TODO: too easy? -->
+1. How would you select rows from a column which match a word, and then sort those rows in ascending order by a numeric column?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Some martial arts have a concept called 'Mushin'. A literal translation of this is 'mind without mind'. It denotes a state of mind achieved when free from thoughts of anger, fear, or ego, during combat or in everyday life. To achieve mushin takes **repeated practice** and complete familiarity with the technique required to act, so that technical details can fade into the background.
+
+We think there is an analogy to learning R here:
+
+- If you are anxious, stressed or avoidant you will be distracted and find it harder to learn.
+- Getting confident with the basics makes more complex techniques possible.
+
+This session is about building skills and mastering core techniques. We will use these skills throughout the course. If
+some parts are already familiar to you, that's fine.  If it is all new, be sure to complete all the exercises/practice
+problems.

@@ -1,5 +1,5 @@
 ---
-title: 'The way of the warrior (Bushido)'
+title: 'Looking for relationships'
 author: 'Ben Whalley, Paul Sharpe, Sonja Heintz'
 # date: "April 2021"
 bibliography: [references.bib]
@@ -15,6 +15,26 @@ source('_first_chunk.R')
 ```
 
 
-![](images/bushido.png)
+<!-- ![](images/bushido.png) -->
 
-> The way of the warrior; a moral code regulating attitudes, behaviour and lifestyle.
+
+
+*Describing and understanding relationships*
+
+- geom_smooth
+- correlation
+- corrplot/matrix
+- geom_smooth 
+
+
+
+<!-- - Summary tables to reveal patterns in data (use Simpson's paradox as teaching example) -->
+- ggsave
+- jitter
+
+
+
+
+*Testing hypotheses*
+
+- Using a Bayesian correlation to quantify evidence for a relationship
