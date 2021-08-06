@@ -1,0 +1,34 @@
+As we work, it's useful to be able to save the results of the code we write.
+
+For example, we might have a dataset where each row containts data from a single person, and a number of columns
+containing each person's answer to a particular questionnaire item. We might want to calculate a new column containing
+an average of each person's scores on all of the questions for use in later calculations.
+
+Alternatively, we might want to save the result of a specific calculation and use it later on.
+
+To do this we can create a **variable**.
+
+A variable is just a container to store data in. To make variables we use the assignment operator, which looks like this `<-`.
+
+That is, like an arrow that points to the left. This is a reminder that the results of the calculation on the right hand
+side will be assigned (stored) in the variable on the left hand side.
+
+```{r}
+# assign the current year to a variable
+current_year <- 2021
+
+# do a calculation to create a new variable
+next_year <- current_year + 1
+
+# print the variable we created to the console window
+next_year
+```
+
+The code in this chunk assigns the number 2021 to a new variable named `current_year`. It then creates another variable `next_year` which is the result of `current_year + 1`. The output of the chunk is `2021`, the value of `next_year`.
+
+Give your variables short names which describe the data they contain. Use the underscore `_` if you need to use more
+than one word e.g. `current_year`.
+
+You might wonder *where* these variables get saved. In most cases, variables you create are stored in what's called the
+`Global Environment`. You can see them in the **Environment** pane in RStudio. Double-clicking on any variable there
+will show you what is stored inside the container.
