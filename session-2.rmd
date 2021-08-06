@@ -15,6 +15,14 @@ source('_first_chunk.R')
 ```
 
 
+```{html, child="bs-tab-fix.html"}
+```
+
+
+```{css, child="video.css"}
+```
+
+
 # Overview
 
 **Make sure you are confident with all the material in the [previous session](session-1.html) before continuing.**

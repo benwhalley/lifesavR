@@ -15,30 +15,9 @@ output:
 source("_first_chunk.R")
 ```
 
-~~~{=html}
 
-<script type="text/javascript">
-$(document).ready(function()
-  {
-    
-    // jump to anchor in hash even if it is a bootstrap tab
-    url = window.location.href;
-    toshow = url.substring(url.indexOf("#") + 1);
-    // should prob check this is actually a bs tab or tab body before doign this
-    $("#"+toshow).click()
-  
-    // by default, bootstrap doesn't push the hash of specific tabs when switching... 
-    // do this too and then urls can be copied from the browser bar
-    $('.nav-tabs a').on('shown.bs.tab', function (e) {
-      // requires that tab element ids end in "-tab"
-      history.pushState(null,null,e.target.hash + "-tab");
-    })
-  
-  }
-)
-
-</script>
-~~~
+```{html, child="bs-tab-fix.html"}
+```
 
 
 ```{css, child="video.css"}
@@ -60,7 +39,6 @@ the activities in the blue boxes.**
 - [Using the RStudio interface](#using)
 - [What can R do?](#cando)
 - [Working interactively in R Markdown](#interactive)
-- [Creating a chunk](#chunk)
 - [Loading packages](#packages)
 - [Built-in datasets](#datasets)
 - [Exploring and checking data](#exploring)
