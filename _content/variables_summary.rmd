@@ -1,0 +1,5 @@
+- In R, a **variable** is the name for a *container* which *stores data*.
+- We make variables using the **assignment operator**, which looks like this: `<-`
+- Anything to the right of the `<-` symbol is stored in the variable named on left.
+- For example, `current_year <- 2021` stores the number `2021` in the variable `current_year`
+- Variables are stored in the `Global Environment` and are visible in the **Environment** pane.
