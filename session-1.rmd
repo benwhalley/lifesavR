@@ -381,8 +381,7 @@ revealed in Session 2.
 
 ### Extension exercise 1
 
-This scatterplot uses the `mtcars` dataset to show `displ` (displacement) on the x-axis against `cty` (mpg when driving in
-a city) on the y-axis.
+This scatterplot uses the `mtcars` dataset to show `disp` (displacement) on the x-axis against `mpg` (miles per gallon, or fuel economy) on the y-axis.
 
 ```{r, echo=FALSE}
 mtcars %>% 
@@ -396,8 +395,6 @@ In a new chunk, write the R code to produce this plot.
 
 
 :::{.exercise}
-
-
 
 ### Extension exercise 2
 
@@ -414,4 +411,9 @@ Make a scatterplot which shows the relationships betwwn petal widths and lengths
 
 
 # Further reading
+
+*Scatterplots and visualisation*: This book is an excellent resource for data visualisation in R. This chapter: <https://clauswilke.com/dataviz/visualizing-associations.html> shows many examples of 
+plots which display relationships between variables (including scatter plots) and so 
+would extend the material here.
+
 

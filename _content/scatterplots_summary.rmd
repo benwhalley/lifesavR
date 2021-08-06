@@ -1,5 +1,7 @@
 
-- A scatterplot shows the relationship between two variables by plotting their values as points.
-- The `tidyverse` package also loads the `mpg` dataset, which contains fuel economy data from 1999 to 2008 for 38 popular models of US cars.
-- The function `aes()` chooses the columns to use as data for the x and y axes.
-- The function `geom_point()` plots each pair of values as a point.
+- A scatterplot shows the *relationship* between two variables
+- Each observation must have two *continuous* values
+- These define the position on the x and y axes of the plot
+- Use `ggplot()` to make plots
+- `aes(x = ..., y = ...)` says which *columns* of data to use
+- `geom_point()` adds each pair of values as a point

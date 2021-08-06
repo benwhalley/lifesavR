@@ -18,9 +18,9 @@ gapminder
 
 ```{r, eval=F}
 # show first 6 rows of mtcars
-mtcars %>% head()
+head(mtcars)
 
 
 # shows all columns in happiness plus some data
-gapminder %>% glimpse()
+glimpse(gapminder)
 ```

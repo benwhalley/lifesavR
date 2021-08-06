@@ -1,2 +1,5 @@
-- R can do simple arithmetic, generate data and produce plots.
-- You need to tell R *exactly* what to do, by providing precise instructions.
+- R is a multi-purpose tool
+- It can do simple arithmetic, load data, make plots etc.
+- It can also run any statistical analysis you like
+- You need to tell R *exactly* what to do, by providing precise instructions
+- These instructions (code) provide a *reproducible record* of your work

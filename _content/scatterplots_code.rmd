@@ -1,7 +1,17 @@
 
 ```{r, eval=F}
-# make a scatterplot from the mpg dataset
-mpg %>%
-  ggplot(aes(cty, hwy)) + # choose data: x = cty, y = hwy
-    geom_point()          # plot x,y for each row (scatterplot)
+# make a scatterplot from the mtcars dataset
+mtcars %>%
+  ggplot(aes(x=wt, y=mpg)) + # selects the columns to use
+    geom_point()         # adds the points to the plot
+
+
+
+# the sample plot, but this time ommitting x= and y=
+# these are implicit in the order of wt and mpg.
+# the x axis comes first
+mtcars %>%
+  ggplot(aes(wt, mpg)) +
+    geom_point()         
+
 ```

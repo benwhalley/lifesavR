@@ -108,3 +108,16 @@ Other types include:
 * `ord` — short for 'ordered'; a variant of *fct* where the categories have a particular order (e.g. responses like 'Wost' < 'Better' < 'Best')
 
 The importance of knowing the type associated with a column will become clear in a later session.
+
+
+
+
+### Why are we talking about cars not psychology?
+
+- simpler, less cognitive overhead
+- concrete physical terms which are much harder to misunderstand or keep in mind
+- no specialist knowledge required
+- people are messy — cars are simpler!
+- in early stages, keeps things simple
+- the skills and concepts are the same; R and the techniques and statistics we teach are used across the natural sciences [show examples here]
+- we will be collecting psychological data soon enough though!
