@@ -14,34 +14,23 @@ output:
 source('_first_chunk.R')
 ```
 
+
 # Overview
 
+**Make sure you are confident with all the material in the [previous session](session-1.html) before continuing.**
 
+Here we introduce extra tricks for working
+with RStudio that are important to build confidence and make you productive.
 
-![TODO: replace with feelgood video](images/video_placeholder.png)
-
-`r hide('Show full video transcript and code')`
-In this session we cover:
-
-- Loading data from files
-- Saving intermediate steps using variables
-
-`r unhide()`
-
-<!-- - Provide stereotyped examples of the sorts of students positive/negative traits which relate to the theme of session - make it all more concrete -->
-<!-- Use quotes from previous students illustrating? -->
-
-# Principles/ideas
-
-- Using data to answer questions
-- Precision and literal-mindedness of R
-- Paths and directories
+At the end of the session, you will have used variables to store the result of your calculations,
+loaded data into R from a file, and used commands to select and summarise
+subsets of the data. These are important building blocks for later sessions.
 
 
 # Techniques covered
 
 - [Storing data in variables](#variables)
-- [Passing data to functions using the pipe `%>%`](#pipe)
+- [Passing data with pipes `%>%`](#pipe)
 - [Loading data from elsewhere](#loadingdata)
 - [The **Files** pane](#filespane)
 - [Uploading data files](#upload)
@@ -54,6 +43,7 @@ In this session we cover:
 <!-- ???  set up the teaching as a kind of treasure hunt where students have to find use data to answer questions, gather -->
 <!-- clues and spell out a word? Alternatively, just ask them to make *LOTs* of different plots using the techniques above, not -->
 <!-- just one: -->
+
 
 # Variables {#variables}
 

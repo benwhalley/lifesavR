@@ -2,9 +2,10 @@
 # assign the current year to a variable
 current_year <- 2021
 
-# do a calculation to create a new variable
-next_year <- current_year + 1
-
-# print the variable we created to the console window
+# print the variable we created
+# (it should display below the chunk, or in the console pane)
 next_year
+
+# do a calculation to create a new variable from an existing one
+next_year <- current_year + 1
 ```
