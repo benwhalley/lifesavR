@@ -316,7 +316,7 @@ We can use `read_csv()` to load data from either a file, or over the internet, w
 
 ```{r}
 # load data from a URL and assign it to a variable, called shootings
-shootings <- read_csv("https://benwhalley.github.io/lifesavR/data/shootings.csv")
+shootings <- read_csv("https://benwhalley.github.io/lifesavR/lifesavr/shootings.csv")
 
 # display the stored data
 shootings
@@ -335,7 +335,7 @@ variable `shootings`.
 The URL (the link to the CSV file) needs to be in quotes (single or double quotes both work).
 
 ```{r}
-shootings <- read_csv("https://benwhalley.github.io/lifesavR/data/shootings.csv")
+shootings <- read_csv("https://benwhalley.github.io/lifesavR/lifesavr/shootings.csv")
 ```
 
 Because we made a new variable, the result is stored in the Environment, and we can double-click it to have a look at the data.
@@ -349,7 +349,7 @@ shootings
 Or you can select the name of the variable in your code, and hit ctrl+Enter:
 [in this section of the video I select the word "shootings" and press ctrl+Enter. This has the same effect.]
 ```{r, eval=F}
-shootings <- read_csv("https://benwhalley.github.io/lifesavR/data/shootings.csv")
+shootings <- read_csv("https://benwhalley.github.io/lifesavR/lifesavr/shootings.csv")
 ```
 
 `r unhide()`
