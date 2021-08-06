@@ -64,7 +64,6 @@ video_data <- list(identifier = "using-r-studio-interface", ytidentifier = "yt-e
 
 
 
-
 # Before you start
 
 ```{r, echo=F}

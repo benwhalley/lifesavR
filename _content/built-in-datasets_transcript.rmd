@@ -40,10 +40,9 @@ All these terms are mostly interchangeable:
 
 ### Built in datasets
 
-There are quite a few data sets which are built into R to provide examples for beginners.
+There are many datasets built into R as examples for beginners.
 
-One of these built in datasets is called `mtcars`. This contains data about cars that was published in a US
-magazine called Motor Trend.
+One of these is called `mtcars`. This contains data about cars --- things like weight, fuel economy, engine size --- that was published in a US car magazine.
 
 Let's display this data in using a new chunk. As we did with the `diamonds` tibble, if we
 type `mtcars`, select the variable name and execute it, we can see the data it contains.
