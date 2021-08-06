@@ -147,11 +147,10 @@ video_data <- list(identifier = "loading-data-internet", ytidentifier = "yt-embe
 **Exercise 5**
 
 1. Create a new chunk.
-1. Read the data stored at <https://benwhalley.github.io/lifesavR/data/shootings.csv>
+1. Read the data stored at <https://benwhalley.github.io/lifesavR/lifesavr/shootings.csv>
 1. View it using the **Environment** pane.
 1. View it using `glimpse()`.
 :::
-
 
 ## Using data from your computer {#upload}
 
