@@ -71,11 +71,11 @@ video_data <- list(identifier = "variables", ytidentifier = "yt-embed")
 
 The output should look like this:
 
-![Results of creating `meaningoflife` variable](images/life.png)
+![Results of creating `meaningoflife` variable](images/variables.png)
 
 Your **Environment** pane should look like this:
 
-![Environment pane after creating variable](images/environment1.png)
+![Environment pane after creating variable](images/environment_variables.png)
 :::
 
 :::{.exercise}
