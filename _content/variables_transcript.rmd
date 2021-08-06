@@ -27,7 +27,7 @@ For example, we can write this:
 current_year <- 2021
 ```
 
-And we now have a variable called `current_year` which contains the number `2021`
+And we now have a variable called `current_year` which contains the number `2021`.
 
 
 The simplest way to check what a variable contains is to write it's name, and then
