@@ -1,0 +1,31 @@
+CSV files are a common format to store and share data. As shown in the previous video, the first line of a CSV file
+defines the column names, and the remaining lines are rows of data.
+
+The `read_csv()` function reads a CSV file, and converts it to a `data.frame`, which is the format we use in R.  We can load data either from a file, or over the internet.
+
+In this example, I'm reading a CSV directly over the Internet and storing the resulting `data.frame` in the
+variable `shootings`.
+
+The URL (the link to the CSV file) needs to be in quotes (single or double quotes both work).
+
+```{r}
+shootings <- read_csv("https://benwhalley.github.io/lifesavR/lifesavr/shootings.csv")
+```
+
+Because we made a new variable, the result is stored in the environment, and we can double-click the variable in the **Environment** tab to have a look at the data.
+
+[click on `shootings`]
+
+An alternative (and recommended) way is to simply type the name of the variable and run the line:
+
+```{r}
+shootings
+```
+
+You can also display the data by selecting the name of the variable in your code, and pressing ctrl+Enter, or cmd+Enter on a Mac:
+
+[Select the word `shootings` and press ctrl+Enter.]
+
+```{r, eval=F}
+shootings <- read_csv("https://benwhalley.github.io/lifesavR/lifesavr/shootings.csv")
+```
