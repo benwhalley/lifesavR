@@ -1245,7 +1245,7 @@ $(document).ready(function()
     // by default, bootstrap doesn't push the hash of specific tabs when switching... 
     // do this too and then urls can be copied from the browser bar
     $('.nav-tabs a').on('shown.bs.tab', function (e) {
-      // requirs that tab element ids enc in "-tab"
+      // requires that tab element ids end in "-tab"
       history.pushState(null,null,e.target.hash + "-tab");
     })
   
@@ -1272,10 +1272,14 @@ $(document).ready(function()
 .videowrapper {
   border:1px solid grey;
   padding:1em;
-  font-size:120%;
+  /* font-size:120%; */
 }
-.transcript { font-size:83.333333333%;}
-.code-examples { font-size:83.333333333%;}
+.transcript {
+  /* font-size:83.333333333%; */
+}
+.code-examples {
+  /* font-size:83.333333333%; */
+}
 
 
 .main-container {
@@ -1284,9 +1288,6 @@ $(document).ready(function()
     margin-right: auto;
 }
 
-.tablink {
-  float:right;
-}
 
 </style>
 <div id="overview" class="section level1">
@@ -1946,13 +1947,13 @@ Your browser does not support the video tag.
 <li>Use <code>head()</code> to show the first six rows of <code>gapminder</code>.</li>
 </ol>
 <p>Use the output to answer the following question. After entering your answer, click outside the box. The border will turn turn blue when the answer is correct.</p>
-<p>The population of Afghanistan in 1967 was: <span id="Q891652" class="webex-fitb"><input class="solveme  nospaces" data-digits="4" size="8" style="width:8em;" data-answer="[&quot;11537966&quot;]"></input><span class="solvedme"></span></span>.</p>
+<p>The population of Afghanistan in 1967 was: <span id="Q698047" class="webex-fitb"><input class="solveme  nospaces" data-digits="4" size="8" style="width:8em;" data-answer="[&quot;11537966&quot;]"></input><span class="solvedme"></span></span>.</p>
 <p><strong>Exercise 7</strong></p>
 <ol style="list-style-type: decimal">
 <li>Create a new chunk at the bottom of your worksheet.</li>
 <li>Use <code>glimpse</code> to display the <code>diamonds</code> dataset.</li>
 </ol>
-<p>The <code>clarity</code> variable in the <code>diamonds</code> tibble is of type <span id="Q149695" class="webex-fitb"><input class="solveme  nospaces" data-digits="4" size="3" style="width:3em;" data-answer="[&quot;ord&quot;]"></input><span class="solvedme"></span></span>.</p>
+<p>The <code>clarity</code> variable in the <code>diamonds</code> tibble is of type <span id="Q31527" class="webex-fitb"><input class="solveme  nospaces" data-digits="4" size="3" style="width:3em;" data-answer="[&quot;ord&quot;]"></input><span class="solvedme"></span></span>.</p>
 </div>
 </div>
 <div id="scatterplots" class="section level1">
