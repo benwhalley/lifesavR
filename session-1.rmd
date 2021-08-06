@@ -16,25 +16,26 @@ source("_first_chunk.R")
 ```
 
 ~~~{=html}
-<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
 
 <script type="text/javascript">
 $(document).ready(function()
   {
+    
+    // jump to anchor in hash even if it is a bootstrap tab
     url = window.location.href;
     toshow = url.substring(url.indexOf("#") + 1);
-    if(toshow.endsWith('-tab')){
-      $("#"+toshow).click()
-    }
+    // should prob check this is actually a bs tab or tab body before doign this
+    $("#"+toshow).click()
+  
+    // by default, bootstrap doesn't push the hash of specific tabs when switching... 
+    // do this too and then urls can be copied from the browser bar
+    $('.nav-tabs a').on('shown.bs.tab', function (e) {
+      // requires that tab element ids end in "-tab"
+      history.pushState(null,null,e.target.hash + "-tab");
+    })
+  
   }
 )
-
-new ClipboardJS('.tablink', {
-    text: function(trigger) {
-        return window.location.href.replace(window.location.hash,"") + trigger.getAttribute('data-clipboard-text');
-    }
-});
-
 
 </script>
 ~~~
@@ -293,7 +294,7 @@ video_data <- list(identifier = "built-in-datasets", ytidentifier = "yt-embed")
 :::{.exercise}
 **Exercise 5**
 
-1. Create a new chunk at the bottom of your workbook.
+1. Create a new chunk at the bottom of your workbook (`session-1.rmd`).
 1. Display the `mtcars` `data.frame` and try out the navigation buttons.
 1. Load the `gapminder` package.
 1. Display and explore the `gapminder` dataset.
@@ -305,13 +306,13 @@ video_data <- list(identifier = "built-in-datasets", ytidentifier = "yt-embed")
 :::{.exercise}
 **Exercise 6**
 
-1. Create a new chunk at the bottom of your worksheet.
+1. Create a new chunk at the bottom of your worksheet (`session-1.rmd`).
 1. Use `head()` to show the first six rows of `gapminder`.
 
 Use the output to answer the following question. After entering your answer, click outside the box. The border will turn
 turn blue when the answer is correct.
 
-The population of Afghanistan in 1967 was `r fitb('11537966')`.
+The population of Afghanistan in 1967 was: `r fitb('11537966')`.
 
 **Exercise 7**
 
@@ -365,45 +366,52 @@ Write an answer to each of these questions in the `Check your knowledge` section
 revealed in Session 2.
 
 1. How do you run part of a line of R code (using the keyboard short cut)?
-1. Which library do you usually need to load in your first R Markdown chunk?
+1. Which library will you always need to load in your first R Markdown chunk?
 1. What is `gapminder`?
 1. Which function would you use to explore the first few rows of a dataset?
-1. What is the 5th column in `gapminder`?
 1. Explain what `glimpse` does.
-1. Which function makes a plot?  (there are many, but we mean the one shown in this worksheet)
-1. Which function defines the axes on a plot?
-
+1. What is the 5th column in the `gapminder` dataset?
+1. Which function makes a plot?  (there are many, but we mean the one shown above)
+1. Which function says which columns of data are used in a plot?
 
 
 # Extension exercises
 
 :::{.exercise}
 
-### Extension exercise XXX
+### Extension exercise 1
 
-This scatterplot uses the `mpg` dataset to show `displ` (displacement) on the x-axis against `cty` (mpg when driving in
+This scatterplot uses the `mtcars` dataset to show `displ` (displacement) on the x-axis against `cty` (mpg when driving in
 a city) on the y-axis.
 
 ```{r, echo=FALSE}
-mpg %>% ggplot(aes(displ, cty)) +
+mtcars %>% 
+  ggplot(aes(disp, mpg)) +
   geom_point()
 ```
 
 In a new chunk, write the R code to produce this plot.
+
 :::
 
 
+:::{.exercise}
 
 
-### ADD NEW EXTENSION EXERCISE???
 
-(removed the ones which used color)
+### Extension exercise 2
+
+There is another built in dataset called `iris`.
+
+Use `glimpse` to get a list of the column names.
+
+Make a scatterplot which shows the relationships betwwn petal widths and lengths.
+
+:::
+
 
 
 
 
 # Further reading
 
-- The [R Markdown Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
-- The [R Markdown cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/)
-- Other [R Markdown resources](https://rmarkdown.rstudio.com/)

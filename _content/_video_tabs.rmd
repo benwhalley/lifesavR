@@ -35,10 +35,6 @@ t1c <- '
 <div class="tab-pane active video-summary" id="{{identifier}}-summary">
 
 
-<button class="tablink" data-clipboard-text="#{{identifier}}-summary-tab">
-Copy link
-</button>
-
 
 '
 
@@ -47,9 +43,6 @@ t2 <- '
 
 <!-- Code examples -->
 <div class="tab-pane fade code-examples" id="{{identifier}}-examples">
-<button class="tablink" data-clipboard-text="#{{identifier}}-examples-tab">
-Copy link
-</button>
 
 
 '
@@ -60,9 +53,7 @@ t3 <- '
 
 <!-- Full transcript of the video -->
 <div class="tab-pane fade transcript" id="{{identifier}}-transcript">
-<button class="tablink" data-clipboard-text="#{{identifier}}-transcript-tab">
-Copy link
-</button>
+
 
 '
 
