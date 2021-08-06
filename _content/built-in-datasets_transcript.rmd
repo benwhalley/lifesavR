@@ -114,10 +114,30 @@ The importance of knowing the type associated with a column will become clear in
 
 ### Why are we talking about cars not psychology?
 
-- simpler, less cognitive overhead
-- concrete physical terms which are much harder to misunderstand or keep in mind
-- no specialist knowledge required
-- people are messy — cars are simpler!
-- in early stages, keeps things simple
-- the skills and concepts are the same; R and the techniques and statistics we teach are used across the natural sciences [show examples here]
-- we will be collecting psychological data soon enough though!
+In this course we mostly use very simple dataset, including `mtcars`.
+
+Some students ask why we don't always use psychological examples — after all, this is a
+course of psychologists. If this hasn't troubled you then you could skip to the next section!
+
+------------
+
+
+We think the `mtcars` dataset (and others, like `diamonds`, `iris` and `gapminder`) have a number of benefits.
+
+First, they are either built into R, or loaded in common packages. This makes them easily available for everyone.
+
+Second, these data relate to concrete, easy to understand physical phenemena (e.g. weight, length, number of gears).
+This means you don't have to hold in mind any complex theoretical ideas for the examples to make sense.
+
+Third, the relationships in these datasets are clear, and there aren't too many data points. Psychological data are
+often more messy because many psychological constructs are hard to measure.
+
+
+Our experience is that, when learning R, it pays to keep everything as simple as it possibly can be.
+The skills and concepts involved in analysing these data are the same though.
+
+R --- and the techniques and statistics we teach --- are used right across the natural sciences
+
+[ TOOD show examples of plots and analyses here]
+
+If you're still not convinced — don't worry ... we'll be collecting our psychological data soon enough and analysing that too!
