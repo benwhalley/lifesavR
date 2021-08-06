@@ -17,10 +17,14 @@
 .videowrapper {
   border:1px solid grey;
   padding:1em;
-  font-size:120%;
+  /* font-size:120%; */
 }
-.transcript { font-size:83.333333333%;}
-.code-examples { font-size:83.333333333%;}
+.transcript {
+  /* font-size:83.333333333%; */
+}
+.code-examples {
+  /* font-size:83.333333333%; */
+}
 
 
 .main-container {
