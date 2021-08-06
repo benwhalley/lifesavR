@@ -8,6 +8,7 @@ csl: apa.csl
 link-citations: yes
 output:
   webex::html_clean
+
 ---
 
 ```{r, include=F, echo=F}
@@ -15,17 +16,8 @@ source("_first_chunk.R")
 ```
 
 
-
-<style>
-.videowrapper {
-  border:1px solid grey;
-  padding:1em;
-  font-size:120%;
-}
-#transcript { font-size:83.333333333%;}
-</style>
-
-
+```{css, child="video.css"}
+```
 
 # Overview
 
@@ -50,46 +42,39 @@ the activities in the blue boxes.**
 - [Making a scatterplot with `ggplot()`](#scatterplots)
 - [Introduction to Markdown](#markdown)
 
+
+
+
+
+
 # Using the RStudio interface {#using}
 
-![TODO: replace with video](images/video_placeholder.png)
 
-### Video summary
+```{r, echo=F}
+video_data <- list(identifier = "using-r-studio-interface", ytidentifier = "yt-embed", showcode=F)
+# makermds(video_data)
+```
 
-- Using a web browser to access [the RStudio Server at Plymouth University](https://rstudio.plymouth.ac.uk).
+```{r child = '_content/_video_tabs.rmd'}
+```
 
-:::{.tip}
-If you're using Windows or an older Mac we strongly recommend [downloading Firefox](https://www.mozilla.org/en-US/firefox/new/) and using that.  If you have any issues with RStudio this is likely the first suggestion we will make.
 
-- [Install Firefox now](https://www.mozilla.org/en-US/firefox/new/)
-:::
 
-When you login to RStudio, you'll be greeted with a screen that looks something like the image below.
 
-![RStudio on first opening](images/rstudio-new.png)
 
-You can see three parts:
 
-1. The **Console** - This is the large rectangle on the left. It is where you tell R what to do, and where R prints the answers to your questions.
 
-2. The **Environment** - This is the rectangle on the top right. It is where R keeps a list of the data it knows about. It's empty at the moment, because we haven't given R any data yet.
-
-3. The **Files** - This is the rectangle on the bottom right. It's a bit like the _File Explorer_ in Windows, or the _Finder_ on a Mac. It shows you what files and folders R can see.
-
-You should also be able to see that the two rectangles on the right have a number of other "tabs". These work like tabs on a web browser.  
-
-The top rectangle has the tabs **Environment** and **History**. The **History** tab keeps a record of what you've recently typed into the **Console**. This can sometimes be useful.
-
-The bottom rectangle has the tabs **Files**, **Plots**, **Packages**, **Help**, and **Viewer**. We'll cover what these other tabs do later on.
 
 # Before you start
 
-![TODO: replace with video](images/video_placeholder.png)
+```{r, echo=F}
+video_data <- list(identifier = "before-you-start", ytidentifier = "yt-embed")
+# makermds(video_data)
+```
 
-### Video summary
+```{r child = '_content/_video_tabs.rmd'}
+```
 
-- Before starting this module, you need to run some R code which makes a folder and downloads the files you
-will need for each workshop.
 
 :::{.exercise}
 
@@ -106,168 +91,58 @@ Press <span class="keyshape">↩</span> to run the code. If your console looks l
 ![](images/bootstrap_success.png)
 :::
 
-## Using the workbooks
 
-Each session has an associated "workbook" file which you will use to complete the exercises in the worksheet.
 
-`r hide('Show full video transcript and code')`
-Each session has an associated "workbook" file which you will use to complete the exercises in the worksheet. The file
-you need for this session is called `session-1.rmd`.
 
-If you click on the file it opens the workbook in a tab of a new pane, called the **Source** pane. It's called the
-**Source** pane because statements writting in the R language are often referred to as 'R code', which is shorthand for
-'R source code'. The **source** pane allows you to write R code and explore your data.
-`r unhide()`
+# Using the workbooks
+
+```{r, echo=F}
+video_data <- list(identifier = "using-the-workbooks",
+                   showcode = F,
+                   ytidentifier = "yt-embed")
+# makermds(video_data)
+```
+
+```{r child = '_content/_video_tabs.rmd'}
+```
+
 
 :::{.exercise}
+
 Click on `session-1.rmd` in the **Files** pane.
+
+If you're able to open this file you are now ready to start the rest of the session.
+
 :::
 
-You're now ready to start the session.
+
 
 # What can R do? {#cando}
 
-![TODO: replace with video](images/video_placeholder.png)
-
-### Video summary
-
-- R can do simple arithmetic, generate data and produce plots.
-- You need to tell R *exactly* what to do, by providing precise instructions.
-
-### Code examples
-
-```{r}
-# multiply two numbers
-2 * 221
-
-# generate some random numbers with a normal distribution
-rnorm(10, 0,1)
-
-# histogram plot of random numbers
-hist(rnorm(100, 0,1))
+```{r, echo=F}
+video_data <- list(identifier = "what-can-r-do", ytidentifier = "yt-embed")
 ```
 
-`r hide('Show full video transcript and code')`
-RStudio is a user interface to R, which is a computer language that is primarily designed for data analysis and
-visualisation. R is a text-based language, so you interact with it by typing and then running statements which have a
-meaning in the R language.
+```{r child = '_content/_video_tabs.rmd'}
+```
 
-R Studio makes it easy to run R code and organise your work. For example, you can do simple arithmetic [`2 * 221`],
-generate some random numbers with a [normal distribution](https://www.khanacademy.org/math/statistics-probability/modeling-distributions-of-data/normal-distributions-library/a/normal-distributions-review) [`rnorm(10, 0,1)`], and plot some random numbers [`hist(rnorm(100, 0,1))`].
 
-You should think of R as a robot. The robot is extremely fast, powerful and tireless; but it’s also literal-minded, and
-won’t think for itself or take the initiative. You need to tell it *exactly* what to do, by providing very precise
-instructions.
-
-`r unhide()`
 
 # Working interactively in R Markdown {#interactive}
 
-![TODO: replace with video](images/video_placeholder.png)
-
-### Video summary
-
-- R Markdown documents are a way of combining R "chunks" with narrative text.
-- A chunk contains R code which can be run interactively.
-- Chunks are opened using the symbols `` ```{r} ``, and closed using the symbols `` ``` ``.
-- Anything outside a chunk is just narrative (regular) text, and not treated as code.
-
-`r hide('Show full video transcript and code')`
-
-R Markdown is a file format which allows us to combine R code with narrative text.
-It allows you to integrate the results of your data analysis
-into high quality reports, research papers, dissertations or books. Because it's such a powerful tool, this module
-provides an early introduction to R Markdown.
-
-**R Markdown documents can also be used interactively inside RStudio to run R code.**
-
-If you [click on the `lifesavr` folder in the **Files**
-pane of RStudio], you'll notice that some files have the extension `.rmd`.
-These are R Markdown files. The file extension `.rmd` (or .`Rmd`) is important,
-because this is how R Studio knows that the files contain a mixture of R code
-and narrative text.
-
-RStudio needs to distinguish R code from regular narrative text.
-This is done by putting the code inside some special
-characters, creating what's referred to as a `chunk`.
-A chunk is opened using the symbols `` ```{r} ``, and closed using
-the symbols `` ``` ``. This is what a chunk looks like in RStudio:
-
-![A code chunk in the RMarkdown editor](images/r-code-chunk.png)
-
-_NOTE:_ The symbols which start and end a chunk are _backticks_, not single quotes.
-
-`r hide("Can't find the backticks on your keyboard?")`
-![On windows](images/backtick-windows-uk.png)
-
-![On a Mac](images/backtick-mac-uk.png)
-`r unhide()`
-
-`r unhide()`
-
-## Running R code within a chunk
-
-<!-- TODO: re-record VIDEO of running code in a chunk -->
-
-<video width="100%" controls id="chunks">
-  <source src="videos/chunks.mp4" type="video/mp4" />
-  <track label="English" kind="subtitles" srclang="en" src="videos/chunks.vtt" />
-</video>
-<script>
-v = document.getElementById("chunks")
-v.textTracks[0].mode = "showing";  // or "hidden"
-</script>
-
-```{=html}
-<style>
- .keyshape {
-    /*Box Properties*/
-    display:inline-block;
-    width:48px;
-    height:48px;
-    margin: 0px 4px;
-    background: #fff;
-    border-radius: 4px;
-    box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.5);
-    /*Text Properties*/
-    font: 18px/48px Helvetica, serif;
-    text-align: center;
-    color: #666;
-}
-</style>
+```{r, echo=F}
+video_data <- list(identifier = "working-interactively-in-r", ytidentifier = "yt-embed", showcode=F)
+# makermds(video_data)
 ```
 
-### Video summary
+```{r child = '_content/_video_tabs.rmd'}
+```
 
-- To run a line of code in a chunk, place your cursor on the line and press <span class="keyshape">Ctrl</span> + <span class="keyshape">↵</span> on Windows or Linux, or <span class="keyshape">⌘</span> + <span class="keyshape">↩</span> on a Mac.
-- You can run part of a line by first selecting only the code you want to run.
-- Pressing the green arrow on the right hand side of the chunk to run all code within a chunk.
 
-`r hide('Show full video transcript and code')`
-There are three ways to run R code within a chunk. The first is to run a complete line of code. You can
-see here that our cursor is on line 12. The cursor can be anywhere on that line. To run the line, press
-<span class="keyshape">Ctrl</span> + <span class="keyshape">↵</span> on Windows or Linux, or <span
-class="keyshape">⌘</span> + <span class="keyshape">↩</span> on a Mac.
-
-You'll see some output beneath the chunk that you don't need to worry about for now, but one of the effects of running
-this code is to load a dataset about diamonds.
-
-The cursor has been automatically positioned online 13. Lines 13 to 15 are actually part of the same statement. We use the
-same keys, <span class="keyshape">Ctrl</span> + <span class="keyshape">↵</span>, to run these lines, which generate a
-scatter plot using the diamonds dataset. Don't worry how these statements work for now.
-
-The second way to run code is to select only the parts you want to execute. If you select just the word diamonds on line
-13 and run that, you will see that it does something different. This prints the contents of the diamonds data. Because
-the dataset is large, it just prints the first few rows.
-
-Finally, you often want to run all of the code in a chunk. This can be done by pressing the green arrow on the right hand side of the chunk. Another way to run all of the code is to position your cursor anywhere within the chunk and press
-<span class="keyshape">Ctrl</span> + <span class="keyshape">⇧</span> + <span class="keyshape">↵</span> (Windows, Linux) or
-<span class="keyshape">⌘</span> + <span class="keyshape">⇧</span> + <span class="keyshape">↩</span> (Mac).
-`r unhide()`
 
 :::{.exercise}
-**Exercise 1**
 
+**Exercise 1**
 
 1. Locate the first chunk in `session-1.rmd` (you find this in the 'files' pane)
 1. Place your cursor (anywhere) on the line that says `library(tidyverse)`
@@ -275,6 +150,11 @@ Finally, you often want to run all of the code in a chunk. This can be done by p
 <span class="keyshape">⌘</span> + <span class="keyshape">↩</span> (Mac)
 
 You will see some output appear beneath the chunk. Don't worry about the details for now, we'll explain those later.
+
+:::
+
+
+:::{.exercise}
 
 **Exercise 2**
 
@@ -287,12 +167,19 @@ diamonds %>%
   ggplot(aes(carat, price)) +
   geom_point()
 ```
+
+
 :::
 
+
 Congratulations! You have just run your first lines of R. The code to produce the plot consisted of three lines. You can
-also run part of a line by highlighting the code you want to run:
+also run part of a line by highlighting just the code you want to run, as you'll see in the next exercise.
+
+
+
 
 :::{.exercise}
+
 **Exercise 3**
 
 1. Select (highlight) the word `diamonds`.
@@ -301,107 +188,51 @@ also run part of a line by highlighting the code you want to run:
 This prints the first few lines of the diamonds data:
 
 ![Example of running highlighted code](images/diamonds.png)
+
 :::
 
 
-### Section summary
 
-Why would you want to run part of a line of code? In these workshops you will combine simple steps into sequences which
-do a particular job, such as generating a plot. It's natural, especially when you're new to R, that your code won't do
-exactly what you want first time.
-
-Running part of your code allows you to identify whether each individual step is correct.
-This allows you to modify subsequent steps until your code produces the required results.
-
-**Remember this technique; you will be using it extensively in these workshops.**
-
-
-## Inserting a chunk {#chunk}
-
-![TODO: replace with video](images/video_placeholder.png)
-
-TODO: DO we need video transcript here?
-
-### Video summary
-
-- You insert a new chunk by positioning your cursor on the line where you want the chunk to appear, and selecting the
-`Code > Insert Chunk` menu option.
-- There are also keyboard shortcuts for inserting a chunk:
-
-```{=html}
-<p>Windows, Linux: <span class="keyshape">Ctrl</span> + <span class="keyshape">Alt</span> + <span class="keyshape">I</span>
-<p>Mac: <span class="keyshape">⌘</span> + <span class="keyshape">I</span>
-</p>
-```
 
 :::{.exercise}
 
-**Exercise 4**
+**Exercise 4: Making new chunks**
 
 1. Find the instructions for Exercise 4 in your workbook.
 1. Create a new chunk below the instructions.
-1. Inside the chunk, write a line of code which adds together the numbers 9, 4, 55 and 2, and assigns the result to a variable named `sum`.
+1. Inside the chunk, write a line of code which adds together the numbers 9, 4, 55 and 2, and assigns the result to a variable named `totalscore`.
 1. Run the the line of code you have written.
 
 After completing these steps, your environment should look like this:
 
+
+<!-- XXX TODO PAUL this image needs changing to read totalscore not sum and also shouldn't have meaningoflife any more -->
+
 ![Environment after Exercise 1](images/ex1.png)
+
 :::
+
+
+
+
+
 
 # Loading packages {#packages}
 
+```{r, echo=F}
+video_data <- list(identifier = "loading-packages", ytidentifier = "yt-embed")
+# makermds(video_data)
+```
 
-<div class="videowrapper">
-
-<div style="padding:70.73% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/367784757?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Looking at imported data in the Environment pane"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
-
-
-<ul class="nav nav-tabs" id="myTab" role="tablist">
-  <li class="nav-item">
-    <a class="nav-link active" id="summary-tab" data-toggle="tab" href="#packages-summary">Video summary</a>
-  </li>12
-  <li class="nav-item">
-    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#packages-examples">Code examples</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="transcript-tab" data-toggle="tab" href="#packages-transcript">Full Transcript</a>
-  </li>
-</ul>
-<div class="tab-content">
-<div class="tab-pane active" id="packages-summary">
-<!-- Summary -->
-- Loading a 'package' adds functionality to R.
-- Some packages (like `tidyverse`) also load datasets.
-
-</div>
-<div class="tab-pane fade" id="packages-examples">
-<!-- Code examples -->
-
-The following R code is used in the video:
-
-```{r}
-# load the tidyverse package
-# also loads the diamonds dataset
-library(tidyverse)
+```{r child = '_content/_video_tabs.rmd'}
 ```
 
 
-</div>
-<div class="tab-pane fade" id="packages-transcript">
-<!-- Full transcript of the video -->
-
-By loading 'packages', you can add functions and datasets to R. Packages are a powerful feature which allow R to be
-extended to analyse or plot data in any way imaginable. A package (sometimes called a library) is an extension to R that
-adds new functions and/or datasets. Packages are loaded using the `library()` function.
-
-The first function you ran above was `library(tidyverse)`. This loaded additional functions needed to create the scatter
-plot, and also the diamonds data. The `tidyverse` package is so fundamental to this course that `library(tidyverse)` is
-likely to be the first line of R in the first chunk of each of your R Markdown files.
 
 :::{.tip}
 
 If you've understood what packages are then it should be clear that you can't use the functions provided by `tidyverse`
-(and the additional packages it loads) until you've run `library(tidyverse)`.
+until you've run the command: `library(tidyverse)`.
 
 For example, if you tried to produce the scatter plot before loading `tidyverse` you'd see an error like this in the
 console:
@@ -411,80 +242,30 @@ Error in diamonds %>% ggplot(aes(carat, price, colour = clarity)) :
   could not find function "%>%"
 </pre>
 
-We mention this here, as `could not find function` errors are one of the most common problems that beginners encounter. They normally mean that you have
+**This is important** because `could not find function` errors are one of the most common problems
+that beginners encounter. They normally mean that you have
 
 1. forgotten to include `library(tidyverse)` as the first line in your code, or
 1. forgotten to *run* that line.
-:::
-
-
-
-</div>
-</div>
-</div>
-<!--end tabs and video wrapper -->
-
-
-
-
-:::{.exercise}
-
-This section didn't actually have one, but exercises for each section would come below.
-
-:::
-
-
-Other narrative could be interspersed, with more code explained and for students to follow along.
-
-
-
-:::{.exercise}
-
-More exercises
 
 :::
 
 
 
-# Built-in datasets {#datasets}
+
+# Datasets {#datasets}
 
 
 
-![TODO: replace with video](images/video_placeholder.png)
-
-### Video summary
-
-- R has a number of built-in datasets.
-- Many datasets are stored in a type of variable called a `data.frame` (or a similar type of variable called a `tibble`).
-- Additional datasets are included with some packages, for example, `gapminder`.
-- You can display a `data.frame` by typing its name on a line and running that code.
-
-### Code examples
-
-```{r}
-# load the gapminder dataset
-library(gapminder)
+```{r, echo=F}
+video_data <- list(identifier = "built-in-datasets", ytidentifier = "yt-embed")
+# makermds(video_data)
 ```
 
-`r hide('Show full video transcript and code')`
-A dataset is a set of data relating to a particular topic. Most datasets we will be working with consist of rows and
-columns, just like a spreadsheet. In R this type of data is stored in a special type of variable called a
-`data.frame`. You will also see references to datasets as `tibbles`. A `tibble` is just a special type of `data.frame`,
-so you can treat the two types of variable as being equivalent.
+```{r child = '_content/_video_tabs.rmd'}
+```
 
-One `data.frame` that is built-in to R is called `mtcars`. This is a dataset about cars that was published in a US
-magazine called Motor Trend. Let's display this data in using a new chunk. As we did with the `diamonds` tibble, if we
-type `mtcars`, select the variable name and execute it, we can see the data it contains.
 
-By default this displays only the first ten rows and columns of the data. You can see other rows using the `Next`,
-`Previous` and number buttons below the data. You can see additional columns using the arrow next to the final,
-right-hand column.
-
-You already know that the diamonds dataset was loaded using `library(tidyverse)`. The `gapminder` package includes a
-tibble that contains data about life expectancy, GDP per capita, and population by country. We can load and explore this
-dataset in a the same way we loaded diamonds dataset. We load the `gapminder` package, type the name of the tibble (also
-`gapminder`) and run it. Again, we can use the navigation buttons to explore the data.
-`r unhide()`
 
 :::{.exercise}
 **Exercise 5**
@@ -495,59 +276,8 @@ dataset in a the same way we loaded diamonds dataset. We load the `gapminder` pa
 1. Display and explore the `gapminder` dataset.
 :::
 
-# Exploring and checking data {#exploring}
 
-![TODO: replace with video](images/video_placeholder.png)
 
-### Video summary
-
-- R Studio has lots of different ways to explore datasets. We recommend the following three.
-- The `head()` function shows the first few rows of a dataset.
-- The **Environment** pane shows the dataset in a spreadsheet-like view.
-- The `glimpse()` function shows a list of all the columns in a dataset (useful when there are many columns).
-
-### Code examples
-
-```{r}
-# show first 6 rows of mtcars
-mtcars %>%
-  head()
-
-# load happiness data.frame
-happiness <- read_csv("data/world-happiness-report-2021.csv")
-
-# shows all columns in happiness
-happiness %>%
-  glimpse()
-```
-
-`r hide('Show full video transcript and code')`
-The `head()` function allows you to explore the first few rows of a dataset. The code `mtcars %>% head()` prints the
-first six rows of `mtcars`. The `%>%` function is called the 'pipe'. We'll explain more about how it works in the next
-session. For now, all you need to know is that the function on the right hand side of the pipe (`head()`) is applied to
-whatever is on the left hand side (in this case, the `mtcars` dataset).
-
-The `glimpse()` function is useful for exploring datasets with lots of columns, as it allows you to see all columns at
-once. Using `glimpse()` we can have the columns of a dataset run down the page, and data run across.
-
-The [World Happiness Report](https://www.kaggle.com/ajaypalsinghlo/world-happiness-report-2021) is a survey of the state
-of global happiness. Running the code `happiness %>% glimpse()` shows all of the columns. This is like rotating the
-output you saw earlier anti-clockwise by 90 degrees. The code displays all of the columns as rows, and as many
-observations from the dataset as will fit on a single line.
-
-Each column in a `data.frame` has an associated type. The second column of the `glimpse` output shows you the type of each column. This dataset includes columns with two types:
-
-* *dbl* is short for 'double-precision number', a number with one or more decimal places
-* *chr* — short for 'character', a variable which contains text (e.g. an email address)
-
-Other types include:
-
-* *fct* is short for 'factor', a categorical variable (e.g. a specific response to a multiple-choice question)
-* *int* is short for 'integer', a variable which contains whole numbers (e.g. a participant id number), and
-* *ord* — short for 'ordered'; a variant of *fct* where the categories have a particular order (e.g. responses like 'Wost' < 'Better' < 'Best')
-
-The importance of knowing the type associated with a column will become clear in a later session.
-`r unhide()`
 
 :::{.exercise}
 **Exercise 6**
@@ -568,41 +298,23 @@ The population of Afghanistan in 1967 was `r fitb('11537966')`.
 The `clarity` variable in the `diamonds` tibble is of type `r fitb('ord')`.
 :::
 
-# Making a scatterplot with `ggplot()` {#scatterplots}
 
-![TODO: replace with video](images/video_placeholder.png)
 
-### Video summary
+# Scatterplots  {#scatterplots}
 
-- A scatterplot shows the relationship between two variables by plotting their values as points.
-- The `tidyverse` package also loads the `mpg` dataset, which contains fuel economy data from 1999 to 2008 for 38 popular models of US cars.
-- The function `aes()` chooses the columns to use as data for the x and y axes.
-- The function `geom_point()` plots each pair of values as a point.
 
-### Code examples
-
-```{r}
-mpg %>%
-  ggplot(aes(cty, hwy)) + # choose data: x = cty, y = hwy
-    geom_point()          # plot x,y for each row (scatterplot)
+```{r, echo=F}
+video_data <- list(identifier = "scatterplots", ytidentifier = "yt-embed")
+# makermds(video_data)
 ```
 
-`r hide('Show full video transcript and code')`
-A scatterplot shows the relationship between two variables by plotting their values as points.
+```{r child = '_content/_video_tabs.rmd'}
+```
 
-This chunk creates a scatter plot by piping the `mpg` data into the `ggplot()` function. The plot is built in two steps. The
-first step, `ggplot(aes(cty, hwy))` selects variables for the x and y axes. In this case, miles per gallon (mpg) when
-cars are driven in the city (`cty`) will be the x-axis, and mpg when cars are driven on the highway (`hwy`) will be the
-y-axis. We can [see the axes by running just this part of the function].
 
-In `ggplot`, each step is separated by `+` and goes on a new line. Because R Studio knows this is all part of the same
-'pipeline', it automatically indents the code.
-
-The second step `geom_point()` is a function which plots the data as points. If we [run the chunk], we see a scatter plot. A
-point is plotted for each row, using the values for the `cty` and `hwy` variables.
-`r unhide()`
 
 :::{.exercise}
+
 **Exercise 8**
 
 1. Create a new chunk at the bottom of your worksheet.
@@ -618,84 +330,29 @@ mpg %>% ggplot(aes(displ, hwy)) +
 :::
 
 
-# Introduction to Markdown {#markdown}
 
-![TODO: replace with video](images/video_placeholder.png)
 
-### Video summary
+<!-- markdown moved to later session -->
 
-- 'Markdown' commands allow you to format the narrative text in your R Markdown files.
-  - `#` creates a first level heading (the largest size)
-  - `##` creates a second level heading (next largest). Using `###` and `####` makes even smaller headings.
-  - `**bold text**` makes **bold text**
-  - `*italic text*` makes *italic text*
-- Press the `Knit` button to run your R chunks, format your markdown and combined them into an output document.
 
-`r hide('Show full video transcript and code')`
-Markdown uses special characters to style text in the same way you might use menus in a word processor to define
-headings, font styles, lists etc. Your workbook contains examples of the main markdown commands you will need:
-
-* The `#` at the start of `# lifesaveR: Workbook 1` assigns the text `lifesaveR: Workbook 1` as a first level heading (the largest size)
-* The sentence below that heading is ordinary text
-* `## An example plot` is a second level heading (next largest). Using `###` and `####` makes even smaller headings
-* `**bold text**` makes **bold text**
-* `*italic text*` makes *italic text*
-* The lines beginning `1.` under `# Exercise 1` create a numbered list, starting at 1
-
-The `Knit` button combines the markdown and R chunks, 'knitting' them together into an output document. It works through
-your document converting markdown to formatted text, and running each of your R chunks, **in the order you have written
-them**. You can see that this is the case by 'knitting' the R Markdown workbook for this session.
-
-The following simple approach will give you regular practice writing markdown:
-
-1. Each time you reach a new section in a worksheet, copy the section name (e.g. 'Exploring and checking data') into a
-level 2 heading in your workbook
-1. Before starting each exercise, create a level 3 heading for the exercise number [e.g. `### Exercise 5`]
-1. Copy the exercise instructions below this as a bullet list
-1. Add any additional notes that remind you what you have learnt in this section [e.g. `Some data is *built-in* to R.`]
-1. Complete the exercise.
-
-This methodical approach will allow you to complete each workbook step by step. At the end of each session, you will
-have written a neat, 'summary' document which will be a useful revision aid. The same approach works for all R
-worksheets at the University of Plymouth. If you get into this habit, you will be adding to your 'reference library'
-whenever you complete a worksheet. These summary documents are invaluable when you are more familiar with R but need to
-quickly remind yourself how to use a particular feature.
-
-The [outline button] in R Studio shows you an outline of your document using the headings you have defined. This makes it easy to find a particular topic and the exercises you have completed to learn about each topic.
-
-The [R Markdown Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) is a useful
-quick reference for markdown syntax.
-`r unhide()`
-
-:::{.exercise}
-**Exercise 11**
-
-1. For each of the chunks you wrote for Exercises 4-7:
-  i) Add the section name as a level 2 heading.
-  i) Add the exercise number as a level 3 heading.
-  i) Add the instructions as a numbered list (or as plain text if there's only one instruction).
-2. Use the outline feature to explore the document.
-3. Knit the document.
-:::
 
 # Check your knowledge
 
 Write an answer to each of these questions in the `Check your knowledge` section of your workbook. The answers will be
 revealed in Session 2.
 
-1. How do you run part of a line of R code?
-1. Which library do you need to load in your first R Markdown chunk?
+1. How do you run part of a line of R code (using the keyboard short cut)?
+1. Which library do you usually need to load in your first R Markdown chunk?
 1. What is `gapminder`?
 1. Which function would you use to explore the first few rows of a dataset?
 1. What is the 5th column in `gapminder`?
 1. Explain what `glimpse` does.
-1. Which function makes a plot?
+1. Which function makes a plot?  (there are many, but we mean the one shown in this worksheet)
 1. Which function defines the axes on a plot?
-1. How do you use markdown to make a level 3 heading?
+
+
 
 # Extension exercises
-
-
 
 :::{.exercise}
 
@@ -715,7 +372,7 @@ In a new chunk, write the R code to produce this plot.
 
 
 
-### ADD NEW EXTENSION EXERCISE...
+### ADD NEW EXTENSION EXERCISE???
 
 (removed the ones which used color)
 

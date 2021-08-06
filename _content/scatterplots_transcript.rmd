@@ -1,0 +1,12 @@
+A scatterplot shows the relationship between two variables by plotting their values as points.
+
+This chunk creates a scatter plot by piping the `mpg` data into the `ggplot()` function. The plot is built in two steps. The
+first step, `ggplot(aes(cty, hwy))` selects variables for the x and y axes. In this case, miles per gallon (mpg) when
+cars are driven in the city (`cty`) will be the x-axis, and mpg when cars are driven on the highway (`hwy`) will be the
+y-axis. We can [see the axes by running just this part of the function].
+
+In `ggplot`, each step is separated by `+` and goes on a new line. Because R Studio knows this is all part of the same
+'pipeline', it automatically indents the code.
+
+The second step `geom_point()` is a function which plots the data as points. If we [run the chunk], we see a scatter plot. A
+point is plotted for each row, using the values for the `cty` and `hwy` variables.

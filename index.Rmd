@@ -19,6 +19,9 @@ source('_first_chunk.R')
 
 
 
+
+
+
 ### Quick links
 
 
@@ -57,7 +60,7 @@ In martial arts, a blow to the head is direct and effective feedback that your b
 
 # Using these worksheets
 
-These worksheets are designed based on student feedback over several years. 
+These worksheets are designed based on student feedback over several years.
 
 **They are intended to be used in supported workshops where students work at their own pace, individually or in pairs, with experts on hand to answer questions and resolve problems quickly.** You can also use the worksheets alone, or without support, although we don't recommend this; in the early stages students can often become stuck or demoralised when they are bogged down with lots of simple errors.
 
@@ -119,7 +122,7 @@ examples here is to the school's RStudio Server.
 -   [Login to your account on the server here](https://rstudio.plymouth.ac.uk)
 
 
-Unless you are very proficient with R, don't try to install it on your own computer, 
+Unless you are very proficient with R, don't try to install it on your own computer,
 at least to begin with. We find creates unecessary problems, and staff can't help
 you debug problems unless they are evident when using the school RStudio server.
 

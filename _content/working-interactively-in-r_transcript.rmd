@@ -1,0 +1,108 @@
+### RMarkdown documents are a good way to use R
+
+RMarkdown is a file format which combines R code (chunks) with regular text.
+
+
+RMarkdown can combine data analysis and graphs with explanatory text.
+
+[Show example of an Rmd document]
+
+In the finished document, the Code is evaluated and the results are interspersed with text.
+
+This allows us to make high quality reports, research papers, dissertations or books.
+
+Because it's such a powerful tool, this module provides an early introduction to RMarkdown, although we don't introduce all it's features just yet.
+
+For the moment, we'll only be using Rmd document as an interactive interface for running R code and looking at the results R produces.
+
+
+### R Markdown documents can be used interactively in RStudio
+
+One neat feature of Rmd files is that, when you open them in RStudio, they
+make it easy to organise and run R code, and see the outputs.
+
+If you click on the `lifesavr` folder in the **Files** pane of RStudio,
+
+[click on files folder in video]
+
+you'll notice that some files have the extension `.rmd`. These are R Markdown files.
+
+[highlight file extension by selecting or pointing with mouse]
+
+The file extension `.rmd` (or .`Rmd`) is important, because this is how R Studio knows that the files contain a mixture of R code and regular text.
+
+
+### Code chunks
+
+RStudio needs to distinguish R code from regular narrative text.
+
+This is done by putting the code inside some special
+characters, creating a `chunk`.
+
+A chunk is opened using the symbols `` ```{r} ``, and closed using
+the symbols `` ``` ``. This is what a chunk looks like in RStudio:
+
+![A code chunk in the RMarkdown editor](images/r-code-chunk.png)
+
+---------
+
+
+_NOTE:_ The symbols which start and end a chunk are _backticks_, not single quotes. The difference is quite subtle.
+
+
+Backticks are on your keyboard here if you're on Windows:
+
+![On windows](images/backtick-windows-uk.png)
+
+Or here if you're on a Mac:
+
+![On a Mac](images/backtick-mac-uk.png)
+
+
+
+
+
+
+### Running R code inside chunks
+
+<!-- TODO: re-record VIDEO of running code in a chunk -->
+
+There are three ways to run R code within a chunk.
+
+The first is to run a complete line of code.
+
+You can see here that our cursor is on line 12. The cursor can be anywhere on that line. To run the line, press
+<span class="keyshape">Ctrl</span> + <span class="keyshape">↵</span> on Windows or Linux, or <span
+class="keyshape">⌘</span> + <span class="keyshape">↩</span> on a Mac.
+
+Pressing these keys has run or executed that line of code.
+
+You'll see some output beneath the chunk that you don't need to worry about for now, but one of the effects of running
+this code is to load a dataset about diamonds (prices, sizes, quality, etc).
+
+
+Now that line 12 has been run, the cursor has been pushed down to line 13.
+
+Lines 13 to 15 are actually part of the same statement — that is, R knows they are related to one another.
+
+We use the same keys, <span class="keyshape">Ctrl</span> + <span class="keyshape">↵</span>, to run these lines.
+This generates a scatter plot using the diamonds dataset. Don't worry how these statements work for now —
+the point here is to show you that we can run code interactively using Rmarkdown.
+
+
+The second way to run code is to select only the parts you want to execute. If you select just the word diamonds on line
+13 and run that, you will see that it does something different.
+
+[select diamonds and run it]
+
+This prints the contents of the diamonds data. Because the dataset is large, it just prints the first few rows.
+
+----
+
+Finally, you often want to run *all of the code in a chunk* at once.
+
+This can be done by pressing the green arrow on the right hand side of the chunk. 
+
+Another way to run all of the code is to position your cursor anywhere within the chunk and press
+<span class="keyshape">Ctrl</span> + <span class="keyshape">⇧</span> + <span class="keyshape">↵</span> (Windows, Linux) or
+<span class="keyshape">⌘</span> + <span class="keyshape">⇧</span> + <span class="keyshape">↩</span> (Mac).

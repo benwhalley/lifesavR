@@ -24,7 +24,6 @@ source('_first_chunk.R')
 In this session we cover:
 
 - Loading data from files
-- Using simple techniques to answer research questions with data
 - Saving intermediate steps using variables
 
 `r unhide()`

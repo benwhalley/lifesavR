@@ -57,7 +57,7 @@ diamonds %>%
 ### Exercise 4
 
 1. Create a chunk below these instructions
-1. Inside the chunk, write a line of code which adds together the numbers 9, 4, 55 and 2
+1. Inside the chunk, write a line of code which adds together the numbers 9, 4, 55 and 2 and assigns the result to a new variable called `totalscore`
 1. Run the the line of code you have written
 
 # Built-in datasets

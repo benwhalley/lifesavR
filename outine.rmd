@@ -71,3 +71,7 @@ FROM 3???
 *Testing hypotheses*
 
 - Using a Bayesian correlation to quantify evidence for a relationship
+
+
+
+Introducing markdown and knitting

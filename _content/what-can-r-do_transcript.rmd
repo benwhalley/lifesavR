@@ -1,0 +1,10 @@
+RStudio is a user interface to R, which is a computer language that is primarily designed for data analysis and
+visualisation. R is a text-based language, so you interact with it by typing and then running statements which have a
+meaning in the R language.
+
+R Studio makes it easy to run R code and organise your work. For example, you can do simple arithmetic [`2 * 221`],
+generate some random numbers with a [normal distribution](https://www.khanacademy.org/math/statistics-probability/modeling-distributions-of-data/normal-distributions-library/a/normal-distributions-review) [`rnorm(10, 0,1)`], and plot some random numbers [`hist(rnorm(100, 0,1))`].
+
+You should think of R as a robot. The robot is extremely fast, powerful and tireless; but it’s also literal-minded, and
+won’t think for itself or take the initiative. You need to tell it *exactly* what to do, by providing very precise
+instructions.

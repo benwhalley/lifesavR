@@ -1,0 +1,4 @@
+- Loading a 'package' adds functionality to R
+- Some packages (like `tidyverse`) also load example datasets
+- Load tidyverse with the command `library(tidyverse)`
+- **Load `tidyverse` every time you use R**

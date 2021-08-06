@@ -1,0 +1,22 @@
+
+- RMarkdown documents combine 'chunks' of R code with regular text
+- RMarkdown files end with "`.rmd`" or "`.Rmd`"
+- To make a chunk type: `Ctrl + Alt + I` (Windows/Linux) or `⌘ + Alt + I` (Mac)
+
+---
+
+- To run a line type `Ctrl + ↵` (Windows/Linux) or `⌘ + ↩` (Mac)
+- Run *part of a line* select it first, then use the same shortcut
+
+---
+
+- Anything outside a chunk is just narrative (ordinary) text and *not* treated as code.
+
+
+---
+
+Backticks:
+
+![On windows](images/backtick-windows-uk.png)
+
+![On a Mac](images/backtick-mac-uk.png)

@@ -19,22 +19,55 @@ source('_first_chunk.R')
 
 
 
-*Describing and understanding relationships*
+# Describing and understanding relationships
 
 - geom_smooth
+- geom_jitter
+
 - correlation
-- corrplot/matrix
-- geom_smooth 
-
-
-
-<!-- - Summary tables to reveal patterns in data (use Simpson's paradox as teaching example) -->
-- ggsave
-- jitter
 
 
 
 
-*Testing hypotheses*
+# Testing hypotheses
 
 - Using a Bayesian correlation to quantify evidence for a relationship
+
+
+
+
+# Introducing markdown {#markdown}
+
+```{r, echo=F}
+identifier <- "introducing-markdown"
+ytidentifier <- "yt-embed"
+# makermds(identifier)
+```
+
+```{r child = '_content/_video_tabs.rmd'}
+```
+
+
+:::{.exercise}
+
+**Exercise 11**
+
+1. For each of the chunks you wrote for Exercises 4-7:
+  i) Add the section name as a level 2 heading.
+  i) Add the exercise number as a level 3 heading.
+  i) Add the instructions as a numbered list (or as plain text if there's only one instruction).
+2. Use the outline feature to explore the document.
+3. Knit the document.
+:::
+
+
+
+
+
+
+
+
+# Test your knowledge
+
+
+1. How do you use markdown to make a level 3 heading?

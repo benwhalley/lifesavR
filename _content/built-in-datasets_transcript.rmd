@@ -1,0 +1,111 @@
+
+Datasets contain are like spreadsheets: they are organised into columns and rows.
+
+
+### Columns
+
+Each column in a dataset has a name.
+
+We sometimes call the columns *variables*, because each column will often relate to
+a variable in our study.
+
+However, this can be a bit confusing because --- in R --- variables can actually contain whole datasets.
+`mtcars`, for example, is the name of a variable which contains an example dataset.
+
+[show mtcars]
+
+But these words are used flexibly and interchangeably, so we'll just have to get used to it.
+It's normally clear which type of variable we mean from the context.
+
+
+### Rows
+
+Each row in a dataset represents an *observation*. In different datasets an observation might correspond to an individual participant, a whole country, or even just a single response in an experiment made by a single person.
+
+
+### Differet names
+
+In R datasets (columns/rows of data) are stored in a special type of variable called a
+`data.frame`.  
+
+You will also see references to datasets as `tibbles`.
+
+A `tibble` is just a special type of `data.frame`, so you can treat these the same.
+
+All these terms are mostly interchangeable:
+- dataset
+- Dataframe or `data.frame`
+- `tibble`
+
+
+### Built in datasets
+
+There are quite a few data sets which are built into R to provide examples for beginners.
+
+One of these built in datasets is called `mtcars`. This contains data about cars that was published in a US
+magazine called Motor Trend.
+
+Let's display this data in using a new chunk. As we did with the `diamonds` tibble, if we
+type `mtcars`, select the variable name and execute it, we can see the data it contains.
+
+```{r}
+mtcars
+```
+
+
+By default this shows the first ten rows and columns of the data. You can see other rows using the `Next`,
+`Previous` and number buttons below the data. You can see additional columns using the arrow next to the final,
+right-hand column.
+
+
+Other built in datasets:
+
+- the diamonds dataset is loaded with tidyverse (when you run `library(tidyverse)`)
+
+- The `gapminder` package loads a dataset which is also called `gapminder`. This contains data about life expectancy, GDP per capita, and population by country.
+
+We can load the gapminder data the same way we loaded the `diamonds` dataset.
+We load the `gapminder` package first, type the name of the dataset (also
+`gapminder`) and run it.
+
+Again, we can use the navigation buttons to explore the data.
+
+
+```{r}
+library(gapminder)
+
+gapminder
+```
+
+
+
+
+
+### Exploring and checking data
+
+
+The `head()` function allows you to explore the first few rows of a dataset. The code `mtcars %>% head()` prints the
+first six rows of `mtcars`. The `%>%` function is called the 'pipe'. We'll explain more about how it works in the next
+session. For now, all you need to know is that the function on the right hand side of the pipe (`head()`) is applied to
+whatever is on the left hand side (in this case, the `mtcars` dataset).
+
+The `glimpse()` function is useful for exploring datasets with lots of columns, as it allows you to see all columns at
+once. Using `glimpse()` we can have the columns of a dataset run down the page, and data run across.
+
+The [World Happiness Report](https://www.kaggle.com/ajaypalsinghlo/world-happiness-report-2021) is a survey of the state
+of global happiness. Running the code `happiness %>% glimpse()` shows all of the columns. This is like rotating the
+output you saw earlier anti-clockwise by 90 degrees. The code displays all of the columns as rows, and as many
+observations from the dataset as will fit on a single line.
+
+Each column in a `data.frame` has an associated type. The second column of the `glimpse` output shows you the type of each column. This dataset includes columns with two types:
+
+* `dbl` is short for 'double-precision number', a number with one or more decimal places
+* `chr` — short for 'character', a variable which contains text (e.g. an email address)
+
+Other types include:
+
+* `fct` is short for 'factor', a categorical variable (e.g. a specific response to a multiple-choice question)
+* `int` is short for 'integer', a variable which contains whole numbers (e.g. a participant id number), and
+* `ord` — short for 'ordered'; a variant of *fct* where the categories have a particular order (e.g. responses like 'Wost' < 'Better' < 'Best')
+
+The importance of knowing the type associated with a column will become clear in a later session.

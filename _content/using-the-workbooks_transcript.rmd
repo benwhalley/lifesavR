@@ -1,0 +1,6 @@
+Each session has an associated "workbook" file which you will use to complete the exercises in the worksheet. The file
+you need for this session is called `session-1.rmd`.
+
+If you click on the file it opens the workbook in a tab of a new pane, called the **Source** pane. It's called the
+**Source** pane because statements writting in the R language are often referred to as 'R code', which is shorthand for
+'R source code'. The **source** pane allows you to write R code and explore your data.

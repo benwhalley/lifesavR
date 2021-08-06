@@ -1,0 +1,33 @@
+<style>
+.keyshape {
+   /*Box Properties*/
+   display:inline-block;
+   width:48px;
+   height:48px;
+   margin: 0px 4px;
+   background: #fff;
+   border-radius: 4px;
+   box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.5);
+   /*Text Properties*/
+   font: 18px/48px Helvetica, serif;
+   text-align: center;
+   color: #666;
+}
+
+.videowrapper {
+  border:1px solid grey;
+  padding:1em;
+  font-size:120%;
+}
+.transcript { font-size:83.333333333%;}
+.code-examples { font-size:83.333333333%;}
+
+
+.main-container {
+    max-width: 1200px !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+</style>

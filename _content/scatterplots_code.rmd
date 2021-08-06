@@ -1,0 +1,7 @@
+
+```{r, eval=F}
+# make a scatterplot from the mpg dataset
+mpg %>%
+  ggplot(aes(cty, hwy)) + # choose data: x = cty, y = hwy
+    geom_point()          # plot x,y for each row (scatterplot)
+```

@@ -1,0 +1,2 @@
+- R can do simple arithmetic, generate data and produce plots.
+- You need to tell R *exactly* what to do, by providing precise instructions.

@@ -1,0 +1,9 @@
+- Rmarkdown files are a mixture of R code chunks and regular text
+
+- Markdown symbols allow you to format the regular text in your R Markdown files.
+  - `#` creates a first level heading (the largest size)
+  - `##` creates a second level heading (next largest). Using `###` and `####` makes even smaller headings.
+  - `**bold text**` makes **bold text**
+  - `*italic text*` makes *italic text*
+
+- Press the `Knit` button to run your R chunks, format your markdown and combined them into an output document.

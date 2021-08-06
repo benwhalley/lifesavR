@@ -1,0 +1,26 @@
+### Built in datasets
+
+```{r, eval=F}
+# display the built in dataset, mtcars, by typing the name
+# and running this in a code chunk
+mtcars
+
+# load the gapminder dataset (contains an example dataset)
+library(gapminder)
+
+# show the gapminder dataset
+# (contained in the gapminder package)
+gapminder
+```
+
+
+### Exploring and checking data
+
+```{r, eval=F}
+# show first 6 rows of mtcars
+mtcars %>% head()
+
+
+# shows all columns in happiness plus some data
+gapminder %>% glimpse()
+```
