@@ -1,0 +1,51 @@
+Sometimes we need to link together multiple steps in our analysis.
+
+For example, if we're working with a big dataset we might want to select only some of the columns, and then filter out some of the rows of data, and the finally calculate descriptive statistics.
+
+We could do this by creating lots of variables, each one saving the results at each intermediate step. This can get confusing, though.
+
+Instead we can use what's known as a 'pipe' — it's another way to link together multiple instructions.
+
+The pipe sends data from one piece of code to another.
+
+The pipe looks like this `%>%`.  
+
+In session 1, you used this code to "pipe" the `mtcars` dataset into `head()`, which shows just the first few rows:
+
+```{r}
+mtcars %>% head()
+```
+
+You can think of your data as flowing along lengths of pipe, joined by functions which do things to the data, step by
+step, until the result you want plops out at the end.
+
+Each `%>%` should be read as the word "then", e.g. "pipe `mtcars` data, *then* `head()` it".
+
+The `>` in the pipe function reminds you of the direction in which your data is flowing (it only works left to right).
+
+It's important to know that the pipe *doesn't store the results* of these steps.
+
+Sometimes that's OK. In our first example we just wanted to look at the first few rows of the `mtcars` data.
+
+But, you will usually want to save the result of a pipeline in a new variable.  
+For example, if we wanted to save the first few rows of the `mtcars` data  to a *new* variable we would write:
+
+```{r}
+mtcars_head <- mtcars %>% head()
+```
+
+Here we combine *assignment* with a *pipeline*.
+
+The result of the pipeline (a `data.frame` containing the first few rows of `mtcars`) is saved to a
+new variable called `mtcars_head`.
+
+You can explore your variables using the **Environment** pane. A `data.frame` will have an icon that looks like a
+spreadsheet. If you [click on the icon], the `data.frame` is displayed in a new tab in the **Source** pane.
+
+This tab shows you the same information as printing the `data.frame`, such as the number of rows and columns, but it
+also provides tools for exploring the data interactively.
+
+* The arrows next to the column names allow you to arrange the rows in ascending or descending order based on the column
+values.
+* The `Filter` button allows you to specify a value for one or more columns to filter out non-matching rows. For
+example, we could display just cars with 4 gears. Click the button again to turn off the filter.
