@@ -1,0 +1,6 @@
+- Boxplots are useful for comparing between categories 
+- Use `ggplot`; choose a categorical column as the x axis
+- `geom_boxplot()` draws boxes and whiskers for each category
+- The box describes [*interquartile range*](https://www.bbc.co.uk/bitesize/guides/zx7rk7h/revision/2)
+- The midpoint is the *median*
+- Individual points show *outliers* in the data

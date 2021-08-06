@@ -1,0 +1,8 @@
+TODO change datasets to avoid mpg
+
+```{r, eval=F}
+# colour points using a different colour for each drv (drivetrain) category
+mpg %>%
+  ggplot(aes(cty, hwy, color = drv)) +
+  geom_point()
+```

@@ -1,0 +1,10 @@
+
+Colour can be added to a scatterplot to categorise the points. So far, you've used the `aes()` function to define which variable is plotted on the x and y axes. The `aes()` function is short for 'aesthetics', and it is a way to map variables to visual aspects of a plot. In addition to mapping variables to the x and y axes, the `colour` option maps colours to a categorical variable.
+
+We could enhance the scatterplot showing mpg for city and highway driving, by adding a colour for each drivetrain.
+
+```{r}
+mpg %>%
+  ggplot(aes(cty, hwy, color = drv)) +
+  geom_point()
+```

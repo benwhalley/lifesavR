@@ -15,6 +15,15 @@ source('_first_chunk.R')
 ```
 
 
+
+```{html, child="bs-tab-fix.html"}
+```
+
+
+```{css, child="video.css"}
+```
+
+
 ![](images/smarties.png)
 
 # Overview
@@ -49,83 +58,49 @@ to explore and compare differences between groups, using these variables.
 
 # Boxplots {#boxplots}
 
-![TODO: replace with video](images/video_placeholder.png)
 
-### Video summary
 
-- Boxplots are useful for visualising categorical data.
-- The function `geom_boxplot()` represents data on the y-axis using boxes, whiskers and points for each category on the x-axis.
-
-### Code examples
-
-```{r}
-mpg %>%
-  ggplot(aes(class, cty)) + # choose data: x = class, y = cty
-  geom_boxplot()            # draw the boxplot
+```{r, echo=F}
+video_data <- list(identifier = "boxplot-introduction", ytidentifier = "yt-embed")
+# makermds(video_data)
 ```
 
-`r hide('Show full video transcript and code')`
-Boxplots are useful for visualising categorical data. In a boxplot, the thick line is the median. That thick line is
-enclosed inside a rectangle (the 'box'), and the size of the box indicates the inter-quartile range (IQR). The IQR
-contains the middle 50% of the ordered data. A wider IQR indicates greater variation in a dataset.
+```{r child = '_content/_video_tabs.rmd'}
+```
 
-The top and bottom of the box are called ‘hinges’. The vertical lines connected to each hinge are called 'whiskers', and
-give some indication of the broader range of the data. Exactly what the whiskers show differs depending on the
-particular options you use to draw a boxplot. In this case, the upper whisker shows the largest data point that is no
-more than 1.5 times the IQR above the upper hinge. The lower whisker is the lowest point no more than 1.5x the IQR below
-the lower hinge. In this version of a boxplot, any data point outside the range of the whiskers is described as an
-'outlying point' and is shown individually as a dot.
-`r unhide()`
+
+
+
 
 :::{.exercise}
 **Exercise 9**
 
-1. Create a new chunk at the bottom of your worksheet.
-1. Create a boxplot with `drv` (front-wheel/rear-wheel/4-wheel drivetrain) on the x-axis and `hwy` on the y-axis.
-1. Run the chunk.
+1. Create a new chunk at the bottom of your worksheet
+1. Create a boxplot with `Species` on the x-axis and `Sepal.Width` on the y-axis (sepals are the leaves that encase an iris flower)
+1. Run the chunk
 
 Your boxplot should look like this:
 
 ```{r, echo=FALSE}
-mpg %>%
-  ggplot(aes(drv, hwy)) +
+iris %>%
+  ggplot(aes(Species, Sepal.Length)) +
   geom_boxplot()
 ```
 :::
 
 
 
-
-
 # Using colour {#colour}
 
-![TODO: replace with video](images/video_placeholder.png)
-
-### Video summary
-
-- The points in a scatterplot can be coloured based on a categorical variable.
-- This is done using by giving `aes()` a `colour` option.
-
-### Code examples
-
-```{r}
-# colour points using a different colour for each drv (drivetrain) category
-mpg %>%
-  ggplot(aes(cty, hwy, color = drv)) +
-  geom_point()
+```{r, echo=F}
+video_data <- list(identifier = "scatterplot-color", ytidentifier = "yt-embed")
+# makermds(video_data)
 ```
 
-`r hide('Show full video transcript and code')`
-Colour can be added to a scatterplot to categorise the points. So far, you've used the `aes()` function to define which variable is plotted on the x and y axes. The `aes()` function is short for 'aesthetics', and it is a way to map variables to visual aspects of a plot. In addition to mapping variables to the x and y axes, the `colour` option maps colours to a categorical variable.
-
-We could enhance the scatterplot showing mpg for city and highway driving, by adding a colour for each drivetrain.
-
-```{r}
-mpg %>%
-  ggplot(aes(cty, hwy, color = drv)) +
-  geom_point()
+```{r child = '_content/_video_tabs.rmd'}
 ```
-`r unhide()`
+
+
 
 :::{.exercise}
 **Exercise 10**

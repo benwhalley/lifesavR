@@ -1,0 +1,76 @@
+Boxplots are useful for visualising differences between categories or groups.
+
+Using `ggplot`, making a boxplot is similar to a scatterplot.
+
+If we haven't already done it, we'd need to load the `tidyverse`:
+
+```{r, echo=T, warning=F, message=F}
+library(tidyverse)
+```
+
+
+------------------------
+
+To make the plot, we first choose the data we want to plot and use a pipe.
+
+```{r, eval = F}
+iris %>% 
+```
+
+
+Next we use `aes(x = ..., y = ...)` to select the columns we want to use in the data.
+This time we have chosen `Species` for the x axis, because it is a *categorical* variable
+
+```{r}
+iris %>% 
+  ggplot(aes(x = Species, y = Petal.Length)) 
+```
+
+
+
+[demonstrate adding x and y variables using auto complete in RStudio]
+
+You'll notice that I used the RStudio autocomplete feature to write variable names.
+This makes things much easier — if you type variables by hand it's easy to make spelling errors
+or typos and this leads to errors in R.
+
+
+If we run that code, `ggplot` draws the plot axes, but doesn't add the data yet:
+
+[run the code so far]
+
+
+To finish, we add `geom_boxplot()` and actually draw the boxes:
+
+```{r}
+iris %>% 
+  ggplot(aes(x = Species, y = Petal.Length)) + 
+  geom_boxplot()
+```
+
+
+Now we have a boxplot, with one box drawn for each value of `Species`.
+
+
+
+### Interpreting boxplots
+
+In a boxplot: 
+
+- the thick line is the median. 
+
+- the height of the box indicates the inter-quartile range (IQR). 
+
+- the whiskers vary a bit, depending on the software you use — but normally show the range/spread of the data
+
+
+The IQR contains the middle 50% of the data. A wider IQR indicates greater variation (spread) in a dataset.
+
+The vertical lines connected to the top and bottom of the box are called 'whiskers', and
+give some indication of the range of the data. 
+
+Exactly what the whiskers show differs depending on the particular options you use to draw a boxplot. 
+
+The default is to show the points that are no more (or less) than 1.5 times the IQR above (or below) the top (bottom) of the box. 
+
+In this version of a boxplot, any data point outside the range of the whiskers is described as an 'outlying point' and is shown individually as a dot.

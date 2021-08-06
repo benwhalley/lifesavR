@@ -1,0 +1,2 @@
+- The points in a scatterplot can be coloured based on a categorical variable.
+- This is done using by giving `aes()` a `colour` option.
