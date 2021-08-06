@@ -13,19 +13,19 @@ Your browser does not support the video tag.
 
 
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item active">
-<a class="nav-link active" id="summary-tab" data-toggle="tab" href="#{{identifier}}-summary">
+<a class="nav-link active" id="{{identifier}}-summary-tab" data-toggle="tab" href="#{{identifier}}-summary">
   Video summary
 </a></li>
 '
 
 t1b <- '
-<li class="nav-item"><a class="nav-link" id="contact-tab" data-toggle="tab" href="#{{identifier}}-examples">
+<li class="nav-item"><a class="nav-link" id="{{identifier}}-examples-tab" data-toggle="tab" href="#{{identifier}}-examples">
   Code examples
 </a></li>
 '
 
 t1c <- '
-<li class="nav-item"><a class="nav-link" id="transcript-tab" data-toggle="tab" href="#{{identifier}}-transcript">
+<li class="nav-item"><a class="nav-link" id="{{identifier}}-transcript-tab" data-toggle="tab" href="#{{identifier}}-transcript">
   Full Transcript
 </a></li>
 </ul>
@@ -33,6 +33,13 @@ t1c <- '
 <div class="tab-content">
 <!-- Summary -->
 <div class="tab-pane active video-summary" id="{{identifier}}-summary">
+
+
+<button class="tablink" data-clipboard-text="#{{identifier}}-summary-tab">
+Copy link
+</button>
+
+
 '
 
 t2 <- '
@@ -40,6 +47,9 @@ t2 <- '
 
 <!-- Code examples -->
 <div class="tab-pane fade code-examples" id="{{identifier}}-examples">
+<button class="tablink" data-clipboard-text="#{{identifier}}-examples-tab">
+Copy link
+</button>
 
 
 '
@@ -50,6 +60,9 @@ t3 <- '
 
 <!-- Full transcript of the video -->
 <div class="tab-pane fade transcript" id="{{identifier}}-transcript">
+<button class="tablink" data-clipboard-text="#{{identifier}}-transcript-tab">
+Copy link
+</button>
 
 '
 
