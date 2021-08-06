@@ -101,7 +101,6 @@ Your **Environment** should now look like this:
 1. Save the result in a variable _with a descriptive name_.
 :::
 
-
 # Pipes: `%>%` {#pipe}
 
 ```{r, echo=F}
