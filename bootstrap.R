@@ -30,10 +30,6 @@ tryCatch(
       stopifnot(system(cmd) == 0)
     }
 
-    # try loading some data
-    tibble_you_loaded_to_test <- NULL
-    assertive::is_data.frame(as.data.frame(tibble_you_loaded_to_test))
-
     rm(list = ls()) # clear environment
 
     print("Success!")
