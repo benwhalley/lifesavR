@@ -1,0 +1,100 @@
+
+In this video we'll use a dataset about plants to show how to 
+create summary statistics for multiple groups.
+
+Plants photosynthesise by combining sunlight with carbon dioxide (CO2) to make sugars.
+They do this more when it's warmer. The `CO2` dataset records how much carbon dioxide plants used (`uptake`) when they were chilled or not-chilled. The type of plant (`Type`) and the conditions (chilled/unchilled) are both stored as factors:
+
+```{r}
+CO2 %>% glimpse
+```
+
+
+We might make a plot like this to compare the plant species:
+
+```{r}
+CO2 %>%
+  ggplot(aes(Type, uptake)) +
+  geom_boxplot()
+```
+
+
+
+
+The graph is helpful, but what if we want the actual numbers in a table, or to report? 
+
+
+### Using filter and summarise
+
+
+One option would be to filter our data first and then summarise:
+
+```{r}
+CO2 %>% 
+  filter(Type=="Quebec") %>% 
+  summarise(mean(uptake))
+```
+
+We could then repeat that step for each type of grass:
+
+```{r}
+CO2 %>% 
+  filter(Type=="Mississippi") %>% 
+  summarise(mean(uptake))
+```
+
+
+That would be repetitive though, and might get frustrating if there are lots of categories.
+
+
+### Using `group_by`
+
+Instead of using `filter`, we can use `group_by` to split our dataset into multiple groups, summarising each one separately:
+
+
+```{r}
+CO2 %>%
+  group_by(Type) %>%
+  summarise(mean(uptake))
+```
+
+
+
+### Nested groups
+
+Another factor in this dataset is an experimental treatment: whether the grasses were `chilled` or `nonchilled`.
+
+We can group by two factors at once and get a row for each combination:
+
+```{r}
+CO2 %>%
+  group_by(Type, Treatment) %>%
+  summarise(mean(uptake))
+```
+
+### Multiple statistics
+
+Finally, we can calculate multiple statistics at once for each of the groups:
+
+```{r}
+CO2 %>%
+  group_by(Type, Treatment) %>%
+  summarise(mean(uptake), sd(uptake))
+```
+
+
+### Give the new variables a name
+
+R gives the new columns a name based on the function we use to `summarise`.
+
+For example, if we use `mean` on the `uptake` variable then the new column is called `mean(uptake)` (see above).
+
+When we use `summarise`, we can give the new column a specific name like this:
+
+```{r}
+CO2 %>%
+  summarise(average_uptake = mean(uptake))
+```
+
+
+The new name shouldn't include spaces or other 'special' characters.

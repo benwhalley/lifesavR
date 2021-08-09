@@ -1,0 +1,42 @@
+
+```{r, eval=F}
+# look at the variables in the CO2 data
+# which is about different grasses use of CO2 (uptake) 
+# under cold/normal conditions
+CO2 %>% glimpse
+
+# make a plot comparing CO2 update of types of grass
+CO2 %>%
+  ggplot(aes(Type, uptake)) +
+  geom_boxplot()
+
+# using filter with summarise to get the numbers from the graph
+CO2 %>% 
+  filter(Type=="Quebec") %>% 
+  summarise(mean(uptake))
+
+# (but this could get repetitive)
+
+
+# instead we use group_by to make multiple summaries, 
+# one for each category
+CO2 %>%
+  group_by(Type) %>%
+  summarise(mean(uptake))
+
+# group by more than one variable at once
+CO2 %>%
+  group_by(Type, Treatment) %>%
+  summarise(mean(uptake))
+
+# calculate the mean and standard deviation in a single step
+# (this adds two columns to our output for mean and SD)
+CO2 %>%
+  group_by(Type, Treatment) %>%
+  summarise(mean(uptake), sd(uptake))
+
+# give the new column a name of our choosing
+CO2 %>%
+  summarise(average_uptake = mean(uptake))
+
+```

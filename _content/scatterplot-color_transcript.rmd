@@ -1,10 +1,41 @@
 
-Colour can be added to a scatterplot to categorise the points. So far, you've used the `aes()` function to define which variable is plotted on the x and y axes. The `aes()` function is short for 'aesthetics', and it is a way to map variables to visual aspects of a plot. In addition to mapping variables to the x and y axes, the `colour` option maps colours to a categorical variable.
+As we saw before, scatterplots show the relationship between two variables.
 
-We could enhance the scatterplot showing mpg for city and highway driving, by adding a colour for each drivetrain.
+Using the `mpg` data, we could plot the size of car engines (`displ`, short for displacement) against their fuel efficiency on
+the highway in miles per gallon (`hwy`):
 
-```{r}
+```{r, eval=F}
 mpg %>%
-  ggplot(aes(cty, hwy, color = drv)) +
+  ggplot(aes(displ, hwy)) +
   geom_point()
 ```
+
+[this first plot is not shown here to save space, but is shown in the video]
+
+
+Colour can be added to distinguish the points — for example, what kind of car each point represents.
+
+So far, you've used the `aes()` function to define which variable is plotted on the x and y axes.  The `aes()` function is short for 'aesthetics' (what we can see) and *connects columns in our data to visual aspects of a plot*, like the x and y axes. 
+
+The `colour=...` option adds to this, and says which column is used to colour the points.
+In the `mpg` data, the `drv` column records if a car is front (`f`), rear (`r`) or four (`4`) wheel drive.
+
+We can write `color=drv` to tell R to colour each point, depending on which wheels are driven:
+
+```{r, eval=T}
+# colour each point; different colour for each type of transmission
+# front, rear and four wheel drive
+mpg %>%
+  ggplot(aes(displ, hwy, color=drv)) +
+  geom_point()
+```
+
+This is an example of using a *categorical* variable to colour our points.
+
+
+
+
+
+
+
+

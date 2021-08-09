@@ -1,0 +1,31 @@
+```{r, eval=F}
+
+# see a list of columns in the dataset, and their types
+iris %>% glimpse
+
+
+
+# make a scatter plot with two continous axes
+# both wt and mpg are numeric variables
+# so this works well
+mtcars %>%
+  ggplot(aes(wt, mpg)) +
+    geom_point()   
+
+
+
+# try and make a boxplot with `am` as the x axis
+# but because `am` is stored as a numeric variable and
+# not categorical the scale of the x axis is wrong
+mtcars %>%
+  ggplot(aes(am, mpg)) +
+  geom_boxplot()
+
+
+# re-draw the plot, but converting `am` to a factor/categorical
+# variable first. Now the x axis looks correct
+mtcars %>%
+  ggplot(aes(factor(am), mpg)) +
+  geom_boxplot()
+```
+

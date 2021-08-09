@@ -1,0 +1,6 @@
+- Datasets often contain categorical variables
+- We often want to compare statistics (like averages) *between* categories
+- The `group_by` function is a quick way to combine filtering and summarising
+- `group_by` creates a *grouped dataframe*
+- Adding `group_by()` to a pipeline runs the subsequent steps *once for each group*.
+- The result is always a new dataframe

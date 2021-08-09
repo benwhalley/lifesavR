@@ -1,8 +1,6 @@
-TODO change datasets to avoid mpg
-
 ```{r, eval=F}
-# colour points using a different colour for each drv (drivetrain) category
-mpg %>%
-  ggplot(aes(cty, hwy, color = drv)) +
+# colour each point; different colour for each Species
+iris %>%
+  ggplot(aes(Sepal.Length, Sepal.Width, color = Species)) +
   geom_point()
 ```

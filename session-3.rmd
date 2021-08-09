@@ -28,31 +28,26 @@ source('_first_chunk.R')
 
 # Overview
 
-We often collect data from two or more groups. Group allocations can be stored as categorical variables, and we often want
-to explore and compare differences between groups, using these variables.
+We often collect data from two or more groups. 
+
+Group allocations are *categorical* variables, and are stored in a special way
+by R which makes displaying them on graphs easier. In this workshop we learn to 
+how to use categorical variables in boxplots, to colour scatterplots, and to 
+make tables of descriptive statistics.
 
 
-## Principles/ideas
+
+<!-- - Types of data (and impact on how R presents it) -->
+<!-- - Different purposes of plots/graphics -->
+<!-- - Purpose and design of data graphics -->
 
 
-- Types of data (and impact on how R presents it)
-- Different purposes of plots/graphics
-- Purpose and design of data graphics
-
-
-## Techniques covered
+### Techniques covered
 
 - [Making boxplots](#boxplots)
 - [Adding color to a plot](#color)
 - Using different types of data and visual scales
-- Facets?XXX
 - [Using `group_by()`](#groupby) to make a summary table and compare groups
-- Aggregating repeated measures data?? XXX
-
-
-
-
-
 
 
 
@@ -101,12 +96,12 @@ video_data <- list(identifier = "scatterplot-color", ytidentifier = "yt-embed")
 ```
 
 
-
 :::{.exercise}
 **Exercise 10**
 
 1. Create a new chunk at the bottom of your worksheet.
-1. Create a scatterplot using the `gapminder` dataset with `gdpPercap` on the x-axis, `lifeExp` on the y-axis, and `continent` in colour.
+1. Create a scatterplot using the `gapminder` dataset with `gdpPercap` on the x-axis, 
+  `lifeExp` on the y-axis, and `continent` in colour.
 1. Run the chunk.
 
 Your plot should look like this:
@@ -114,7 +109,7 @@ Your plot should look like this:
 ```{r ex10, echo=FALSE}
 library(gapminder)
 gapminder %>%
-  ggplot(aes(gdpPercap, lifeExp, color = continent)) +
+  ggplot(aes(lifeExp, gdpPercap, color = continent)) +
   geom_point()
 ```
 :::
@@ -122,202 +117,27 @@ gapminder %>%
 
 
 
+# Types of variables and visual scales
 
 
-
-
-# Types of variables and visual scale
-
-<div class="videowrapper">
-
-![](images/yt-embed.png)
-
-<ul class="nav nav-tabs" role="tablist">
-<li class="nav-item active">
-<a class="nav-link active" id="summary-tab" data-toggle="tab" href="#diffVarsScales-summary">Video summary</a>
-</li>
-<li class="nav-item">
-<a class="nav-link" id="contact-tab" data-toggle="tab" href="#diffVarsScales-examples">Code examples</a>
-</li>
-<li class="nav-item">
-<a class="nav-link" id="transcript-tab" data-toggle="tab" href="#diffVarsScales-transcript">Full Transcript</a>
-</li>
-</ul>
-
-<div class="tab-content">
-
-<!-- Summary -->
-<div class="tab-pane active" id="diffVarsScales-summary">
-
-
-The video introduces the link types of variable (e.g. continuous, categorical, text),
-the data-types which R uses to store them, and the way that `ggplot` presents them
-on the scales of a plot.
-
-- Common types of variable are: numeric, categorical and text (string)
-- Internally, R stores data in a number of different data *types*.
-- These data types mostly match up the different types of variable — but not always, so watch out!
-- For example, sometimes numeric data can get stored as text by accident (we would need to convert this)
-- Categorical variables can be stored as either *factors* or as text/strings (again, we can convert between them as needed)
-- `ggplot` (and other R functions) use data-types as a clue to choose *defaults* for the scales of your graphs
-- Normally the defaults are good; sometimes it's helpful to manually adjust the scale by switching the data type
-
-
-</div>
-
-<!-- Code examples -->
-<div class="tab-pane fade" id="diffVarsScales-examples">
-
-
-The following R code is used in the video:
-
-```{r}
-# load the tidyverse package
-library(tidyverse)
-
-# ... etc etc
+```{r, echo=F}
+video_data <- list(identifier = "types-scales", ytidentifier = "yt-embed")
+# makermds(video_data)
 ```
 
-
-</div>
-
-<!-- Full transcript of the video -->
-<div class="tab-pane fade" id="diffVarsScales-transcript">
-
-### Data types
-
-Data comes in all shapes and sizes, but and important distinction researchers make is between **types** of variable.
-
-You might have seen terms like these:
-
-- *interval* or *continuous* variables data (also called [real numbers](https://en.wikipedia.org/wiki/List_of_types_of_numbers))
-- *ordinal* variables (e.g. Likert style 1-7 responses, sometimes called factors in experimental designs)
-- *count* variables (whole numbers greater than or equal to zero)
-- *nominal* or *categorical* variables, which are also sometimes
-
-
-These data-types mostly match up the different types of variable — and the names will be the same — but it's not *always* the case. Sometimes we need to convert between data types.
-
-In R there are three main data-types you need to know about:
-
-- Numeric data, which are stored as a 'double', abbreviated `dbl`. 'Double' means 'double precision number', which is computer speak for 'any kind of real number, even a very large one'.
-
-- Categorical data, which is stored as a *factor*
-
-- Text, which is stored with the 'character' data-type (abbreviated `chr`)
-
-
-You might also encounter these data types, but we don't specifically need them for this course:
-
-- Boolean data (true/false values)
-- Dates (a special kind of numeric data, which R formats nicely as a date for us)
-- Ordinal variables (a special type of factor where the categories are *ordered*)
-
-
-If you have a variable in R you can use the `typeof` function to check which data-type it is. For example:
-
-```{r}
-typeof(1)
-typeof("apple")
+```{r child = '_content/_video_tabs.rmd'}
 ```
-
-You can also see which data-type is used to store a variable when using the `glimpse` command you saw in session 1 (e.g. [here](session-1.html#exploring)).
-
-```{r}
-iris %>% glimpse
-```
-
-In the `glimpse` output you can see the variable names listed on the left, followed by grey text surrounded by angle brackes, e.g.: `<dbl>` which is the abbreviated data-type.
-
-In this built-in dataset, most of the data is numeric (`dbl`), but the `Species` variable is categorical, and stored as a factor (`fct`).
-
-
-### Data types and scales on graphs
-
-If we look at the mtcars data we can see that all the variables are stored as numeric data (`dbl`):
-
-```{r}
-mtcars %>% glimpse()
-```
-
-
-
-This is fine if we want to make a scatter plot (here of 'miles per gallon' vs weight of the car):
-
-```{r}
-mtcars %>%
-  ggplot(aes(wt, mpg)) +
-    geom_point()       
-```
-
-In this plot both the x and y axes are ***continuous***. That is, they are numeric variables, using real numbers.
-
-
-However, if we want to make a boxplot of the `mpg` variable using `am` as the `x` axis then we have a problem:
-
-```{r}
-mtcars %>%
-  ggplot(aes(am, mpg)) +
-  geom_boxplot()
-```
-We might have expected to see;
-
-- miles per gallon on the y axis
-- two separate boxes, one for automatic cars and another for manual.
-
-This doesn't work as expected though.
-
-Because `ggplot` has seen that `am` is stored as numeric data, it creates a continuous scale on the x axis, and draws a single box at the midpoint of all the values of `am`.  Because `am` ranges from 0 to 1, this box appears at 0.5.
-
-
-As `glimpse` showed us, the variable `am` is stored as numeric data, with type `dbl` (short .
-However, we really want to use `am` as a categorical variable.
-So we should store it as a factor.
-If we convert it to a factor then our plot will work properly.
-
-
-We can use the command `factor(am)` to tell R that the x-axis is a factor:
-
-```{r}
-mtcars %>%
-  ggplot(aes(factor(am), mpg)) +
-  geom_boxplot()
-```
-
-
-This gives us the boxplot we were expecting. The only change here is to replace `am` with `factor(am)`. This tells R to convert the variable `am` to a factor.  `ggplot` can then draw the x axis correctly.
-
-
-
-
-</div>
-</div>
-</div>
-<!--end tabs and video wrapper -->
-
-
-
 
 
 :::{.exercise}
 
-You need to learn these datatypes and abbreviations:
+Work with a friend: Describe the 4 ways in which quantitative researchers might use the word 'variable'?
 
-------------------------------------------
-| Data type | Abbreviation | Used for |
-------------------------------------------
-| double | dbl | Numeric data (e.g. interval or continuous variables) |
-| character| chr | text data, and sometimes also categorical variables |
-||||
-||||
-||||
-||||
-------------------------------------------
-
-- Hide this page and test a friend or someone next to you in the room on what each of them means.
-- Repeat this in 20 minutes time to check you still have it ([spaced repetition is effective](https://www.theguardian.com/education/2016/jan/23/spaced-repetition-a-hack-to-make-your-brain-store-information)).
+(If you need to look these up from the video or text above then try testing yourself again after completing other other exercises).
 
 :::
+
+
 
 
 
@@ -325,35 +145,28 @@ You need to learn these datatypes and abbreviations:
 
 Exercise XXX
 
-Use `mtcars` to make a boxplot showing miles per gallon on the y axis, and number of gears the car has on the x axis (`gear`).
+Use `glimpse` to check the data types of the `mpg` and the `diamonds` datasets.
 
-Your plot should look like this:
-
-```{r ex6, echo=FALSE}
-mtcars %>%
-  ggplot(aes(factor(gear), mpg)) +
-  geom_boxplot()
-```
+- The 4th variable in the `mpg` data is a `r mcq(c("double", "factor", "character", answer=typeof(mpg[[4]])))` 
+- The 5th variable in the `diamonds` data is a `r mcq(c("date","character", "factor", answer=typeof(diamonds[[5]])))` 
 
 :::
 
 
 
 
+
 :::{.exercise}
 
-XXX ADD EXTENSION EXERCISES TO DO THE SAME WITH COLOR SCALES>>> E.G.
+Exercise XXX
 
-```{r}
-mtcars %>%
-  ggplot(aes(wt, mpg, color=gear)) +
-  geom_point()
+Use the `mpg` dataset to make a boxplot showing miles per gallon on the y axis, and number of cylinders on the x axis (`cyl`). Your plot should look like this:
 
-mtcars %>%
-  ggplot(aes(wt, mpg, color=factor(gear))) +
-  geom_point()
+```{r ex6, echo=FALSE}
+mpg %>%
+  ggplot(aes(factor(cyl), hwy)) +
+  geom_boxplot()
 ```
-
 
 :::
 
@@ -363,177 +176,45 @@ mtcars %>%
 # Grouping with `group_by` {#groupby}
 
 
+```{r, echo=F}
+video_data <- list(identifier = "group-by", ytidentifier = "yt-embed")
+# makermds(video_data)
+```
 
-
-<div class="videowrapper">
-
-![](images/yt-embed.png)
-
-<ul class="nav nav-tabs" role="tablist">
-<li class="nav-item active">
-<a class="nav-link active" id="summary-tab" data-toggle="tab" href="#exploGrpDiffs-summary">Video summary</a>
-</li>
-<li class="nav-item">
-<a class="nav-link" id="contact-tab" data-toggle="tab" href="#exploGrpDiffs-examples">Code examples</a>
-</li>
-<li class="nav-item">
-<a class="nav-link" id="transcript-tab" data-toggle="tab" href="#exploGrpDiffs-transcript">Full Transcript</a>
-</li>
-</ul>
-
-<div class="tab-content">
-
-<!-- Summary -->
-<div class="tab-pane active" id="exploGrpDiffs-summary">
-
-The video explains and gives examples showing that:
-
-- Datasets often contain categorical variables
-- We often want to compare statistics (like averages) *between* categories
-- The `group_by` function is a quick way to combine filtering and summarising
-- `group_by` creates a *grouped dataframe*
-- Using grouped dataframes with other functions (e.g. `summarise`) applies them once-per-group
-- The result is always a new dataframe
-
-
-</div>
-
-<!-- Code examples -->
-<div class="tab-pane fade" id="exploGrpDiffs-examples">
-
-The following R code is used in the video:
-
-
-```{r}
-# mtcars has the `gear`, `cyl` and `am` variables, which could be treated as
-# either categorical or numeric
-mtcars %>% select(gear, cyl, am) %>% head
-
-
-# we previously made a box-plot broken down by a category
-mtcars %>%
-  ggplot(aes(factor(gear), mpg)) +
-  geom_boxplot()
-
-# we can use filter to calculate averages for each category
-mtcars %>%
-  filter(gear == 4 ) %>%
-  summarise(mean(mpg))
-
-mtcars %>%
-  filter(gear == 5 ) %>%
-  summarise(mean(mpg))
-
-# ... and so on. However, this gets repetitive with many groups.
-
-
-# Instead we can use group_by to make a table with a row for each group
-mtcars %>%
-  group_by(gear) %>%
-  summarise(mean(mpg))
-
-
-# We can add standard deviations (or other stats) to the same table and give each column a name
-mtcars %>%
-  group_by(gear) %>%
-  summarise(Mean = mean(mpg), SD = sd(mpg))
-
+```{r child = '_content/_video_tabs.rmd'}
 ```
 
 
-
-
-</div>
-
-<!-- Full transcript of the video -->
-<div class="tab-pane fade" id="exploGrpDiffs-transcript">
-
-
-
-XXX THIS WAS COPIED FROM SESSION 2 ... MIGHT NEEDS SOME RE-JIGGING
-
-
-### Grouping data with `group_by()` {#groupby}
-
-![TODO: replace with video](images/video_placeholder.png)
-
-Video summary:
-
-- Our data may have categorical or 'grouping' variables (e.g. gender, or country).
-- We often want to create summaries for each group.
-- We could use `filter()` and `summary()` once for each group, but the `group_by()` function does this for all groups.
-- Adding `group_by()` to a pipeline runs the subsequent steps *once for each group*.
-- Be careful only to group by categorical variables.
-
-<!-- TODO: Having made the point about factors, is it misleading that cyl and am are dbl rather than fct in he following? -->
-<!-- C02 is one of the few built-in datasets with > 1 factor. Types are now in session 3, so I'm not sure which is better here, introducing factor() or introducing a different dataset. -->
-
-```{r}
-# boxplot of C02 uptake grouped by grass type
-CO2 %>%
-  ggplot(aes(Type, uptake)) +
-  geom_boxplot()
-
-# table of C02 uptake grouped by grass type
-CO2 %>%
-  group_by(Type) %>%
-  summarise(average_uptake = mean(uptake))
-
-# group by two factors at once: grass type and experimental treatment
-CO2 %>%
-  group_by(Type, Treatment) %>%
-  summarise(mean(uptake))
-```
-
-```{r, echo=FALSE, eval=FALSE}
-# boxplot grouped by number of cylinders
-mtcars %>%
-  ggplot(aes(factor(cyl), mpg)) +
-  geom_boxplot()
-
-# table
-mtcars %>%
-  group_by(cyl) %>%
-  summarise(average_mpg = mean(mpg))
-
-# group by two variables at once
-mtcars %>%
-  group_by(cyl, am) %>%
-  summarise(mean(mpg))
-```
-
-`r hide('Show full video transcript and code')`
-In this video we'll use a dataset about plants rather than cars. Plants photosynthesise by combining sunlight with carbon dioxide to make sugars. The CO2 dataset carbon dioxide update for two species of grass. The species is a factor.
-
-We might make a plot like this:
-
-```{r}
-CO2 %>%
-  ggplot(aes(Type, uptake)) +
-  geom_boxplot()
-```
-
-But what if we want these numbers in a table (or to report in our report)? We can
-do that using group_by and summarise...
-
-```{r}
-CO2 %>%
-  group_by(Type) %>%
-  summarise(average_uptake = mean(uptake))
-```
-
-Another factor in this dataset is an experimental treatment -- whether the grasses were `chilled` or `nonchilled`. We
-can also group by two factors at once and get a row for each combination:
-
-```{r}
-CO2 %>%
-  group_by(Type, Treatment) %>%
-  summarise(mean(uptake))
-```
-`r unhide()`
 
 :::{.exercise}
-**Exercise 16**
+
+**Exercise XXX**
+
+Adapt the code below to calculate the `median` uptake for each grass in the `CO2` data, when chilled and not-chilled:
+
+```{r, eval=F}
+CO2 %>%
+  group_by(Type, Treatment) %>%
+  summarise(mean(uptake))
+```
+
+:::
+
+
+:::{.exercise}
+
+**Exercise XXX**
+
+Use the built-in  `iris` dataset
+
+Use `group_by` and `summarise` to calculate the average `Sepal.Length` of each `Species` of flower.
+
+:::
+
+
+:::{.exercise}
+
+**Exercise XXX**
 
 `chickwts` contains data for the weights of chicks (in grams) fed on different diets.
 
@@ -548,31 +229,30 @@ chickwts %>%
   group_by(feed) %>%
   summarise(mean(weight), sd(weight))
 ```
+
 The mean weight of chicks fed on linseed was (to 2 decimal places) `r fitb('218.75')`g.
 
 The standard deviation of chicks fed on sunflower was (to 2 decimal places) `r fitb('48.84')`g.
-:::
-
-
-
-
-</div>
-</div>
-</div>
-<!--end tabs and video wrapper -->
-
-
-
-
-:::{.exercise}
-
-Use the built-in  `iris` dataset
-
-Use `group_by` to calculate the average `Sepal.Length` of each `Species` of flower.
 
 :::
 
 
+
+
+
+
+
+# Check your knowledge
+
+Write an answer to each of these questions in the `Check your knowledge` section of your workbook. The answers are
+revealed in Session 4.
+
+1. Which function makes a boxplot?
+1. What is the difference between a `dbl` and a `fct` or `ord`?
+1. Give an example of when the difference between `dbl` and `fct` matters when making a plot? (include code examples for this if you can)
+1. How can you convert a variable from a `dbl` to a `fct`?
+1. How could you calculate the mean for one level of a factor?
+1. How would you calculate the mean for all levels of a factor?
 
 
 
@@ -594,6 +274,7 @@ diamonds %>%
 ```
 `r unhide()`
 :::
+
 
 
 
@@ -669,17 +350,20 @@ mpg %>%
 
 
 
+:::{.exercise}
+
+Extension exercise XXX
+
+Try to recreate the plot below. Remember to use `factor` to convert the type of the column. 
+
+```{r, echo=F}
+mtcars %>%
+  ggplot(aes(wt, mpg, color=factor(gear))) +
+  geom_point()
+```
+
+
+:::
 
 
 
-# Check your knowledge
-
-Write an answer to each of these questions in the `Check your knowledge` section of your workbook. The answers are
-revealed in Session 4.
-
-1. Which function makes a boxplot?
-1. What is the difference between a `dbl` and a `fct` or `ord`?
-1. Give an example of when the difference between `dbl` and `fct` matters when making a plot? (include code examples for this if you can)
-1. How can you convert a variable from a `dbl` to a `fct`?
-1. How could you calculate the mean for one level of a factor?
-1. How would you calculate the mean for all levels of a factor?
