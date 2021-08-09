@@ -16,9 +16,16 @@ value of the variable.
 
 Run the chunk below
 
-```{r}
-meaning_of_life <- 40 + 2
-meaning_of_life
+```{r, eval=F}
+# assign the current year to a variable
+current_year <- 2021
+
+# print the variable we created
+# (it should display below the chunk, or in the console pane)
+current_year
+
+# do a calculation to create a new variable from an existing one
+next_year <- current_year + 1
 ```
 
 # Check your knowledge

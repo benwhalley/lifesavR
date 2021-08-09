@@ -58,3 +58,4 @@ workbook. The subsequent session begins by revealing the answers to these questi
   * *built-in* not *built in/builtin*
   * *x-axis* not *x axis*
   * *colour* not *colour* (in text and `aes()`)
+  * *internet* not *Internet*

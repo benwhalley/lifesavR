@@ -1,0 +1,6 @@
+- Often we want to load data into R, rather than use built-in datasets.
+- The preferred format for data files in R is comma-separated value (CSV).
+- A CSV file usually includes column names in the first row; each row after that contains the data.
+- CSV files should always end in `'.csv'` (this is the file extension).
+- CSV data can be read using the `read_csv()` function.
+- You can load CSV data from an internet address (URL) or a file uploaded to the R Studio server.

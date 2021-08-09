@@ -71,11 +71,11 @@ video_data <- list(identifier = "variables", ytidentifier = "yt-embed")
 
 The output should look like this:
 
-![Results of creating `meaningoflife` variable](images/life.png)
+![Chunk which creates variables and prints a variable's value](images/variables.png)
 
 Your **Environment** pane should look like this:
 
-![Environment pane after creating variable](images/environment1.png)
+![Environment pane after creating variables](images/environment_variables.png)
 :::
 
 :::{.exercise}
@@ -101,88 +101,15 @@ Your **Environment** should now look like this:
 1. Save the result in a variable _with a descriptive name_.
 :::
 
-
 # Pipes: `%>%` {#pipe}
 
-![TODO: replace with video](images/video_placeholder.png)
-
-### Video summary
-
-- The **pipe** passes data from one piece of code to another
-- The pipe looks like this: `%>%`
-- Press `Cmd` + `Shift` + `M` to add a pipe.
-
-- A **pipeline** is a list of functions joined by pipes.
-- Store the output of a pipeline in a variable (using assignment, `<-`).
-
-### Code examples
-
-```{r}
-# pipe mtcars into head()
-mtcars %>% head()
-
-# store first few rows of mtcars
-mtcars_head <- mtcars %>%
-  head()
+```{r, echo=F}
+video_data <- list(identifier = "pipes", ytidentifier = "yt-embed")
+# makermds(video_data)
 ```
 
-
-<!-- START OF VIDEO -->
-`r hide('Show full video transcript and code')`
-Sometimes we need to link together multiple steps in our analysis.
-
-For example, if we're working with a big dataset we might want to select only some of the columns, and then filter out some of the rows of data, and the finally calculate descriptive statistics.
-
-We could do this by creating lots of variables, each one saving the results at each intermediate step. This can get confusing, though.
-
-Instead we can use what's known as a 'pipe' — it's another way to link together multiple instructions.
-
-The pipe sends data from one piece of code to another.
-
-The pipe looks like this `%>%`.  
-
-In session 1, you used this code to "pipe" the `mtcars` dataset into `head()`, which shows just the first few rows:
-
-```{r}
-mtcars %>% head()
+```{r child = '_content/_video_tabs.rmd'}
 ```
-
-You can think of your data as flowing along lengths of pipe, joined by functions which do things to the data, step by
-step, until the result you want plops out at the end.
-
-Each `%>%` should be read as the word "then", e.g. "pipe `mtcars` data, *then* `head()` it".
-
-The `>` in the pipe function reminds you of the direction in which your data is flowing (it only works left to right).
-
-It's important to know that the pipe *doesn't store the results* of these steps.
-
-Sometimes that's OK. In our first example we just wanted to look at the first few rows of the `mtcars` data.
-
-But, you will usually want to save the result of a pipeline in a new variable.  
-For example, if we wanted to save the first few rows of the `mtcars` data  to a *new* variable we would write:
-
-```{r}
-mtcars_head <- mtcars %>% head()
-```
-
-Here we combine *assignment* with a *pipeline*.
-
-The result of the pipeline (a `data.frame` containing the first few rows of `mtcars`) is saved to a
-new variable called `mtcars_head`.
-
-You can explore your variables using the **Environment** pane. A `data.frame` will have an icon that looks like a
-spreadsheet. If you [click on the icon], the `data.frame` is displayed in a new tab in the **Source** pane.
-
-This tab shows you the same information as printing the `data.frame`, such as the number of rows and columns, but it
-also provides tools for exploring the data interactively.
-
-* The arrows next to the column names allow you to arrange the rows in ascending or descending order based on the column
-values.
-* The `Filter` button allows you to specify a value for one or more columns to filter out non-matching rows. For
-example, we could display just cars with 4 gears. Click the button again to turn off the filter.
-`r unhide()`
-
-<!-- END OF VIDEO -->
 
 :::{.exercise}
 **Exercise 4**
@@ -198,128 +125,32 @@ city.
 
 # Loading data {#loadingdata}
 
-![TODO: replace with video](images/video_placeholder.png)
+```{r, echo=F}
+video_data <- list(identifier = "loading-data", ytidentifier = "yt-embed", showcode=F)
+# makermds(video_data)
+```
 
-### Video summary
-
-- Often we want to load data into R, rather than use built-in datasets.
-- The preferred format for data files in R is comma-separated value (CSV).
-- A CSV file usually includes column names in the first row; each row after that contains the data.
-- CSV files should always end in `'.csv'` (this is the file extension).
-- CSV data can be read using the `read_csv()` function.
-- You can load CSV data from an internet address (URL) or a file uploaded to the server.
-
-<!-- THERE IS NO CODE EXAMPLE FOR THIS VIDEO -->
-
-## Loading data
-
-`r hide('Show full video transcript and code')`
-
-In a lot of these workshops we use datasets that are built-in to R. This is a convenient way to illustrate the points we
-make.
-
-[demo opening glancing some built in data like gapminder, iris, mtcars etc]
-
-Normally, though, you will need to load your own data.
-
-R can read data from two places:
-
-- A URL (web address), if the data file is available on the internet somewhere
-- A file on computer that R is running on
-
-The link below is a URL (web address) for a file containing data about US police shootings.
-
-- [https://benwhalley.github.io/lifesavR/data/shootings.csv](https://benwhalley.github.io/lifesavR/data/shootings.csv)
-
-
-The final part of the url tells us the name of the file: `shootings.csv`
-
-The final 3 (sometimes 4) letters of the filename is called the file extension.
-
-Here the file *extension* is `.csv`, which stands for 'comma separated values' or CSV.
-
-CSV is a common data type. Most data-oriented programmes (e.g. Excel or Open Office or SPSS) can read and write `.csv` files, so it's a good choice for storing and sharing data.
-
-If you click on the link [click link in vid] you'll see the first line is a list of column names separated by commas.
-
-The remaining lines contain rows of data matching the column headings. For example, the value of the `arms_category` column in row 1 is `Guns`.
-
-The `read_csv()` function reads a CSV file, and converts it to a `data.frame`, which is the format we use in R.
-
-We can use `read_csv()` to load data from either a file, or over the internet, which is shown in the next video.
-
-`r unhide()`
-
+```{r child = '_content/_video_tabs.rmd'}
+```
 
 ## Reading CSV files from the internet
 
-![TODO: replace with video](images/video_placeholder.png)
-
-### Video summary
-
-- `read_csv("http://...")` can load data from a URL.
-- It converts the data to a `data.frame`.
-- You must assign the loaded data to a variable, which you should give a descriptive name.
-- Use the **Environment** pane to view data you load using `read_csv()`.
-
-
-### Code examples
-
-```{r}
-# load data from a URL and assign it to a variable, called shootings
-shootings <- read_csv("https://benwhalley.github.io/lifesavR/lifesavr/shootings.csv")
-
-# display the stored data
-shootings
+```{r, echo=F}
+video_data <- list(identifier = "loading-data-internet", ytidentifier = "yt-embed")
+# makermds(video_data)
 ```
 
-
-`r hide('Show full video transcript and code')`
-CSV files are a common format to store and share data. As shown in the previous video, the first line of a CSV file
-defines the column names, and the remaining lines are rows of data.
-
-The `read_csv()` function reads a CSV file, and converts it to a `data.frame`, which is the format we use in R.  We can load data either from a file, or over the internet.
-
-In this example, I'm reading a CSV directly over the Internet and storing the resulting `data.frame` in the
-variable `shootings`.
-
-The URL (the link to the CSV file) needs to be in quotes (single or double quotes both work).
-
-```{r}
-shootings <- read_csv("https://benwhalley.github.io/lifesavR/lifesavr/shootings.csv")
+```{r child = '_content/_video_tabs.rmd'}
 ```
-
-Because we made a new variable, the result is stored in the Environment, and we can double-click it to have a look at the data.
-
-An alternative (and recommended) way is to simply type the name of the variable and run the line:
-
-```{r}
-shootings
-```
-
-Or you can select the name of the variable in your code, and hit ctrl+Enter:
-[in this section of the video I select the word "shootings" and press ctrl+Enter. This has the same effect.]
-```{r, eval=F}
-shootings <- read_csv("https://benwhalley.github.io/lifesavR/lifesavr/shootings.csv")
-```
-
-`r unhide()`
 
 :::{.exercise}
 **Exercise 5**
 
 1. Create a new chunk.
-1. Read the data stored at <https://benwhalley.github.io/lifesavR/data/shootings.csv>
+1. Read the data stored at <https://benwhalley.github.io/lifesavR/lifesavr/shootings.csv>
 1. View it using the **Environment** pane.
 1. View it using `glimpse()`.
 :::
-
-
-
-
-
-
-
 
 ## Using data from your computer {#upload}
 
