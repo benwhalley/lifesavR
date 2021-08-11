@@ -218,6 +218,13 @@ After completing these steps, your environment should look like this:
 
 
 
+```{r}
+fuel %>%
+  ggplot(aes(weight, mpg)) +
+    geom_point()  
+```
+
+
 
 
 # Loading packages {#packages}
