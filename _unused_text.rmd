@@ -1,4 +1,22 @@
+Each column in a dataset has an associated type. The second column of the `glimpse` output shows you the type of each column. This dataset includes columns with two types:
 
+* `dbl` is short for 'double-precision number', a number with one or more decimal places
+* `chr` — short for 'character', a variable which contains text (e.g. an email address)
+
+Other types include:
+
+* `fct` is short for 'factor', a categorical variable (e.g. a specific response to a multiple-choice question)
+* `int` is short for 'integer', a variable which contains whole numbers (e.g. a participant id number), and
+* `ord` — short for 'ordered'; a variant of *fct* where the categories have a particular order (e.g. responses like 'Wost' < 'Better' < 'Best')
+
+The importance of knowing the type associated with a column will become clear in a later session.
+
+
+
+
+
+The [World Happiness Report](https://www.kaggle.com/ajaypalsinghlo/world-happiness-report-2021) is a survey of the state
+of global happiness.
 
 
 

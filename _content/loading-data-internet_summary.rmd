@@ -1,4 +1,4 @@
 - `read_csv("http://...")` can load data from a URL.
-- It converts the data to a `data.frame`.
-- You must assign the loaded data to a variable, which you should give a descriptive name.
-- Use the **Environment** pane to view data you load using `read_csv()`.
+- It converts the file to a `data.frame`.
+- You must *assign* the loaded data to a *variable*  (give it a descriptive name).
+- Use the **Environment** pane to view the data you loaded

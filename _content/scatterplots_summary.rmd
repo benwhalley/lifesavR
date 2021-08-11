@@ -1,7 +1,7 @@
 
-- A scatterplot shows the *relationship* between two variables
-- Each observation must have two *continuous* values
+- A scatterplot shows the *relationship* between two *continuous* variables (columns)
+- Each observation (row) must have at least two values (columns)
 - These define the position on the x and y axes of the plot
-- Use `ggplot()` to make plots
-- `aes(x = ..., y = ...)` says which *columns* of data to use
-- `geom_point()` adds each pair of values as a point
+- Use `ggplot()`
+- `aes(x = ..., y = ...)` says which *columns* and creates axes
+- `geom_point()` adds the points

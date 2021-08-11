@@ -130,6 +130,7 @@ video_data <- list(identifier = "what-can-r-do", ytidentifier = "yt-embed")
 
 
 
+
 # Working interactively in R Markdown {#interactive}
 
 ```{r, echo=F}
@@ -147,7 +148,7 @@ video_data <- list(identifier = "working-interactively-in-r", ytidentifier = "yt
 **Exercise 1**
 
 1. Locate the first chunk in `session-1.rmd` (you find this in the 'files' pane)
-1. Place your cursor (anywhere) on the line that says `library(tidyverse)`
+1. Place your cursor (anywhere) on the line that says `library(tidyverse)` (this is explained in the next section)
 1. Run the code by pressing <span class="keyshape">Ctrl</span> + <span class="keyshape">↵</span> (Windows, Linux) or
 <span class="keyshape">⌘</span> + <span class="keyshape">↩</span> (Mac)
 
@@ -270,35 +271,33 @@ video_data <- list(identifier = "built-in-datasets", ytidentifier = "yt-embed")
 
 
 :::{.exercise}
+
 **Exercise 5**
 
 1. Create a new chunk at the bottom of your workbook (`session-1.rmd`).
-1. Display the `mtcars` `data.frame` and try out the navigation buttons.
-1. Load the `gapminder` package.
-1. Display and explore the `gapminder` dataset.
+1. Load the `psydata` package
+1. Display the `fuel` dataset and try out the navigation buttons.
+1. Make a list of columns in the `development` datset
+
 :::
 
 
 
 
 :::{.exercise}
+
 **Exercise 6**
 
-1. Create a new chunk at the bottom of your worksheet (`session-1.rmd`).
-1. Use `head()` to show the first six rows of `gapminder`.
+1. Create a new chunk at the bottom of your worksheet (`session-1.rmd`). 
+1. Load the `psydata` package if you haven't already done that in this work session
+1. Show the first 10 rows of the `development` data 
 
-Use the output to answer the following question. After entering your answer, click outside the box. The border will turn
-turn blue when the answer is correct.
+Use the output to answer the following question. After entering your answer, click outside the box. The border will turn turn blue when the answer is correct.
 
 The population of Afghanistan in 1967 was: `r fitb('11537966')`.
 
-**Exercise 7**
-
-1. Create a new chunk at the bottom of your worksheet.
-1. Use `glimpse` to display the `diamonds` dataset.
-
-The `clarity` variable in the `diamonds` tibble is of type `r fitb('ord')`.
 :::
+
 
 
 
@@ -343,14 +342,14 @@ mpg %>% ggplot(aes(displ, hwy)) +
 Write an answer to each of these questions in the `Check your knowledge` section of your workbook. The answers will be
 revealed in Session 2.
 
-1. How do you run part of a line of R code (using the keyboard short cut)?
+1. How do you run part of a line of R code using the keyboard short cut?
 1. Which library will you always need to load in your first R Markdown chunk?
-1. What is `gapminder`?
-1. Which function would you use to explore the first few rows of a dataset?
-1. Explain what `glimpse` does.
-1. What is the 5th column in the `gapminder` dataset?
+1. What is `psydata`?
+1. How would you look at/inspect a whole dataset?
+1. What does `glimpse` do and when is it useful?
+1. What is the 5th column in the `development` dataset?
 1. Which function makes a plot?  (there are many, but we mean the one shown above)
-1. Which function says which columns of data are used in a plot?
+1. Which function says which columns of data should be used in the plot?
 
 
 # Extension exercises
@@ -359,11 +358,11 @@ revealed in Session 2.
 
 ### Extension exercise 1
 
-This scatterplot uses the `mtcars` dataset to show `disp` (displacement) on the x-axis against `mpg` (miles per gallon, or fuel economy) on the y-axis.
+This scatterplot uses the `mtcars` dataset to show `engine_size` on the x-axis against `mpg` (miles per gallon, or fuel economy) on the y-axis.
 
 ```{r, echo=FALSE}
-mtcars %>% 
-  ggplot(aes(disp, mpg)) +
+fuel %>% 
+  ggplot(aes(engine_size, mpg)) +
   geom_point()
 ```
 
@@ -372,15 +371,17 @@ In a new chunk, write the R code to produce this plot.
 :::
 
 
+
 :::{.exercise}
 
 ### Extension exercise 2
 
-There is another built in dataset called `iris`.
+There is another built-in dataset called `iris` which includes data about
+different flower species.
 
 Use `glimpse` to get a list of the column names.
 
-Make a scatterplot which shows the relationships betwwn petal widths and lengths.
+Make a scatterplot which shows the relationships between petal widths and lengths.
 
 :::
 

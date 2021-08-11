@@ -1,17 +1,22 @@
 
 ```{r, eval=F}
-# make a scatterplot from the mtcars dataset
-mtcars %>%
-  ggplot(aes(x=wt, y=mpg)) + # selects the columns to use
+# if you have not already, load these packages
+library(tidyverse)
+library(psydata)
+
+# make a scatterplot from the fuel dataset
+fuel %>%
+  ggplot(aes(x=weight, y=mpg)) + # selects the columns to use
     geom_point()         # adds the points to the plot
 
 
 
-# the sample plot, but this time ommitting x= and y=
-# these are implicit in the order of wt and mpg.
+# the same plot
+# this time we left out x= and y= in the aes code
+# these are implicit in the order of weight and mpg
 # the x axis comes first
-mtcars %>%
-  ggplot(aes(wt, mpg)) +
+fuel %>%
+  ggplot(aes(weight, mpg)) +
     geom_point()         
 
 ```

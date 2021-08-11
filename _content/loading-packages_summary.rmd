@@ -1,4 +1,4 @@
 - Loading a 'package' adds functionality to R
-- Some packages (like `tidyverse`) also load example datasets
-- Load tidyverse with the command `library(tidyverse)`
-- **Load `tidyverse` every time you use R**
+- Some packages (like `tidyverse` and `pysdata`) also include example datasets
+- To load tidyverse write `library(tidyverse)`
+- **Load `tidyverse` and `psydata` before each session**

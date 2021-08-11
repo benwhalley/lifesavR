@@ -1,6 +1,10 @@
 library(tidyverse)
 library(pander)
 library(webex)
+
+# devtools::install_github("benwhalley/psydata")
+library(psydata)
+
 knitr::opts_chunk$set(
   echo = TRUE,
   collapse = TRUE,
@@ -8,7 +12,6 @@ knitr::opts_chunk$set(
   cache = FALSE,
   message = FALSE
 )
-
 
 
 makermds <- function(video_data){

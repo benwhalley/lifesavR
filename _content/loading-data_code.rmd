@@ -1,0 +1,28 @@
+
+```{r, eval=F}
+
+# REMEMBER
+# This code relies on you first uploading your CSV data
+# to the right folder on the RStudio server
+# if you have problems, check the other steps in the video first
+
+
+# Step 1.
+# We asked you to download the CSV file from here:
+# https://benwhalley.github.io/lifesavR/lifesavr/shootings.csv
+# And save it to your Desktop folder.
+
+
+# Step 2.
+# Then you needed to upload it to the same place as your Rmd file on the server
+
+
+# Step 3.
+# Then you can read the CSV and assign it to a new variable,
+# called `shootings`
+shootings <- read_csv('shootings.csv')
+
+
+# now we can inspect this dataset like any other:
+shootings %>% glimpse
+```

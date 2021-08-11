@@ -1,6 +1,9 @@
 
 Datasets contain are like spreadsheets: they are organised into columns and rows.
 
+In R, datasets are normally stored in a container called a `data.frame`. They can also be stored in a `tibble` (these are basically the same thing).
+
+
 
 ### Columns
 
@@ -10,9 +13,9 @@ We sometimes call the columns *variables*, because each column will often relate
 a variable in our study.
 
 However, this can be a bit confusing because --- in R --- variables can actually contain whole datasets.
-`mtcars`, for example, is the name of a variable which contains an example dataset.
+`fuel`, for example, is the name of a variable which contains an example dataset, provided by the `psydata` package.
 
-[show mtcars]
+[SHOW LIBRARY(PSYDATA) AND THEN THE FUEL DATASET]
 
 But these words are used flexibly and interchangeably, so we'll just have to get used to it.
 It's normally clear which type of variable we mean from the context.
@@ -20,118 +23,103 @@ It's normally clear which type of variable we mean from the context.
 
 ### Rows
 
-Each row in a dataset represents an *observation*. In different datasets an observation might correspond to an individual participant, a whole country, or even just a single response in an experiment made by a single person.
+Each row in a dataset represents an *observation*.
+
+In different datasets an observation might correspond to an individual participant, a whole country, or even just a single button press in an experiment.
 
 
-### Differet names
 
-In R datasets (columns/rows of data) are stored in a special type of variable called a
-`data.frame`.  
+### Packaged datasets
 
-You will also see references to datasets as `tibbles`.
+Some datasets are built into R packages as examples for beginners.
 
-A `tibble` is just a special type of `data.frame`, so you can treat these the same.
+For this course, we created a package called [`psydata`](https://github.com/benwhalley/psydata/)
+which includes the data we need for teaching.
 
-All these terms are mostly interchangeable:
-- dataset
-- Dataframe or `data.frame`
-- `tibble`
-
-
-### Built in datasets
-
-There are many datasets built into R as examples for beginners.
-
-One of these is called `mtcars`. This contains data about cars --- things like weight, fuel economy, engine size --- that was published in a US car magazine.
-
-Let's display this data in using a new chunk. As we did with the `diamonds` tibble, if we
-type `mtcars`, select the variable name and execute it, we can see the data it contains.
+This is installed on the RStudio server. To load it we run:
 
 ```{r}
-mtcars
+library(psydata)
+```
+
+We can see from the loading message that one of the datasets is called `fuel`. This contains data about cars --- things like weight, fuel economy, engine size.
+
+Let's display this data in using a new chunk.  If we type the word `fuel`, select this variable name with our cursor, and 'execute' it, we can see the data it contains:
+
+```{r}
+fuel
 ```
 
 
 By default this shows the first ten rows and columns of the data. You can see other rows using the `Next`,
-`Previous` and number buttons below the data. You can see additional columns using the arrow next to the final,
-right-hand column.
+`Previous` and number buttons below the data.
+
+If your browser window is very narrow you may need to view some of the columns by using the arrow next to the final, right-hand column.
 
 
-Other built in datasets:
 
-- the diamonds dataset is loaded with tidyverse (when you run `library(tidyverse)`)
-
-- The `gapminder` package loads a dataset which is also called `gapminder`. This contains data about life expectancy, GDP per capita, and population by country.
-
-We can load the gapminder data the same way we loaded the `diamonds` dataset.
-We load the `gapminder` package first, type the name of the dataset (also
-`gapminder`) and run it.
-
-Again, we can use the navigation buttons to explore the data.
-
+You can get information about the columns in all these example datasets by typing:
+`help(name_of_the_dataset_you_want_to_know_about)`. For example:
 
 ```{r}
-library(gapminder)
-
-gapminder
+help(fuel)
 ```
-
 
 
 
 
 ### Exploring and checking data
 
+There are two ways we recommend to inspect and check data you are using.
 
-The `head()` function allows you to explore the first few rows of a dataset. The code `mtcars %>% head()` prints the
-first six rows of `mtcars`. The `%>%` function is called the 'pipe'. We'll explain more about how it works in the next
-session. For now, all you need to know is that the function on the right hand side of the pipe (`head()`) is applied to
-whatever is on the left hand side (in this case, the `mtcars` dataset).
+1. Typing the name of the dataset, and running that as code
+2. The `glimpse()` function, which shows a list of all the columns and some of the data
+3. The `head()` function, which shows the first 10 rows
 
-The `glimpse()` function is useful for exploring datasets with lots of columns, as it allows you to see all columns at
-once. Using `glimpse()` we can have the columns of a dataset run down the page, and data run across.
 
-The [World Happiness Report](https://www.kaggle.com/ajaypalsinghlo/world-happiness-report-2021) is a survey of the state
-of global happiness. Running the code `happiness %>% glimpse()` shows all of the columns. This is like rotating the
-output you saw earlier anti-clockwise by 90 degrees. The code displays all of the columns as rows, and as many
-observations from the dataset as will fit on a single line.
 
-Each column in a `data.frame` has an associated type. The second column of the `glimpse` output shows you the type of each column. This dataset includes columns with two types:
+To use glimpse:
 
-* `dbl` is short for 'double-precision number', a number with one or more decimal places
-* `chr` — short for 'character', a variable which contains text (e.g. an email address)
+```{r}
+glimpse(fuel)
+```
 
-Other types include:
+This shows a list of all the columns in the dataset, the type of data stored in each column, and as many observations (datapoonts) as will fit on a single line.
 
-* `fct` is short for 'factor', a categorical variable (e.g. a specific response to a multiple-choice question)
-* `int` is short for 'integer', a variable which contains whole numbers (e.g. a participant id number), and
-* `ord` — short for 'ordered'; a variant of *fct* where the categories have a particular order (e.g. responses like 'Wost' < 'Better' < 'Best')
+`glimpse` is a really useful view to check which columns are available in a dataset before using them.
 
-The importance of knowing the type associated with a column will become clear in a later session.
+
+
+Using head:
+
+```{r}
+head(fuel)
+```
+
+This prints the first 10 rows of all the columns.   `head()` is really useful for checking the actual datapoints are as you expect before using them.
+
 
 
 
 
 ### Why are we talking about cars not psychology?
 
-In this course we mostly use very simple dataset, including `mtcars`.
+In this course we mostly use very simple datasets, and some of them aren't even about psychology.
 
-Some students ask why we don't always use psychological examples — after all, this is a
-course of psychologists. If this hasn't troubled you then you could skip to the next section!
-
-------------
+Some students ask why we don't always use psychological examples. If this hasn't troubled
+you then you could skip to the next section, but we thought we should explain:
 
 
-We think the `mtcars` dataset (and others, like `diamonds`, `iris` and `gapminder`) have a number of benefits.
+We think the `fuel` dataset (and others, like `iris`, and `development`) have a number of benefits.
 
-First, they are either built into R, or loaded in common packages. This makes them easily available for everyone.
+First, they are either built into R, loaded in common packages, or available in the `psydata` package.
+This makes them easily available for everyone.
 
-Second, these data relate to concrete, easy to understand physical phenemena (e.g. weight, length, number of gears).
-This means you don't have to hold in mind any complex theoretical ideas for the examples to make sense.
+Second, these data relate to concrete, easy to understand phenemena (e.g. weight, length, number of gears).
+This means you don't have to hold in mind any complex psychological/theoretical ideas for the examples to make sense.
 
-Third, the relationships in these datasets are clear, and there aren't too many data points. Psychological data are
+Third, the relationships in these datasets are clear, and there aren't too many data points. Real data are
 often more messy because many psychological constructs are hard to measure.
-
 
 Our experience is that, when learning R, it pays to keep everything as simple as it possibly can be.
 The skills and concepts involved in analysing these data are the same though.
@@ -140,4 +128,5 @@ R --- and the techniques and statistics we teach --- are used right across the n
 
 [ TOOD show examples of plots and analyses here]
 
-If you're still not convinced — don't worry ... we'll be collecting our psychological data soon enough and analysing that too!
+If you're still not convinced — don't worry ... we do include some clinical examples, and we will
+be collecting our own psychological data soon enough and analysing that.

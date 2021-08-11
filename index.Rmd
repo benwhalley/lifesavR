@@ -19,9 +19,6 @@ source('_first_chunk.R')
 
 
 
-
-
-
 ### Quick links
 
 
@@ -34,33 +31,49 @@ source('_first_chunk.R')
 
 # Overview
 
-R is a bit like a martial art (yes, this is a bit corny, but we think the parallels are real. If you don't find the analogy useful feel free to ignore it, but it might be helpful to some).
+R is a bit like a martial art. Yes, this analogy is clichéd, but we think the parallels are real. Learning a martial art goes something like this:
 
-- As a beginner you learn basic moves and simple techniques for self defence. If an attacker does _just_ what you expect you can block or counter-attack. But if something unexpected happens you might be confused or overwhelmed.
+- As a novice you learn basic movements and techniques for self defence. If an attacker behaves as you expect you can block or counter-attack. But if something unexpected happens you might be confused or overwhelmed.
 
 - As you gain expertise you learn general principles of movement and strategies to attack or defend. These let you to respond flexibly — so when things don't unfold as you expect you are able to adapt and make good decisions. As you practice you get stronger and can be more effective.
 
-- Finally, you become a master. You begin to see connections between techniques and can suggest new combinations or patterns to break thoough even sophisticated defences.
+- Finally, you become a master. You begin to see connections between techniques and can suggest new combinations or patterns to break through even sophisticated defences.
 
 
-This is all the same with R.
+This is a lot like learning R.
 
-- To begin with we show you the basics, but if the data aren't in the right format, or something unexpected happens you can end up stuck.
-- In this course we aim to give you more general principles for working with data. Over time you will develop understanding and expertise that lets you combine techniques to solve new problems.
-- In stage 4, and if you continue using R in your own work, you might develop mastery and really start to understand the core princples involved — at least in some areas.
+- To begin with we show you the basics, but if your data aren't in the right format, or something unexpected happens you can end up getting stuck. You make basic errors of style or form which leave you vulnerable.
+- In this course we aim to teach general principles for working with data. Over time you will develop understanding and expertise that lets you combine techniques to solve new problems. With repeated practice your skills are honed and you gain strength.
+- In stage 4, and if you continue using R in your own work, you might develop mastery and really start to understand the core principles involved, solving problems in creative ways.
 
 
-------------
+### Practice makes perfect
 
-Another way R and martial arts are similar is that there's no substitute for practice. It's simply not possible to 'fake it'.
+One final way R and martial arts are similar is that there's no substitute for practice. It's simply not possible to 'fake it'.
 
-In martial arts, a blow to the head is direct and effective feedback that your basic skills like blocking or footwork need practice. In R, error messages and broken code can feel similarly unforgiving. The solution (in both cases) is to ensure the basics are correct, and continue to train!
+In martial arts, a blow to the head is direct and effective feedback that your basic skills like blocking or footwork need practice. In R, error messages and broken code can feel similarly unforgiving. The solution (in both cases) is to use failures constructively: ensure the basics are correct, and continue to train!
+
+
+### Mindset matters
+
+You might ask what you can do to succeed on this course and make the most of your training.
+
+Based on what we've observed in previous cohorts, the following attributes and approaches are 
+what seem to us to correlate with success.
+
+* Go slow, but be steady. Don't move on until you've understood each section. It's not a race or a competition with your peers (even if workshops can feel that way). 
+
+* Be consistent. If you feel you might be slower than other students with this material allocate time to study outside of workshops now. Don't leave work until the end of the year — we will be adding new material each week, so this is a recipe for falling behind.
+
+* Support each other, but make sure _you_ are doing the work too. It's nice to work as a pair or a group, and it can be great for your own learning to explain teachniques to others. But it's also easy to forget that you must learn the material for yourself. Our advice is to swap partners every week or two to make sure you don't get in a rut.
+
+* Persevere. Do all exercises. Re-do parts of a worksheet if you didn't understand them.
 
 
 
 # Using these worksheets
 
-These worksheets are designed based on student feedback over several years.
+These worksheets are designed based on student feedback over many years.
 
 **They are intended to be used in supported workshops where students work at their own pace, individually or in pairs, with experts on hand to answer questions and resolve problems quickly.** You can also use the worksheets alone, or without support, although we don't recommend this; in the early stages students can often become stuck or demoralised when they are bogged down with lots of simple errors.
 
@@ -86,32 +99,6 @@ For each session there is an accompanying interactive workbook (explained below)
 
 
 
-
-## Mindset matters
-
-<!-- TODO BEN intro VIDEO -->
-
-`r hide('Video script')`
-I wonder if a video of Ben explaining success factors might be a replacement for the martial arts simile.
-
-For now, this is a list of success factors observed in previous cohorts:
-
-* 'Light' attitude
-* Perseverence
-* Go slow. Don't move on until you've understood each section
-* It's not a race or a competition with your peers (even if workshops can feel that way)
-  * Hare and the tortoise
-* ork iSupport each other, but make sure _you_ are doing the work too.
-* Do all exercises
-* Re-do parts of worksheet if you didn't understand them
-* Work together
-* Many instances of people who overcame initial lack of confidence to enjoy R
-* Practise - learn by doing
-`r unhide()`
-
-
-
-
 # Access to R
 
 Throughout the module we use R for data processing and analysis.
@@ -122,14 +109,23 @@ examples here is to the school's RStudio Server.
 -   [Login to your account on the server here](https://rstudio.plymouth.ac.uk)
 
 
-Unless you are very proficient with R, don't try to install it on your own computer,
-at least to begin with. We find creates unecessary problems, and staff can't help
-you debug problems unless they are evident when using the school RStudio server.
+Unless you already  have a lot of experience with R, don't try to install it on 
+your own computer. We find this creates unnecessary problems for students. Staff won't help
+you debug your work unless they are evident when using the school RStudio server.
 
 
 
 
-If you want to install R on your own computer (not recommended) see this page first: https://discourse.psy.plymouth.ac.uk/t/how-can-i-install-r/16
+
+# Getting support
+
+<!-- PSYC519 and PSYC719 have more staff time allocated to them than any other modules in the school. -->
+<!-- However, we have 300 students in the class and only 10 members of staff.  -->
+
+<!-- TODO add something about discourse -->
+
+
+
 
 
 
