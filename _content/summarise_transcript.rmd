@@ -1,0 +1,50 @@
+TODO - base video on code examples and summary
+
+-----------------
+
+NOTES
+
+
+Show
+
+```{r}
+mtcars %>% summarise(average_mpg = mean(mpg))
+```
+
+and also
+
+```{r}
+mtcars %>% summarise(mean(mpg))
+```
+
+emphasising that the former is better
+
+Also show replacing with median, sd etc.
+
+This is where we fist encounter the need to give things R-legal names so explain about spaces and special characters
+Emphasise everything should be lower case with underscores.
+
+Then show calculating two new cols at once:
+
+mtcars %>% summarise(M = mean(mpg), SD = sd(mpg))
+
+Point out the comma between the two in commentary
+
+
+
+
+### Using `filter` with `summarise`
+
+One powerful thing about R and the `tidyverse` is that you can combine the techniques 
+you learn to make more sophisticated analyses.
+
+A simple example of this is using  `filter` with `summarise`. 
+
+For example, if we want to calculate the average life expectancy of only Asian countries
+in the development data we can write:
+
+```{r}
+development %>% 
+  filter(continent=="Asia") %>% 
+  summarise(asian_life_expectancy = mean(life_expectancy))
+```

@@ -123,6 +123,7 @@ In 1999, a 6-cylinder, manual transmission, Audio A4 could cover `r fitb('18')` 
 city.
 :::
 
+
 # Loading data {#loadingdata}
 
 ```{r, echo=F}
@@ -133,15 +134,8 @@ video_data <- list(identifier = "loading-data", ytidentifier = "yt-embed", showc
 ```{r child = '_content/_video_tabs.rmd'}
 ```
 
-## Reading CSV files from the internet
 
-```{r, echo=F}
-video_data <- list(identifier = "loading-data-internet", ytidentifier = "yt-embed")
-# makermds(video_data)
-```
 
-```{r child = '_content/_video_tabs.rmd'}
-```
 
 :::{.exercise}
 **Exercise 5**
@@ -152,50 +146,8 @@ video_data <- list(identifier = "loading-data-internet", ytidentifier = "yt-embe
 1. View it using `glimpse()`.
 :::
 
-## Using data from your computer {#upload}
-
-![TODO: replace with video](images/video_placeholder.png)
-
-### Video summary
-
-- Before using your own data you must upload it to the server.
-- Data can be uploaded using the **Files** pane.
-- Always upload data to the same location as your R code (or `.rmd` file).
-- For data you upload, give `read_csv()` the path to the CSV file.
-- Assign the data you load to a variable. Give this a descriptive name.
-- Use the **Environment** pane to view data.
 
 
-### Code examples
-
-```{r, eval=F}
-# load a csv file uploaded to the server
-shootings <- read_csv("shootings.csv")
-
-# note - this will only work if the file called shootings.csv is uploaded to the server
-# and in the same place as your .rmd file
-```
-
-
-`r hide('Show full video transcript and code')`
-The `Upload` button in the **Files** pane lets you upload a file from your computer to R Studio. R Studio uses file
-extensions to guess what the file contains. A file extension is a sequence of characters, starting with a `.` at the end
-of a file name.
-
-- `.csv` - CSV file
-- `.rmd` - R Markdown file
-
-Make sure that any file you upload has the correct file extension.
-
-We'll upload `shootings.csv` from the previous exercise.
-
-1. Click the `Upload` button.
-1. Ensure the `Target directory` is where you want the uploaded file to appear. For this module it should read `~/lifesavr`. The `~` (pronounced "tilde") means your `Home` directory on the R Studio server. The `/lifesavr` means the folder named `lifesaver` in `Home`.
-1. Click the `Choose file` button and select the file you want to upload. After you select a file, its name appears next to the button.
-1. Click the `**OK**` button.
-
-The file should appear in the **Files** pane in your `lifesavr` folder.
-`r unhide()`
 
 :::{.exercise}
 **Exercise 6**
@@ -208,88 +160,26 @@ The file should appear in the **Files** pane in your `lifesavr` folder.
 In which city was the earliest recorded shooting? `r fitb('Shelton')`
 :::
 
-# Selecting rows: `filter()` {#filter}
-
-![TODO: replace with video](images/video_placeholder.png)
-
-### Video summary
-
-- The `filter()` function selects *rows* from a dataset where values in that row match criteria we set.
-- The simplest filter uses `==` (two equality symbols) to test if values in the row match exactly.
-- When matching text data upper/lower case, spaces and punctuation all matter.
-- We can use other filters like `<` or `>` for numeric data.
-- We can combine multiple filters.
 
 
-### Code examples
 
-```{r}
-# load gapminder dataset
-library(gapminder)
 
-# filter rows where country is equal to the word "Kenya"
-# (double-equality symbols require an exact match)
-gapminder %>%
-  filter(country == "Kenya")
+# Selecting rows {#filter}
 
-# matches rows where year is greater than 2000
-gapminder %>%
-  filter(year > 2000)
 
-# matches rows with low life expectancy
-gapminder %>%
-  filter(lifeExp < 35)
+```{r, echo=F}
+video_data <- list(identifier = "filter", ytidentifier = "yt-embed", showcode=F)
+# makermds(video_data)
+```
 
-# combines multiple filters
-gapminder %>%
-  filter(country=="Kenya") %>%
-  filter(year > 2000) %>%
-  filter(lifeExp < 55)
+```{r child = '_content/_video_tabs.rmd'}
 ```
 
 
-<!-- TODO LABEL -->
-`r hide('Show full video transcript and code')`
-
-TODO ADD PREAMBLE/EXPLANATION OF AIM OF VIDEO
-
-The following chunk filters the `gapminder` dataset to include only rows where the `country` column equals "Kenya".
 
 
 
-```{r}
-library(gapminder)
-gapminder %>% filter(country == "Kenya")
-```
 
-
-The `==` is called an "operator". It compares values from the column on the left hand side with the value specified on
-the right hand side. The value *must* match the column type. The value `"Kenya"` was in quotes because the country
-column is a factor.
-
-The "greater than" operator `>` filters numeric data.
-
-```{r}
-gapminder %>% filter(year > 2000)
-```
-
-This chunk filters rows where `year` is greater than 2000.
-
-The opposite of the `>` operator is the `<` operator. This filters numeric columns which are *less than* a value.
-
-Combined filters
-
-```{r}
-gapminder %>%
-  filter(country=="Kenya") %>%
-  filter(year > 2000)
-```
-
-
-TODO - ADD AN EXAMPLE HERE OF SOMETHING WITH A SPACE OR INCORRECT CAPITALISATION NOT MATCHING
-
-
-`r unhide()`
 
 :::{.exercise}
 **Exercise 7**
@@ -299,7 +189,7 @@ Filter `gapminder` to show countries with a population greater than 100 million.
 Your results should look like this:
 
 ```{r, echo=FALSE}
-gapminder %>% filter(pop > 100000000)
+development %>% filter(population > 100000000)
 ```
 
 :::
@@ -313,134 +203,65 @@ Show countries with a population greater than 100 million and life expectancy gr
 The results should look like this:
 
 ```{r, echo=FALSE}
-gapminder %>%
-  filter(pop > 100000000) %>%
-  filter(lifeExp > 70)
+development %>%
+  filter(population > 100000000) %>%
+  filter(life_expectancy > 70)
 ```
 
 :::
 
 
-# `summarise()` {#summarise}
+# Summarising data {#summarise}
 
-![TODO: replace with video](images/video_placeholder.png)
 
-Video summary:
-
-- Often you have lots of data and need to make summaries of it, e.g. to calculate the average of a column.
-- The `summarise()` function takes many rows and uses a **function** to convert those into fewer rows.
-- Common summary functions are those which calculate descriptive statistics, like `mean()`, `median()`, and `sd()`, which is short for standard deviation.
-- The result is a data frame which can be stored in a variable.
-
-```{r}
-# use function mean() to summarise mpg column
-# the result is a data.frame with the a single column named 'mean_mpg'
-mtcars %>%
-  summarise(mean_mpg = mean(mpg))
-
-# if you omit the column name, the summarised column is named after summary function
-# this produces column names which can be awkward to process later in a pipeline
-# for example:
-mtcars %>%
-  summarise(mean(mpg))
-
-# median mpg (rather than mean)
-mtcars %>%
-  summarise(median_mpg = median(mpg))
-
-# standard deviation
-mtcars %>%
-  summarise(sd_mpg = sd(mpg))
-
-# summarise two columns at once (functions are separated with a comma)
-# store the resulting data frame in a variable
-mtcars_summary <- mtcars %>%
-  summarise(M = mean(mpg), SD = sd(mpg))
+```{r, echo=F}
+video_data <- list(identifier = "summarise", ytidentifier = "yt-embed", showcode=F)
+# makermds(video_data)
 ```
 
-`r hide('Show full video transcript and code')`
-Show
-
-```{r}
-mtcars %>% summarise(average_mpg = mean(mpg))
+```{r child = '_content/_video_tabs.rmd'}
 ```
 
-and also
 
-```{r}
-mtcars %>% summarise(mean(mpg))
-```
-
-emphasising that the former is better
-
-Also show replacing with median, sd etc.
-
-This is where we fist encounter the need to give things R-legal names so explain about spaces and special characters
-Emphasise everything should be lower case with underscores.
-
-Then show calculating two new cols at once:
-
-mtcars %>% summarise(M = mean(mpg), SD = sd(mpg))
-
-Point out the comma between the two in commentary
-`r unhide()`
 
 :::{.exercise}
 **Exercise 13**
 
 1. Copy the code above into your workbook.
 1. Amend the code to calculate the median weight.
-1. Note that `mtcars` stores weight in units of 1000 lbs.
+1. Note that `fuel` stores `weight` in kilos.
 
-The median car weight is `r fitb('3.325')` pounds.
+The median car weight is `r fitb(median(fuel$weight))` kg
+
 
 **Exercise 14**
 
-1. Amend the code to calculate the mean and standard deviation of weight.
+1. Amend the code to calculate the mean and standard deviation of `weight`.
 
-To the nearest pound, the mean car weight is `r fitb('3217')` pounds, and the standard deviation is `r fitb('978')`
-pounds.
+To the nearest pound, the mean car weight is `r fitb(round(median(fuel$weight), 0))` kg, and the standard deviation is `r fitb(round(sd(fuel$weight), 0))` kg.
 :::
 
-## Using `filter()` and `summarise()` together
 
-![TODO: replace with video](images/video_placeholder.png)
-
-Video summary:
-
-- We often want to filter a dataset before summarising.
-- We can do this by creating a pipeline with `filter()` and `summarise()`.
-
-```{r}
-# calculate the mean for cars with manual transmission (am == 1)
-mtcars %>%
-  filter(am == 1) %>%
-  summarise(mean_mpg = mean(mpg))
-```
-
-`r hide('Show full video transcript and code')`
-
-Calculate the mean for cars with manual transmission (am == 1)
-
-```{r}
-mtcars %>%
-  filter(am == 1) %>%
-  summarise(mean_mpg = mean(mpg))
-```
-
-`r unhide()`
 
 :::{.exercise}
 **Exercise 15**
 
-```{r, echo=FALSE, eval=FALSE}
-mtcars %>%
-  filter(am == 0) %>%
-  summarise(sd_mpg = sd(mpg))
-```
-Use `filter()` and `summarise()` to calculate the standard deviation of cars with automatic transmission.
+```{r, echo=FALSE, eval=T}
+sd6 <- fuel %>%
+  filter(cyl == 6) %>%
+  summarise(x = sd(mpg)) %>% pull(x) 
 
-Cars with automatic transmission have a standard deviation (to two decimal places) of `r fitb('3.83')` miles per gallon.
+mubig <- fuel %>%
+  filter(engine_size > 3000) %>%
+  summarise(x = mean(mpg)) %>% pull(x) 
+
+```
+Use `filter()` and `summarise()` together to calculate the answers to these questions to 1 decimal place:
+
+- the average MPG of cars with engine size > 3000:  `r fitb(mubig, tol=.1)`
+- the standard deviation of MPG in cars with 6 gears: `r fitb(sd6, tol=.1)`
+
+
 :::
 
 
@@ -451,10 +272,9 @@ revealed in Session 3.
 
 1. What is the `<-` symbol called and what does it do?
 1. What is the `%>%` symbol called and what does it do?
-1. Which function is used to load data and what are two places that data can be loaded from?
-1. How would you select rows from a data frame where values in a numeric column are between 10 and 20?
+1. Which function is used to load data from a CSV file?
+1. How would you select rows from a dataset where values in a numeric column are between 10 and 20?
 1. Which functions would you use to calculate the mean of a numeric column?
-1. Which other two functions are commonly used to calculate descriptive statistics?
 
 
 
@@ -478,8 +298,8 @@ gapminder %>%
   ggplote(aes("lifeExp", colr = "Continent"))  geom_density()
 
 # select only years after 1990
-gapminder %>%
-  filter(year > 1990)
+development %>%
+  filter(year > "1990")
 
 ggplot(aes(year, lifeExp, color=continent)) +
   geom_jitter()
@@ -492,13 +312,15 @@ NOTE - we will know all the errors they will see so can provide hints for each o
 library(tidyverse)
 
 # make a density plot of of life expectacy with different color lines for each continent
-gapminder %>%
-  ggplot(aes(lifeExp, color = continent))  +
+development %>%
+  ggplot(aes(life_expectancy, color = continent))  +
   geom_density()
 
 # select only years after 1990
-gapminder::gapminder %>%
-  filter(year > 1990) %>%
-  ggplot(aes(year, lifeExp, color=continent)) +
-  geom_jitter()
+development %>%
+  filter(year > 1990)
+
+development %>%
+  ggplot(aes(year, life_expectancy, color=continent)) +
+  geom_point()
 ```

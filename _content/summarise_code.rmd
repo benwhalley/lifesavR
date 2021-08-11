@@ -1,0 +1,52 @@
+
+```{r}
+# use function mean() to summarise mpg column
+# the result is a data.frame with the a single column named 'mean_mpg'
+fuel %>%
+  summarise(mean_mpg = mean(mpg))
+
+# if you omit the column name, the summarised column is named after summary function
+# this produces column names which can be awkward to process later in a pipeline
+# for example:
+fuel %>%
+  summarise(mean(mpg))
+
+# median mpg (rather than mean)
+fuel %>%
+  summarise(median_mpg = median(mpg))
+
+# standard deviation
+fuel %>%
+  summarise(sd_mpg = sd(mpg))
+
+# summarise two columns at once 
+# the mean and sd functions are separated with a comma
+# the resulting data frame is stored in a variable called mtcar
+fuel_summary <- fuel %>%
+  summarise(M = mean(mpg), SD = sd(mpg))
+
+
+# see the stored summary
+fuel_summary
+
+# remember, this summary is still a new dataset; you could do more processing on it in extra steps if needed
+
+
+
+# combining summarise and filter
+development %>% 
+  filter(continent=="Asia") %>% 
+  summarise(Average_life_expectancy = mean(life_expectancy))
+
+
+```
+
+
+
+
+
+
+
+
+
+

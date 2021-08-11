@@ -1,0 +1,8 @@
+
+- Summarising data means reduce lots of numbers to a smaller number
+- For example, the mean is a summary which tells us about the central tendency
+- `summarise()` allows us to use different *summary functions* like mean, median or standard deviation
+- It reduces many rows into a smaller number (sometimes a single number)
+- `summarise()` returns a new dataset
+- You can store the result in a variable, or use it in later code
+- You can use `filter` and `summarise` together

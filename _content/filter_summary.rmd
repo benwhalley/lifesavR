@@ -1,0 +1,8 @@
+
+- `filter()` selects *rows* from a dataset
+- We define criteria to match rows we want
+- To match exactly, we use `==` (two equality symbols) 
+- Other filters like `<` or `>` are also useful
+- Combine multiple filters to be more specific
+- Upper/lower case, spaces, and punctuation all matter (watch out!)
+
