@@ -293,13 +293,14 @@ Start a NEW R session and make this code work:
 ```{r, eval=F}
 liibrary(todyverse)
 
-# make a density plot of of life expectacy with different color lines for each continent
-gapminder %>%
-  ggplote(aes("lifeExp", colr = "Continent"))  geom_density()
-
 # select only years after 1990
 development %>%
   filter(year > "1990")
+
+# calculate the average life expectancy in Africa
+development 
+  filter(continent = "africa") %>% 
+  summarise(average(life_expectancy))
 
 ggplot(aes(year, lifeExp, color=continent)) +
   geom_jitter()
@@ -311,14 +312,14 @@ NOTE - we will know all the errors they will see so can provide hints for each o
 # correct version
 library(tidyverse)
 
-# make a density plot of of life expectacy with different color lines for each continent
-development %>%
-  ggplot(aes(life_expectancy, color = continent))  +
-  geom_density()
-
 # select only years after 1990
 development %>%
   filter(year > 1990)
+
+# calculate the average life expectancy in Africa
+development %>% 
+  filter(continent == "Africa") %>% 
+  summarise(mean(life_expectancy))
 
 development %>%
   ggplot(aes(year, life_expectancy, color=continent)) +
