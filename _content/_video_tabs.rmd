@@ -6,7 +6,8 @@ t1a <- '
 <div class="videowrapper">
 
 
-<video width="80%" controls>
+<video width="80%" controls poster="images/poster-images/{{identifier}}.png">
+
 <source src="videos/{{ytidentifier}}.mp4" type="video/mp4"></source>
 Your browser does not support the video tag.
 </video>
