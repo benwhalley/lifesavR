@@ -1,5 +1,5 @@
 ---
-title: 'Plotting and describing groups'
+title: 'Working with groups'
 author: 'Ben Whalley, Paul Sharpe, Sonja Heintz'
 # date: "April 2021"
 bibliography: [references.bib]
@@ -24,11 +24,10 @@ source('_first_chunk.R')
 ```
 
 
-![](images/smarties.png)
 
 # Overview
 
-We often collect data from two or more groups. 
+As researchers, we often collect data from two or more groups. 
 
 Group allocations are *categorical* variables, and are stored in a special way
 by R which makes displaying them on graphs easier. In this workshop we learn to 
@@ -71,8 +70,7 @@ video_data <- list(identifier = "boxplot-introduction", ytidentifier = "yt-embed
 **Exercise 9**
 
 1. Create a new chunk at the bottom of your worksheet
-1. Create a boxplot with `Species` on the x-axis and `Sepal.Width` on the y-axis (sepals are the leaves that encase an iris flower)
-1. Run the chunk
+1. Use the `iris` dataset. Create a boxplot with `Species` on the x-axis and `Sepal.Width` on the y-axis (sepals are the leaves that encase an iris flower)
 
 Your boxplot should look like this:
 
@@ -117,7 +115,7 @@ gapminder %>%
 
 
 
-# Types of variables and visual scales
+# Types of variable and visual scale
 
 
 ```{r, echo=F}
@@ -160,11 +158,11 @@ Use `glimpse` to check the data types of the `mpg` and the `diamonds` datasets.
 
 Exercise XXX
 
-Use the `mpg` dataset to make a boxplot showing miles per gallon on the y axis, and number of cylinders on the x axis (`cyl`). Your plot should look like this:
+Use the `fuel` dataset to make a boxplot showing miles per gallon on the y axis, and number of gears on the x axis (`gear`). Your plot should look like this:
 
 ```{r ex6, echo=FALSE}
-mpg %>%
-  ggplot(aes(factor(cyl), hwy)) +
+fuel %>%
+  ggplot(aes(factor(gear), mpg)) +
   geom_boxplot()
 ```
 
@@ -174,7 +172,6 @@ mpg %>%
 
 
 # Grouping with `group_by` {#groupby}
-
 
 ```{r, echo=F}
 video_data <- list(identifier = "group-by", ytidentifier = "yt-embed")
@@ -190,13 +187,25 @@ video_data <- list(identifier = "group-by", ytidentifier = "yt-embed")
 
 **Exercise XXX**
 
-Adapt the code below to calculate the `median` uptake for each grass in the `CO2` data, when chilled and not-chilled:
+Replace the `?` in the code below to to calculate the `median` weight lost for men and women undergoing FIT and MI in the
+`funimagery` dataset:
 
 ```{r, eval=F}
-CO2 %>%
-  group_by(Type, Treatment) %>%
-  summarise(mean(uptake))
+? %>%
+  group_by(?, ?) %>%
+  summarise( ?(kg3) )
 ```
+
+These are the correct numbers:
+
+```{r, echo=F, include=T}
+funimagery %>%
+  group_by(Gender=gender, Intervention=intervention) %>%
+  summarise(`Median weight loss` =  sprintf("%.1f", median(kg3) )) %>% 
+  mutate(Gender=factor(Gender, levels=c("m", "f"), labels=c("Male", "Female"))) %>% 
+  pander()
+```
+
 
 :::
 
@@ -207,7 +216,7 @@ CO2 %>%
 
 Use the built-in  `iris` dataset
 
-Use `group_by` and `summarise` to calculate the average `Sepal.Length` of each `Species` of flower.
+Use `group_by` and `summarise` to calculate the average `Sepal.Length` for each `Species` of flower.
 
 :::
 
@@ -222,6 +231,7 @@ Use `group_by` and `summarise` to calculate the average `Sepal.Length` of each `
 glimpse(chickwts)
 ```
 
+Using `group_by` and `summarise`. 
 Calculate the mean and standard deviation chick weights for each type of feed.
 
 ```{r, echo=FALSE, eval=FALSE}
@@ -239,32 +249,31 @@ The standard deviation of chicks fed on sunflower was (to 2 decimal places) `r f
 
 
 
-
-
-
 # Check your knowledge
 
 Write an answer to each of these questions in the `Check your knowledge` section of your workbook. The answers are
 revealed in Session 4.
 
-1. Which function makes a boxplot?
+1. Which functions are needed to make a boxplot?
 1. What is the difference between a `dbl` and a `fct` or `ord`?
-1. Give an example of when the difference between `dbl` and `fct` matters when making a plot? (include code examples for this if you can)
+1. Which datatypes are used for continuous variables?
+1. Give an example of why the difference between `dbl` and `fct` matters when making a plot (include code examples for this if you can)
 1. How can you convert a variable from a `dbl` to a `fct`?
 1. How could you calculate the mean for one level of a factor?
-1. How would you calculate the mean for all levels of a factor?
+1. How would you calculate the mean for all levels of a factor (e.g. for continent in the `development` dataset?
 
 
 
 
 # Extension exercises
 
-
 :::{.exercise}
 
-### Extension exercise XXX
-Make a scatterplot of the `diamonds` data. Show carat on the x-axis, price on the y-axis and the clarity of the diamond
-in colour. Try to produce your plot before comparing it against the answer using the button below.
+## Extension exercise XXX
+Make a scatterplot of the `diamonds` data. Show carat on the x-axis, price on the y-axis and the clarity of the diamond in colour. Try to produce your plot before comparing it against the answer using the button below.
+
+Interpret your plot: Which category of diamond `clarity` has the steepest rise in price as
+size (carat) increases?
 
 `r hide('show answer')`
 ```{r, echo=FALSE}
@@ -273,6 +282,7 @@ diamonds %>%
   geom_point()
 ```
 `r unhide()`
+
 :::
 
 
@@ -281,13 +291,15 @@ diamonds %>%
 :::{.exercise}
 
 ## Extension exercise XXX
-Make a scatterplot of the `mpg` data. Show city mpg on the x-axis, highway mpg on the y-axis and the vehicle class
-in colour. Try to produce your plot before comparing it against the answer using the button below.
+
+Make a scatterplot of the `fuel` data. Show `mpg` on the y-axis, engine size on the x-axis, and use type of transmission (auto/manual) to colour the points. Try to produce your plot before comparing it against the answer using the button below.
+
+Interpret your plot: Which type of car (auto or manal) sees the strongest relationship between engine size and fuel economy?
 
 `r hide('show answer')`
 ```{r, echo=FALSE}
-mpg %>%
-  ggplot(aes(cty, hwy, colour = class)) +
+fuel %>%
+  ggplot(aes(engine_size, mpg, colour = automatic)) +
   geom_point()
 ```
 `r unhide()`
@@ -300,10 +312,11 @@ mpg %>%
 
 
 
+:::{.exercise}
 
-## Extension exercise 1
+## Extension exercise XXX
 
-Make a boxplot showing life expectancy by continent for years greater than 1999. (Hint: use `filter()`, `ggplot()` and `geom_boxplot()`.)
+Use the `development` data. Make a boxplot showing life expectancy by continent for years greater than 1999. (Hint: use `filter()`, `ggplot()` and `geom_boxplot()`.)
 
 The plot should look like this:
 
@@ -315,11 +328,13 @@ gapminder::gapminder %>%
 ```
 
 
+:::
 
 
 
 :::{.exercise}
-### Extension exercise XXX
+
+## Extension exercise XXX
 
 This boxplot uses the `gapminder` dataset to show `lifeExp` (life expectancy) on the y-axis for each `continent` on the
 x-axis.
@@ -331,13 +346,14 @@ gapminder %>%
 ```
 
 In a new chunk, write the R code to produce this plot.
+
 :::
 
 
 
 :::{.exercise}
 
-### Extension exercise XXX
+## Extension exercise XXX
 Create a boxplot which shows drivetrain on the x-axis and miles per gallon when a car is driven in the city on the
 y-axis. Your plot should look like this:
 
@@ -361,6 +377,120 @@ mtcars %>%
   ggplot(aes(wt, mpg, color=factor(gear))) +
   geom_point()
 ```
+
+
+:::
+
+
+# Extra (advanced) techniques 
+
+## 'Flipping' axes
+
+One neat trick when using boxplots is to 'flip' the axes, so the boxes are horizontal. This
+can save space and make the graph easier to read when there are many categories.
+
+E.g. compare this:
+
+```{r}
+asia <- development %>% 
+  filter(continent=="Asia")
+
+asia %>% 
+  ggplot(aes(country, life_expectancy)) + 
+  geom_boxplot()
+```
+
+With this:
+
+```{r}
+asia %>% 
+  ggplot(aes(country, life_expectancy)) + 
+  geom_boxplot() + 
+  coord_flip()
+```
+
+
+All we had to do was add `+ coord_flip()` to the end of our code. This is short for 'flip coordinates' (i.e. swap
+the x and y axes).
+
+
+## Get things in order
+
+Another useful technique is to sort the boxes by their average, or some other value.
+
+```{r, eval=F}
+asia %>% 
+  ggplot(aes(fct_reorder(country, life_expectancy, median, .desc=TRUE), life_expectancy)) + 
+  geom_boxplot() + 
+  coord_flip()
+```
+
+
+```{r, echo=F}
+# hidden because xlab/ylab not introduced yet
+asia %>% 
+  ggplot(aes(fct_reorder(country, life_expectancy, median, .desc=TRUE), life_expectancy)) + 
+  geom_boxplot() + 
+  coord_flip() + xlab("") + ylab("Life expectancy")
+```
+
+
+Here we changed `country` to read `fct_reorder(country, life_expectancy, median)`. Let's unpack that. 
+Taking each part in order, it means:
+
+- reorder a factor (i.e. change the ordering of the categories)
+- we are going to reorder the `country` column
+- reorder the categories using values in the `life_expectancy` column
+- use the `median` to decide the sorting order
+- `.desc=TRUE` means use a *descending* sort (i.e. we do a reverse sort on the median)
+
+
+The result is a plot where all the countries are arranged in descending order of their median life expectancy.
+
+
+## Adding labels
+
+If we want to make the x and y labels on our plot nicer, we can use `+ xlab("label")` and  `+ ylab("label")`.
+
+For example:
+
+```{r}
+fuel %>% 
+  ggplot(aes(factor(gear), mpg)) + 
+  geom_boxplot() + 
+  xlab("Number of gears") + ylab("Fuel economy (mpg)")
+```
+
+
+
+:::{.exercise}
+
+## (Advanced) Extension Exercise: 1
+
+This plot of the American countries is OK, but it's hard to read the labels:
+
+```{r, echo=F}
+development %>% 
+  filter(continent=="Americas") %>% 
+  ggplot(aes(country, life_expectancy)) + 
+  geom_boxplot() 
+```
+
+Can you convert it to look more like this?
+
+
+```{r, echo=F}
+development %>% 
+  filter(continent=="Americas") %>% 
+  ggplot(aes(fct_reorder(country, life_expectancy, .desc=TRUE), life_expectancy)) + 
+  geom_boxplot() + 
+  coord_flip() + xlab("") + ylab("Life expectancy")
+```
+
+
+Reflection: Imagine someone using the graph for various different purposes.
+Is it always helpful to sort the countries in order of life expectancy? How should we
+decide when and how to sort the data?
 
 
 :::

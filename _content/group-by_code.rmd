@@ -1,42 +1,56 @@
 
 ```{r, eval=F}
-# look at the variables in the CO2 data
-# which is about different grasses use of CO2 (uptake) 
-# under cold/normal conditions
-CO2 %>% glimpse
+# check the columns in the funimagery dataset 
+# results of an RCT of functional imagery training for weight loss 
+# conducted at Plymouth University
+funimagery %>% glimpse
 
-# make a plot comparing CO2 update of types of grass
-CO2 %>%
-  ggplot(aes(Type, uptake)) +
+# boxplot to compare the intervention groups
+funimagery %>%
+  ggplot(aes(intervention, weight_lost)) +
   geom_boxplot()
 
-# using filter with summarise to get the numbers from the graph
-CO2 %>% 
-  filter(Type=="Quebec") %>% 
-  summarise(mean(uptake))
 
-# (but this could get repetitive)
+# calculate mean weight loss in each group in a laborious way
+funimagery %>% 
+  filter(intervention=="MI") %>% 
+  summarise(mean(weight_lost))
+
+funimagery %>% 
+  filter(intervention=="FIT") %>% 
+  summarise(mean(weight_lost))
 
 
-# instead we use group_by to make multiple summaries, 
-# one for each category
-CO2 %>%
-  group_by(Type) %>%
-  summarise(mean(uptake))
+# use group_by to split the data and summarise each group
+funimagery %>%
+  group_by(intervention) %>%
+  summarise(mean(weight_lost))
 
-# group by more than one variable at once
-CO2 %>%
-  group_by(Type, Treatment) %>%
-  summarise(mean(uptake))
+# store the result (also a dataframe) in a new variable
+average_weight_loss <- funimagery %>%
+                          group_by(intervention) %>%
+                          summarise(mean(weight_lost))
 
-# calculate the mean and standard deviation in a single step
-# (this adds two columns to our output for mean and SD)
-CO2 %>%
-  group_by(Type, Treatment) %>%
-  summarise(mean(uptake), sd(uptake))
 
-# give the new column a name of our choosing
-CO2 %>%
-  summarise(average_uptake = mean(uptake))
+# example of grouping by two columns at once
+funimagery %>%
+  group_by(gender, intervention) %>%
+  summarise(mean(weight_lost))
+
+
+
+# calculate the mean and SD in one go
+funimagery %>%
+  group_by(intervention) %>%
+  summarise(mean(weight_lost), sd(weight_lost))
+
+
+# how to give your new summary columns a name 
+# (this is good practice)
+funimagery %>%
+  group_by(intervention) %>%
+  summarise(Mean_weight_lost = mean(weight_lost), SD_weight_lost = sd(weight_lost))
+
 
 ```
+

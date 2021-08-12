@@ -12,6 +12,7 @@ knitr::opts_chunk$set(
   cache = FALSE,
   message = FALSE
 )
+options(dplyr.summarise.inform = FALSE)
 
 
 makermds <- function(video_data){

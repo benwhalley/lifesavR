@@ -1,5 +1,5 @@
-- Continuous, categorical and text (string) data are all common in psychology
-- Internally, R stores data in a number of different data *types*.
-- Sometimes we need to convert between data types
-- For example, sometimes categorical data can get stored as numeric
+- Continuous, categorical and text data are all common in psychology
+- Internally, R stores columns of data using different *data types*.
 - R uses data-types as a clue to set *defaults* (e.g. for graphs)
+- Sometimes we need to convert between types
+- E.g., sometimes categorical data is (wrongly) stored as a numeric column

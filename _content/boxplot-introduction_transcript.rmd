@@ -31,7 +31,7 @@ iris %>%
 ```
 
 
-[demonstrate using auto complete in RStudio when writing the code above]
+[DEMONSTRATE USING AUTO COMPLETE IN RSTUDIO WHEN WRITING THE CODE ABOVE]
 
 You'll notice that I used the RStudio autocomplete feature to write function and column names
 from our dataset.
@@ -41,7 +41,7 @@ hand it's easy to make spelling errors or typos, and this leads to errors in R.
 
 If we run the code so far, `ggplot` draws the plot axes, but doesn't add the data yet:
 
-[run the code so far]
+[RUN THE CODE SO FAR]
 
 So far we have said *what* we want to show on our plot, but not *how* it should be shown.
 
@@ -54,7 +54,6 @@ iris %>%
 ```
 
 Note that I used a `+` symbol to add the boxplot layer to our graph.
-
 
 So, now we have a boxplot, with one box drawn for each value of `Species`.
 

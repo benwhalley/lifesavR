@@ -1,3 +1,9 @@
+# TODO
+
+# add options(dplyr.summarise.inform = FALSE) to .RProfile?
+# add message reminidng to load tidyverse to .Rprofile? Plus similar?
+
+
 # add library(tidyverse) here so that it's loaded for the first Session
 # even before they have ready about loading libraties
 library(tidyverse)

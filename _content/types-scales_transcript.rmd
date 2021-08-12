@@ -95,35 +95,35 @@ mtcars %>%
 In this plot both the x and y axes are ***continuous***. That is, they are numeric variables, using real numbers.
 
 
-However, if we want to make a boxplot of the `mpg` column using `am` as the `x` axis then we have a problem:
+However, if we want to make a boxplot of the `mpg` column using `cyl` (number of cylinders) as the `x` axis then we have a problem:
 
 ```{r}
-mtcars %>%
-  ggplot(aes(am, mpg)) +
+fuel %>%
+  ggplot(aes(cyl, mpg)) +
   geom_boxplot()
 ```
 
 We might have expected to see;
 
 - miles per gallon on the y axis
-- two separate boxes, one for automatic cars and another for manual.
+- three separate boxes, one for 4, 6 and 8 cylinders
 
 This doesn't work as expected though. 
 
-R spots that `am` is stored as numeric data, so it creates a continuous scale on the x axis. Only one box is drawn at the midpoint of all the values of `am`;  because `am` ranges from 0 to 1 the box appears at 0.5.
+R spots that `cyl` is stored as numeric data, so it creates a continuous scale on the x axis. Only one box is drawn at the midpoint of all the values of `cyl`;  because `cyl` ranges from 4 to 6 the box appears at 6.
 
 
 
-We want to use `am` as a categorical variable, so we should convert it to a factor.
+We want to use `cyl` as a categorical variable, so we should convert it to a factor.
 Then our plot will work properly.
 
 
-We can use the command `factor(am)` to tell R that the x-axis is a factor:
+We can use the command `factor(cyl)` to tell R that the x-axis is a factor:
 
 ```{r}
 mtcars %>%
-  ggplot(aes(factor(am), mpg)) +
+  ggplot(aes(factor(cyl), mpg)) +
   geom_boxplot()
 ```
 
-This gives us the boxplot we were expecting. The only change was to replace `am` with `factor(am)`. This tells R to convert the variable `am` to a factor, and  `ggplot` can guess the type of x axis correctly.
+This gives us the boxplot we were expecting. The only change was to replace `cyl` with `factor(cyl)`. This tells R to convert the variable `cyl` to a factor, and  `ggplot` can then set the scale of the x axis correctly.
