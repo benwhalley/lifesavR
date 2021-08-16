@@ -41,12 +41,9 @@ If you click on the link you will see the data in it's raw form, which can be ha
 
 To save a copy to the computer you are working at, right-click on the link and choose:
 
-
-- "Save link as" (Chrome)
+- "Save link as" (Chrome/Firefox)
 - "Download linked file as" (Safari)
-- XXX WHAT DOES FIREFOX SAY?
 - XXX EDGE?
-
 
 Your computer will ask you where you want to save it. For now, you should choose your `Desktop` folder.
 
