@@ -27,36 +27,30 @@ diamonds %>%
 
 # Working interactively in R Markdown {#interactive}
 
-## Running R code within a chunk
-
-### Exercise 1
+## Exercise 1
 
 1. Locate the first chunk in this workbook.
 1. Place your cursor (anywhere) on the line that says `library(tidyverse)`.
 1. Run the code.
 
-### Exercise 2
+## Exercise 2
 
 Position your cursor on the line that says `diamonds` and run the code.
 
-### Exercise 3
+## Exercise 3
 
 1. Select (highlight) the word `diamonds`.
 1. Run the code.
 
-## Inserting a chunk
-
-### Exercise 4
+## Exercise 4
 
 1. Create a chunk below these instructions
 1. Inside the chunk, write a line of code which adds together the numbers 9, 4, 55 and 2
 1. Run the the line of code you have written
 
-```{r}
-9 + 4 + 55+ 2
-```
+# Datasets
 
-# Built-in datasets
+## Exercise 5
 
 # Check your knowledge
 

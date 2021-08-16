@@ -8,7 +8,7 @@
 ### Where are datasets?
 
 - R has some built-in datasets as learning examples
-- The `psydata` includes datasets used in this course
+- The `psydata` package includes datasets used in this course
 - Later on, we will import data from files (e.g. actual spreadsheets)
 
 

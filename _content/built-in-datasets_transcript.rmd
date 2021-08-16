@@ -96,10 +96,7 @@ Using head:
 head(fuel)
 ```
 
-This prints the first 10 rows of all the columns.   `head()` is really useful for checking the actual datapoints are as you expect before using them.
-
-
-
+This prints the first 10 rows of all the columns. `head()` is really useful for checking the actual datapoints are as you expect before using them.
 
 
 ### Why are we talking about cars not psychology?
