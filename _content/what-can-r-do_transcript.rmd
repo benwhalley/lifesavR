@@ -2,8 +2,7 @@ R is a computer language for data analysis and visualisation.
 
 RStudio is a user interface to R; it helps you organise your work.
 
-R is a text-based language. You interact with it by typing commands and running (or executing) them.
-
+R is a text-based language. You interact with it by typing commands and running (also called 'executing') them.
 
 R can do everything from simple arithmetic and plotting to complex data analysis.
 

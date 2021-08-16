@@ -13,8 +13,6 @@ What to do:
 - Use this document to complete and record your answers to the exercises in each session.
 - Edit the code and text below to save your work
 
-
-
 ## An example plot
 
 The following chunk creates a scatter-plot of a built-in data set that contains information about diamonds. By the end of
@@ -41,15 +39,9 @@ diamonds %>%
 
 Position your cursor on the line that says `diamonds` and run the code.
 
-```{r}
-diamonds %>%
-  ggplot(aes(carat, price)) +
-  geom_point()
-```
-
 ### Exercise 3
 
-1. Select (highlight) the word `diamonds` in the chunk above.
+1. Select (highlight) the word `diamonds`.
 1. Run the code.
 
 ## Inserting a chunk
@@ -57,8 +49,12 @@ diamonds %>%
 ### Exercise 4
 
 1. Create a chunk below these instructions
-1. Inside the chunk, write a line of code which adds together the numbers 9, 4, 55 and 2 and assigns the result to a new variable called `totalscore`
+1. Inside the chunk, write a line of code which adds together the numbers 9, 4, 55 and 2
 1. Run the the line of code you have written
+
+```{r}
+9 + 4 + 55+ 2
+```
 
 # Built-in datasets
 
