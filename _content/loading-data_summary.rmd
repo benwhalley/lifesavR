@@ -1,7 +1,7 @@
 File formats:
 
 - R can load almost any data format
-- We recommend comma-separated data (CSV) files
+- We recommend comma-separated value (CSV) files
 - CSV filenames always end in `.csv`
 - You can also open CSV files in Excel
 
