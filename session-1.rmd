@@ -43,12 +43,6 @@ the activities in the blue boxes.**
 - [Built-in datasets](#datasets)
 - [Exploring and checking data](#exploring)
 - [Making a scatterplot with `ggplot()`](#scatterplots)
-- [Introduction to Markdown](#markdown)
-
-
-
-
-
 
 # Using the RStudio interface {#using}
 

@@ -8,14 +8,11 @@ Later, though, you will need to load your own data.
 R can read many different file formats, including Excel files (`.xlsx` or `.xls`), and
 from other packages like SPSS.
 
-To keep things simple, reproducible and future proof we recommend *comma separated values* files,
+To keep things simple, reproducible and future proof we recommend *comma separated values* (CSV) files,
 which have the file extension `.csv`.
 (The final 3 or 4 letters of a filename, after the full stop, is called the file extension).  
 
-
-
-
-### Loading csv data
+### Loading CSV data
 
 There are 3 steps you must follow:
 
@@ -23,15 +20,13 @@ There are 3 steps you must follow:
 2. Upload it to the RStudio server, in the same place as your R code (`.rmd` file)
 3. Use `read_csv()`. Assign the result to a variable with a descriptive name
 
-
-
-##### Step 1. Collect or get the data
+### Step 1. Collect or get the data
 
 If you are using your own data then you will have collected it using Experimental software,
 or an online survey tool like SurveyMonkey, or recorded it yourself in a Spreadsheet.
 In any of these cases, you will need to export the data to a `.csv` file.
 
-You may also be send CSV data by email, or download it from the web. That's what we'll practice now.
+You may also be sent CSV data by email, or download it from the web. That's what we'll practice now.
 
 The following URL is for a file called `shootings.csv`.
 
@@ -41,58 +36,38 @@ If you click on the link you will see the data in it's raw form, which can be ha
 
 To save a copy to the computer you are working at, right-click on the link and choose:
 
-
-- "Save link as" (Chrome)
+- "Save link as" (Chrome/Firefox)
 - "Download linked file as" (Safari)
-- XXX WHAT DOES FIREFOX SAY?
 - XXX EDGE?
-
 
 Your computer will ask you where you want to save it. For now, you should choose your `Desktop` folder.
 
 [DEMO OF THIS SHOWN IN THE VIDEO]
 
+### Step 2. Upload data to the RStudio server
 
-##### Step 2. Upload data to the RStudio server
-
-In these classes we are using the RStudio server.
+In these workshops we are using the RStudio server.
 
 This means R is running on a different computer to the one you are working on, and can't access the files on your
 `Desktop`.
 
 We need to upload the `.csv` file to the server before we can load them.
 
-
-- Go to the `Files` pane in the RStudio interface
-- Make sure you can see the `.rmd` file you are working on in the Files pane. This means you are "in" the same folder as the `.rmd` (R calles this you *working directory*)
-- Press the 'upload' button XXX check wording
-- Choose the `.csv` you want to upload from your LOCAL computer (this will be in your Desktop folder if you followed the instructions in part 1)
+- Go to the **Files** pane in the RStudio interface
+- Make sure you can see the `.rmd` file you are working on in the **Files** pane. This means you are "in" the same folder as the `.rmd` (R calls this your *working directory*)
+- Press the 'Upload' button
+- Click `Choose file` and choose the `.csv` you want to upload from your LOCAL computer. In this example it will be the file `shootings.csv` that you saved to your Desktop folder in Step 1.
+- Click **`OK`**
 
 [DO A DEMO OF THESE STEPS]
 
-Finally, check the files pane again. Make sure you can see `shootings.csv` in the same directory as your `.rmd` file.
+Finally, use the **Files** pane to check that `shootings.csv` is in the same directory as `session-2.rmd`.
 
 If you can see both files you are ready to carry on.
 
+### Step 3. Use `read_csv()` and assign result to a variable
 
-
-<!--
-
-XXX TODO PAUL - PREV WE SAID THIS BUT I HAVE SWITCHED ABOVE TO RECOMMENDING THEY NAVIGATE TO The
-RIGHT PLACE FIRST. I THINK THIS IS MORE INTUITIVE BUT NEED TO CHECK IT WORKS
-
-
-1. Click the `Upload` button.
-1. Ensure the `Target directory` is where you want the uploaded file to appear. For this module it should read `~/lifesavr`. The `~` (pronounced "tilde") means your `Home` directory on the R Studio server. The `/lifesavr` means the folder named `lifesaver` in `Home`.
-1. Click the `Choose file` button and select the file you want to upload. After you select a file, its name appears next to the button.
-1. Click the `**OK**` button.
-
--->
-
-
-##### Step 3. Use `read_csv()` and assign result to a variable
-
-In your `.rmd` file create a new code chunk (the keyboard shortcut is `Ctrl/Cmd + Shift + M`).
+In your workbook file (`session-2.rmd`) create a new code chunk (the keyboard shortcut is `Ctrl/Cmd + Alt + I`).
 
 Use `read_csv()` to load the file, like this:
 
@@ -112,9 +87,7 @@ To do that we need to assign the result of `read_csv()` to a variable:
 shootings <- read_csv('shootings.csv')
 ```
 
-
-
-##### Checking it worked
+### Checking it worked
 
 Now we have assigned the result of `read_csv()` to a variable, we can use this
 dataset like any other (including the built-in ones):
@@ -123,4 +96,4 @@ dataset like any other (including the built-in ones):
 shootings %>% glimpse
 ```
 
-You could also use the **Environment** pane to check the data if you prefer.
+You could also use the **Environment** pane to examine the `shootings` variable if you prefer.
