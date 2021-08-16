@@ -9,7 +9,7 @@
 
 # Step 1.
 # We asked you to download the CSV file from here:
-# https://benwhalley.github.io/lifesavR/lifesavr/shootings.csv
+# https://benwhalley.github.io/lifesavR/data/shootings.csv
 # And save it to your Desktop folder.
 
 

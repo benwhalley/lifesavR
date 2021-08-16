@@ -30,7 +30,7 @@ You may also be sent CSV data by email, or download it from the web. That's what
 
 The following URL is for a file called `shootings.csv`.
 
-- [https://benwhalley.github.io/lifesavR/lifesavr/shootings.csv](https://benwhalley.github.io/lifesavR/lifesavr/shootings.csv)
+- [https://benwhalley.github.io/lifesavR/data/shootings.csv](https://benwhalley.github.io/lifesavR/data/shootings.csv)
 
 If you click on the link you will see the data in it's raw form, which can be hard to read.
 
