@@ -152,7 +152,7 @@ video_data <- list(identifier = "loading-data", ytidentifier = "yt-embed", showc
 :::{.exercise}
 **Exercise 6**
 
-1. Use your web browser to download <https://benwhalley.github.io/lifesavR/data/shootings.csv> to your computer.
+1. Use your web browser to download <https://benwhalley.github.io/lifesavR/lifesavr/shootings.csv> to your computer.
 1. Upload `shootings.csv` to the server.
 1. Create a new code chunk in your workbook.
 1. Read `shootings.csv` into a variable with a descriptive name.
