@@ -29,6 +29,78 @@ source('_first_chunk.R')
 
 
 
+STUFF FROM SESSION 1
+
+We show the benefit of jitter somewhere here now
+
+<!-- he points on the scatter plot are 'jittered' to avoid -->
+<!-- overplotting, making the output easier to read. -->
+
+```{r}
+mpg %>%
+  ggplot(aes(cty, hwy)) + geom_point()
+
+mpg %>%
+  ggplot(aes(cty, hwy)) + geom_jitter()
+```
+
+`r hide('Video script')`
+A problem with this plot is that there are many cars with the same number of cylinders. Another way of saying this is
+that `cyl` has been plotted using an 'integer (whole number) scale'. Consequently, many of the points are plotted on top
+of each other, making the values hard to see. The overplotting issue is easily solved by replacing `geom_point()` with
+`geom_jitter()`, which spreads the points out where cars have the same number of cylinders.
+`r unhide()`
+
+
+ALSO SHOW COLOR SCALE PROBLEM (REPEATS FROM PREV SESSION)
+
+```{r}
+mtcars %>%
+  ggplot(aes(wt, mpg, colour = cyl)) +
+  geom_point()
+```
+
+The number of cylinders are plotted in continuous shades of blue. This isn't terrible, but it would be clearer if each
+number of cylinders had its own colour. This is the same problem we had with some of the other `mtcars` variables. They
+have type `dbl`, when they are actually factors. We can use `factor` to fix the colours in the same way we fixed the
+x-axis:
+
+```{r}
+mtcars %>%
+  ggplot(aes(wt, mpg, color = factor(cyl))) +
+  geom_point()
+```
+
+In this plot it's easier to see that cars with more cylinders tend to be heavier, and have worse fuel consumption.
+
+
+# Dividing up graphs with facets {#facets}
+
+<!-- TODO CHANGE THIS TO EXTEND PREVIOUS EXERCISES IN THIS WORKSHEET -->
+
+In our previous plots we only showed the difference between cars of 4, 6 and 8 cylinders. We can break the plot down
+into multiple panels using '**facets**':
+
+
+```{r}
+mtcars %>%
+  ggplot(aes(factor(cyl), mpg)) +
+  geom_boxplot() +
+  facet_wrap(vars(am))   # note to paul... use vars here to avoid quoting of variable names which is confusing/inconsistent with other use
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Testing hypotheses
 
 - Using a Bayesian correlation to quantify evidence for a relationship
@@ -71,3 +143,14 @@ ytidentifier <- "yt-embed"
 
 
 1. How do you use markdown to make a level 3 heading?
+
+
+
+
+
+
+# Further reading
+
+- The [R Markdown Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
+- The [R Markdown cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/)
+- Other [R Markdown resources](https://rmarkdown.rstudio.com/)

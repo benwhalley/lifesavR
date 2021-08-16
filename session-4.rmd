@@ -1,5 +1,5 @@
 ---
-title: 'Answering questions with data'
+title: 'Answering questions with descriptive statistics'
 author: 'Ben Whalley, Paul Sharpe, Sonja Heintz'
 # date: "April 2021"
 bibliography: [references.bib]
@@ -15,227 +15,384 @@ source('_first_chunk.R')
 ```
 
 
-Descriptive questions:
+# Overview
 
-- Recap on filter, summarise and group_by
-- [Sorting data using `arrange()`](#arrange)
-- [Combining `filter()` with `arrange()`](#filterarrange)
+An important task for researchers is to ***answer questions using data***.
+We can often divide this activity into:
 
-
-
-Testing hypotheses
-
-- Using a Bayesian t-test to quantify the evidence for differences between groups
+1. **Describing patterns in the data**
+2. **Quantifying how *sure* we are about those patterns**
 
 
+This session is all about describing and visualising patterns in the data to answer
+research questions.
+
+In this session we will cover four techniques psychologists use to answer research questions. 
+
+1. summarising numeric variables by *central tendency* and *spread* 
+3. calculating the *frequency* of categorical responses
+2. calculating *differences* between scores or groups
+3. describing *relationship* between two variables
 
 
+In the past psychologists have often neglect the first part (spotting and describing patterns) and jumped 
+straight to the second --- for example, they have been very keen to run hypothesis tests and calculate *p* values!
 
-# Testing hypotheses
+A more contemporary approach places much more emphasis on describing and visualising the data. 
 
-- Often we see differences between different groups in our data
-- We can describe these differences with plots (e.g. boxplot) or descriptive statistics (e.g. mean, standard deviation)
-
-- The next step, though, is to try and explain how the data came about
-- We might have a theory which generates hypotheses about how the data came about
-- E.g. we might have a theory that being in GROUPA gives you a better chance of scoring highly on TEST-Y than if you are in GROUP-B
-- This theory predicts a difference between GROUPA and B.
-- BUT, in any data we collect there will always be error — sometimes called "noise"
-- If we only see a small difference, how could we be sure it wasn't happening by chance?
-- We want to judge how likely our hypothesis is; that is, how likely is it there really is a difference between A and B
-- To do this we compare two hypotheses: H1, H0
-- We ask: given the data we see, how likely is it that H1 is true. Then we repeat for H0.
-- If the H1 is more likely, given the data, then H0 then we say we have evidence for H1
+We have already seen how to implement some of these techniques in R (e.g. using `summarise()`). 
+However, more important than any specific technique in R is this idea that we ***collect data to answer questions*** 
+(not just for it's own sake!).
 
 
 
-<!-- 4.	Evidence 2 – correlations -->
-<!-- -	Scatter plot -->
-<!-- -	Effect sizes shown in scatter plots (make it a quiz* and/or use http://guessthecorrelation.com ) -->
-<!-- -	Bayesian evidence for a correlation -->
-<!-- -	Colouring a scatterplot*† -->
-<!-- -	Smoothed line plot*† -->
+# Central tendency and spread
 
-STUFF FROM SESSION 1
+If we have a single numeric variable we can describe:
 
-We show the benefit of jitter somewhere here now
+1. the *central tendency* of the data: e.g. mean, median
+2. the *spread* or distribution of the data: e.g. the standard deviation or interquartile range
 
-<!-- he points on the scatter plot are 'jittered' to avoid -->
-<!-- overplotting, making the output easier to read. -->
+Even simple descriptive statistics like the mean or standard deviation enable us to *answer research questions*. For example, if
+we consider the `funimagery` data describing the RCT of functional imagery training, we could ask:
 
-```{r}
-mpg %>%
-  ggplot(aes(cty, hwy)) + geom_point()
+- *"what was the typical weight of participants at baseline?"* or
+- *"what was the **range** in which most participants' weight fell?"*
 
-mpg %>%
-  ggplot(aes(cty, hwy)) + geom_jitter()
-```
-
-`r hide('Video script')`
-A problem with this plot is that there are many cars with the same number of cylinders. Another way of saying this is
-that `cyl` has been plotted using an 'integer (whole number) scale'. Consequently, many of the points are plotted on top
-of each other, making the values hard to see. The overplotting issue is easily solved by replacing `geom_point()` with
-`geom_jitter()`, which spreads the points out where cars have the same number of cylinders.
-`r unhide()`
-
-
-ALSO SHOW COLOR SCALE PROBLEM (REPEATS FROM PREV SESSION)
-
-```{r}
-mtcars %>%
-  ggplot(aes(wt, mpg, colour = cyl)) +
-  geom_point()
-```
-
-The number of cylinders are plotted in continuous shades of blue. This isn't terrible, but it would be clearer if each
-number of cylinders had its own colour. This is the same problem we had with some of the other `mtcars` variables. They
-have type `dbl`, when they are actually factors. We can use `factor` to fix the colours in the same way we fixed the
-x-axis:
-
-```{r}
-mtcars %>%
-  ggplot(aes(wt, mpg, color = factor(cyl))) +
-  geom_point()
-```
-
-In this plot it's easier to see that cars with more cylinders tend to be heavier, and have worse fuel consumption.
-
-
-# Dividing up graphs with facets {#facets}
-
-<!-- TODO CHANGE THIS TO EXTEND PREVIOUS EXERCISES IN THIS WORKSHEET -->
-
-In our previous plots we only showed the difference between cars of 4, 6 and 8 cylinders. We can break the plot down
-into multiple panels using '**facets**':
+You have already seen how techniques like `group_by()` and `summarise()`, or graphs like boxplots, can help
+calculate and present these *descriptive statistics*.
 
 
 ```{r}
-mtcars %>%
-  ggplot(aes(factor(cyl), mpg)) +
+# this is a recap only
+
+# typical weight at baseline
+funimagery %>% 
+  summarise(mean(kg1))
+
+
+# a boxplot showing the IQR as the box. The IQR includes 50% of participants
+# so, we can see 50% of participants weighed between 80 and 100kg at baseline
+funimagery %>% 
+  ggplot(aes(intervention, kg1)) + 
   geom_boxplot() +
-  facet_wrap(vars(am))   # note to paul... use vars here to avoid quoting of variable names which is confusing/inconsistent with other use
+  scale_y_continuous(n.breaks = 10) # this extra line just adds more marks on the y axis
 ```
 
+:::{.exercise}
+
+TODO VERY SIMPLE REVISION EXERCISES
+- USING GROUP_BY AND SUMARISE
+- MAKING A BOXPLOT
+
+:::
 
 
 
-
-# Comparing the averages of groups
-
+# *Differences*
 
 
-
-<div class="videowrapper">
-
-![](images/yt-embed.png)
-
-<ul class="nav nav-tabs" role="tablist">
-<li class="nav-item active">
-<a class="nav-link active" id="summary-tab" data-toggle="tab" href="#bayesTTest-summary">Video summary</a>
-</li>
-<li class="nav-item">
-<a class="nav-link" id="contact-tab" data-toggle="tab" href="#bayesTTest-examples">Code examples</a>
-</li>
-<li class="nav-item">
-<a class="nav-link" id="transcript-tab" data-toggle="tab" href="#bayesTTest-transcript">Full Transcript</a>
-</li>
-</ul>
-
-<div class="tab-content">
-
-<!-- Summary -->
-<div class="tab-pane active" id="bayesTTest-summary">
-
-
-BSc students will have encountered some of this last year; but there's new stuff too, and important revision.
-
-The video explains that:
-
-- t-tests allow us to *compare the average score for two groups*
-- A Bayes Factor (from a Bayesian t-test) compares two different hypotheses:  H1 (there groups are different) vs. H0 (the groups are identical)
-- Use the `ttestBF` function (remember to load the `BayesFactor` package first)
-- Large Bayes Factors (e.g. > 10) mean we have a lot of evidence there is a difference between groups
-- Very small Bayes Factors (e.g. < .1) mean we have strong evidence there is NO difference
-- Bayes factors $>3$ or < $\frac{1}{3}$ provide limited evidence for one of the hypotheses, v.s. the other.
-- Bayes factors between $\frac{1}{3}$ and $3$ are inconclusive.
-
-
-</div>
-
-<!-- Code examples -->
-<div class="tab-pane fade" id="bayesTTest-examples">
-
-The following R code is used in the video:
-
+XXX CODE TO EXPLAIN
 ```{r}
-# how much more fuel efficient are manual cars?
-mtcars %>%
-  group_by(am) %>%
-  summarise(mean(mpg))
+# we have seen this already
 
-# about 7 mpg
+# table of means of weight lost
+funimagery %>%
+  group_by(intervention) %>%
+  summarise(median(weight_lost_end_trt))
 
-
-# we can use a boxplot to see how much overlap there is between the groups
-mtcars %>%
-  ggplot(aes(factor(am), mpg)) +
+# boxplot of the same
+funimagery %>%
+  ggplot(aes(intervention, weight_lost_end_trt)) + 
   geom_boxplot()
 
-# it looks like they don't overlap too much, which means there probably
-# is areal difference but we want to use a Bayesian t-test and a
-# "Bayes Factor" to quantify how much more likely it is that:
-# H1) there really is a difference vs.
-# H0) there's no real difference (just chance variation)
 
-library(BayesFactor)
-ttestBF(formula = mpg ~ am, data=mtcars)
+```
 
-# the number 86.58973 is our Bayes Factor. This is > 10 so we have strong
-# evidence for a difference (Hypothesis A)
+```{r}
+# this showed weight lost at the end treatment, though
+
+# the `weight_lost_end_trt` column had already been calculated for us
+
+# what if we wanted to calculate weight lost from baseline (`kg1`) to end the
+# end of the followup period, `kg3`? 
+# we want to do this to see if the advatage of FIT over MI persists
+
+# we use `mutate` to create a NEW COLUMN of data
+# this code shows the result just below the code chunk
+funimagery %>% 
+  mutate(weight_lost_end_followup = kg3 - kg1)
+
+
+# we almost certainly want to STORE this extra column by creating a new 
+# variable. This code creates a copy of the `funimagery`, with the new 
+# column, is stored to use again later
+
+funimagery.edited <- funimagery %>% 
+  mutate(weight_lost_end_followup = kg3 - kg1)
+
+# plot weight lost at end of followup using the variable we just calculated
+funimagery.edited %>% 
+  ggplot(aes(intervention, weight_lost_end_followup)) + 
+  geom_boxplot()
+
+# if anything, it looks like the difference is BIGGER after followup than it was at
+# the end of treatment
+```
+
+:::{.exercise}
+
+Use the `fn`XXX
+
+:::
+
+
+# The *frequency* of responses
+
+
+Where we have categorical data it's not possible to calculate averages or measures of spread, but it is still useful to be able to describe the data to answer questions we might have. For example, if we were thinking about the `earnings` dataset we might ask:
+
+- *"How many men and women were recruited?"*
+- *"What proportion of participants worked in the public sector?"* 
+- *"Was this proportion similar for men and women?*"
+
+
+The earnings data contained variables called `gender` and `job` which can help answer these questions:
+
+```{r}
+earnings %>% glimpse
+```
+
+
+To count the frequency of different responses we can use the `count` function.
+
+
+For example: XXX TODO EXPLAIN THIS CODE AND WRITE AN EXERCISE
+
+
+```{r}
+# this gives us the total number of rows
+earnings %>% count()
+
+# numbers of men an women
+earnings %>%
+  group_by(gender) %>%
+  count()
+
+# later we'll show ways of doing arithmetic on the results, but for now
+# if we simply divide men/total we get the proportion/percentage of men
+2353 / 4483 * 100
+
+
+
+# we can do the same for job:
+earnings %>%
+  group_by(job) %>%
+  count()
+
+# proportion in the private sector
+3447 / 4483 * 100
+
+
+# we can use group_by again to get the split for men and women:
+earnings %>%
+  group_by(job, gender) %>%
+  count()
+
+1940
+```
+
+```{r}
+# XXX THIS COULD BE AN extension activity but low priority for now
+earnings %>%
+  group_by(gender, education) %>%
+  count() %>%
+  pivot_wider(names_from = "gender", values_from="n")
 ```
 
 
 
 
-</div>
-
-<!-- Full transcript of the video -->
-<div class="tab-pane fade" id="bayesTTest-transcript">
-
-
-XXX FLESH THIS OUT TO BE MORE CONVERSATIONAL AND INTEGRATE/EXPLAIN THE CODE BELOW
-
-- A 'Bayesian t-test' is a procedure which tells us how likely it is that two groups have a *different average* for a *continuous variable*.
-
-- A Bayesian t-test imagines two different worlds: In world A) the groups truly do have a different average. In world B) the groups are really identical, with just chance errors leading to small differences between them in observations we make.
-
-- We can get an intuition for how much evidence there is for a difference by looking at how much the distributions of the two groups overlap [e.g. a boxplot].
-
-- After collecting data we use a ***Bayes Factor*** to **quantify** how much more likely world A is v.s. world B (or the reverse).
-
-- That is: given the data we have collected and the differences (big or small) that we see, we can estimate *"how much more likely is it that there really is a difference between the groups, v.s. that there is no difference"*
-
-- Another way to think of these alternative worlds (A and B) is as different *hypotheses* about how our data came about.
-
-- Sometimes we talk about comparing an *experimental hypothesis* (H1) with a *null hypothesis* (H0)
-
-- When we compare two groups (with a t-test) we have a very simple experimental hypothesis — simply, that the groups are not identical
-
-- If we run a t test and find a large Bayes Factor, this is evidence for that experimental hypothesis, as compared with the null hypothesis (that the groups are the same)
 
 
 
 
-</div>
-</div>
-</div>
-<!--end tabs and video wrapper -->
+# Relationships
+
+When we have 2 or more continuous variables, we can also describe the *relationships* between them.
+
+We have already seen how to use scatterplots to show the relationship between variables.
+
+A nice addition to that technique --- and one which emphasises the idea of relationships --- is the **smoothed line plot**.
+
+
+### Smoothed line plots
+
+If we plot the relationship between engine size and fuel economy in the `fuel` dataset we can see the
+relationship between these variables:
+
+```{r}
+fuel %>%
+  ggplot(aes(engine_size, mpg)) +
+  geom_point()
+```
+
+It's fairly obvious that there is a relationship, but it's not a straight-line.
+For small engined cars there is a strong negative relationship. But once you get above a
+certain engine size this is less pronounced.
+
+We can accentuate this pattern, and make the relationship between variables even clearer,
+by **adding another layer** to our plot:
+
+
+```{r, message=FALSE}
+fuel %>%
+  ggplot(aes(engine_size, mpg)) +
+  geom_point() +
+  geom_smooth()
+```
+
+
+The only addition to the previous plot is the code: `+ geom_smooth()`
+
+This adds a smoothed line to the scatterplot.  The blue line traces the  *local average* of the
+value of MPG. That is, it represents what we might expect MPG to be, for any given engine size.
+
+It's good to show both the raw datapoints AND the smoothed line because we see both the 'big picture'
+relationship and any deviations from the general trend in a single plot.
+
+Some people would say we've increased the *information density* by adding the extra layer.
+
+
+```{r}
+library(tidyverse)
+library(corrr)
+library(psydata)
+fuel %>% correlate()
+```
+
+## Correlation
+
+The smoothed line plot is helpful, but we sometimes also want a number to describe of the
+relationship between variables.
+
+A *correlation* is a single number which describes *how related* two continuous variables are.
+
+For a correlation to work the relationship between the variables must be ***linear***.
+That is, the line on the graph has to be (fairly) straight.
+
+A good example of this is in the `funimagery` data. We can plot weight at baseline (`kg1`) against
+weight after intervention:
+
+```{r, echo=F}
+funimagery %>%
+  ggplot(aes(kg1, kg2)) +
+  geom_point() +
+  coord_fixed()
+```
+
+We can see from the scatterplot that there is a really strong relationship between weight at baseline and weight at follow-up. All the points are in a fairly straight line, with not much deviation.
+
+
+In this plot we use `geom_smooth()` again, but this time ask R to add a ***straight*** line to
+the plot, rather than a bendy one.
+
+```{r, eval=F}
+funimagery %>%
+  ggplot(aes(kg1, kg2)) +
+  geom_point() +
+  geom_smooth(method=lm)
+
+```
+
+```{r, echo=F}
+funimagery %>%
+  ggplot(aes(kg1, kg2)) +
+  geom_point() +
+  geom_smooth(method=lm) +
+  coord_fixed()
+```
+
+In this code, we simply added `method=lm` inside `geom_smooth()`. In this case, `lm` stands for
+*linear model*, and told R that we wanted the straight line.
+
+
+***A correlation coefficient is a single number which tells us how steep the line is, and which direction it goes***.
+
+
+***A correlation can be between -1 and 1*** (and is never outside this range)
+
+- Zero correlation means we have no relationship; the line would be flat.
+- Correlation = 1 means the variables are perfectly related, and the line rises steeply
+- -1 means the opposite, and the line will fall steeply
+
+
+```{r, echo=F}
+tibble(r = c(-1, -.5, 0, .5,1), p = c("Negative","Negative","Zero", "Positive","Positive")) %>%
+  ggplot() +
+    geom_abline(aes(intercept=0, slope=r, color=p)) +
+  coord_fixed(xlim=c(0,1), ylim=c(-1,1), expand=F) +
+  geom_label(aes(x=.5, y=r*.5, label=paste(" r =",r)), size=3) +
+  xlab("one variable") + ylab("another variable") +
+  theme(legend.position = "none")
+```
+
+
+To calculate a correlation we use the `cor()` function.
+
+The `cor()` function expects a dataframe containing only numeric columns.
+
+Because the `funimagery` data contains a categorical variable we have to select only the columns
+we want first.
+
+This code uses `select()` to select the columns we want (`kg1` and `kg3`). Then it uses another
+pipe and sends only these columns to the `cor()` function.
+
+[DEMO SELECTING THE FIRST TWO LINE AND SHOW IT REMOVES THE OTHER COLUMNS. THEN SHOW RUNNING ALL THE CODE]
+
+```{r}
+funimagery %>%
+  select(kg1, kg3) %>%
+  cor()
+```
+
+**Explanation**: The `cor()` function produces a new table of numbers.
+The rows and columns of the table are labelled with the names of our variables.
+The number represent the **correlation coefficient** for each pair of variables.
+The correlation between a variable and itself is always perfect, so the numbers on
+the diagonal of the table are always equal to 1.
+
+
+
+We can see here that the correlation is 0.93, which is very high.
+This isn't surprising though — even when we are trying to lose weight, if we
+measure our weight twice, even 12 months apart, these are likely to be quite
+closely related.
 
 
 
 
+### Summary of descriptions
+
+-------------------------------------------------------------------------------------------------------------------------
+| Description of   | Statistic    | Plot                             | R function                                       |
+| ---------------- | ------------ | -------------------------------- | ------------------------------------------------ |
+| Central tendency | Mean, median | Boxplot                          | `sumarise()`, `geom_boxplot()`                   |
+| Distribution     | SD, IQR      | Density plot; boxplot            | `summarise()`, geom_boxplot()`, `geom_density()` |
+| Relationship     | Correlation  | Scatterplot (plus smoothed line) | `cor()`, `geom_point()`, `geom_smooth()`         |
+-------------------------------------------------------------------------------------------------------------------------
 
 
+
+
+# Summary
+
+***Both plots and descriptive statistics are valuable ways of answering questions from the data.***
+Psychologists sometimes neglect them (especially plots) but they are important steps in developing
+understanding.
+
+- Boxplots are useful for describing the differences between groups
+- Scatterplots and smoothed-line plots help describe relationships
 
 
 
@@ -244,5 +401,73 @@ XXX FLESH THIS OUT TO BE MORE CONVERSATIONAL AND INTEGRATE/EXPLAIN THE CODE BELO
 Write an answer to each of these questions in the `Check your knowledge` section of your workbook. The answers will be
 revealed in Session 5.
 
-- What is the difference between `geom_jitter()` and `geom_point()`?
-- Why is `geom_jitter` useful sometimes?
+
+
+
+
+
+
+
+# Extension techniques
+
+
+
+### Sorting
+
+Sorting is often useful for this sort of question.
+
+We can sort data in R using the `arrange()` function.
+
+
+For example:
+
+Q: Which countries had the lowest life expectancy in the 20th century?
+
+
+```{r}
+development %>%
+  # sort the data by life expectancy
+  arrange(life_expectancy) %>%
+  head(3)  # show only the first few rows
+```
+
+If you want to sort in the reverse order, put a hyphen in front of column you are sorting.
+This means *sort in reverse order*.
+
+
+```{r}
+development %>%
+  # to sort the data by life expectancy in descending order add a hyphen
+  arrange(-life_expectancy) %>%
+  head(3)  # show only the first few rows
+```
+
+
+
+### Combining multiple operations in a pipeline
+
+We can combine multiple functions to answer more detailed questions.
+
+Q: Which countries had the lowest life expectancy *in 1992*?
+
+```{r}
+development %>%
+  filter(year==1992) %>%
+  arrange(life_expectancy) %>%
+  head(3)
+```
+
+
+
+
+We can also combine filtering, *grouping* and summarising in a single pipeline.
+
+
+Q: What was the average life expectancy in 1992 on each continent?
+
+```{r}
+development %>%
+  group_by(continent) %>%
+  filter(year==1992) %>%
+  summarise(mean(life_expectancy))
+```

@@ -1,3 +1,48 @@
+
+
+:::{.exercise}
+
+Reproduce this table using the `earnings` data in the `psydata` package:
+
+```{r, echo=F}
+earnings %>%
+  group_by(Gender=gender, `Native speaker`=native) %>%
+  summarise(Income=mean(income)) %>%
+  pander("Income by gender and language")
+```
+
+:::
+
+
+:::{r}
+
+Reproduce the numbers in this table, and the boxplot, using the `fuel` data:
+
+```{r, echo=F}
+df1 <- fuel %>%
+  mutate(Transmission = factor(automatic, levels = c(F,T), labels=c("Manual", "Automatic"))) %>%
+  rename(Weight=weight)
+
+df1 %>%
+  group_by(Transmission) %>%
+  summarise(`Median weight` = median(Weight)) %>%
+  pander(caption="Car weights by type of transmission")
+
+
+df1 %>%
+  ggplot(aes(Transmission, Weight)) +
+  geom_boxplot()
+```
+
+
+:::
+
+
+
+- What is the difference between `geom_jitter()` and `geom_point()`?
+- Why is `geom_jitter` useful sometimes?
+
+
 Each column in a dataset has an associated type. The second column of the `glimpse` output shows you the type of each column. This dataset includes columns with two types:
 
 * `dbl` is short for 'double-precision number', a number with one or more decimal places
@@ -292,3 +337,113 @@ We think there is an analogy to learning R here:
 This session is about building skills and mastering core techniques. We will use these skills throughout the course. If
 some parts are already familiar to you, that's fine.  If it is all new, be sure to complete all the exercises/practice
 problems.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+We can use simple facts or descriptions of the world to answer questions based on data we have collected. For example:
+
+  - What is the highest life expectancy in the world? or
+- How many errors did participants make on a task, on average?
+
+
+  We have already seen techniques like `filter`, `group_by` and `summarise` which can help answer these sorts of question, by summarising raw data.
+
+For example, given questions like this we can find answers in the data:
+
+  *Q: What is the average life expectancy across all countries in the `development` data?*
+
+  ```{r}
+library(psydata)
+
+development %>%
+  summarise(mean(life_expectancy))
+```
+
+
+*Q: Which group lost most weight in the FIT trials*?
+
+```{r}
+funimagery %>%
+  group_by(intervention) %>%
+  summarise(mean(weight_lost_end_trt))
+```
+
+
+
+
+
+
+
+### Describing differences
+
+
+
+
+### Describing distributions
+
+
+Other descriptive statistics can be useful too — for example to describe how widely-spread the data are
+around the mean or median.
+
+We already saw the Interquartile Range and the Standard Deviation in the previous session. The IQR is visible on box plots and describes the range in which 50% of all the observations fall.  
+
+So if we look at a boxplot of the `funimagery` data for weight at baseline, the box represents the
+area in which half of the patients fell. So, around 50% of patients had a weight between 80kg and 100kg at
+baseline:
+
+  ```{r}
+funimagery %>%
+  ggplot(aes(intervention, kg1)) +
+  geom_boxplot() +
+  scale_y_continuous(breaks = seq(55,180,5))
+```
+
+
+Another way to describe the distribution of the data is using a density plot. Density plots look like this:
+
+  ```{r}
+funimagery %>%
+  ggplot(aes(kg1,, color=intervention)) +
+  geom_density()
+```
+
+The height of the lines shows how many people, relatively speaking, had the baseline weight
+shown on the x axis. So we can see that the vast majority of patients had baseline weight between 70 and 110kg.
+
+
+We're not going to practice this technique here, but if you want to learn how to make a density plot, you could refer back to our [stage 1 teaching materials here](https://www.andywills.info/rminr/corr.html).
+
+
+-------------
+
+
+The point to make here is that we can learn a lot by just describing the differences between groups — either with descriptive *statistics* like means and standard deviations or --- often better --- by visualising the data.
+
+
+
+
+funimagery %>%
+  group_by(intervention) %>%
+  summarise(quibble2(weight_lost_end_trt))
+
+funimagery %>% group_by(intervention) %>% summarise(range(weight_lost_end_trt))
+
+quibble2 <- function(x, q = c(0.25, 0.5, 0.75)) {
+  tibble("{{ x }}_quantile" := q, "{{ x }}" := quantile(x, q))
+}
