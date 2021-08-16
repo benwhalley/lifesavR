@@ -201,7 +201,7 @@ These are the correct numbers:
 ```{r, echo=F, include=T}
 funimagery %>%
   group_by(Gender=gender, Intervention=intervention) %>%
-  summarise(`Median weight loss` =  sprintf("%.1f", median(weight_lost_end_trt) )) %>% 
+  summarise(`Median weight loss` =  sprintf("%.1f", median(weight_lost_end_trt) )) %>%
   mutate(Gender=factor(Gender, levels=c("m", "f"), labels=c("Male", "Female"))) %>%
   pander()
 ```
@@ -495,3 +495,7 @@ decide when and how to sort the data?
 
 
 :::
+
+
+
+# References
