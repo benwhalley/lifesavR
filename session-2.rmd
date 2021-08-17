@@ -153,7 +153,7 @@ video_data <- list(identifier = "filter", ytidentifier = "yt-embed")
 :::{.exercise}
 **Exercise 6**
 
-Filter `gapminder` to show countries with a population greater than 100 million.
+Filter the `development` dataset to show countries with a population greater than 100 million.
 
 Your results should look like this:
 
