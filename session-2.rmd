@@ -182,7 +182,7 @@ development %>%
 # Summarising data using `summarise()` {#summarise}
 
 ```{r, echo=F}
-video_data <- list(identifier = "summarise", ytidentifier = "yt-embed", showcode=F)
+video_data <- list(identifier = "summarise", ytidentifier = "yt-embed")
 # makermds(video_data)
 ```
 

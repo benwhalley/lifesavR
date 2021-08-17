@@ -1,5 +1,4 @@
-
-```{r}
+```{r, eval=FALSE}
 # use function mean() to summarise mpg column
 # the result is a data.frame with the a single column named 'mean_mpg'
 fuel %>%
@@ -21,24 +20,19 @@ fuel %>%
 
 # summarise two columns at once 
 # the mean and sd functions are separated with a comma
-# the resulting data frame is stored in a variable called mtcar
+# the resulting data frame is stored in a variable called fuel_summary
 fuel_summary <- fuel %>%
   summarise(M = mean(mpg), SD = sd(mpg))
-
 
 # see the stored summary
 fuel_summary
 
 # remember, this summary is still a new dataset; you could do more processing on it in extra steps if needed
 
-
-
-# combining summarise and filter
+# combining filter() and summarise()
 development %>% 
   filter(continent=="Asia") %>% 
   summarise(Average_life_expectancy = mean(life_expectancy))
-
-
 ```
 
 
