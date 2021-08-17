@@ -83,3 +83,9 @@ Create a new chunk below this line to answer Exercise 7.
 ## Which function makes a plot?  (there are many, but we mean the one shown above)
 
 ## Which function chooses the columns of data used in the plot?
+
+# Extension exercises
+
+## Extension exercise 1
+
+## Extension exercise 2

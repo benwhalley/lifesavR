@@ -363,13 +363,11 @@ Make a scatterplot which shows the relationships between petal widths and length
 :::
 
 
-
-
-
 # Further reading
 
-*Scatterplots and visualisation*: This book is an excellent resource for data visualisation in R. This chapter: <https://clauswilke.com/dataviz/visualizing-associations.html> shows many examples of 
-plots which display relationships between variables (including scatter plots) and so 
-would extend the material here.
+*Scatterplots and visualisation*: [Fundamentals of Data Visualization](https://clauswilke.com/dataviz/) is an excellent
+resource for data visualisation in R. This chapter: <https://clauswilke.com/dataviz/visualizing-associations.html> shows
+many examples of plots which display relationships between variables (including scatter plots) which would extend the
+material here.
 
 
