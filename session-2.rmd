@@ -128,28 +128,16 @@ video_data <- list(identifier = "loading-data", ytidentifier = "yt-embed", showc
 ```{r child = '_content/_video_tabs.rmd'}
 ```
 
-
-
-
 :::{.exercise}
 **Exercise 5**
 
-1. Create a new chunk.
-1. Read the data stored at <https://benwhalley.github.io/lifesavR/lifesavr/data/shootings.csv>
-1. View it using the **Environment** pane.
-1. View it using `glimpse()`.
-:::
+1. Use your web browser to download
+[https://benwhalley.github.io/lifesavR/data/world-happiness-report-2021.csv](https://benwhalley.github.io/lifesavR/data/world-happiness-report-2021.csv) to your computer.
+1. Upload `world-happiness-report-2021.csv` to the server.
+1. Create a new chunk below the `Exercise 5` heading in your workbook.
+1. Read `world-happiness-report-2021.csv` into a variable with a descriptive name.
 
-
-:::{.exercise}
-**Exercise 6**
-
-1. Use your web browser to download <https://benwhalley.github.io/lifesavR/lifesavr/data/shootings.csv> to your computer.
-1. Upload `shootings.csv` to the server.
-1. Create a new code chunk in your workbook.
-1. Read `shootings.csv` into a variable with a descriptive name.
-
-In which city was the earliest recorded shooting? `r fitb('Shelton')`
+Which country had the highest **Healthy life expectancy**? `r fitb('Singapore')`
 :::
 
 
@@ -165,7 +153,7 @@ video_data <- list(identifier = "filter", ytidentifier = "yt-embed", showcode=F)
 ```
 
 :::{.exercise}
-**Exercise 7**
+**Exercise 6**
 
 Filter `gapminder` to show countries with a population greater than 100 million.
 
@@ -179,7 +167,7 @@ development %>% filter(population > 100000000)
 
 :::{.exercise}
 
-**Exercise 8**
+**Exercise 7**
 
 Show countries with a population greater than 100 million and life expectancy greater than 70.
 
@@ -204,7 +192,7 @@ video_data <- list(identifier = "summarise", ytidentifier = "yt-embed", showcode
 ```
 
 :::{.exercise}
-**Exercise 9**
+**Exercise 8**
 
 1. Copy the code above into your workbook.
 1. Amend the code to calculate the median weight.
@@ -213,7 +201,7 @@ video_data <- list(identifier = "summarise", ytidentifier = "yt-embed", showcode
 The median car weight is `r fitb(median(fuel$weight))` kg
 
 
-**Exercise 10**
+**Exercise 9**
 
 1. Amend the code to calculate the mean and standard deviation of `weight`.
 
@@ -223,7 +211,7 @@ To the nearest pound, the mean car weight is `r fitb(round(median(fuel$weight), 
 
 
 :::{.exercise}
-**Exercise 11**
+**Exercise 10**
 
 ```{r, echo=FALSE, eval=T}
 sd6 <- fuel %>%

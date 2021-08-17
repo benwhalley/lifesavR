@@ -40,21 +40,19 @@ next_year <- current_year + 1
 
 ## Exercise 5
 
-## Exercise 6
-
 # Selecting rows with `filter()`
+
+## Exercise 6
 
 ## Exercise 7
 
-## Exercise 8
-
 # Summarising data using `summarise()`
+
+## Exercise 8
 
 ## Exercise 9
 
 ## Exercise 10
-
-## Exercise 11
 
 # Check your knowledge
 
