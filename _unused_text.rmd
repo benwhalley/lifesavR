@@ -1,3 +1,126 @@
+# Extension techniques
+
+
+
+### Sorting
+
+Sorting is often useful for this sort of question.
+
+We can sort data in R using the `arrange()` function.
+
+
+For example:
+
+Q: Which countries had the lowest life expectancy in the 20th century?
+
+
+```{r}
+development %>%
+  # sort the data by life expectancy
+  arrange(life_expectancy) %>%
+  head(3)  # show only the first few rows
+```
+
+If you want to sort in the reverse order, put a hyphen in front of column you are sorting.
+This means *sort in reverse order*.
+
+
+```{r}
+development %>%
+  # to sort the data by life expectancy in descending order add a hyphen
+  arrange(-life_expectancy) %>%
+  head(3)  # show only the first few rows
+```
+
+
+
+### Combining multiple operations in a pipeline
+
+We can combine multiple functions to answer more detailed questions.
+
+Q: Which countries had the lowest life expectancy *in 1992*?
+
+```{r}
+development %>%
+  filter(year==1992) %>%
+  arrange(life_expectancy) %>%
+  head(3)
+```
+
+
+
+
+We can also combine filtering, *grouping* and summarising in a single pipeline.
+
+
+Q: What was the average life expectancy in 1992 on each continent?
+
+```{r}
+development %>%
+  group_by(continent) %>%
+  filter(year==1992) %>%
+  summarise(mean(life_expectancy))
+```
+
+
+
+### Summary of descriptions
+
+-------------------------------------------------------------------------------------------------------------------------
+| Description of   | Statistic    | Plot                             | R function                                       |
+| ---------------- | ------------ | -------------------------------- | ------------------------------------------------ |
+| Central tendency | Mean, median | Boxplot                          | `sumarise()`, `geom_boxplot()`                   |
+| Distribution     | SD, IQR      | Density plot; boxplot            | `summarise()`, geom_boxplot()`, `geom_density()` |
+| Relationship     | Correlation  | Scatterplot (plus smoothed line) | `cor()`, `geom_point()`, `geom_smooth()`         |
+-------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+A nice addition to that technique --- and one which emphasises the idea of relationships --- is the **smoothed line plot**.
+
+
+### Smoothed line plots
+
+If we plot the relationship between engine size and fuel economy in the `fuel` dataset we can see the
+relationship between these variables:
+
+```{r}
+fuel %>%
+  ggplot(aes(engine_size, mpg)) +
+  geom_point()
+```
+
+It's fairly obvious that there is a relationship, but it's not a straight-line.
+For small engined cars there is a strong negative relationship. But once you get above a
+certain engine size this is less pronounced.
+
+We can accentuate this pattern, and make the relationship between variables even clearer,
+by **adding another layer** to our plot:
+
+
+```{r, message=FALSE}
+fuel %>%
+  ggplot(aes(engine_size, mpg)) +
+  geom_point() +
+  geom_smooth()
+```
+
+
+The only addition to the previous plot is the code: `+ geom_smooth()`
+
+This adds a smoothed line to the scatterplot.  The blue line traces the  *local average* of the
+value of MPG. That is, it represents what we might expect MPG to be, for any given engine size.
+
+It's good to show both the raw datapoints AND the smoothed line because we see both the 'big picture'
+relationship and any deviations from the general trend in a single plot.
+
+Some people would say we've increased the *information density* by adding the extra layer.
+
+
+
+
+
 
 
 :::{.exercise}
