@@ -77,7 +77,7 @@ Your **Environment** pane should look like this:
 :::{.exercise}
 **Exercise 2**
 
-1. Create a new chunk below the `Exercise 2` heading in your workbook (`session-2.rmd`)
+1. Create a new chunk below the `Exercise 2` heading in your workbook (`session-2.rmd`).
 1. Assign the results of the calculation `2 * 35` to the variable `seventy`
 1. Run the chunk
 
@@ -91,7 +91,7 @@ Your **Environment** should now look like this:
 
 **Exercise 3**
 
-1. Create a new chunk below the `Exercise 3` heading
+1. Create a new chunk below the `Exercise 3` heading in your workbook.
 1. Use R to calculate your age in the year 2051.
 1. Save the result in a variable _with a descriptive name_.
 :::
@@ -109,13 +109,12 @@ video_data <- list(identifier = "pipes", ytidentifier = "yt-embed")
 :::{.exercise}
 **Exercise 4**
 
-1. Create a level 3 markdown heading named "Exercise 4" in your workbook. (You should be used to doing this for every exercise by now, so we won't remind you again.)  <!-- TODO is this true enough yet? -->
-1. Create a new code chunk beneath this heading.
+1. Create a new chunk below the `Exercise 4` heading in your workbook.
 1. Load the `tidyverse` library.
-1. Pipe the `mpg` `data.frame` into `head()` and assign the results to a variable called `mpg_head`.
-1. Use the **Environment** pane to open `mpg_head`.
-In 1999, a 6-cylinder, manual transmission, Audio A4 could cover `r fitb('18')` miles per gallon when driven in the
-city.
+1. Pipe the `fuel` dataset into `head()` and assign the results to a variable called `fuel_head`.
+1. Use the **Environment** pane to open `fuel_head`.
+
+The engine size of the vehicle with the second highest miles per gallon was `r fitb('1770')`cc.
 :::
 
 
