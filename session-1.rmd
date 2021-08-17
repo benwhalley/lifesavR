@@ -34,14 +34,13 @@ This session doesn't assume any prior knowledge of R, and introduces the basics.
 To be clear, this repetition is intentional: we find most students will benefit from refreshing their knowledge at this stage in the course. **Even if you are quite confident when using RStudio please read the worksheet carefully and complete all of
 the activities in the blue boxes.**
 
-# R techniques covered
+# Techniques covered
 
 - [Using the RStudio interface](#using)
 - [What can R do?](#cando)
 - [Working interactively in R Markdown](#interactive)
 - [Loading packages](#packages)
-- [Built-in datasets](#datasets)
-- [Exploring and checking data](#exploring)
+- [Datasets](#datasets)
 - [Making a scatterplot with `ggplot()`](#scatterplots)
 
 # Using the RStudio interface {#using}
@@ -288,7 +287,7 @@ The population of Afghanistan in 1967 was: `r fitb('11537966')`.
 
 :::
 
-# Scatterplots  {#scatterplots}
+# Making a scatterplot with `ggplot()` {#scatterplots}
 
 ```{r, echo=F}
 video_data <- list(identifier = "scatterplots", ytidentifier = "yt-embed")

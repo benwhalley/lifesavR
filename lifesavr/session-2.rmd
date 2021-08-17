@@ -7,12 +7,12 @@ output: html_document
 
 This R Markdown document is your workbook for session two of the lifesaveR module.
 
-## Variables
+# Storing data in variables
 
 The chunk below runs the calculation `40 + 2`, assigns the result to the variable `meaningoflife`, and then prints the
 value of the variable.
 
-### Exercise 1
+## Exercise 1
 
 Run the chunk below
 
@@ -27,6 +27,34 @@ current_year
 # do a calculation to create a new variable from an existing one
 next_year <- current_year + 1
 ```
+
+## Exercise 2
+
+## Exercise 3
+
+# Passing data with pipes `%>%`
+
+## Exercise 4
+
+# Loading data from elsewhere 
+
+## Exercise 5
+
+## Exercise 6
+
+# Selecting rows with `filter()`
+
+## Exercise 7
+
+## Exercise 8
+
+# Summarising data using `summarise()`
+
+## Exercise 9
+
+## Exercise 10
+
+## Exercise 11
 
 # Check your knowledge
 
