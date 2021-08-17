@@ -34,17 +34,13 @@ At the end of the session, you will have used variables to store the result of y
 loaded data into R from a file, and used commands to select and summarise
 subsets of the data. These are important building blocks for later sessions.
 
-
 # Techniques covered
 
 - [Storing data in variables](#variables)
 - [Passing data with pipes `%>%`](#pipe)
 - [Loading data from elsewhere](#loadingdata)
-- [The **Files** pane](#filespane)
-- [Uploading data files](#upload)
 - [Selecting rows with `filter()`](#filter)
 - [Summarising data using `summarise()`](#summarise)
-- [R comments](#comments)
 
 <!-- Activity: -->
 
@@ -53,7 +49,7 @@ subsets of the data. These are important building blocks for later sessions.
 <!-- just one: -->
 
 
-# Variables {#variables}
+# Storing data in variables {#variables}
 
 ```{r, echo=F}
 video_data <- list(identifier = "variables", ytidentifier = "yt-embed")
@@ -101,7 +97,7 @@ Your **Environment** should now look like this:
 1. Save the result in a variable _with a descriptive name_.
 :::
 
-# Pipes: `%>%` {#pipe}
+# Passing data with pipes `%>%` {#pipe}
 
 ```{r, echo=F}
 video_data <- list(identifier = "pipes", ytidentifier = "yt-embed")
@@ -124,7 +120,7 @@ city.
 :::
 
 
-# Loading data {#loadingdata}
+# Loading data from elsewhere {#loadingdata}
 
 ```{r, echo=F}
 video_data <- list(identifier = "loading-data", ytidentifier = "yt-embed", showcode=F)
@@ -141,18 +137,16 @@ video_data <- list(identifier = "loading-data", ytidentifier = "yt-embed", showc
 **Exercise 5**
 
 1. Create a new chunk.
-1. Read the data stored at <https://benwhalley.github.io/lifesavR/lifesavr/shootings.csv>
+1. Read the data stored at <https://benwhalley.github.io/lifesavR/lifesavr/data/shootings.csv>
 1. View it using the **Environment** pane.
 1. View it using `glimpse()`.
 :::
 
 
-
-
 :::{.exercise}
 **Exercise 6**
 
-1. Use your web browser to download <https://benwhalley.github.io/lifesavR/lifesavr/shootings.csv> to your computer.
+1. Use your web browser to download <https://benwhalley.github.io/lifesavR/lifesavr/data/shootings.csv> to your computer.
 1. Upload `shootings.csv` to the server.
 1. Create a new code chunk in your workbook.
 1. Read `shootings.csv` into a variable with a descriptive name.
@@ -161,10 +155,7 @@ In which city was the earliest recorded shooting? `r fitb('Shelton')`
 :::
 
 
-
-
-
-# Selecting rows {#filter}
+# Selecting rows with `filter()` {#filter}
 
 
 ```{r, echo=F}
@@ -174,12 +165,6 @@ video_data <- list(identifier = "filter", ytidentifier = "yt-embed", showcode=F)
 
 ```{r child = '_content/_video_tabs.rmd'}
 ```
-
-
-
-
-
-
 
 :::{.exercise}
 **Exercise 7**
@@ -210,9 +195,7 @@ development %>%
 
 :::
 
-
-# Summarising data {#summarise}
-
+# Summarising data using `summarise()` {#summarise}
 
 ```{r, echo=F}
 video_data <- list(identifier = "summarise", ytidentifier = "yt-embed", showcode=F)
@@ -222,10 +205,8 @@ video_data <- list(identifier = "summarise", ytidentifier = "yt-embed", showcode
 ```{r child = '_content/_video_tabs.rmd'}
 ```
 
-
-
 :::{.exercise}
-**Exercise 13**
+**Exercise 9**
 
 1. Copy the code above into your workbook.
 1. Amend the code to calculate the median weight.
@@ -234,7 +215,7 @@ video_data <- list(identifier = "summarise", ytidentifier = "yt-embed", showcode
 The median car weight is `r fitb(median(fuel$weight))` kg
 
 
-**Exercise 14**
+**Exercise 10**
 
 1. Amend the code to calculate the mean and standard deviation of `weight`.
 
@@ -244,7 +225,7 @@ To the nearest pound, the mean car weight is `r fitb(round(median(fuel$weight), 
 
 
 :::{.exercise}
-**Exercise 15**
+**Exercise 11**
 
 ```{r, echo=FALSE, eval=T}
 sd6 <- fuel %>%

@@ -13,8 +13,6 @@ What to do:
 - Use this document to complete and record your answers to the exercises in each session.
 - Edit the code and text below to save your work
 
-
-
 ## An example plot
 
 The following chunk creates a scatter-plot of a built-in data set that contains information about diamonds. By the end of
@@ -29,59 +27,65 @@ diamonds %>%
 
 # Working interactively in R Markdown {#interactive}
 
-## Running R code within a chunk
-
-### Exercise 1
+## Exercise 1
 
 1. Locate the first chunk in this workbook.
 1. Place your cursor (anywhere) on the line that says `library(tidyverse)`.
 1. Run the code.
 
-### Exercise 2
+## Exercise 2
 
 Position your cursor on the line that says `diamonds` and run the code.
 
-```{r}
-diamonds %>%
-  ggplot(aes(carat, price)) +
-  geom_point()
-```
+## Exercise 3
 
-### Exercise 3
-
-1. Select (highlight) the word `diamonds` in the chunk above.
+1. Select (highlight) the word `diamonds`.
 1. Run the code.
 
-## Inserting a chunk
-
-### Exercise 4
+## Exercise 4
 
 1. Create a chunk below these instructions
-1. Inside the chunk, write a line of code which adds together the numbers 9, 4, 55 and 2 and assigns the result to a new variable called `totalscore`
+1. Inside the chunk, write a line of code which adds together the numbers 9, 4, 55 and 2
 1. Run the the line of code you have written
 
-# Built-in datasets
+# Datasets
+
+## Exercise 5
+
+Create a new chunk below this line to answer Exercise 5.
+
+## Exercise 6
+
+Create a new chunk below this line to answer Exercise 6.
+
+# Scatterplots
+
+## Exercise 7
+
+Create a new chunk below this line to answer Exercise 7.
 
 # Check your knowledge
 
-## How do you run part of a line of R code?
+[Write your answers below each questions and save your workbook for later]
 
-[Write your answers directly into the workbook here and save it for later]
+## How do you run part of a line of R code using the keyboard short cut?
 
-## Which library do you need to load in your first R Markdown chunk?
+## Which library will you always need to load in your first R Markdown chunk?
 
-## What is `gapminder`?
+## What is `psydata`?
 
-## Which function would you use to explore the first few rows of a dataset?
+## How would you look at/inspect a whole dataset?
 
-## What is the 5th column in `gapminder`?
+## What does `glimpse` do and when is it useful?
 
-## Explain what `glimpse` does.
+## What is the 5th column in the `development` dataset?
 
-## Which function makes a plot?
+## Which function makes a plot?  (there are many, but we mean the one shown above)
 
-## Which function defines the axes on a plot?
+## Which function chooses the columns of data used in the plot?
 
-## Which function makes a boxplot?
+# Extension exercises
 
-## How do you use markdown to make a level 3 heading?
+## Extension exercise 1
+
+## Extension exercise 2
