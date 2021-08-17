@@ -1,0 +1,52 @@
+With categorical data it's not possible to calculate averages, but it is still useful to be able to describe the data. For example, if we were thinking about the `earnings` dataset we might ask:
+
+- *"How many men and women were recruited?"*
+- *"What proportion of participants worked in the public sector?"* 
+- *"Was this proportion similar for men and women?*"
+
+
+The earnings data contained variables called `gender` and `job` which can answer these questions:
+
+```{r}
+earnings %>% glimpse
+```
+
+
+To count the frequency of different responses we can use the `count` function.
+
+
+For example: XXX TODO EXPLAIN THIS CODE AND WRITE AN EXERCISE
+
+
+```{r}
+# this gives us the total number of rows
+earnings %>% count()
+
+# numbers of men an women
+earnings %>%
+  group_by(gender) %>%
+  count()
+
+# later we'll show ways of doing arithmetic on the results, but for now
+# if we simply divide men/total we get the proportion/percentage of men
+2353 / 4483 * 100
+
+
+
+# we can do the same for job:
+earnings %>%
+  group_by(job) %>%
+  count()
+
+# proportion in the private sector
+3447 / 4483 * 100
+
+
+# we can use group_by again to get the split for men and women:
+earnings %>%
+  group_by(job, gender) %>%
+  count()
+
+1940
+```
+
