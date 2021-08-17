@@ -303,13 +303,14 @@ video_data <- list(identifier = "scatterplots", ytidentifier = "yt-embed")
 **Exercise 7**
 
 1. Create a new chunk below the `Exercise 7` heading in your workbook.
-1. Create a scatterplot with `displ` (engine 'displacement') on the x-axis and `hwy` on the y-axis.
+1. Using the `fuel` dataset, create a scatterplot  with `engine_size` on the x-axis and `mpg` on the y-axis.
 1. Run the chunk.
 
 The scatterplot should look like this:
 
 ```{r, echo=FALSE}
-mpg %>% ggplot(aes(displ, hwy)) +
+fuel %>%
+  ggplot(aes(engine_size, mpg)) +
   geom_point()
 ```
 :::
