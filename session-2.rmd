@@ -77,8 +77,7 @@ Your **Environment** pane should look like this:
 :::{.exercise}
 **Exercise 2**
 
-1. Create a level 3 markdown heading named "Exercise 2" in your workbook
-1. Create a new chunk beneath the heading
+1. Create a new chunk below the `Exercise 2` heading in your workbook (`session-2.rmd`)
 1. Assign the results of the calculation `2 * 35` to the variable `seventy`
 1. Run the chunk
 
@@ -92,7 +91,7 @@ Your **Environment** should now look like this:
 
 **Exercise 3**
 
-1. Create a level 3 markdown heading named "Exercise 3" in your workbook
+1. Create a new chunk below the `Exercise 3` heading
 1. Use R to calculate your age in the year 2051.
 1. Save the result in a variable _with a descriptive name_.
 :::
