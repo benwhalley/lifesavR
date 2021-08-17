@@ -42,9 +42,9 @@ current_year
 You might wonder *where* these variables get saved. In most cases, variables you create are stored in what's called the
 `Global Environment`. You can see them in the **Environment** pane in RStudio.
 
-Double-clicking on any variable there will show you what is stored inside the container.
+The names of variables are shown in the column on the right, and their values in the column on the left.
 
-[show clicking on the Environment]
+[Highlight name and value of a variable in the Environment]
 
 ---------------
 
