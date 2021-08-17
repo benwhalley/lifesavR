@@ -327,8 +327,7 @@ revealed in Session 2.
 1. What does `glimpse` do and when is it useful?
 1. What is the 5th column in the `development` dataset?
 1. Which function makes a plot?  (there are many, but we mean the one shown above)
-1. Which function says which columns of data should be used in the plot?
-
+1. Which function chooses the columns of data used in the plot?
 
 # Extension exercises
 
