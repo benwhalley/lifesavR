@@ -1,7 +1,5 @@
 
-Sometimes dataset can be very large. We often want to work with a subset of all the data, and `filter` makes this possible.
-
-
+Some datasets are very large. We often want to work with a subset of the data, and `filter` makes this possible.
 
 ### Categorical and text filters
 
@@ -32,8 +30,6 @@ development %>%
 ```
 This doesn't match any rows because from R's point of view `"kenya"` and `"Kenya"` are completely different!
 
-
-
 ### Numeric filters
 
 The "greater than" operator `>` filters on numeric columns. For example, `year` is 
@@ -47,19 +43,17 @@ The code above filters rows where `year` is greater than 2000, showing us the re
 
 The opposite of the `>` operator is the `<` operator. This filters numeric columns which are *less than* a value.
 
-
-
-
 ### Combined filters
+
+You can combine filters in a pipeline to filter rows using multiple operators.
 
 ```{r}
 development %>%
-  filter(country=="Kenya") %>%
+  filter(country == "Kenya") %>%
   filter(year > 2000)
 ```
 
-
-
+This code filters rows leaving those where the country is `Kenya` and the year is greater than `2000`.
 
 ### Storing and re-using filtered data
 
@@ -76,18 +70,18 @@ For example:
 
 ```{r}
 development.europe <- development %>% 
-  filter(continent=="Europe") %>% 
+  filter(continent == "Europe") %>% 
   filter(year > 1980)
 ```
 
-This code filters only European countries, and only data after 1980.
+This code filters rows leaving us with data for European countries after 1980.
 
 Importantly, it also stores this data in a *new variable*, called `development.europe`.
 
 We can look at this new subset of the data by typing and running its name, or by looking in the **Envrionment** pane.
 
 
-[DEMONSTRATE EXPLORING THE SUBSET OF DATA, AND HOW IT APPEARS IN THE ENVIRONMENT PANE]
+[Demo evaluating data subset and exploring using Environment pane.]
 
 Now that it is stored in a new variable, we can use these data in other code, for example to 
 make a plot:

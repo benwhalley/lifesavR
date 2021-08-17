@@ -3,13 +3,13 @@
 library(psydata)
 
 # filter on a categorical variable
-# == mean 'match exactly'
+# == means 'match exactly'
 development %>% 
   filter(country == "Kenya")
 
-# this doesn't match any rows because we don't use a capital K
+# this doesn't match any rows because the data spells Kenya with a capital 'K'
 development %>% 
-  filter(country=="kenya")
+  filter(country == "kenya")
 
 # filtering on a numeric variable
 development %>% filter(year > 2000)
@@ -17,13 +17,13 @@ development %>% filter(year > 2000)
 
 # combining multiple filters makes things more specific
 development %>%
-  filter(country=="Kenya") %>%
+  filter(country == "Kenya") %>%
   filter(year > 2000)
 
 # assign filtered data to a new variable for re-use later on
 # if you don't store the data, it is displayed but then lost
 development.europe <- development %>% 
-  filter(continent=="Europe") %>% 
+  filter(continent == "Europe") %>% 
   filter(year > 1980)
 
 # show the stored subset

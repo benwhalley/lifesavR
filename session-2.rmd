@@ -140,12 +140,10 @@ video_data <- list(identifier = "loading-data", ytidentifier = "yt-embed", showc
 Which country had the highest **Healthy life expectancy**? `r fitb('Singapore')`
 :::
 
-
 # Selecting rows with `filter()` {#filter}
 
-
 ```{r, echo=F}
-video_data <- list(identifier = "filter", ytidentifier = "yt-embed", showcode=F)
+video_data <- list(identifier = "filter", ytidentifier = "yt-embed")
 # makermds(video_data)
 ```
 
