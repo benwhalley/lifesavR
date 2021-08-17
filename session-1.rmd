@@ -303,7 +303,7 @@ video_data <- list(identifier = "scatterplots", ytidentifier = "yt-embed")
 **Exercise 7**
 
 1. Create a new chunk below the `Exercise 7` heading in your workbook.
-1. Using the `fuel` dataset, create a scatterplot  with `engine_size` on the x-axis and `mpg` on the y-axis.
+1. Using the `fuel` dataset, create a scatterplot  with `engine_size` on the x-axis and `mpg` (miles per gallon, or fuel economy) on the y-axis.
 1. Run the chunk.
 
 The scatterplot should look like this:
@@ -324,7 +324,7 @@ revealed in Session 2.
 1. Which library will you always need to load in your first R Markdown chunk?
 1. What is `psydata`?
 1. How would you look at/inspect a whole dataset?
-1. What does `glimpse` do and when is it useful?
+1. What does `glimpse()` do and when is it useful?
 1. What is the 5th column in the `development` dataset?
 1. Which function makes a plot?  (there are many, but we mean the one shown above)
 1. Which function chooses the columns of data used in the plot?
@@ -335,11 +335,11 @@ revealed in Session 2.
 
 ### Extension exercise 1
 
-This scatterplot uses the `mtcars` dataset to show `engine_size` on the x-axis against `mpg` (miles per gallon, or fuel economy) on the y-axis.
+This scatterplot uses the `fuel` dataset to show a vehicle's `power` on the x-axis against `mpg` on the y-axis.
 
 ```{r, echo=FALSE}
 fuel %>% 
-  ggplot(aes(engine_size, mpg)) +
+  ggplot(aes(power, mpg)) +
   geom_point()
 ```
 
@@ -356,7 +356,7 @@ In a new chunk, write the R code to produce this plot.
 There is another built-in dataset called `iris` which includes data about
 different flower species.
 
-Use `glimpse` to get a list of the column names.
+Use `glimpse()` to get a list of the column names.
 
 Make a scatterplot which shows the relationships between petal widths and lengths.
 
