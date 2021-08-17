@@ -10,6 +10,8 @@ The pipe sends data from one piece of code to another.
 
 It looks like this `%>%`.  
 
+Press `Ctrl + Shift + M` (Windows/Linux) or `⌘ + Shift + M` (Mac) to add a pipe.
+
 In session 1, you used the following code to "pipe" the `mtcars` dataset into `head()`, which shows just the first few rows:
 
 ```{r}
@@ -19,7 +21,7 @@ mtcars %>% head()
 You can think of your data as flowing along lengths of pipe, joined by functions which do things to the data, step by
 step, until the result you want plops out at the end.
 
-Each `%>%` should be read as the word "then", e.g. "pipe `mtcars` data, *then* `head()` it".
+Each `%>%` should be read as the word "then", e.g. "pipe the `mtcars` dataset, *then* `head()` it".
 
 The `>` in the pipe function reminds you of the direction in which your data is flowing (it only works left to right).
 
@@ -36,7 +38,7 @@ mtcars_head <- mtcars %>% head()
 
 Here we combine *assignment* with a *pipeline*.
 
-Remember that it is the final result of the commands on the right hand side of the '<-' that are assigned to the variable.
+Remember that it is the final result of the commands on the right hand side of the `<-` that are assigned to the variable.
 
 The result of the pipeline (a `data.frame` containing the first few rows of `mtcars`) is saved to a
 new variable called `mtcars_head`.
