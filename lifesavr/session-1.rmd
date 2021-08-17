@@ -52,6 +52,18 @@ Position your cursor on the line that says `diamonds` and run the code.
 
 ## Exercise 5
 
+Create a new chunk below this line to answer Exercise 5.
+
+## Exercise 6
+
+Create a new chunk below this line to answer Exercise 6.
+
+# Scatterplots
+
+## Exercise 7
+
+Create a new chunk below this line to answer Exercise 7.
+
 # Check your knowledge
 
 ## How do you run part of a line of R code?

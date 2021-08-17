@@ -141,8 +141,8 @@ video_data <- list(identifier = "working-interactively-in-r", ytidentifier = "yt
 
 **Exercise 1**
 
-1. Locate the first chunk in `session-1.rmd` (you find this in the 'files' pane)
-1. Place your cursor (anywhere) on the line that says `library(tidyverse)` (this is explained in the next section)
+1. Locate the first chunk in `session-1.rmd` (you find this in the **Files** pane)
+1. Place your cursor (anywhere) on the line that says `library(tidyverse)` (this code is explained in the next section)
 1. Run the code by pressing <span class="keyshape">Ctrl</span> + <span class="keyshape">↵</span> (Windows, Linux) or
 <span class="keyshape">⌘</span> + <span class="keyshape">↩</span> (Mac)
 
@@ -197,29 +197,13 @@ This prints the first few lines of the diamonds data:
 
 1. Find the instructions for Exercise 4 in your workbook.
 1. Create a new chunk below the instructions.
-1. Inside the chunk, write a line of code which adds together the numbers 9, 4, 55 and 2, and assigns the result to a variable named `totalscore`.
+1. Inside the chunk, write a line of code which adds together the numbers 9, 4, 55 and 2.
 1. Run the the line of code you have written.
 
-After completing these steps, your environment should look like this:
+The output from the chunk should look like this:
 
-
-<!-- XXX TODO PAUL this image needs changing to read totalscore not sum and also shouldn't have meaningoflife any more -->
-
-![Environment after Exercise 1](images/ex1.png)
-
+![Result from Exercise 4](images/ex4.png)
 :::
-
-
-
-
-```{r}
-fuel %>%
-  ggplot(aes(weight, mpg)) +
-    geom_point()  
-```
-
-
-
 
 # Loading packages {#packages}
 
@@ -275,21 +259,26 @@ video_data <- list(identifier = "built-in-datasets", ytidentifier = "yt-embed")
 
 **Exercise 5**
 
-1. Create a new chunk at the bottom of your workbook (`session-1.rmd`).
+1. Create a new chunk below the `Exercise 5` heading in your workbook (`session-1.rmd`).
 1. Load the `psydata` package
 1. Display the `fuel` dataset and try out the navigation buttons.
 1. Make a list of columns in the `development` datset
 
+The output should look like this:
+
+![The `fuel` dataset](images/s1_ex5-1.png)
+
+![Columns in the `development` dataset](images/s1_ex5-2.png)
+
+
 :::
-
-
 
 
 :::{.exercise}
 
 **Exercise 6**
 
-1. Create a new chunk at the bottom of your worksheet (`session-1.rmd`). 
+1. Create a new chunk below the `Exercise 6` heading in your workbook (`session-1.rmd`).
 1. Load the `psydata` package if you haven't already done that in this work session
 1. Show the first 10 rows of the `development` data 
 
@@ -299,11 +288,7 @@ The population of Afghanistan in 1967 was: `r fitb('11537966')`.
 
 :::
 
-
-
-
 # Scatterplots  {#scatterplots}
-
 
 ```{r, echo=F}
 video_data <- list(identifier = "scatterplots", ytidentifier = "yt-embed")
@@ -313,13 +298,11 @@ video_data <- list(identifier = "scatterplots", ytidentifier = "yt-embed")
 ```{r child = '_content/_video_tabs.rmd'}
 ```
 
-
-
 :::{.exercise}
 
-**Exercise 8**
+**Exercise 7**
 
-1. Create a new chunk at the bottom of your worksheet.
+1. Create a new chunk below the `Exercise 7` heading in your workbook.
 1. Create a scatterplot with `displ` (engine 'displacement') on the x-axis and `hwy` on the y-axis.
 1. Run the chunk.
 
@@ -330,13 +313,6 @@ mpg %>% ggplot(aes(displ, hwy)) +
   geom_point()
 ```
 :::
-
-
-
-
-<!-- markdown moved to later session -->
-
-
 
 # Check your knowledge
 
