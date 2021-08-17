@@ -7,7 +7,7 @@ library(psydata)
 # make a scatterplot from the fuel dataset
 fuel %>%
   ggplot(aes(x=weight, y=mpg)) + # selects the columns to use
-    geom_point()         # adds the points to the plot
+    geom_point()                 # adds the points to the plot
 
 
 
