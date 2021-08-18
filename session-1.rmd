@@ -1,26 +1,24 @@
 ---
-title: 'Getting started'
-author: 'Ben Whalley, Paul Sharpe, Sonja Heintz, Andy Wills'
+title: "Getting started"
+author: "Ben Whalley, Paul Sharpe, Sonja Heintz, Andy Wills"
 # date: "April 2021"
 bibliography: [references.bib]
 csl: apa.csl
 #biblio-style: apa6
 link-citations: yes
-output:
-  webex::html_clean
-
+output: webex::html_clean
 ---
 
 ```{r, include=F, echo=F}
 source("_first_chunk.R")
 ```
 
-
 ```{html, child="bs-tab-fix.html"}
+
 ```
 
-
 ```{css, child="video.css"}
+
 ```
 
 # Overview
@@ -28,6 +26,9 @@ source("_first_chunk.R")
 <!-- > Beginners mind (Shoshin) denotes openness, eagerness and lack of preconceptions when studying a subject, just as a beginner would, no matter what level of expertise the student has.  -->
 
 <!-- Even black belt martial artists practice basic techniques like blocks and punches every time they train. -->
+
+
+
 
 This session doesn't assume any prior knowledge of R, and introduces the basics. For some students this will include revision of material from stage 1. However we provide additional material for advanced students to test their knowledge and extend familiar skills.
 
@@ -45,20 +46,14 @@ the activities in the blue boxes.**
 
 # Using the RStudio interface {#using}
 
-
 ```{r, echo=F}
 video_data <- list(identifier = "using-r-studio-interface", ytidentifier = "yt-embed", showcode=F)
 # makermds(video_data)
 ```
 
 ```{r child = '_content/_video_tabs.rmd'}
+
 ```
-
-
-
-
-
-
 
 # Before you start
 
@@ -68,8 +63,8 @@ video_data <- list(identifier = "before-you-start", ytidentifier = "yt-embed")
 ```
 
 ```{r child = '_content/_video_tabs.rmd'}
-```
 
+```
 
 :::{.exercise}
 
@@ -86,9 +81,6 @@ Press <span class="keyshape">↩</span> to run the code. If your console looks l
 ![](images/bootstrap_success.png)
 :::
 
-
-
-
 # Using the workbooks
 
 ```{r, echo=F}
@@ -99,8 +91,8 @@ video_data <- list(identifier = "using-the-workbooks",
 ```
 
 ```{r child = '_content/_video_tabs.rmd'}
-```
 
+```
 
 :::{.exercise}
 
@@ -110,8 +102,6 @@ If you're able to open this file you are now ready to start the rest of the sess
 
 :::
 
-
-
 # What can R do? {#cando}
 
 ```{r, echo=F}
@@ -119,10 +109,8 @@ video_data <- list(identifier = "what-can-r-do", ytidentifier = "yt-embed")
 ```
 
 ```{r child = '_content/_video_tabs.rmd'}
+
 ```
-
-
-
 
 # Working interactively in R Markdown {#interactive}
 
@@ -132,9 +120,8 @@ video_data <- list(identifier = "working-interactively-in-r", ytidentifier = "yt
 ```
 
 ```{r child = '_content/_video_tabs.rmd'}
+
 ```
-
-
 
 :::{.exercise}
 
@@ -143,12 +130,11 @@ video_data <- list(identifier = "working-interactively-in-r", ytidentifier = "yt
 1. Locate the first chunk in `session-1.rmd` (you find this in the **Files** pane)
 1. Place your cursor (anywhere) on the line that says `library(tidyverse)` (this code is explained in the next section)
 1. Run the code by pressing <span class="keyshape">Ctrl</span> + <span class="keyshape">↵</span> (Windows, Linux) or
-<span class="keyshape">⌘</span> + <span class="keyshape">↩</span> (Mac)
+   <span class="keyshape">⌘</span> + <span class="keyshape">↩</span> (Mac)
 
 You will see some output appear beneath the chunk. Don't worry about the details for now, we'll explain those later.
 
 :::
-
 
 :::{.exercise}
 
@@ -164,15 +150,10 @@ diamonds %>%
   geom_point()
 ```
 
-
 :::
-
 
 Congratulations! You have just run your first lines of R. The code to produce the plot consisted of three lines. You can
 also run part of a line by highlighting just the code you want to run, as you'll see in the next exercise.
-
-
-
 
 :::{.exercise}
 
@@ -186,9 +167,6 @@ This prints the first few lines of the diamonds data:
 ![Example of running highlighted code](images/diamonds.png)
 
 :::
-
-
-
 
 :::{.exercise}
 
@@ -212,9 +190,8 @@ video_data <- list(identifier = "loading-packages", ytidentifier = "yt-embed")
 ```
 
 ```{r child = '_content/_video_tabs.rmd'}
+
 ```
-
-
 
 :::{.tip}
 
@@ -233,16 +210,11 @@ Error in diamonds %>% ggplot(aes(carat, price, colour = clarity)) :
 that beginners encounter. They normally mean that you have
 
 1. forgotten to include `library(tidyverse)` as the first line in your code, or
-1. forgotten to *run* that line.
+1. forgotten to _run_ that line.
 
 :::
 
-
-
-
 # Datasets {#datasets}
-
-
 
 ```{r, echo=F}
 video_data <- list(identifier = "built-in-datasets", ytidentifier = "yt-embed")
@@ -250,9 +222,8 @@ video_data <- list(identifier = "built-in-datasets", ytidentifier = "yt-embed")
 ```
 
 ```{r child = '_content/_video_tabs.rmd'}
+
 ```
-
-
 
 :::{.exercise}
 
@@ -269,9 +240,7 @@ The output should look like this:
 
 ![Columns in the `development` dataset](images/s1_ex5-2.png)
 
-
 :::
-
 
 :::{.exercise}
 
@@ -279,7 +248,7 @@ The output should look like this:
 
 1. Create a new chunk below the `Exercise 6` heading in your workbook (`session-1.rmd`).
 1. Load the `psydata` package if you haven't already done that in this work session
-1. Show the first 10 rows of the `development` data 
+1. Show the first 10 rows of the `development` data
 
 Use the output to answer the following question. After entering your answer, click outside the box. The border will turn turn blue when the answer is correct.
 
@@ -295,6 +264,7 @@ video_data <- list(identifier = "scatterplots", ytidentifier = "yt-embed")
 ```
 
 ```{r child = '_content/_video_tabs.rmd'}
+
 ```
 
 :::{.exercise}
@@ -302,7 +272,7 @@ video_data <- list(identifier = "scatterplots", ytidentifier = "yt-embed")
 **Exercise 7**
 
 1. Create a new chunk below the `Exercise 7` heading in your workbook.
-1. Using the `fuel` dataset, create a scatterplot  with `engine_size` on the x-axis and `mpg` (miles per gallon, or fuel economy) on the y-axis.
+1. Using the `fuel` dataset, create a scatterplot with `engine_size` on the x-axis and `mpg` (miles per gallon, or fuel economy) on the y-axis.
 1. Run the chunk.
 
 The scatterplot should look like this:
@@ -312,6 +282,7 @@ fuel %>%
   ggplot(aes(engine_size, mpg)) +
   geom_point()
 ```
+
 :::
 
 # Check your knowledge
@@ -325,7 +296,7 @@ revealed in Session 2.
 1. How would you look at/inspect a whole dataset?
 1. What does `glimpse()` do and when is it useful?
 1. What is the 5th column in the `development` dataset?
-1. Which function makes a plot?  (there are many, but we mean the one shown above)
+1. Which function makes a plot? (there are many, but we mean the one shown above)
 1. Which function chooses the columns of data used in the plot?
 
 # Extension exercises
@@ -337,7 +308,7 @@ revealed in Session 2.
 This scatterplot uses the `fuel` dataset to show a vehicle's `power` on the x-axis against `mpg` on the y-axis.
 
 ```{r, echo=FALSE}
-fuel %>% 
+fuel %>%
   ggplot(aes(power, mpg)) +
   geom_point()
 ```
@@ -345,8 +316,6 @@ fuel %>%
 In a new chunk, write the R code to produce this plot.
 
 :::
-
-
 
 :::{.exercise}
 
@@ -361,12 +330,9 @@ Make a scatterplot which shows the relationships between petal widths and length
 
 :::
 
-
 # Further reading
 
-*Scatterplots and visualisation*: [Fundamentals of Data Visualization](https://clauswilke.com/dataviz/) is an excellent
+_Scatterplots and visualisation_: [Fundamentals of Data Visualization](https://clauswilke.com/dataviz/) is an excellent
 resource for data visualisation in R. This chapter: <https://clauswilke.com/dataviz/visualizing-associations.html> shows
 many examples of plots which display relationships between variables (including scatter plots) which would extend the
 material here.
-
-
