@@ -233,11 +233,14 @@ revealed in Session 3.
 
 1. What is the `<-` symbol called and what does it do?
 1. What is the `%>%` symbol called and what does it do?
+1. Which function would you pipe a dataset into if you wanted to see the first few rows?
 1. Which function is used to load data from a CSV file?
-1. How would you select rows from a dataset where values in a numeric column are between 10 and 20?
-1. Which functions would you use to calculate the mean of a numeric column?
-
-
+1. What must you do before you can load data on the RStudio server?
+1. Which function is used to select rows from a dataset?
+1. How would you select rows where values in a numeric column are between 10 and 20?
+1. Which function is used to summarise data?
+1. Which summary function would you use to calculate the mean of a numeric column?
+1. How would you calculate the median of a subset of rows in a `data.frame`?
 
 # Extension exercises
 
