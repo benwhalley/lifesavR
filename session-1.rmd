@@ -303,7 +303,7 @@ revealed in Session 2.
 
 :::{.exercise}
 
-### Extension exercise 1
+**Extension exercise 1**
 
 This scatterplot uses the `fuel` dataset to show a vehicle's `power` on the x-axis against `mpg` on the y-axis.
 
@@ -319,7 +319,7 @@ In a new chunk, write the R code to produce this plot.
 
 :::{.exercise}
 
-### Extension exercise 2
+**Extension exercise 2**
 
 There is another built-in dataset called `iris` which includes data about
 different flower species.

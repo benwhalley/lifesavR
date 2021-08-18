@@ -56,24 +56,30 @@ next_year <- current_year + 1
 
 # Check your knowledge
 
-## What is the `%>%` symbol called and what does it do?
-
 [Write your answers directly into the workbook here and save it for later]
 
 ## What is the `<-` symbol called and what does it do?
 
-## Which function is used to load data and what are the two places that data can be loaded from?
+## What is the `%>%` symbol called and what does it do?
 
-## How would you select rows from a `data.frame` where values in a numeric column are between 10 and 20?
+## Which function would you pipe a dataset into if you wanted to see the first few rows?
 
-## How would you sort a `data.frame` by a numeric column in descending order? <!-- TODO: too easy? -->
+## Which function is used to load data from a CSV file?
 
-## How would you select rows from a column which match a word, and then sort those rows in ascending order by a numeric column?
+## What must you do before you can load data on the RStudio server?
 
-## Which functions would you use to calculate the mean of a numeric column?
+## Which function is used to select rows from a dataset?
 
-## Which other two functions are commonly used to calculate descriptive statistics?
+## How would you select rows where values in a numeric column are between 10 and 20?
 
-## How could you calculate the mean for one level of a factor?
+## Which function is used to summarise data?
 
-## How would you calculate the mean for all levels of a factor?
+## Which summary function would you use to calculate the mean of a numeric column?
+
+## How would you calculate the median of a subset of rows in a `data.frame`?
+
+# Extension exercises
+
+## Extension exercise 1
+
+## Extension exercise 2

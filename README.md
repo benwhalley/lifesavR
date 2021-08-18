@@ -42,8 +42,9 @@ this is provided online.
 
 ## "Check your knowledge" sections
 
-Each worksheet and workbook has a "Check your knowledge" section. Students are directed to answer these questions in the
-workbook. The subsequent session begins by revealing the answers to these questions, as a warmup/revision test.
+Each worksheet and workbook has a "Check your knowledge" section. Questions test the worksheet content, so the total
+number will vary. Students are directed to answer these questions in the workbook. The subsequent session begins by
+revealing the answers to these questions, as a warmup/revision test.
 
 ## Videos
 

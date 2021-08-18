@@ -1,5 +1,5 @@
-- Boxplots are useful for comparing between categories
-- Use `ggplot`; choose a categorical column as the x axis
+- Boxplots are useful for comparing categorised data
+- Use `aes()` with `ggplot()` to choose a categorical column as the x axis
 - `geom_boxplot()` draws boxes and whiskers for each category
 - The box describes the [*interquartile range*](https://www.bbc.co.uk/bitesize/guides/zx7rk7h/revision/2)
 - The midpoint is the *median*
