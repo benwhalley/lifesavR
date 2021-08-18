@@ -11,6 +11,8 @@ This R Markdown document is your workbook for session three of the lifesaveR mod
 
 ## Exercise 1
 
+Use the `iris` dataset to create a boxplot with `Species` on the x-axis and `Sepal.Width` on the y-axis.
+
 # Using colour
 
 ## Exercise 2
