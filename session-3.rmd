@@ -12,6 +12,8 @@ output:
 
 ```{r, include=F, echo=F}
 source('_first_chunk.R')
+## FIXME: remove this when Ben resolves missing weight_lost_end_trt
+funimagery <- funimagery %>% mutate(weight_lost_end_trt = weight_lost)
 ```
 
 
