@@ -31,10 +31,9 @@ funimagery <- funimagery %>% mutate(weight_lost_end_trt = weight_lost)
 
 As researchers, we often collect data from two or more groups.
 
-Group allocations are *categorical* variables, and are stored in a special way
-by R which makes displaying them on graphs easier. In this workshop we learn to
-how to use categorical variables in boxplots, to colour scatterplots, and to
-make tables of descriptive statistics.
+Group allocations are *categorical* variables. They are stored in a special way by R which makes it easier to display
+them on graphs. In this workshop we learn to how to use categorical variables in boxplots, to colour scatterplots, and
+to make tables of descriptive statistics.
 
 
 
@@ -46,7 +45,7 @@ make tables of descriptive statistics.
 ### Techniques covered
 
 - [Making boxplots](#boxplots)
-- [Adding color to a plot](#color)
+- [Adding color to a plot](#colour)
 - [Using different types of data and visual scales](#datatypes)
 - [Using `group_by()` to make a summary table and compare groups](#groupby)
 
@@ -103,7 +102,7 @@ gapminder %>%
 ```
 :::
 
-# Using different types of data and visual scales(#datatypes)
+# Using different types of data and visual scales{#datatypes}
 
 ```{r, echo=F}
 video_data <- list(identifier = "types-scales", ytidentifier = "yt-embed")

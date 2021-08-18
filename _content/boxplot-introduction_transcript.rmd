@@ -1,6 +1,6 @@
 Boxplots are useful for visualising differences between categories or groups.
 
-Using `ggplot`, making a boxplot is similar to a scatterplot.
+Using `ggplot()`, making a boxplot is similar to a scatterplot.
 
 If we haven't already done it, we'd need to load the `tidyverse`:
 
@@ -11,7 +11,7 @@ library(tidyverse)
 
 ------------------------
 
-To make the plot, we first choose the data we want to plot and use add a pipe to the end of the
+To make the plot, we first choose the data we want to plot and add a pipe to the end of the
 line to send this data to the next command:
 
 ```{r, eval = F}
@@ -19,11 +19,11 @@ iris %>%
 ```
 
 
-Next we use `ggplot` and `aes(x = ..., y = ...)` to select the columns we want to use in the data.
-`aes` is short for *aesthetics* which means 'something you can see'. So the `aes` function
+Next we use `ggplot()` and `aes(x = ..., y = ...)` to select the columns we want to use in the data.
+`aes` is short for *aesthetics* which means 'something you can see'. So the `aes()` function
 defines what will be able to see on the plot — the axes, and other features like color.
 
-This time we have chosen `Species` for the x axis, because it is a *categorical* variable
+This time we have chosen `Species` for the x axis, because it is a *categorical* variable.
 
 ```{r}
 iris %>%
@@ -39,7 +39,7 @@ from our dataset.
 This makes things much easier — especially for column names. If you type column names by
 hand it's easy to make spelling errors or typos, and this leads to errors in R.
 
-If we run the code so far, `ggplot` draws the plot axes, but doesn't add the data yet:
+If we run the code so far, `ggplot()` draws the plot axes, but doesn't add the data yet:
 
 [RUN THE CODE SO FAR]
 
@@ -58,7 +58,6 @@ Note that I used a `+` symbol to add the boxplot layer to our graph.
 So, now we have a boxplot, with one box drawn for each value of `Species`.
 
 
-
 ### Interpreting boxplots
 
 In a boxplot:
@@ -68,6 +67,6 @@ In a boxplot:
 - the height of the box indicates the [*interquartile range*](https://www.bbc.co.uk/bitesize/guides/zx7rk7h/revision/2) (IQR), so this contains 50% of the datapoints. A wider IQR indicates greater variation (spread) in a dataset.
 
 - the whiskers vary a little bit, depending on the software you use — but normally show the range/spread of the data
-(The default is in `ggplot` to show the points that are no more/less than 1.5 times the IQR above/below the top/bottom of the box.)
+(The default in `ggplot()` is to show the points that are no more/less than 1.5 times the IQR above/below the top/bottom of the box.)
 
-In this boxplot, any data point outside the range of the whiskers is described as an 'outlying point' or 'outlier' and is shown individually as a dot.
+In this boxplot, any data point outside the range of the whiskers is described as an 'outlying point' or 'outlier'. Each outlier is plotted as a dot.
