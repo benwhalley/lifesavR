@@ -1,47 +1,81 @@
-TODO - base video on code examples and summary
+Patterns within a dataset are often easier to see after the data is summarised.
 
------------------
+Summarising data means reducing lots of numbers to a smaller number.
 
-NOTES
+For example, the mean is a summary which tells us about the central tendency.
 
+To summarise data in R, we use `summarise()`, with a "summary function" which reduces some data values.
 
-Show
-
-```{r}
-mtcars %>% summarise(average_mpg = mean(mpg))
-```
-
-and also
+For example, the `mean()` summary function calculates the mean of some data values, in this case the `mpg` column:
 
 ```{r}
-mtcars %>% summarise(mean(mpg))
+fuel %>%
+  summarise(mean_mpg = mean(mpg))
+```
+The result is a `data.frame` with a single column named `mean_mpg` (`mean_mpg =` defined the column name).
+
+If you don't assign the result of the summary function to a column name, it is named after the summary function:
+
+```{r}
+fuel %>%
+  summarise(mean(mpg))
 ```
 
-emphasising that the former is better
+You should normally specify a column name, because columns named after summary functions
+are awkward to process later in a pipeline.
 
-Also show replacing with median, sd etc.
+The mean is just one of many summary functions.
 
-This is where we fist encounter the need to give things R-legal names so explain about spaces and special characters
-Emphasise everything should be lower case with underscores.
+We could also summarise `mpg` using a different measure of central tendency, the median.
 
-Then show calculating two new cols at once:
+In this case we would use the `median()` summary function:
 
-mtcars %>% summarise(M = mean(mpg), SD = sd(mpg))
+```{r}
+fuel %>%
+  summarise(median_mpg = median(mpg))
+```
 
-Point out the comma between the two in commentary
+Another common summary is the standard deviation, which tells us how far, on average, data values are from the mean.
 
+We can calculate the standard deviation using the `sd()` summary function:
 
+```{r}
+fuel %>%
+  summarise(sd_mpg = sd(mpg))
+```
 
+R only allows certain characters for column (and variable) names.
+
+Errors caused by invalid characters can be confusing, but they're easy to avoid if you follow these simple rules:
+
+1. Only use lower case letters from the alphabet (a-z)
+1. Use underscores `_` instead of spaces
+
+You can also use `summarise()` with more than one summary function.
+
+Seperate each summary function with a comma:
+
+[HIGHLIGHT COMMA IN `summarise()`.]
+
+```{r}
+fuel_summary <- fuel %>%
+  summarise(m = mean(mpg), sd = sd(mpg))
+```
+
+[SHOW `fuel_summary` IN THE ENVIRONMENT.]
+
+Remember, the out from `summarise()` (in this case `fuel_summary`) is a `data.frame` that you could do more processing
+on in extra steps if needed.
 
 ### Using `filter` with `summarise`
 
 One powerful thing about R and the `tidyverse` is that you can combine the techniques 
 you learn to make more sophisticated analyses.
 
-A simple example of this is using  `filter` with `summarise`. 
+A simple example of this is using `filter()` with `summarise()`. 
 
 For example, if we want to calculate the average life expectancy of only Asian countries
-in the development data we can write:
+in the `development` dataset we can write:
 
 ```{r}
 development %>% 

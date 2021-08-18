@@ -1,10 +1,10 @@
 ```{r, eval=FALSE}
 # use function mean() to summarise mpg column
-# the result is a data.frame with the a single column named 'mean_mpg'
+# the result is a data.frame with a single column named 'mean_mpg'
 fuel %>%
   summarise(mean_mpg = mean(mpg))
 
-# if you omit the column name, the summarised column is named after summary function
+# if you omit the column name, the summarised column is named after the summary function
 # this produces column names which can be awkward to process later in a pipeline
 # for example:
 fuel %>%
@@ -22,7 +22,7 @@ fuel %>%
 # the mean and sd functions are separated with a comma
 # the resulting data frame is stored in a variable called fuel_summary
 fuel_summary <- fuel %>%
-  summarise(M = mean(mpg), SD = sd(mpg))
+  summarise(m = mean(mpg), sd = sd(mpg))
 
 # see the stored summary
 fuel_summary
