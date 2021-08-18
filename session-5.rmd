@@ -1,5 +1,5 @@
 ---
-title: 'Looking for relationships'
+title: 'Quantifying evidence'
 author: 'Ben Whalley, Paul Sharpe, Sonja Heintz'
 # date: "April 2021"
 bibliography: [references.bib]
@@ -15,137 +15,313 @@ source('_first_chunk.R')
 ```
 
 
-<!-- ![](images/bushido.png) -->
 
 
-
-# Describing and understanding relationships
-
-- geom_smooth
-- geom_jitter
-
-- correlation
-
-
-
-
-STUFF FROM SESSION 1
-
-We show the benefit of jitter somewhere here now
-
-<!-- he points on the scatter plot are 'jittered' to avoid -->
-<!-- overplotting, making the output easier to read. -->
-
-```{r}
-mpg %>%
-  ggplot(aes(cty, hwy)) + geom_point()
-
-mpg %>%
-  ggplot(aes(cty, hwy)) + geom_jitter()
+```{html, child="bs-tab-fix.html"}
 ```
 
-`r hide('Video script')`
-A problem with this plot is that there are many cars with the same number of cylinders. Another way of saying this is
-that `cyl` has been plotted using an 'integer (whole number) scale'. Consequently, many of the points are plotted on top
-of each other, making the values hard to see. The overplotting issue is easily solved by replacing `geom_point()` with
-`geom_jitter()`, which spreads the points out where cars have the same number of cylinders.
-`r unhide()`
 
-
-ALSO SHOW COLOR SCALE PROBLEM (REPEATS FROM PREV SESSION)
-
-```{r}
-mtcars %>%
-  ggplot(aes(wt, mpg, colour = cyl)) +
-  geom_point()
-```
-
-The number of cylinders are plotted in continuous shades of blue. This isn't terrible, but it would be clearer if each
-number of cylinders had its own colour. This is the same problem we had with some of the other `mtcars` variables. They
-have type `dbl`, when they are actually factors. We can use `factor` to fix the colours in the same way we fixed the
-x-axis:
-
-```{r}
-mtcars %>%
-  ggplot(aes(wt, mpg, color = factor(cyl))) +
-  geom_point()
-```
-
-In this plot it's easier to see that cars with more cylinders tend to be heavier, and have worse fuel consumption.
-
-
-# Dividing up graphs with facets {#facets}
-
-<!-- TODO CHANGE THIS TO EXTEND PREVIOUS EXERCISES IN THIS WORKSHEET -->
-
-In our previous plots we only showed the difference between cars of 4, 6 and 8 cylinders. We can break the plot down
-into multiple panels using '**facets**':
-
-
-```{r}
-mtcars %>%
-  ggplot(aes(factor(cyl), mpg)) +
-  geom_boxplot() +
-  facet_wrap(vars(am))   # note to paul... use vars here to avoid quoting of variable names which is confusing/inconsistent with other use
+```{css, child="video.css"}
 ```
 
 
 
 
+# Overview
+
+In the [previous workshop](session-4.html) we learned techniques to describe and summarise data. 
+In this workshop we take the next step and introduce a technique for quantifying how *sure* we are that the patterns 
+we see are real. 
+
+Here we introduce the *Bayes Factor*, or BF. The BF a single number which tells us which of two possibilities are more 
+likely, given the data we have collected.
+
+As we'll see, the Bayes Factor can be used as a measure of evidence for both differences in groups and for the relationship between variables (correlation).
 
 
 
 
 
+# Was it a fluke?
+
+<!-- Summary points -->
+
+- In all data there is *sampling error* or *'noise'*
+- We may want to *quantify the evidence* that patterns we see are 'real'
+- Bayes Factors quantify evidence by comparing the probability of two scenarios: 
+  i) the difference we see is 'real', and
+  ii) any difference is just a 'fluke'
+- By convention, the larger the Bayes Factor the more likely the pattern is real
 
 
+<!-- transcript -->
 
-
-# Testing hypotheses
-
-- Using a Bayesian correlation to quantify evidence for a relationship
-
-
-
-
-# Introducing markdown {#markdown}
+Previously, we emphasised that summaries and descriptions of data are used to *answer research questions*. 
+For example, we used a boxplot to compare the differences in the amount of weight participants lost when
+treated with either Functional Imagery Training or Motivational Interviewing (the `funimagery` dataset).
 
 ```{r, echo=F}
-identifier <- "introducing-markdown"
-ytidentifier <- "yt-embed"
-# makermds(identifier)
+funimagery %>% 
+  ggplot(aes(intervention, weight_lost_end_trt)) + 
+  geom_boxplot()
 ```
 
-```{r child = '_content/_video_tabs.rmd'}
+```{r, echo=F}
+fitdiff <- funimagery %>% group_by(intervention) %>% summarise(m=mean(weight_lost_end_trt)) %>% pull(m) %>% diff %>% round(1) %>% abs
 ```
 
 
-:::{.exercise}
+This plot shows the median and interquartile for each treatment group, and it's immediately obvious 
+that --- *in this sample* --- there is a difference between the two groups (`r fitdiff` kg, in fact).
 
-**Exercise 11**
+For many purposes this plot is enough. In this case, especially, the difference is quite large and 
+we can interpret this plot at face value.
 
-1. For each of the chunks you wrote for Exercises 4-7:
-  i) Add the section name as a level 2 heading.
-  i) Add the exercise number as a level 3 heading.
-  i) Add the instructions as a numbered list (or as plain text if there's only one instruction).
-2. Use the outline feature to explore the document.
-3. Knit the document.
+However, researchers often want to *quantify the evidence* in their sample. This is important because in psychology the effects of our interventions are often quite subtle. It *might* be the case that patterns we see in the data are a 'fluke': that is, they have come about by chance. 
+
+It _could_ be the case that if we took another sample from the same population (treated more people with FIT and MI) then we would see no difference.
+
+
+The Bayes Factor compares two possibilities:
+
+- There really is a difference in how much weight people lost with FIT and MI
+- There's NO difference between FIT and MI; any difference we see is likely to be a fluke
+
+
+
+-------------
+
+
+
+Likewise, we also previously saw how a scatterplot visualises the relation between two columns of data:
+
+```{r, echo=F}
+fuel %>% 
+  ggplot(aes(engine_size, power)) + geom_point()
+```
+
+Again, from this plot the relationship seems quite clear. 
+
+However, we don't have that many data points. The Bayes Factor allows us to quantify how much 
+evidence we have for this relationship.
+
+Again, the BF compares two possibilities:
+
+- There is a relationship between `engine_size` and `power`
+- There is NO relationship (the pattern we see is just a fluke)
+
+
+### Signals and noise
+
+We must always remember that, in any dataset we collect, there will be some randomness or chance error. 
+
+Researchers call this sort of randomness "noise". The metaphor here is that this noise it makes it harder for us 
+to 'listen' for the true signal in the data.
+
+
+
+<!-- No code examples here -->
+
+
+
+
+
+# Bayesian t test
+
+<!-- SUMMSRY-->
+
+
+- t-tests allow us to *compare the average score for two groups*
+- A Bayes Factor (from a Bayesian t-test) compares two different hypotheses:  H1 (there groups are different) vs. H0 (the groups are identical)
+- Use the `ttestBF` function (remember to load the `BayesFactor` package first)
+- Large Bayes Factors (e.g. > 10) mean we have a lot of evidence there is a difference between groups
+- Very small Bayes Factors (e.g. < .1) mean we have strong evidence there is NO difference
+- Bayes factors $>3$ or < $\frac{1}{3}$ provide limited evidence for one of the hypotheses, v.s. the other.
+- Bayes factors between $\frac{1}{3}$ and $3$ are inconclusive.
+
+
+
+
+<!-- TRANSCRIPT -->
+
+
+A 'Bayesian t-test' is a procedure which calculates the Bayes Factor for a difference between groups.
+
+That is, we get a Bayes Factor which tells us how likely the difference we see is to be 'real', rather than a fluke
+or just due to sampling variation.
+
+
+Specifically, the Bayes Fsctor from a Bayesian t-test says how probable it is that two groups have a *different average score* for a *continuous variable*. This probability is *relative* to an alternative hypothesis that the average of each group is actually the same. 
+
+Some people call these the *experimental* and *null* hypotheses, or H1 and H0.
+
+
+As we saw above, we can look at a boxplot and get an intuition for whether we think the
+difference is real by looking at how much the *distributions* of the two groups overlap (e.g. with the boxplot).
+
+[
+SHOW BOXPLOT AGAIN USING CODE BELOW
+There is not much overlap between the groups, so we intuit the difference is real
+]
+
+```{r, eval=F, echo=F}
+funimagery %>% 
+  ggplot(aes(intervention, weight_lost_end_trt)) + 
+  geom_boxplot()
+```
+
+
+
+If find a large Bayes Factor, this is evidence *for* the experimental hypothesis, as compared with the null hypothesis.
+
+
+### Running a t-test
+
+To run a t-test and calculate the Bayes Factor we first need to load the `BayesFactor` package:
+
+```{r}
+library(psydata)
+library(BayesFactor)
+```
+
+
+
+```{r}
+ttestBF(formula = weight_lost_end_trt ~ intervention, data = funimagery)
+```
+
+The number $515647.5$ is our Bayes Factor. This is a large number, so we have strong
+evidence that the difference in means is real.
+
+We explain how to interpret these numbers in more detail in the section below, but broadly:
+
+- Anything > 3 is evidence *for* a difference
+- < 0.33 is evidence *against* a difference
+- Anything in between is *inconclusive*
+
+
+
+
+# Bayes Factor for correlation
+
+
+As we saw above, the Bayes Factor from a 'Bayesian t-test' gives us the evidence two groups are really different.
+
+A Bayes Factor for a correlation is similar, but compares the hypotheses that:
+
+- H1: There is a relationship between the two columns of data
+- H2: There is NO relationship (any pattern we see is just due to chance)
+
+
+Another way to think about it is to imagine we have a set of data points like this:
+
+```{r, echo=F}
+set.seed(12)
+df <- tibble(y=rnorm(30, 0, 1), x=.75*y+rnorm(30, 0, 1)) %>% mutate_all(scale)
+correlate(df)
+p1 <- df %>% 
+  ggplot(aes(x, y)) +
+  # scale_x_continuous(expand = c(0,0) , limits = c(0,2)) +
+  # scale_y_continuous(expand = c(0,0) , limits = c(-1,1)) +
+  coord_fixed(xlim=c(-2,2), ylim=c(-2,2)) +
+  guides(alpha=F) + theme_minimal()
+
+p1 +  geom_point() 
+```
+
+We ask: *if we wanted to draw a single straight line through all the datapoints, which would fit the best?* That is, which line would fall the closest to all the data points?
+
+This plot shows some examples of lines we might draw though these data points.
+The zero correlation coefficient is drawn in blue. Some examples of other *possible* coefficients are shown in red 
+(but remember, it could be anything from -1 to 1).
+
+```{r, echo=F, fig.width=4}
+dd <- tibble(s=c(0, -.75,-.25, .25, .75 ), cc=factor(c(1,0,0,0,0)))
+dd %>% 
+ggplot(aes(x, y)) +
+  coord_fixed(xlim=c(-2,2), ylim=c(-2,2)) + 
+  geom_point(data=df, aes(x,y), size=.2) +
+  guides(color=F) + theme_minimal() +
+  geom_abline(data=dd, aes(intercept=0, slope=s, 1 , color=cc)) +
+  facet_wrap(~factor(s, levels=unique(s), labels = paste("r = ", s)), ncol=7) + theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(),
+        axis.title.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank())
+```
+
+
+The Bayes Factor is estimating how much more likely ANY of the red lines are ($r > 0$ or $r < 0$) than is the blue line (where $r = 0$). 
+
+Only some of these possible red lines are shown in the plot — but the correlation can be anything between -1 and 1. The test is saying, *"given the data we have collected, how much more likely is it that the slope is non-zero, than zero?"*
+
+```{r, echo=F, include=F}
+library(BayesFactor)
+dfdf <- df %>% as.data.frame()
+xyr <- dfdf %>% correlate %>% pull(y)  %>% .[[2]] %>% round(2)
+xybf <- correlationBF(dfdf$x, dfdf$y) %>% as_tibble() %>% pull(bf) %>% round()
+```
+
+In this case, the correlation coefficient is `r xyr`, and the Bayes Factor for this correlation is `r xybf`.
+
+This means we think it is `r xybf` times more likely that the slope is NOT completely flat, given the data 
+we have collected.
+
+
+### A worked example
+
+
+Let's say we wanted the Bayes Factor for the correlation between size (carat) and price of 
+items in the `diamonds` data set.
+
+The first thing to do is to plot the data, to check that the relationship between these variables
+is approximately linear (straight line):
+
+```{r, echo=F}
+diamonds %>% 
+  ggplot(aes(carat, price)) + 
+  geom_point()
+```
+
+
+
+
+
+# Interpreting Bayes Factors
+
+The size of the Bayes Factor is mostly dependent on three things:
+
+- *How large* the effect is (how big is the group difference or how steep is the slope)
+- *How clear* the difference is (e.g., how much do the scores from each group overlap)
+- *How much data* we have collected (more data lets us be more confident)
+
+
+
+:::{.tip}
+
+Bayes Factors can also be influenced by what what we thought was more likely BEFORE we collected
+the data. Although, in this course, we always assume that either hypothesis was equally likely, this
+doesn't have to be the case. It can be important to incorporate this *prior knowledge*
+when calculating Bayes Factors (and it's a big advantage of the approach) but we'll cover 
+that in later courses.
+
 :::
 
 
 
+### Mechanisms and possible worlds
 
+Another way to think of these alternative worlds (A and B) is as different *hypotheses* about how our data came about.
 
-
+TODO XXX EXPAND AS ALTERNATIVE EXPLANATION
+talk about how we are implying that there is a mechanisms which generates the differences we see...
 
 
 # Test your knowledge
 
 
-1. How do you use markdown to make a level 3 heading?
-
-
-
+TODO XXX
 
 
 

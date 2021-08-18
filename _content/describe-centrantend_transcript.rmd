@@ -43,8 +43,7 @@ funimagery %>%
   geom_boxplot()
 ```
 
-However, in clinical trials, it's important to measure participants for longer periods to judge
-whether the effect of a treatment is sustained. Interventions for obesity and overweight can be successful, but patients may later regain weight [@hall2018maintenance]. Estimating how long weight loss is sustained is important because it changes the long term prognosis of patients, and how cost-effective an intervention is.
+However, in clinical trials, it's important to measure participants for longer periods to judge whether the effect of a treatment is sustained. Interventions for obesity and overweight can be successful, but patients may later regain weight [@hall2018maintenance]. Estimating how long weight loss is sustained is important because it changes the long term prognosis of patients, and how cost-effective an intervention is.
 
 The `funimagery` data come from a study which followed people for 6 months after completing treatment
 (12 months after joining the study). The `kg1` column records weights at baseline, and the`kg3` columns
