@@ -47,14 +47,10 @@ make tables of descriptive statistics.
 
 - [Making boxplots](#boxplots)
 - [Adding color to a plot](#color)
-- Using different types of data and visual scales
-- [Using `group_by()`](#groupby) to make a summary table and compare groups
+- [Using different types of data and visual scales](#datatypes)
+- [Using `group_by()` to make a summary table and compare groups](#groupby)
 
-
-
-# Boxplots {#boxplots}
-
-
+# Making boxplots {#boxplots}
 
 ```{r, echo=F}
 video_data <- list(identifier = "boxplot-introduction", ytidentifier = "yt-embed")
@@ -64,12 +60,8 @@ video_data <- list(identifier = "boxplot-introduction", ytidentifier = "yt-embed
 ```{r child = '_content/_video_tabs.rmd'}
 ```
 
-
-
-
-
 :::{.exercise}
-**Exercise 9**
+**Exercise 1**
 
 1. Create a new chunk at the bottom of your worksheet
 1. Use the `iris` dataset. Create a boxplot with `Species` on the x-axis and `Sepal.Width` on the y-axis (sepals are the leaves that encase an iris flower)
@@ -83,9 +75,7 @@ iris %>%
 ```
 :::
 
-
-
-# Using colour {#colour}
+# Adding color to a plot {#colour}
 
 ```{r, echo=F}
 video_data <- list(identifier = "scatterplot-color", ytidentifier = "yt-embed")
@@ -95,9 +85,8 @@ video_data <- list(identifier = "scatterplot-color", ytidentifier = "yt-embed")
 ```{r child = '_content/_video_tabs.rmd'}
 ```
 
-
 :::{.exercise}
-**Exercise 10**
+**Exercise 2**
 
 1. Create a new chunk at the bottom of your worksheet.
 1. Create a scatterplot using the `gapminder` dataset with `gdpPercap` on the x-axis,
@@ -114,11 +103,7 @@ gapminder %>%
 ```
 :::
 
-
-
-
-# Types of variable and visual scale
-
+# Using different types of data and visual scales(#datatypes)
 
 ```{r, echo=F}
 video_data <- list(identifier = "types-scales", ytidentifier = "yt-embed")
@@ -128,22 +113,17 @@ video_data <- list(identifier = "types-scales", ytidentifier = "yt-embed")
 ```{r child = '_content/_video_tabs.rmd'}
 ```
 
-
 :::{.exercise}
+**Exercise 3**
 
 Work with a friend: Describe the 4 ways in which quantitative researchers might use the word 'variable'?
 
-(If you need to look these up from the video or text above then try testing yourself again after completing other other exercises).
+(If you need to look these up from the video or text above then try testing yourself again after completing other exercises).
 
 :::
 
-
-
-
-
 :::{.exercise}
-
-Exercise XXX
+**Exercise 4**
 
 Use `glimpse` to check the data types of the `mpg` and the `diamonds` datasets.
 
@@ -153,16 +133,12 @@ Use `glimpse` to check the data types of the `mpg` and the `diamonds` datasets.
 :::
 
 
-
-
-
 :::{.exercise}
-
-Exercise XXX
+**Exercise 5**
 
 Use the `fuel` dataset to make a boxplot showing miles per gallon on the y axis, and number of gears on the x axis (`gear`). Your plot should look like this:
 
-```{r ex6, echo=FALSE}
+```{r, echo=FALSE}
 fuel %>%
   ggplot(aes(factor(gear), mpg)) +
   geom_boxplot()
@@ -170,10 +146,7 @@ fuel %>%
 
 :::
 
-
-
-
-# Grouping with `group_by` {#groupby}
+# Using `group_by()` to make a summary table and compare groups{#groupby}
 
 ```{r, echo=F}
 video_data <- list(identifier = "group-by", ytidentifier = "yt-embed")
@@ -187,7 +160,7 @@ video_data <- list(identifier = "group-by", ytidentifier = "yt-embed")
 
 :::{.exercise}
 
-**Exercise XXX**
+**Exercise 6**
 
 Replace the `?` in the code below to to calculate the `median` weight lost for men and women undergoing FIT and MI in the
 `funimagery` dataset:
@@ -214,7 +187,7 @@ funimagery %>%
 
 :::{.exercise}
 
-**Exercise XXX**
+**Exercise 7**
 
 Use the built-in  `iris` dataset
 
@@ -225,7 +198,7 @@ Use `group_by` and `summarise` to calculate the average `Sepal.Length` for each 
 
 :::{.exercise}
 
-**Exercise XXX**
+**Exercise 8**
 
 `chickwts` contains data for the weights of chicks (in grams) fed on different diets.
 
@@ -248,9 +221,6 @@ The standard deviation of chicks fed on sunflower was (to 2 decimal places) `r f
 
 :::
 
-
-
-
 # Check your knowledge
 
 Write an answer to each of these questions in the `Check your knowledge` section of your workbook. The answers are
@@ -264,14 +234,11 @@ revealed in Session 4.
 1. How could you calculate the mean for one level of a factor?
 1. How would you calculate the mean for all levels of a factor (e.g. for continent in the `development` dataset?
 
-
-
-
 # Extension exercises
 
 :::{.exercise}
 
-## Extension exercise XXX
+**Extension exercise 1**
 
 Make a scatterplot of the `diamonds` data. Show carat on the x-axis, price on the y-axis and the clarity of the diamond in colour. Try to produce your plot before comparing it against the answer using the button below.
 
@@ -288,12 +255,9 @@ diamonds %>%
 
 :::
 
-
-
-
 :::{.exercise}
 
-## Extension exercise XXX
+**Extension exercise 2**
 
 Make a scatterplot of the `fuel` data. Show `mpg` on the y-axis, engine size on the x-axis, and use type of transmission (auto/manual) to colour the points. Try to produce your plot before comparing it against the answer using the button below.
 
@@ -308,16 +272,9 @@ fuel %>%
 `r unhide()`
 :::
 
-
-
-
-
-
-
-
 :::{.exercise}
 
-## Extension exercise XXX
+**Extension exercise 3**
 
 Use the `development` data. Make a boxplot showing life expectancy by continent for years greater than 1999. (Hint: use `filter()`, `ggplot()` and `geom_boxplot()`.)
 
@@ -333,11 +290,9 @@ gapminder::gapminder %>%
 
 :::
 
-
-
 :::{.exercise}
 
-## Extension exercise XXX
+**Extension exercise 4**
 
 This boxplot uses the `gapminder` dataset to show `lifeExp` (life expectancy) on the y-axis for each `continent` on the
 x-axis.
@@ -352,11 +307,10 @@ In a new chunk, write the R code to produce this plot.
 
 :::
 
-
-
 :::{.exercise}
 
-## Extension exercise XXX
+**Extension exercise 5**
+
 Create a boxplot which shows drivetrain on the x-axis and miles per gallon when a car is driven in the city on the
 y-axis. Your plot should look like this:
 
@@ -368,10 +322,9 @@ mpg %>%
 :::
 
 
-
 :::{.exercise}
 
-Extension exercise XXX
+**Extension exercise 6**
 
 Try to recreate the plot below. Remember to use `factor` to convert the type of the column.
 
@@ -380,8 +333,6 @@ mtcars %>%
   ggplot(aes(wt, mpg, color=factor(gear))) +
   geom_point()
 ```
-
-
 :::
 
 
@@ -494,10 +445,6 @@ development %>%
 Reflection: Imagine someone using the graph for various different purposes.
 Is it always helpful to sort the countries in order of life expectancy? How should we
 decide when and how to sort the data?
-
-
 :::
-
-
 
 # References

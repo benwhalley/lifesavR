@@ -7,6 +7,30 @@ output: html_document
 
 This R Markdown document is your workbook for session three of the lifesaveR module.
 
+# Making boxplots
+
+## Exercise 1
+
+# Using colour
+
+## Exercise 2
+
+# Using different types of data and visual scales
+
+## Exercise 3
+
+## Exercise 4
+
+## Exercise 5
+
+# Using `group_by()` to make a summary table and compare groups
+
+## Exercise 6
+
+## Exercise 7
+
+## Exercise 8
+
 # Check your knowledge
 
 ## What is the difference between a `dbl` and an `ord`/`fct`?
