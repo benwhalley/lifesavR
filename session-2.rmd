@@ -246,7 +246,7 @@ revealed in Session 3.
 
 :::{.exercise}
 
-### Extension exercise 1
+**Extension exercise 1**
 
 This output uses the `fuel` dataset to show vehicles with 8 cylinders and an engine size greater than 5 litres.
 
@@ -263,7 +263,7 @@ In a new chunk, write the R code to produce this `data.frame`.
 
 :::{.exercise}
 
-### Extension exercise 2
+**Extension exercise 2**
 
 Filter and summarise the `iris` dataset in order to answer the following question **to 2 decimal places**:
 
