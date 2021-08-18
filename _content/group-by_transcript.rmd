@@ -12,7 +12,14 @@ We can see the columns in the dataset using `glimpse`:
 funimagery %>% glimpse
 ```
 
-Weight was measured three times, and these measurements are in the columns called `kg1`, `kg2` and `kg3`. The first was taken at baseline (`kg1`). The final measurement (`kg3`) was made 12 months after patients started the internetion. The `weight_lost_end_trt` column is the difference between `kg1` and `kg3`.
+Weight was measured three times, and these measurements are in the columns called `kg1`, `kg2` and `kg3`. 
+
+- The first (`kg1`) was taken at *baseline*, when participants joined the study
+- The second (`kg2`) was taken at the end of treatment, 6 months after baseline
+- The final measurement (`kg3`) was made 12 months after baseline
+
+The `weight_lost_end_trt` column is the *difference* between `kg1` and `kg2` -- i.e.
+how much weight the participant lost after their treatment.
 
 
 
@@ -100,7 +107,7 @@ It looks like women lost a bit more weight on average, but FIT was better than M
 
 ### Multiple statistics
 
-Finally, we can calculate multiple statistics at once for each of the groups:
+With `summarise()` we can calculate multiple statistics at once for each of the groups:
 
 ```{r}
 funimagery %>%
@@ -109,14 +116,18 @@ funimagery %>%
 ```
 
 
+
 ### Give your new variables a name
 
-R gives the new columns a name based on the function we use to `summarise`.
+R gives the new columns a name based on the function we use to `summarise` them.
 
-For example, if we use `mean` on the `weight_lost_end_trt` variable then the new column is called `mean(weight_lost_end_trt)` (see above).
+For example, if we use `mean` on the `weight_lost_end_trt` variable then the new column is called `mean(weight_lost_end_trt)`.
 
-When we use `summarise`, we can give the new column a specific name like this:
+[RERUN CODE ABOVE AND HIGHLIGHT WHERE NAME COMES FROM]
 
+
+Unfortunately, these new variable names contain parentheses and (sometimes) spaces which makes them harder to work
+with. It's much better to give the new column a specific name like this:
 
 ```{r}
 funimagery %>%
@@ -124,5 +135,4 @@ funimagery %>%
   summarise(Mean_weight_lost_end_trt = mean(weight_lost_end_trt), SD_weight_lost_end_trt = sd(weight_lost_end_trt))
 ```
 
-The new name shouldn't include spaces or other 'special' characters (there are ways of
-doing that if you really want, but we'll cover that later).
+This was new name shouldn't include spaces or other 'special' characters. This is the method we recommend.

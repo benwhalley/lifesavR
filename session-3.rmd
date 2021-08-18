@@ -12,7 +12,6 @@ output:
 
 ```{r, include=F, echo=F}
 source('_first_chunk.R')
-
 ```
 
 
@@ -30,7 +29,7 @@ source('_first_chunk.R')
 As researchers, we often collect data from two or more groups.
 
 Group allocations are *categorical* variables. They are stored in a special way by R which makes it easier to display
-them on graphs. In this workshop we learn to how to use categorical variables in boxplots, to colour scatterplots, and
+them on graphs. In this workshop we learn to how to use categorical variables in boxplots, to add colour to scatterplots, and
 to make tables of descriptive statistics.
 
 
@@ -45,6 +44,7 @@ to make tables of descriptive statistics.
 - [Adding color to a plot](#colour)
 - [Using different types of data and visual scales](#datatypes)
 - [Using `group_by()` to make a summary table and compare groups](#groupby)
+
 
 # Making boxplots {#boxplots}
 
@@ -84,10 +84,12 @@ video_data <- list(identifier = "scatterplot-color", ytidentifier = "yt-embed")
 :::{.exercise}
 **Exercise 2**
 
-1. Create a new chunk at the bottom of your worksheet.
-1. Create a scatterplot using the `gapminder` dataset with `gdpPercap` on the x-axis,
-  `lifeExp` on the y-axis, and `continent` in colour.
-1. Run the chunk.
+1. Use the `development` data from the `psydata` package (run `library(psydata)` first if you haven't already)
+1. Create a new chunk at the bottom of your worksheet XXX IS THIS NEEDED? PERHAPS PRE-MAKE THIS CHUNK?
+1. Create a scatterplot with `gdp_per_capita` on the x-axis (along the bottom) and
+  `life_expectancy` on the y-axis
+1. Add color to this scatterplot: make each `continent` a different colour.
+1. Run the chunk of code
 
 Your plot should look like this:
 
@@ -140,6 +142,8 @@ fuel %>%
   geom_boxplot()
 ```
 
+Remember that you will need to *change* the type of the `gear` variable for this to work.
+
 :::
 
 # Using `group_by()` to make a summary table and compare groups{#groupby}
@@ -167,7 +171,7 @@ Replace the `?` in the code below to to calculate the `median` weight lost for m
   summarise( ?(kg3) )
 ```
 
-These are the correct numbers:
+These are the correct numbers to check your work against:
 
 ```{r, echo=F, include=T}
 funimagery %>%
@@ -211,9 +215,9 @@ chickwts %>%
   summarise(mean(weight), sd(weight))
 ```
 
-The mean weight of chicks fed on linseed was (to 2 decimal places) `r fitb('218.75')`g.
+The mean weight of chicks fed on linseed was `r fitb('218.75', tol=1)`g.
 
-The standard deviation of chicks fed on sunflower was (to 2 decimal places) `r fitb('48.84')`g.
+The standard deviation of chicks fed on sunflower was `r fitb('48.84', tol=1)`g.
 
 :::
 

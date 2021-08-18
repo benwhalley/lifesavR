@@ -14,10 +14,8 @@ library(tidyverse)
 To make the plot, we first choose the data we want to plot and add a pipe to the end of the
 line to send this data to the next command:
 
-```{r, eval = F}
-iris %>%
-```
-
+[FROM CODE BELOW SELECT ONLY FIRST LINE; ALSO SHOW SELECTING/EXECUTING JUST THE NAME OF THE DATASET
+AND HOW THIS DISPLAYS THE DATA]
 
 Next we use `ggplot()` and `aes(x = ..., y = ...)` to select the columns we want to use in the data.
 `aes` is short for *aesthetics* which means 'something you can see'. So the `aes()` function
@@ -31,12 +29,10 @@ iris %>%
 ```
 
 
-[DEMONSTRATE USING AUTO COMPLETE IN RSTUDIO WHEN WRITING THE CODE ABOVE]
+[DEMONSTRATE RUNNING CODE ABOVE; ALSO USING AUTO COMPLETE IN RSTUDIO WHEN WRITING THE CODE ABOVE]
 
 You'll notice that I used the RStudio autocomplete feature to write function and column names
-from our dataset.
-
-This makes things much easier — especially for column names. If you type column names by
+from our dataset. This makes things much easier — especially for column names. If you type column names by
 hand it's easy to make spelling errors or typos, and this leads to errors in R.
 
 If we run the code so far, `ggplot()` draws the plot axes, but doesn't add the data yet:
@@ -62,11 +58,10 @@ So, now we have a boxplot, with one box drawn for each value of `Species`.
 
 In a boxplot:
 
-- the thick line is the median or midpoint of the data
+- the thick line across the middle of the box is the *median* or midpoint of the data
 
-- the height of the box indicates the [*interquartile range*](https://www.bbc.co.uk/bitesize/guides/zx7rk7h/revision/2) (IQR), so this contains 50% of the datapoints. A wider IQR indicates greater variation (spread) in a dataset.
+- the height of the box indicates the [*interquartile range*](https://www.bbc.co.uk/bitesize/guides/zx7rk7h/revision/2) (IQR). This means the box contains 50% of the datapoints. A wider IQR indicates greater variation (spread) in a dataset.
 
-- the whiskers vary a little bit, depending on the software you use — but normally show the range/spread of the data
-(The default in `ggplot()` is to show the points that are no more/less than 1.5 times the IQR above/below the top/bottom of the box.)
+- the meaning of the whiskers varies a little bit depending on the software you use — but they always show the range/spread of the data. The default in `ggplot()` is to show the points that are no more/less than 1.5 times the IQR above/below the top/bottom of the box.
 
-In this boxplot, any data point outside the range of the whiskers is described as an 'outlying point' or 'outlier'. Each outlier is plotted as a dot.
+- Any data point outside the range of the whiskers is described as an 'outlying point' or 'outlier'. Each outlier is plotted individually as a dot.

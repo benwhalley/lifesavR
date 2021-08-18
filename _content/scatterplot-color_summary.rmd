@@ -1,3 +1,3 @@
-- The points of a scatterplot can be coloured based on a third column
-- We can use categorical *or* continuous data for this
-- Add the `colour=column_name` option to `aes()` (change `column_name` to the name of your column)
+- The points of a scatterplot can be coloured based on a third column of data
+- We can use categorical ***or*** continuous data for this
+- The `aes(..., colour=column_name)` option selects the column to use (change `column_name` to the name of *your* column)
