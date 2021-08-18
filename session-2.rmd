@@ -192,20 +192,18 @@ video_data <- list(identifier = "summarise", ytidentifier = "yt-embed")
 :::{.exercise}
 **Exercise 8**
 
-1. Copy the code above into your workbook.
+1. Copy the code for calculating the median miles per gallon into your workbook.
 1. Amend the code to calculate the median weight.
 1. Note that `fuel` stores `weight` in kilos.
 
-The median car weight is `r fitb(median(fuel$weight))` kg
-
+The median car weight is `r fitb(median(fuel$weight))` kg.
 
 **Exercise 9**
 
-1. Amend the code to calculate the mean and standard deviation of `weight`.
+1. Amend the code to also calculate the mean and standard deviation of `weight`.
 
-To the nearest pound, the mean car weight is `r fitb(round(median(fuel$weight), 0))` kg, and the standard deviation is `r fitb(round(sd(fuel$weight), 0))` kg.
+To the nearest kilo, the mean car weight is `r fitb(round(mean(fuel$weight), 0))` kg, and the standard deviation is `r fitb(round(sd(fuel$weight), 0))` kg.
 :::
-
 
 
 :::{.exercise}
@@ -221,12 +219,10 @@ mubig <- fuel %>%
   summarise(x = mean(mpg)) %>% pull(x) 
 
 ```
-Use `filter()` and `summarise()` together to calculate the answers to these questions to 1 decimal place:
+Use `filter()` and `summarise()` together to calculate the answers to these questions **to 1 decimal place**:
 
-- the average MPG of cars with engine size > 3000:  `r fitb(mubig, tol=.1)`
-- the standard deviation of MPG in cars with 6 gears: `r fitb(sd6, tol=.1)`
-
-
+- the mean `mpg` of cars with engine size > 3000:  `r fitb(mubig, tol=.1)`
+- the standard deviation of `mpg` in cars with 6 cylinders: `r fitb(sd6, tol=.1)`
 :::
 
 
