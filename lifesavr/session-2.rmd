@@ -14,7 +14,7 @@ value of the variable.
 
 ## Exercise 1
 
-Run the chunk below
+Run this chunk:
 
 ```{r, eval=F}
 # assign the current year to a variable
@@ -30,29 +30,58 @@ next_year <- current_year + 1
 
 ## Exercise 2
 
+Create a new chunk containing code which assigns the results of the calculation `2 * 35` to the variable `seventy`.
+
 ## Exercise 3
+
+Create a chunk which calculates your age in the year 2051 and assigns the result to a variable _with a descriptive name_.
 
 # Passing data with pipes `%>%`
 
 ## Exercise 4
 
+1. Load the `tidyverse` library.
+1. Pipe the `fuel` dataset into `head()` and assign the results to a variable called `fuel_head`.
+1. Use `fuel_head` to answer the question in the workbook.
+
 # Loading data from elsewhere
 
 ## Exercise 5
+
+1. Upload
+[https://benwhalley.github.io/lifesavR/data/world-happiness-report-2021.csv](https://benwhalley.github.io/lifesavR/data/world-happiness-report-2021.csv) to the R Studio server.
+1. Create a new chunk which reads `world-happiness-report-2021.csv` into a variable with a descriptive name.
+1. Use this variable to answer the question in the workbook.
 
 # Selecting rows with `filter()`
 
 ## Exercise 6
 
+Filter the `development` dataset to show countries with a population greater than 100 million.
+
 ## Exercise 7
+
+Show countries with a population greater than 100 million and life expectancy greater than 70.
 
 # Summarising data using `summarise()`
 
 ## Exercise 8
 
+1. Copy the code in the worksheet which calculates the median miles per gallon.
+1. Paste the code into a new chunk.
+1. Amend the code to calculate the median weight.
+1. Use the results to answer the question in the workbook.
+
 ## Exercise 9
 
+1. Amend the code in Exercise 8 to also calculate the mean and standard deviation of `weight`.
+
 ## Exercise 10
+
+Using the `fuel` dataset, `filter()` and `summarise()`, calculate:
+
+- the mean miles per gallon of cars with engine size > 3000
+- the standard deviation of miles per gallon in cars with 6 cylinders
 
 # Check your knowledge
 

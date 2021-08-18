@@ -52,17 +52,23 @@ Position your cursor on the line that says `diamonds` and run the code.
 
 ## Exercise 5
 
-Create a new chunk below this line to answer Exercise 5.
+1. Create a new chunk below these instructions
+1. Load the `psydata` package
+1. Display the `fuel` dataset and try out the navigation buttons
+1. Write a line of code which makes a list of columns in the `development` datset
 
 ## Exercise 6
 
-Create a new chunk below this line to answer Exercise 6.
+1. Create a new chunk below these instructions
+1. Load the `psydata` package if you haven't already done that in this work session
+1. Show the first 10 rows of the `development` data 
 
 # Scatterplots
 
 ## Exercise 7
 
-Create a new chunk below this line to answer Exercise 7.
+1. Create a new chunk below these instructions
+1. Using the `fuel` dataset, create a scatterplot  with `engine_size` on the x-axis and `mpg` (miles per gallon, or fuel economy) on the y-axis
 
 # Check your knowledge
 
@@ -88,4 +94,9 @@ Create a new chunk below this line to answer Exercise 7.
 
 ## Extension exercise 1
 
+Use the `fuel` dataset to make a scatterplot with `power` on the x-axis and `mpg` on the y-axis.
+
 ## Extension exercise 2
+
+1. Use `glimpse()` to get a list of the column names in the `iris` dataset.
+1. Make a scatterplot which shows the relationships between petal widths and lengths.
