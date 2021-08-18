@@ -244,9 +244,40 @@ revealed in Session 3.
 
 # Extension exercises
 
-XXX NEED TO ADD A NEW PAIR BECAUSE I TOOK OUT ARRANGE AND GROUP BY
+:::{.exercise}
 
+### Extension exercise 1
 
+This output uses the `fuel` dataset to show vehicles with 8 cylinders and an engine size greater than 5 litres.
+
+```{r, echo=FALSE}
+guzzle <- fuel %>%
+  filter(cyl == 8) %>%
+  filter(engine_size > 5000)
+guzzle
+```
+
+In a new chunk, write the R code to produce this `data.frame`.
+
+:::
+
+:::{.exercise}
+
+### Extension exercise 2
+
+Filter and summarise the `iris` dataset in order to answer the following question **to 2 decimal places**:
+
+```{r, echo=FALSE}
+correct <- iris %>%
+  filter(Species == 'versicolor') %>%
+  summarise(mean_petal_width = round(mean(Petal.Width), 2)) %>%
+  pull(mean_petal_width) 
+
+```
+
+The mean petal width of the versicolor species of iris is `r fitb(correct, tol=.2)`cm.
+
+:::
 
 <!-- TODO: Ben: need to chat more to finish this and other "fix script" tasks -->
 
