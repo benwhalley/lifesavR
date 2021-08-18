@@ -12,10 +12,8 @@ output:
 
 ```{r, include=F, echo=F}
 source('_first_chunk.R')
-## FIXME: remove this when Ben resolves missing weight_lost_end_trt
-funimagery <- funimagery %>% mutate(weight_lost_end_trt = weight_lost)
-```
 
+```
 
 
 ```{html, child="bs-tab-fix.html"}
@@ -34,7 +32,6 @@ As researchers, we often collect data from two or more groups.
 Group allocations are *categorical* variables. They are stored in a special way by R which makes it easier to display
 them on graphs. In this workshop we learn to how to use categorical variables in boxplots, to colour scatterplots, and
 to make tables of descriptive statistics.
-
 
 
 <!-- - Types of data (and impact on how R presents it) -->
@@ -73,6 +70,7 @@ iris %>%
   geom_boxplot()
 ```
 :::
+
 
 # Adding color to a plot {#colour}
 
