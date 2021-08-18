@@ -10,7 +10,7 @@ mpg %>%
   geom_point()
 ```
 
-[this first plot is not shown here to save space, but is shown in the video]
+[THIS FIRST PLOT IS NOT SHOWN HERE TO SAVE SPACE, BUT IS SHOWN IN THE VIDEO.]
 
 
 Colour can be added to distinguish the points — for example, what kind of car each point represents.

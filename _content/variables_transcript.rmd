@@ -44,7 +44,7 @@ You might wonder *where* these variables get saved. In most cases, variables you
 
 The names of variables are shown in the column on the right, and their values in the column on the left.
 
-[Highlight name and value of a variable in the Environment]
+[HIGHLIGHT NAME AND VALUE OF A VARIABLE IN THE ENVIRONMENT.]
 
 ---------------
 

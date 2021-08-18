@@ -123,7 +123,7 @@ The skills and concepts involved in analysing these data are the same though.
 
 R --- and the techniques and statistics we teach --- are used right across the natural sciences
 
-[ TOOD show examples of plots and analyses here]
+[ TODO show examples of plots and analyses here]
 
 If you're still not convinced — don't worry ... we do include some clinical examples, and we will
 be collecting our own psychological data soon enough and analysing that.

@@ -5,7 +5,7 @@ RMarkdown is a file format which combines R code (chunks) with regular text.
 
 RMarkdown can combine data analysis and graphs with explanatory text.
 
-[Show example of an Rmd document]
+[SHOW EXAMPLE OF AN R MARKDOWN DOCUMENT.]
 
 In the finished document, the Code is evaluated and the results are interspersed with text.
 
@@ -23,11 +23,11 @@ make it easy to organise and run R code, and see the outputs.
 
 If you click on the `lifesavr` folder in the **Files** pane of RStudio,
 
-[click on files folder in video]
+[CLICK ON FILES FOLDER IN VIDEO.]
 
 you'll notice that some files have the extension `.rmd`. These are R Markdown files.
 
-[highlight file extension by selecting or pointing with mouse]
+[HIGHLIGHT FILE EXTENSION BY SELECTING OR POINTING WITH MOUSE.]
 
 The file extension `.rmd` (or .`Rmd`) is important, because this is how R Studio knows that the files contain a mixture of R code and regular text.
 
@@ -93,7 +93,7 @@ the point here is to show you that we can run code interactively using Rmarkdown
 The second way to run code is to select only the parts you want to execute. If you select just the word diamonds on line
 13 and run that, you will see that it does something different.
 
-[select diamonds and run it]
+[SELECT DIAMONDS AND RUN IT.]
 
 This prints the contents of the diamonds data. Because the dataset is large, it just prints the first few rows.
 

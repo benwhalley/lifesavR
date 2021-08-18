@@ -1,7 +1,7 @@
 In a lot of these workshops we use datasets that are built-in to R, or are part of the `psydata` package.
 This is a convenient way to illustrate the points we make.
 
-[open and glance at some built in data like gapminder, iris, mtcars etc]
+[OPEN AND GLANCE AT SOME BUILT IN DATA LIKE GAPMINDER, IRIS, MTCARS ETC.]
 
 Later, though, you will need to load your own data.
 
@@ -39,7 +39,7 @@ To save a copy to the computer you are working at, right-click on the link and c
 
 Your computer will ask you where you want to save it. For now, you should choose your `Desktop` folder.
 
-[Demo saving link to Desktop folder.]
+[DEMO SAVING LINK TO DESKTOP FOLDER.]
 
 ### Step 2. Upload data to the RStudio server
 
@@ -56,7 +56,7 @@ We need to upload the `.csv` file to the server before we can load them.
 - Click `Choose file` and choose the `.csv` you want to upload from your LOCAL computer. In this example it will be the file `shootings.csv` that you saved to your Desktop folder in Step 1.
 - Click **`OK`**
 
-[Demo Step 2.]
+[DEMO STEP 2.]
 
 Finally, use the **Files** pane to check that `shootings.csv` is in the same directory as `session-2.rmd`.
 

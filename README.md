@@ -45,6 +45,11 @@ this is provided online.
 Each worksheet and workbook has a "Check your knowledge" section. Students are directed to answer these questions in the
 workbook. The subsequent session begins by revealing the answers to these questions, as a warmup/revision test.
 
+## Videos
+
+* 'Stage directions' in video transcripts should be written in capitals and enclosed in square brackets,
+e.g. [RUN THE CODE SO FAR].
+
 ## Language
 
 * Show rather than tell

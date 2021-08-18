@@ -81,7 +81,7 @@ Importantly, it also stores this data in a *new variable*, called `development.e
 We can look at this new subset of the data by typing and running its name, or by looking in the **Envrionment** pane.
 
 
-[Demo evaluating data subset and exploring using Environment pane.]
+[DEMO EVALUATING DATA SUBSET AND EXPLORING USING ENVIRONMENT PANE.]
 
 Now that it is stored in a new variable, we can use these data in other code, for example to 
 make a plot:

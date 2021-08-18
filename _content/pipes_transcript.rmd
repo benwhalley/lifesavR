@@ -46,7 +46,7 @@ new variable called `mtcars_head`.
 You can explore your variables using the **Environment** pane. A `data.frame` will have an icon that looks like a
 spreadsheet. If you click on the icon, the `data.frame` is displayed in a new tab in the **Source** pane.
 
-[click on the `mtcars_head` icon]
+[CLICK ON THE `mtcars_head` ICON]
 
 This tab shows you the same information as printing the `data.frame`, such as the number of rows and columns, but it
 also provides tools for exploring the data interactively.
