@@ -62,6 +62,6 @@ In a boxplot:
 
 - the height of the box indicates the [*interquartile range*](https://www.bbc.co.uk/bitesize/guides/zx7rk7h/revision/2) (IQR). This means the box contains 50% of the datapoints. A wider IQR indicates greater variation (spread) in a dataset.
 
-- the meaning of the whiskers varies a little bit depending on the software you use — but they always show the range/spread of the data. The default in `ggplot()` is to show the points that are no more/less than 1.5 times the IQR above/below the top/bottom of the box.
+- the meaning of the "whiskers" (the lines above the top, and below the bottom of the box) varies a little bit depending on the software you use — but they always show the range/spread of the data. The default in `ggplot()` are whiskers with lengths covering data points no more, or less than 1.5 times the IQR.
 
 - Any data point outside the range of the whiskers is described as an 'outlying point' or 'outlier'. Each outlier is plotted individually as a dot.
