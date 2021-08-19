@@ -187,9 +187,9 @@ funimagery %>%
 
 **Exercise 7**
 
-Use the built-in  `iris` dataset
+Use the built-in `iris` dataset
 
-Use `group_by` and `summarise` to calculate the average `Sepal.Length` for each `Species` of flower.
+Use `group_by()` and `summarise()` to calculate the average `Sepal.Length` for each `Species` of flower.
 
 :::
 
@@ -204,7 +204,7 @@ Use `group_by` and `summarise` to calculate the average `Sepal.Length` for each 
 glimpse(chickwts)
 ```
 
-Using `group_by` and `summarise`.
+Using `group_by()` and `summarise()`.
 Calculate the mean and standard deviation chick weights for each type of feed.
 
 ```{r, echo=FALSE, eval=FALSE}

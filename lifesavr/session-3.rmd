@@ -39,6 +39,15 @@ Using the `fuel` dataset, make a boxplot showing miles per gallon on the y-axis,
 
 ## Exercise 6
 
+Replace the `?` in the code below to to calculate the median weight lost for men and women undergoing FIT and MI in the
+`funimagery` dataset:
+
+```{r, eval=F}
+? %>%
+  group_by(?, ?) %>%
+  summarise( ?(kg3) )
+```
+
 ## Exercise 7
 
 ## Exercise 8
