@@ -236,11 +236,18 @@ revealed in Session 4.
 
 # Extension exercises
 
+
+```{r, child="_content/extension-exercises-premable.rmd"}
+```
+
+
+
+
 :::{.exercise}
 
 **Extension exercise 1**
 
-Make a scatterplot of the `diamonds` data. Show carat on the x-axis, price on the y-axis and the clarity of the diamond in colour. Try to produce your plot before comparing it against the answer using the button below.
+Make a scatterplot of the `diamonds` data. Show `carat` on the x-axis, `price` on the y-axis, and the `clarity` of the diamonds in colour. Try to produce your plot _before_ comparing it against the answer using the button below.
 
 Interpret your plot: Which category of diamond `clarity` has the steepest rise in price as
 size (carat) increases?

@@ -212,11 +212,11 @@ To the nearest kilo, the mean car weight is `r fitb(round(mean(fuel$weight), 0))
 ```{r, echo=FALSE, eval=T}
 sd6 <- fuel %>%
   filter(cyl == 6) %>%
-  summarise(x = sd(mpg)) %>% pull(x) 
+  summarise(x = sd(mpg)) %>% pull(x)
 
 mubig <- fuel %>%
   filter(engine_size > 3000) %>%
-  summarise(x = mean(mpg)) %>% pull(x) 
+  summarise(x = mean(mpg)) %>% pull(x)
 
 ```
 Use `filter()` and `summarise()` together to calculate the answers to these questions **to 1 decimal place**:
@@ -242,7 +242,13 @@ revealed in Session 3.
 1. Which summary function would you use to calculate the mean of a numeric column?
 1. How would you calculate the median of a subset of rows in a `data.frame`?
 
+
 # Extension exercises
+
+
+```{r, child="_content/extension-exercises-premable.rmd"}
+```
+
 
 :::{.exercise}
 
@@ -271,7 +277,7 @@ Filter and summarise the `iris` dataset in order to answer the following questio
 correct <- iris %>%
   filter(Species == 'versicolor') %>%
   summarise(mean_petal_width = round(mean(Petal.Width), 2)) %>%
-  pull(mean_petal_width) 
+  pull(mean_petal_width)
 
 ```
 
@@ -293,8 +299,8 @@ development %>%
   filter(year > "1990")
 
 # calculate the average life expectancy in Africa
-development 
-  filter(continent = "africa") %>% 
+development
+  filter(continent = "africa") %>%
   summarise(average(life_expectancy))
 
 ggplot(aes(year, lifeExp, color=continent)) +
@@ -312,8 +318,8 @@ development %>%
   filter(year > 1990)
 
 # calculate the average life expectancy in Africa
-development %>% 
-  filter(continent == "Africa") %>% 
+development %>%
+  filter(continent == "Africa") %>%
   summarise(mean(life_expectancy))
 
 development %>%

@@ -141,12 +141,24 @@ fuel %>% select(power, engine_size) %>% correlate()
 :::
 
 
-:::{.exercisee}
+:::{.exercise}
 
 XXX TODO
 - play guess the correlation
 
 :::
+
+
+
+
+# Extension exercises
+
+
+```{r, child="_content/extension-exercises-premable.rmd"}
+```
+
+
+TODO XXX
 
 
 :::{.exercise}

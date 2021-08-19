@@ -29,11 +29,11 @@ source('_first_chunk.R')
 
 # Overview
 
-In the [previous workshop](session-4.html) we learned techniques to describe and summarise data. 
-In this workshop we take the next step and introduce a technique for quantifying how *sure* we are that the patterns 
-we see are real. 
+In the [previous workshop](session-4.html) we learned techniques to describe and summarise data.
+In this workshop we take the next step and introduce a technique for quantifying how *sure* we are that the patterns
+we see are real.
 
-Here we introduce the *Bayes Factor*, or BF. The BF a single number which tells us which of two possibilities are more 
+Here we introduce the *Bayes Factor*, or BF. The BF a single number which tells us which of two possibilities are more
 likely, given the data we have collected.
 
 As we'll see, the Bayes Factor can be used as a measure of evidence for both differences in groups and for the relationship between variables (correlation).
@@ -48,7 +48,7 @@ As we'll see, the Bayes Factor can be used as a measure of evidence for both dif
 
 - In all data there is *sampling error* or *'noise'*
 - We may want to *quantify the evidence* that patterns we see are 'real'
-- Bayes Factors quantify evidence by comparing the probability of two scenarios: 
+- Bayes Factors quantify evidence by comparing the probability of two scenarios:
   i) the difference we see is 'real', and
   ii) any difference is just a 'fluke'
 - By convention, the larger the Bayes Factor the more likely the pattern is real
@@ -56,13 +56,13 @@ As we'll see, the Bayes Factor can be used as a measure of evidence for both dif
 
 <!-- transcript -->
 
-Previously, we emphasised that summaries and descriptions of data are used to *answer research questions*. 
+Previously, we emphasised that summaries and descriptions of data are used to *answer research questions*.
 For example, we used a boxplot to compare the differences in the amount of weight participants lost when
 treated with either Functional Imagery Training or Motivational Interviewing (the `funimagery` dataset).
 
 ```{r, echo=F}
-funimagery %>% 
-  ggplot(aes(intervention, weight_lost_end_trt)) + 
+funimagery %>%
+  ggplot(aes(intervention, weight_lost_end_trt)) +
   geom_boxplot()
 ```
 
@@ -71,13 +71,13 @@ fitdiff <- funimagery %>% group_by(intervention) %>% summarise(m=mean(weight_los
 ```
 
 
-This plot shows the median and interquartile for each treatment group, and it's immediately obvious 
+This plot shows the median and interquartile for each treatment group, and it's immediately obvious
 that --- *in this sample* --- there is a difference between the two groups (`r fitdiff` kg, in fact).
 
-For many purposes this plot is enough. In this case, especially, the difference is quite large and 
+For many purposes this plot is enough. In this case, especially, the difference is quite large and
 we can interpret this plot at face value.
 
-However, researchers often want to *quantify the evidence* in their sample. This is important because in psychology the effects of our interventions are often quite subtle. It *might* be the case that patterns we see in the data are a 'fluke': that is, they have come about by chance. 
+However, researchers often want to *quantify the evidence* in their sample. This is important because in psychology the effects of our interventions are often quite subtle. It *might* be the case that patterns we see in the data are a 'fluke': that is, they have come about by chance.
 
 It _could_ be the case that if we took another sample from the same population (treated more people with FIT and MI) then we would see no difference.
 
@@ -96,13 +96,13 @@ The Bayes Factor compares two possibilities:
 Likewise, we also previously saw how a scatterplot visualises the relation between two columns of data:
 
 ```{r, echo=F}
-fuel %>% 
+fuel %>%
   ggplot(aes(engine_size, power)) + geom_point()
 ```
 
-Again, from this plot the relationship seems quite clear. 
+Again, from this plot the relationship seems quite clear.
 
-However, we don't have that many data points. The Bayes Factor allows us to quantify how much 
+However, we don't have that many data points. The Bayes Factor allows us to quantify how much
 evidence we have for this relationship.
 
 Again, the BF compares two possibilities:
@@ -113,9 +113,9 @@ Again, the BF compares two possibilities:
 
 ### Signals and noise
 
-We must always remember that, in any dataset we collect, there will be some randomness or chance error. 
+We must always remember that, in any dataset we collect, there will be some randomness or chance error.
 
-Researchers call this sort of randomness "noise". The metaphor here is that this noise it makes it harder for us 
+Researchers call this sort of randomness "noise". The metaphor here is that this noise it makes it harder for us
 to 'listen' for the true signal in the data.
 
 
@@ -151,7 +151,7 @@ That is, we get a Bayes Factor which tells us how likely the difference we see i
 or just due to sampling variation.
 
 
-Specifically, the Bayes Fsctor from a Bayesian t-test says how probable it is that two groups have a *different average score* for a *continuous variable*. This probability is *relative* to an alternative hypothesis that the average of each group is actually the same. 
+Specifically, the Bayes Fsctor from a Bayesian t-test says how probable it is that two groups have a *different average score* for a *continuous variable*. This probability is *relative* to an alternative hypothesis that the average of each group is actually the same.
 
 Some people call these the *experimental* and *null* hypotheses, or H1 and H0.
 
@@ -165,8 +165,8 @@ There is not much overlap between the groups, so we intuit the difference is rea
 ]
 
 ```{r, eval=F, echo=F}
-funimagery %>% 
-  ggplot(aes(intervention, weight_lost_end_trt)) + 
+funimagery %>%
+  ggplot(aes(intervention, weight_lost_end_trt)) +
   geom_boxplot()
 ```
 
@@ -219,27 +219,27 @@ Another way to think about it is to imagine we have a set of data points like th
 set.seed(12)
 df <- tibble(y=rnorm(30, 0, 1), x=.75*y+rnorm(30, 0, 1)) %>% mutate_all(scale)
 correlate(df)
-p1 <- df %>% 
+p1 <- df %>%
   ggplot(aes(x, y)) +
   # scale_x_continuous(expand = c(0,0) , limits = c(0,2)) +
   # scale_y_continuous(expand = c(0,0) , limits = c(-1,1)) +
   coord_fixed(xlim=c(-2,2), ylim=c(-2,2)) +
   guides(alpha=F) + theme_minimal()
 
-p1 +  geom_point() 
+p1 +  geom_point()
 ```
 
 We ask: *if we wanted to draw a single straight line through all the datapoints, which would fit the best?* That is, which line would fall the closest to all the data points?
 
 This plot shows some examples of lines we might draw though these data points.
-The zero correlation coefficient is drawn in blue. Some examples of other *possible* coefficients are shown in red 
+The zero correlation coefficient is drawn in blue. Some examples of other *possible* coefficients are shown in red
 (but remember, it could be anything from -1 to 1).
 
 ```{r, echo=F, fig.width=4}
 dd <- tibble(s=c(0, -.75,-.25, .25, .75 ), cc=factor(c(1,0,0,0,0)))
-dd %>% 
+dd %>%
 ggplot(aes(x, y)) +
-  coord_fixed(xlim=c(-2,2), ylim=c(-2,2)) + 
+  coord_fixed(xlim=c(-2,2), ylim=c(-2,2)) +
   geom_point(data=df, aes(x,y), size=.2) +
   guides(color=F) + theme_minimal() +
   geom_abline(data=dd, aes(intercept=0, slope=s, 1 , color=cc)) +
@@ -252,7 +252,7 @@ ggplot(aes(x, y)) +
 ```
 
 
-The Bayes Factor is estimating how much more likely ANY of the red lines are ($r > 0$ or $r < 0$) than is the blue line (where $r = 0$). 
+The Bayes Factor is estimating how much more likely ANY of the red lines are ($r > 0$ or $r < 0$) than is the blue line (where $r = 0$).
 
 Only some of these possible red lines are shown in the plot — but the correlation can be anything between -1 and 1. The test is saying, *"given the data we have collected, how much more likely is it that the slope is non-zero, than zero?"*
 
@@ -265,24 +265,31 @@ xybf <- correlationBF(dfdf$x, dfdf$y) %>% as_tibble() %>% pull(bf) %>% round()
 
 In this case, the correlation coefficient is `r xyr`, and the Bayes Factor for this correlation is `r xybf`.
 
-This means we think it is `r xybf` times more likely that the slope is NOT completely flat, given the data 
+This means we think it is `r xybf` times more likely that the slope is NOT completely flat, given the data
 we have collected.
 
 
 ### A worked example
 
 
-Let's say we wanted the Bayes Factor for the correlation between size (carat) and price of 
-items in the `diamonds` data set.
+Let's say we wanted the Bayes Factor for the correlation between engine size and power in the `fuel` data set.
 
 The first thing to do is to plot the data, to check that the relationship between these variables
 is approximately linear (straight line):
 
 ```{r, echo=F}
-diamonds %>% 
-  ggplot(aes(carat, price)) + 
+fuel %>%
+  ggplot(aes(engine_size, power)) +
   geom_point()
 ```
+
+
+It seems like it is. The plot also suggests a positive correlation. We can check this with:
+
+```{r}
+diamonds %>% select(carat, price) %>% correlate()
+```
+
 
 
 
@@ -303,7 +310,7 @@ The size of the Bayes Factor is mostly dependent on three things:
 Bayes Factors can also be influenced by what what we thought was more likely BEFORE we collected
 the data. Although, in this course, we always assume that either hypothesis was equally likely, this
 doesn't have to be the case. It can be important to incorporate this *prior knowledge*
-when calculating Bayes Factors (and it's a big advantage of the approach) but we'll cover 
+when calculating Bayes Factors (and it's a big advantage of the approach) but we'll cover
 that in later courses.
 
 :::
@@ -316,6 +323,17 @@ Another way to think of these alternative worlds (A and B) is as different *hypo
 
 TODO XXX EXPAND AS ALTERNATIVE EXPLANATION
 talk about how we are implying that there is a mechanisms which generates the differences we see...
+
+
+
+# Extension exercises
+
+
+```{r, child="_content/extension-exercises-premable.rmd"}
+```
+
+
+TODO XXX
 
 
 # Test your knowledge

@@ -27,9 +27,6 @@ source("_first_chunk.R")
 
 <!-- Even black belt martial artists practice basic techniques like blocks and punches every time they train. -->
 
-
-
-
 This session doesn't assume any prior knowledge of R, and introduces the basics. For some students this will include revision of material from stage 1. However we provide additional material for advanced students to test their knowledge and extend familiar skills.
 
 To be clear, this repetition is intentional: we find most students will benefit from refreshing their knowledge at this stage in the course. **Even if you are quite confident when using RStudio please read the worksheet carefully and complete all of
@@ -301,9 +298,14 @@ revealed in Session 2.
 
 # Extension exercises
 
+
+```{r, child="_content/extension-exercises-premable.rmd"}
+```
+
+
 :::{.exercise}
 
-**Extension exercise 1**
+### Extension exercise 1
 
 This scatterplot uses the `fuel` dataset to show a vehicle's `power` on the x-axis against `mpg` on the y-axis.
 
@@ -319,7 +321,7 @@ In a new chunk, write the R code to produce this plot.
 
 :::{.exercise}
 
-**Extension exercise 2**
+### Extension exercise 2
 
 There is another built-in dataset called `iris` which includes data about
 different flower species.
