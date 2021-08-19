@@ -58,10 +58,12 @@ e.g. [RUN THE CODE SO FAR].
   * Bad: *It is important to understand what a variable is in R.*
 * Technical terms
   * *function* not *command* (for now!)
+  * *column* not *variable* when referring to a column in a dataset
 * Spellings
   * *datasets* not *data sets*
+  * *data types* not *data-types*, or *datatypes*
   * `data.frame` (in backticks) not *dataframe*, or *data frame*
   * *built-in* not *built in/builtin*
   * *x-axis* not *x axis*
-  * *colour* not *colour* (in text and `aes()`)
+  * *colour* not *color* (in text and `aes()`)
   * *internet* not *Internet*

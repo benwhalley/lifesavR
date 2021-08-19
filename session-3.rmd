@@ -41,7 +41,7 @@ to make tables of descriptive statistics.
 ### Techniques covered
 
 - [Making boxplots](#boxplots)
-- [Adding color to a plot](#colour)
+- [Adding colour to a plot](#colour)
 - [Using different types of data and visual scales](#datatypes)
 - [Using `group_by()` to make a summary table and compare groups](#groupby)
 
@@ -70,8 +70,7 @@ iris %>%
 ```
 :::
 
-
-# Adding color to a plot {#colour}
+# Adding colour to a plot {#colour}
 
 ```{r, echo=F}
 video_data <- list(identifier = "scatterplot-color", ytidentifier = "yt-embed")
@@ -85,10 +84,9 @@ video_data <- list(identifier = "scatterplot-color", ytidentifier = "yt-embed")
 **Exercise 2**
 
 1. Use the `development` data from the `psydata` package (run `library(psydata)` first if you haven't already)
-1. Create a new chunk at the bottom of your worksheet XXX IS THIS NEEDED? PERHAPS PRE-MAKE THIS CHUNK?
-1. Create a scatterplot with `gdp_per_capita` on the x-axis (along the bottom) and
-  `life_expectancy` on the y-axis
-1. Add color to this scatterplot: make each `continent` a different colour.
+1. Create a scatterplot with `life_expectancy` on the x-axis (along the bottom) and `gdp_per_capita`
+   on the y-axis
+1. Add colour to this scatterplot: make each `continent` a different colour
 1. Run the chunk of code
 
 Your plot should look like this:
@@ -96,7 +94,7 @@ Your plot should look like this:
 ```{r ex10, echo=FALSE}
 library(gapminder)
 gapminder %>%
-  ggplot(aes(lifeExp, gdpPercap, color = continent)) +
+  ggplot(aes(lifeExp, gdpPercap, colour = continent)) +
   geom_point()
 ```
 :::
@@ -123,10 +121,10 @@ Work with a friend: Describe the 4 ways in which quantitative researchers might 
 :::{.exercise}
 **Exercise 4**
 
-Use `glimpse` to check the data types of the `mpg` and the `diamonds` datasets.
+Use `glimpse()` to check the data types of the `mpg` and the `diamonds` datasets.
 
-- The 4th variable in the `mpg` data is a `r mcq(c("double", "factor", "character", answer=typeof(mpg[[4]])))`
-- The 5th variable in the `diamonds` data is a `r mcq(c("date","character", "factor", answer=typeof(diamonds[[5]])))`
+- The data type of the 4th variable in the `mpg` data is `r mcq(c("double", "factor", "character", answer=typeof(mpg[[4]])))`
+- The data type 5th variable in the `diamonds` data is `r mcq(c("date","character", "factor", answer=typeof(diamonds[[5]])))`
 
 :::
 
@@ -134,7 +132,7 @@ Use `glimpse` to check the data types of the `mpg` and the `diamonds` datasets.
 :::{.exercise}
 **Exercise 5**
 
-Use the `fuel` dataset to make a boxplot showing miles per gallon on the y axis, and number of gears on the x axis (`gear`). Your plot should look like this:
+Use the `fuel` dataset to make a boxplot showing miles per gallon on the y-axis, and number of gears (`gear`) on the x-axis. Your plot should look like this:
 
 ```{r, echo=FALSE}
 fuel %>%
@@ -168,7 +166,7 @@ Replace the `?` in the code below to to calculate the `median` weight lost for m
 ```{r, eval=F}
 ? %>%
   group_by(?, ?) %>%
-  summarise( ?(kg3) )
+  summarise( ?(weight_lost_end_trt) )
 ```
 
 These are the correct numbers to check your work against:
@@ -189,9 +187,9 @@ funimagery %>%
 
 **Exercise 7**
 
-Use the built-in  `iris` dataset
+Use the built-in `iris` dataset
 
-Use `group_by` and `summarise` to calculate the average `Sepal.Length` for each `Species` of flower.
+Use `group_by()` and `summarise()` to calculate the average `Sepal.Length` for each `Species` of flower.
 
 :::
 
@@ -206,7 +204,7 @@ Use `group_by` and `summarise` to calculate the average `Sepal.Length` for each 
 glimpse(chickwts)
 ```
 
-Using `group_by` and `summarise`.
+Using `group_by()` and `summarise()`.
 Calculate the mean and standard deviation chick weights for each type of feed.
 
 ```{r, echo=FALSE, eval=FALSE}
@@ -337,7 +335,7 @@ Try to recreate the plot below. Remember to use `factor` to convert the type of 
 
 ```{r, echo=F}
 mtcars %>%
-  ggplot(aes(wt, mpg, color=factor(gear))) +
+  ggplot(aes(wt, mpg, colour=factor(gear))) +
   geom_point()
 ```
 :::

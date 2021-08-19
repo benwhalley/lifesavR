@@ -2,7 +2,7 @@ The video introduces:
 
 - the different types of data we may have (e.g. continuous, categorical, text)
 - the way R stores these data and
-- the way that `ggplot` presents them
+- the way that `ggplot()` presents them
 
 
 These might seem like small details — but having some understanding of what is happening will help later on: you
@@ -27,9 +27,9 @@ about them in advance:
 
 - *variables in a study design*. For example an experimental group allocation, or an attribute of participants like age or gender.
 
-- *variables in a dataset*. Here we mean a column of numbers in a spreadsheet, where the column has a name. This usage overlaps with the previous two, but doesn't have to. For example, we might have a column of numbers recording participants' scores on an empathy questionnaire. But we might also have a column containing reaction times for multiple trials; analysed a certain way these reaction times might tell us something about working memory, but the column of reaction times isn't the same thing as the variable in our theoretical model.
+- *variables in a dataset*. Here we mean a column of numbers in a dataset (e.g. a spreadsheet), where the column has a name. This usage overlaps with the previous two, but doesn't have to. For example, we might have a column of numbers recording participants' scores on an empathy questionnaire. But we might also have a column containing reaction times for multiple trials; analysed a certain way these reaction times might tell us something about working memory, but the column of reaction times isn't the same thing as the variable in our theoretical model.
 
-- *variables in R and computer programs*: This type of variable are a *general purpose container* which can store anything. Variables in R *can* contain columns of numbers, but they can also contain whole datasets, or graphs, or the results of statistical tests. **A variable in R often isn't the same thing as an experimental variable or a column in a spreadsheet**.
+- *variables in R and computer programs*: This type of variable is a *general purpose container* which can store anything. Variables in R *can* contain columns of numbers, but they can also contain whole datasets, or graphs, or the results of statistical tests. **A variable in R often isn't the same thing as an experimental variable or a column in a dataset**.
 
 
 **In this guide use *variable* to mean either an experimental/theoretical variable or an R container.**
@@ -54,11 +54,11 @@ If we are thinking about variables in a study design the main *types* to conside
 
 Datasets have multiple columns, each with a unique name.
 
-There are different types of column in R. These data-types are mostly determined by the sort of variable.
-But there is some overlap, and the same variable could be stored in different types of column. We sometimes also
-need to convert between data types.
+In R, every column has a *data type*. These data types are normally determined by the type of variable. But there is
+some overlap, and different data types could be used to store the same variable. We sometimes need to convert between
+data types.
 
-There are three data-types you need to know about in R:
+There are four data types you need to know about in R:
 
 - *Factors*, which are used for categorical data (and sometimes ordinal data too)
 - *Text*, also called *character* or *string* data.
@@ -72,27 +72,27 @@ categorical data can end up stored as continuous--- and in these cases we need t
 format to another.
 
 
-You can see which data-type is used to store a variable when using the `glimpse` command introduced in
-session 1 (see [here](session-1.html#exploring)).
+You can see which data type is used to store a variable when using the `glimpse()` command introduced in
+Session 1 (see [here](session-1.html#exploring)).
 
 ```{r}
-iris %>% glimpse
+iris %>% glimpse()
 ```
 
-In the `glimpse` output you can see the variable names listed on the left, followed by grey text surrounded by angle brackes, e.g.: `<dbl>` which is the abbreviated data-type.
+In the output you can see the variable names listed on the left, followed by text in angle brackets, e.g.: `<dbl>` which
+is the abbreviated name of data type.
 
 In this built-in dataset, most of the data is numeric (`dbl`), but the `Species` variable is categorical, and stored as a factor (`fct`).
-
 
 It's possible to convert columns from one type to another, to suit our needs. We'll see more of this later.
 
 
 | Data/column type | Useful for             | Abbreviations used/subtypes | Often need to convert from |
 | ---------------- | ---------------------- | --------------------------- | -------------------------- |
-| Numeric          | Continuous, ordinal    | `int`, `dbl`                | Categorical; Text          |
-| Factor           | Categorical, ordinal   | `fct`, `ord`                | Text                       |
-| Text             | Free text, categorical | `chr`                       | Categorical                |
-| Logical          | Binary/boolean         | `lgl`                       | Numeric                    |
+| Factor           | categorical, ordinal   | `fct`, `ord`                | text                       |
+| Text             | text, categorical      | `chr`                       | categorical                |
+| Numeric          | continuous, ordinal    | `int`, `dbl`                | categorical; text          |
+| Logical          | binary (boolean)       | `lgl`                       | numeric                    |
 
 
 
@@ -152,4 +152,4 @@ fuel %>%
 ```
 
 This gives us the boxplot we were expecting. The only change was to replace `cyl` with `factor(cyl)`. 
-This tells R to convert the variable `cyl` to a factor, and  `ggplot` can then set the scale of the x axis correctly.
+This tells R to convert the variable `cyl` to a factor, and  `ggplot()` can then set the scale of the x axis correctly.

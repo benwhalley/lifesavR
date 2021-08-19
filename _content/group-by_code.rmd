@@ -2,7 +2,7 @@
 ```{r, eval=F}
 # check the columns in the funimagery dataset
 # results of an RCT of functional imagery training for weight loss
-# conducted at Plymouth University
+# conducted at the University of Plymouth
 funimagery %>% glimpse
 
 # boxplot to compare the intervention groups
@@ -26,7 +26,7 @@ funimagery %>%
   group_by(intervention) %>%
   summarise(mean(weight_lost_end_trt))
 
-# store the result (also a dataframe) in a new variable
+# store the result (also a data.frame) in a new variable
 average_weight_loss <- funimagery %>%
                           group_by(intervention) %>%
                           summarise(mean(weight_lost_end_trt))
