@@ -6,7 +6,7 @@ The study compared two treatments for weight loss: Functional
 Imagery Training (FIT) and Motivational Interviewing (MI).
 
 
-We can see the columns in the dataset using `glimpse`:
+We can see the columns in the dataset using `glimpse()`:
 
 ```{r}
 funimagery %>% glimpse
@@ -32,11 +32,12 @@ funimagery %>%
 ```
 
 
-This graph is helpful, and makes the differences really clear. But what if we want the actual numbers in a table, or to report in the text of our paper?
+This graph is helpful, and makes the differences really clear. But what if we want the actual numbers in a table, or to
+report in the text of our paper?
 
 
 
-### Using `filter` and `summarise`
+### Using `filter()` and `summarise()`
 
 One option would be to filter our data first and then summarise each subset in turn:
 
@@ -46,7 +47,7 @@ funimagery %>%
   summarise(mean(weight_lost_end_trt))
 ```
 
-This gives us the mean for the MI group (shown in brown underneath the code). We then have to repeat that step for the FIT group:
+The output (underneath the code) shows us the mean for the MI group. We then have to repeat that step for the FIT group:
 
 ```{r}
 funimagery %>%
@@ -61,7 +62,7 @@ similar for each continent in the `development` data, for example.
 
 ### Using `group_by()`
 
-Instead of using `filter`, we can use `group_by` to split our dataset into multiple groups, summarising each one separately:
+Instead of using `filter()`, we can use `group_by()` to split our dataset into multiple groups, summarising each one separately:
 
 
 ```{r}
@@ -74,7 +75,8 @@ funimagery %>%
 Using `group_by()` before `summarise()` splits up the data depending on which `intervention` the participant
 was randomised to.  The `summarise()` function calculates the mean for each group separately.
 
-The result is a new dataset with two columns: The name of the `intervention`, and the average weight lost. We could save this dataset in a new variable for use later, if we liked:
+The result is a new `data.frame` with two columns: The name of the `intervention`, and the average weight lost. We could save
+this in a new variable for use later, if we liked:
 
 ```{r}
 average_weight_losses <- funimagery %>%
@@ -92,7 +94,7 @@ Sometimes we might want to group by more than one variable at once.
 
 Imagine we wanted to see if men and women responded differently to the two treatments?
 
-With `group_by` this is really easy: just add the name of another column to group on (`gender`), separated with a comma:
+With `group_by()` this is really easy: just add the name of another column to group on (`gender`), separated with a comma:
 
 ```{r}
 funimagery %>%
@@ -115,13 +117,11 @@ funimagery %>%
   summarise(mean(weight_lost_end_trt), sd(weight_lost_end_trt))
 ```
 
-
-
 ### Give your new variables a name
 
-R gives the new columns a name based on the function we use to `summarise` them.
+R gives the new columns a name based on the function we use to `summarise()` them.
 
-For example, if we use `mean` on the `weight_lost_end_trt` variable then the new column is called `mean(weight_lost_end_trt)`.
+For example, if we use `mean()` on the `weight_lost_end_trt` variable then the new column is called `mean(weight_lost_end_trt)`.
 
 [RERUN CODE ABOVE AND HIGHLIGHT WHERE NAME COMES FROM]
 
@@ -132,7 +132,7 @@ with. It's much better to give the new column a specific name like this:
 ```{r}
 funimagery %>%
   group_by(intervention) %>%
-  summarise(Mean_weight_lost_end_trt = mean(weight_lost_end_trt), SD_weight_lost_end_trt = sd(weight_lost_end_trt))
+  summarise(mean_weight_lost_end_trt = mean(weight_lost_end_trt), sd_weight_lost_end_trt = sd(weight_lost_end_trt))
 ```
 
-This was new name shouldn't include spaces or other 'special' characters. This is the method we recommend.
+As a reminder, the names you use shouldn't include spaces or other 'special' characters.
