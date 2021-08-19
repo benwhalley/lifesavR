@@ -28,11 +28,12 @@ Describe the 4 ways in which quantitative researchers might use the word 'variab
 
 ## Exercise 4
 
-Use `glimpse()` to check the data types of the `mpg` and the `diamonds` datasets.
+1. Use `glimpse()` to check the data types of the `mpg` and the `diamonds` datasets.
+2. Use the output to answer the questions in the worksheet.
 
 ## Exercise 5
 
-Using the `fuel` dataset, make a boxplot showing miles per gallon on the y axis, and number of gears on the x axis.
+Using the `fuel` dataset, make a boxplot showing miles per gallon on the y-axis, and number of gears on the x-axis.
 
 # Using `group_by()` to make a summary table and compare groups
 

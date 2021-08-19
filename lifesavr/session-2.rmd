@@ -42,7 +42,7 @@ Create a chunk which calculates your age in the year 2051 and assigns the result
 
 1. Load the `tidyverse` library.
 1. Pipe the `fuel` dataset into `head()` and assign the results to a variable called `fuel_head`.
-1. Use `fuel_head` to answer the question in the workbook.
+1. Use `fuel_head` to answer the question in the worksheet.
 
 # Loading data from elsewhere
 
@@ -51,7 +51,7 @@ Create a chunk which calculates your age in the year 2051 and assigns the result
 1. Upload
 [https://benwhalley.github.io/lifesavR/data/world-happiness-report-2021.csv](https://benwhalley.github.io/lifesavR/data/world-happiness-report-2021.csv) to the R Studio server.
 1. Create a new chunk which reads `world-happiness-report-2021.csv` into a variable with a descriptive name.
-1. Use this variable to answer the question in the workbook.
+1. Use this variable to answer the question in the worksheet.
 
 # Selecting rows with `filter()`
 
@@ -70,7 +70,7 @@ Show countries with a population greater than 100 million and life expectancy gr
 1. Copy the code in the worksheet which calculates the median miles per gallon.
 1. Paste the code into a new chunk.
 1. Amend the code to calculate the median weight.
-1. Use the results to answer the question in the workbook.
+1. Use the results to answer the question in the worksheet.
 
 ## Exercise 9
 
