@@ -84,9 +84,9 @@ video_data <- list(identifier = "scatterplot-color", ytidentifier = "yt-embed")
 **Exercise 2**
 
 1. Use the `development` data from the `psydata` package (run `library(psydata)` first if you haven't already)
-1. Create a scatterplot with `gdp_per_capita` on the x-axis (along the bottom) and
-  `life_expectancy` on the y-axis
-1. Add colour to this scatterplot: make each `continent` a different colour.
+1. Create a scatterplot with `life_expectancy` on the x-axis (along the bottom) and `gdp_per_capita`
+   on the y-axis
+1. Add colour to this scatterplot: make each `continent` a different colour
 1. Run the chunk of code
 
 Your plot should look like this:
