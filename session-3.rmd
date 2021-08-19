@@ -166,7 +166,7 @@ Replace the `?` in the code below to to calculate the `median` weight lost for m
 ```{r, eval=F}
 ? %>%
   group_by(?, ?) %>%
-  summarise( ?(kg3) )
+  summarise( ?(weight_lost_end_trt) )
 ```
 
 These are the correct numbers to check your work against:

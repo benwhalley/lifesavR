@@ -45,7 +45,7 @@ Replace the `?` in the code below to to calculate the median weight lost for men
 ```{r, eval=F}
 ? %>%
   group_by(?, ?) %>%
-  summarise( ?(kg3) )
+  summarise( ?(weight_lost_end_trt) )
 ```
 
 ## Exercise 7
