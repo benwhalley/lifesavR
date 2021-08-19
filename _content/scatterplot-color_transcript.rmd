@@ -32,6 +32,8 @@ mpg %>%
 
 This is an example of using a *categorical* variable to colour our points.
 
+Notice that `ggplot()` automatically adds a key to the plot, mapping the colour of the points to the categories in `drv`.
+
 
 
 

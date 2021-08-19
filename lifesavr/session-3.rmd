@@ -17,6 +17,9 @@ Use the `iris` dataset to create a boxplot with `Species` on the x-axis and `Sep
 
 ## Exercise 2
 
+Using the `development` data from `psydata`, create a scatterplot with `gdp_per_capita` on the x-axis, `life_expectancy`
+on the y-axis, and `continent` in colour.
+
 # Using different types of data and visual scales
 
 ## Exercise 3

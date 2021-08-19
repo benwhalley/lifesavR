@@ -41,7 +41,7 @@ to make tables of descriptive statistics.
 ### Techniques covered
 
 - [Making boxplots](#boxplots)
-- [Adding color to a plot](#colour)
+- [Adding colour to a plot](#colour)
 - [Using different types of data and visual scales](#datatypes)
 - [Using `group_by()` to make a summary table and compare groups](#groupby)
 
@@ -70,8 +70,7 @@ iris %>%
 ```
 :::
 
-
-# Adding color to a plot {#colour}
+# Adding colour to a plot {#colour}
 
 ```{r, echo=F}
 video_data <- list(identifier = "scatterplot-color", ytidentifier = "yt-embed")
@@ -85,10 +84,9 @@ video_data <- list(identifier = "scatterplot-color", ytidentifier = "yt-embed")
 **Exercise 2**
 
 1. Use the `development` data from the `psydata` package (run `library(psydata)` first if you haven't already)
-1. Create a new chunk at the bottom of your worksheet XXX IS THIS NEEDED? PERHAPS PRE-MAKE THIS CHUNK?
 1. Create a scatterplot with `gdp_per_capita` on the x-axis (along the bottom) and
   `life_expectancy` on the y-axis
-1. Add color to this scatterplot: make each `continent` a different colour.
+1. Add colour to this scatterplot: make each `continent` a different colour.
 1. Run the chunk of code
 
 Your plot should look like this:
@@ -96,7 +94,7 @@ Your plot should look like this:
 ```{r ex10, echo=FALSE}
 library(gapminder)
 gapminder %>%
-  ggplot(aes(lifeExp, gdpPercap, color = continent)) +
+  ggplot(aes(lifeExp, gdpPercap, colour = continent)) +
   geom_point()
 ```
 :::
@@ -330,7 +328,7 @@ Try to recreate the plot below. Remember to use `factor` to convert the type of 
 
 ```{r, echo=F}
 mtcars %>%
-  ggplot(aes(wt, mpg, color=factor(gear))) +
+  ggplot(aes(wt, mpg, colour=factor(gear))) +
   geom_point()
 ```
 :::

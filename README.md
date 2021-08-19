@@ -63,5 +63,5 @@ e.g. [RUN THE CODE SO FAR].
   * `data.frame` (in backticks) not *dataframe*, or *data frame*
   * *built-in* not *built in/builtin*
   * *x-axis* not *x axis*
-  * *colour* not *colour* (in text and `aes()`)
+  * *colour* not *color* (in text and `aes()`)
   * *internet* not *Internet*
