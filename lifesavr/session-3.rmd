@@ -55,7 +55,8 @@ Use `group_by()` and `summarise()` with the built-in `iris` dataset to calculate
 
 ## Exercise 8
 
-Calculate the mean and standard deviation chick weights for each type of feed, using the built-in `chickwts` dataset.
+1. Calculate the mean and standard deviation chick weights for each type of feed, using the built-in `chickwts` dataset.
+1. Use the output to answer the questions in the worksheet.
 
 # Check your knowledge
 
