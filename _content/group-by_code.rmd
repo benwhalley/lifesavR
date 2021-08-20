@@ -53,8 +53,8 @@ funimagery %>%
 funimagery %>%
   group_by(intervention) %>%
   summarise(
-    Mean_weight_lost_end_trt = mean(weight_lost_end_trt),
-    SD_weight_lost_end_trt = sd(weight_lost_end_trt)
+    mean_weight_lost_end_trt = mean(weight_lost_end_trt),
+    sd_weight_lost_end_trt = sd(weight_lost_end_trt)
   )
 
 
