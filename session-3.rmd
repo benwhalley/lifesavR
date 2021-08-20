@@ -274,57 +274,23 @@ Interpret your plot: Which type of car (auto or manal) sees the strongest relati
 
 **Extension exercise 3**
 
-Use the `development` data. Make a boxplot showing life expectancy by continent for years greater than 1999. (Hint: use `filter()`, `ggplot()` and `geom_boxplot()`.)
+Using the `development` dataset, make a boxplot showing life expectancy by continent for years greater than 1999. (Hint: use `filter()`, `ggplot()` and `geom_boxplot()`.)
 
 The plot should look like this:
 
 ```{r, echo=FALSE}
-gapminder::gapminder %>%
+development %>%
   filter(year > 1999) %>%
-  ggplot(aes(continent, lifeExp)) +
+  ggplot(aes(continent, life_expectancy)) +
   geom_boxplot()
 ```
-
-
 :::
 
 :::{.exercise}
 
 **Extension exercise 4**
 
-This boxplot uses the `gapminder` dataset to show `lifeExp` (life expectancy) on the y-axis for each `continent` on the
-x-axis.
-
-```{r, echo=FALSE}
-gapminder %>%
-  ggplot(aes(continent, lifeExp)) +
-  geom_boxplot()
-```
-
-In a new chunk, write the R code to produce this plot.
-
-:::
-
-:::{.exercise}
-
-**Extension exercise 5**
-
-Create a boxplot which shows drivetrain on the x-axis and miles per gallon when a car is driven in the city on the
-y-axis. Your plot should look like this:
-
-```{r, echo=FALSE}
-mpg %>%
-  ggplot(aes(drv, cty)) +
-  geom_boxplot()
-```
-:::
-
-
-:::{.exercise}
-
-**Extension exercise 6**
-
-Try to recreate the plot below. Remember to use `factor` to convert the type of the column.
+Try to recreate the plot below using the `mtcars` built-in dataset. Remember to use `factor()` to convert the type of the column.
 
 ```{r, echo=F}
 mtcars %>%
