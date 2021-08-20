@@ -86,6 +86,10 @@ Which clarity type has the steepest rise in price as size increases?
 
 ## Extension exercise 2
 
+Make a scatterplot of the `fuel` dataset, showing `mpg` on the y-axis, engine size on the x-axis, with coloured points based on transmission type.
+
+Which type of car (auto or manal) sees the strongest relationship between engine size and fuel economy?
+
 ## Extension exercise 3
 
 ## Extension exercise 4

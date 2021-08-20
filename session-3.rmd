@@ -239,9 +239,6 @@ Write an answer to each of these questions in the `Check your knowledge` section
 
 Make a scatterplot of the `diamonds` data. Show carat on the x-axis, price on the y-axis and the clarity of the diamond in colour. Try to produce your plot before comparing it against the answer using the button below.
 
-Interpret your plot: Which category of diamond `clarity` has the steepest rise in price as
-size (carat) increases?
-
 `r hide('show answer')`
 ```{r, echo=FALSE}
 diamonds %>%
@@ -250,15 +247,17 @@ diamonds %>%
 ```
 `r unhide()`
 
+
+Interpret your plot: Which category of diamond `clarity` has the steepest rise in price as
+size (carat) increases?
+
 :::
 
 :::{.exercise}
 
 **Extension exercise 2**
 
-Make a scatterplot of the `fuel` data. Show `mpg` on the y-axis, engine size on the x-axis, and use type of transmission (auto/manual) to colour the points. Try to produce your plot before comparing it against the answer using the button below.
-
-Interpret your plot: Which type of car (auto or manal) sees the strongest relationship between engine size and fuel economy?
+Make a scatterplot of the `fuel` dataset. Show `mpg` on the y-axis, engine size on the x-axis, and use type of transmission (auto/manual) to colour the points. Try to produce your plot before comparing it against the answer using the button below.
 
 `r hide('show answer')`
 ```{r, echo=FALSE}
@@ -267,6 +266,8 @@ fuel %>%
   geom_point()
 ```
 `r unhide()`
+
+Interpret your plot: Which type of car (auto or manal) sees the strongest relationship between engine size and fuel economy?
 :::
 
 :::{.exercise}
