@@ -204,14 +204,7 @@ iris %>%
 
 **Exercise 8**
 
-`chickwts` contains data for the weights of chicks (in grams) fed on different diets.
-
-```{r}
-glimpse(chickwts)
-```
-
-Using `group_by()` and `summarise()`.
-Calculate the mean and standard deviation chick weights for each type of feed.
+The built-in dataset `chickwts` contains weights of chicks (in grams) fed on different diets. Use `group_by()` and `summarise()` to calculate the mean and standard deviation chick weights for each type of feed.
 
 ```{r, echo=FALSE, eval=FALSE}
 chickwts %>%

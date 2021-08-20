@@ -55,6 +55,8 @@ Use `group_by()` and `summarise()` with the built-in `iris` dataset to calculate
 
 ## Exercise 8
 
+Calculate the mean and standard deviation chick weights for each type of feed, using the built-in `chickwts` dataset.
+
 # Check your knowledge
 
 ## What is the difference between a `dbl` and an `ord`/`fct`?
