@@ -290,7 +290,7 @@ development %>%
 
 **Extension exercise 4**
 
-Try to recreate the plot below using the `mtcars` built-in dataset. Remember to use `factor()` to convert the type of the column.
+Try to recreate the plot below using the `mtcars` built-in dataset. Remember to use `factor()` for columns which require conversion to `fct`.
 
 ```{r, echo=F}
 mtcars %>%
@@ -299,6 +299,17 @@ mtcars %>%
 ```
 :::
 
+:::{.exercise}
+
+**Extension exercise 4**
+
+Try to recreate the table below using the `painmusic` dataset from `psydata`.
+
+```{r, echo=FALSE}
+painmusic %>%
+  group_by(factor(liked), factor(familiar)) %>%
+  summarise(mean_pain_no_music = mean(pain.with.music), sd_pain_no_music = sd(pain.with.music))
+```
 
 # Extra (advanced) techniques
 
