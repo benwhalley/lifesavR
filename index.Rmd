@@ -19,14 +19,15 @@ source('_first_chunk.R')
 
 
 
-### Quick links
+# Quick links
 
 
-- [Session 1](session-1.html)
-- [Session 2](session-2.html)
-- [Session 3](session-3.html)
-- [Session 4](session-4.html)
-- [Session 5](session-5.html)
+- [Session 1](session-1.html): Getting started
+- [Session 2](session-2.html): Working with R
+- [Session 3](session-3.html): Grouped data
+- [Session 4](session-4.html): Describing patterns, answering questions 
+- [Session 5](session-5.html): Quantifying evidence
+
 
 
 # Overview

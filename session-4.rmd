@@ -1,5 +1,5 @@
 ---
-title: 'Answering questions with descriptive statistics'
+title: 'Describing patterns, answering questions'
 author: 'Ben Whalley, Paul Sharpe, Sonja Heintz'
 # date: "April 2021"
 bibliography: [references.bib]

@@ -1,5 +1,5 @@
 ---
-title: 'Working with data in R'
+title: 'Working with R'
 author: 'Ben Whalley, Paul Sharpe, Sonja Heintz'
 # date: "April 2021"
 bibliography: [references.bib]
@@ -25,7 +25,7 @@ source('_first_chunk.R')
 
 # Overview
 
-**Make sure you are confident with all the material in the [previous session](session-1.html) before continuing.**
+**Make sure you are confident with all the material in the [previous 'getting started' session](session-1.html) before continuing.**
 
 Here we introduce extra tricks for working
 with RStudio that are important to build confidence and make you productive.
