@@ -50,6 +50,9 @@ Replace the `?` in the code below to to calculate the median weight lost for men
 
 ## Exercise 7
 
+Use `group_by()` and `summarise()` with the built-in `iris` dataset to calculate the mean `Sepal.Length` for each
+`Species` of flower.
+
 ## Exercise 8
 
 # Check your knowledge

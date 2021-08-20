@@ -187,10 +187,16 @@ funimagery %>%
 
 **Exercise 7**
 
-Use the built-in `iris` dataset
+Use `group_by()` and `summarise()` with the built-in `iris` dataset to calculate the mean `Sepal.Length` for each `Species` of flower.
 
-Use `group_by()` and `summarise()` to calculate the average `Sepal.Length` for each `Species` of flower.
+These are the correct numbers to check your work against:
 
+```{r, echo=F, include=T}
+iris %>%
+  group_by(Species) %>%
+  summarise(`Mean sepal length` =  sprintf("%.1f", mean(Sepal.Length) )) %>%
+  pander()
+```
 :::
 
 
