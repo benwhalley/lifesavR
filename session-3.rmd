@@ -220,8 +220,7 @@ The standard deviation of chicks fed on sunflower was `r fitb('48.84', tol=1)`g.
 
 # Check your knowledge
 
-Write an answer to each of these questions in the `Check your knowledge` section of your workbook. The answers are
-revealed in Session 4.
+Write an answer to each of these questions in the `Check your knowledge` section of your workbook. The answers will be revealed in Session 4.
 
 1. Which functions are needed to make a boxplot?
 1. What is the difference between a `dbl` and a `fct` or `ord`?
@@ -229,7 +228,8 @@ revealed in Session 4.
 1. Give an example of why the difference between `dbl` and `fct` matters when making a plot (include code examples for this if you can)
 1. How can you convert a variable from a `dbl` to a `fct`?
 1. How could you calculate the mean for one level of a factor?
-1. How would you calculate the mean for all levels of a factor (e.g. for continent in the `development` dataset?
+1. How would you calculate the mean for all levels of a factor (e.g. for continent in the `development` dataset)?
+1. How would you calculate means and standard deviations for all combinations of levels in two factors? 
 
 # Extension exercises
 

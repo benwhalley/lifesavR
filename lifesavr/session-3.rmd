@@ -60,8 +60,36 @@ Use `group_by()` and `summarise()` with the built-in `iris` dataset to calculate
 
 # Check your knowledge
 
-## What is the difference between a `dbl` and an `ord`/`fct`?
+## Which functions are needed to make a boxplot?
 
-## Give an example of when the difference between `dbl` and `fct` matters when making a plot
+## What is the difference between a `dbl` and a `fct` or `ord`?
 
-## How can you convert a variable from a `dbl` to a `fct`
+## Which datatypes are used for continuous variables?
+
+## Give an example of why the difference between `dbl` and `fct` matters when making a plot (include code examples for this if you can)
+
+## How can you convert a variable from a `dbl` to a `fct`?
+
+## How could you calculate the mean for one level of a factor?
+
+## How would you calculate the mean for all levels of a factor (e.g. for continent in the `development` dataset)?
+
+## How would you calculate means and standard deviations for all combinations of levels in two factors?
+
+# Extension exercises
+
+## Extension exercise 1
+
+Make a scatterplot of the `diamonds` data with size (`carat`) on the x-axis, price on the y-axis and the clarity of the diamond in colour.
+
+Which clarity type has the steepest rise in price as size increases?
+
+## Extension exercise 2
+
+## Extension exercise 3
+
+## Extension exercise 4
+
+## Extension exercise 5
+
+## Extension exercise 6
