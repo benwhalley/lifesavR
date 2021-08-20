@@ -23,3 +23,5 @@ makermds <- function(video_data){
 
   rstudioapi::navigateToFile(paste0("_content/", identifier, "_summary.rmd"))
 }
+
+theme_set(theme_minimal())

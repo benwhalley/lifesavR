@@ -233,11 +233,18 @@ Write an answer to each of these questions in the `Check your knowledge` section
 
 # Extension exercises
 
+
+```{r, child="_content/extension-exercises-premable.rmd"}
+```
+
+
+
+
 :::{.exercise}
 
 **Extension exercise 1**
 
-Make a scatterplot of the `diamonds` data. Show carat on the x-axis, price on the y-axis and the clarity of the diamond in colour. Try to produce your plot before comparing it against the answer using the button below.
+Make a scatterplot of the `diamonds` data. Show `carat` on the x-axis, `price` on the y-axis, and the `clarity` of the diamonds in colour. Try to produce your plot _before_ comparing it against the answer using the button below.
 
 `r hide('show answer')`
 ```{r, echo=FALSE}

@@ -1,5 +1,3 @@
-
-
 # Introducing markdown {#markdown}
 
 ```{r, echo=F}
@@ -9,28 +7,20 @@ ytidentifier <- "yt-embed"
 ```
 
 ```{r child = '_content/_video_tabs.rmd'}
-```
 
+```
 
 :::{.exercise}
 
 **Exercise 11**
 
 1. For each of the chunks you wrote for Exercises 4-7:
-  i) Add the section name as a level 2 heading.
-  i) Add the exercise number as a level 3 heading.
-  i) Add the instructions as a numbered list (or as plain text if there's only one instruction).
+   i) Add the section name as a level 2 heading.
+   i) Add the exercise number as a level 3 heading.
+   i) Add the instructions as a numbered list (or as plain text if there's only one instruction).
 2. Use the outline feature to explore the document.
 3. Knit the document.
-:::
-
-
-
-
-
-
-
-
+   :::
 
 STUFF FROM SESSION 1
 
@@ -54,7 +44,6 @@ of each other, making the values hard to see. The overplotting issue is easily s
 `geom_jitter()`, which spreads the points out where cars have the same number of cylinders.
 `r unhide()`
 
-
 ALSO SHOW COLOR SCALE PROBLEM (REPEATS FROM PREV SESSION)
 
 ```{r}
@@ -76,14 +65,12 @@ mtcars %>%
 
 In this plot it's easier to see that cars with more cylinders tend to be heavier, and have worse fuel consumption.
 
-
 # Dividing up graphs with facets {#facets}
 
 <!-- TODO CHANGE THIS TO EXTEND PREVIOUS EXERCISES IN THIS WORKSHEET -->
 
 In our previous plots we only showed the difference between cars of 4, 6 and 8 cylinders. We can break the plot down
 into multiple panels using '**facets**':
-
 
 ```{r}
 mtcars %>%
@@ -92,21 +79,7 @@ mtcars %>%
   facet_wrap(vars(am))   # note to paul... use vars here to avoid quoting of variable names which is confusing/inconsistent with other use
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
 # Extension techniques
-
-
 
 ### Sorting
 
@@ -114,11 +87,9 @@ Sorting is often useful for this sort of question.
 
 We can sort data in R using the `arrange()` function.
 
-
 For example:
 
 Q: Which countries had the lowest life expectancy in the 20th century?
-
 
 ```{r}
 development %>%
@@ -128,8 +99,7 @@ development %>%
 ```
 
 If you want to sort in the reverse order, put a hyphen in front of column you are sorting.
-This means *sort in reverse order*.
-
+This means _sort in reverse order_.
 
 ```{r}
 development %>%
@@ -138,13 +108,11 @@ development %>%
   head(3)  # show only the first few rows
 ```
 
-
-
 ### Combining multiple operations in a pipeline
 
 We can combine multiple functions to answer more detailed questions.
 
-Q: Which countries had the lowest life expectancy *in 1992*?
+Q: Which countries had the lowest life expectancy _in 1992_?
 
 ```{r}
 development %>%
@@ -153,11 +121,7 @@ development %>%
   head(3)
 ```
 
-
-
-
-We can also combine filtering, *grouping* and summarising in a single pipeline.
-
+We can also combine filtering, _grouping_ and summarising in a single pipeline.
 
 Q: What was the average life expectancy in 1992 on each continent?
 
@@ -168,23 +132,19 @@ development %>%
   summarise(mean(life_expectancy))
 ```
 
-
-
 ### Summary of descriptions
 
--------------------------------------------------------------------------------------------------------------------------
-| Description of   | Statistic    | Plot                             | R function                                       |
-| ---------------- | ------------ | -------------------------------- | ------------------------------------------------ |
-| Central tendency | Mean, median | Boxplot                          | `sumarise()`, `geom_boxplot()`                   |
-| Distribution     | SD, IQR      | Density plot; boxplot            | `summarise()`, geom_boxplot()`, `geom_density()` |
-| Relationship     | Correlation  | Scatterplot (plus smoothed line) | `cor()`, `geom_point()`, `geom_smooth()`         |
--------------------------------------------------------------------------------------------------------------------------
+---
 
+| Description of   | Statistic    | Plot                             | R function                                      |
+| ---------------- | ------------ | -------------------------------- | ----------------------------------------------- |
+| Central tendency | Mean, median | Boxplot                          | `sumarise()`, `geom_boxplot()`                  |
+| Distribution     | SD, IQR      | Density plot; boxplot            | `summarise()`, geom_boxplot()`,`geom_density()` |
+| Relationship     | Correlation  | Scatterplot (plus smoothed line) | `cor()`, `geom_point()`, `geom_smooth()`        |
 
-
+---
 
 A nice addition to that technique --- and one which emphasises the idea of relationships --- is the **smoothed line plot**.
-
 
 ### Smoothed line plots
 
@@ -204,7 +164,6 @@ certain engine size this is less pronounced.
 We can accentuate this pattern, and make the relationship between variables even clearer,
 by **adding another layer** to our plot:
 
-
 ```{r, message=FALSE}
 fuel %>%
   ggplot(aes(engine_size, mpg)) +
@@ -212,22 +171,15 @@ fuel %>%
   geom_smooth()
 ```
 
-
 The only addition to the previous plot is the code: `+ geom_smooth()`
 
-This adds a smoothed line to the scatterplot.  The blue line traces the  *local average* of the
+This adds a smoothed line to the scatterplot. The blue line traces the _local average_ of the
 value of MPG. That is, it represents what we might expect MPG to be, for any given engine size.
 
 It's good to show both the raw datapoints AND the smoothed line because we see both the 'big picture'
 relationship and any deviations from the general trend in a single plot.
 
-Some people would say we've increased the *information density* by adding the extra layer.
-
-
-
-
-
-
+Some people would say we've increased the _information density_ by adding the extra layer.
 
 :::{.exercise}
 
@@ -241,7 +193,6 @@ earnings %>%
 ```
 
 :::
-
 
 :::{r}
 
@@ -263,51 +214,26 @@ df1 %>%
   geom_boxplot()
 ```
 
-
 :::
-
-
 
 - What is the difference between `geom_jitter()` and `geom_point()`?
 - Why is `geom_jitter` useful sometimes?
 
-
 Each column in a dataset has an associated type. The second column of the `glimpse` output shows you the type of each column. This dataset includes columns with two types:
 
-* `dbl` is short for 'double-precision number', a number with one or more decimal places
-* `chr` — short for 'character', a variable which contains text (e.g. an email address)
+- `dbl` is short for 'double-precision number', a number with one or more decimal places
+- `chr` — short for 'character', a variable which contains text (e.g. an email address)
 
 Other types include:
 
-* `fct` is short for 'factor', a categorical variable (e.g. a specific response to a multiple-choice question)
-* `int` is short for 'integer', a variable which contains whole numbers (e.g. a participant id number), and
-* `ord` — short for 'ordered'; a variant of *fct* where the categories have a particular order (e.g. responses like 'Wost' < 'Better' < 'Best')
+- `fct` is short for 'factor', a categorical variable (e.g. a specific response to a multiple-choice question)
+- `int` is short for 'integer', a variable which contains whole numbers (e.g. a participant id number), and
+- `ord` — short for 'ordered'; a variant of _fct_ where the categories have a particular order (e.g. responses like 'Wost' < 'Better' < 'Best')
 
 The importance of knowing the type associated with a column will become clear in a later session.
 
-
-
-
-
 The [World Happiness Report](https://www.kaggle.com/ajaypalsinghlo/world-happiness-report-2021) is a survey of the state
 of global happiness.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Sorting data using `arrange()` {#arrange}
 
@@ -319,7 +245,6 @@ of global happiness.
 - Give `arrange()` a single column name to sort data in ascending order.
 - To sort in descending order, put a `-` before the column name.
 - Use commas between column names to sort by more than once column at once
-
 
 ### Code examples
 
@@ -366,6 +291,7 @@ Sort by price (descending) within carat (ascending)
 diamonds %>%
   arrange(carat, -price)
 ```
+
 `r unhide()`
 
 :::{.exercise}
@@ -384,7 +310,6 @@ diamonds %>%
 
 :::
 
-
 :::{.exercise}
 
 **Exercise 10**
@@ -394,7 +319,6 @@ How big is the largest diamond in the `diamonds` dataset? `r fitb('5.01')` carat
 What was the cut of the three largest diamonds in that dataset? `r fitb('Fair')`.
 
 :::
-
 
 # Combine `filter()` with `arrange()` {#filterarrange}
 
@@ -467,27 +391,19 @@ The European country with the highest life expectancy is `r fitb('Iceland')`.
 The European country with the fifth largest population was recorded in which year? `r fitb('2007')`.
 :::
 
-
-
 PAUL - I'M WORRIED WEAKER STUDENTS WON'T GET THIS FAR.
 
 PERHAPS WE SHOULD PUSH SUMMARISE INTO SESSION 3? I CERTAINLY THINK THIS IS TRUE FOR GROUP-BY
 
 WE CAN MOTIVATE THIS BY FINDING LONG FORM DATA WE WANT TO SUMMARISE THEN RUN A T TEST ON.
 
-
 CAN YOU HAVE A THINK ABOUT HOW LONG EACH OF THE VIDEOS MIGHT RUN FOR? IF STUDENTS WATCHED ALL OF THEM WOULD IT TAKE > 1 HOUR? I THINK WE SHOULD PERHAPS AIM FOR VIDEOS TOTALLING <40 MINS, THEN EXPECT EXERCISES TO TAKE 40 MINS....
 I WILL HAVE ANOTHER READ THROUGH TOO
 
-
-
 ALTERNATIVELY, WE CAN SHOW THIS HERE AND THEN REPEAT AGAIN IN SESSION 3 TO DO THE T TEST... THAT WOULD ALSO BE GOOD
-
-
 
 The last two exercises are like the end of level "boss characters" in a computer game. To beat them, you need to select
 and combine skills you've learnt so far.
-
 
 ## Extension exercise 1
 
@@ -537,24 +453,10 @@ gapminder %>%
   arrange(-life_expectancy)
 ```
 
-
 #### SORT AND ARRANGE CHECK YOUR KNOWLEDGE QUESTIONS
+
 1. How would you sort a `data.frame` by a numeric column in descending order? <!-- TODO: too easy? -->
 1. How would you select rows from a column which match a word, and then sort those rows in ascending order by a numeric column?
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 Some martial arts have a concept called 'Mushin'. A literal translation of this is 'mind without mind'. It denotes a state of mind achieved when free from thoughts of anger, fear, or ego, during combat or in everyday life. To achieve mushin takes **repeated practice** and complete familiarity with the technique required to act, so that technical details can fade into the background.
 
@@ -564,48 +466,28 @@ We think there is an analogy to learning R here:
 - Getting confident with the basics makes more complex techniques possible.
 
 This session is about building skills and mastering core techniques. We will use these skills throughout the course. If
-some parts are already familiar to you, that's fine.  If it is all new, be sure to complete all the exercises/practice
+some parts are already familiar to you, that's fine. If it is all new, be sure to complete all the exercises/practice
 problems.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 We can use simple facts or descriptions of the world to answer questions based on data we have collected. For example:
 
-  - What is the highest life expectancy in the world? or
+- What is the highest life expectancy in the world? or
 - How many errors did participants make on a task, on average?
 
-
-  We have already seen techniques like `filter`, `group_by` and `summarise` which can help answer these sorts of question, by summarising raw data.
+We have already seen techniques like `filter`, `group_by` and `summarise` which can help answer these sorts of question, by summarising raw data.
 
 For example, given questions like this we can find answers in the data:
 
-  *Q: What is the average life expectancy across all countries in the `development` data?*
+_Q: What is the average life expectancy across all countries in the `development` data?_
 
-  ```{r}
+```{r}
 library(psydata)
 
 development %>%
-  summarise(mean(life_expectancy))
+summarise(mean(life_expectancy))
 ```
 
-
-*Q: Which group lost most weight in the FIT trials*?
+_Q: Which group lost most weight in the FIT trials_?
 
 ```{r}
 funimagery %>%
@@ -613,66 +495,49 @@ funimagery %>%
   summarise(mean(weight_lost_end_trt))
 ```
 
-
-
-
-
-
-
 ### Describing differences
 
-
-
-
 ### Describing distributions
-
 
 Other descriptive statistics can be useful too — for example to describe how widely-spread the data are
 around the mean or median.
 
-We already saw the Interquartile Range and the Standard Deviation in the previous session. The IQR is visible on box plots and describes the range in which 50% of all the observations fall.  
+We already saw the Interquartile Range and the Standard Deviation in the previous session. The IQR is visible on box plots and describes the range in which 50% of all the observations fall.
 
 So if we look at a boxplot of the `funimagery` data for weight at baseline, the box represents the
 area in which half of the patients fell. So, around 50% of patients had a weight between 80kg and 100kg at
 baseline:
 
-  ```{r}
+```{r}
 funimagery %>%
-  ggplot(aes(intervention, kg1)) +
-  geom_boxplot() +
-  scale_y_continuous(breaks = seq(55,180,5))
+ggplot(aes(intervention, kg1)) +
+geom_boxplot() +
+scale_y_continuous(breaks = seq(55,180,5))
 ```
-
 
 Another way to describe the distribution of the data is using a density plot. Density plots look like this:
 
-  ```{r}
+```{r}
 funimagery %>%
-  ggplot(aes(kg1,, color=intervention)) +
-  geom_density()
+ggplot(aes(kg1,, color=intervention)) +
+geom_density()
 ```
 
 The height of the lines shows how many people, relatively speaking, had the baseline weight
 shown on the x axis. So we can see that the vast majority of patients had baseline weight between 70 and 110kg.
 
-
 We're not going to practice this technique here, but if you want to learn how to make a density plot, you could refer back to our [stage 1 teaching materials here](https://www.andywills.info/rminr/corr.html).
 
+---
 
--------------
-
-
-The point to make here is that we can learn a lot by just describing the differences between groups — either with descriptive *statistics* like means and standard deviations or --- often better --- by visualising the data.
-
-
-
+The point to make here is that we can learn a lot by just describing the differences between groups — either with descriptive _statistics_ like means and standard deviations or --- often better --- by visualising the data.
 
 funimagery %>%
-  group_by(intervention) %>%
-  summarise(quibble2(weight_lost_end_trt))
+group_by(intervention) %>%
+summarise(quibble2(weight_lost_end_trt))
 
 funimagery %>% group_by(intervention) %>% summarise(range(weight_lost_end_trt))
 
 quibble2 <- function(x, q = c(0.25, 0.5, 0.75)) {
-  tibble("{{ x }}_quantile" := q, "{{ x }}" := quantile(x, q))
+tibble("{{ x }}\_quantile" := q, "{{ x }}" := quantile(x, q))
 }
