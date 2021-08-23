@@ -5,9 +5,9 @@ library(psydata)
 library(BayesFactor)
 
 
-# use `with` to tell ttestBF which data to use
-# this compares weight lost between groups
-with(funimagery,  ttestBF(weight_lost_end_trt, intervention))
+funimagery %>% ggplot(aes(intervention, kg1))+ geom_point()
 
-# remember that the results can be in Scientific notation
+# use `formula = ` to tell ttestBF which data to use
+# the tilda symbol, ~, means "is predicted by"
+ttestBF(formula = weight_lost_end_trt ~ intervention, data=funimagery)
 ```

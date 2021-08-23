@@ -1,9 +1,9 @@
 
 - t-tests *compare the average score for two groups*
-- A Bayes Factor (from a t-test) compares two different hypotheses:  
-  - H1 (there groups are different) vs. 
-  - H0 (the groups are identical)
-
+- A Bayes Factor from a t-test compares two hypotheses:  
+  - H1: the groups are *different*, vs.
+  - H0: the groups are *identical*
 - Use the `ttestBF` function in R  (load `BayesFactor` first)
 - Bayes Factors range from zero to infinity
-- Large Bayes Factors are evidence FOR a difference
+- Large Bayes Factors are evidence ***for some difference***
+- Check which *direction* with a boxplot
