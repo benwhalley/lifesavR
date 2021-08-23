@@ -24,9 +24,10 @@ source('_first_chunk.R')
 ```
 
 
+![](images/spotpatterns.png)
+
 
 # Overview
-
 
 
 ```{r, echo=F}
