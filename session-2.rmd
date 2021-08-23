@@ -125,7 +125,7 @@ The engine size of the vehicle with the second highest miles per gallon was `r f
 # Loading data from elsewhere {#loadingdata}
 
 ```{r, echo=F}
-video_data <- list(identifier = "loading-data", ytidentifier = "yt-embed", showcode=F)
+video_data <- list(identifier = "loading-data", ytidentifier = "yt-embed")
 # makermds(video_data)
 ```
 
