@@ -5,10 +5,12 @@
 # typical weight at baseline in the FIT trial
 funimagery %>%
   summarise(mean(kg1))
+```
 
 
-# a boxplot shows the interquartile range (IQR) as the box.
-# The IQR is the range which includes 50% of values
+```{r}
+# boxplots show the interquartile range (IQR) as the height of the box.
+# The IQR is the range which includes 50% of the data points
 funimagery %>%
   ggplot(aes(intervention, kg1)) +
   geom_boxplot() +
