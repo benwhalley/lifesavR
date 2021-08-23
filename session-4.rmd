@@ -83,39 +83,19 @@ video_data <- list(identifier = "describe-frequency", ytidentifier = "yt-embed")
 
 :::{.exercise}
 
-TODO XXX
+- Use the `funimagery` data.
+- Use `count()` to count how many participants there were in each intervention group
+- How many men were in the FIT group?
 
-- Exercise where they have to do this
 
-```{r}
-earnings %>% group_by(education) %>% count()
-```
-
+<!-- funimagery %>% count(intervention, gender) -->
 
 :::
-
-
-:::{.exercise}
-
-XXX TODO POSSIBLE EXTENSION EXERCISE
-THIS COULD BE AN extension activity but low priority for now
-
-```{r}
-earnings %>%
-  group_by(gender, education) %>%
-  count() %>%
-  pivot_wider(names_from = "gender", values_from="n")
-```
-
-:::
-
 
 
 
 
 # Relationships
-
-
 
 ```{r, echo=F}
 video_data <- list(identifier = "describe-relationships", ytidentifier = "yt-embed")
@@ -129,23 +109,28 @@ video_data <- list(identifier = "describe-relationships", ytidentifier = "yt-emb
 
 :::{.exercisee}
 
-XXX TODO
-
-- What is the correlation between `power` and `engine_size` in the `fuel` dataset?
-
-```{r}
-library(corrr)
-fuel %>% ggplot(aes(engine_size, power)) + geom_point()
-fuel %>% select(power, engine_size) %>% correlate()
-```
+- Remember to load the `corrr` package (use the `library` function)
+- Use the `fuel` dataset from the `psydata` package
+- What is the correlation between `power` and `engine_size`?
 
 :::
 
 
+
+---
+
+
 :::{.exercise}
 
-XXX TODO
-- play guess the correlation
+It's helpful to get a feel for what the data would look like for different correlation coefficients.
+<http://guessthecorrelation.com> is a game designed to help with this.
+
+- The game shows you a scatterplot; your job is to guess the correlation coefficient.
+- Try and get to about 30 points without losing any lives!  If you like you can get competitive and play a two-player game!
+
+<iframe src="http://guessthecorrelation.com" width=800 height=800></iframe>
+
+
 
 :::
 
@@ -159,23 +144,29 @@ XXX TODO
 ```
 
 
-TODO XXX
-
-
 :::{.exercise}
 
-XXX TODO possible extension exercise
 
+Correlations require that there is a *linear relationship* between the two variables. That is, the pattern in a scatterplot should be fair close to a straight line. 
 
-- Correlations require that there is a *linear relationship* between the two variables
-- Which pairs of numeric column in the `fuel` dataset would be suitable for correlation?
+- Plot pairs of variables from the `fuel` dataset.
+- Which pairs would be NOT be suitable to use to calculate a correlation?
 
-```{r, message=F}
-# perhaps not mpg and engine_size or power, or engine_size+weight
-fuel %>% select(mpg, engine_size, power, weight) %>%
-  GGally::ggpairs()
+`r hide()`
+
+Engine size and MPG would be one example. There is a curved relationship between them:
+
+```{r, echo=F, warning=F, message=F}
+fuel %>% ggplot(aes(engine_size, mpg)) + geom_point() + geom_smooth(method=lm, formula=y~poly(x, 2), se=F)
 ```
 
+The problem here is that a single straight line isn't appropriate for the data: The slope is
+much less steep at the right hand side of the plot, but the correlation doesn't capture that, so
+it's not a good statistic to describe the pattern we see here.
+
+
+
+`r unhide()`
 
 :::
 
