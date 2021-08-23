@@ -1,7 +1,7 @@
 :::{.tip}
 
 Please remember that these extension exercises are _not_ required to pass the course. We
-include them because find that some students work through these materials much
+include them because some students work through these materials much
 more quickly than others --- perhaps because they have more previous experience with
 programming --- and we aim to give all students the opportunity to stretch their skills.
 

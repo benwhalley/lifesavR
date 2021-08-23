@@ -99,3 +99,5 @@ Use the `development` dataset to make a boxplot showing life expectancy by conti
 Try to recreate the plot shown in the worksheet, using the `mtcars` built-in dataset.
 
 ## Extension exercise 5
+
+Try to recreate the table shown in the worksheet using the `painmusic` dataset from `psydata`.

@@ -41,6 +41,7 @@ subsets of the data. These are important building blocks for later sessions.
 - [Loading data from elsewhere](#loadingdata)
 - [Selecting rows with `filter()`](#filter)
 - [Summarising data using `summarise()`](#summarise)
+- [Learning how to fix broken code](#fixing)
 
 <!-- Activity: -->
 
@@ -227,6 +228,59 @@ Use `filter()` and `summarise()` together to calculate the answers to these ques
 - the standard deviation of `mpg` in cars with 6 cylinders: `r fitb(sd6, tol=.1)`
 :::
 
+# Learning how to fix broken code{#fixing}
+
+[WIP: ignore for now]
+
+```{r, echo=F}
+video_data <- list(identifier = "fixing-code", ytidentifier = "yt-embed", showcode = F)
+#makermds(video_data)
+```
+
+```{r child = '_content/_video_tabs.rmd'}
+```
+
+:::{.exercise}
+**Exercise 11**
+
+Start a NEW R session and make this code work:
+
+```{r, eval=F}
+liibrary(todyverse)
+
+# select only years after 1990
+development %>%
+  filter(year > "1990")
+
+# calculate the average life expectancy in Africa
+development 
+  filter(continent = "africa") %>% 
+  summarise(average(life_expectancy))
+
+ggplot(aes(year, lifeExp, color=continent)) +
+  geom_jitter()
+```
+
+:::
+NOTE - we will know all the errors they will see so can provide hints for each of them
+
+```{r}
+# correct version
+library(tidyverse)
+
+# select only years after 1990
+development %>%
+  filter(year > 1990)
+
+# calculate the average life expectancy in Africa
+development %>%
+  filter(continent == "Africa") %>%
+  summarise(mean(life_expectancy))
+
+development %>%
+  ggplot(aes(year, life_expectancy, color=continent)) +
+  geom_point()
+```
 
 # Check your knowledge
 
@@ -287,44 +341,3 @@ The mean petal width of the versicolor species of iris is `r fitb(correct, tol=.
 
 :::
 
-<!-- TODO: Ben: need to chat more to finish this and other "fix script" tasks -->
-
-# Broken script to fix
-
-Start a NEW R session and make this code work:
-
-```{r, eval=F}
-liibrary(todyverse)
-
-# select only years after 1990
-development %>%
-  filter(year > "1990")
-
-# calculate the average life expectancy in Africa
-development
-  filter(continent = "africa") %>%
-  summarise(average(life_expectancy))
-
-ggplot(aes(year, lifeExp, color=continent)) +
-  geom_jitter()
-```
-
-NOTE - we will know all the errors they will see so can provide hints for each of them
-
-```{r}
-# correct version
-library(tidyverse)
-
-# select only years after 1990
-development %>%
-  filter(year > 1990)
-
-# calculate the average life expectancy in Africa
-development %>%
-  filter(continent == "Africa") %>%
-  summarise(mean(life_expectancy))
-
-development %>%
-  ggplot(aes(year, life_expectancy, color=continent)) +
-  geom_point()
-```
