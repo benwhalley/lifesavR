@@ -3,4 +3,4 @@
 - It compares:
   - H1: There *is a relationship* between two columns of data
   - H0: There *is NO relationship*
-- Large Bayes Factors is evidence *for* a relationship
+- Large Bayes Factors are evidence *for* a relationship
