@@ -43,14 +43,12 @@ development %>%
 
 As researchers, we often collect data from two or more groups.
 
-Group allocations are *categorical* variables. They are stored in a special way by R which makes it easier to display
-them on graphs. In this workshop we learn to how to use categorical variables in boxplots, to add colour to scatterplots, and
-to make tables of descriptive statistics.
+Group allocations are *categorical* variables. They are stored in a special way by R, which makes it easier to display
+them on graphs and use them in analyses.
 
+In this workshop we learn to how to use categorical variables in boxplots, to add colour to scatterplots, and
+to make tables of descriptive statistics which you will need in your coursework and project reports.
 
-<!-- - Types of data (and impact on how R presents it) -->
-<!-- - Different purposes of plots/graphics -->
-<!-- - Purpose and design of data graphics -->
 
 
 ### Techniques covered
