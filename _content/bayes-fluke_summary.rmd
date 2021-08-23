@@ -1,0 +1,8 @@
+- In all data there is *sampling error* or *'noise'*
+- Patterns caused by noise will not replicate
+- Bayes Factors quantify the evidence 
+- We compre the probability of two scenarios:
+  i) the difference we see is 'real', and
+  ii) any difference is just a 'fluke'
+- By convention, the larger the Bayes Factor the more likely the pattern is 'real'
+

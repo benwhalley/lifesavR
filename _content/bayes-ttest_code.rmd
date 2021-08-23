@@ -1,0 +1,13 @@
+
+```{r}
+# load packages first
+library(psydata)
+library(BayesFactor)
+
+
+# use `with` to tell ttestBF which data to use
+# this compares weight lost between groups
+with(funimagery,  ttestBF(weight_lost_end_trt, intervention))
+
+# remember that the results can be in Scientific notation
+```

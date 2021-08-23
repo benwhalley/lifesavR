@@ -1,0 +1,7 @@
+
+- `correlationBF` estimates the Bayes Factor for a correlation
+- It compares the probability that there is NO 
+
+- H1: There is a relationship between the two columns of data
+- H0: There is NO relationship (any pattern is just due to chance)
+

@@ -26,215 +26,72 @@ library(corrr)
 ```
 
 
-
 ![](images/scales.png)
 
 
 # Overview
 
 In the [previous workshop](session-4.html) we learned techniques to describe and summarise data.
-In this workshop we take the next step and introduce a technique for quantifying how *sure* we are that the patterns
-we see are real: the *Bayes Factor*.
+Now we take the next step quantify how *sure* we are that the patterns are real, using the *Bayes Factor*.
 
-The Bayes Factor (BF) is a single number which allows us to choose between different *possible* hypotheses about 
-how the data we collect were generated.  To calculate it, we estimate:
+The Bayes Factor (BF) is a single number which allows us to choose between different *possible* hypotheses (explanations) of how our data were generated, based on which is most probable.
 
-- How *probable* each hypothesis is, given the data we have and what we expected
+To calculate it, we:
+
+- Estimate how *probable* each hypothesis is, given the data we have and what we knew beforehand
 - Divide one of these probabilities by the other
 
-If hypotheses A is 10 times more likely than hypothesis B, then our Bayes Factor will be 10.
+If 'hypotheses A' is 10 times more likely than 'hypothesis B', given the data, 
+then we would get a Bayes Factor of 10.
+
 
 -----------
 
-The important thing to remember about Bayes Factors is that they *compare two possible hypotheses* about how the data came about. ***The meaning of the Bayes Factor completely depends on which hypotheses we compare.***
+The important thing to remember about Bayes Factors is that they *compare two possible hypotheses* about how the data came about. But the ***meaning*** of the Bayes Factor completely depends on which hypotheses we compare.
 
 As we'll see, the Bayes Factor can be used as a measure of evidence for both differences between groups (aka, a *t-test*) and for the relationship between variables (*correlation*).
 
 
 
-
-
 # Is this pattern a fluke?
 
-![via [Google Earth](https://earth.google.com/web/)](images/heart-shaped-land-formation-strange-google-earth.jpg)
 
-
-
-<!-- Summary points -->
-
-- In all data there is *sampling error* or *'noise'*
-- Patterns caused by noise, or which happened by chance, will not replicate if we sample more data (but that's not always possible)
-- We may want to *quantify the evidence* that patterns we see are 'real'
-- Bayes Factors quantify evidence by comparing the probability of two scenarios:
-  i) the difference we see is 'real', and
-  ii) any difference is just a 'fluke'
-- By convention, the larger the Bayes Factor the more likely the pattern is real
-
-
-<!-- transcript -->
-
-Whenever we collect data, there is some element of chance. 
-If the data we have are limited, it's possible that any patterns have only occurred by chance.
-We need to be able to quantify how much information our data provide --- that is, 
-how much more or less confident about the patterns we are after we make observations.
-
-
-### Bayes Factors for *differences*
-
-Previously, we emphasised that summaries and descriptions of data are used *to answer research questions*.
-
-For example, we used a boxplot to compare the differences in the amount of weight participants lost when
-treated with either Functional Imagery Training or Motivational Interviewing (the `funimagery` dataset). 
-This lets us answer the question: *"which intervention was more effective in helping participants lose weight?"*:
 
 ```{r, echo=F}
-funimagery %>%
-  ggplot(aes(intervention, weight_lost_end_trt)) +
-  geom_boxplot()
+video_data <- list(identifier = "bayes-fluke", ytidentifier = "yt-embed")
+# makermds(video_data)
 ```
 
-```{r, echo=F}
-fitdiff <- funimagery %>% group_by(intervention) %>% summarise(m=mean(weight_lost_end_trt)) %>% pull(m) %>% diff %>% round(1) %>% abs
+```{r child = '_content/_video_tabs.rmd'}
 ```
-
-
-This boxplot shows the *median* and *interquartile range* for each treatment group. It's immediately obvious
-that --- *in this sample* --- there is a difference between the two groups (`r fitdiff` kg, in fact), and that --- *in this sample* --- FIT helped people lose more weight than MI.
-
-For many purposes this plot is enough.
-
-The difference here is quite large and we can interpret this graph at face value. If the costs of these interventions were similar (i.e. if 'all other things are equal') it we should choose FIT rather than MI.
-
-However, researchers often want to *quantify the evidence* provided by the sample of data they collect. 
-This is important in psychology, and other sciences, because the size of the effects we see are often quite small or subtle.
-
-It *might* be the case that patterns we see are just a 'fluke'. That is, they have come about by chance. Perhaps if we took another sample from the same population (treated more people with FIT and MI) then we would see no difference?
-
-
-The Bayes Factor quantifies how confident we should be about any given pattern in our by comparing two possibilities:
-
-1. There really is a difference in how much weight people lost with FIT and MI (we call this H1)
-2. There's NO difference between FIT and MI; any difference we see is likely to be a fluke (H0)
-
-
-
-### Bayes Factors for *correlations*
-
-We have also seen how a scatterplot describes the *relationship* between two columns of data:
-
-```{r, echo=F}
-fuel %>%
-  ggplot(aes(engine_size, power)) + geom_point()
-```
-```{r, echo=F, message=F, warning=F}
-enginecor <- fuel %>% select(engine_size, power) %>% correlate() %>% pull(power) %>% first %>% round(2)
-```
-
-
-From this plot the relationship seems quite clear, and the correlation between these columns is `r enginecor`
-
-However, we don't have that many data points, so the pattern _might_ have happened by chance.
-
-The Bayes Factor allows us to quantify how much evidence we have for this correlation. As before, we are
-comparing two different possibilities:
-
-1. There is a correlation between `engine_size` and `power`
-2. There is **NO** correlation (the pattern is just a fluke)
-
-
-
-<!-- No code examples here -->
-
-
 
 
 
 # Do it: Bayesian t test
 
-<!-- SUMMSRY-->
 
-
-- t-tests *compare the average score for two groups*
-- A Bayes Factor (from a t-test) compares two different hypotheses:  
-  - H1 (there groups are different) vs. 
-  - H0 (the groups are identical)
-
-- Use the `ttestBF` function in R  (load `BayesFactor` first)
-- Bayes Factors range from zero to infinity
-- Large Bayes Factors are evidence FOR a difference
-- Small Bayes Factors (e.g. < .33) are evidence of NO difference
-- Bayes factors between $\frac{1}{3}$ and $3$ are inconclusive
-
-
-
-
-
-<!-- TRANSCRIPT -->
-
-
-A 'Bayesian t-test' is a procedure which calculates the Bayes Factor for a difference between groups.
-
-That is, we get a Bayes Factor which tells us how likely the difference we see is to be 'real', rather than a fluke or due to sampling variation.
-
-Specifically, the Bayes Factor from a Bayesian t-test says how probable it is that two groups have a *different average score* for a *continuous variable*. This probability is *relative* to an alternative hypothesis that the average of each group is actually the same.
-
-Some people call these the *experimental* and *null* hypotheses, or H1 and H0.
-
-
-As we saw above, we can look at a boxplot and get an intuition for whether we think the
-difference is real by looking at how much the *distributions* of the two groups overlap (e.g. with the boxplot).
-
-[
-SHOW BOXPLOT AGAIN USING CODE BELOW
-There is not much overlap between the groups, so we intuit the difference is real
-]
-
-```{r, eval=F, echo=F}
-funimagery %>%
-  ggplot(aes(intervention, weight_lost_end_trt)) +
-  geom_boxplot()
+```{r, echo=F}
+video_data <- list(identifier = "bayes-ttest", ytidentifier = "yt-embed")
+# makermds(video_data)
 ```
 
-
-
-If find a large Bayes Factor, this is evidence *for* the experimental hypothesis, as compared with the null hypothesis.
-
-
-### Running a t-test
-
-To run a t-test and calculate the Bayes Factor we first need to load the `BayesFactor` package:
-
-```{r}
-library(psydata)
-library(BayesFactor)
+```{r child = '_content/_video_tabs.rmd'}
 ```
 
-
-And then use the `ttestBF` function.
-
-
-```{r}
-with(funimagery,  ttestBF(weight_lost_end_trt, intervention))
-```
-
-The number $515647.5$ is our Bayes Factor. This is a large number, so we have strong
-evidence that the difference in means is real.
-
-
-XXX MORE EXPLANATION HERE OF FOMULA AND TILDE
-
-
-
-We explain how to interpret these numbers in more detail in the section below, but broadly:
-
-- Anything > 3 is evidence *for* a difference
-- < 0.33 is evidence *against* a difference
-- Anything in between is *inconclusive*
 
 
 
 
 # Do it: Bayes Factor for correlations
+
+```{r, echo=F}
+video_data <- list(identifier = "bayes-corr", ytidentifier = "yt-embed")
+# makermds(video_data)
+```
+
+```{r child = '_content/_video_tabs.rmd'}
+```
+
 
 
 A Bayes Factor for a correlation compares the two hypotheses that either:
