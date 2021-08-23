@@ -128,11 +128,8 @@ We return to this topic later but for now just remember that:
 - Which function calculates the Bayes Factor for a correlation?
 - Which function calculates the Bayes Factor for a difference in the average of two groups?
 - What direction slope does a correlation of -0.5 imply? What would the scatterplot look like?
-- What conclusion should we draw if the Bayes Factor for a correlation is 2.1?
-- What conclusion should we draw if the Bayes Factor for a correlation is 320?
-- What conclusion should we draw if the Bayes Factor for a correlation is 0.12?
-- What conclusion should we draw if the Bayes Factor for a t test is 0.8?
-- What conclusion should we draw if the Bayes Factor for a t test is >10?
+- What conclusion should we draw if the Bayes Factor for a correlation is 2.1? How about if it was 0.21, or 210?
+- What conclusion should we draw if the Bayes Factor for a t test is 0.8? How about if it were > 10?
 
 
 # References
