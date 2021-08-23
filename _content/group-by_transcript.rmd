@@ -12,7 +12,7 @@ We can see the columns in the dataset using `glimpse()`:
 funimagery %>% glimpse
 ```
 
-Weight was measured three times, and these measurements are in the columns called `kg1`, `kg2` and `kg3`. 
+Weight was measured three times, and these measurements are in the columns called `kg1`, `kg2` and `kg3`.
 
 - The first (`kg1`) was taken at *baseline*, when participants joined the study
 - The second (`kg2`) was taken at the end of treatment, 6 months after baseline
@@ -32,8 +32,7 @@ funimagery %>%
 ```
 
 
-This graph is helpful, and makes the differences really clear. But what if we want the actual numbers in a table, or to
-report in the text of our paper?
+This graph is helpful, and makes the differences really clear. But what if we want the actual numbers in a table, or to report in the text of our paper?
 
 
 
@@ -123,8 +122,12 @@ R gives the new columns a name based on the function we use to `summarise()` the
 
 For example, if we use `mean()` on the `weight_lost_end_trt` variable then the new column is called `mean(weight_lost_end_trt)`.
 
-[RERUN CODE ABOVE AND HIGHLIGHT WHERE NAME COMES FROM]
 
+:::{.direction}
+
+- rerun code above and highlight where the name of the variable comes from
+
+:::
 
 Unfortunately, these new variable names contain parentheses and (sometimes) spaces which makes them harder to work
 with. It's much better to give the new column a specific name like this:

@@ -14,7 +14,12 @@ shootings <- read_csv("https://benwhalley.github.io/lifesavR/lifesavr/shootings.
 
 Because we made a new variable, the result is stored in the environment, and we can double-click the variable in the **Environment** tab to have a look at the data.
 
-[click on `shootings`]
+:::{.direction}
+
+- click on `shootings`
+
+:::
+
 
 An alternative (and recommended) way is to simply type the name of the variable and run the line:
 
@@ -24,7 +29,11 @@ shootings
 
 You can also display the data by selecting the name of the variable in your code, and pressing ctrl+Enter, or cmd+Enter on a Mac:
 
-[Select the word `shootings` and press ctrl+Enter.]
+:::{.direction}
+
+- Select the word `shootings` and press ctrl+Enter.
+
+:::
 
 ```{r, eval=F}
 shootings <- read_csv("https://benwhalley.github.io/lifesavR/lifesavr/shootings.csv")

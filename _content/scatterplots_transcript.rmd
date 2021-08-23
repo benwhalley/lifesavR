@@ -12,20 +12,36 @@ fuel %>%
     geom_point()
 ```
 
-[SHOW THE CODE, SELECT THE PIPE WITH CURSOR]
+:::{.direction}
+
+- show the code
+- select the pipe with the cursor to highlight
+
+:::
 
 
 The second line recieves the data. The `ggplot()` function tells us we are going to be making a plot.
 
 The plot itself is built in two steps. The first step, `ggplot(aes(weight, mpg))` selects columns in our dataset to use for the x and y axes. In this case, the x axis is `weight`, which is the weight of the cars in kg.
 
-[SELECT WEIGHT IN CODE]
+:::{.direction}
+
+- select `weight` in the code - highlight it is the x axis
+- same for `mpg` and y axis
+
+:::
+
 
 And `mpg` is miles per gallon, or fuel efficiency. This will be the y-axis.
 
 We can see the plot if we put our cursor on the first line and press the shortcut — Ctrl or Cmd + Enter
 
-[RUN THE PLOT AND SHOW]
+:::{.direction}
+
+- run the plot and show result
+
+:::
+
 
 As you've seen before, if we run code in an Rmarkdown document then the result is shown underneath the chunk.
 
@@ -64,6 +80,11 @@ fuel %>%
 
 R assumes that the first variable is the x axis and the second is the y axis.
 
-[SELECT X AXIS AND Y AXIS IN TURN WHEN DESCRIBING]
+:::{.direction}
+
+- select x axis and y axis in turn when describing
+
+:::
+
 
 We use this style in these guides, and you should too.

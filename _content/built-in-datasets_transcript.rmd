@@ -15,7 +15,12 @@ a variable in our study.
 However, this can be a bit confusing because --- in R --- variables can actually contain whole datasets.
 `fuel`, for example, is the name of a variable which contains an example dataset, provided by the `psydata` package.
 
-[SHOW LIBRARY(PSYDATA) AND THEN THE FUEL DATASET]
+:::{.direction}
+
+- Show `library(psydata)` and then the `fuel` dataset
+
+:::
+
 
 But these words are used flexibly and interchangeably, so we'll just have to get used to it.
 It's normally clear which type of variable we mean from the context.
@@ -123,7 +128,12 @@ The skills and concepts involved in analysing these data are the same though.
 
 R --- and the techniques and statistics we teach --- are used right across the natural sciences
 
-[ TODO show examples of plots and analyses here]
+
+:::{.direction}
+
+- TODO show examples of a variety of plots and analyses here
+
+:::
 
 If you're still not convinced — don't worry ... we do include some clinical examples, and we will
 be collecting our own psychological data soon enough and analysing that.

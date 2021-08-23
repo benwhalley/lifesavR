@@ -10,12 +10,14 @@ mpg %>%
   geom_point()
 ```
 
-[THIS FIRST PLOT IS NOT SHOWN HERE TO SAVE SPACE, BUT IS SHOWN IN THE VIDEO.]
+
+*NOTE: This first plot is not shown here to save space, but is shown in the video.*
+
 
 
 Colour can be added to distinguish the points — for example, what kind of car each point represents.
 
-So far, you've used the `aes()` function to define which variable is plotted on the x and y axes.  The `aes()` function is short for 'aesthetics' (what we can see) and *connects columns in our data to visual aspects of a plot*, like the x and y axes. 
+So far, you've used the `aes()` function to define which variable is plotted on the x and y axes.  The `aes()` function is short for 'aesthetics' (what we can see) and *connects columns in our data to visual aspects of a plot*, like the x and y axes.
 
 The `colour=...` option adds to this, and says which column is used to colour the points.
 In the `mpg` data, the `drv` column records if a car is front (`f`), rear (`r`) or four (`4`) wheel drive.
@@ -33,11 +35,3 @@ mpg %>%
 This is an example of using a *categorical* variable to colour our points.
 
 Notice that `ggplot()` automatically adds a key to the plot, mapping the colour of the points to the categories in `drv`.
-
-
-
-
-
-
-
-

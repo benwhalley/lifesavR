@@ -46,7 +46,15 @@ Next we need to select the columns we want to correlate. In this case we want to
 
 We can use `select()` to choose only these columns, and then use another pipe to send just those columns to `correlate()`:
 
-[SHOW SELECT PART OF THE CODE BELOW - ie. SELECT AND RUN JUST THAT PART. SHOW HOW R SPITS TWO COLUMNS OF DATA BELOW THE CHUNK]
+
+:::{.direction}
+
+- show selecting part of the code below
+- ie. select and run just the line up to `select()`
+- show how R spits out two columns of data below the chunk, rather than the whole dataset
+
+:::
+
 
 ```{r, message=F}
 # select weight at baseline and follow-up an correlate them
@@ -64,7 +72,13 @@ The numbers represent the **correlation coefficient** for each pair of variables
 The correlation between a variable and itself is always perfect, so the numbers on
 the diagonal of the table are not shown (they are `NA`).
 
-[SHOW AND TALK THROUGH SOME OF THE VALUES IN THE TABLE AT THIS POINT]
+
+:::{.direction}
+
+- show and talk through some of the values in the table at this point
+
+:::
+
 
 We can see here that the correlations are all above 0.9, which is very high.
 
@@ -107,12 +121,6 @@ However to get a real feel for what correlations of different values look like, 
 [DEMO http://guessthecorrelation.com]
 
 ![](images/guessthecorrelation.png)
-
-
-
-
-
-
 
 
 

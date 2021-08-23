@@ -55,7 +55,13 @@ You can also use `summarise()` with more than one summary function.
 
 Seperate each summary function with a comma:
 
-[HIGHLIGHT COMMA IN `summarise()`.]
+:::{.direction}
+
+
+- Highlight comma in `summarise()`.
+
+:::
+
 
 ```{r}
 fuel_summary <- fuel %>%
@@ -69,16 +75,16 @@ on in extra steps if needed.
 
 ### Using `filter` with `summarise`
 
-One powerful thing about R and the `tidyverse` is that you can combine the techniques 
+One powerful thing about R and the `tidyverse` is that you can combine the techniques
 you learn to make more sophisticated analyses.
 
-A simple example of this is using `filter()` with `summarise()`. 
+A simple example of this is using `filter()` with `summarise()`.
 
 For example, if we want to calculate the average life expectancy of only Asian countries
 in the `development` dataset we can write:
 
 ```{r}
-development %>% 
-  filter(continent=="Asia") %>% 
+development %>%
+  filter(continent=="Asia") %>%
   summarise(asian_life_expectancy = mean(life_expectancy))
 ```
