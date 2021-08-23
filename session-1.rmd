@@ -21,6 +21,7 @@ source("_first_chunk.R")
 
 ```
 
+
 # Overview
 
 <!-- > Beginners mind (Shoshin) denotes openness, eagerness and lack of preconceptions when studying a subject, just as a beginner would, no matter what level of expertise the student has.  -->

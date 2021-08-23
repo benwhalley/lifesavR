@@ -23,6 +23,7 @@ source('_first_chunk.R')
 ```
 
 
+
 # Overview
 
 **Make sure you are confident with all the material in the [previous 'getting started' session](session-1.html) before continuing.**
