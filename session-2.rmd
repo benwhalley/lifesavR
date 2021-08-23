@@ -49,6 +49,8 @@ subsets of the data. These are important building blocks for later sessions.
 <!-- just one: -->
 
 
+
+
 # Storing data in variables {#variables}
 
 ```{r, echo=F}
