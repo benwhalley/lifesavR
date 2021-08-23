@@ -1,6 +1,5 @@
-:::{.tip}
 
-Please remember that these extension exercises are _not_ required to pass the course. We
+***Please remember that these extension exercises are _not_ required to pass the course.*** We
 include them because some students work through these materials much
 more quickly than others --- perhaps because they have more previous experience with
 programming --- and we aim to give all students the opportunity to stretch their skills.
@@ -8,5 +7,3 @@ programming --- and we aim to give all students the opportunity to stretch their
 If you do find you have extra time, however, these exercises are intended to
 provide additional practice in the technqiues taught here, and to be useful
 preparation for using R independently in a stage 4 or MSc research project.
-
-:::

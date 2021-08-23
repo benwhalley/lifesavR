@@ -112,7 +112,7 @@ video_data <- list(identifier = "what-can-r-do", ytidentifier = "yt-embed")
 
 ```
 
-# Working interactively in R Markdown {#interactive}
+# Working interactively {#interactive}
 
 ```{r, echo=F}
 video_data <- list(identifier = "working-interactively-in-r", ytidentifier = "yt-embed", showcode=F)
@@ -188,7 +188,7 @@ The output from the chunk should look like this:
 ![Result from Exercise 4](images/ex4.png)
 :::
 
-# Loading packages {#packages}
+# Packages {#packages}
 
 ```{r, echo=F}
 video_data <- list(identifier = "loading-packages", ytidentifier = "yt-embed")
@@ -201,18 +201,24 @@ video_data <- list(identifier = "loading-packages", ytidentifier = "yt-embed")
 
 :::{.tip}
 
-If you've understood what packages are then it should be clear that you can't use the functions provided by `tidyverse`
-until you've run the command: `library(tidyverse)`.
+If you've understood what packages are it should be clear you need to load them *first*, before doing
+anything else.
 
-For example, if you tried to produce the scatter plot before loading `tidyverse` you'd see an error like this in the
-console:
+
+You can't use the functions provided by `tidyverse`
+until you've run the command: `library(tidyverse)`. And the data in `psydata` is not available until
+after you load that package.
+
+
+For example, if you tried to produce a scatter plot before loading `tidyverse` you'd see an error like this in the
+console pane:
 
 <pre style="color:red">
 Error in diamonds %>% ggplot(aes(carat, price, colour = clarity)) :
   could not find function "%>%"
 </pre>
 
-**This is important** because `could not find function` errors are one of the most common problems
+**This is important to remember**: `could not find function` errors are one of the most common problems
 that beginners encounter. They normally mean that you have
 
 1. forgotten to include `library(tidyverse)` as the first line in your code, or
@@ -235,12 +241,15 @@ video_data <- list(identifier = "built-in-datasets", ytidentifier = "yt-embed")
 
 **Exercise 5**
 
-1. Create a new chunk below the `Exercise 5` heading in your workbook (`session-1.rmd`).
+1. Open your workbook for this workshop (called `session-1.rmd`).
+1. Create a new chunk below the `Exercise 5` heading
 1. Load the `psydata` package
 1. Display the `fuel` dataset and try out the navigation buttons.
-1. Make a list of columns in the `development` datset
+1. Make a list of the columns in the `development` datset
 
-The output should look like this:
+-----------
+
+The output should look something like this:
 
 ![The `fuel` dataset](images/s1_ex5-1.png)
 
@@ -252,9 +261,11 @@ The output should look like this:
 
 **Exercise 6**
 
-1. Create a new chunk below the `Exercise 6` heading in your workbook (`session-1.rmd`).
-1. Load the `psydata` package if you haven't already done that in this work session
-1. Show the first 10 rows of the `development` data
+In your workbook (`session-1.rmd`):
+
+1. Create a new chunk below the `Exercise 6` heading
+1. Load the `psydata` package (if you haven't already)
+1. Show the first 10 rows of the `development` data using `head()`
 
 Use the output to answer the following question. After entering your answer, click outside the box. The border will turn turn blue when the answer is correct.
 
@@ -262,7 +273,8 @@ The population of Afghanistan in 1967 was: `r fitb('11537966')`.
 
 :::
 
-# Making a scatterplot with `ggplot()` {#scatterplots}
+
+# Scatterplots {#scatterplots}
 
 ```{r, echo=F}
 video_data <- list(identifier = "scatterplots", ytidentifier = "yt-embed")

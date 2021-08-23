@@ -14,7 +14,6 @@ mpg %>%
 *NOTE: This first plot is not shown here to save space, but is shown in the video.*
 
 
-
 Colour can be added to distinguish the points — for example, what kind of car each point represents.
 
 So far, you've used the `aes()` function to define which variable is plotted on the x and y axes.  The `aes()` function is short for 'aesthetics' (what we can see) and *connects columns in our data to visual aspects of a plot*, like the x and y axes.

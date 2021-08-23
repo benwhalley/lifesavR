@@ -20,9 +20,11 @@ fuel %>%
 :::
 
 
-The second line recieves the data. The `ggplot()` function tells us we are going to be making a plot.
+The second line recieves the data. The `ggplot()` part means we're making a plot.
 
-The plot itself is built in two steps. The first step, `ggplot(aes(weight, mpg))` selects columns in our dataset to use for the x and y axes. In this case, the x axis is `weight`, which is the weight of the cars in kg.
+The plot is built in two steps:
+
+The first step is `ggplot(aes(weight, mpg))`. This selects columns in our dataset to use for the x and y axes. In this case, the x axis is `weight`, which is the weight of the cars in kg. And `mpg` is miles per gallon, or fuel efficiency. This will be the y-axis.
 
 :::{.direction}
 
@@ -32,18 +34,15 @@ The plot itself is built in two steps. The first step, `ggplot(aes(weight, mpg))
 :::
 
 
-And `mpg` is miles per gallon, or fuel efficiency. This will be the y-axis.
-
-We can see the plot if we put our cursor on the first line and press the shortcut — Ctrl or Cmd + Enter
+We can see the plot if we run this statement using the keyboard shortcut — `Ctrl` or `Cmd` (Mac) + `Enter`
 
 :::{.direction}
 
-- run the plot and show result
+- run the code and show the resulting plot
+- emphasise this is shown below the code chunk when using RMarkdown
 
 :::
 
-
-As you've seen before, if we run code in an Rmarkdown document then the result is shown underneath the chunk.
 
 
 
@@ -54,17 +53,27 @@ A useful thing to know is that `ggplot` works by building up plots in multiple l
 
 If we run just this part of the code, we can see the plot with just the axes, and no data shown.
 
-[RUN JUST THE FIRST TWO LINES OF CODE BY SELECTING AND PRESSING CTRL+ENTER]
 
-So, we make plots by:
+:::{.direction}
 
-1. selecting data
-2. defining the axes, and then
-3. adding the data points
+- run just the first two lines of code by selecting and pressing `ctrl+enter`
+- emphasise the axes are there but no data shown
+
+:::
+
+
+So, conceptually, we make plots by:
+
+1. *selecting* data
+2. *defining* the axes, and then
+3. *drawing* the data points
 
 Each part of the plot is separated by a `+` symbol and goes on a new line.
 
-RStudio is smart and knows all this is part of the sample plot, so automatically indents the code.
+RStudio is smart and knows all this is part of the same statement.
+This means it automatically indents the code.
+
+
 
 ### Cutting corners
 

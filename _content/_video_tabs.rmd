@@ -27,7 +27,7 @@ t1b <- '
 
 t1c <- '
 <li class="nav-item"><a class="nav-link" id="{{identifier}}-transcript-tab" data-toggle="tab" href="#{{identifier}}-transcript">
-  Full Transcript
+  Video Transcript
 </a></li>
 </ul>
 

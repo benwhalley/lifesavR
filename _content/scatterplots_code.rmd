@@ -9,12 +9,9 @@ fuel %>%
   ggplot(aes(x=weight, y=mpg)) + # selects the columns to use
     geom_point()                 # adds the points to the plot
 
-
-
-# the same plot
-# this time we left out x= and y= in the aes code
-# these are implicit in the order of weight and mpg
-# the x axis comes first
+# the same plot, this time we left out x= and y= in
+# the aes code. These are implicit from the order of weight and mpg
+# (the x axis comes first)
 fuel %>%
   ggplot(aes(weight, mpg)) +
     geom_point()         

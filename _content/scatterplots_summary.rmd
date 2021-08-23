@@ -1,6 +1,6 @@
 
 - A scatterplot shows the *relationship* between two *continuous* variables (columns)
-- Each observation (row) must have at least two values (columns)
+- Each observation (row) must have at least two values (so we need two columns)
 - These define the position of a point on the x and y axes of the plot
 - Use `ggplot()`
 - `aes(x = ..., y = ...)` chooses the x and y data *columns* and creates the axes
