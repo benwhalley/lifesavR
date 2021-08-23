@@ -36,20 +36,8 @@ Now we take the next step quantify how *sure* we are that the patterns are real,
 
 The Bayes Factor (BF) is a single number which allows us to choose between different *possible* hypotheses (explanations) of how our data were generated, based on which is most probable.
 
-To calculate it, we:
+The important thing to remember about Bayes Factors is that they ***compare two possible hypotheses*** about how the data came about.  The ***meaning*** of the Bayes Factor completely depends on which hypotheses we compare.
 
-- Estimate how *probable* each hypothesis is, given the data we have and what we knew beforehand
-- Divide one of these probabilities by the other
-
-If 'hypotheses A' is 10 times more likely than 'hypothesis B', given the data, 
-then we would get a Bayes Factor of 10.
-
-
------------
-
-The important thing to remember about Bayes Factors is that they *compare two possible hypotheses* about how the data came about. But the ***meaning*** of the Bayes Factor completely depends on which hypotheses we compare.
-
-As we'll see, the Bayes Factor can be used as a measure of evidence for both differences between groups (aka, a *t-test*) and for the relationship between variables (*correlation*).
 
 
 
@@ -79,6 +67,27 @@ video_data <- list(identifier = "bayes-ttest", ytidentifier = "yt-embed")
 ```
 
 
+:::{.exercise}
+
+XXX TODO PAUL _ ADD WORKBOOK PARTS AND REMINDERS HERE
+
+- Use the `funimagery` dataset
+- Plot participants' weights at baseline (`kg1`) in each intervention group
+- Use `summarise()` to calculate the difference between the groups weight
+- Use `with()` and `ttestBF()` to calculate the Bayes Factor for this difference
+
+
+```{r}
+
+funimagery %>% 
+  ggplot(aes(intervention, kg1)) + geom_boxplot()
+
+aa <- with(funimagery,  ttestBF(intervention, kg1,posterior=T, iterations=1e4)) 
+aa %>% as_data_frame() %>% group_by
+```
+
+
+:::
 
 
 
@@ -91,122 +100,6 @@ video_data <- list(identifier = "bayes-corr", ytidentifier = "yt-embed")
 
 ```{r child = '_content/_video_tabs.rmd'}
 ```
-
-
-
-A Bayes Factor for a correlation compares the two hypotheses that either:
-
-- H1: There is a relationship between the two columns of data
-- H0: There is NO relationship (any pattern is just due to chance)
-
-
-Another way to think about it is to imagine we have a set of data points like this:
-
-```{r, echo=F, message=F, warning=F, fig.width=4}
-set.seed(12)
-df <- tibble(y=rnorm(30, 0, 1), x=.75*y+rnorm(30, 0, 1)) %>% mutate_all(scale)
-correlate(df)
-p1 <- df %>%
-  ggplot(aes(x, y)) +
-  # scale_x_continuous(expand = c(0,0) , limits = c(0,2)) +
-  # scale_y_continuous(expand = c(0,0) , limits = c(-1,1)) +
-  coord_fixed(xlim=c(-2,2), ylim=c(-2,2)) +
-  guides(alpha=F) + theme_minimal()
-
-p1 +  geom_point()
-```
-
-We ask: *if we wanted to draw a straight line through all the data points, which would be the best fit?* Which line would fall the closest to all the data points?
-
----
-
-The plot below shows some examples of lines we could draw.
-
-Zero correlation is drawn in blue. 
-
-Examples of other *possible* coefficients are shown in red (but remember, it could be anything from -1 to 1).
-
-```{r, echo=F}
-dd <- tibble(s=c(0, -.75,-.25, .25, .75 ), cc=factor(c(1,0,0,0,0)))
-dd %>%
-  ggplot(aes()) +
-  coord_fixed(xlim=c(-2,2), ylim=c(-2,2)) +
-  geom_point(data=df, aes(x=x,y=y), size=.2) +
-  guides(color=F) + theme_minimal() +
-  geom_abline(data=dd, aes(intercept=0, slope=s, 1 , color=cc)) +
-  facet_wrap(~factor(s, levels=unique(s), labels = paste("r = ", s)), ncol=7) + theme(axis.title.x=element_blank(),
-        axis.text.x=element_blank(),
-        axis.ticks.x=element_blank(),
-        axis.title.y=element_blank(),
-        axis.text.y=element_blank(),
-        axis.ticks.y=element_blank())
-```
-
-The Bayes Factor tells us: *"Are ANY of the red lines a better fit than the blue line?"*
-
-
-The Bayes Factor is comparing the change that ANY of the red lines (where $r > 0$ or $r < 0$) are a better fit than the blue line, where $r = 0$.
-
-Another way to say it is, *"given the data we have collected, how much more likely is it that the correlation is non-zero, than actually being zero?"*
-
-
-
-### A worked example
-
-We want to check the relationship of two variables in the `happy` dataset, which is based on the [Gallup World Happiness Report 2021](https://worldhappiness.report/ed/2021/):
-
-- `happiness` (a national measure of average life satisfaction)
-`- `perceptions_of_corruption` (a national measure of how corrupt their think their society is)
-
-The first thing to do is to plot the data, to check that the relationship between these variables
-is approximately linear (a straight line). Here I have used `filter` to select only the data from 2019.
-
-
-```{r, echp=F}
-happy %>% 
-  filter(year==2019) %>% 
-  ggplot(aes(perceptions_of_corruption, happiness)) + 
-  geom_point() + 
-  geom_smooth(method=lm, se=F)
-```
-
-
-
-The plot suggests a fairly strong negative correlation, as you might expect.
-
-We can check the correlation using `select` and `correlate()`:
-
-```{r}
-happy  %>% 
-  filter(year == 2019) %>% 
-  select(happiness, perceptions_of_corruption) %>% 
-  correlate()
-```
-
-
-So - the question now is, how much evidence do we have that the correlation is 'real', and that
-this pattern isn't just a fluke.
-
-```{r}
-# first, make a copy of the happy data, including only data from 2019
-happy.2019 <- happy %>% filter(year == 2019)
-```
-
-
-```{r, echo=F, warning=F, message=F}
-happybf <- with(happy.2019,  correlationBF(happiness, perceptions_of_corruption)) %>%  
-  as_tibble() %>% pull(bf) 
-```
-
-
-```{r}
-with(happy.2019,  correlationBF(happiness, perceptions_of_corruption))
-```
-
-
-Now, the Bayes Factor is `r happybf %>% sprintf("%.0f", .)`. 
-
-That means we can be ***very*** confident that the pattern we see is not simply due to chance.
 
 
 
