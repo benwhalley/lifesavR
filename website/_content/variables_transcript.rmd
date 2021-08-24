@@ -1,0 +1,70 @@
+
+Each instruction we give R produces a result.
+
+By default, these results are shown below the code chunk.
+
+Sometimes, though, we'd like to save the results. Perhaps we want to use them in another
+calculation later?
+
+To do this we can create a **variable**.
+
+A variable is just a *container*.  We can store things in it: the results of simple
+calculations, datasets, tables, plots, or even statistical models.
+
+To make variables we use the assignment operator, which looks like this `<-`.
+
+It looks like an arrow that points to the left, but it's made up of an angle bracket and a hyphen,
+placed next to each other.
+
+The arrow is a reminder that the value on the right hand
+side will be assigned (stored) in the variable named on the left hand side.
+
+
+For example, we can write this:
+
+```{r}
+# assign the current year to a variable
+current_year <- 2021
+```
+
+And we now have a variable called `current_year` which contains the number `2021`.
+
+
+The simplest way to check what a variable contains is to write it's name, and then
+run that line of code:
+
+```{r}
+# print the variable we created to the console window
+current_year
+```
+
+
+You might wonder *where* these variables get saved. In most cases, variables you create are stored in what's called the
+`Global Environment`. You can see them in the **Environment** pane in RStudio.
+
+The names of variables are shown in the column on the right, and their values in the column on the left.
+
+[HIGHLIGHT NAME AND VALUE OF A VARIABLE IN THE ENVIRONMENT.]
+
+---------------
+
+
+Once stored, we can use variables as the *input* to new calculations.
+
+For example, in this example we are adding 1 to the current year and storing the result in another
+variable called `next_year`:
+
+
+```{r}
+# do a calculation to create a new variable from an existing one
+next_year <- current_year + 1
+```
+
+
+--------------------
+
+Naming variables sensibly is more important than you might realise.
+
+You will save yourself a lot of trouble if you give your variables short names which describe the data they contain. Use the underscore `_` if you need to use more than one word e.g. `current_year`.
+
+Variable names can't contain spaces, and it's best to avoid special characters or capital letters.

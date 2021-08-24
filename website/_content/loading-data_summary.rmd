@@ -1,0 +1,18 @@
+File formats:
+
+- R can load almost any data format
+- We recommend comma-separated value (CSV) files
+- CSV filenames always end in `.csv`
+- You can also open CSV files in Excel
+
+Loading data:
+
+- Always use `read_csv()` (NOT `read.csv()`)
+- Upload your file to the RStudio server first (use the **Files** pane)
+- Save/upload data to the **same folder as your `.rmd` file**
+
+Remember to:
+
+- Assign (`<-`) the result of `read_csv()` to a variable
+- Give the variable a descriptive name
+- Use `glimpse` or the **Environment** pane to check imported data

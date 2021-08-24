@@ -1,5 +1,0 @@
-```{r, eval=F}
-# run an R script over the internet which will get you
-# set up, and copy files you need to your home folder
-source("https://raw.githubusercontent.com/benwhalley/lifesavR/main/bootstrap.R")
-```

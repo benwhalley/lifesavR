@@ -1,0 +1,77 @@
+# Getting started
+
+- [Using the RStudio interface](#using)
+- [What can R do?](#cando)
+- [Working interactively in R Markdown](#interactive)
+- [Creating a chunk](#chunk)
+- [Loading packages](#packages)
+- [Built-in datasets](#datasets)
+- [Exploring and checking data](#exploring)
+- [Making a scatterplot with `ggplot()`](#scatterplots)
+- [Introduction to Markdown](#markdown)
+
+
+
+
+# Working with data in R
+
+- [Storing data in variables](#variables)
+- [Passing data to functions using the pipe `%>%`](#pipe)
+- [Loading data from elsewhere](#loadingdata)
+- [The **Files** pane](#filespane)
+- [Uploading data files](#upload)
+- [Selecting rows with `filter()`](#filter)
+- [Summarising data using `summarise()`](#summarise)
+- [R comments](#comments)
+
+
+
+# Plotting and describing groups
+
+- How R stores different types of data,
+- How this affects the way we plot and summarise data
+- [Adding colour to a plot](#colour)
+- Factors and colour scales
+
+- [Making a boxplot with `ggplot()`](#boxplots)
+- [Using `group_by()`](#groupby) to make a summary table and compare groups
+
+- Extra example where participant RT data is aggregated first, then compared between groups
+
+
+
+# Answering questions with data
+
+Descriptive questions:
+
+- [Sorting data using `arrange()`](#arrange)
+- [Combining `filter()` with `arrange()`](#filterarrange)
+
+Testing hypotheses
+
+- Using a Bayesian t-test to quantify the evidence for differences between groups
+
+
+
+# Looking for relationships
+
+
+*Describing and understanding relationships*
+
+- geom_smooth
+- correlation
+- corrplot/matrix
+- geom_smooth with two groups or facets
+
+FROM 3???
+- Summary tables to reveal patterns in data (use Simpson's paradox as teaching example)
+- Facets in graphs; ggsave
+
+
+*Testing hypotheses*
+
+- Using a Bayesian correlation to quantify evidence for a relationship
+
+
+
+Introducing markdown and knitting

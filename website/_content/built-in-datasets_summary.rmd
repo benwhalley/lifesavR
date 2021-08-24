@@ -1,0 +1,19 @@
+### Datasets are like spreadsheets. They have have:
+
+- multiple rows, with one row per *observation*
+- multiple columns; each column has a name.
+- columns also (sometimes) get called *variables*; this can be confusing
+
+
+### Where are datasets?
+
+- R has some built-in datasets as learning examples
+- The `psydata` package includes datasets used in this course
+- Later on, we will import data from files (e.g. actual spreadsheets)
+
+
+### Exploring and checking data
+
+- View a whole dataset by typing its name and running it in a code chunk
+- `glimpse()` shows a list of all the columns, plus a few of the datapoints
+- The **Environment** pane shows a spreadsheet-like view of the data

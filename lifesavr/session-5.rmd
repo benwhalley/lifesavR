@@ -1,8 +1,0 @@
----
-title: "LifesaveR: Session 5"
-output: html_document
----
-
-# lifesaveR: Workbook 5
-
-This R Markdown document is your workbook for session five of the lifesaveR module.

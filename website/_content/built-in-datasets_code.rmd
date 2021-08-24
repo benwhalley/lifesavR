@@ -1,0 +1,19 @@
+
+```{r, eval=F}
+# always laod the tidyverse first
+library(tidyverse)
+
+# the psydata package contains datasets for this course
+library(psydata)
+
+# display the `fuel` dataset, by typing the name
+# and running this in a code chunk
+fuel
+
+# show only the first 6 rows of the `fuel` data
+head(fuel)
+
+# shows a list of columns in the `development` dataset
+# plus the first few datapoints (as many as will fit)
+glimpse(development)
+```

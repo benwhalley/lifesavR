@@ -1,0 +1,4 @@
+- Each session has an associated "workbook" file
+- They end with the file extension `".rmd"`
+- These were copied to your home folder by the bootstrap script (above)
+- Use them to complete the exercises in the worksheet

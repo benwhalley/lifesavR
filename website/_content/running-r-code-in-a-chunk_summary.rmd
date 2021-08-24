@@ -1,0 +1,3 @@
+- To run a line of code in a chunk, place your cursor on the line and press <span class="keyshape">Ctrl</span> + <span class="keyshape">↵</span> on Windows or Linux, or <span class="keyshape">⌘</span> + <span class="keyshape">↩</span> on a Mac.
+- You can run part of a line by first selecting only the code you want to run.
+- Pressing the green arrow on the right hand side of the chunk to run all code within a chunk.

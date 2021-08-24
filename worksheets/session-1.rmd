@@ -1,0 +1,102 @@
+---
+title: "LifesaveR: Session 1"
+output: html_document
+---
+
+# lifesaveR: Workbook 1
+
+This is an RMarkdown document. We will use a document like this as a workbook for 
+each of the sessions in the LifesaveR course.
+
+What to do: 
+
+- Use this document to complete and record your answers to the exercises in each session.
+- Edit the code and text below to save your work
+
+## An example plot
+
+The following chunk creates a scatter-plot of a built-in data set that contains information about diamonds. By the end of
+the second session, you will have learnt how to create similar plots.
+
+```{r}
+library(tidyverse)
+diamonds %>%
+  ggplot(aes(carat, price)) +
+  geom_point()
+```
+
+# Working interactively in R Markdown {#interactive}
+
+## Exercise 1
+
+1. Locate the first chunk in this workbook.
+1. Place your cursor (anywhere) on the line that says `library(tidyverse)`.
+1. Run the code.
+
+## Exercise 2
+
+Position your cursor on the line that says `diamonds` and run the code.
+
+## Exercise 3
+
+1. Select (highlight) the word `diamonds`.
+1. Run the code.
+
+## Exercise 4
+
+1. Create a chunk below these instructions
+1. Inside the chunk, write a line of code which adds together the numbers 9, 4, 55 and 2
+1. Run the the line of code you have written
+
+# Datasets
+
+## Exercise 5
+
+1. Create a new chunk below these instructions
+1. Load the `psydata` package
+1. Display the `fuel` dataset and try out the navigation buttons
+1. Write a line of code which makes a list of columns in the `development` datset
+
+## Exercise 6
+
+1. Create a new chunk below these instructions
+1. Load the `psydata` package if you haven't already done that in this work session
+1. Show the first 10 rows of the `development` data 
+
+# Scatterplots
+
+## Exercise 7
+
+1. Create a new chunk below these instructions
+1. Using the `fuel` dataset, create a scatterplot  with `engine_size` on the x-axis and `mpg` (miles per gallon, or fuel economy) on the y-axis
+
+# Check your knowledge
+
+[Write your answers below each questions and save your workbook for later]
+
+## How do you run part of a line of R code using the keyboard short cut?
+
+## Which library will you always need to load in your first R Markdown chunk?
+
+## What is `psydata`?
+
+## How would you look at/inspect a whole dataset?
+
+## What does `glimpse` do and when is it useful?
+
+## What is the 5th column in the `development` dataset?
+
+## Which function makes a plot?  (there are many, but we mean the one shown above)
+
+## Which function chooses the columns of data used in the plot?
+
+# Extension exercises
+
+## Extension exercise 1
+
+Use the `fuel` dataset to make a scatterplot with `power` on the x-axis and `mpg` on the y-axis.
+
+## Extension exercise 2
+
+1. Use `glimpse()` to get a list of the column names in the `iris` dataset.
+1. Make a scatterplot which shows the relationships between petal widths and lengths.

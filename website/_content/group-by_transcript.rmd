@@ -1,0 +1,141 @@
+In this video we'll use the `funimagery` dataset (in the `psydata`) package.
+This contains data from a randomised controlled trial run in
+Plymouth [@solbrig2019functional].
+
+The study compared two treatments for weight loss: Functional
+Imagery Training (FIT) and Motivational Interviewing (MI).
+
+
+We can see the columns in the dataset using `glimpse()`:
+
+```{r}
+funimagery %>% glimpse
+```
+
+Weight was measured three times, and these measurements are in the columns called `kg1`, `kg2` and `kg3`.
+
+- The first (`kg1`) was taken at *baseline*, when participants joined the study
+- The second (`kg2`) was taken at the end of treatment, 6 months after baseline
+- The final measurement (`kg3`) was made 12 months after baseline
+
+The `weight_lost_end_trt` column is the *difference* between `kg1` and `kg2` -- i.e.
+how much weight the participant lost after their treatment.
+
+
+
+We have already seen a plot like this which can compare scores between categories:
+
+```{r}
+funimagery %>%
+  ggplot(aes(intervention, weight_lost_end_trt)) +
+  geom_boxplot()
+```
+
+
+This graph is helpful, and makes the differences really clear. But what if we want the actual numbers in a table, or to report in the text of our paper?
+
+
+
+### Using `filter()` and `summarise()`
+
+One option would be to filter our data first and then summarise each subset in turn:
+
+```{r}
+funimagery %>%
+  filter(intervention=="MI") %>%
+  summarise(mean(weight_lost_end_trt))
+```
+
+The output (underneath the code) shows us the mean for the MI group. We then have to repeat that step for the FIT group:
+
+```{r}
+funimagery %>%
+  filter(intervention=="FIT") %>%
+  summarise(mean(weight_lost_end_trt))
+```
+
+
+That would be repetitive though, and would get annoying if there were lots of categories. Imagine doing something
+similar for each continent in the `development` data, for example.
+
+
+### Using `group_by()`
+
+Instead of using `filter()`, we can use `group_by()` to split our dataset into multiple groups, summarising each one separately:
+
+
+```{r}
+funimagery %>%
+  group_by(intervention) %>%
+  summarise(mean(weight_lost_end_trt))
+```
+
+
+Using `group_by()` before `summarise()` splits up the data depending on which `intervention` the participant
+was randomised to.  The `summarise()` function calculates the mean for each group separately.
+
+The result is a new `data.frame` with two columns: The name of the `intervention`, and the average weight lost. We could save
+this in a new variable for use later, if we liked:
+
+```{r}
+average_weight_losses <- funimagery %>%
+                          group_by(intervention) %>%
+                          summarise(mean(weight_lost_end_trt))
+```
+
+If you run this code, you can now see the new variable in the **Environment**, so it's stored for later.
+
+
+
+### Nested groups
+
+Sometimes we might want to group by more than one variable at once.
+
+Imagine we wanted to see if men and women responded differently to the two treatments?
+
+With `group_by()` this is really easy: just add the name of another column to group on (`gender`), separated with a comma:
+
+```{r}
+funimagery %>%
+  group_by(gender, intervention) %>%
+  summarise(mean(weight_lost_end_trt))
+```
+
+
+It looks like women lost a bit more weight on average, but FIT was better than MI for both men and women.
+
+
+
+### Multiple statistics
+
+With `summarise()` we can calculate multiple statistics at once for each of the groups:
+
+```{r}
+funimagery %>%
+  group_by(intervention) %>%
+  summarise(mean(weight_lost_end_trt), sd(weight_lost_end_trt))
+```
+
+### Give your new variables a name
+
+R gives the new columns a name based on the function we use to `summarise()` them.
+
+For example, if we use `mean()` on the `weight_lost_end_trt` variable then the new column is called `mean(weight_lost_end_trt)`.
+
+
+:::{.direction}
+
+- rerun code above and highlight where the name of the variable comes from
+
+:::
+
+Unfortunately, these new variable names contain parentheses and (sometimes) spaces which makes them harder to work
+with. It's much better to give the new column a specific name like this:
+
+```{r}
+funimagery %>%
+  group_by(intervention) %>%
+  summarise(mean_weight_lost_end_trt = mean(weight_lost_end_trt), sd_weight_lost_end_trt = sd(weight_lost_end_trt))
+```
+
+As a reminder, the names you use shouldn't include spaces or other 'special' characters.

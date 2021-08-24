@@ -1,0 +1,43 @@
+
+***Remember***:  This code relies on you first uploading your CSV data
+to the correct folder on the RStudio server. if you have problems see below or
+re-watch the video.
+
+
+### Preparation
+
+Before you run the code below, we asked you to:
+
+1. Download the CSV file from here: [shootings.csv](data/shootings.csv) and save it to you ***Desktop Folder***. Then,
+
+2. Upload it to the RStudio Server, in the same place as your Rmd worksheets
+
+3. Step is to use the code BELOW
+
+
+```{r eval=F}
+#read the CSV and assign it to a new variable, called `shootings`
+shootings <- read_csv('shootings.csv')
+
+
+# now we can inspect this dataset like any other:
+shootings %>% glimpse
+```
+
+
+### Troubleshooting
+
+If you see the error below it means you have not uploaded the data file (`.csv`) to
+the same place as your `.Rmd` worksheet, so check that first, and try uploading it again:
+
+
+<pre style="color:red">
+Error: 'shootings.csv' does not exist in current working directory ('/home/username').
+</pre>
+
+
+If you get this error or similar, it means you haven't loaded `tidyverse` yet:
+
+<pre style="color:red">
+Error in read_csv("shootings.csv") : could not find function "read_csv"
+</pre>

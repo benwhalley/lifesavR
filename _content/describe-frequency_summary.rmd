@@ -1,4 +1,0 @@
-- We can't calculate a mean or SD for Categorical variables
-- We still want to describe the pattern of responses
-- We can use `count()` and `group_by()` to make a *frequency table*
-- This is common in journal results sections (e.g. to describe characteristics of the sample like gender or education)

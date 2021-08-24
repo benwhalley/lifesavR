@@ -1,8 +1,0 @@
-```{r, eval=F}
-# colour each point; different colour for each Species
-iris %>%
-  ggplot(aes(Sepal.Length, Sepal.Width, color = Species)) +
-  geom_point()
-```
-
-

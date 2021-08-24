@@ -1,0 +1,5 @@
+- the *central tendency* of the data describes the "middle" of a set of values
+- the mean and median are the most common measures
+- measures of *spread* or distribution of the data show where most of the values fall (i.e. what range of values are most likely)
+- common measures are the standard deviation or interquartile range
+- we have already seen how to calculate these statistics using `summarise()` and `group_by()`

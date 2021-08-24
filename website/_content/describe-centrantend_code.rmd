@@ -1,0 +1,18 @@
+```{r}
+# this is a recap of earlier material
+
+# calculate an average
+# typical weight at baseline in the FIT trial
+funimagery %>%
+  summarise(mean(kg1))
+```
+
+
+```{r}
+# boxplots show the interquartile range (IQR) as the height of the box.
+# The IQR is the range which includes 50% of the data points
+funimagery %>%
+  ggplot(aes(intervention, kg1)) +
+  geom_boxplot() +
+  scale_y_continuous(n.breaks = 10) # this extra line just adds more marks on the y-axis
+```

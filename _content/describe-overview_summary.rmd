@@ -1,9 +1,0 @@
-
-- We collect data to ***answer questions***
-- The first step is to describe and visualise pattens in our data
-- Common descriptions include measures of:
-  - *central tendency* and *spread* of continuous variables (and of *differences* in these values)
-  - the *frequency* of categorical responses
-  - the *relationships* between variables (correlation)
-- After that, we can quantify our confidence (see next workshop)
-- Visualisation is an undervalued method for understanding data

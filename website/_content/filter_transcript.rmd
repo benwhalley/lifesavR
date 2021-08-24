@@ -1,0 +1,106 @@
+
+Some datasets are very large. We often want to work with a subset of the data, and `filter` makes this possible.
+
+### Categorical and text filters
+
+The following chunk filters the `development` dataset (from `psydata`) to include only rows where the `country` column equals "Kenya".
+
+
+```{r}
+library(psydata)
+
+development %>%
+  filter(country == "Kenya")
+```
+
+
+The `==` is called an "operator". It compares values from the column on the left hand side with the value specified on the right hand side.
+
+The value we are filtering for *must* match the column type.
+
+The value `"Kenya"` was in quotes because the country column is a factor (not numeric), and we need to
+match the text of the name of the country.
+
+
+It's important to be accurate when matching text. Capitalisation, punctuation and spaces all matter, so you need to be precise. Copy and paste wherever you can. For example:
+
+```{r}
+development %>%
+  filter(country=="kenya")
+```
+This doesn't match any rows because from R's point of view `"kenya"` and `"Kenya"` are completely different!
+
+### Numeric filters
+
+The "greater than" operator `>` filters on numeric columns. For example, `year` is
+a column in the `development` dataset.
+
+```{r}
+development %>% filter(year > 2000)
+```
+
+The code above filters rows where `year` is greater than 2000, showing us the result.
+
+The opposite of the `>` operator is the `<` operator. This filters numeric columns which are *less than* a value.
+
+### Combined filters
+
+You can combine filters in a pipeline to filter rows using multiple operators.
+
+```{r}
+development %>%
+  filter(country == "Kenya") %>%
+  filter(year > 2000)
+```
+
+This code filters rows leaving those where the country is `Kenya` and the year is greater than `2000`.
+
+### Storing and re-using filtered data
+
+
+When filtering, it's common to want to save a subset of a dataset to use again.
+
+For example, we might want to filter the data, make a table, and then also make a plot.
+
+The key step is to ***assign your filtered data to a new variable***.
+
+
+For example:
+
+
+```{r}
+development.europe <- development %>%
+  filter(continent == "Europe") %>%
+  filter(year > 1980)
+```
+
+This code filters rows leaving us with data for European countries after 1980.
+
+Importantly, it also stores this data in a *new variable*, called `development.europe`.
+
+We can look at this new subset of the data by typing and running its name, or by looking in the **Envrionment** pane.
+
+
+:::{.direction}
+
+- Demonstrate evaluating data subset and exploring this using the environment pane.
+
+:::
+
+
+Now that it is stored in a new variable, we can use these data in other code, for example to
+make a plot:
+
+```{r}
+development.europe %>%
+    ggplot(aes(gdp_per_capita, life_expectancy)) +
+  geom_point()
+```
+
+Or to calculate descriptive statistics for particular groups in the data (see the next section).
+
+
+### Don't forget to store filtered data
+
+Beginners often forget to assign their filtered data to a new variable. Make sure you give your variables
+short but descriptive names so you know what they are.

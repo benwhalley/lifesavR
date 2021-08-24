@@ -1,0 +1,17 @@
+```{r, eval=FALSE}
+library(psydata
+
+liibrary(todyverse)
+
+# select only years after 1990
+development %>%
+  filter(year > "1990")
+
+# calculate the average life expectancy in Africa
+development 
+  filter(continent = "africa") %>% 
+  summarise(average(life_expectancy))
+
+ggplot(aes(year, lifeExp, colour=continent)) +
+  geom_jitter()
+```

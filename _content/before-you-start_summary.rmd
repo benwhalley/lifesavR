@@ -1,2 +1,0 @@
-- Before starting you must run some R code to get set up.
-- **See the code tab or the exercise below.**

@@ -1,0 +1,155 @@
+The video introduces:
+
+- the different types of data we may have (e.g. continuous, categorical, text)
+- the way R stores these data and
+- the way that `ggplot()` presents them
+
+
+These might seem like small details — but having some understanding of what is happening will help later on: you
+will be able to control how your data are presented in tables and plots. It will also help you make sure
+your data are in the right format for other statistical tests.
+
+
+### Columns vs variables
+
+:::{.tip}
+
+This is really important. Make sure you are clear on the different meanings of the word 'variable'
+
+:::
+
+The word *variable* gets used in at least 4 different ways in quantitative research, and this confuses a lot of people.
+We can't avoid all ambiguity because these different usages are common in the field, but it helps to know
+about them in advance:
+
+
+- *variables in a theoretical model*. That is, things we think exist, and which *cause* other things to happen. An example would be "empathy", or "working memory".
+
+- *variables in a study design*. For example an experimental group allocation, or an attribute of participants like age or gender.
+
+- *variables in a dataset*. Here we mean a column of numbers in a dataset (e.g. a spreadsheet), where the column has a name. This usage overlaps with the previous two, but doesn't have to. For example, we might have a column of numbers recording participants' scores on an empathy questionnaire. But we might also have a column containing reaction times for multiple trials; analysed a certain way these reaction times might tell us something about working memory, but the column of reaction times isn't the same thing as the variable in our theoretical model.
+
+- *variables in R and computer programs*: This type of variable is a *general purpose container* which can store anything. Variables in R *can* contain columns of numbers, but they can also contain whole datasets, or graphs, or the results of statistical tests. **A variable in R often isn't the same thing as an experimental variable or a column in a dataset**.
+
+
+**In this guide use *variable* to mean either an experimental/theoretical variable or an R container.**
+**When we mean a column of data in a dataset we will use the word *column* instead.**
+
+
+
+### Types of variable
+
+If we are thinking about variables in a study design the main *types* to consider are:
+
+- *categorical* or *nominal* variables (sometimes also called *factors*): e.g. gender, education status
+- *binary* variables (a special category that is either `TRUE` or `FALSE`): e.g. smoker/non-smoker
+- *ordinal* variables (categorical responses where the order is important): e.g. a 1-7 response on a Likert-style question
+- *interval* or *continuous* variables: e.g. weight in kg, time in milliseconds
+- *count* variables (a frequency, measured in whole numbers): e.g. number of social contacts per week
+- *text* variables: e.g. free text responses to open-ended questionnaire items
+
+
+
+### Types of column
+
+Datasets have multiple columns, each with a unique name.
+
+In R, every column has a *data type*. These data types are normally determined by the type of variable. But there is
+some overlap, and different data types could be used to store the same variable. We sometimes need to convert between
+data types.
+
+There are four data types you need to know about in R:
+
+- *Factors*, which are used for categorical data (and sometimes ordinal data too)
+- *Text*, also called *character* or *string* data.
+- *Numeric* columns can called be either *integer* or *double*. Double is computer speak for 'double-precision number', which just means decimals and really big numbers are allowed
+- *Logical*, which can be used to store values that can only be either True or False.
+
+
+The important thing to know is that, although different types of variable are usually stored in the same
+type of column in R, *this isn't always the case*. Sometimes data can be stored as the wrong type---e.g.
+categorical data can end up stored as continuous--- and in these cases we need to convert from one
+format to another.
+
+
+You can see which data type is used to store a variable when using the `glimpse()` command introduced in
+Session 1 (see [here](session-1.html#exploring)).
+
+```{r}
+iris %>% glimpse()
+```
+
+In the output you can see the variable names listed on the left, followed by text in angle brackets, e.g.: `<dbl>` which
+is the abbreviated name of data type.
+
+In this built-in dataset, most of the data is numeric (`dbl`), but the `Species` variable is categorical, and stored as a factor (`fct`).
+
+It's possible to convert columns from one type to another, to suit our needs. We'll see more of this later.
+
+
+| Data/column type | Useful for             | Abbreviations used/subtypes | Often need to convert from |
+| ---------------- | ---------------------- | --------------------------- | -------------------------- |
+| Factor           | categorical, ordinal   | `fct`, `ord`                | text                       |
+| Text             | text, categorical      | `chr`                       | categorical                |
+| Numeric          | continuous, ordinal    | `int`, `dbl`                | categorical; text          |
+| Logical          | binary (boolean)       | `lgl`                       | numeric                    |
+
+
+
+
+### Column types determine the scales on graphs
+
+If we look at the `fuel` data we can see that most of the columns are stored as numeric data (`dbl`):
+
+```{r}
+fuel %>% glimpse()
+```
+
+This is fine if we want to make a scatter plot. In the example below we have 'miles per gallon' vs the weight of cars in the `fuel` dataset (in `psydata`):
+
+```{r}
+fuel %>%
+  ggplot(aes(weight, mpg)) +
+    geom_point()       
+```
+
+In this scatterplot both the x and y axes are ***continuous***.
+That is, they are numeric variables, using real numbers.
+
+
+However, if we want to make a boxplot of the `mpg` column using `cyl` (number of cylinders) as the `x` axis then we have a problem:
+
+```{r}
+fuel %>%
+  ggplot(aes(cyl, mpg)) +
+  geom_boxplot()
+```
+
+The warning message says `Continuous x aesthetic -- did you forget aes(group=...)?`. This is a
+clue as to what has gone wrong.
+
+We might have expected to see;
+
+- miles per gallon on the $y$ axis
+- three separate boxes, one each for 4, 6 and 8 cylinders
+
+This doesn't work as expected though.
+
+R spots that `cyl` is stored as numeric data, so it creates a continuous scale on the $x$ axis.
+Only one box is drawn at the midpoint of all the values of `cyl`;  because `cyl` ranges from
+4 to 6 the box appears at 6.
+
+
+We want to use `cyl` as a categorical variable, so we should convert it to a `factor`.
+Then our plot will work properly.
+
+We can use the command `factor(cyl)` to tell R that the $x$-axis is a factor:
+
+```{r}
+fuel %>%
+  ggplot(aes(factor(cyl), mpg)) +
+  geom_boxplot()
+```
+
+This gives us the boxplot we were expecting. The only change was to replace `cyl` with `factor(cyl)`.
+This tells R to convert the variable `cyl` to a factor, and  `ggplot()` can then set the scale of the x-axis correctly.

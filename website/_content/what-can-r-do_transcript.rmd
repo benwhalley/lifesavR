@@ -1,0 +1,38 @@
+R is a computer language for data analysis and visualisation.
+
+RStudio is a user interface to R; it helps you organise your work.
+
+R is a text-based language. You interact with it by typing commands and running (also called 'executing') them.
+
+R can do everything from simple arithmetic and plotting to complex data analysis.
+
+For example, you can do simple arithmetic like
+
+[`2 * 221`]
+
+We could generate some random numbers with a [normal distribution](https://www.khanacademy.org/math/statistics-probability/modeling-distributions-of-data/normal-distributions-library/a/normal-distributions-review)
+
+```{r}
+rnorm(10, 0,1)
+```
+
+
+And we could plot random numbers using a histogram
+
+```{r}
+hist(rnorm(100, 0,1))
+```
+
+------------
+
+You should think of R as a robot.
+
+The robot is extremely fast, powerful and tireless; but it’s also literal-minded, and
+won’t think for itself or take the initiative. You need to tell it *exactly* what to do, by providing very precise
+instructions.
+
+The advantage of writing detailed instructions is that you have a detailed, reproducible
+version of all your analyses.
+
+Reproducibility is a key topic in psychology and other natural sciences — learning R (or something like it)
+is an important skill for new psychologists.

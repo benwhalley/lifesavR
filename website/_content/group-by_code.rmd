@@ -1,0 +1,61 @@
+
+```{r, eval=F}
+# check the columns in the funimagery dataset
+# results of an RCT of functional imagery training for weight loss
+# conducted at the University of Plymouth
+funimagery %>% glimpse
+
+# boxplot to compare the intervention groups
+funimagery %>%
+  ggplot(aes(intervention, weight_lost_end_trt)) +
+  geom_boxplot()
+
+
+# calculate mean weight loss in each group in a laborious way
+funimagery %>%
+  filter(intervention=="MI") %>%
+  summarise(mean(weight_lost_end_trt))
+
+funimagery %>%
+  filter(intervention=="FIT") %>%
+  summarise(mean(weight_lost_end_trt))
+
+
+# use group_by to split the data and summarise each group
+funimagery %>%
+  group_by(intervention) %>%
+  summarise(mean(weight_lost_end_trt))
+
+# store the result (also a data.frame) in a new variable
+average_weight_loss <- funimagery %>%
+                          group_by(intervention) %>%
+                          summarise(mean(weight_lost_end_trt))
+
+
+# example of grouping by two columns at once
+funimagery %>%
+  group_by(gender, intervention) %>%
+  summarise(mean(weight_lost_end_trt))
+
+
+
+# calculate the mean and SD in one go
+funimagery %>%
+  group_by(intervention) %>%
+  summarise(
+    mean(weight_lost_end_trt),
+    sd(weight_lost_end_trt)
+  )
+
+
+# how to give your new summary columns a name
+# (this is good practice)
+funimagery %>%
+  group_by(intervention) %>%
+  summarise(
+    mean_weight_lost_end_trt = mean(weight_lost_end_trt),
+    sd_weight_lost_end_trt = sd(weight_lost_end_trt)
+  )
+
+
+```

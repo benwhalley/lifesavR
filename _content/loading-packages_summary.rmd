@@ -1,4 +1,0 @@
-- Loading a ***package*** adds functionality to R
-- Some packages (like `tidyverse` and `pysdata`) also include example datasets
-- To load tidyverse write `library(tidyverse)`
-- **Load `tidyverse` and `psydata` before each session**

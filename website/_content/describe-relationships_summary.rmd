@@ -1,0 +1,134 @@
+
+When we have 2 or more continuous variables, we can also describe the *relationships* between them.
+
+We have already seen how to use scatterplots to show the relationship between variables. For example,
+using the trial data again, we can show the relationship between weight at baseline and end of treatment:
+
+```{r, echo=F}
+# show the relationship between weight at baseline and end of treatment
+funimagery %>%
+  ggplot(aes(kg1, kg2)) +
+  geom_point() + coord_equal()
+```
+
+
+The scatterplot shows there is a ***strong, postive relationship*** between participants' weights at
+baseline and after treatment.
+
+Even though participants' weight does change in the trial, it is not by much.
+We can see this by the way the points for each participant line up close to the diagonal: if their weight
+stayed exactly the same we would see all the points in a line at 45 degrees from the graph origin.
+
+***The scatterplot is a powerful description of the data in its own right***. Psychologists have tended to undervalue data visualisation, so it's important to make plots like this with your own data.
+
+However, we do sometimes want to summarise the relationship further and describe the strength of the relationship in a single number. For this we use correlation.
+
+
+## Correlation
+
+A *correlation* is a single number which describes *how related* two continuous variables are.
+
+For a correlation to work the relationship between the variables must be ***linear***. That is, the line on the graph has to be (fairly) straight (as it is in the example above).
+
+
+To calculate a correlation we use the `correlate()` function in the `corrr` library.
+
+First we load the library:
+
+```{r}
+library(corrr)
+
+```
+
+
+Next we need to select the columns we want to correlate. In this case we want to use `kg1`, `kg2`, and `kg3` in the `funimagery` dataset.
+
+We can use `select()` to choose only these columns, and then use another pipe to send just those columns to `correlate()`:
+
+
+:::{.direction}
+
+- show selecting part of the code below
+- ie. select and run just the line up to `select()`
+- show how R spits out two columns of data below the chunk, rather than the whole dataset
+
+:::
+
+
+```{r, message=F}
+# select weight at baseline and follow-up an correlate them
+funimagery %>%
+  select(kg1, kg2, kg3) %>%
+  correlate()
+```
+
+The result of `correlate()` is a new dataset.
+
+It has one column for each of the variables we selected, plus an extra column called `term` for the variable
+being correlated.
+
+The numbers represent the **correlation coefficient** for each pair of variables.
+The correlation between a variable and itself is always perfect, so the numbers on
+the diagonal of the table are not shown (they are `NA`).
+
+
+:::{.direction}
+
+- show and talk through some of the values in the table at this point
+
+:::
+
+
+We can see here that the correlations are all above 0.9, which is very high.
+
+This isn't surprising though. Even when trying to lose weight if we
+measure the same person twice these observations are likely to be quite closely related.
+
+
+
+
+### Interpreting correlation coefficients
+
+A *correlation coefficient* (the number) can be between -1 and 1. It is never outside this range.
+
+The plot below shows examples o positive an negative correlations:
+
+```{r, echo=F, message=F}
+library(lavaan)
+f <- '
+y ~~ 1*y
+a ~~ 1*a
+b ~~ 1*b
+c ~~ 1*c
+y ~ 0*a
+y ~ 1*b
+y ~ -1*c
+'
+set.seed(1245)
+cordata <- simulateData(f, sample.nobs = 100, standardized = T)
+correlate(cordata)
+cordata %>%
+  rename(`Zero correlation`=a, `Positive (0.6)`=b, `Negative (-0.6)`=c) %>%
+  pivot_longer(-y) %>%
+  ggplot(aes(value, y)) + geom_point() + facet_wrap(~name) + coord_fixed()
+
+ggsave('correlation-examples.png')
+```
+
+However to get a real feel for what correlations of different values look like, you can play this game:
+
+[DEMO http://guessthecorrelation.com]
+
+![](images/guessthecorrelation.png)
+
+
+
+
+# Summary
+
+***Both plots and descriptive statistics are valuable ways of answering questions from the data.***
+Psychologists sometimes neglect them (especially plots) but they are important steps in developing
+understanding.
+
+- Boxplots are useful for describing the differences between groups
+- Scatterplots and smoothed-line plots help describe relationships

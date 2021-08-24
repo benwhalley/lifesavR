@@ -1,0 +1,63 @@
+We often need to link a few commands together which modify data before analysing it.
+
+For example, if we're working with a big dataset we might only want analyse part of the data. We could do this in stages by selecting only the columns we want to analyse, filtering out any rows we don't want to analyse, and then calculating some descriptive statistics for the data that's left.
+
+One way to do this would be to use variables to save the results of each stage, but this would produce lots of variables which can get confusing.
+
+A different approach is to use what's known as a 'pipe' — it's another way to link together multiple instructions.
+
+The pipe sends data from one piece of code to another.
+
+It looks like this `%>%`.  
+
+Press `Ctrl + Shift + M` (Windows/Linux) or `⌘ + Shift + M` (Mac) to add a pipe.
+
+In session 1, you used the following code to "pipe" the `mtcars` dataset into `head()`, which shows just the first few rows:
+
+```{r}
+mtcars %>% head()
+```
+
+You can think of your data as flowing along lengths of pipe, joined by functions which do things to the data, step by
+step, until the result you want plops out at the end.
+
+Each `%>%` should be read as the word "then", e.g. "pipe the `mtcars` dataset, *then* `head()` it".
+
+The `>` in the pipe function reminds you of the direction in which your data is flowing (it only works left to right).
+
+It's important to know that the pipe *doesn't store the results* of these steps.
+
+Sometimes that's OK. In our first example we just wanted to look at the first few rows of the `mtcars` data.
+
+But, you will usually want to save the result of a pipeline in a new variable.  
+For example, if we wanted to save the first few rows of the `mtcars` data  to a *new* variable we would write:
+
+```{r}
+mtcars_head <- mtcars %>% head()
+```
+
+Here we combine *assignment* with a *pipeline*.
+
+Remember that it is the final result of the commands on the right hand side of the `<-` that are assigned to the variable.
+
+The result of the pipeline (a `data.frame` containing the first few rows of `mtcars`) is saved to a
+new variable called `mtcars_head`.
+
+You can explore your variables using the **Environment** pane. A `data.frame` will have an icon that looks like a
+spreadsheet. If you click on the icon, the `data.frame` is displayed in a new tab in the **Source** pane.
+
+
+:::{.direction}
+
+- click on the `mtcars_head` icon
+
+:::
+
+
+This tab shows you the same information as printing the `data.frame`, such as the number of rows and columns, but it
+also provides tools for exploring the data interactively.
+
+* The arrows next to the column names allow you to arrange the rows in ascending or descending order based on the column
+values.
+* The `Filter` button allows you to specify a value for one or more columns to filter out non-matching rows. For
+example, we could display just cars with 4 gears. Click the button again to turn off the filter.

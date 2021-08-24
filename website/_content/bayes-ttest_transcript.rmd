@@ -1,0 +1,73 @@
+A 'Bayesian t-test' is a procedure which calculates the Bayes Factor for a difference between groups.
+
+That is, we get a Bayes Factor which tells us how likely the difference we see is to be 'real', rather than a fluke or due to sampling variation.
+
+Specifically, the Bayes Factor from a Bayesian t-test says how probable it is that two groups have a *different average score* for a *continuous variable*. This probability is *relative* to an alternative hypothesis that the average of each group is actually the same.
+
+Some people call these the *experimental* and *null* hypotheses, or H1 and H0.
+
+
+As we saw above, we can look at a boxplot and get an intuition for whether we think the
+difference is real by looking at how much the *distributions* of the two groups overlap (e.g. with the boxplot).
+
+[
+SHOW BOXPLOT AGAIN USING CODE BELOW
+There is not much overlap between the groups, so we intuit the difference is real
+]
+
+```{r, eval=F, echo=F}
+funimagery %>%
+  ggplot(aes(intervention, weight_lost_end_trt)) +
+  geom_boxplot()
+```
+
+
+
+If find a large Bayes Factor, this is evidence *for* the experimental hypothesis, as compared with the null hypothesis.
+
+
+### Running a t-test
+
+To run a t-test and calculate the Bayes Factor we first need to load the `BayesFactor` package:
+
+```{r}
+library(psydata)
+library(BayesFactor)
+```
+
+
+And then use the `ttestBF` function.
+
+
+```{r}
+ttestBF(formula = weight_lost_end_trt ~ intervention, data=funimagery)
+```
+
+:::{.direction}
+
+- Write out the ttestBF code
+- explain this is an old function, so looks slightly different
+- explain the formula
+- outcome variable to the left
+- the tilde symbol in the middle, means "is predicted by"
+- then the group variable on the right
+- we use `data=funimagery` to say which data
+
+:::
+
+
+The important part of the code here is where we write: `weight_lost_end_trt ~ intervention`. This tells R which column to use as the *outcome* and which to use as the group *predictor*. The tilde symbol, `~`, just means "is predicted by".
+
+
+
+
+```{r}
+fitbf <- ttestBF(formula = weight_lost_end_trt ~ intervention, data=funimagery) %>% 
+  as_tibble() %>% pull(bf) %>% .[1]
+```
+
+
+The number `r fitbf` is our Bayes Factor. This is a very large, so we have strong evidence that the difference in means is real.
+
+We explain how to interpret Bayes Factors in more detail in the section below, but large numbers are evidence *for* a difference.
+

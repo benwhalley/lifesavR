@@ -1,0 +1,69 @@
+With categorical data it's not possible to calculate averages; what would the
+average of 3 apples and 4 oranges be?
+
+Nonetheless, it is still useful to be able to describe the data and spot patterns.
+
+For example, if we were thinking about the `earnings` dataset we might
+ask things like:
+
+- *"How many men and women were included in the sample?"*
+- *"What proportion of participants worked in the public sector?"*
+- *"Was this proportion similar for men and women?*"
+
+
+The earnings data contained variables called `gender` and `job`, which give us the
+information to answer these questions:
+
+```{r}
+earnings %>% glimpse
+```
+
+
+
+### Using `count()`
+
+
+To count the frequency of different responses we can use the `count` function.
+
+
+
+For example, the following statement counts the total number of responses in our sample:
+
+
+```{r}
+# this gives us the total number of rows
+earnings %>% count()
+```
+
+However, we often want to count the number of observations by-group. For example, if we write:
+
+```{r}
+# numbers of men and women
+earnings %>%
+  count(gender)
+```
+
+Here we added `gender` inside `count()` so R knows to count the responses from each group separately.
+
+
+We can do arithmetic on these numbers to get the percentage of women in the sample:
+
+```{r}
+2353 / 4483 * 100
+```
+
+Later on you'll find ways to create a new column containing percentages, but this is fine for now.
+
+
+### Multiple subgroups
+
+What's neat about `count()` is that we can add more than one variable at once, and we get a count for each subgrouping:
+
+```{r}
+earnings %>%
+  count(job, gender)
+```
+
+You can re-order the table by changing the order in which you include `gender` and `job`.
+
+
