@@ -107,7 +107,7 @@ video_data <- list(identifier = "describe-relationships", ytidentifier = "yt-emb
 
 
 
-:::{.exercisee}
+:::{.exercise}
 
 - Remember to load the `corrr` package (use the `library` function)
 - Use the `fuel` dataset from the `psydata` package
@@ -117,7 +117,6 @@ video_data <- list(identifier = "describe-relationships", ytidentifier = "yt-emb
 
 
 
----
 
 
 :::{.exercise}
@@ -147,7 +146,7 @@ It's helpful to get a feel for what the data would look like for different corre
 :::{.exercise}
 
 
-Correlations require that there is a *linear relationship* between the two variables. That is, the pattern in a scatterplot should be fair close to a straight line. 
+Correlations require that there is a *linear relationship* between the two variables. That is, the pattern in a scatterplot should be fair close to a straight line.
 
 - Plot pairs of variables from the `fuel` dataset.
 - Which pairs would be NOT be suitable to use to calculate a correlation?
