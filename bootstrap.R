@@ -13,6 +13,7 @@ tryCatch(
     clonedreporesult <- system(paste0("git clone https://github.com/benwhalley/lifesavR/ ~/lifesavR", format(Sys.Date(), "%Y")))
     stopifnot(clonedreporesult==0)
     rm(list = ls()) # clear environment
+    rstudioapi::navigateToFile("~/lifesavR/")
     print("Success!")
   },
   error = errfun,
