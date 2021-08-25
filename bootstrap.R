@@ -13,9 +13,9 @@ tryCatch(
     lifesavrdir <- paste0("~/lifesavR", format(Sys.Date(), "%Y"))
     clonedreporesult <- system(paste0("git clone https://github.com/benwhalley/lifesavR/ ", lifesavrdir ))
     stopifnot(clonedreporesult==0)
-    rm(list = ls()) # clear environment
     rstudioapi::filesPaneNavigate(lifesavrdir)
     print("Success!")
+    rm(list = ls()) # clear environment
   },
   error = errfun,
   warning = errfun
