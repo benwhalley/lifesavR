@@ -1,39 +1,145 @@
-```{r, eval=F}
+We said earlier that R is a bit like an obedient robot; it will do exactly what you tell it to do.
+
+This means that you need to be very precise when writing R code.
+
+One of the key skills to develop is your ability to spot, and correct errors which will prevent your code from doing
+what you want it to.
+
+It's natural to make one or two mistakes, especially when you're first learning to use R. This video gives you some tips for avoiding and correcting errors in your R code.
+
+The more you practice, the less mistakes you will make and the easier you will find it to spot errors which creep into
+your code.
+
+R Studio has some features which can help you spot errors.
+
+Here's a chunk of code with various errors which we'll correct one by one.
+
+[CREATE NEW RMD, PASTE CODE EXAMPLE INTO A NEW CHUNK, SAVE]
+
+The first errors are in this line:
+
+```{r, eval=FALSE}
 liibrary(todyverse)
 ```
-We said earlier that R is a bit like an obedient robot; it will do exactly what you tell it to do.
+
+## Yellow triangle
+
+The yellow triangle with an exclamation mark is telling us that there is something wrong with this code.
+
+If we try to run this line, we get a red bar next to the code, and some errors in the console.
+
+[RUN CODE TO SHOW THAT IT DOESN'T WORK]
+
+It's best to fix errors that produce the yellow triangle before going any further.
+
+If you hover your pointer over the triangle, you will see a list of errors which R Studio has detected in the code.
 
 [HOVER OVER YELLOW TRIANGLE; TWO WARNINGS]
 
-[RUN CODE TO SHOW THAT IT DOESN'T WORK]
-[FIX ERROR IN FUNCTION NAME; POINT OUT IT'S NOW BLUE]
+The language used in these suggestions can be a bit confusing, but you can probably work out that R Studio is warning you that there's `no symbol named 'liibrary' in scope`, because of a simple typing error in the `library()` function.
+
+If we correct this, the warning goes away.
+
+[FIX ERROR IN FUNCTION NAME]
+
+You'll also notice that the function name `library` is now blue. This is another way to check that your functions have the correct spelling.
+
+If we run the code again, we now get a different error in the **Console**.
+
 [RUN CODE TO SHOW THAT IT STILL DOESN'T WORK]
 
-This error message is quite helpful. If you haven't spotted the problem already, the error message gives you a clue. It tells you that there's no package called `todyverse`, which should be enough for you to realise that you meant 'tidyverse'.
+This error message is quite helpful. It tells us that "there is no package called ‘todyverse’".
 
-[FIX ERROR IN PACKAGE NAME, EXECUTE LINE; POINT OUT GREEN BAR]
+If you haven't spotted the problem already, the error message gives you a clue. It should be enough for us to realise that we meant to type 'tidyverse'.
 
-Explain edit/execute loop.
+This line of code now works.
+
+[FIX ERROR IN PACKAGE NAME, POINT OUT YELLOW TRIANGLE GONE; EXECUTE LINE; POINT OUT GREEN BAR]
+
+### The edit/change/execute loop
+
+The approach to fixing errors I just demonstrated is a bit like testing hypotheses with experiments.
+
+Ideas about why your code isn't doing what you expect can be thought of as hypotheses.
+
+Making a change and then running the code is like designing and running an experiment. If the change you made resolves the error, then your experiment supports your hypothesis and you are one step closer to having working code.
+
+By repeating these "experiments" you should eventually resolve all errors and have the code which does exactly what you expect.
 
 ```{r, eval=F}
 library(psydata
 ```
 
+## Red circle with white cross
+
+Another symbol that R Studio uses to tell you that your code contains an error is the red circle with a white cross.
+
+Hovering over the cross gives you a clue about what the error is.
+
 [HOVER OVER RED CROSS]
 
-R Studio tries to be helpful, but doesn't always correctly identify the error. Error messages can be misleading. Here, the suggestion is that we've missed a comma. In actual fact, we've forgotten to close the parentheses to the `library()` function.
+R Studio doesn't always correctly identify the correct way to resolve an error.
 
-### Common errors
+Here, the suggestion is that we've missed a comma. In actual fact, we've forgotten to close the parentheses to the `library()` function.
 
-* Missing pipe
-* Missing assignment
-* Missing comma
-* %>% not + in ggplot()
-* forgot library(tidyverse)
-* PSYDATA should be lowercase
+Notice happens when we fix this error.
 
-### Style
+[ADD MISSING CLOSE PARENTHESIS]
+
+Not only does the cross on this line disappear, but a number of other crosses on subsequent lines also disappear, because they were also due to the missing close parenthesis.
+
+This explains why it's worth the effort to methodically resolve errors in the order they appear in your code.
+
+### Blue triangle
+
+The other symbol you may see is a blue triangle with a white "i".
+
+Your code will still work if this symbol is present, but it suggests something that will make it easier for you (and others) to read the code.
 
 [HOVER OVER BLUE I]
 
-spaces around `=` makes code easier to read.
+In this case, adding spaces around `=` makes the code easier to read.
+
+### Errors which R Studio can't detect
+
+Although your code my run, it may still not do what you expect.
+
+This is normally because your code contains errors relating to logic or data types.
+
+For example, we have a useful comment here which says that the next code selects only years after 1990.
+
+Whilst this code does run ...
+
+[RUN `filter()` CODE]
+
+... all of the rows in the the output have values for `year` which are *less than* 1990.
+
+This is a clue that we've made a logical error, and used `<` where we meant `>'.
+
+[RUN `filter()` CODE]
+
+The code to filter out non-Asian countries also runs, but doesn't return any rows.
+
+[RUN CORRECTED `filter()` CODE]
+
+This is an example of a data-driven error. The column containing "Asia" is `continent` not `country`.
+
+If we fix this error then the code does what we expect.
+
+[RUN CORRECTED `filter()` CODE]
+
+Remember, if you have a pipeline with multiple steps, you may need to select and execute just part of the pipeline to
+detect an error.
+
+### Common errors
+
+Common errors that you may run into at this stage in the module are:
+
+* Missing assignment operator `<-`
+* Missing pipe symbol `%>%`
+* Forgetting to include `library(tidyverse)`
+* Using `=` where `==` is required
+* Incorrect capitalisation
+* Using `%>%` rather than `+` in `ggplot()`
+
+You may also find this [more extensive list of common R errors](https://www.andywills.info/rminr/common-errors.html) useful.

@@ -83,28 +83,32 @@ Using the `fuel` dataset, `filter()` and `summarise()`, calculate:
 - the mean miles per gallon of cars with engine size > 3000
 - the standard deviation of miles per gallon in cars with 6 cylinders
 
-# Learning how to fix broken code{#fixing}
+# How to fix code errors
 
-[WIP: ignore for now]
+## Exercise 11
 
-Start a NEW R session and make this code work:
+1. Select the R Studio menu option `Session > New Session...`
+1. Select `Start within: Current Directory` and click **Start** (this will open a new tab)
+1. Open your Session 2 workbook in the new tab
+1. Correct all of the errors in the chunk below
+1. When the code is working, select `Session > Quit Session...`, then close the tab.
 
 ```{r}
-liibrary(todyverse)
-
+libary(Tidyverse)
 library(psydata
 
-# select only years after 1990
+# select cars with less than 8 cylinders
 development %>%
-  filter(year > "1990")
+  filter(cyl > 8)
 
 # calculate the average life expectancy in Africa
-development 
+development
   filter(continent = "africa") %>% 
   summarise(average(life_expectancy))
 
-ggplot(aes(year, lifeExp, colour=continent)) +
-  geom_jitter()
+# scatterplot of life expectancy against year with continent in colour
+ggplot(aes(year, lifeExp, colour=continent)) %>%
+  geom_scatterplot()
 ```
 
 # Check your knowledge

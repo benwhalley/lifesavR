@@ -42,7 +42,7 @@ subsets of the data. These are important building blocks for later sessions.
 - [Loading data from elsewhere](#loadingdata)
 - [Selecting rows with `filter()`](#filter)
 - [Summarising data using `summarise()`](#summarise)
-- [Learning how to fix broken code](#fixing)
+- [How to fix code errors](#fixing)
 
 <!-- Activity: -->
 
@@ -229,12 +229,10 @@ Use `filter()` and `summarise()` together to calculate the answers to these ques
 - the standard deviation of `mpg` in cars with 6 cylinders: `r fitb(sd6, tol=.1)`
 :::
 
-# Learning how to fix broken code{#fixing}
-
-[WIP: ignore for now]
+# How to fix code errors{#fixing}
 
 ```{r, echo=F}
-video_data <- list(identifier = "fixing-code", ytidentifier = "yt-embed", showcode = F)
+video_data <- list(identifier = "fixing-code", ytidentifier = "yt-embed", showcode = T)
 #makermds(video_data)
 ```
 
@@ -244,42 +242,48 @@ video_data <- list(identifier = "fixing-code", ytidentifier = "yt-embed", showco
 :::{.exercise}
 **Exercise 11**
 
-Start a NEW R session and make this code work:
+1. Select the R Studio menu option `Session > New Session...`
+1. Select `Start within: Current Directory` and click **Start** (this will open a new tab)
+1. Open your Session 2 workbook in the new tab
+1. Correct all of the errors in the chunk below
+1. When the code is working, select `Session > Quit Session...`, then close the tab.
 
 ```{r, eval=F}
-liibrary(todyverse)
+libary(Tidyverse)
+library(psydata
 
-# select only years after 1990
+# select cars with less than 8 cylinders
 development %>%
-  filter(year > "1990")
+  filter(cyl > 8)
 
 # calculate the average life expectancy in Africa
-development 
+development
   filter(continent = "africa") %>% 
   summarise(average(life_expectancy))
 
-ggplot(aes(year, lifeExp, colour=continent)) +
-  geom_jitter()
+# scatterplot of life expectancy against year with continent in colour
+ggplot(aes(year, lifeExp, colour=continent)) %>%
+  geom_scatterplot()
 ```
 
 :::
-NOTE - we will know all the errors they will see so can provide hints for each of them
 
-```{r}
+```{r, echo=FALSE, eval=FALSE}
 # correct version
 library(tidyverse)
+library(psydata)
 
-# select only years after 1990
-development %>%
-  filter(year > 1990)
+# select cars with less than 8 cylinders
+fuel %>%
+  filter(cyl < 8)
 
 # calculate the average life expectancy in Africa
 development %>%
-  filter(continent == "Africa") %>%
+  filter(continent == "Africa") %>% 
   summarise(mean(life_expectancy))
 
-development %>%
-  ggplot(aes(year, life_expectancy, colour=continent)) +
+# scatterplot of life expectancy against year with continent in colour
+development %>% ggplot(aes(year, life_expectancy, colour=continent)) +
   geom_point()
 ```
 
