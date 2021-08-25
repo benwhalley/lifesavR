@@ -12,8 +12,10 @@ tryCatch(
   {
     lifesavrdir <- paste0("~/lifesavR", format(Sys.Date(), "%Y"))
     clonedreporesult <- system(paste0("git clone https://github.com/benwhalley/lifesavR/ ", lifesavrdir ))
-    stopifnot(clonedreporesult==0)
-    rstudioapi::filesPaneNavigate(paste0(lifesavrdir, "/exercises"))
+    stopifnot(clonedreporesult == 0)
+    exercise_dir <- paste0(lifesavrdir, "/exercises")
+    rstudioapi::filesPaneNavigate(exercise_dir)
+    setwd(exercise_dir) # ensure 'new session + current directory' uses exercise dir
     print("Success!")
     rm(list = ls()) # clear environment
   },
