@@ -1,6 +1,7 @@
 # add library(tidyverse) here so that it's loaded for the first Session
 # even before they have ready about loading libraries
-library(tidyverse)
+
+suppressPackageStartupMessages(library(tidyverse))
 
 
 errfun <-  function(cond) {
