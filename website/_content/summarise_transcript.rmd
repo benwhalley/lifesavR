@@ -68,7 +68,11 @@ fuel_summary <- fuel %>%
   summarise(m = mean(mpg), sd = sd(mpg))
 ```
 
-[SHOW `fuel_summary` IN THE ENVIRONMENT.]
+:::{.direction}
+
+- Show `fuel_summary` in **Environment**
+
+:::
 
 Remember, the out from `summarise()` (in this case `fuel_summary`) is a `data.frame` that you could do more processing
 on in extra steps if needed.

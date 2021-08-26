@@ -37,11 +37,19 @@ make it easy to organise and run R code, and see the outputs.
 
 Provided you have already run the bootstrap script, click on the `lifesavr` folder in the **Files** pane of RStudio,
 
-[CLICK ON FILES FOLDER IN VIDEO.]
+:::{.direction}
+
+- Click on files folder
+
+:::
 
 You'll notice that some files have the extension `.rmd`. These are R Markdown files.
 
-[HIGHLIGHT FILE EXTENSION BY SELECTING OR POINTING WITH MOUSE.]
+:::{.direction}
+
+- Highlight file extension by selecting or pointing with mouse
+
+:::
 
 The file extension `.rmd` (or .`Rmd`) is important, because this is how R Studio knows that the files contain a mixture of R code and regular text.
 
@@ -116,8 +124,13 @@ For now, you can see we have a code chunk here:
 
 ```
 
-[SHOW CURSOR INTERACTING WITH THIS CODE CHUNK. PLACE CURSOR ANYWHERE ON THE LINE, THEN RUN THE STATEMENT BY PRESSING CTRL + ENTER ON THE KEYBOARD]
+:::{.direction}
 
+1. Show cursor interacting with this code chunk
+1. Place cursor anywhere on the line
+1. Run statement using Ctrl + Enter
+
+:::
 
 You can see that we put the cursor in the middle of this line of numbers that we wanted to add up.
 Then I pressed <span class="keyshape">Ctrl</span> + <span class="keyshape">↵</span>  (this would be the `Cmd` key on a Mac).
