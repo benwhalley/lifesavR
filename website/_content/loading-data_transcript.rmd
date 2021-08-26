@@ -28,7 +28,7 @@ For example, this code reads a dataset (`food_example.csv`) which is already in 
 food <- read_csv('food_example.csv')
 ```
 
-[ADD THIS CODE TO A CHUNK; RUN THE CHUNK]
+[ADD THIS CODE TO A CHUNK; RUN THE CODE]
 
 The data is read into the variable `food` as a `data.frame`.
 
