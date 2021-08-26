@@ -20,7 +20,30 @@ which have the file extension `.csv`.
 
 ### Loading CSV data
 
-There are 3 steps you must follow:
+We can load CSV data using `read_csv()`.
+
+For example, this code reads a dataset (`food_example.csv`) which is already in the same folder as your workbooks.
+
+```{r, eval=FALSE}
+food <- read_csv('food_example.csv')
+```
+
+:::{.direction}
+
+1. Add this code to a chunk
+1. Run the code
+
+:::
+
+The data is read into the variable `food` as a `data.frame`.
+
+:::{.direction}
+
+- Show `food` in **Environment** pane
+
+:::
+
+To load other CSV data, there are 3 steps you must follow:
 
 1. Collect or otherwise get hold of the CSV file you want to load
 2. Upload it to the RStudio server, in the same place as your R code (`.rmd` file)

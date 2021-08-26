@@ -65,5 +65,8 @@
     margin-right: auto;
 }
 
+.direction {
+  color: green; /* green for "go" and do a thing */
+}
 
 </style>
