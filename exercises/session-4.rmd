@@ -7,6 +7,14 @@ output: html_document
 
 This R Markdown document is your workbook for session four of the lifesaveR module.
 
+# Central tendency and spread
+
+## Exercise 1
+
+1. Use `group_by()` and `summarise()` with the built-in `iris` dataset to calculate the mean `Sepal.Width` for each `Species` of flower.
+1. Make a boxplot that shows the sepal width for each species of flower.
+
+
 # Check your knowledge
 
 ## What is the difference between `geom_jitter()` and `geom_point()`? 
