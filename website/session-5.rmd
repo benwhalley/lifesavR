@@ -39,11 +39,14 @@ The Bayes Factor (BF) is a single number which allows us to choose between diffe
 The important thing to remember about Bayes Factors is that they ***compare two possible hypotheses*** about how the data came about.  The ***meaning*** of the Bayes Factor completely depends on which hypotheses we compare.
 
 
+### Techniques covered
 
+- [Is this pattern a fluke?](#fluke)
+- [Do it: Bayesian t test](#bayest)
+- [Do it: Bayes Factor for correlations](#bayescor)
+- [Interpreting Bayes Factors](#bayesinterpreting)
 
-# Is this pattern a fluke?
-
-
+# Is this pattern a fluke?{#fluke}
 
 ```{r, echo=F}
 video_data <- list(identifier = "bayes-fluke", ytidentifier = "yt-embed")
@@ -55,7 +58,7 @@ video_data <- list(identifier = "bayes-fluke", ytidentifier = "yt-embed")
 
 
 
-# Do it: Bayesian t test
+# Do it: Bayesian t test{#bayest}
 
 
 ```{r, echo=F}
@@ -90,7 +93,7 @@ aa %>% as_data_frame() %>% group_by
 
 
 
-# Do it: Bayes Factor for correlations
+# Do it: Bayes Factor for correlations{#bayescor}
 
 ```{r, echo=F}
 video_data <- list(identifier = "bayes-corr", ytidentifier = "yt-embed")
@@ -102,7 +105,7 @@ video_data <- list(identifier = "bayes-corr", ytidentifier = "yt-embed")
 
 
 
-# Interpreting Bayes Factors
+# Interpreting Bayes Factors{#bayesinterpreting}
 
 The size of a Bayes Factor is mostly dependent on three things:
 
@@ -116,11 +119,9 @@ We return to this topic later but for now just remember that:
 - A Bayes Factor or 1 means each hypothesis is equally likely
 - A Bayes factor > 3 is a common threshold for thinking an effect is 'real' (although this threshold is arbitrary)
 - A Bayes Factor $< \frac{1}{3}$ is evidence *against* the effect being real
-- If the Bayes Factor is $> \frac{1}{3}$ and $<3$ then we say the result is ***inconclusive***.
+- If the Bayes Factor is $> \frac{1}{3}$ and $< 3$ then we say the result is ***inconclusive***.
 
-
-
-# Test your knowledge
+# Check your knowledge
 
 - What hypotheses are being compared when we calculate a Bayes Factor for a correlation?
 - Which function do we recommend to calculate correlation coefficients?

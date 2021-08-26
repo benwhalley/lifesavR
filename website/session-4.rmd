@@ -29,6 +29,11 @@ source('_first_chunk.R')
 
 # Overview
 
+### Techniques covered
+
+- [Central tendency and spread](#centralspread)
+- [The *frequency* of responses](#responsefrequency)
+- [Relationships](#relationships)
 
 ```{r, echo=F}
 video_data <- list(identifier = "describe-overview", showcode = F, ytidentifier = "yt-embed")
@@ -40,7 +45,7 @@ video_data <- list(identifier = "describe-overview", showcode = F, ytidentifier 
 
 
 
-# Central tendency and spread
+# Central tendency and spread{#centralspread}
 
 ```{r, echo=F}
 video_data <- list(identifier = "describe-centrantend", ytidentifier = "yt-embed")
@@ -70,7 +75,7 @@ TODO XXX
 :::
 
 
-# The *frequency* of responses
+# The *frequency* of responses{#responsefrequency}
 
 
 ```{r, echo=F}
@@ -96,7 +101,7 @@ video_data <- list(identifier = "describe-frequency", ytidentifier = "yt-embed")
 
 
 
-# Relationships
+# Relationships{#relationships}
 
 ```{r, echo=F}
 video_data <- list(identifier = "describe-relationships", ytidentifier = "yt-embed")
@@ -135,6 +140,13 @@ It's helpful to get a feel for what the data would look like for different corre
 :::
 
 
+# Check your knowledge
+
+Write an answer to each of these questions in the `Check your knowledge` section of your workbook. The answers will be
+revealed in Session 5.
+
+
+TODO XXX
 
 
 # Extension exercises
@@ -174,13 +186,6 @@ it's not a good statistic to describe the pattern we see here.
 
 
 
-# Check your knowledge
-
-Write an answer to each of these questions in the `Check your knowledge` section of your workbook. The answers will be
-revealed in Session 5.
-
-
-TODO XXX
 
 
 
