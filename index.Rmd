@@ -25,7 +25,7 @@ source('_first_chunk.R')
 - [Session 1](session-1.html): Getting started
 - [Session 2](session-2.html): Working with R
 - [Session 3](session-3.html): Grouped data
-- [Session 4](session-4.html): Describing patterns, answering questions 
+- [Session 4](session-4.html): Describing patterns, answering questions
 - [Session 5](session-5.html): Quantifying evidence
 
 
@@ -59,10 +59,10 @@ In martial arts, a blow to the head is direct and effective feedback that your b
 
 You might ask what you can do to succeed on this course and make the most of your training.
 
-Based on what we've observed in previous cohorts, the following attributes and approaches are 
+Based on what we've observed in previous cohorts, the following attributes and approaches are
 what seem to us to correlate with success.
 
-* Go slow, but be steady. Don't move on until you've understood each section. It's not a race or a competition with your peers (even if workshops can feel that way). 
+* Go slow, but be steady. Don't move on until you've understood each section. It's not a race or a competition with your peers (even if workshops can feel that way).
 
 * Be consistent. If you feel you might be slower than other students with this material allocate time to study outside of workshops now. Don't leave work until the end of the year — we will be adding new material each week, so this is a recipe for falling behind.
 
@@ -110,10 +110,13 @@ examples here is to the school's RStudio Server.
 -   [Login to your account on the server here](https://rstudio.plymouth.ac.uk)
 
 
-Unless you already  have a lot of experience with R, don't try to install it on 
+
+Unless you already  have a lot of experience with R, don't try to install it on
 your own computer. We find this creates unnecessary problems for students. Staff won't help
 you debug your work unless they are evident when using the school RStudio server.
 
+
+[[](images/firefox.png)](https://www.mozilla.org/en-GB/firefox/new/)
 
 
 

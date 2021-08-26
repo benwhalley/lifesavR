@@ -17,8 +17,8 @@ tryCatch(
     clonedreporesult <- system(paste0("git clone https://github.com/benwhalley/lifesavR/ ", lifesavrdir ))
     stopifnot(clonedreporesult==0)
     rstudioapi::filesPaneNavigate(paste0(lifesavrdir, "/exercises"))
-    print("Switching to the exercises folder.")
-    print("Success!")
+    message("Switching to the exercises folder.")
+    message("Success!")
     rm(list = ls()) # clear environment
   },
   error = errfun,
