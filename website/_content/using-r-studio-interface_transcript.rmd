@@ -2,9 +2,9 @@
 - Using a web browser to access [the RStudio Server at Plymouth University](https://rstudio.plymouth.ac.uk).
 
 :::{.tip}
-If you're using Windows or an older Mac we strongly recommend [downloading Firefox](https://www.mozilla.org/en-US/firefox/new/) and using that.  If you have any issues with RStudio this is likely the first suggestion we will make.
+If you're using Windows or an older Mac we strongly recommend [downloading Chrome](https://www.google.co.uk/chrome/) and using that.  If you have any issues with RStudio this is likely the first suggestion we will make.
 
-- [Install Firefox now](https://www.mozilla.org/en-US/firefox/new/)
+- [Install Chrome now](https://www.google.co.uk/chrome/)
 :::
 
 When you login to RStudio, you'll be greeted with a screen that looks something like the image below.
