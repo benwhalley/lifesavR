@@ -28,11 +28,20 @@ For example, this code reads a dataset (`food_example.csv`) which is already in 
 food <- read_csv('food_example.csv')
 ```
 
-[ADD THIS CODE TO A CHUNK; RUN THE CODE]
+:::{.direction}
+
+1. Add this code to a chunk
+1. Run the code
+
+:::
 
 The data is read into the variable `food` as a `data.frame`.
 
-[SHOW `food` IN THE ENVIRONMENT]
+:::{.direction}
+
+- Show `food` in **Environment** pane
+
+:::
 
 To load other CSV data, there are 3 steps you must follow:
 
