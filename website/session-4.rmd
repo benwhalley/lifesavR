@@ -52,6 +52,7 @@ video_data <- list(identifier = "describe-centrantend", ytidentifier = "yt-embed
 
 :::{.exercise}
 
+1. Open `session-4.rmd` using the **Files** pane. This is the workbook you will be using in this session.
 TODO XXX VERY SIMPLE REVISION EXERCISES IN WORKBOOK
 - USING GROUP_BY AND SUMARISE
 - MAKING A BOXPLOT WITH A DEMO DATASET
