@@ -72,6 +72,7 @@ video_data <- list(identifier = "boxplot-introduction", ytidentifier = "yt-embed
 :::{.exercise}
 **Exercise 1**
 
+1. Open `session-3.rmd` using the **Files** pane. This is the workbook you will be using in this session.
 1. Use the `iris` dataset to create a boxplot with `Species` on the x-axis and `Sepal.Width` on the y-axis (sepals are the leaves that encase an iris flower)
 
 Your boxplot should look like this:
