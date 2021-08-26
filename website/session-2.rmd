@@ -242,12 +242,9 @@ video_data <- list(identifier = "fixing-code", ytidentifier = "yt-embed", showco
 :::{.exercise}
 **Exercise 11**
 
-1. Select the R Studio menu option `Session > New Session...`
-1. Select `Start within: Current Directory` and click **Start** (this will open a new tab)
-1. Open your Session 2 workbook in the new tab
+1. Select the R Studio menu option `Session > Restart R`
+1. Ensure that the **Environment** pane is empty
 1. Correct all of the errors in the chunk below
-1. When the code is working, save your workbook
-1. Select `Session > Quit Session...`, then close the tab.
 
 ```{r, eval=F}
 libary(Tidyverse)
