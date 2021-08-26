@@ -56,12 +56,28 @@ video_data <- list(identifier = "describe-centrantend", ytidentifier = "yt-embed
 ```
 
 :::{.exercise}
+**Exercise 1**
 
 1. Open `session-4.rmd` using the **Files** pane. This is the workbook you will be using in this session.
-TODO XXX VERY SIMPLE REVISION EXERCISES IN WORKBOOK
-- USING GROUP_BY AND SUMARISE
-- MAKING A BOXPLOT WITH A DEMO DATASET
+1. Use `group_by()` and `summarise()` with the built-in `iris` dataset to calculate the mean `Sepal.Width` for each `Species` of flower.
+1. Make a boxplot that shows the sepal width for each species of flower.
 
+These are the correct numbers to check your work against:
+
+```{r, echo=F, include=T}
+iris %>%
+  group_by(Species) %>%
+  summarise(`Mean sepal width` =  sprintf("%.1f", mean(Sepal.Width) )) %>%
+  pander()
+```
+
+Your plot should look like this:
+
+```{r, echo=F, include=T}
+iris %>%
+  ggplot(aes(Species, Sepal.Width)) +
+  geom_boxplot()
+```
 :::
 
 
