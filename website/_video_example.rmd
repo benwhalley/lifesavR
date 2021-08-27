@@ -1,8 +1,0 @@
-```{r, echo=F}
-identifier <- "descriptive-hyphenated-filenames"
-ytidentifier <- "images/yt-embed.png"
-# makermds(identifier)
-```
-
-```{r child = '_content/_video_tabs.rmd'}
-```
