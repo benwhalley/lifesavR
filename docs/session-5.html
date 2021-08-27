@@ -1366,8 +1366,17 @@ img {
 <p>In the <a href="session-4.html">previous workshop</a> we learned techniques to describe and summarise data. Now we take the next step quantify how <em>sure</em> we are that the patterns are real, using the <em>Bayes Factor</em>.</p>
 <p>The Bayes Factor (BF) is a single number which allows us to choose between different <em>possible</em> hypotheses (explanations) of how our data were generated, based on which is most probable.</p>
 <p>The important thing to remember about Bayes Factors is that they <strong><em>compare two possible hypotheses</em></strong> about how the data came about. The <strong><em>meaning</em></strong> of the Bayes Factor completely depends on which hypotheses we compare.</p>
+<div id="techniques-covered" class="section level3">
+<h3>Techniques covered</h3>
+<ul>
+<li><a href="#fluke">Is this pattern a fluke?</a></li>
+<li><a href="#bayest">Do it: Bayesian t test</a></li>
+<li><a href="#bayescor">Do it: Bayes Factor for correlations</a></li>
+<li><a href="#bayesinterpreting">Interpreting Bayes Factors</a></li>
+</ul>
 </div>
-<div id="is-this-pattern-a-fluke" class="section level1">
+</div>
+<div id="fluke" class="section level1">
 <h1>Is this pattern a fluke?</h1>
 <div class="videowrapper">
 <div class="videowrapper-video">
@@ -1443,7 +1452,7 @@ Your browser does not support the video tag.
 </div>
 <!--end tabs and video wrapper -->
 </div>
-<div id="do-it-bayesian-t-test" class="section level1">
+<div id="bayest" class="section level1">
 <h1>Do it: Bayesian t test</h1>
 <div class="videowrapper">
 <div class="videowrapper-video">
@@ -1505,11 +1514,16 @@ Your browser does not support the video tag.
 <!-- Full transcript of the video -->
 <div id="bayes-ttest-transcript" class="tab-pane fade transcript">
 <p>A ‘Bayesian t-test’ is a procedure which calculates the Bayes Factor for a difference between groups.</p>
-<p>That is, we get a Bayes Factor which tells us how likely the difference we see is to be ‘real’, rather than a fluke or due to sampling variation.</p>
+<p>That is, we get a Bayes Factor which tells us how likely the difference we see is ‘real’, rather than a fluke or due to sampling variation.</p>
 <p>Specifically, the Bayes Factor from a Bayesian t-test says how probable it is that two groups have a <em>different average score</em> for a <em>continuous variable</em>. This probability is <em>relative</em> to an alternative hypothesis that the average of each group is actually the same.</p>
 <p>Some people call these the <em>experimental</em> and <em>null</em> hypotheses, or H1 and H0.</p>
-<p>As we saw above, we can look at a boxplot and get an intuition for whether we think the difference is real by looking at how much the <em>distributions</em> of the two groups overlap (e.g. with the boxplot).</p>
-<p>[ SHOW BOXPLOT AGAIN USING CODE BELOW There is not much overlap between the groups, so we intuit the difference is real]</p>
+<p>As we saw above, we can look at a boxplot and get an intuition for whether we think the difference is real by looking at how much the <em>distributions</em> of the two groups overlap.</p>
+<div class="direction">
+<ul>
+<li>Show boxplot again using code below</li>
+</ul>
+</div>
+<p>There is not much overlap between the groups, so we intuit the difference is real</p>
 <p>If find a large Bayes Factor, this is evidence <em>for</em> the experimental hypothesis, as compared with the null hypothesis.</p>
 <div id="running-a-t-test" class="section level3">
 <h3>Running a t-test</h3>
@@ -1535,12 +1549,13 @@ Your browser does not support the video tag.
 <li>the tilde symbol in the middle, means “is predicted by”</li>
 <li>then the group variable on the right</li>
 <li>we use <code>data=funimagery</code> to say which data</li>
+<li>show 2 factor levels in <code>funimagery</code></li>
 </ul>
 </div>
 <p>The important part of the code here is where we write: <code>weight_lost_end_trt ~ intervention</code>. This tells R which column to use as the <em>outcome</em> and which to use as the group <em>predictor</em>. The tilde symbol, <code>~</code>, just means “is predicted by”.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>fitbf &lt;-<span class="st"> </span><span class="kw">ttestBF</span>(<span class="dt">formula =</span> weight_lost_end_trt <span class="op">~</span><span class="st"> </span>intervention, <span class="dt">data=</span>funimagery) <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">as_tibble</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pull</span>(bf) <span class="op">%&gt;%</span><span class="st"> </span>.[<span class="dv">1</span>]</span></code></pre></div>
-<p>The number 5.1564753^{5} is our Bayes Factor. This is a very large, so we have strong evidence that the difference in means is real.</p>
+<p>The number 5.1564753^{5} is our Bayes Factor. This is very large, so we have strong evidence that the difference in means is real.</p>
 <p>We explain how to interpret Bayes Factors in more detail in the section below, but large numbers are evidence <em>for</em> a difference.</p>
 </div>
 </div>
@@ -1565,20 +1580,20 @@ Your browser does not support the video tag.
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a><span class="co"># A tibble: 10,000 x 5</span></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a>      mu <span class="st">`</span><span class="dt">beta (x - y)</span><span class="st">`</span>  sig2 delta      g</span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true"></a>   <span class="op">&lt;</span>dbl<span class="op">&gt;</span><span class="st">          </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span><span class="st"> </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span><span class="st"> </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span><span class="st">  </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true"></a><span class="st"> </span><span class="dv">1</span>  <span class="fl">46.4</span>          <span class="fl">-87.7</span>  <span class="fl">110.</span> <span class="fl">-8.35</span>   <span class="fl">54.0</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true"></a> <span class="dv">2</span>  <span class="fl">46.7</span>          <span class="fl">-88.0</span>  <span class="fl">100.</span> <span class="fl">-8.78</span>   <span class="fl">12.6</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true"></a> <span class="dv">3</span>  <span class="fl">46.5</span>          <span class="fl">-88.8</span>  <span class="fl">109.</span> <span class="fl">-8.48</span>   <span class="fl">96.2</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true"></a> <span class="dv">4</span>  <span class="fl">45.2</span>          <span class="fl">-89.7</span>  <span class="fl">114.</span> <span class="fl">-8.40</span>   <span class="fl">93.0</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true"></a> <span class="dv">5</span>  <span class="fl">46.2</span>          <span class="fl">-89.6</span>  <span class="fl">118.</span> <span class="fl">-8.24</span>   <span class="fl">14.3</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true"></a> <span class="dv">6</span>  <span class="fl">46.4</span>          <span class="fl">-90.0</span>  <span class="fl">114.</span> <span class="fl">-8.45</span> <span class="fl">1376.</span> </span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true"></a> <span class="dv">7</span>  <span class="fl">45.4</span>          <span class="fl">-88.6</span>  <span class="fl">131.</span> <span class="fl">-7.75</span>   <span class="fl">58.4</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true"></a> <span class="dv">8</span>  <span class="fl">45.6</span>          <span class="fl">-89.7</span>  <span class="fl">110.</span> <span class="fl">-8.56</span>   <span class="fl">11.2</span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true"></a> <span class="dv">9</span>  <span class="fl">44.2</span>          <span class="fl">-88.4</span>  <span class="fl">120.</span> <span class="fl">-8.08</span>  <span class="fl">111.</span> </span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true"></a><span class="dv">10</span>  <span class="fl">46.2</span>          <span class="fl">-89.9</span>  <span class="fl">125.</span> <span class="fl">-8.04</span>   <span class="fl">39.1</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true"></a><span class="st"> </span><span class="dv">1</span>  <span class="fl">44.8</span>          <span class="fl">-89.1</span>  <span class="fl">122.</span> <span class="fl">-8.08</span>   <span class="fl">22.3</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true"></a> <span class="dv">2</span>  <span class="fl">46.0</span>          <span class="fl">-88.1</span>  <span class="fl">143.</span> <span class="fl">-7.38</span>   <span class="fl">77.1</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true"></a> <span class="dv">3</span>  <span class="fl">45.8</span>          <span class="fl">-91.1</span>  <span class="fl">121.</span> <span class="fl">-8.27</span> <span class="fl">1646.</span> </span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true"></a> <span class="dv">4</span>  <span class="fl">45.8</span>          <span class="fl">-86.9</span>  <span class="fl">105.</span> <span class="fl">-8.50</span> <span class="fl">7708.</span> </span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true"></a> <span class="dv">5</span>  <span class="fl">46.4</span>          <span class="fl">-88.9</span>  <span class="fl">125.</span> <span class="fl">-7.95</span>   <span class="fl">71.9</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true"></a> <span class="dv">6</span>  <span class="fl">44.1</span>          <span class="fl">-88.2</span>  <span class="fl">120.</span> <span class="fl">-8.05</span>   <span class="fl">58.1</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true"></a> <span class="dv">7</span>  <span class="fl">45.6</span>          <span class="fl">-87.7</span>  <span class="fl">115.</span> <span class="fl">-8.19</span>   <span class="fl">93.7</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true"></a> <span class="dv">8</span>  <span class="fl">45.4</span>          <span class="fl">-92.6</span>  <span class="fl">103.</span> <span class="fl">-9.13</span>  <span class="fl">173.</span> </span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true"></a> <span class="dv">9</span>  <span class="fl">45.7</span>          <span class="fl">-89.0</span>  <span class="fl">108.</span> <span class="fl">-8.57</span>   <span class="fl">11.1</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true"></a><span class="dv">10</span>  <span class="fl">47.3</span>          <span class="fl">-87.2</span>  <span class="fl">128.</span> <span class="fl">-7.70</span>  <span class="fl">169.</span> </span>
 <span id="cb7-17"><a href="#cb7-17" aria-hidden="true"></a><span class="co"># … with 9,990 more rows</span></span></code></pre></div>
 </div>
 </div>
-<div id="do-it-bayes-factor-for-correlations" class="section level1">
+<div id="bayescor" class="section level1">
 <h1>Do it: Bayes Factor for correlations</h1>
 <div class="videowrapper">
 <div class="videowrapper-video">
@@ -1708,7 +1723,7 @@ Your browser does not support the video tag.
 </div>
 <!--end tabs and video wrapper -->
 </div>
-<div id="interpreting-bayes-factors" class="section level1">
+<div id="bayesinterpreting" class="section level1">
 <h1>Interpreting Bayes Factors</h1>
 <p>The size of a Bayes Factor is mostly dependent on three things:</p>
 <ul>
@@ -1721,11 +1736,11 @@ Your browser does not support the video tag.
 <li>A Bayes Factor or 1 means each hypothesis is equally likely</li>
 <li>A Bayes factor &gt; 3 is a common threshold for thinking an effect is ‘real’ (although this threshold is arbitrary)</li>
 <li>A Bayes Factor <span class="math inline">\(&lt; \frac{1}{3}\)</span> is evidence <em>against</em> the effect being real</li>
-<li>If the Bayes Factor is <span class="math inline">\(&gt; \frac{1}{3}\)</span> and <span class="math inline">\(&lt;3\)</span> then we say the result is <strong><em>inconclusive</em></strong>.</li>
+<li>If the Bayes Factor is <span class="math inline">\(&gt; \frac{1}{3}\)</span> and <span class="math inline">\(&lt; 3\)</span> then we say the result is <strong><em>inconclusive</em></strong>.</li>
 </ul>
 </div>
-<div id="test-your-knowledge" class="section level1">
-<h1>Test your knowledge</h1>
+<div id="check-your-knowledge" class="section level1">
+<h1>Check your knowledge</h1>
 <ul>
 <li>What hypotheses are being compared when we calculate a Bayes Factor for a correlation?</li>
 <li>Which function do we recommend to calculate correlation coefficients?</li>
@@ -1748,11 +1763,11 @@ Your browser does not support the video tag.
       	<button type="button" class="close">×</button>
         <ul>
         <li><a href="#overview">Overview</a></li>
-        <li><a href="#is-this-pattern-a-fluke">Is this pattern a fluke?</a></li>
-        <li><a href="#do-it-bayesian-t-test">Do it: Bayesian t test</a></li>
-        <li><a href="#do-it-bayes-factor-for-correlations">Do it: Bayes Factor for correlations</a></li>
-        <li><a href="#interpreting-bayes-factors">Interpreting Bayes Factors</a></li>
-        <li><a href="#test-your-knowledge">Test your knowledge</a></li>
+        <li><a href="#fluke">Is this pattern a fluke?</a></li>
+        <li><a href="#bayest">Do it: Bayesian t test</a></li>
+        <li><a href="#bayescor">Do it: Bayes Factor for correlations</a></li>
+        <li><a href="#bayesinterpreting">Interpreting Bayes Factors</a></li>
+        <li><a href="#check-your-knowledge">Check your knowledge</a></li>
         <li><a href="#references">References</a></li>
         </ul>
       </div>
