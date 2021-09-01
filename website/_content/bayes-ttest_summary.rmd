@@ -6,4 +6,4 @@
 - Use the `ttestBF` function in R  (load `BayesFactor` first)
 - Bayes Factors range from zero to infinity
 - Large Bayes Factors are evidence ***for some difference***
-- Check which *direction* with a boxplot
+- Use a boxplot to check the *direction* of any difference
