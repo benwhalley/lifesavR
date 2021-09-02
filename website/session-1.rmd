@@ -155,7 +155,7 @@ also run part of a line by highlighting just the code you want to run, as you'll
 
 This prints the first few lines of the `mtcars` data:
 
-![Example of running highlighted code](images/diamonds.png)
+![Example of running highlighted code](images/mtcars.png)
 
 :::
 
@@ -163,7 +163,7 @@ This prints the first few lines of the `mtcars` data:
 
 **Exercise 3: Making new chunks**
 
-1. Find the instructions for Exercise 4 in your workbook.
+1. Find the instructions for Exercise 3 in your workbook.
 1. Create a new chunk below the instructions.
 1. Inside the chunk, write a line of code which adds together the numbers 9, 4, 55 and 2.
 1. Run the the line of code you have written.
@@ -227,7 +227,7 @@ video_data <- list(identifier = "built-in-datasets", ytidentifier = "yt-embed")
 **Exercise 4**
 
 1. Open your workbook for this workshop (called `session-1.rmd`).
-1. Create a new chunk below the `Exercise 5` heading
+1. Create a new chunk below the `Exercise 4` instructions
 1. Load the `psydata` package
 1. Display the `fuel` dataset and try out the navigation buttons.
 1. Make a list of the columns in the `development` datset
@@ -248,7 +248,7 @@ The output should look something like this:
 
 In your workbook (`session-1.rmd`):
 
-1. Create a new chunk below the `Exercise 6` heading
+1. Create a new chunk below the `Exercise 5` instructions
 1. Load the `psydata` package (if you haven't already)
 1. Show the first 10 rows of the `development` data using `head()`
 
@@ -274,7 +274,7 @@ video_data <- list(identifier = "scatterplots", ytidentifier = "yt-embed")
 
 **Exercise 6**
 
-1. Create a new chunk below the `Exercise 7` heading in your workbook.
+1. Create a new chunk below the `Exercise 6` instructions in your workbook.
 1. Using the `fuel` dataset, create a scatterplot with `engine_size` on the x-axis and `mpg` (miles per gallon, or fuel economy) on the y-axis.
 1. Run the chunk.
 
