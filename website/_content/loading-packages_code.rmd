@@ -4,4 +4,7 @@ The following R code is used in the video:
 # load the tidyverse package
 # (this also loads the diamonds example dataset, and some others)
 library(tidyverse)
+diamonds %>%
+  ggplot(aes(carat, price)) +
+  geom_point()
 ```

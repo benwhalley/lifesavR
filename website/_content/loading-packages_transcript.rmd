@@ -18,7 +18,17 @@ You also need to remember to actually **run** the lines of code to load the libr
 Beginners often forget to do this — but it's an easy error to fix.
 
 :::{.direction}
-1. Demonstrate error when running example plot in Workbook 1 if `tidyverse` hasn't been loaded
+* Demonstrate error when running following plot if `tidyverse` hasn't been loaded
+:::
+
+```{r, eval=F}
+library(tidyverse)
+diamonds %>%
+  ggplot(aes(carat, price)) +
+  geom_point()
+```
+
+:::{.direction}
 1. Load `tidyverse`
 1. Re-run example plot to show that it now works
 :::
