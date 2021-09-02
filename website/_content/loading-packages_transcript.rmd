@@ -15,7 +15,7 @@ It's a good idea to start your documents with a chunk which loads any packages y
 have been loaded, and avoids loading them twice which is occasionally a problem.
 
 You also need to remember to actually **run** the lines of code to load the libraries.
-Beginners often forget to do this — but it's an easy error to fix.
+Beginners often forget to do this — but it's an easy error to fix.
 
 :::{.direction}
 * Demonstrate error when running following plot if `tidyverse` hasn't been loaded
