@@ -13,15 +13,12 @@ What to do:
 - Use this document to complete and record your answers to the exercises in each session.
 - Edit the code and text below to save your work
 
-## An example plot
+## An example
 
-The following chunk creates a scatter-plot of a built-in data set that contains information about cars. By the end of
-the second session, you will have learnt how to create similar plots.
+The following chunk adds together three numbers:
 
 ```{r}
-mtcars %>%
-  ggplot(aes(wt, mpg)) +
-  geom_point()
+10 + 12 + 20
 ```
 
 # Working interactively in R Markdown {#interactive}
@@ -29,12 +26,12 @@ mtcars %>%
 ## Exercise 1
 
 1. Locate the first chunk in this workbook.
-1. Place your cursor (anywhere) on the line that says `mtcars`.
+1. Place your cursor (anywhere) on the line of R code which adds three numbers.
 1. Run the code.
 
 ## Exercise 2
 
-1. Select (highlight) the word `mtcars`.
+1. Select (highlight) the last two numbers in the sum.
 1. Run the code.
 
 ## Exercise 3

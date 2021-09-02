@@ -129,31 +129,29 @@ video_data <- list(identifier = "working-interactively-in-r", ytidentifier = "yt
 **Exercise 1**
 
 1. Locate the first chunk in `session-1.rmd` (you find this in the **Files** pane)
-1. Place your cursor (anywhere) on the line that says `mtcars`
+1. Place your cursor (anywhere) on the line of R code
 1. Run the code by pressing <span class="keyshape">Ctrl</span> + <span class="keyshape">↵</span> (Windows, Linux) or
    <span class="keyshape">⌘</span> + <span class="keyshape">↩</span> (Mac)
 
-You should see the following scatter plot of the `mtcars` dataset appear below the chunk:
+You should see the result of the sum appear below the chunk:
 
 ```{r diamonds-plot, echo=FALSE}
-mtcars %>%
-  ggplot(aes(wt, mpg)) +
-  geom_point()
+10 + 12 + 20
 ```
 
 :::
 
-Congratulations! You have just run your first lines of R. The code to produce the plot consisted of three lines. You can
-also run part of a line by highlighting just the code you want to run, as you'll see in the next exercise.
+Congratulations! You have just run your first line of R. You can also run part of a line by highlighting just the code
+you want to run, as you'll see in the next exercise.
 
 :::{.exercise}
 
 **Exercise 2**
 
-1. Select (highlight) the word `mtcars`.
+1. Select (highlight) the last two numbers in the sum.
 1. Run the code.
 
-This prints the first few lines of the `mtcars` data:
+This adds up two of the three numbers:
 
 ![Example of running highlighted code](images/mtcars.png)
 
