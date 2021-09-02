@@ -15,13 +15,12 @@ What to do:
 
 ## An example plot
 
-The following chunk creates a scatter-plot of a built-in data set that contains information about diamonds. By the end of
+The following chunk creates a scatter-plot of a built-in data set that contains information about cars. By the end of
 the second session, you will have learnt how to create similar plots.
 
 ```{r}
-library(tidyverse)
-diamonds %>%
-  ggplot(aes(carat, price)) +
+mtcars %>%
+  ggplot(aes(wt, mpg)) +
   geom_point()
 ```
 
@@ -30,19 +29,15 @@ diamonds %>%
 ## Exercise 1
 
 1. Locate the first chunk in this workbook.
-1. Place your cursor (anywhere) on the line that says `library(tidyverse)`.
+1. Place your cursor (anywhere) on the line that says `mtcars`.
 1. Run the code.
 
 ## Exercise 2
 
-Position your cursor on the line that says `diamonds` and run the code.
-
-## Exercise 3
-
-1. Select (highlight) the word `diamonds`.
+1. Select (highlight) the word `mtcars`.
 1. Run the code.
 
-## Exercise 4
+## Exercise 3
 
 1. Create a chunk below these instructions
 1. Inside the chunk, write a line of code which adds together the numbers 9, 4, 55 and 2
@@ -50,14 +45,14 @@ Position your cursor on the line that says `diamonds` and run the code.
 
 # Datasets
 
-## Exercise 5
+## Exercise 4
 
 1. Create a new chunk below these instructions
 1. Load the `psydata` package
 1. Display the `fuel` dataset and try out the navigation buttons
 1. Write a line of code which makes a list of columns in the `development` datset
 
-## Exercise 6
+## Exercise 5
 
 1. Create a new chunk below these instructions
 1. Load the `psydata` package if you haven't already done that in this work session
@@ -65,7 +60,7 @@ Position your cursor on the line that says `diamonds` and run the code.
 
 # Scatterplots
 
-## Exercise 7
+## Exercise 6
 
 1. Create a new chunk below these instructions
 1. Using the `fuel` dataset, create a scatterplot  with `engine_size` on the x-axis and `mpg` (miles per gallon, or fuel economy) on the y-axis

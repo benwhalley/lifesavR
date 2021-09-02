@@ -124,36 +124,20 @@ video_data <- list(identifier = "working-interactively-in-r", ytidentifier = "yt
 
 ```
 
-
-XXX PAUL CAN YOU REPLACE THESE WITH EXERCISES WHICH DON"T REQUIRE LOADING A PACKAGE UNTIL WE HAVE INTRODUCED BELOW... JUST USE SIMPLE ARITHMETIC FOR NOW, OR PERHAPS PLOT A BUILT IN DATASET
-
-
-
-
 :::{.exercise}
 
 **Exercise 1**
 
 1. Locate the first chunk in `session-1.rmd` (you find this in the **Files** pane)
-1. Place your cursor (anywhere) on the line that says `library(tidyverse)` (this code is explained in the next section)
+1. Place your cursor (anywhere) on the line that says `mtcars`
 1. Run the code by pressing <span class="keyshape">Ctrl</span> + <span class="keyshape">↵</span> (Windows, Linux) or
    <span class="keyshape">⌘</span> + <span class="keyshape">↩</span> (Mac)
 
-You will see some output appear beneath the chunk. Don't worry about the details for now, we'll explain those later.
-
-:::
-
-:::{.exercise}
-
-**Exercise 2**
-
-Position your cursor on the line that says `diamonds` and run the code.
-
-You should see the following scatter plot of the diamonds data appear below the chunk:
+You should see the following scatter plot of the `mtcars` dataset appear below the chunk:
 
 ```{r diamonds-plot, echo=FALSE}
-diamonds %>%
-  ggplot(aes(carat, price)) +
+mtcars %>%
+  ggplot(aes(wt, mpg)) +
   geom_point()
 ```
 
@@ -164,12 +148,12 @@ also run part of a line by highlighting just the code you want to run, as you'll
 
 :::{.exercise}
 
-**Exercise 3**
+**Exercise 2**
 
-1. Select (highlight) the word `diamonds`.
+1. Select (highlight) the word `mtcars`.
 1. Run the code.
 
-This prints the first few lines of the diamonds data:
+This prints the first few lines of the `mtcars` data:
 
 ![Example of running highlighted code](images/diamonds.png)
 
@@ -177,7 +161,7 @@ This prints the first few lines of the diamonds data:
 
 :::{.exercise}
 
-**Exercise 4: Making new chunks**
+**Exercise 3: Making new chunks**
 
 1. Find the instructions for Exercise 4 in your workbook.
 1. Create a new chunk below the instructions.
@@ -186,7 +170,7 @@ This prints the first few lines of the diamonds data:
 
 The output from the chunk should look like this:
 
-![Result from Exercise 4](images/ex4.png)
+![Result from Exercise 3](images/ex4.png)
 :::
 
 # Packages {#packages}
@@ -240,7 +224,7 @@ video_data <- list(identifier = "built-in-datasets", ytidentifier = "yt-embed")
 
 :::{.exercise}
 
-**Exercise 5**
+**Exercise 4**
 
 1. Open your workbook for this workshop (called `session-1.rmd`).
 1. Create a new chunk below the `Exercise 5` heading
@@ -260,7 +244,7 @@ The output should look something like this:
 
 :::{.exercise}
 
-**Exercise 6**
+**Exercise 5**
 
 In your workbook (`session-1.rmd`):
 
@@ -288,7 +272,7 @@ video_data <- list(identifier = "scatterplots", ytidentifier = "yt-embed")
 
 :::{.exercise}
 
-**Exercise 7**
+**Exercise 6**
 
 1. Create a new chunk below the `Exercise 7` heading in your workbook.
 1. Using the `fuel` dataset, create a scatterplot with `engine_size` on the x-axis and `mpg` (miles per gallon, or fuel economy) on the y-axis.
