@@ -86,7 +86,7 @@ fuel %>%
     geom_point()         
 ```
 
-R assumes that the first variable is the x-axis and the second is the y-axis.
+R assumes that the first column is the x-axis and the second is the y-axis.
 
 :::{.direction}
 - select x-axis and y-axis in turn when describing
