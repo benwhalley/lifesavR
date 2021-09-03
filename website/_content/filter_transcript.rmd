@@ -114,7 +114,7 @@ development.europe %>%
   geom_point()
 ```
 
-In the next section you see how we could also use the saved data to calculate descriptive statistics for particular
+In the next section you'll see how we could also use the saved data to calculate descriptive statistics for particular
 groups.
 
 ### Don't forget to store filtered data
