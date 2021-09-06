@@ -9,7 +9,8 @@ library(psydata
 development %>%
   filter(year < 1990)
 
-# select Asian countries
+# select Asian countries for years after 1990
 development %>%
-  filter(country == "Asia")
+  filter(country == "Asia") %>%
+  filter(year > 1990)
 ```
