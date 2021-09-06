@@ -127,7 +127,7 @@ This explains why it's worth the effort to methodically resolve errors in the or
 
 ### Blue triangle
 
-The other symbol you may see is a blue triangle with a white "i".
+The other symbol you may see is a blue circle with a white "i".
 
 Your code will still work if this symbol is present, but it suggests something that will make it easier for you (and others) to read the code.
 
