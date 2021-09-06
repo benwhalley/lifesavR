@@ -125,7 +125,7 @@ Not only does the cross on this line disappear, but a number of other crosses on
 
 This explains why it's worth the effort to methodically resolve errors in the order they appear in your code.
 
-### Blue triangle
+### Blue circle
 
 The other symbol you may see is a blue circle with a white "i".
 
