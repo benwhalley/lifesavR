@@ -48,12 +48,15 @@ the activities in the blue boxes.**
 # Using the RStudio interface {#using}
 
 ```{r, echo=F}
-video_data <- list(identifier = "using-r-studio-interface", ytidentifier = "yt-embed", showcode=F)
+video_data <- list(identifier = "using-r-studio-interface", 
+                   showcode=F, 
+                   yt_id = "E0Lvfzp1F7s")
 # makermds(video_data)
 ```
 
-```{r child = '_content/_video_tabs.rmd'}
 
+
+```{r child = '_content/_video_tabs.rmd'}
 ```
 
 # Before you start
@@ -171,15 +174,17 @@ The output from the chunk should look like this:
 ![Result from Exercise 3](images/ex4.png)
 :::
 
+
 # Packages {#packages}
 
+
+
 ```{r, echo=F}
-video_data <- list(identifier = "loading-packages", ytidentifier = "yt-embed")
+video_data <- list(identifier = "loading-packages", yt_id = "tG875lqOVN4")
 # makermds(video_data)
 ```
 
 ```{r child = '_content/_video_tabs.rmd'}
-
 ```
 
 :::{.tip}
@@ -260,7 +265,7 @@ The population of Afghanistan in 1967 was: `r fitb('11537966')`.
 # Scatterplots {#scatterplots}
 
 ```{r, echo=F}
-video_data <- list(identifier = "scatterplots", ytidentifier = "yt-embed")
+video_data <- list(identifier = "scatterplots", yt_id = "RoK0ToZzwI0")
 # makermds(video_data)
 ```
 

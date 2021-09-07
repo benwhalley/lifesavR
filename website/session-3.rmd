@@ -87,7 +87,7 @@ iris %>%
 # Adding colour to a plot {#colour}
 
 ```{r, echo=F}
-video_data <- list(identifier = "scatterplot-colour", ytidentifier = "yt-embed")
+video_data <- list(identifier = "scatterplot-colour", yt_id = "wzjGY-Yn2g8")
 # makermds(video_data)
 ```
 
@@ -161,7 +161,7 @@ Remember that you will need to *change* the type of the `gear` variable for this
 # Using `group_by()` to make a summary table and compare groups{#groupby}
 
 ```{r, echo=F}
-video_data <- list(identifier = "group-by", ytidentifier = "yt-embed")
+video_data <- list(identifier = "group-by", yt_id = "dBfkA3-j3dU")
 # makermds(video_data)
 ```
 

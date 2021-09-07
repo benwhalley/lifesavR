@@ -1,8 +1,8 @@
 
 ```{r results='asis', echo=F}
-
-t1a <- '
-
+# print(video_data)
+if (is.null(video_data$yt_id)){
+  vidwrap <- '
 <div class="videowrapper">
 
 <div class="videowrapper-video">
@@ -12,7 +12,22 @@ Your browser does not support the video tag.
 </video>
 </div>
 
+'
 
+} else {
+  vidwrap <- '
+<div class="videowrapper">
+
+<div class="videowrapper-video">
+<iframe width="800" height="500" src="https://www.youtube.com/embed/{{yt_id}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+'
+}
+
+
+
+
+t1a <- '
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item active">
 <a class="nav-link active" id="{{identifier}}-summary-tab" data-toggle="tab" href="#{{identifier}}-summary">
   Video summary
@@ -71,6 +86,7 @@ t4 <- '
 ```
 
 ```{r results="asis", echo=F}
+cat(whisker::whisker.render(vidwrap, video_data))
 cat(whisker::whisker.render(t1a, video_data))
 
 item_or_default = function (list, item, default = NULL) {

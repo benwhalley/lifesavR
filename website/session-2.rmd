@@ -56,7 +56,7 @@ subsets of the data. These are important building blocks for later sessions.
 # Storing data in variables {#variables}
 
 ```{r, echo=F}
-video_data <- list(identifier = "variables", ytidentifier = "yt-embed")
+video_data <- list(identifier = "variables", yt_id = "rZbJrccgk80")
 # makermds(video_data)
 ```
 
@@ -147,7 +147,7 @@ Which country had the highest **Healthy life expectancy**? `r fitb('Singapore')`
 # Selecting rows with `filter()` {#filter}
 
 ```{r, echo=F}
-video_data <- list(identifier = "filter", ytidentifier = "yt-embed")
+video_data <- list(identifier = "filter", yt_id = "9N8sRAoFYzc")
 # makermds(video_data)
 ```
 
@@ -232,7 +232,7 @@ Use `filter()` and `summarise()` together to calculate the answers to these ques
 # How to fix code errors{#fixing}
 
 ```{r, echo=F}
-video_data <- list(identifier = "fixing-code", ytidentifier = "yt-embed", showcode = T)
+video_data <- list(identifier = "fixing-code", yt_id = "NByWIgA9LA0", showcode = T)
 #makermds(video_data)
 ```
 
