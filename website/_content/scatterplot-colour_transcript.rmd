@@ -10,18 +10,28 @@ mpg %>%
   geom_point()
 ```
 
+:::{.direction}
+* Run code to generate plot
+:::
 
 *NOTE: This first plot is not shown here to save space, but is shown in the video.*
 
-
-Colour can be added to distinguish the points — for example, what kind of car each point represents.
+We can add colour to distinguish the points in this plot — for example, what kind of car each point represents.
 
 So far, you've used the `aes()` function to define which variable is plotted on the x and y axes.  The `aes()` function is short for 'aesthetics' (what we can see) and *connects columns in our data to visual aspects of a plot*, like the x and y axes.
 
 The `colour=...` option adds to this, and says which column is used to colour the points.
-In the `mpg` data, the `drv` column records if a car is front (`f`), rear (`r`) or four (`4`) wheel drive.
+
+In the `mpg` data, the `drv` column contains one of three values. The value categorises cars based on which wheels are
+driven the engine. An `f` in `drv` means a front wheel drive car, `r` means rear wheel drive, and `4` means four
+wheel drive.
 
 We can write `colour=drv` to tell R to colour each point, depending on which wheels are driven:
+
+:::{.direction}
+1. Add `colour=drv`
+1. Run code to generate plot
+:::
 
 ```{r, eval=T}
 # colour each point; different colour for each type of transmission
@@ -31,6 +41,6 @@ mpg %>%
   geom_point()
 ```
 
-This is an example of using a *categorical* variable to colour our points.
-
 Notice that `ggplot()` automatically adds a key to the plot, mapping the colour of the points to the categories in `drv`.
+
+This is an example of using a *categorical* variable to colour our points.
