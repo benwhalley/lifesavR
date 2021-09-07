@@ -1,6 +1,6 @@
 - R Studio has features to help you spot errors
 - Start by correcting errors that produce the yellow triangle, or red circle with white cross
-- The blue triangle suggests ways to make your code more readable
+- The blue circle suggests ways to make your code more readable
 - Detect errors methodically by running mini "experiments" in which you change and re-run parts of your code
 - You may need to run a number of these "experiments" to detect logical and data-driven errors
 - Lists of [common R errors](https://www.andywills.info/rminr/common-errors.html) can be useful

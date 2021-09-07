@@ -1,10 +1,13 @@
 
-Some datasets are very large. We often want to work with a subset of the data, and `filter` makes this possible.
+Some datasets are very large. We often want to work with a subset of the data, and `filter()` makes this possible.
 
 ### Categorical and text filters
 
 The following chunk filters the `development` dataset (from `psydata`) to include only rows where the `country` column equals "Kenya".
 
+:::{.direction}
+* Enter and run code
+:::
 
 ```{r}
 library(psydata)
@@ -21,7 +24,6 @@ The value we are filtering for *must* match the column type.
 The value `"Kenya"` was in quotes because the country column is a factor (not numeric), and we need to
 match the text of the name of the country.
 
-
 It's important to be accurate when matching text. Capitalisation, punctuation and spaces all matter, so you need to be precise. Copy and paste wherever you can. For example:
 
 ```{r}
@@ -36,16 +38,25 @@ The "greater than" operator `>` filters on numeric columns. For example, `year` 
 a column in the `development` dataset.
 
 ```{r}
-development %>% filter(year > 2000)
+development %>%
+  filter(year > 2000)
 ```
 
 The code above filters rows where `year` is greater than 2000, showing us the result.
 
 The opposite of the `>` operator is the `<` operator. This filters numeric columns which are *less than* a value.
 
+:::{.direction}
+* Change `>` to `<` and run code
+:::
+
 ### Combined filters
 
 You can combine filters in a pipeline to filter rows using multiple operators.
+
+:::{.direction}
+* Enter and run code
+:::
 
 ```{r}
 development %>%
@@ -64,9 +75,11 @@ For example, we might want to filter the data, make a table, and then also make 
 
 The key step is to ***assign your filtered data to a new variable***.
 
-
 For example:
 
+:::{.direction}
+* Enter and run code
+:::
 
 ```{r}
 development.europe <- development %>%
@@ -91,16 +104,20 @@ We can look at this new subset of the data by typing and running its name, or by
 Now that it is stored in a new variable, we can use these data in other code, for example to
 make a plot:
 
+:::{.direction}
+* Enter and run code
+:::
+
 ```{r}
 development.europe %>%
     ggplot(aes(gdp_per_capita, life_expectancy)) +
   geom_point()
 ```
 
-Or to calculate descriptive statistics for particular groups in the data (see the next section).
-
+In the next section you'll see how we could also use the saved data to calculate descriptive statistics for particular
+groups.
 
 ### Don't forget to store filtered data
 
-Beginners often forget to assign their filtered data to a new variable. Make sure you give your variables
+Beginners often forget to assign their filtered data to a new variable. Remember to give your variables
 short but descriptive names so you know what they are.

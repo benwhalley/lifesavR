@@ -26,7 +26,7 @@ funimagery %>%
 
 
 
-If find a large Bayes Factor, this is evidence *for* the experimental hypothesis, as compared with the null hypothesis.
+If we find a large Bayes Factor, this is evidence *for* the experimental hypothesis, as compared with the null hypothesis.
 
 
 ### Running a t-test

@@ -16,9 +16,7 @@ Here's a chunk of code with various errors which we'll correct one by one.
 
 :::{.direction}
 
-1. Create new .rmd
-1. Paste code example into a new chunk
-1. Save
+1. Open `broken.rmd`
 
 :::
 
@@ -56,7 +54,8 @@ If we correct this, the warning goes away.
 
 :::{.direction}
 
-- Fix error in function name
+1. Fix error in function name
+1. Point out yellow triangle gone
 
 :::
 
@@ -79,7 +78,6 @@ This line of code now works.
 :::{.direction}
 
 1. Fix error in package name
-1. Point out yellow triangle gone
 1. Execute line
 1. Point out green bar
 
@@ -95,13 +93,13 @@ Making a change and then running the code is like designing and running an exper
 
 By repeating these "experiments" you should eventually resolve all errors and have the code which does exactly what you expect.
 
-```{r, eval=F}
-library(psydata
-```
-
 ## Red circle with white cross
 
 Another symbol that R Studio uses to tell you that your code contains an error is the red circle with a white cross.
+
+```{r, eval=F}
+library(psydata
+```
 
 Hovering over the cross gives you a clue about what the error is.
 
@@ -127,9 +125,9 @@ Not only does the cross on this line disappear, but a number of other crosses on
 
 This explains why it's worth the effort to methodically resolve errors in the order they appear in your code.
 
-### Blue triangle
+### Blue circle
 
-The other symbol you may see is a blue triangle with a white "i".
+The other symbol you may see is a blue circle with a white "i".
 
 Your code will still work if this symbol is present, but it suggests something that will make it easier for you (and others) to read the code.
 
@@ -139,7 +137,7 @@ Your code will still work if this symbol is present, but it suggests something t
 
 :::
 
-In this case, adding spaces around `=` makes the code easier to read.
+In this case, adding spaces around `%>%` makes the code easier to read.
 
 ### Errors which R Studio can't detect
 
@@ -159,7 +157,7 @@ Whilst this code does run ...
 
 ... all of the rows in the the output have values for `year` which are *less than* 1990.
 
-This is a clue that we've made a logical error, and used `<` where we meant `>'.
+This is a clue that we've made a logical error, and used `<` where we meant `>`.
 
 :::{.direction}
 
