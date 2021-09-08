@@ -116,10 +116,12 @@ video_data <- list(identifier = "what-can-r-do", ytidentifier = "yt-embed")
 
 ```
 
-# Working interactively {#interactive}
+
+
+# Introducing RMarkdown {#interactive}
 
 ```{r, echo=F}
-video_data <- list(identifier = "working-interactively-in-r", ytidentifier = "yt-embed", showcode=F)
+video_data <- list(identifier = "introducing-rmarkdown", yt_id = "TfkL_b92r_E", showcode=F)
 # makermds(video_data)
 ```
 
@@ -290,6 +292,22 @@ fuel %>%
 ```
 
 :::
+
+
+
+# Working interactively {#rmarkdown-recap}
+
+```{r, echo=F}
+video_data <- list(identifier = "working-interactively-in-r", yt_id="KUUOqO7uZwE", showcode=F)
+# makermds(video_data)
+```
+
+```{r child = '_content/_video_tabs.rmd'}
+
+```
+
+
+
 
 # Check your knowledge
 

@@ -1,0 +1,36 @@
+---
+title: Very simple RMarkdown example
+---
+
+
+# Using R for arithmetic (heading)
+
+This is explanatory text. The section below does some basic arithmetic using R
+
+```{r}
+2 + 4 + 8
+```
+
+
+# Looking at data using RMarkdown
+
+```{r}
+iris
+```
+
+
+
+# Running parts code
+
+```{r}
+
+2 + 4 + 8 + 16
+
+42 * 42
+
+2 +
+  4 +
+  8 +
+  16
+
+```

@@ -1,0 +1,185 @@
+So far you have seen some of the RStudio interface.
+Now we're going to encounter RMarkdown documents.
+
+RMarkdown documents are a good way to use R which we can use in RStudio to make
+our lives easier.
+
+RMarkdown is a file format which combines R code (chunks) with regular text. This means
+RMarkdown can combine data analysis and graphs with explanatory text, which makes it easier for you to work, keep notes, and communicate your work to others.
+
+
+Once the document is ready there iss an extra step called 'knitting' in
+which the R code in your file is run, and the results are interspersed
+with your text to make a file you can share with others.
+Typically that's an html file (i.e. a web page) or sometimes a pdf.
+
+This allows us to make high quality reports, research papers, dissertations or books,
+and is becoming very popular as part of the general move to encourage reproducibility in psychological research.
+
+-----------------------------------
+
+Because it's such a powerful tool, this module provides an early introduction to RMarkdown.
+We don't use all it's features just yet, though.
+
+For the moment, we'll only *be using Rmd document as an interactive interface for running code and looking at the results R produces*.
+
+
+### Using RMarkdown
+
+A neat feature of `.Rmd` files is that, when you open them in RStudio, they
+make it easy to organise and run R code, and see the outputs.
+
+Provided you have already run the bootstrap script, click on the `lifesavr` folder in the **Files** pane of RStudio,
+
+:::{.direction}
+
+- Click on files then lifesavr, then exercises folders
+
+:::
+
+You'll notice that some files have the extension `.rmd`. These are R Markdown files.
+
+:::{.direction}
+
+- Highlight file extension by selecting or pointing with mouse
+
+:::
+
+The file extension `.rmd` (or .`Rmd`) is important, because this is how R Studio knows that the files contain a mixture of R code and regular text.
+
+If you don't save files with the right extension, R has trouble knowing what to do with it.
+
+
+
+:::{.direction}
+
+- Open the `simplest-rmarkdown-example.rmd` file
+
+:::
+
+
+### Code chunks
+
+RMarkdown makes a distinction between R code and regular, narrative text.
+
+This tells RStudio how to treat each part of your document — whether to display
+it as text, or format it as code (and give us warnings when there are errors and so on).
+
+This is done by putting the code inside some special
+characters, called backticks, creating a  ***code chunk***.
+
+A chunk is opened using the symbols `` ```{r} ``, and closed using
+the symbols `` ``` ``. This is what a chunk looks like in RStudio:
+
+![A code chunk in the RMarkdown editor](images/r-code-chunk.png)
+
+---------
+
+
+_NOTE:_ The symbols which start and end a chunk are _backticks_, not single quotes. The difference is quite subtle.
+
+
+Backticks are on your keyboard here if you're on Windows:
+
+![On windows](images/backtick-windows-uk.png)
+
+Or here if you're on a Mac:
+
+![On a Mac](images/backtick-mac-uk.png)
+
+
+
+
+
+
+
+
+
+### Running R code inside chunks
+
+<!-- TODO: re-record VIDEO of running code in a chunk -->
+
+In the picture of a chunk above you might have noticed that we had both some code (`2+2`) and the
+result from that code was shown beneath the chunk (`4`!). To show the result of our code, we first need to ***run*** it.
+
+
+
+There are three ways to run R code within a chunk:
+
+- Run a whole chunk at once (can include multiple statements)
+- Run one or more related lines, called a ***statement***
+- Select and run just part of a statement
+
+
+#### Running the whole chunk
+
+:::{.direction}
+
+- Show the green play button in action
+
+:::
+
+
+
+#### Running a statement
+
+The most common case is when we have given R an instruction (written a *statement*) and we want to run
+just that new code.
+
+A statement is cometimes one line of code, but it can include multiple lines that are related — we'll see more of that
+later.
+
+For now, you can see we have a code chunk here:
+
+
+```{r}
+# some arithmetic in R
+
+2 + 4 + 8
+
+```
+
+:::{.direction}
+
+1. Show cursor interacting with this code chunk
+1. Place cursor anywhere on the line
+1. Run statement using Ctrl + Enter
+
+:::
+
+You can see that we put the cursor in the middle of this line of numbers that we wanted to add up.
+Then I pressed <span class="keyshape">Ctrl</span> + <span class="keyshape">↵</span>  (this would be the `Cmd` key on a Mac).
+
+This runs or *executes* the whole line, and the result is shown *below* the code chunk.
+
+
+#### Code chunks with multiple statements
+
+We might want to add some extra calculations to our chunk.
+
+```{r}
+# some arithmetic in R
+
+2 + 2 + 8 + 16
+
+42 * 42
+
+2 +
+  4 +
+  8 +
+  16
+
+```
+
+Now we have 2 statements: `2 + 4 + 8 + 16` and `42 * 42` (the star means multiply).
+We can run either of the statements in the same way: by putting the cursor anywhere on the line
+and pressing `Ctrl/Cmd + Enter`
+
+
+:::{.direction}
+
+- Demonstrate doing this in rstudio show that the cursor can be anywhere on the line and also
+- That if we execute a second statement the result of the first one disappears
+- Also point out that I did separate all the statements with a blank line to make it easier for myself to read (but R doesn t care about this and can work out whether the lines are related by itself)
+
+:::
