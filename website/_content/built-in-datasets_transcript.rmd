@@ -1,36 +1,12 @@
 
-Datasets contain are like spreadsheets: they are organised into columns and rows.
+When we say "dataset" or "data", we mean something like a spreadsheet:
+In R, datasets contain values are organised into columns and rows.
+
+One distinction to make though is that by *dataset* we mean data that has
+been loaded into R--- data *files* are different thing.
 
 In R, datasets are normally stored in a container called a `data.frame`. They can also be stored in a `tibble` (these are basically the same thing).
 
-
-
-### Columns
-
-Each column in a dataset has a name.
-
-We sometimes call the columns *variables*, because each column will often relate to
-a variable in our study.
-
-However, this can be a bit confusing because --- in R --- variables can actually contain whole datasets.
-`fuel`, for example, is the name of a variable which contains an example dataset, provided by the `psydata` package.
-
-:::{.direction}
-
-- Show `library(psydata)` and then the `fuel` dataset
-
-:::
-
-
-But these words are used flexibly and interchangeably, so we'll just have to get used to it.
-It's normally clear which type of variable we mean from the context.
-
-
-### Rows
-
-Each row in a dataset represents an *observation*.
-
-In different datasets an observation might correspond to an individual participant, a whole country, or even just a single button press in an experiment.
 
 
 
@@ -72,39 +48,58 @@ help(fuel)
 
 
 
+### Columns
+
+Each column in a dataset has a name.
+
+We sometimes call the columns *variables*, because each column will often relate to
+a variable in our study.
+
+However, this can be a bit confusing because --- in R --- variables can actually contain whole datasets.
+`fuel`, for example, is the name of a variable which contains an example dataset, provided by the `psydata` package.
+
+:::{.direction}
+
+- Show `library(psydata)` and then the `fuel` dataset
+
+:::
+
+
+But these words are used flexibly and interchangeably, so we'll just have to get used to it.
+It's normally clear which type of variable we mean from the context.
+
+
+### Rows
+
+Each row in a dataset represents an *observation*.
+
+In different datasets an observation might correspond to an individual participant, a whole country, or even just a single button press in an experiment.
+
+
+
 
 ### Exploring and checking data
 
-There are two ways we recommend to inspect and check data you are using.
+There are a two ways we recommend you use inspect and check data you are using.
 
 1. Typing the name of the dataset, and running that as code
 2. The `glimpse()` function, which shows a list of all the columns and some of the data
-3. The `head()` function, which shows the first 10 rows
-
-
 
 To use glimpse:
 
 ```{r}
+fuel
 glimpse(fuel)
 ```
 
-This shows a list of all the columns in the dataset, the type of data stored in each column, and as many observations (datapoonts) as will fit on a single line.
+`glimpse` shows a list of all the columns in the dataset, the type of data stored in each column, and as many observations (datapoonts) as will fit on a single line.
 
 `glimpse` is a really useful view to check which columns are available in a dataset before using them.
 
 
 
-Using head:
 
-```{r}
-head(fuel)
-```
-
-This prints the first 10 rows of all the columns. `head()` is really useful for checking the actual datapoints are as you expect before using them.
-
-
-### Why are we talking about cars not psychology?
+### Why are we talking about cars and flowers and not psychology?
 
 In this course we mostly use very simple datasets, and some of them aren't even about psychology.
 
@@ -128,12 +123,6 @@ The skills and concepts involved in analysing these data are the same though.
 
 R --- and the techniques and statistics we teach --- are used right across the natural sciences
 
-
-:::{.direction}
-
-- TODO show examples of a variety of plots and analyses here
-
-:::
 
 If you're still not convinced — don't worry ... we do include some clinical examples, and we will
 be collecting our own psychological data soon enough and analysing that.

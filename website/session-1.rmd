@@ -219,7 +219,7 @@ that beginners encounter. They normally mean that you have
 # Datasets {#datasets}
 
 ```{r, echo=F}
-video_data <- list(identifier = "built-in-datasets", ytidentifier = "yt-embed")
+video_data <- list(identifier = "built-in-datasets", yt_id = "hro-RRKO1Oo")
 # makermds(video_data)
 ```
 
