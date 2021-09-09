@@ -109,7 +109,7 @@ If you're able to open this file you are now ready to start the rest of the sess
 # What can R do? {#cando}
 
 ```{r, echo=F}
-video_data <- list(identifier = "what-can-r-do", ytidentifier = "yt-embed")
+video_data <- list(identifier = "what-can-r-do", yt_id="zFBw6OuOX9k")
 ```
 
 ```{r child = '_content/_video_tabs.rmd'}
