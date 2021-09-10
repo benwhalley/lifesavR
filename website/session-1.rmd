@@ -62,7 +62,7 @@ video_data <- list(identifier = "using-r-studio-interface",
 # Before you start
 
 ```{r, echo=F}
-video_data <- list(identifier = "before-you-start", ytidentifier = "yt-embed")
+video_data <- list(identifier = "before-you-start", yt_id="HqXmNmwumvU")
 # makermds(video_data)
 ```
 
@@ -90,7 +90,7 @@ Press <span class="keyshape">↩</span> to run the code. If your console looks l
 ```{r, echo=F}
 video_data <- list(identifier = "using-the-workbooks",
                    showcode = F,
-                   ytidentifier = "yt-embed")
+                   yt_id = "t359FSOPEnw")
 # makermds(video_data)
 ```
 
