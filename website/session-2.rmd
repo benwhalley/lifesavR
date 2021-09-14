@@ -103,7 +103,7 @@ Your **Environment** should now look like this:
 # Passing data with pipes `%>%` {#pipe}
 
 ```{r, echo=F}
-video_data <- list(identifier = "pipes", ytidentifier = "yt-embed")
+video_data <- list(identifier = "pipes", yt_id="APFXK-xoxR0")
 # makermds(video_data)
 ```
 
@@ -186,7 +186,7 @@ development %>%
 # Summarising data using `summarise()` {#summarise}
 
 ```{r, echo=F}
-video_data <- list(identifier = "summarise", ytidentifier = "yt-embed")
+video_data <- list(identifier = "summarise", yt_id="ZoCJTBdfVwQ")
 # makermds(video_data)
 ```
 

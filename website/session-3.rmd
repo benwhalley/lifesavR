@@ -62,7 +62,7 @@ to make tables of descriptive statistics which you will need in your coursework 
 # Making boxplots {#boxplots}
 
 ```{r, echo=F}
-video_data <- list(identifier = "boxplot-introduction", ytidentifier = "yt-embed")
+video_data <- list(identifier = "boxplot-introduction", yt_id = "2FXgGkfXtXw")
 # makermds(video_data)
 ```
 
