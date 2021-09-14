@@ -116,7 +116,7 @@ gapminder %>%
 # Using different types of data and visual scales{#datatypes}
 
 ```{r, echo=F}
-video_data <- list(identifier = "types-scales", ytidentifier = "yt-embed")
+video_data <- list(identifier = "types-scales", yt_id="RrIRNof4mzM")
 # makermds(video_data)
 ```
 

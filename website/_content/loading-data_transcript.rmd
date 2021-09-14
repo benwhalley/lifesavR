@@ -1,10 +1,13 @@
-In a lot of these workshops we use datasets that are built-in to R, or are part of the `psydata` package.
+In a lot of these workshops we use datasets that are built-in to R,
+or are part of the `psydata` package.
 This is a convenient way to illustrate the points we make.
 
 
 :::{.direction}
 
-- open and use `glance` on some built-in data like iris, mtcars etc, or `development`, `happy`, from `psydata`
+
+- open and use `glance` on some built-in data like iris, mtcars etc,
+- load psydata and show or `development`, `happy`, from `psydata`
 
 :::
 
@@ -18,11 +21,12 @@ To keep things simple, reproducible and future proof we recommend *comma separat
 which have the file extension `.csv`.
 (The final 3 or 4 letters of a filename, after the full stop, is called the file extension).  
 
+
 ### Loading CSV data
 
-We can load CSV data using `read_csv()`.
+We can load CSV data using `read_csv()` which is a function in the tidyverse package.
 
-For example, this code reads a dataset (`food_example.csv`) which is already in the same folder as your workbooks.
+For example, this code reads a dataset (`happiness.csv`) which is already in the same folder as your workbooks.
 
 ```{r, eval=FALSE}
 food <- read_csv('food_example.csv')
@@ -39,15 +43,18 @@ The data is read into the variable `food` as a `data.frame`.
 
 :::{.direction}
 
-- Show `food` in **Environment** pane
+- Show `food` in **Environment** pane. Note that this is shown here because this is a variable WE created... that's not true for other dataset loaded with a package as examples.
 
 :::
 
-To load other CSV data, there are 3 steps you must follow:
+To load other CSV data, there are 4 steps you must follow:
 
 1. Collect or otherwise get hold of the CSV file you want to load
 2. Upload it to the RStudio server, in the same place as your R code (`.rmd` file)
-3. Use `read_csv()`, and assign the result to a variable with a descriptive name
+3. Use `read_csv('filename.csv')`, using the correct filename and...
+4. assign the result to a variable with a descriptive name
+
+
 
 ### Step 1. Collect or get the data
 
@@ -59,7 +66,7 @@ You may also be sent CSV data by email, or download it from the web. That's what
 
 The following URL is for a file called `shootings.csv`.
 
-- [https://benwhalley.github.io/lifesavR/data/shootings.csv](https://benwhalley.github.io/lifesavR/data/shootings.csv)
+- [shootings.csv](https://raw.githubusercontent.com/benwhalley/psydata/main/data-raw/shootings.csv)
 
 To save a copy to the computer you are working at, right-click on the link and choose:
 
@@ -102,7 +109,7 @@ Finally, use the **Files** pane to check that `shootings.csv` is in the same dir
 
 If you can see both files you are ready to carry on.
 
-### Step 3. Use `read_csv()` and assign the result to a variable
+### Step 3/4. Use `read_csv()` and assign the result to a variable
 
 In your workbook file (`session-2.rmd`) create a new code chunk (the keyboard shortcut is `Ctrl (or ⌘) + Alt + I`) below
 the heading `Loading data from elsewhere`.
@@ -142,3 +149,22 @@ You could also use the **Environment** pane to examine the `shootings` variable 
 - Remind how to use Environment pane
 
 :::
+
+
+
+
+
+# Advanced tip
+
+You can shortcut some of the steps above if your data is available at a URL on the internet.
+If this is the case you can write:
+
+```{r, eval=F}
+read_csv('http://URL_HERE')
+```
+
+So, this also works:
+
+```{r}
+shootings <- read_csv('https://raw.githubusercontent.com/benwhalley/psydata/main/data-raw/shootings.csv')
+```
