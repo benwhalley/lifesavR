@@ -62,7 +62,7 @@ Create a chunk which calculates your age in the year 2051 and assigns the result
 ## Exercise 5
 
 1. Upload
-[https://benwhalley.github.io/lifesavR/data/world-happiness-report-2021.csv](https://benwhalley.github.io/lifesavR/data/world-happiness-report-2021.csv) to the R Studio server.
+[https://raw.githubusercontent.com/benwhalley/lifesavR/main/website/data/world-happiness-report-2021.csv](https://raw.githubusercontent.com/benwhalley/lifesavR/main/website/data/world-happiness-report-2021.csv) to the R Studio server.
 1. Create a new chunk which reads `world-happiness-report-2021.csv` into a variable with a descriptive name.
 1. Use this variable to answer the question in the worksheet.
 

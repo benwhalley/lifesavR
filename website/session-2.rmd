@@ -136,7 +136,7 @@ video_data <- list(identifier = "loading-data", yt_id = "N78Z98vs9vQ")
 **Exercise 5**
 
 1. Use your web browser to download
-[https://benwhalley.github.io/lifesavR/data/world-happiness-report-2021.csv](https://benwhalley.github.io/lifesavR/data/world-happiness-report-2021.csv) to your computer.
+[https://raw.githubusercontent.com/benwhalley/lifesavR/main/website/data/world-happiness-report-2021.csv](https://raw.githubusercontent.com/benwhalley/lifesavR/main/website/data/world-happiness-report-2021.csv) to your computer.
 1. Upload `world-happiness-report-2021.csv` to the server.
 1. Create a new chunk below the `Exercise 5` heading in your workbook.
 1. Read `world-happiness-report-2021.csv` into a variable with a descriptive name.
@@ -256,7 +256,7 @@ development %>%
 
 # calculate the average life expectancy in Africa
 development
-  filter(continent = "africa") %>% 
+  filter(continent = "africa") %>%
   summarise(average(life_expectancy))
 
 # scatterplot of life expectancy against year with continent in colour
@@ -277,7 +277,7 @@ fuel %>%
 
 # calculate the average life expectancy in Africa
 development %>%
-  filter(continent == "Africa") %>% 
+  filter(continent == "Africa") %>%
   summarise(mean(life_expectancy))
 
 # scatterplot of life expectancy against year with continent in colour
@@ -343,4 +343,3 @@ correct <- iris %>%
 The mean petal width of the versicolour species of iris is `r fitb(correct, tol=.2)`cm.
 
 :::
-
