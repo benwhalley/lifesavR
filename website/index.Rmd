@@ -1,6 +1,6 @@
 ---
 title: 'lifesavR'
-author: 'Ben Whalley, Paul Sharpe '
+author: 'Ben Whalley, Sonja Heinz, Paul Sharpe'
 # date: "April 2021"
 bibliography: [references.bib]
 biblio-style: apa6
@@ -15,8 +15,7 @@ source('_first_chunk.R')
 ```
 
 
-> LifesaveR is a short course in statistics and data visualisation R.
-
+> LifesaveR is a short course in statistics and data visualisation using R.
 
 
 # Quick links
@@ -25,7 +24,7 @@ source('_first_chunk.R')
 - [Session 1](session-1.html): Getting started
 - [Session 2](session-2.html): Working with R
 - [Session 3](session-3.html): Grouped data
-- [Session 4](session-4.html): Describing patterns, answering questions 
+- [Session 4](session-4.html): Describing patterns, answering questions
 - [Session 5](session-5.html): Quantifying evidence
 
 
@@ -59,10 +58,10 @@ In martial arts, a blow to the head is direct and effective feedback that your b
 
 You might ask what you can do to succeed on this course and make the most of your training.
 
-Based on what we've observed in previous cohorts, the following attributes and approaches are 
+Based on what we've observed in previous cohorts, the following attributes and approaches are
 what seem to us to correlate with success.
 
-* Go slow, but be steady. Don't move on until you've understood each section. It's not a race or a competition with your peers (even if workshops can feel that way). 
+* Go slow, but be steady. Don't move on until you've understood each section. It's not a race or a competition with your peers (even if workshops can feel that way).
 
 * Be consistent. If you feel you might be slower than other students with this material allocate time to study outside of workshops now. Don't leave work until the end of the year — we will be adding new material each week, so this is a recipe for falling behind.
 
@@ -98,6 +97,14 @@ For each session there is an accompanying interactive workbook (explained below)
 :::
 
 
+:::{.tip}
+
+Where you see a green box like this, it's a 'tip'. We've highlighted this text
+because it's especially important — for example because you will definitely need to
+know this to complete a later task.
+
+:::
+
 
 
 # Access to R
@@ -110,9 +117,9 @@ examples here is to the school's RStudio Server.
 -   [Login to your account on the server here](https://rstudio.plymouth.ac.uk)
 
 
-Unless you already  have a lot of experience with R, don't try to install it on 
-your own computer. We find this creates unnecessary problems for students. Staff won't help
-you debug your work unless they are evident when using the school RStudio server.
+
+Unless you already  have a lot of experience with R, don't try to install it on
+your own computer. We find this creates unnecessary problems for students. Staff won't help you debug your work unless they are evident when using the school RStudio server.
 
 
 
@@ -120,14 +127,12 @@ you debug your work unless they are evident when using the school RStudio server
 
 # Getting support
 
-<!-- PSYC519 and PSYC719 have more staff time allocated to them than any other modules in the school. -->
-<!-- However, we have 300 students in the class and only 10 members of staff.  -->
 
-<!-- TODO add something about discourse -->
+If you are having trouble with the RStudio interface, please do make sure you are running a new version of your browser. Google Chrome is recommended by the University, although if you are (rightly) concerned about your privacy [Firefox](https://www.mozilla.org/en-GB/firefox/new/) also works well.
 
+Plymouth psychology students should always seek help - in the first instance - on the Discourse Forum. The RStudio/Statistics category has lots of posts answering common questions and solutions for common bugs:
 
-
-
+[https://discourse.psy.plymouth.ac.uk/c/rstudio/](https://discourse.psy.plymouth.ac.uk/c/rstudio/21)
 
 
 
