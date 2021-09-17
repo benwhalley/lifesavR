@@ -15,8 +15,7 @@ source('_first_chunk.R')
 ```
 
 
-> LifesaveR is a short course in statistics and data visualisation R.
-
+> LifesaveR is a short course in statistics and data visualisation using R.
 
 
 # Quick links
