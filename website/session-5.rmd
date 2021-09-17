@@ -49,7 +49,7 @@ The important thing to remember about Bayes Factors is that they ***compare two 
 # Is this pattern a fluke?{#fluke}
 
 ```{r, echo=F}
-video_data <- list(identifier = "bayes-fluke", ytidentifier = "yt-embed")
+video_data <- list(identifier = "bayes-fluke", yt_id="gefYqIPIjJQ")
 # makermds(video_data)
 ```
 
@@ -62,7 +62,7 @@ video_data <- list(identifier = "bayes-fluke", ytidentifier = "yt-embed")
 
 
 ```{r, echo=F}
-video_data <- list(identifier = "bayes-ttest", ytidentifier = "yt-embed")
+video_data <- list(identifier = "bayes-ttest", yt_id="BRKrSC5AjKg")
 # makermds(video_data)
 ```
 
@@ -81,10 +81,10 @@ video_data <- list(identifier = "bayes-ttest", ytidentifier = "yt-embed")
 
 ```{r}
 
-funimagery %>% 
+funimagery %>%
   ggplot(aes(intervention, kg1)) + geom_boxplot()
 
-aa <- with(funimagery,  ttestBF(intervention, kg1,posterior=T, iterations=1e4)) 
+aa <- with(funimagery,  ttestBF(intervention, kg1,posterior=T, iterations=1e4))
 aa %>% as_data_frame() %>% group_by
 ```
 
@@ -96,7 +96,7 @@ aa %>% as_data_frame() %>% group_by
 # Do it: Bayes Factor for correlations{#bayescor}
 
 ```{r, echo=F}
-video_data <- list(identifier = "bayes-corr", ytidentifier = "yt-embed")
+video_data <- list(identifier = "bayes-corr", yt_id="kUqabfExu2Q")
 # makermds(video_data)
 ```
 

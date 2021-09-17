@@ -5,7 +5,10 @@ library(psydata)
 library(BayesFactor)
 
 
-funimagery %>% ggplot(aes(intervention, kg1))+ geom_point()
+funimagery %>%
+  ggplot(aes(intervention, weight_lost_end_trt)) +
+  geom_boxplot() +
+  geom_hline(yintercept=0)
 
 # use `formula = ` to tell ttestBF which data to use
 # the tilda symbol, ~, means "is predicted by"

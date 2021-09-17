@@ -48,7 +48,7 @@ video_data <- list(identifier = "describe-overview", showcode = F, ytidentifier 
 # Central tendency and spread{#centralspread}
 
 ```{r, echo=F}
-video_data <- list(identifier = "describe-centrantend", ytidentifier = "yt-embed")
+video_data <- list(identifier = "describe-centrantend", yt_id="WcfyjFCdnWk")
 # makermds(video_data)
 ```
 
@@ -107,7 +107,7 @@ funimagery.edited %>%
 
 
 ```{r, echo=F}
-video_data <- list(identifier = "describe-frequency", ytidentifier = "yt-embed")
+video_data <- list(identifier = "describe-frequency", yt_id = "2zH8QyrcMqU")
 # makermds(video_data)
 ```
 
@@ -132,7 +132,7 @@ video_data <- list(identifier = "describe-frequency", ytidentifier = "yt-embed")
 # Relationships{#relationships}
 
 ```{r, echo=F}
-video_data <- list(identifier = "describe-relationships", ytidentifier = "yt-embed")
+video_data <- list(identifier = "describe-relationships", yt_id="PGV-MZlCoOc")
 # makermds(video_data)
 ```
 

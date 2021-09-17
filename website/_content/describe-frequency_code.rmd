@@ -1,1 +1,24 @@
-TODO XXX
+```{r}
+# this gives us the total number of rows
+earnings %>% count()
+
+# numbers of men and women
+earnings %>%
+  count(gender)
+
+
+# We can do arithmetic on these numbers
+# calculate percentage
+2353 / 4483 * 100
+
+
+# counts for multiple subgroups
+earnings %>%
+  count(job, gender)
+
+
+# making a plot
+earnings %>%
+  ggplot(aes(gender)) +
+  stat_count()
+```

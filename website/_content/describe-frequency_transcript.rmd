@@ -1,5 +1,6 @@
-With categorical data it's not possible to calculate averages; what would the
-average of 3 apples and 4 oranges be?
+
+With categorical data it's not possible to calculate things like an average;
+what would the average of 3 apples and 4 oranges be, for example?
 
 Nonetheless, it is still useful to be able to describe the data and spot patterns.
 
@@ -11,21 +12,20 @@ ask things like:
 - *"Was this proportion similar for men and women?*"
 
 
-The earnings data contained variables called `gender` and `job`, which give us the
+The earnings data contained variables called `gender` and `job`, which give us
 information to answer these questions:
+
 
 ```{r}
 earnings %>% glimpse
 ```
 
 
-
 ### Using `count()`
 
 
-To count the frequency of different responses we can use the `count` function.
-
-
+To count the frequency of different responses we can use the `count` function, which
+is again from the tidyverse package. [load tidyverse now]
 
 For example, the following statement counts the total number of responses in our sample:
 
@@ -46,18 +46,28 @@ earnings %>%
 Here we added `gender` inside `count()` so R knows to count the responses from each group separately.
 
 
+Note, this does the same thing as writing this, although one line shorter:
+
+```{r}
+earnings %>%
+  group_by(gender) %>%
+  count()
+```
+
+
+
 We can do arithmetic on these numbers to get the percentage of women in the sample:
 
 ```{r}
 2353 / 4483 * 100
 ```
 
-Later on you'll find ways to create a new column containing percentages, but this is fine for now.
+Later on you'll find ways to create a new column containing percentages (using mutate), but this is fine for now.
 
 
 ### Multiple subgroups
 
-What's neat about `count()` is that we can add more than one variable at once, and we get a count for each subgrouping:
+What's neat about `count()` is that we can add more than one variable at once, and we get a count for each sub-grouping that is formed. For example:
 
 ```{r}
 earnings %>%
@@ -67,3 +77,13 @@ earnings %>%
 You can re-order the table by changing the order in which you include `gender` and `job`.
 
 
+
+### Making a plot
+
+If you want to make a plot of counts, then `stat_count` can be useful:
+
+```{r}
+earnings %>%
+  ggplot(aes(gender)) +
+  stat_count()
+```

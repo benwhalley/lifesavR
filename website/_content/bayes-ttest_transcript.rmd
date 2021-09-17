@@ -25,7 +25,6 @@ funimagery %>%
 ```
 
 
-
 If we find a large Bayes Factor, this is evidence *for* the experimental hypothesis, as compared with the null hypothesis.
 
 
@@ -64,7 +63,7 @@ The important part of the code here is where we write: `weight_lost_end_trt ~ in
 
 
 ```{r}
-fitbf <- ttestBF(formula = weight_lost_end_trt ~ intervention, data=funimagery) %>% 
+fitbf <- ttestBF(formula = weight_lost_end_trt ~ intervention, data=funimagery) %>%
   as_tibble() %>% pull(bf) %>% .[1]
 ```
 
@@ -72,4 +71,3 @@ fitbf <- ttestBF(formula = weight_lost_end_trt ~ intervention, data=funimagery) 
 The number `r fitbf` is our Bayes Factor. This is very large, so we have strong evidence that the difference in means is real.
 
 We explain how to interpret Bayes Factors in more detail in the section below, but large numbers are evidence *for* a difference.
-
