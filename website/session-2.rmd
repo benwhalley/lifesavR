@@ -277,7 +277,7 @@ ggplot(aes(year, lifeExp, colour=continent)) %>%
 
 This removes ALL your stored variables, which can be useful when you want to test your code, but do bear that in mind.
 
-Restarting the R session WON'T always clear all variables, because R saves your progress and reloads variables when the session restarts. You shouldn't rely on this though — it could fail sometimes (e.g. if the R server restarts). 
+Restarting the R session WON'T always clear all variables, because R saves your progress and reloads variables when the session restarts. You shouldn't rely on this though — it could fail sometimes (e.g. if the R server restarts).
 
 :::
 
@@ -359,3 +359,12 @@ correct <- iris %>%
 The mean petal width of the `versicolor` species of iris is `r fitb(correct, tol=.2)`cm.
 
 :::
+
+
+
+# Additional resources
+
+
+## How to save as CSV in Excel {#saveascsv}
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/qIS4UILV26c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

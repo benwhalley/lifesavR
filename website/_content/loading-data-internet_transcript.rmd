@@ -9,7 +9,7 @@ variable `shootings`.
 The URL (the link to the CSV file) needs to be in quotes (single or double quotes both work).
 
 ```{r}
-shootings <- read_csv("https://benwhalley.github.io/lifesavR/lifesavr/shootings.csv")
+shootings <- read_csv("https://raw.githubusercontent.com/benwhalley/psydata/main/data-raw/shootings.csv")
 ```
 
 Because we made a new variable, the result is stored in the environment, and we can double-click the variable in the **Environment** tab to have a look at the data.
@@ -36,5 +36,5 @@ You can also display the data by selecting the name of the variable in your code
 :::
 
 ```{r, eval=F}
-shootings <- read_csv("https://benwhalley.github.io/lifesavR/lifesavr/shootings.csv")
+shootings <- read_csv("https://raw.githubusercontent.com/benwhalley/psydata/main/data-raw/shootings.csv")
 ```
