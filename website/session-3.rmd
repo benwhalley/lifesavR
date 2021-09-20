@@ -106,9 +106,9 @@ video_data <- list(identifier = "scatterplot-colour", yt_id = "wzjGY-Yn2g8")
 Your plot should look like this:
 
 ```{r ex10, echo=FALSE}
-library(gapminder)
-gapminder %>%
-  ggplot(aes(lifeExp, gdpPercap, colour = continent)) +
+library(psydata)
+development %>%
+  ggplot(aes(life_expectancy, gdp_per_capita, colour = continent)) +
   geom_point()
 ```
 :::
