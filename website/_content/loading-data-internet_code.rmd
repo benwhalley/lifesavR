@@ -1,6 +1,6 @@
 ```{r, eval=F}
 # load data from a URL and assign it to a variable, called shootings
-shootings <- read_csv("https://benwhalley.github.io/lifesavR/lifesavr/shootings.csv")
+shootings <- read_csv("https://raw.githubusercontent.com/benwhalley/psydata/main/data-raw/shootings.csv")
 
 # display the stored data
 shootings
