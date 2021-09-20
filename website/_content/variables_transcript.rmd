@@ -13,7 +13,7 @@ calculations, datasets, tables, plots, or even statistical models.
 
 To make variables we use the assignment operator, which looks like this `<-`.
 
-It looks like an arrow that points to the left, but it's made up of an angle bracket and a hyphen,
+It looks like an arrow that points to the left, but it's made up of an left angle bracket (`<`) and a hyphen (`-`),
 placed next to each other.
 
 The arrow is a reminder that the value on the right hand
