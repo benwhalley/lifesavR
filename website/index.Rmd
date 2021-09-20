@@ -27,6 +27,9 @@ source('_first_chunk.R')
 - [Session 4](session-4.html): Describing patterns, answering questions
 - [Session 5](session-5.html): Quantifying evidence
 
+<br>
+
+- [Cheat-sheets/reference](https://plymouthpsychology.github.io/cheatR/)
 
 
 # Overview
@@ -122,6 +125,17 @@ Unless you already  have a lot of experience with R, don't try to install it on
 your own computer. We find this creates unnecessary problems for students. Staff won't help you debug your work unless they are evident when using the school RStudio server.
 
 
+
+
+# R Cheatsheets
+
+We have posted a 'cheatsheet' for all the code used in our BSc and MSc psychology teaching materials here:
+
+
+https://plymouthpsychology.github.io/cheatR/
+
+
+Students who are more comfortable with R may find the "staff cheatsheet for project students" useful, because it is more concise and includes some additional techniques.
 
 
 
