@@ -37,7 +37,7 @@ source('_first_chunk.R')
 
 ```{r, echo=F}
 video_data <- list(identifier = "describe-overview", showcode = F,
-yt_id="k8hn3I168bU")
+yt_id="DNla39W33II")
 # makermds(video_data)
 ```
 
@@ -49,7 +49,7 @@ yt_id="k8hn3I168bU")
 # Central tendency and spread{#centralspread}
 
 ```{r, echo=F}
-video_data <- list(identifier = "describe-centrantend", yt_id="WcfyjFCdnWk")
+video_data <- list(identifier = "describe-centrantend", yt_id="6ubOM1xekQk")
 # makermds(video_data)
 ```
 
@@ -108,7 +108,7 @@ funimagery.edited %>%
 
 
 ```{r, echo=F}
-video_data <- list(identifier = "describe-frequency", yt_id = "2zH8QyrcMqU")
+video_data <- list(identifier = "describe-frequency", yt_id = "XB-b454apj4")
 # makermds(video_data)
 ```
 
