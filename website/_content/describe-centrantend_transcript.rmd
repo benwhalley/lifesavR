@@ -1,8 +1,8 @@
 
 If we have a single continous variable — that is, one stored in a numeric column in R —  then can describe a few things about it, including:
 
-1. the *central tendency* of the data: e.g. mean, median
-2. the *spread* or distribution of the data: e.g. the standard deviation or interquartile range
+1. the *central tendency* of the data: e.g. mean, median ([see here for refresher](https://www.graduatetutor.com/statistics-tutor/measures-of-central-tendency-mean-median-mode/))
+2. the *spread* or distribution of the data: e.g. the standard deviation or interquartile range ([see refresher here](https://www.statisticshowto.com/probability-and-statistics/standard-deviation/#SDD))
 
 It's important to remember that even simple descriptive statistics like the mean or standard deviation enable us to *answer research questions* — you don't always need fancy statistics! For example, if we consider the `funimagery` data describing the RCT of functional imagery training, we could ask:
 
