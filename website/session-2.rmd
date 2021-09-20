@@ -243,7 +243,7 @@ video_data <- list(identifier = "fixing-code", yt_id = "NByWIgA9LA0", showcode =
 **Exercise 11**
 
 1. Select the R Studio menu option `Session > Restart R`
-1. Ensure that the **Environment** pane is empty
+1. Ensure that the **Environment** pane is empty ([see here for how to do this](#clearenv))
 1. Correct all of the errors in the chunk below
 
 ```{r, eval=F}
@@ -265,6 +265,22 @@ ggplot(aes(year, lifeExp, colour=continent)) %>%
 ```
 
 :::
+
+
+:::{#clearenv .tip}
+
+
+ You can clear the `Environment` pane by pressing the small broom icon in the menu bar:
+
+
+ ![](images/env-clear.png)
+
+This removes ALL your stored variables, which can be useful when you want to test your code, but do bear that in mind.
+
+Restarting the R session WON'T always clear all variables, because R saves your progress and reloads variables when the session restarts. You shouldn't rely on this though — it could fail sometimes (e.g. if the R server restarts). 
+
+:::
+
 
 ```{r, echo=FALSE, eval=FALSE}
 # correct version
