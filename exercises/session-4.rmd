@@ -12,15 +12,15 @@ This R Markdown document is your workbook for session four of the lifesaveR modu
 ## Exercise 1
 
 1. Use `group_by()` and `summarise()` with the built-in `iris` dataset to calculate the mean `Sepal.Width` for each `Species` of flower.
-1. Make a boxplot that shows the sepal width for each species of flower.
+2. Make a boxplot that shows the sepal width for each species of flower.
 
 ## Exercise 2
 
 1. Using the `funimagery` dataset, create a column representing weight lost between baseline and the next weight measurement (`kg2`)
-1. Make a boxplot of these data
+2. Make a boxplot of these data
 
 # Check your knowledge
 
-## What is the difference between `geom_jitter()` and `geom_point()`? 
+## What is the difference between `geom_jitter()` and `geom_point()`?
 
 ## Why is `geom_jitter` useful sometimes?

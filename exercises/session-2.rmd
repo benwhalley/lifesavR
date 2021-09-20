@@ -48,8 +48,8 @@ Create a chunk which calculates your age in the year 2051 and assigns the result
 ## Exercise 4
 
 1. Load the `tidyverse` library.
-1. Pipe the `fuel` dataset into `head()` and assign the results to a variable called `fuel_head`.
-1. Use `fuel_head` to answer the question in the worksheet.
+2. Pipe the `fuel` dataset into `head()` and assign the results to a variable called `fuel_head`.
+3. Use `fuel_head` to answer the question in the worksheet.
 
 
 
@@ -59,8 +59,8 @@ Create a chunk which calculates your age in the year 2051 and assigns the result
 
 1. Upload
 [https://raw.githubusercontent.com/benwhalley/lifesavR/main/website/data/world-happiness-report-2021.csv](https://raw.githubusercontent.com/benwhalley/lifesavR/main/website/data/world-happiness-report-2021.csv) to the R Studio server.
-1. Create a new chunk which reads `world-happiness-report-2021.csv` into a variable with a descriptive name.
-1. Use this variable to answer the question in the worksheet.
+2. Create a new chunk which reads `world-happiness-report-2021.csv` into a variable with a descriptive name.
+3. Use this variable to answer the question in the worksheet.
 
 
 
@@ -81,9 +81,9 @@ Show countries with a population greater than 100 million and life expectancy gr
 ## Exercise 8
 
 1. Copy the code in the worksheet which calculates the median miles per gallon.
-1. Paste the code into a new chunk.
-1. Amend the code to calculate the median weight.
-1. Use the results to answer the question in the worksheet.
+2. Paste the code into a new chunk.
+3. Amend the code to calculate the median weight.
+4. Use the results to answer the question in the worksheet.
 
 ## Exercise 9
 
@@ -103,8 +103,8 @@ Using the `fuel` dataset, `filter()` and `summarise()`, calculate:
 ## Exercise 11
 
 1. Select the R Studio menu option `Session > Restart R`
-1. Ensure that the **Environment** pane is empty
-1. Correct all of the errors in the chunk below
+2. Ensure that the **Environment** pane is empty
+3. Correct all of the errors in the chunk below
 
 ```{r}
 libary(Tidyverse)

@@ -5,10 +5,10 @@ output: html_document
 
 # lifesaveR: Workbook 1
 
-This is an RMarkdown document. We will use a document like this as a workbook for 
+This is an RMarkdown document. We will use a document like this as a workbook for
 each of the sessions in the LifesaveR course.
 
-What to do: 
+What to do:
 
 - Use this document to complete and record your answers to the exercises in each session.
 - Edit the code and text below to save your work
@@ -26,41 +26,41 @@ The following chunk adds together three numbers:
 ## Exercise 1
 
 1. Locate the first chunk in this workbook.
-1. Place your cursor (anywhere) on the line of R code which adds three numbers.
-1. Run the code.
+2. Place your cursor (anywhere) on the line of R code which adds three numbers.
+3. Run the code.
 
 ## Exercise 2
 
 1. Select (highlight) the last two numbers in the sum.
-1. Run the code.
+2. Run the code.
 
 ## Exercise 3
 
 1. Create a chunk below these instructions
-1. Inside the chunk, write a line of code which adds together the numbers 9, 4, 55 and 2
-1. Run the the line of code you have written
+2. Inside the chunk, write a line of code which adds together the numbers 9, 4, 55 and 2
+3. Run the the line of code you have written
 
 # Datasets
 
 ## Exercise 4
 
 1. Create a new chunk below these instructions
-1. Load the `psydata` package
-1. Display the `fuel` dataset and try out the navigation buttons
-1. Write a line of code which makes a list of columns in the `development` datset
+2. Load the `psydata` package
+3. Display the `fuel` dataset and try out the navigation buttons
+4. Write a line of code which makes a list of columns in the `development` datset
 
 ## Exercise 5
 
 1. Create a new chunk below these instructions
-1. Load the `psydata` package if you haven't already done that in this work session
-1. Show the first 10 rows of the `development` data 
+2. Load the `psydata` package if you haven't already done that in this work session
+3. Show the first 10 rows of the `development` data
 
 # Scatterplots
 
 ## Exercise 6
 
 1. Create a new chunk below these instructions
-1. Using the `fuel` dataset, create a scatterplot  with `engine_size` on the x-axis and `mpg` (miles per gallon, or fuel economy) on the y-axis
+2. Using the `fuel` dataset, create a scatterplot  with `engine_size` on the x-axis and `mpg` (miles per gallon, or fuel economy) on the y-axis
 
 # Check your knowledge
 
@@ -91,4 +91,4 @@ Use the `fuel` dataset to make a scatterplot with `power` on the x-axis and `mpg
 ## Extension exercise 2
 
 1. Use `glimpse()` to get a list of the column names in the `iris` dataset.
-1. Make a scatterplot which shows the relationships between petal widths and lengths.
+2. Make a scatterplot which shows the relationships between petal widths and lengths.
