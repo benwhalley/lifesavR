@@ -138,7 +138,7 @@ Work with a friend: Describe the 4 ways in which quantitative researchers might 
 Use `glimpse()` to check the data types of the `mpg` and the `diamonds` datasets.
 
 - The data type of the 4th variable in the `mpg` data is `r mcq(c("double", "factor", "character", answer=typeof(mpg[[4]])))`
-- The data type 5th variable in the `diamonds` data is `r mcq(c("date","character", "factor", answer=typeof(diamonds[[5]])))`
+- The data type of the 5th variable in the `diamonds` data is `r mcq(c("date","character", "factor", answer=typeof(diamonds[[5]])))`
 
 :::
 
