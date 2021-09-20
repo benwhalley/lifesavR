@@ -9,13 +9,11 @@ In R, datasets are normally stored in a container called a `data.frame`. They ca
 
 
 
-
 ### Packaged datasets
 
 Some datasets are built into R packages as examples for beginners.
 
-For this course, we created a package called [`psydata`](https://github.com/benwhalley/psydata/)
-which includes the data we need for teaching.
+For this course, we created a package called [`psydata`](https://github.com/benwhalley/psydata/) which includes the data we need for teaching.
 
 This is installed on the RStudio server. To load it we run:
 
