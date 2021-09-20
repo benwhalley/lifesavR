@@ -79,7 +79,7 @@ Your boxplot should look like this:
 
 ```{r, echo=FALSE}
 iris %>%
-  ggplot(aes(Species, Sepal.Length)) +
+  ggplot(aes(Species, Sepal.Width)) +
   geom_boxplot()
 ```
 :::
