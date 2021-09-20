@@ -37,7 +37,7 @@ This is important in psychology, and other sciences, because the size of the eff
 It *might* be the case that patterns we see are just a 'fluke'. That is, they have come about by chance. Perhaps if we took another sample from the same population (treated more people with FIT and MI) then we would see no difference?
 
 
-The Bayes Factor quantifies how confident we should be about any given pattern in our by comparing two possibilities:
+The Bayes Factor quantifies how confident we should be about any given pattern in our data by comparing two possibilities:
 
 1. There really is a difference in how much weight people lost with FIT and MI (we call this H1)
 2. There's **NO** difference between FIT and MI; any difference we see is likely to be a fluke (H0)
