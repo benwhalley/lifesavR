@@ -244,6 +244,7 @@ video_data <- list(identifier = "built-in-datasets", yt_id = "hro-RRKO1Oo")
 1. Open your workbook for this workshop (called `session-1.rmd`).
 1. Create a new chunk below the `Exercise 4` instructions
 1. Load the `psydata` package
+1. Look at the fuel data using the `glimpse()` function
 1. Display the `fuel` dataset and try out the navigation buttons.
 1. Make a list of the columns in the `development` datset
 
@@ -273,6 +274,15 @@ The population of Afghanistan in 1967 was: `r fitb('11537966')`.
 
 :::
 
+
+
+:::{.tip}
+
+### Take a break!
+
+Our student pilot-testers suggested that now would be a good time for a short break!
+
+:::
 
 
 
@@ -373,6 +383,13 @@ Use `glimpse()` to get a list of the column names.
 Make a scatterplot which shows the relationships between petal widths and lengths.
 
 :::
+
+
+# Congratulations!
+
+You've completed all the exercises for this session, and are well on the way to working fluently in R. Well done!
+
+
 
 # Further reading
 
