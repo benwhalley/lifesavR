@@ -356,7 +356,7 @@ correct <- iris %>%
 
 ```
 
-The mean petal width of the versicolour species of iris is `r fitb(correct, tol=.2)`cm.
+The mean petal width of the `versicolor` species of iris is `r fitb(correct, tol=.2)`cm.
 
 :::
 
