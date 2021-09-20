@@ -334,7 +334,7 @@ Filter and summarise the `iris` dataset in order to answer the following questio
 
 ```{r, echo=FALSE}
 correct <- iris %>%
-  filter(Species == 'versicolour') %>%
+  filter(Species == 'versicolor') %>%
   summarise(mean_petal_width = round(mean(Petal.Width), 2)) %>%
   pull(mean_petal_width)
 
