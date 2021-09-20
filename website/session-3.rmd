@@ -329,7 +329,7 @@ Try to recreate the table below using the `painmusic` dataset from `psydata`.
 ```{r, echo=FALSE}
 painmusic %>%
   group_by(liked = factor(liked), familiar = factor(familiar)) %>%
-  summarise(mean_pain_no_music = mean(pain.with.music), sd_pain_no_music = sd(pain.with.music))
+  summarise(mean_pain_no_music = mean(pain.no.music), sd_pain_no_music = sd(pain.no.music))
 ```
 
 :::
