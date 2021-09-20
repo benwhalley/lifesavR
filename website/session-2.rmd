@@ -118,7 +118,7 @@ video_data <- list(identifier = "pipes", yt_id="APFXK-xoxR0")
 1. Pipe the `fuel` dataset into `head()` and assign the results to a variable called `fuel_head`.
 1. Use the **Environment** pane to open `fuel_head`.
 
-The engine size of the vehicle with the second highest miles per gallon was `r fitb('1770')`cc.
+The engine size of the vehicle with the highest miles per gallon was `r fitb('1770')`cc.
 :::
 
 
@@ -334,7 +334,7 @@ Filter and summarise the `iris` dataset in order to answer the following questio
 
 ```{r, echo=FALSE}
 correct <- iris %>%
-  filter(Species == 'versicolour') %>%
+  filter(Species == 'versicolor') %>%
   summarise(mean_petal_width = round(mean(Petal.Width), 2)) %>%
   pull(mean_petal_width)
 

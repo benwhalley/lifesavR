@@ -15,11 +15,7 @@ library(...)
 This R Markdown document is your workbook for session two of the lifesaveR module.
 
 
-
 # Storing data in variables
-
-The chunk below runs the calculation `40 + 2`, assigns the result to the variable `meaningoflife`, and then prints the
-value of the variable.
 
 ## Exercise 1
 
