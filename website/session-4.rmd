@@ -87,8 +87,9 @@ iris %>%
 
 In the video you saw how to use `mutate()` to create a new column which is the difference between values in two other columns.
 
-1. Using the `funimagery` dataset, create a column representing weight lost between end of treatment (`kg2`) and at the end of followup (`kg3`)
-2. Make a boxplot of this new column
+1. Using the `funimagery` dataset, create a column representing weight lost between end of treatment and at the end of
+followup.
+1. Make a boxplot of these data.
 
 Your plot should look like this:
 
@@ -117,10 +118,10 @@ video_data <- list(identifier = "describe-frequency", yt_id = "XB-b454apj4")
 
 
 :::{.exercise}
+**Exercise 3**
 
-- Use the `funimagery` data.
-- Use `count()` to count how many participants there were in each intervention group
-- How many men were in the FIT group?
+1. Using the `funimagery` data and `count()` to count how many participants there were in each intervention group.
+1. How many men were in the FIT group?
 
 
 <!-- funimagery %>% count(intervention, gender) -->
@@ -143,18 +144,16 @@ video_data <- list(identifier = "describe-relationships", yt_id="PGV-MZlCoOc")
 
 
 :::{.exercise}
+**Exercise 4**
 
-- Remember to load the `corrr` package (use the `library` function)
-- Use the `fuel` dataset from the `psydata` package
-- What is the correlation between `power` and `engine_size`?
+1. Load the `corrr` package (use the `library()` function).
+1. Use the `fuel` dataset from the `psydata` package, to calculate the correlation between `power` and `engine_size`?
 
 :::
 
 
-
-
-
 :::{.exercise}
+**Exercise 5**
 
 It's helpful to get a feel for what the data would look like for different correlation coefficients.
 <http://guessthecorrelation.com> is a game designed to help with this.
@@ -186,12 +185,13 @@ TODO XXX
 
 
 :::{.exercise}
+**Extension exercise 1**
 
+Correlations require that there is a *linear relationship* between the two variables. That is, the pattern in a
+scatterplot should be fairly close to a straight line.
 
-Correlations require that there is a *linear relationship* between the two variables. That is, the pattern in a scatterplot should be fair close to a straight line.
-
-- Plot pairs of variables from the `fuel` dataset.
-- Which pairs would be NOT be suitable to use to calculate a correlation?
+1. Plot pairs of variables from the `fuel` dataset.
+2. Which pairs would be NOT be suitable for calculating a correlation?
 
 `r hide()`
 
@@ -210,11 +210,6 @@ it's not a good statistic to describe the pattern we see here.
 `r unhide()`
 
 :::
-
-
-
-
-
 
 
 

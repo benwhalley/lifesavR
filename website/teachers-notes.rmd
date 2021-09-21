@@ -21,10 +21,67 @@ source("_first_chunk.R")
 
 
 
-# Answers to test-your-knowledge sections
+# Answers to 'Check your knowledge' questions
 
-## S1
+## Session 1
 
-## S2
+### How do you run part of a line of R code using the keyboard short cut?
 
-...
+### Which library will you always need to load in your first R Markdown chunk?
+
+### What is `psydata`?
+
+### How would you look at/inspect a whole dataset?
+
+### What does `glimpse()` do and when is it useful?
+
+### What is the 5th column in the `development` dataset?
+
+### Which function makes a plot? (there are many, but we mean the one shown above)
+
+### Which function chooses the columns of data used in the plot?
+
+## Session 2
+
+### What is the `<-` symbol called and what does it do?
+
+### What is the `%>%` symbol called and what does it do?
+
+### Which function would you pipe a dataset into if you wanted to see the first few rows?
+
+### Which function is used to load data from a CSV file?
+
+### What must you do before you can load data on the RStudio server?
+
+### Which function is used to select rows from a dataset?
+
+### How would you select rows where values in a numeric column are between 10 and 20?
+
+### Which function is used to summarise data?
+
+### Which summary function would you use to calculate the mean of a numeric column?
+
+### How would you calculate the median of a subset of rows in a `data.frame`?
+
+## Session 3
+
+### Which functions are needed to make a boxplot?
+
+### What is the difference between a `dbl` and a `fct` or `ord`?
+
+### Which data types are used for continuous variables?
+
+### Give an example of why the difference between `dbl` and `fct` matters when making a plot (include code examples for this if you can)
+
+### How can you convert a variable from a `dbl` to a `fct`?
+
+### How could you calculate the mean for one level of a factor?
+
+### How would you calculate the mean for all levels of a factor (e.g. for continent in the `development` dataset)?
+
+### How would you calculate means and standard deviations for all combinations of levels in two factors?
+
+## Session 4
+
+TODO XXX
+## Session 5

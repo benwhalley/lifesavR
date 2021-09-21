@@ -16,11 +16,40 @@ This R Markdown document is your workbook for session four of the lifesaveR modu
 
 ## Exercise 2
 
-1. Using the `funimagery` dataset, create a column representing weight lost between end of treatment (`kg2`) and at the end of followup (`kg3`)
-2. Make a boxplot of this new column
+In the video you saw how to use `mutate()` to create a new column which is the difference between values in two other columns.
+
+1. Using the `funimagery` dataset, create a column representing weight lost between end of treatment and at the end of
+followup.
+2. Make a boxplot of these data.
+
+# The *frequency* of responses
+
+## Exercise 3
+
+1. Using the `funimagery` data and `count()` to count how many participants there were in each intervention group.
+2. How many men were in the FIT group?
+
+# Relationships
+
+## Exercise 4
+
+1. Load the `corrr` package (use the `library()` function).
+2. Use the `fuel` dataset from the `psydata` package, to calculate the correlation between `power` and `engine_size`?
+
+## Exercise 5
+
+Play "Guess the correlation" in the worksheet.
 
 # Check your knowledge
 
-## What is the difference between `geom_jitter()` and `geom_point()`?
+Write your answers below each question and save your workbook for later.
 
-## Why is `geom_jitter` useful sometimes?
+# Extension exercises
+
+## Extension exercise 1
+
+Correlations require that there is a *linear relationship* between the two variables. That is, the pattern in a
+scatterplot should be fairly close to a straight line.
+
+1. Plot pairs of variables from the `fuel` dataset.
+2. Which pairs would be NOT be suitable for calculating a correlation?
