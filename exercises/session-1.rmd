@@ -27,7 +27,7 @@ The following chunk adds together three numbers:
 
 1. Locate the first chunk in this workbook.
 2. Place your cursor (anywhere) on the line of R code which adds three numbers.
-3. Run the code.
+3. Run the code by pressing Ctrl + Enter (Windows, Linux) or Cmd + Enter (Mac).
 
 ## Exercise 2
 
@@ -36,35 +36,37 @@ The following chunk adds together three numbers:
 
 ## Exercise 3
 
-1. Create a chunk below these instructions
-2. Inside the chunk, write a line of code which adds together the numbers 9, 4, 55 and 2
-3. Run the the line of code you have written
+1. Create a chunk below these instructions.
+2. Inside the chunk, write a line of code which adds together the numbers 9, 4, 55 and 2.
+3. Run the the line of code you have written.
 
 # Datasets
 
 ## Exercise 4
 
-1. Create a new chunk below these instructions
-2. Load the `psydata` package
-3. Display the `fuel` dataset and try out the navigation buttons
-4. Write a line of code which makes a list of columns in the `development` datset
+1. Create a new chunk below these instructions.
+2. Load the `psydata` package.
+3. Display the `fuel` dataset and try out the navigation buttons.
+4. Write a line of code which makes a list of columns in the `development` dataset.
 
 ## Exercise 5
 
-1. Create a new chunk below these instructions
-2. Load the `psydata` package if you haven't already done that in this work session
-3. Show the first 10 rows of the `development` data
+1. Create a new chunk below these instructions.
+2. Load the `psydata` package (if you haven't already).
+3. Show the first 10 rows of the `development` data using `head()`.
 
 # Scatterplots
 
 ## Exercise 6
 
-1. Create a new chunk below these instructions
-2. Using the `fuel` dataset, create a scatterplot  with `engine_size` on the x-axis and `mpg` (miles per gallon, or fuel economy) on the y-axis
+1. Create a new chunk below these instructions.
+2. Using the `fuel` dataset, create a scatterplot with `engine_size` on the x-axis and `mpg` (miles per gallon, or fuel economy) on the y-axis.
+3. Run the chunk.
 
 # Check your knowledge
 
-[Write your answers below each questions and save your workbook for later]
+Write your answers below each question and save your workbook for later.
+
 
 ## How do you run part of a line of R code using the keyboard short cut?
 
@@ -74,11 +76,11 @@ The following chunk adds together three numbers:
 
 ## How would you look at/inspect a whole dataset?
 
-## What does `glimpse` do and when is it useful?
+## What does `glimpse()` do and when is it useful?
 
 ## What is the 5th column in the `development` dataset?
 
-## Which function makes a plot?  (there are many, but we mean the one shown above)
+## Which function makes a plot? (there are many, but we mean the one shown above)
 
 ## Which function chooses the columns of data used in the plot?
 
