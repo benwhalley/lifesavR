@@ -21,7 +21,7 @@ The following chunk adds together three numbers:
 10 + 12 + 20
 ```
 
-# Working interactively in R Markdown {#interactive}
+# Working interactively in RMarkdown {#interactive}
 
 ## Exercise 1
 
@@ -70,7 +70,7 @@ Write your answers below each question and save your workbook for later.
 
 ## How do you run part of a line of R code using the keyboard short cut?
 
-## Which library will you always need to load in your first R Markdown chunk?
+## Which library will you always need to load in your first RMarkdown chunk?
 
 ## What is `psydata`?
 

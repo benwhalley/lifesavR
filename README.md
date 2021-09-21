@@ -70,3 +70,4 @@ revealing the answers to these questions, as a warmup/revision test.
   - _x-axis_ not _x axis_
   - _colour_ not _color_ (in text and `aes()`)
   - _internet_ not _Internet_
+  - _RMarkdown_ not _R Markdown_
