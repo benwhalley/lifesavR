@@ -35,19 +35,17 @@ source('_first_chunk.R')
 - [Cheat-sheets/reference](https://plymouthpsychology.github.io/cheatR/)
 
 
-
 # Topic index 
 
-
-`ggplot()`: Plotting function, [introduced](URL)
-
-`geom_point`: for scatterplots, [introduced](); [with multiple colors](XXX)
-
-
-
-
-
-
+* `geom_point()` (scatterplots)
+  * [**introduction**](session-1.html#scatterplots)
+  * [adding colour](session-3.html#colour)
+* `ggplot()` (plotting function)
+  * [**introduction**](session-1.html#scatterplots)
+* R (programming language)
+  * [**what R can do**](session-1.html#cando)
+* RStudio (program for writing R and RMarkdown)
+  * [**using**](session-1.html#using)
 
 # Overview
 
