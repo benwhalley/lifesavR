@@ -37,15 +37,25 @@ source('_first_chunk.R')
 
 # Topic index 
 
-* `geom_point()` (scatterplots)
+* dataset: grid (rows and columns) of data values
+  * [**introduction**](session-1.html#datasets)
+* `geom_point()`: create scatterplots
   * [**introduction**](session-1.html#scatterplots)
   * [adding colour](session-3.html#colour)
-* `ggplot()` (plotting function)
+* `ggplot()`: create plots
   * [**introduction**](session-1.html#scatterplots)
-* R (programming language)
+* `library()`: load packages
+  * [**loading packages**](session-1.html#packages)
+* Package: add functionality to R
+  * [**introduction**](session-1.html#packages)
+* R: programming language
   * [**what R can do**](session-1.html#cando)
-* RStudio (program for writing R and RMarkdown)
+* RMarkdown: combine R code with regular text
+  * [**Working interactively**](session-1.html#interactive)
+* RStudio: program in R and RMarkdown
   * [**using**](session-1.html#using)
+* `tidyverse`: essential package for this module
+  * [**introduction**](session-1.html#packages)
 
 # Overview
 
