@@ -445,6 +445,7 @@
 </div>
 <!-- Code examples -->
 <div id="scatterplot-colour-examples" class="tab-pane fade code-examples">
+<<<<<<< HEAD
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># scatterplot of engine size (displ) against highway fuel efficiency (hwy)</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(displ, hwy)) <span class="sc">+</span></span>
@@ -455,6 +456,18 @@
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span></span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(displ, hwy, <span class="at">colour=</span>drv)) <span class="sc">+</span></span>
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+=======
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="co"># scatterplot of engine size (displ) against highway fuel efficiency (hwy)</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>mpg <span class="op">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(displ, hwy)) <span class="op">+</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_point</span>()</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a><span class="co"># colour each point; different colour for each type of transmission</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true"></a><span class="co"># front, rear and four wheel drive</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true"></a>mpg <span class="op">%&gt;%</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(displ, hwy, <span class="dt">colour=</span>drv)) <span class="op">+</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
+>>>>>>> a0ff214fa9054d679dea03782282fad991987302
 </div>
 <!-- Full transcript of the video -->
 <div id="scatterplot-colour-transcript" class="tab-pane fade transcript">
@@ -1009,9 +1022,15 @@ TODO - have a ppt of the first explanatory part of this instead of a blank scree
 <div class="exercise">
 <p><strong>Exercise 6</strong></p>
 <p>Replace the <code>?</code> in the code below to to calculate the <code>median</code> weight lost for men and women undergoing FIT and MI in the <code>funimagery</code> dataset.</p>
+<<<<<<< HEAD
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>? <span class="sc">%&gt;%</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(?, ?) <span class="sc">%&gt;%</span></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>( ?(weight_lost_end_trt) )</span></code></pre></div>
+=======
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true"></a>? <span class="op">%&gt;%</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">group_by</span>(?, ?) <span class="op">%&gt;%</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">summarise</span>( ?(weight_lost_end_trt) )</span></code></pre></div>
+>>>>>>> a0ff214fa9054d679dea03782282fad991987302
 <p>These are the correct numbers to check your work against:</p>
 <table style="width:62%;">
 <colgroup>

@@ -56,7 +56,10 @@ video_data <- list(identifier = "describe-centrantend", yt_id="6ubOM1xekQk")
 ```{r child = '_content/_video_tabs.rmd'}
 ```
 
-:::{.exercise}
+:::{#ex1 .exercise}
+
+<!-- REMEMBER TO UPDATE THE WORKBOOK IF YOU TOUCH THIS !!! -->
+
 **Exercise 1**
 
 1. Open `session-4.rmd` using the **Files** pane. This is the workbook you will be using in this session.
@@ -79,7 +82,20 @@ iris %>%
   ggplot(aes(Species, Sepal.Width)) +
   geom_boxplot()
 ```
+
+
+```{r, echo=F, include=F}
+aesmcqq <- c("aes(Species, Sepal.Width))", "aes('Species', 'Sepal.Width')", "aes((species, sepal.width))", answer="aes(Species, Sepal.Width)")
+```
+
+
+The `aes` part of your ggplot code should be: `r mcq(aesmcqq)`
+
 :::
+
+
+<style type="text/css">#ex1 select { font-family: monospace; }</script>
+
 
 
 :::{.exercise}
