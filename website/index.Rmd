@@ -37,15 +37,33 @@ source('_first_chunk.R')
 
 # Topic index 
 
-* `geom_point()` (scatterplots)
-  * [**introduction**](session-1.html#scatterplots)
+* [%>%](session-2.html#pipe): pipe operator
+* [<-](session-2.html#variables): assignment operator
+* [CSV](session-2.html#loadingdata): comma separated value (file format)
+* [dataset](session-1.html#datasets): grid of data values (rows and columns)
+  * [loading from elsewhere](session-2.html#loadingdata)
+* errors
+  * [fixing](session-2.html#fixing)
+  * [common](https://www.andywills.info/rminr/common-errors.html)
+* [`filter()`](session-2.html#filter) function to select *rows* from a dataset
+* [`geom_point()`](session-1.html#scatterplots): function to create scatterplots
   * [adding colour](session-3.html#colour)
-* `ggplot()` (plotting function)
-  * [**introduction**](session-1.html#scatterplots)
-* R (programming language)
-  * [**what R can do**](session-1.html#cando)
-* RStudio (program for writing R and RMarkdown)
-  * [**using**](session-1.html#using)
+* [`ggplot()`](session-1.html#scatterplots): function to create plots
+* [`glimpse()`](session-1.html#datasets): function to list columns, plus a few datapoints
+* [`library()`](session-1.html#packages): function to load packages
+* [`mean()`](session-2.html#summarise): summarise data using the mean
+* [`median()`](session-2.html#summarise): summarise data using the median
+* [psydata](session-1.html#datasets): package including datasets used in this module
+* [package](session-1.html#packages): adds functionality to R
+* [R](session-1.html#cando): programming language for data science
+* [RMarkdown](session-1.html#interactive): combine R code with regular text
+* [RStudio](session-1.html#using): program for writing R and RMarkdown
+* [`read_csv()`](session-2.html#loadingdata): function to read a CSV file
+* [scatterplot](session-1.html#scatterplots): show the relationship between two continuous variables
+* [`sd()`](session-2.html#summarise): summarise data using the standard deviation
+* [`summarise()`](session-2.html#summarise): function to summarise data values
+* [`tidyverse`](session-1.html#packages): essential package for this module
+* [variable](session-2.html#variables): container for storing things in R
 
 # Overview
 
