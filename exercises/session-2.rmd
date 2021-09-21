@@ -35,34 +35,34 @@ next_year <- current_year + 1
 
 ## Exercise 2
 
-Create a new chunk containing code which assigns the results of the calculation `2 * 35` to the variable `seventy`.
+1. Create a new chunk.
+2. Assign the results of the calculation `2 * 35` to the variable `seventy`.
+3. Run the chunk.
 
 ## Exercise 3
 
-Create a chunk which calculates your age in the year 2051 and assigns the result to a variable _with a descriptive name_.
-
-
+1. Create a new chunk.
+2. Use R to calculate your age in the year 2051.
+3. Save the result in a variable _with a descriptive name_.
 
 # Passing data with pipes `%>%`
 
 ## Exercise 4
 
-1. Load the `tidyverse` library.
-2. Pipe the `fuel` dataset into `head()` and assign the results to a variable called `fuel_head`.
-3. Use `fuel_head` to answer the question in the worksheet.
-
-
+1. Create a new chunk.
+2. Load the `tidyverse` library.
+3. Pipe the `fuel` dataset into `head()` and assign the results to a variable called `fuel_head`.
+4. Use the **Environment** pane to open `fuel_head`.
 
 # Loading data from elsewhere
 
 ## Exercise 5
 
-1. Upload
-[https://raw.githubusercontent.com/benwhalley/lifesavR/main/website/data/world-happiness-report-2021.csv](https://raw.githubusercontent.com/benwhalley/lifesavR/main/website/data/world-happiness-report-2021.csv) to the R Studio server.
-2. Create a new chunk which reads `world-happiness-report-2021.csv` into a variable with a descriptive name.
-3. Use this variable to answer the question in the worksheet.
-
-
+1. Use your web browser to download
+[https://raw.githubusercontent.com/benwhalley/lifesavR/main/website/data/world-happiness-report-2021.csv](https://raw.githubusercontent.com/benwhalley/lifesavR/main/website/data/world-happiness-report-2021.csv) to your computer.
+2. Upload `world-happiness-report-2021.csv` to the server.
+3. Create a new chunk.
+4. Read `world-happiness-report-2021.csv` into a variable with a descriptive name.
 
 # Selecting rows with `filter()`
 
@@ -75,7 +75,6 @@ Filter the `development` dataset to show countries with a population greater tha
 Show countries with a population greater than 100 million and life expectancy greater than 70.
 
 
-
 # Summarising data using `summarise()`
 
 ## Exercise 8
@@ -83,11 +82,11 @@ Show countries with a population greater than 100 million and life expectancy gr
 1. Copy the code in the worksheet which calculates the median miles per gallon.
 2. Paste the code into a new chunk.
 3. Amend the code to calculate the median weight.
-4. Use the results to answer the question in the worksheet.
+4. Note that `fuel` stores `weight` in kilos.
 
 ## Exercise 9
 
-1. Amend the code in Exercise 8 to also calculate the mean and standard deviation of `weight`.
+Amend the code in Exercise 8 to also calculate the mean and standard deviation of `weight`.
 
 ## Exercise 10
 
@@ -102,9 +101,9 @@ Using the `fuel` dataset, `filter()` and `summarise()`, calculate:
 
 ## Exercise 11
 
-1. Select the R Studio menu option `Session > Restart R`
-2. Ensure that the **Environment** pane is empty
-3. Correct all of the errors in the chunk below
+1. Select the R Studio menu option `Session > Restart R`.
+2. Ensure that the **Environment** pane is empty (see worksheet for how to do this).
+3. Correct all of the errors in the chunk below.
 
 ```{r}
 libary(Tidyverse)
@@ -128,7 +127,7 @@ ggplot(aes(year, lifeExp, colour=continent)) %>%
 
 # Check your knowledge
 
-[Write your answers directly into the workbook here and save it for later]
+Write your answers below each question and save your workbook for later.
 
 ## What is the `<-` symbol called and what does it do?
 
@@ -154,4 +153,8 @@ ggplot(aes(year, lifeExp, colour=continent)) %>%
 
 ## Extension exercise 1
 
+In a new chunk, write the R code to produce the `data.frame` shown in the worksheet.
+
 ## Extension exercise 2
+
+Filter and summarise the `iris` dataset in order to answer the question in the worksheet.
