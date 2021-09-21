@@ -27,19 +27,66 @@ source("_first_chunk.R")
 
 ### How do you run part of a line of R code using the keyboard short cut?
 
+Press `Ctrl+Enter` (on a PC) or `Command+Enter` on a Mac.
+
+(Enter is also sometimes called the Return key and has a looped arrow symbol on it).
+
+
 ### Which library will you always need to load in your first R Markdown chunk?
+
+`library(tidyverse)`
+
 
 ### What is `psydata`?
 
+A package created by the School of Psychology to distribute datasets we use in our teaching examples.
+
+For example, the `fuel`, `happy`, `funimagery`, and `development` datasets all come from `psydata`.
+
+In many cases these datasets are based on data in other packages (including tidyverse) but we have tweaked them to avoid some common errors and frustrations when teaching beginners.
+
+
 ### How would you look at/inspect a whole dataset?
+
+We recommend 2 methods:
+
+- Type the name of the dataset as a line of code, and run that. This provides a nice user interface in which you can explore all the data. E.g. if using the `fuel` dataset, just write `fuel` on a line of its own and execute that.
+
+- Use `glimpse(fuel)` or `fuel %>% glimpse` to see a list of column names and the first few datapoints for each column. Good when there are lots of columns.
+
+
+You can also click on the name of the variable in the `Environment` pane, but we don't recommend this because:
+
+- in our experience it sometimes causes confusion for beginners
+- it won't work for built in datasets, or those from packages
+
+
 
 ### What does `glimpse()` do and when is it useful?
 
+As noted, `glimpse` shows a list of column names and the first few datapoints for each column. Good when there are lots of columns. Also helpful to find out what *type* each column is stored as.
+
 ### What is the 5th column in the `development` dataset?
+
+This is a fancy way of selecting the fifth column name from the `development` dataset:
+
+```{r}
+development %>% names %>% .[5]
+```
+
 
 ### Which function makes a plot? (there are many, but we mean the one shown above)
 
+`ggplot` is the recommended way to make plots. Older methods using Base R functions tend to 
+be much more tricky for beginners, and don't provide you with the flexible skills to adapt and
+grow later in the course.
+
 ### Which function chooses the columns of data used in the plot?
+
+The `aes()` function.
+
+`aes` is short for **aesthetics**, and determines the mapping between columns in the data and visual features of a plot (e.g. the x, y and colour scales).
+
 
 ## Session 2
 
