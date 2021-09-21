@@ -32,7 +32,7 @@ library(corrr)
 # Overview
 
 In the [previous workshop](session-4.html) we learned techniques to describe and summarise data.
-Now we take the next step quantify how *sure* we are that the patterns are real, using the *Bayes Factor*.
+Now we take the next step to quantify how *sure* we are that the patterns are real, using the *Bayes Factor*.
 
 The Bayes Factor (BF) is a single number which allows us to choose between different *possible* hypotheses (explanations) of how our data were generated, based on which is most probable.
 
