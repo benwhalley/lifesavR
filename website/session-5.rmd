@@ -32,7 +32,7 @@ library(corrr)
 # Overview
 
 In the [previous workshop](session-4.html) we learned techniques to describe and summarise data.
-Now we take the next step to quantify how *sure* we are that the patterns are real, using the *Bayes Factor*.
+Now we take the next step quantify how *sure* we are that the patterns are real, using the *Bayes Factor*.
 
 The Bayes Factor (BF) is a single number which allows us to choose between different *possible* hypotheses (explanations) of how our data were generated, based on which is most probable.
 
@@ -71,13 +71,12 @@ video_data <- list(identifier = "bayes-ttest", yt_id="BRKrSC5AjKg")
 
 
 :::{.exercise}
-**Exercise 1**
 
 1. Open `session-5.rmd` using the **Files** pane. This is the workbook you will be using in this session.
-1. Use the `funimagery` dataset.
-1. Plot participants' weights at baseline (`kg1`) in each intervention group.
-1. Use `summarise()` to calculate the difference between the groups weight.
-1. Use `with()` and `ttestBF()` to calculate the Bayes Factor for this difference.
+1. Use the `funimagery` dataset
+1. Plot participants' weights at baseline (`kg1`) in each intervention group
+1. Use `summarise()` to calculate the difference between the groups weight
+1. Use `with()` and `ttestBF()` to calculate the Bayes Factor for this difference
 
 
 ```{r}
@@ -124,14 +123,18 @@ We return to this topic later but for now just remember that:
 
 # Check your knowledge
 
-1. What hypotheses are being compared when we calculate a Bayes Factor for a correlation?
-1. Which function do we recommend to calculate correlation coefficients?
-1. Which function calculates the Bayes Factor for a correlation?
-1. Which function calculates the Bayes Factor for a difference in the average of two groups?
-1. What direction slope does a correlation of -0.5 imply? What would the scatterplot look like?
-1. What conclusion should we draw if the Bayes Factor for a correlation is 2.1? How about if it was 0.21, or 210?
-1. What conclusion should we draw if the Bayes Factor for a t test is 0.8? How about if it were > 10?
-1. What is the difference between `ttestBF()` and `correlationBF()`?
+- What hypotheses are being compared when we calculate a Bayes Factor for a correlation?
+- Which function do we recommend to calculate correlation coefficients?
+- Which function calculates the Bayes Factor for a correlation?
+- Which function calculates the Bayes Factor for a difference in the average of two groups?
+- What direction slope does a correlation of -0.5 imply? What would the scatterplot look like?
+- What conclusion should we draw if the Bayes Factor for a correlation is 2.1? How about if it was 0.21, or 210?
+- What conclusion should we draw if the Bayes Factor for a t test is 0.8? How about if it were > 10?
+- What is the difference between `ttestBF` and `correlationBF`?
+
+
+
+
 
 
 # References
