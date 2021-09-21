@@ -84,4 +84,21 @@ source("_first_chunk.R")
 ## Session 4
 
 TODO XXX
-## Session 5
+
+### Session 5
+
+### What hypotheses are being compared when we calculate a Bayes Factor for a correlation?
+
+### Which function do we recommend to calculate correlation coefficients?
+
+### Which function calculates the Bayes Factor for a correlation?
+
+### Which function calculates the Bayes Factor for a difference in the average of two groups?
+
+### What direction slope does a correlation of -0.5 imply? What would the scatterplot look like?
+
+### What conclusion should we draw if the Bayes Factor for a correlation is 2.1? How about if it was 0.21, or 210?
+
+### What conclusion should we draw if the Bayes Factor for a t test is 0.8? How about if it were > 10?
+
+### What is the difference between `ttestBF()` and `correlationBF()`?
