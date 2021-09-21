@@ -94,9 +94,6 @@ The `aes` part of your ggplot code should be: `r mcq(aesmcqq)`
 :::
 
 
-<style type="text/css">#ex1 select { font-family: monospace; }</script>
-
-
 
 :::{.exercise}
 **Exercise 2**
@@ -137,7 +134,12 @@ video_data <- list(identifier = "describe-frequency", yt_id = "XB-b454apj4")
 **Exercise 3**
 
 1. Using the `funimagery` data and `count()` to count how many participants there were in each intervention group.
-1. How many men were in the FIT group?
+1. How many men were in the FIT group? `r mcq(c(12,14,answer=funcounts$n[4], 18, 33, 28))`
+
+
+```{r, echo=F, include=F}
+funcounts <- funimagery %>% count(intervention, gender)
+```
 
 
 <!-- funimagery %>% count(intervention, gender) -->
@@ -147,7 +149,7 @@ video_data <- list(identifier = "describe-frequency", yt_id = "XB-b454apj4")
 
 
 
-# Relationships{#relationships}
+# Relationships {#relationships}
 
 ```{r, echo=F}
 video_data <- list(identifier = "describe-relationships", yt_id="PGV-MZlCoOc")
@@ -190,7 +192,23 @@ Write an answer to each of these questions in the `Check your knowledge` section
 revealed in Session 5.
 
 
-TODO XXX
+
+- What functions in R describe the central tendency of a variable?
+- What type of column can we use with `mean`?
+- How might you describe patterns in a categorical variable?
+- What function did we use to create a new column in the `funinmagery` dataset?
+- In the `funimagery` data, How much weight did FIT participants lose AFTER the end of treatment?
+- What type of plot describes the relationship between two variables?
+- What function do we use to make a plot that shows a relationship between two variables in `ggplot`?
+
+
+```{r}
+funimagery %>%
+  mutate(weight_lost_after_treat = kg3 - kg2) %>%
+  group_by(intervention) %>%
+  summarise(mean(weight_lost_after_treat))
+```
+
 
 
 # Extension exercises
@@ -226,6 +244,7 @@ it's not a good statistic to describe the pattern we see here.
 `r unhide()`
 
 :::
+
 
 
 
