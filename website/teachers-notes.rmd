@@ -1,0 +1,30 @@
+---
+title: "Teachers notes"
+bibliography: [references.bib]
+csl: apa.csl
+#biblio-style: apa6
+link-citations: yes
+output: webex::html_clean
+---
+
+```{r, include=F, echo=F}
+source("_first_chunk.R")
+```
+
+```{html, child="bs-tab-fix.html"}
+
+```
+
+```{css, child="video.css"}
+
+```
+
+
+
+# Answers to test-your-knowledge sections
+
+## S1
+
+## S2
+
+...
