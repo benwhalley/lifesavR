@@ -40,7 +40,7 @@ the activities in the blue boxes.**
 
 - [Using the RStudio interface](#using)
 - [What can R do?](#cando)
-- [Working interactively in R Markdown](#interactive)
+- [Working interactively in RMarkdown](#interactive)
 - [Loading packages](#packages)
 - [Datasets](#datasets)
 - [Making a scatterplot with `ggplot()`](#scatterplots)
@@ -338,7 +338,7 @@ Write an answer to each of these questions in the `Check your knowledge` section
 revealed in Session 2.
 
 1. How do you run part of a line of R code using the keyboard short cut?
-1. Which library will you always need to load in your first R Markdown chunk?
+1. Which library will you always need to load in your first RMarkdown chunk?
 1. What is `psydata`?
 1. How would you look at/inspect a whole dataset?
 1. What does `glimpse()` do and when is it useful?
