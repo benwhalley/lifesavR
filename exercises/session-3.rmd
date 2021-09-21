@@ -11,20 +11,27 @@ This R Markdown document is your workbook for session three of the lifesaveR mod
 
 ## Exercise 1
 
-Use the `iris` dataset to create a boxplot with `Species` on the x-axis and `Sepal.Width` on the y-axis.
+Use the `iris` dataset to create a boxplot with `Species` on the x-axis and `Sepal.Width` on the y-axis (sepals are the
+leaves that encase an iris flower).
 
 # Using colour
 
 ## Exercise 2
 
-Using the `development` data from `psydata`, create a scatterplot with `life_expectancy` on the x-axis, `gdp_per_capita`
-on the y-axis, and `continent` in colour.
+1. Use the `development` data from the `psydata` package (run `library(psydata)` first if you haven't already).
+2. Create a scatterplot with `life_expectancy` on the x-axis (along the bottom) and `gdp_per_capita`
+   on the y-axis.
+3. Add colour to this scatterplot: make each `continent` a different colour.
+4. Run the chunk of code.
 
 # Using different types of data and visual scales
 
 ## Exercise 3
 
-Describe the 4 ways in which quantitative researchers might use the word 'variable'?
+Work with a friend: Describe the 4 ways in which quantitative researchers might use the word 'variable'?
+
+(If you need to look these up from the video or text above then try testing yourself again after completing other
+exercises).
 
 ## Exercise 4
 
@@ -33,14 +40,15 @@ Describe the 4 ways in which quantitative researchers might use the word 'variab
 
 ## Exercise 5
 
-Using the `fuel` dataset, make a boxplot showing miles per gallon on the y-axis, and number of gears on the x-axis.
+Use the `fuel` dataset to make a boxplot showing miles per gallon on the y-axis, and number of gears (`gear`) on the
+x-axis.
 
 # Using `group_by()` to make a summary table and compare groups
 
 ## Exercise 6
 
-Replace the `?` in the code below to to calculate the median weight lost for men and women undergoing FIT and MI in the
-`funimagery` dataset:
+Replace the `?` in the code below to to calculate the `median` weight lost for men and women undergoing FIT and MI in the
+`funimagery` dataset.
 
 ```{r, eval=F}
 ? %>%
@@ -55,10 +63,14 @@ Use `group_by()` and `summarise()` with the built-in `iris` dataset to calculate
 
 ## Exercise 8
 
-1. Calculate the mean and standard deviation chick weights for each type of feed, using the built-in `chickwts` dataset.
-2. Use the output to answer the questions in the worksheet.
+The built-in dataset `chickwts` contains weights of chicks (in grams) fed on different diets. Use `group_by()` and
+`summarise()` to calculate the mean and standard deviation chick weights for each type of feed.
+
+Use the output to answer the questions in the worksheet.
 
 # Check your knowledge
+
+Write your answers below each question and save your workbook for later.
 
 ## Which functions are needed to make a boxplot?
 
@@ -80,23 +92,29 @@ Use `group_by()` and `summarise()` with the built-in `iris` dataset to calculate
 
 ## Extension exercise 1
 
-Make a scatterplot of the `diamonds` data with size (`carat`) on the x-axis, price on the y-axis and the clarity of the diamond in colour.
+Make a scatterplot of the `diamonds` data. Show `carat` on the x-axis, `price` on the y-axis, and the `clarity` of the
+diamonds in colour. Try to produce your plot _before_ comparing it against the answer in the worksheet.
 
-Which clarity type has the steepest rise in price as size increases?
+Interpret your plot: Which category of diamond `clarity` has the steepest rise in price as
+size (carat) increases?
 
 ## Extension exercise 2
 
-Make a scatterplot of the `fuel` dataset, showing `mpg` on the y-axis, engine size on the x-axis, with coloured points based on transmission type (automatic or manual).
+Make a scatterplot of the `fuel` dataset. Show `mpg` on the y-axis, engine size on the x-axis, and use type of
+transmission (auto/manual) to colour the points. Try to produce your plot before comparing it against the answer in the
+worksheet.
 
-Which type of car (auto or manal) sees the strongest relationship between engine size and fuel economy?
+Interpret your plot: Which type of car (auto or manal) sees the strongest relationship between engine size and fuel economy?
 
 ## Extension exercise 3
 
-Use the `development` dataset to make a boxplot showing life expectancy by continent for years greater than 1999.
+Using the `development` dataset, make a boxplot showing life expectancy by continent for years greater than 1999. (Hint:
+use `filter()`, `ggplot()` and `geom_boxplot()`.)
 
 ## Extension exercise 4
 
-Try to recreate the plot shown in the worksheet, using the `mtcars` built-in dataset.
+Try to recreate the plot shown in the worksheet using the `mtcars` built-in dataset. Remember to use `factor()` for
+columns which require conversion to `fct`.
 
 ## Extension exercise 5
 
