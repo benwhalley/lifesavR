@@ -141,10 +141,10 @@ video_data <- list(identifier = "introducing-rmarkdown", yt_id = "TfkL_b92r_E", 
 
 **Exercise 1**
 
-1. Locate the first chunk in `session-1.rmd` (you find this in the **Files** pane)
-1. Place your cursor (anywhere) on the line of R code
+1. Locate the first chunk in `session-1.rmd` (you find this in the **Files** pane).
+1. Place your cursor (anywhere) on the line of R code.
 1. Run the code by pressing <span class="keyshape">Ctrl</span> + <span class="keyshape">↵</span> (Windows, Linux) or
-   <span class="keyshape">⌘</span> + <span class="keyshape">↩</span> (Mac)
+   <span class="keyshape">⌘</span> + <span class="keyshape">↩</span> (Mac).
 
 You should see the result of the sum appear below the chunk:
 
@@ -242,11 +242,11 @@ video_data <- list(identifier = "built-in-datasets", yt_id = "hro-RRKO1Oo")
 **Exercise 4**
 
 1. Open your workbook for this workshop (called `session-1.rmd`).
-1. Create a new chunk below the `Exercise 4` instructions
-1. Load the `psydata` package
-1. Look at the fuel data using the `glimpse()` function
+1. Create a new chunk below the `Exercise 4` instructions.
+1. Load the `psydata` package.
+1. Look at the fuel data using the `glimpse()` function.
 1. Display the `fuel` dataset and try out the navigation buttons.
-1. Make a list of the columns in the `development` datset
+1. Write a line of code which makes a list of columns in the `development` dataset.
 
 -----------
 
@@ -264,9 +264,9 @@ The output should look something like this:
 
 In your workbook (`session-1.rmd`):
 
-1. Create a new chunk below the `Exercise 5` instructions
-1. Load the `psydata` package (if you haven't already)
-1. Show the first 10 rows of the `development` data using `head()`
+1. Create a new chunk below the `Exercise 5` instructions.
+1. Load the `psydata` package (if you haven't already).
+1. Show the first 10 rows of the `development` data using `head()`.
 
 Use the output to answer the following question. After entering your answer, click outside the box. The border will turn turn blue when the answer is correct.
 
