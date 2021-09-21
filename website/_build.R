@@ -12,7 +12,7 @@
 setwd(dirname(rstudioapi::getSourceEditorContext()$path))
 
 # rebuild docs into /docs which is where github serves them from
-rmarkdown::render('index.rmd', output_dir = "../docs")
+rmarkdown::render('index.Rmd', output_dir = "../docs")
 rmarkdown::render('session-1.rmd', output_dir = "../docs")
 rmarkdown::render('session-2.rmd', output_dir = "../docs")
 rmarkdown::render('session-3.rmd', output_dir = "../docs")
