@@ -87,17 +87,18 @@ iris %>%
 
 In the video you saw how to use `mutate()` to create a new column which is the difference between values in two other columns.
 
-1. Using the `funimagery` dataset, create a column representing weight lost between baseline and the next weight measurement (`kg2`)
+1. Using the `funimagery` dataset, create a column representing weight lost between end of treatment and at the end of
+followup
 1. Make a boxplot of these data
 
 Your plot should look like this:
 
 ```{r, echo=FALSE}
 funimagery.edited <- funimagery %>%
-  mutate(weight_lost_time_two = kg2 - kg1)
+  mutate(weight_lost_trt_followup = kg3 - kg2)
 
 funimagery.edited %>%
-  ggplot(aes(intervention, weight_lost_time_two)) +
+  ggplot(aes(intervention, weight_lost_trt_followup)) +
   geom_boxplot()
 ```
 
