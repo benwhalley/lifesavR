@@ -1,7 +1,13 @@
 ```{r, eval=F}
-# colour each point; different colour for each Species
-iris %>%
-  ggplot(aes(Sepal.Length, Sepal.Width, colour = Species)) +
+# scatterplot of engine size (displ) against highway fuel efficiency (hwy)
+mpg %>%
+  ggplot(aes(displ, hwy)) +
+  geom_point()
+
+# colour each point; different colour for each type of transmission
+# front, rear and four wheel drive
+mpg %>%
+  ggplot(aes(displ, hwy, colour=drv)) +
   geom_point()
 ```
 

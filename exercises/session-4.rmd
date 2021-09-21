@@ -16,8 +16,8 @@ This R Markdown document is your workbook for session four of the lifesaveR modu
 
 ## Exercise 2
 
-1. Using the `funimagery` dataset, create a column representing weight lost between baseline and the next weight measurement (`kg2`)
-2. Make a boxplot of these data
+1. Using the `funimagery` dataset, create a column representing weight lost between end of treatment (`kg2`) and at the end of followup (`kg3`)
+2. Make a boxplot of this new column
 
 # Check your knowledge
 
