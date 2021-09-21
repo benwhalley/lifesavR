@@ -37,6 +37,7 @@ source('_first_chunk.R')
 
 # Topic index 
 
+* [<-](session-2.html#variables): assignment operator
 * [dataset](session-1.html#datasets): grid of data values (rows and columns)
 * [`geom_point()`](session-1.html#scatterplots): function to create scatterplots
   * [adding colour](session-3.html#colour)
@@ -48,7 +49,9 @@ source('_first_chunk.R')
 * [R](session-1.html#cando): programming language for data science
 * [RMarkdown](session-1.html#interactive): combine R code with regular text
 * [RStudio](session-1.html#using): program for writing R and RMarkdown
+* [scatterplot](session-1.html#scatterplots): show the relationship between two continuous variables
 * [`tidyverse`](session-1.html#packages): essential package for this module
+* [variable](session-2.html#variables): container for storing things in R
 
 # Overview
 
