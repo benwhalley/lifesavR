@@ -56,7 +56,10 @@ video_data <- list(identifier = "describe-centrantend", yt_id="6ubOM1xekQk")
 ```{r child = '_content/_video_tabs.rmd'}
 ```
 
-:::{.exercise}
+:::{#ex1 .exercise}
+
+<!-- REMEMBER TO UPDATE THE WORKBOOK IF YOU TOUCH THIS !!! -->
+
 **Exercise 1**
 
 1. Open `session-4.rmd` using the **Files** pane. This is the workbook you will be using in this session.
