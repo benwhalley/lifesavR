@@ -202,14 +202,6 @@ revealed in Session 5.
 - What function do we use to make a plot that shows a relationship between two variables in `ggplot`?
 
 
-```{r}
-funimagery %>%
-  mutate(weight_lost_after_treat = kg3 - kg2) %>%
-  group_by(intervention) %>%
-  summarise(mean(weight_lost_after_treat))
-```
-
-
 
 # Extension exercises
 
