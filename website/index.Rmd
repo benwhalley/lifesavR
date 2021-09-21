@@ -14,6 +14,9 @@ output:
 source('_first_chunk.R')
 ```
 
+<meta property="og:description" content="LifesaveR is a short course in statistics and data visualisation using R." />
+
+
 
 > LifesaveR is a short course in statistics and data visualisation using R.
 
