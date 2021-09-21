@@ -130,6 +130,7 @@ We return to this topic later but for now just remember that:
 - What direction slope does a correlation of -0.5 imply? What would the scatterplot look like?
 - What conclusion should we draw if the Bayes Factor for a correlation is 2.1? How about if it was 0.21, or 210?
 - What conclusion should we draw if the Bayes Factor for a t test is 0.8? How about if it were > 10?
+- What is the difference between `ttestBF` and `correlationBF`?
 
 
 # References
