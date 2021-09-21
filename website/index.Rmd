@@ -37,25 +37,18 @@ source('_first_chunk.R')
 
 # Topic index 
 
-* dataset: grid (rows and columns) of data values
-  * [**introduction**](session-1.html#datasets)
-* `geom_point()`: create scatterplots
-  * [**introduction**](session-1.html#scatterplots)
+* [dataset](session-1.html#datasets): grid of data values (rows and columns)
+* [`geom_point()`](session-1.html#scatterplots): function to create scatterplots
   * [adding colour](session-3.html#colour)
-* `ggplot()`: create plots
-  * [**introduction**](session-1.html#scatterplots)
-* `library()`: load packages
-  * [**loading packages**](session-1.html#packages)
-* Package: add functionality to R
-  * [**introduction**](session-1.html#packages)
-* R: programming language
-  * [**what R can do**](session-1.html#cando)
-* RMarkdown: combine R code with regular text
-  * [**Working interactively**](session-1.html#interactive)
-* RStudio: program in R and RMarkdown
-  * [**using**](session-1.html#using)
-* `tidyverse`: essential package for this module
-  * [**introduction**](session-1.html#packages)
+* [`ggplot()`](session-1.html#scatterplots): function to create plots
+* [`glimpse()`](session-1.html#datasets): function to list columns, plus a few datapoints
+* [`library()`](session-1.html#packages): function to load packages
+* [psydata](session-1.html#datasets): package including datasets used in this module
+* [package](session-1.html#packages): adds functionality to R
+* [R](session-1.html#cando): programming language for data science
+* [RMarkdown](session-1.html#interactive): combine R code with regular text
+* [RStudio](session-1.html#using): program for writing R and RMarkdown
+* [`tidyverse`](session-1.html#packages): essential package for this module
 
 # Overview
 
