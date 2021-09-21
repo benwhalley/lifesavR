@@ -294,22 +294,120 @@ development %>%
 
 ## Session 4
 
-TODO XXX
+
+## What functions in R describe the central tendency of a variable?
+
+`mean` or `median`
+
+## What type of column can we use with `mean`?
+
+Numeric columns (i.e. those stored as `dbl` or `int`).
+
+## How might you describe patterns in a categorical variable?
+
+Using frequencies (counts).
+
+Use the `count()` function to calculate these.
+
+## What function did we use to create a new column in the `funinmagery` dataset?
+
+`mutate()`
+
+
+## In the `funimagery` data, How much weight did FIT participants lose AFTER the end of treatment?
+
+```{r}
+funimagery %>%
+  mutate(weight_lost_after_treat = kg3 - kg2) %>%
+  group_by(intervention) %>%
+  summarise(mean(weight_lost_after_treat))
+```
+
+
+
+## What type of plot describes the relationship between two variables?
+
+Scatter plots, optionally with an added line.
+
+
+## What function do we use to make a plot that shows a relationship between two variables in `ggplot`?
+
+`geom_scatter()`
+
+
+
 
 ### Session 5
 
 ### What hypotheses are being compared when we calculate a Bayes Factor for a correlation?
 
+H0: There is ZERO correlation between the two variables
+H1: There is a non-zero correlation
+
+The Bayes Factor says NOTHING about how large the correlation is. It only describes how strong the evidence is for whatever correlation we observe.
+
+To judge how strong the relationship is we must use `correlate()`.
+
+Remember: you can have strong evidence for a small but non-zero correlation if you have enough data.
+
+
 ### Which function do we recommend to calculate correlation coefficients?
+
+`correlate()`
+
 
 ### Which function calculates the Bayes Factor for a correlation?
 
+`correlationBF`
+
 ### Which function calculates the Bayes Factor for a difference in the average of two groups?
+
+`ttestBF`
 
 ### What direction slope does a correlation of -0.5 imply? What would the scatterplot look like?
 
+A negative correlation of r = 0.5 looks like this:
+
+```{r, echo=F}
+library('faux')
+set.seed(123)
+dat <- rnorm_multi(n = 100, 
+                  mu = c(20, 20, 20),
+                  sd = c(5, 5, 5),
+                  r = c(-0.5, -0.5, 0.25), 
+                  varnames = c("A", "B", "C"),
+                  empirical = FALSE)
+
+dat %>% ggplot(aes(A, B)) + geom_point() + coord_equal()
+
+```
+
+
+
 ### What conclusion should we draw if the Bayes Factor for a correlation is 2.1? How about if it was 0.21, or 210?
+
+If BF 2.1, the data are inconclusive.
+
+If it was 0.21 this is evidence in favour of the Null hypothesis (because < 1/3)
+
+If it was 210 that is strong evidence in favour of H1.
+
+
 
 ### What conclusion should we draw if the Bayes Factor for a t test is 0.8? How about if it were > 10?
 
+0.8 is inconclusive.
+
+\> 10 is string evidence
+
+
 ### What is the difference between `ttestBF()` and `correlationBF()`?
+
+`ttestBF:`  calculates the BF for between-group differences on a continuous outcome
+
+`correlationBF`: calculates the BF linear relationship (correlation) between two continuous variables
+
+
+
+
+
