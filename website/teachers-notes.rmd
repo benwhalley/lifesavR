@@ -23,6 +23,7 @@ source("_first_chunk.R")
 
 # Answers to 'Check your knowledge' questions
 
+
 ## Session 1
 
 ### How do you run part of a line of R code using the keyboard short cut?
@@ -92,41 +93,204 @@ The `aes()` function.
 
 ### What is the `<-` symbol called and what does it do?
 
+This is called the ***assignment operator***. It allows you to store things in a named variable.
+For example, the following code saves the number `42` in a variable called `meaning_of_life`:
+
+```{r}
+meaning_of_life <- 40 + 2
+```
+
+You can also save datasets, plots, statistical models and many other things in variables in R.
+
+
+
 ### What is the `%>%` symbol called and what does it do?
+
+This is the ***pipe*** symbol.
+
+It is only available when you have loaded the  `tidyverse` package.
+
+It sends the value on the left to the function on the right. For example, this sends the `fuel` dataset to the `glimpse` function:
+
+```{r}
+fuel %>% glimpse
+```
+
+
 
 ### Which function would you pipe a dataset into if you wanted to see the first few rows?
 
+`head` or `glimpse`
+
+
 ### Which function is used to load data from a CSV file?
+
+`read_csv()`, which is part of `tidyverse`.  Don't use `read.csv()` (note the dot rather than the underscore).
+
 
 ### What must you do before you can load data on the RStudio server?
 
+Upload it to the same directory (folder) as your RMarkdown file.
+
+
 ### Which function is used to select rows from a dataset?
+
+`filter()`
+
+E.g.:
+
+```{r}
+fuel %>% 
+  filter(mpg > 32)
+```
+
 
 ### How would you select rows where values in a numeric column are between 10 and 20?
 
+Again using filter:
+
+```{r}
+fuel %>% 
+  filter(mpg > 10) %>% 
+  filter(mpg < 20)
+```
+
+Or, to be more concise, you can use the `&` symbol:
+
+```{r}
+fuel %>% 
+  filter(mpg > 10 & mpg < 20)
+```
+
+
+
 ### Which function is used to summarise data?
+
+`summarise()!
+
+E.g. to calculate the SD:
+
+```{r}
+fuel %>% 
+  summarise(sd(mpg))
+```
+
+
 
 ### Which summary function would you use to calculate the mean of a numeric column?
 
+We can use `mean`, usually inside `summarise`:
+
+```{r}
+fuel %>% 
+  summarise(mean(mpg))
+```
+
+
+
 ### How would you calculate the median of a subset of rows in a `data.frame`?
+
+```{r}
+fuel %>% 
+  summarise(median(mpg))
+```
+
+
 
 ## Session 3
 
 ### Which functions are needed to make a boxplot?
 
+`ggplot`, `aes`, and `geom_boxplot`
+
+E.g.:
+
+```{r}
+fuel %>% 
+  ggplot(aes(automatic, mpg)) + 
+  geom_boxplot()
+```
+
+
+You might also need `factor()` if the variable on your x axis is not stored as a categorical (factor) column:
+
+```{r}
+fuel %>% 
+  ggplot(aes(factor(cyl), mpg)) + 
+  geom_boxplot()
+```
+
+
 ### What is the difference between a `dbl` and a `fct` or `ord`?
+
+`dbl` is short for ***double precision number***, which means it is numeric
+
+`fct` is a factor, so categorical
+
+`ord` is short for ordinal, which means an ordered category
+
 
 ### Which data types are used for continuous variables?
 
+`dbl` or `int`
+
+
 ### Give an example of why the difference between `dbl` and `fct` matters when making a plot (include code examples for this if you can)
+
+These two plots illustrate the difference:
+
+
+```{r}
+fuel %>% 
+  ggplot(aes(cyl, mpg)) + 
+  geom_boxplot()
+```
+
+
+```{r}
+fuel %>% 
+  ggplot(aes(factor(cyl), mpg)) + 
+  geom_boxplot()
+```
+
+
+In the first plot `cyl` is stored as a `dbl` (numeric) column, so doesn't make a proper boxplot.
+
 
 ### How can you convert a variable from a `dbl` to a `fct`?
 
+Use `factor(name_of_variable)`
+
+
 ### How could you calculate the mean for one level of a factor?
+
+Use `filter` and `summarise` with `mean`:
+
+```{r}
+development %>% 
+  filter(country=="Canada") %>% 
+  summarise(mean(life_expectancy))
+```
+
 
 ### How would you calculate the mean for all levels of a factor (e.g. for continent in the `development` dataset)?
 
+```{r}
+development %>% 
+  group_by(continent) %>% 
+  summarise(mean(life_expectancy))
+```
+
+
+
 ### How would you calculate means and standard deviations for all combinations of levels in two factors?
+
+```{r, eval=F}
+development %>% 
+  group_by(year, continent) %>% 
+  summarise(mean(life_expectancy)) 
+```
+
 
 ## Session 4
 
