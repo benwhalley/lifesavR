@@ -32,6 +32,20 @@ source('_first_chunk.R')
 - [Cheat-sheets/reference](https://plymouthpsychology.github.io/cheatR/)
 
 
+
+# Topic index 
+
+
+`ggplot()`: Plotting function, [introduced](URL)
+
+`geom_point`: for scatterplots, [introduced](); [with multiple colors](XXX)
+
+
+
+
+
+
+
 # Overview
 
 R is a bit like a martial art. Yes, this analogy is clichéd, but we think the parallels are real. Learning a martial art goes something like this:
