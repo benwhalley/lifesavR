@@ -150,17 +150,39 @@ This index links to all the important R functions and topics within the course.
 
 * [%>%](session-2.html#pipe)  pipe operator
 * [<-](session-2.html#variables)  assignment operator
+* [`aes()`](session-3.html#boxplots){#aes} function to define `ggplot()` axes, colour, etc.
+  * [colour](session-3.html#colour)
+* [Bayes Factor](session-5.html#fluke){#bf} quantifies evidence for differences or correlations in a dataset
+  * [interpreting](session-5.html#bayesinterpreting)
+* [boxplots](session-3.html#boxplots) visualise differences between categories or groups
 * [CSV](session-2.html#loadingdata)  comma separated value (file format)
+* [central tendency](session-4.html#centralspread) the "middle" of a set of values
+* [`count()`](session-4.html#responsefrequency){#count} function to count frequencies in categorical data
+* [`correlate()`](session-4.html#relationships){#correlate} function to calculate the correlation between two continuous variables
+* [correlation coefficient](session-4.html#relationships) number between -1 and 1, quantify a correlation between two continuous variables
+* [`correlationBF()`](session-5.html#bayescor) function to quantify evidence for a relationship between two continuous variables
+  * see [`correlate()`](#correlate)
+  * see [Bayes Factor](#bf)
 * [dataset](session-1.html#datasets)  grid of data values (rows and columns)
   * [loading from elsewhere](session-2.html#loadingdata)
+* [data type](session-3.html#datatypes) format used by R to store data (factor, text, numeric, logical, etc.)
 * errors
   * [how to problem-solve](session-2.html#fixing)
   * [list of common errors](https://www.andywills.info/rminr/common-errors.html)
+* [factor](session-3.html#datatypes) R data type for storing categorical or ordinal data
 * [`filter()`](session-2.html#filter) function to select *rows* from a dataset
+* [frequency table](session-4.html#responsefrequency) table counts (frequencies) by category
+  * see [`count()`](#count)
+* [`geom_boxplot()`](session-3.html#boxplots) function to create boxplots
 * [`geom_point()`](session-1.html#scatterplots)  function to create scatterplots
   * [adding colour](session-3.html#colour)
 * [`ggplot()`](session-1.html#scatterplots)  function to create plots
+  * see also [`aes()`](#aes)
 * [`glimpse()`](session-1.html#datasets)  function to list columns, plus a few datapoints
+* [`group_by()`](session-3.html#groupby) function to create a grouped `data.frame` (see `summarise()`)
+* [hypotheses](session-5.html#bayest) null and alternative (experimental)
+* [interquartile range](session-3.html#boxplots) central 50% of datapoints
+  * see [spread](#spread)
 * [`library()`](session-1.html#packages)  function to load packages
 * [`mean()`](session-2.html#summarise)  summarise data using the mean
 * [`median()`](session-2.html#summarise)  summarise data using the median
@@ -171,8 +193,14 @@ This index links to all the important R functions and topics within the course.
 * [RStudio](session-1.html#using)  program for writing R and RMarkdown
 * [`read_csv()`](session-2.html#loadingdata)  function to read a CSV file
 * [scatterplot](session-1.html#scatterplots)  show the relationship between two continuous variables
+  * [plotting relationships](session-4.html#relationships)
+* [spread](session-4.html#centralspread){#spread} the distribution of a set of values
 * [`sd()`](session-2.html#summarise)  summarise data using the standard deviation
+  * see [spread](#spread)
 * [`summarise()`](session-2.html#summarise)  function to summarise data values
+* [t-test](session-5.html#bayest) compare the average score for two groups
+* [`ttestBF()`](session-5.html#bayest) function to quantify evidence for a difference between groups
+  * see [Bayes Factor](#bf)
 * [`tidyverse`](session-1.html#packages)  essential package for this module
 * [variable](session-2.html#variables)  container for storing things in R
 
