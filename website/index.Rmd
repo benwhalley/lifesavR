@@ -33,37 +33,9 @@ source('_first_chunk.R')
 <br>
 
 - [Cheat-sheets/reference](https://plymouthpsychology.github.io/cheatR/)
+- [Topic index](#topicindex)
 
 
-# Topic index 
-
-* [%>%](session-2.html#pipe): pipe operator
-* [<-](session-2.html#variables): assignment operator
-* [CSV](session-2.html#loadingdata): comma separated value (file format)
-* [dataset](session-1.html#datasets): grid of data values (rows and columns)
-  * [loading from elsewhere](session-2.html#loadingdata)
-* errors
-  * [fixing](session-2.html#fixing)
-  * [common](https://www.andywills.info/rminr/common-errors.html)
-* [`filter()`](session-2.html#filter) function to select *rows* from a dataset
-* [`geom_point()`](session-1.html#scatterplots): function to create scatterplots
-  * [adding colour](session-3.html#colour)
-* [`ggplot()`](session-1.html#scatterplots): function to create plots
-* [`glimpse()`](session-1.html#datasets): function to list columns, plus a few datapoints
-* [`library()`](session-1.html#packages): function to load packages
-* [`mean()`](session-2.html#summarise): summarise data using the mean
-* [`median()`](session-2.html#summarise): summarise data using the median
-* [psydata](session-1.html#datasets): package including datasets used in this module
-* [package](session-1.html#packages): adds functionality to R
-* [R](session-1.html#cando): programming language for data science
-* [RMarkdown](session-1.html#interactive): combine R code with regular text
-* [RStudio](session-1.html#using): program for writing R and RMarkdown
-* [`read_csv()`](session-2.html#loadingdata): function to read a CSV file
-* [scatterplot](session-1.html#scatterplots): show the relationship between two continuous variables
-* [`sd()`](session-2.html#summarise): summarise data using the standard deviation
-* [`summarise()`](session-2.html#summarise): function to summarise data values
-* [`tidyverse`](session-1.html#packages): essential package for this module
-* [variable](session-2.html#variables): container for storing things in R
 
 # Overview
 
@@ -160,15 +132,49 @@ your own computer. We find this creates unnecessary problems for students. Staff
 
 
 
-# R Cheatsheets
+# R Cheatsheets {#cheatsheets}
 
 We have posted a 'cheatsheet' for all the code used in our BSc and MSc psychology teaching materials here:
 
-
 https://plymouthpsychology.github.io/cheatR/
 
-
 Students who are more comfortable with R may find the "staff cheatsheet for project students" useful, because it is more concise and includes some additional techniques.
+
+```{css, child="topic-index.css"}
+```
+
+
+# Topic index  {#topicindex}
+
+This index links to all the important R functions and topics within the course.
+
+* [%>%](session-2.html#pipe)  pipe operator
+* [<-](session-2.html#variables)  assignment operator
+* [CSV](session-2.html#loadingdata)  comma separated value (file format)
+* [dataset](session-1.html#datasets)  grid of data values (rows and columns)
+  * [loading from elsewhere](session-2.html#loadingdata)
+* errors
+  * [how to problem-solve](session-2.html#fixing)
+  * [list of common errors](https://www.andywills.info/rminr/common-errors.html)
+* [`filter()`](session-2.html#filter) function to select *rows* from a dataset
+* [`geom_point()`](session-1.html#scatterplots)  function to create scatterplots
+  * [adding colour](session-3.html#colour)
+* [`ggplot()`](session-1.html#scatterplots)  function to create plots
+* [`glimpse()`](session-1.html#datasets)  function to list columns, plus a few datapoints
+* [`library()`](session-1.html#packages)  function to load packages
+* [`mean()`](session-2.html#summarise)  summarise data using the mean
+* [`median()`](session-2.html#summarise)  summarise data using the median
+* [psydata](session-1.html#datasets)  package including datasets used in this module
+* [package](session-1.html#packages)  adds functionality to R
+* [R](session-1.html#cando)  programming language for data science
+* [RMarkdown](session-1.html#interactive)  combine R code with regular text
+* [RStudio](session-1.html#using)  program for writing R and RMarkdown
+* [`read_csv()`](session-2.html#loadingdata)  function to read a CSV file
+* [scatterplot](session-1.html#scatterplots)  show the relationship between two continuous variables
+* [`sd()`](session-2.html#summarise)  summarise data using the standard deviation
+* [`summarise()`](session-2.html#summarise)  function to summarise data values
+* [`tidyverse`](session-1.html#packages)  essential package for this module
+* [variable](session-2.html#variables)  container for storing things in R
 
 
 
