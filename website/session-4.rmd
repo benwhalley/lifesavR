@@ -49,7 +49,7 @@ yt_id="4mn_XxnSjUQ")
 # Central tendency and spread{#centralspread}
 
 ```{r, echo=F}
-video_data <- list(identifier = "describe-centrantend", yt_id="6ubOM1xekQk")
+video_data <- list(identifier = "describe-centrantend", yt_id="4mn_XxnSjUQ")
 # makermds(video_data)
 ```
 
