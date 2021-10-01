@@ -197,7 +197,7 @@ video_data <- list(identifier = "summarise", yt_id="ZoCJTBdfVwQ")
 **Exercise 8**
 
 1. Copy the code for calculating the median miles per gallon.
-1. Pase this code into a new chunk your workbook.
+1. Paste this code into a new chunk your workbook.
 1. Amend the code to calculate the median weight.
 1. Note that `fuel` stores `weight` in kilos.
 
