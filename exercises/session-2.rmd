@@ -50,7 +50,7 @@ next_year <- current_year + 1
 ## Exercise 4
 
 1. Create a new chunk.
-2. Load the `tidyverse` library.
+2. Load the `tidyverse` and `psydata` libraries.
 3. Pipe the `fuel` dataset into `head()` and assign the results to a variable called `fuel_head`.
 4. Use the **Environment** pane to open `fuel_head`.
 

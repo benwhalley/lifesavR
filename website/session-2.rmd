@@ -114,7 +114,7 @@ video_data <- list(identifier = "pipes", yt_id="APFXK-xoxR0")
 **Exercise 4**
 
 1. Create a new chunk below the `Exercise 4` heading in your workbook.
-1. Load the `tidyverse` library.
+2. Load the `tidyverse` and `psydata` libraries.
 1. Pipe the `fuel` dataset into `head()` and assign the results to a variable called `fuel_head`.
 1. Use the **Environment** pane to open `fuel_head`.
 
