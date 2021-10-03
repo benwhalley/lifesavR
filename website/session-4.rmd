@@ -29,6 +29,17 @@ source('_first_chunk.R')
 
 # Overview
 
+
+An important task for quantitative researchers is to **answer questions using data**. 
+We can often divide this activity into:
+
+- Describing patterns in the data
+- Quantifying how *sure* we are about those patterns
+
+This session is all about describing and visualising patterns in the data to answer research questions.
+
+
+
 ### Techniques covered
 
 - [Central tendency and spread](#centralspread)

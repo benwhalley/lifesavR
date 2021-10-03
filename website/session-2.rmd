@@ -82,8 +82,8 @@ Your **Environment** pane should look like this:
 **Exercise 2**
 
 1. Create a new chunk below the `Exercise 2` heading in your workbook (`session-2.rmd`).
-1. Assign the results of the calculation `2 * 35` to the variable `seventy`.
-1. Run the chunk.
+1. Assign the results of the calculation `2 * 35` to the variable `seventy`
+1. Run the chunk
 
 Your **Environment** should now look like this:
 
@@ -196,8 +196,7 @@ video_data <- list(identifier = "summarise", yt_id="ZoCJTBdfVwQ")
 :::{.exercise}
 **Exercise 8**
 
-1. Copy the code for calculating the median miles per gallon.
-1. Pase this code into a new chunk your workbook.
+1. Copy the code for calculating the median miles per gallon into your workbook.
 1. Amend the code to calculate the median weight.
 1. Note that `fuel` stores `weight` in kilos.
 
@@ -205,7 +204,7 @@ The median car weight is `r fitb(median(fuel$weight))` kg.
 
 **Exercise 9**
 
-Amend the code in Exercise 8 to also calculate the mean and standard deviation of `weight`.
+1. Amend the code to also calculate the mean and standard deviation of `weight`.
 
 To the nearest kilo, the mean car weight is `r fitb(round(mean(fuel$weight), 0))` kg, and the standard deviation is `r fitb(round(sd(fuel$weight), 0))` kg.
 :::
@@ -222,8 +221,8 @@ sd6 <- fuel %>%
 mubig <- fuel %>%
   filter(engine_size > 3000) %>%
   summarise(x = mean(mpg)) %>% pull(x)
-```
 
+```
 Use `filter()` and `summarise()` together to calculate the answers to these questions **to 1 decimal place**:
 
 - the mean `mpg` of cars with engine size > 3000:  `r fitb(mubig, tol=.1)`
@@ -243,9 +242,9 @@ video_data <- list(identifier = "fixing-code", yt_id = "NByWIgA9LA0", showcode =
 :::{.exercise}
 **Exercise 11**
 
-1. Select the R Studio menu option `Session > Restart R`.
-1. Ensure that the **Environment** pane is empty ([see here for how to do this](#clearenv)).
-1. Correct all of the errors in the chunk below.
+1. Select the R Studio menu option `Session > Restart R`
+1. Ensure that the **Environment** pane is empty ([see here for how to do this](#clearenv))
+1. Correct all of the errors in the chunk below
 
 ```{r, eval=F}
 libary(Tidyverse)
@@ -270,7 +269,6 @@ ggplot(aes(year, lifeExp, colour=continent)) %>%
 
 :::{#clearenv .tip}
 
-
  You can clear the `Environment` pane by pressing the small broom icon in the menu bar:
 
 
@@ -281,6 +279,7 @@ This removes ALL your stored variables, which can be useful when you want to tes
 Restarting the R session WON'T always clear all variables, because R saves your progress and reloads variables when the session restarts. You shouldn't rely on this though — it could fail sometimes (e.g. if the R server restarts).
 
 :::
+
 
 
 ```{r, echo=FALSE, eval=FALSE}
@@ -354,9 +353,10 @@ correct <- iris %>%
   filter(Species == 'versicolor') %>%
   summarise(mean_petal_width = round(mean(Petal.Width), 2)) %>%
   pull(mean_petal_width)
+
 ```
 
-The mean petal width of the `versicolor` species of iris is `r fitb(correct, tol=.2)`cm.
+The mean petal width of the versicolour species of iris is `r fitb(correct, tol=.2)`cm.
 
 :::
 

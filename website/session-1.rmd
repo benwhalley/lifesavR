@@ -266,7 +266,7 @@ In your workbook (`session-1.rmd`):
 
 1. Create a new chunk below the `Exercise 5` instructions.
 1. Load the `psydata` package (if you haven't already).
-1. Show the first 10 rows of the `development` data using `head()`.
+1. Show the first 6 rows of the `development` data using `head()`.
 
 Use the output to answer the following question. After entering your answer, click outside the box. The border will turn turn blue when the answer is correct.
 
@@ -296,6 +296,15 @@ video_data <- list(identifier = "scatterplots", yt_id = "RoK0ToZzwI0")
 ```{r child = '_content/_video_tabs.rmd'}
 
 ```
+
+
+:::{.tip}
+
+The `aes()` function, used with `ggplot` is short for 'aesthetics' (what we can see). 
+This part of the code *connects columns in our data to visual aspects of a plot*, like the x and y axes.
+
+:::
+
 
 :::{.exercise}
 
