@@ -114,7 +114,7 @@ video_data <- list(identifier = "pipes", yt_id="APFXK-xoxR0")
 **Exercise 4**
 
 1. Create a new chunk below the `Exercise 4` heading in your workbook.
-1. Load the `tidyverse` library.
+2. Load the `tidyverse` and `psydata` libraries.
 1. Pipe the `fuel` dataset into `head()` and assign the results to a variable called `fuel_head`.
 1. Use the **Environment** pane to open `fuel_head`.
 
@@ -196,7 +196,8 @@ video_data <- list(identifier = "summarise", yt_id="ZoCJTBdfVwQ")
 :::{.exercise}
 **Exercise 8**
 
-1. Copy the code for calculating the median miles per gallon into your workbook.
+1. Copy the code for calculating the median miles per gallon.
+1. Paste this code into a new chunk your workbook.
 1. Amend the code to calculate the median weight.
 1. Note that `fuel` stores `weight` in kilos.
 
