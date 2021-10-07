@@ -8,7 +8,7 @@ re-watch the video.
 
 Before you run the code below, we asked you to:
 
-1. Download the CSV file from here: [shootings.csv](data/shootings.csv) and save it to you ***Desktop Folder***. Then,
+1. Download the CSV file from here: [shootings.csv](https://raw.githubusercontent.com/benwhalley/psydata/main/data-raw/shootings.csv) and save it to you ***Desktop Folder***. Then,
 
 2. Upload it to the RStudio Server, in the same place as your Rmd worksheets
 
