@@ -50,7 +50,7 @@ x-axis.
 Replace the `?` in the code below to to calculate the `median` weight lost for men and women undergoing FIT and MI in the
 `funimagery` dataset.
 
-```{r, eval=F}
+```{r}
 ? %>%
   group_by(?, ?) %>%
   summarise( ?(weight_lost_end_trt) )
