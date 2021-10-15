@@ -288,7 +288,7 @@ development %>%
 ```{r, eval=F}
 development %>% 
   group_by(year, continent) %>% 
-  summarise(mean(life_expectancy)) 
+  summarise(mean(life_expectancy), sd(life_expectancy)) 
 ```
 
 

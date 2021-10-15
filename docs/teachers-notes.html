@@ -1602,7 +1602,7 @@ img {
 <h3>How would you calculate means and standard deviations for all combinations of levels in two factors?</h3>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a>development <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">group_by</span>(year, continent) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="kw">mean</span>(life_expectancy)) </span></code></pre></div>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="kw">mean</span>(life_expectancy), <span class="kw">sd</span>(life_expectancy)) </span></code></pre></div>
 </div>
 </div>
 <div id="session-4" class="section level2">
