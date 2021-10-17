@@ -148,7 +148,7 @@ video_data <- list(identifier = "describe-frequency", yt_id = "XB-b454apj4")
 funcounts <- funimagery %>% count(intervention, gender)
 ```
 
-1. Using the `funimagery` data and `count()` to count how many participants there were in each intervention group.
+1. Use the `funimagery` data and `count()` to count how many participants there were in each intervention group.
 1. How many men were in the FIT group? `r mcq(c(12,14,answer=funcounts$n[4], 18, 33, 28))`
 
 <!-- funimagery %>% count(intervention, gender) -->
