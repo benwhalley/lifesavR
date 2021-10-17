@@ -188,7 +188,7 @@ It's helpful to get a feel for what the data would look like for different corre
 - The game shows you a scatterplot; your job is to guess the correlation coefficient.
 - Try and get to about 30 points without losing any lives!  If you like you can get competitive and play a two-player game!
 
-<iframe src="http://guessthecorrelation.com" width=800 height=800></iframe>
+- Play now: <http://guessthecorrelation.com>
 
 
 
