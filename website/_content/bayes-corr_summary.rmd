@@ -1,6 +1,6 @@
 
 - `correlationBF` estimates the Bayes Factor for a correlation
 - It compares:
-  - H_1_: There *is a relationship* between two columns of data
-  - H_0_: There *is NO relationship*
+  - H$_1$: There *is a relationship* between two columns of data
+  - H$_0$: There *is NO relationship*
 - Large Bayes Factors are evidence *for* a relationship
