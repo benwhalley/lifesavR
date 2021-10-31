@@ -11,6 +11,6 @@ funimagery %>%
   geom_hline(yintercept=0)
 
 # use `formula = ` to tell ttestBF which data to use
-# the tilda symbol, ~, means "is predicted by"
+# the tilde symbol, ~, means "is predicted by"
 ttestBF(formula = weight_lost_end_trt ~ intervention, data=funimagery)
 ```
