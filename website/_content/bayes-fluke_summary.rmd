@@ -4,4 +4,4 @@
 - We ***compare the probability*** of two scenarios:
   i) the difference we see is 'real', and
   ii) any difference is a 'fluke'
-- By convention, large Bayes Factor mean the pattern is 'real'
+- By convention, large Bayes Factors mean the pattern is 'real'
