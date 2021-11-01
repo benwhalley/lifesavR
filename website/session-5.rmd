@@ -75,8 +75,8 @@ video_data <- list(identifier = "bayes-ttest", yt_id="BRKrSC5AjKg")
 1. Open `session-5.rmd` using the **Files** pane. This is the workbook you will be using in this session.
 1. Use the `funimagery` dataset
 1. Plot participants' weights at baseline (`kg1`) in each intervention group
-1. Use `summarise()` to calculate the difference between the groups weight
-1. Use `with()` and `ttestBF()` to calculate the Bayes Factor for this difference
+1. Use `summarise()` to calculate each group's weight at baseline
+1. Use `ttestBF()` with a formula to calculate the Bayes Factor for the difference in these weights
 
 
 ```{r, eval=F, include=F}
