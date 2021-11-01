@@ -11,10 +11,10 @@ This R Markdown document is your workbook for session five of the lifesaveR modu
 
 ## Exercise 1
 
-1. Use the `funimagery` dataset.
-2. Plot participants' weights at baseline (`kg1`) in each intervention group.
-3. Use `summarise()` to calculate the difference between the groups weight.
-4. Use `with()` and `ttestBF()` to calculate the Bayes Factor for this difference.
+1. Use the `funimagery` dataset
+2. Plot participants' weights at baseline (`kg1`) in each intervention group
+3. Use `summarise()` to calculate each group's weight at baseline
+4. Use `ttestBF()` with a formula to calculate the Bayes Factor for the difference in these weights
 
 # Check your knowledge
 
