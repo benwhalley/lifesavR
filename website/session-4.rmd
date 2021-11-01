@@ -206,7 +206,7 @@ revealed in Session 5.
 - What type of column can we use with `mean`?
 - How might you describe patterns in a categorical variable?
 - What function did we use to create a new column in the `funinmagery` dataset?
-- In the `funimagery` data, How much weight did FIT participants lose AFTER the end of treatment?
+- In the `funimagery` data, how much weight did FIT participants lose AFTER the end of treatment?
 - What type of plot describes the relationship between two variables?
 - What function do we use to make a plot that shows a relationship between two variables in `ggplot`?
 
