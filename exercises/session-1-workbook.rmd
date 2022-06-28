@@ -1,9 +1,7 @@
 ---
-title: "LifesaveR: Session 1"
+title: "LifesaveR Session 1 Workbook"
 output: html_document
 ---
-
-# lifesaveR: Workbook 1
 
 This is an RMarkdown document. We will use a document like this as a workbook for
 each of the sessions in the LifesaveR course.

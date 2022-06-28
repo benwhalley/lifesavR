@@ -1,19 +1,14 @@
 ---
-title: "LifesaveR: Session 2"
+title: "LifesaveR Session 2 Workbook"
 output: html_document
 ---
-
 
 ```{r}
 # use this chunk to load all the packages you need
 library(...)
 ```
 
-
-# lifesaveR: Workbook 2
-
 This R Markdown document is your workbook for session two of the lifesaveR module.
-
 
 # Storing data in variables
 
