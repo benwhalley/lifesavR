@@ -1,0 +1,32 @@
+
+
+`r video("O3G3m-iZKbg")`
+
+`r make_tabs('O3G3m-iZKbg')`
+
+:::{.tab-content}
+
+:::{#O3G3m-iZKbg-summary .tab-pane .active}
+
+SUMMARY
+
+:::
+
+:::{#O3G3m-iZKbg-code .tab-pane .fade}
+
+```{r}
+CODE
+```
+
+:::
+
+
+:::{#O3G3m-iZKbg-transcript .tab-pane .fade}
+
+TRANSCRIPT
+
+:::
+
+:::
+
+

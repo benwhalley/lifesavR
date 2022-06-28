@@ -19,8 +19,8 @@ Your browser does not support the video tag.
 <div class="videowrapper">
 
 <div class="videowrapper-video">
-<iframe width="800" height="500" src="//www.youtube.com/embed/{{yt_id}}"
-frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="800" height="500" src="https://www.youtube.com/embed/{{yt_id}}"
+frameborder="0" allow="autoplay; encrypted-media" allowfullscreen data-external="1"></iframe>
 
 </div>
 '
