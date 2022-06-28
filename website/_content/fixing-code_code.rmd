@@ -1,7 +1,7 @@
 ```{r, eval=FALSE}
 # code chunk containing various errors
 
-liibrary(todyverse)
+liibrary(tidyverse)
 
 library(psydata
 
