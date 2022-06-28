@@ -54,16 +54,17 @@ By the end of this session you will be able to:
 
 - Use numbers (coefficients) to interpret a line on a scatterplot
 - Run a simple linear regression model in R
-- Check 3 key assumptions of your model
+- Make a prediction from the model
+- Check 3 key assumptions
 
 
 ### Topics covered
 
-- Introduction to the example dataset
 - Revision for scatter plots
 - Adding straight lines to scatter plots
-- Explanation of the regression equation (it describes a straight line)
-- Residuals as the divergence from the fitted line
+- Explanation of the regression equation (describing a straight line in numbers)
+- The regression line as a *prediction*
+- Residuals as the error in prediction
 - 3 assumptions of regression
 
 
@@ -112,13 +113,14 @@ mentalh %>%
 :::{.exercise}
 
 
+*Do it: make a scatter plot*
+
 1. As a refresher, make the plot shown above for yourself using:
 
 - the `mentalh` dataset
 - the `ggplot` and `geom_point` functions
 - the `screen_time` and `anxiety_score` columns
 - remember to use the `aes` function to select which variable appears on each axis
-
 
 2. Describe the relationship between these two variables in no more than 2 or 3 sentences.
 
@@ -152,7 +154,7 @@ mentalh %>%
 :::{#O3G3m-iZKbg-summary .tab-pane .active}
 
 
-To make predictions using **simple regression* we need to draw a *line of best fit* 
+To make predictions using **simple regression** we need to draw a *line of best fit* 
 between one *outcome* variable and one *predictor* variable
 
 - The *outcome* is what we want to predict or explain (e.g., anxiety scores)
@@ -243,7 +245,7 @@ Now the blue line is the ***best linear fit*** between the predictor and the out
 
 :::{.exercise}
 
-1. Recreate the plot  in the video with `screen_time` and the predictor, `anxiety_score` as the outcome, and with the line of best fit (using `geom_smooth` and `geom_point`)
+1. Recreate the plot  in the video with `screen_time` and the predictor, `anxiety_score` as the outcome, and with the line of best fit (using `geom_smooth(method=lm)`)
 
 2. Make two version: one with `method="lm"`, and one without. The lines look different — but which do you think is the "best"? How would we decide? (We will return to this topic later)
 
