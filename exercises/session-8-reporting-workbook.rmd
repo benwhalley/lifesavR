@@ -1,0 +1,20 @@
+---
+title: "LifesaveR Session 8 Workbook: Reporting"
+output: html_document
+---
+
+This R Markdown document is your workbook for session 8 of the lifesaveR course
+
+
+# Do it: XXX
+
+## Exercise 1
+
+XXX
+
+# Check your knowledge
+
+Write your answers below each question and save your workbook for later.
+
+## Q1
+

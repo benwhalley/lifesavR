@@ -1,0 +1,20 @@
+---
+title: "LifesaveR Session 7 Workbook: Multiple Regression"
+output: html_document
+---
+
+This R Markdown document is your workbook for session 7 of the lifesaveR course
+
+
+# Do it: XXX
+
+## Exercise 1
+
+XXX
+
+# Check your knowledge
+
+Write your answers below each question and save your workbook for later.
+
+## Q1
+
