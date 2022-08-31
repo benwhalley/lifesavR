@@ -1,0 +1,100 @@
+---
+title: 'Making predictions'
+author: 'Ben Whalley, Paul Sharpe, Sonja Heintz, Chris Berry'
+bibliography: [references.bib]
+csl: apa.csl
+#biblio-style: apa6
+link-citations: yes
+output:
+  webex::html_clean
+---
+
+
+```{r, include=F, echo=F}
+source('_first_chunk.R')
+source('tabbed-rmd.R')
+library(broom)
+
+knitr::opts_chunk$set(
+  cache = F
+)
+```
+
+```{css, child="video.css"}
+```
+
+
+# Section 1
+
+`r video("O3G3m-iZKbg")`
+
+`r make_tabs('section1')`
+
+:::{.tab-content}
+
+:::{#section1-summary .tab-pane .active}
+
+Here A
+
+:::
+
+:::{#section1-code .tab-pane .fade}
+
+B hERE
+
+:::
+
+
+:::{#section1-transcript .tab-pane .fade}
+
+C hERE
+
+:::
+
+:::
+
+
+
+
+
+
+
+# Section 2
+
+`r video("O3G3m-iZKbg")`
+
+`r make_tabs('section2')`
+
+:::{.tab-content}
+
+:::{#section2-summary .tab-pane .active}
+
+Here A2
+
+:::
+
+:::{#section2-code .tab-pane .fade}
+
+B hERE
+
+:::
+
+
+:::{#section2-transcript .tab-pane .fade}
+
+C hERE
+
+:::
+
+:::
+
+
+
+
+
+
+
+
+
+
+

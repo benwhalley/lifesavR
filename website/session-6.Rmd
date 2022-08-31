@@ -5,7 +5,8 @@ bibliography: [references.bib]
 csl: apa.csl
 link-citations: yes
 output:
-  webex::html_clean
+  webex::html_clean:
+    highlight: tango
 ---
 
 
@@ -54,8 +55,8 @@ By the end of this session you will be able to:
 
 - Use numbers (coefficients) to interpret a line on a scatterplot
 - Run a simple linear regression model in R
-- Make a prediction from the model
-- Check 3 key assumptions
+- Make a prediction from it
+- Check 3 key assumptions of the model
 
 
 ### Topics covered
@@ -64,8 +65,9 @@ By the end of this session you will be able to:
 - Adding straight lines to scatter plots
 - Explanation of the regression equation (describing a straight line in numbers)
 - The regression line as a *prediction*
-- Residuals as the error in prediction
-- 3 assumptions of regression
+- Residuals as the *error in prediction*
+- Three *assumptions* regression makes
+
 
 
 ### The dataset: Screen time and anxiety
@@ -79,10 +81,18 @@ These data are available in the `psydata` package, in the `mentalh` dataset.
 
 Open the data and have a list the variables in the `mentalh` dataset:
 
-```{r}
+`r hide("Show me")`
+
+
+```{r, echo=T, eval=F}
 library(psydata)
+glimpse(mentalh)
+
+# you could also write this for more information on the variables
 help(mentalh)
 ```
+
+`r unhide()`
 
 :::
 
@@ -343,18 +353,17 @@ There are actually lots of ways to draw a 'best-fit' line, but simple linear reg
 uses the ***"method of least squares"*** (as described in the lecture).
 
 The calculations can be complex, but the `lm` function in R will do them for us.
+This example shows how:
 
-This is an example:
-
-```{r}
-# conduct a simple regression to predict anxiety_score from screen_time
+```{r, attr.source='.numberLines'}
+# conduct a simple regression to predict anxiety_score from screen_time.
 lm(anxiety_score ~ screen_time, data = mentalh)
 ```
 
 **Explanation of the code**  
 
-- The first part tells R to use the `lm` function. 
-- The next part is known as a **model formula**
+- The command on line 2 tells R to use the `lm` function. 
+- The first argument passed to `lm` is known as a **model formula**
 - The `~` symbol (called a 'tilde') means "*is predicted by*". So you can read the formula as saying
 *"anxiety score is predicted by screen time"*. 
 - Finally, we tell `lm` to use the `mentalh` data to estimate the coefficients.
@@ -362,9 +371,9 @@ lm(anxiety_score ~ screen_time, data = mentalh)
 
 **Explanation of the output**. When we use `lm`, the output displays:
 
--   The 'Call' we made (i.e. what inputs we gave, so we can remember how we did it later on)
+-   The 'Call' we made (i.e. what inputs we gave, so we can remember how we did it later on; this is line 4 and 5)
 -   The ***coefficients*** of the model. These are the **numbers which represent the line on the
-    graph** we saw above.
+    graph** we saw above. The coefficient values are on line 9.
 
 
 
@@ -577,6 +586,18 @@ Using the coefficients in the `lm` output above, answer the following questions:
 2. What is the expected anxiety score for a person who watched a screen for 24 hours? `r fitb(s1coef[1] + s1coef[2]*24, tol=.5)`
 
 
+
+`r hide("Answers")`
+
+
+```{r, echo=F}
+augment(simple1, newdata = tibble(screen_time = c(2, 24))) %>% 
+  pull(.fitted) %>% round(3) %>% 
+  pandoc.list()
+```
+
+`r unhide()`
+
 :::
 
 
@@ -732,17 +753,61 @@ first few rows and
 
 :::{.exercise}
 
+
+*Check your understanding*
+
+```{r, include=F}
+residmcq <- c(
+  "data that wasn't used to fit the model",
+  answer = "distance between observed outcomes and model predictions",
+  "prediction for new data",
+  "distance between two points on the regression line"
+)
+
+whichrresdid <- c(
+  "broom",
+  "predict",
+  "residual",
+  answer="augment",
+  "fitted"
+)
+
+residwhichscale <- c(
+  answer = "outcome",
+  "predictor",
+  "neither"
+)
+
+```
+
+- The residual is the `r mcq(residmcq)`
+- Residuals can be calculated which which R function? `r mcq(whichrresdid)`
+- Residuals will be on the same scale as the: `r mcq(residwhichscale)`
+
+<br>
+
 *Try it: Calculate the residuals*
 
 - Make sure you have run an `lm` and saved the result as `simple1`, as above
 - Use `augment` on this saved model *without* specifying any new data
 
+<br>
 
 *Check your result*
 
-- How many hours of screen time did the the person in the third row of the original data watch? `r fitb(4.2142, tol=.1)`
-- The prediction for the 3rd row in the original dataset is: `r fitb(6.147666, tol=.1)` 
+```{r, include=F}
+mentalh$anxiety_score[3]
+mentalh$screen_time[3]
+fitted(simple1)[3]
+mentalh$anxiety_score[3] - predict(simple1)[3]
+```
 
+Consider the person in the **third row** of the `mentalh` dataset we used to fit the model we saved as `simple1`:
+
+- What is their anxiety score? `r fitb(mentalh$anxiety_score[3], tol=.1)`
+- How much screen time did they watch? `r fitb(mentalh$screen_time[3], tol=.1)`
+- What is their **predicted** anxiety score? `r fitb(predict(simple1)[3], tol=.1)`
+- What is the **residual** for this prediction? `r fitb(resid(simple1)[3], tol=.1)`
 
 
 :::
@@ -815,6 +880,10 @@ augment(simple1) %>%
 :::{#checkingassumptions-transcript .tab-pane .fade}
 
 
+
+> NOTE: I have added a few extra points not mentioned in the video to the end of this transcript section
+
+
 ## Checking for linearity
 
 We have already covered this above, and we know that we can make a scatter plot with an added line 
@@ -881,6 +950,13 @@ augment(simple1) %>%
 - As a result, the trend line is mostly flat.
 - It's not perfect, but this example would be considered 'good enough' (i.e. does not violate the assumption).
 
+
+
+**Extra things I didn't say in the video**
+
+In the example, we have far more data for people who watched < 10 hours of screen time than for people who watched more. This means that in the residuals plots shown, there are more residuals in the left hand side of the plot, and things are more sparse on the right. This _doesn't_ cause a problem for the *homogeneity of variance* assumption. For that, all we care about is the vertical spacing  — how far the points are above/below the regression line -- and that this spacing is equal across the range of screen time.
+
+
 :::
 
 :::
@@ -894,332 +970,30 @@ augment(simple1) %>%
 
 - Re-run the `lm` model, again saving it as `simple1`
 
-Use augment without specifying new data, and make:
+Use `augment` *without* specifying new data, and then make:
 
 - A histogram of the residuals
 - A scatterplot of fitted vs. residual values
 
-:::
 
-
-
-# Further reading and exercises {#further}
-
-Please read the following material between the workshop sessions. If you have questions
-arising from it please bring them to the subsequent workshop and ask a member of staff there.
-
-
-## Why do regression assumptions matter? 
-
-We saw that regression models make three important assumptions:
-
-1. the 'true' best-fit line is straight (i.e. _not_ curved)
-2. residuals are approximately normal
-3. residuals are of equal size along the regression line
-
-
-There are two main reasons we should be suspicious about linear models that violate these assumptions:
-
-1. Predictions will be systematically wrong in some cases. For example, if the true relationship between predictor and outcome is curved (as we saw in the GDP example above) then for some values of the predictor the model will be way-off. We may end up with predictions that are a long way from the true values.
-
-2. Inferences we make from the model (e.g. using *p* values or Bayes Factors --- we will cover these in the next session) assume that the residuals are normally distributed. If this is not the case, then these statistics can be biased. Specifically, we may conclude that we have a 'real' effect, or have more evidence for an effect, than is really the case. This will lead us to draw the wrong conclusions from out data and, potentially, make bad decisions.
-
-
-### How bad is 'too bad'? 
-
-Some students ask "how will we know if the assumptions have been violated?". They worry when
-we say "residuals should be *approximately* normal", because they don't know how much divergence from
-normality would be 'too much'.
-
-> In truth, there are no hard and fast criteria to check against for any of these assumptions.
-> Sometimes it is obvious that assumptions have been violated, but often it is less clear cut.
-
-For the moment, don't worry too much because we will make any assumptions-checks 
-for your assessment very clear-cut. You will know right away (using diagnostic plots) 
-if the assumptions of your model have been met.
-
-However, some specific examples are shown below to provide context.
-
-
-## Examples of assumptions violated {#violationexample}
-
-
-```{r, echo=F, include=F}
-library(patchwork)
-# this code makes plots for a model and output ... for convenient examples below
-combineddiagplots <- function(f, thedata){
-  set.seed(123)
-  nrows <- thedata %>% count() %>% pull(n)
-  thedata <- thedata %>% sample_n(min(100, nrows))
-  themodel <- lm(f, data=thedata)
-  x <- as.list(f)[[3]] %>% as.character()
-  y <- as.list(f)[[2]] %>% as.character()
-
-  modeldata <- themodel$model
-  modeldata$x =modeldata[,1]
-  modeldata$y =modeldata[,2]
-  aa <- modeldata %>% 
-    ggplot(aes(x,y)) + geom_jitter(alpha=.5) + 
-    geom_smooth(se=F) +
-    geom_smooth(method=lm, se=F, color="red", size=.4) +
-    labs(x="Predictor", y="Outcome") + ggtitle("Scatterplot")
-  a <- augment(themodel) %>%
-    ggplot(aes(.resid)) +
-    geom_histogram(bins=25)+
-     ggtitle("Distribution")
-  b <- augment(themodel) %>%
-    ggplot(aes(.fitted, .resid)) +
-    geom_hline(yintercept = 0, color="red",  size=.4) +
-    geom_jitter(alpha=.5) +
-    geom_smooth(method = 'gam', formula=y ~ s(x, bs = "cs"), se=F) +
-     ggtitle("Fitted vs. residual")
-  return (aa +a +b + plot_layout(ncol = 3))
-}
-combineddiagplots(f=life_expectancy ~ gdp_per_capita, development)
-
-```
-
-Here we show some *unacceptable* models, which do violate the regression assumptions.
-
-I have made the same types of diagnostic plot shown above using different datasets and variables. 
-I have added red lines showing the *expectcted* trend of the data, if the assumptions had been met
-
-### Example 1: National income and life expectancy
-
-In this example we use the `development` dataset which contains data about the population and economy of countries around the world. 
-The outcome of our model is the averag life expectancy of each country in years.
-The predictor is the  national income of a country, per capita (in $).
-
-```{r, echo=F, fig.cap="Diagnostics plots from a 'bad' regression model", fig.height=2.5, fig.width=6}
-combineddiagplots(f=life_expectancy ~ gdp_per_capita, psydata::development)
-```
-
-***This model is problematic because***:
-
-- the relationship between national income and life expectancy is not linear (there is a clear curve)
-- the residuals change in size across the range of predicted values 
-
-<br>
-
-*Interpretation*: We should _not_ accept this model, or interpret results from it, because it violates two important
-assumptions of linear regression.
-
-There _are_ possible fixes for these problems (see the [next section](#fixingviolations)), but *all that is required for now* is to:
-
-- identify when violations of assumptions have occurred, and 
-- know that interpreting models which violate assumptions is inappropriate
-
-
-
-### Example 2
-
-In this example we use the `diamonds` dataset. 
-The outcome of our model is the price of a diamond in £. The predictor is the size of
-the diamond (measured in carats).
-
-```{r, echo=F, fig.height=2.5, fig.width=6}
-combineddiagplots(f=price ~ carat, diamonds)
-```
-
-
-:::{.exercise}
-
-Given these diagnostic plots, how should we judge the model?
-
-- The relationship looks linear: `r mcq(c("True", answer="False", "Hard to tell"))`
-- The residuals are normally distributed: `r mcq(c("True", answer="False", "Hard to tell"))`
-- The residuals are consistent across the range of fitted values: `r mcq(c("True", answer="False", "Hard to tell"))`
-
-
-`r hide("Show comments and possible solutions")`
-
-*Interpretation*: Here all three assumptions are violated. The relationships looks curved, the residuals are definitely
-not normally-distributed, and the residuals get larger as the prediction increass. You shouldn't base inferences on a model like this.
-
-`r unhide()`
-
-
-:::
-
-
-
-
-### Example 3
-
-In this example we use the `mtcars` dataset, which contains data on cars. 
-The outcome of our model is the fuel economy of cars in miles per gallon. 
-The predictor is the weight of the car (measured in kg).
-
-
-```{r, echo=F, fig.height=2.5, fig.width=6}
-combineddiagplots(f=mpg ~ wt, mtcars)
-```
-
-
-:::{.exercise}
-
-Given these diagnostic plots, how should we judge the model?
-
-- The relationship looks linear: `r mcq(c(answer="True", "False", "Hard to tell"))`
-- The residuals are normally distributed: `r mcq(c("True", "False", answer="Hard to tell"))`
-- The residuals are consistent across the range of fitted values: `r mcq(c("True", answer="False", "Hard to tell"))`
-
-
-`r hide("Show comments and possible solutions")`
-
-*Interpretation*: Although the residuals are larger for large and small fitted values, these diagnostic plots look "OK".
-If possible we should amend our model to improve things (e.g. by adding predictors), but inferences from this  model 
-would most likely be reasonable.
-Note that it can be hard to tell whether residuals are normally distributed when we don't have much data — as is the case here (N=32).
-
-`r unhide()`
-
-
-
-:::
-
-
-### Example 4
-
-In this example we use the `iris` dataset, which contains data on the width and length of flower petals for different species.
-The outcome of our model is the length of petals (in mm). 
-The predictor is the width of the petals (mm).
-
-```{r, echo=F, fig.height=2.5, fig.width=6}
-combineddiagplots(f= Petal.Length ~ Petal.Width, iris)
-#combineddiagplots(f= Petal.Length ~ Petal.Width+Species+Sepal.Length, iris)
-```
-
-:::{.exercise}
-
-Given these diagnostic plots, how should we judge the model?
-
-- The relationship looks linear: `r mcq(c(answer="True", "False", "Hard to tell"))`
-- The residuals are normally distributed: `r mcq(c(answer="True", "False", "Too hard to tell"))`
-- The residuals are consistent across the range of fitted values: `r mcq(c("True (probably)", answer="False (probably not)", "Too hard to tell"))`
-
-
-`r hide("Show comments and possible solutions")`
-
-In this case the relationship looks mostly linear, although there is a tendency for the relationship to tail off (curve) at higher values
-of petal width. The residuals are normally distributed, but they don't appear to be consistent across the range of predicted values.
-
-*Interpretation*: Strictly, we shouldn't interpret this model as-is. If possible we should adapt our model, perhaps by adding predictors.
-Nonetheless, plenty of published research _would_ report and base inferences on a model like this.
-
-`r unhide()`
-
-
-:::
-
-
-
-
-
-
-## Understanding and fixing assumptions violations {#fixingviolations}
-
-:::{.tip}
-
-Many students will not have time for this additional material during the scheduled workshops.
-This section is optional and not required for the module assessment.
-
-:::
-
-
-In an [example above](#violationexample) we saw that a model predicting life expectancy from GDP per-person lead us to violate some assumptions of regression. There are many different techniques which can be used to work around this kind of problem. Here we illustrate one.
-
-If we look at the data used for the model above, we can see that the relationship between GDP and life expectancy is not linear.
-We can see this because the points are in a curved shape, and so the line cannot get close to them all the way along the range of predictor values.
-This itself violates an assumption of regression. It also caused problems with the residuals, as we saw above.
-
-```{r, echo=F, fig.height=3}
-development %>% 
-  ggplot(aes(gdp_per_capita, life_expectancy)) + geom_point() + geom_smooth(method=lm, se=F)
-```
-
-To understand why this is the case, we can plot the distribution of national incomes:
-
-```{r, echo=F, fig.height=2.5}
-# use a histogram to show the distribution of incomes
-development %>% 
-  ggplot(aes(gdp_per_capita)) + geom_histogram()
-```
-
-We can see that incomes are _not_ normally distributed. 
-In fact, they are very [*right skewed*](https://www.statology.org/left-skewed-vs-right-skewed/): most GDP values are quite low, but there is a long tail on the right hand side.  
-This is quite typical of incomes data — both  nationally and for individuals: wealth is very unequally distributed, and some people
-are really [a _lot_ richer than the average](https://bezoscalculator.com).
-
-
-### Transforming the outcome
-
-One option in these cases is to *transform* the outcome so that it _is_ more normally distributed.
-
-For example, if we plot the [logarithm](https://www.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:logs/x2ec2f6f830c9fb89:log-intro/v/logarithms) of GDP, this is (a bit more) normally distributed. 
-
-The log function transforms the data and "squashes" the large values downwards, reducing the skew:
-
-```{r, fig.height=2.5}
-# make a log plot of incomes.. now less skewed
-development %>% 
-  ggplot(aes(log(gdp_per_capita))) + 
-  geom_histogram() 
-```
-
-We can use this transformation to our advantage when we run our models. If we plot $log(gdp)$ rather than $gdp$ as our predictor, we can see that the relationship between the two variables is linear again:
-
-```{r, fig.height=3}
-development %>% 
-  ggplot(aes(log(gdp_per_capita), life_expectancy)) + 
-  geom_point() + 
-  geom_smooth(method=lm, se=F) 
-```
-
-And this means if we use `log(gdp_per_capita)` as the predictor in an `lm` model, the 
-model residuals no longer violate the assumptions (or at least, not too badly):
-
-
-```{r, echo=F, fig.cap="Diagnostics plots from a regression model using a log-transformed outcome.", fig.height=2.5}
-combineddiagplots(life_expectancy ~ log(gdp_per_capita), development)
-```
-
-:::{.exercise}
-
-*Try it for yourself*:
-
-- Use the built in `mtcars` dataset.
-- Make a scatterplot of the `mpg` (miles per gallon) and `hp` (horsepower) variables
-- Add a fitted line using `geom_smooth`
-- Use a `log()` transform on the `hp` variable and make the plot again
-- Do either or both of the plots show a linear relationship? Which would be more suitable to use in a regression model?
-
-
-- If all is going well and you have time, you could try running this model using `lm` and making the diagnostic plots shown above using `augment` and `ggplot`.
-
-
-
-`r hide("Show code")`
+`r hide("Show answers")`
 
 ```{r}
-# looks non-linear
-mtcars %>% 
-  ggplot(aes(hp, mpg)) + geom_point() + geom_smooth()
+simple1 <- lm(anxiety_score ~ screen_time, data = mentalh)
+simple1.augment <- augment(simple1)
+simple1.augment %>% 
+  ggplot(aes(.resid)) + 
+  geom_histogram()
 
-# looks more linear
-mtcars %>% 
-  ggplot(aes(log(hp), mpg)) + geom_point() + geom_smooth()
-
-# run the model and make a fitted vs residual plot
-# this isn't perfect, but the residuals look "ok"
-lm(mpg ~ log(hp), mtcars) %>% 
-  augment() %>% 
-  ggplot(aes(.fitted, .resid)) + geom_point() + geom_smooth()
+simple1.augment %>% 
+  ggplot(aes(.fitted, .resid)) + 
+  geom_point() + 
+  geom_smooth(method=lm)
 
 ```
 
-
 `r unhide()`
+
 
 :::
 
@@ -1324,6 +1098,346 @@ whatfuncrespred <-  c(
 - Which function calculates residuals and predictions from a saved `lm` model? `r mcq(whatfuncrespred)`
 
 - What are the three assumptions of regression introduced in this session?  (Make a note of your answers, then [check them here](#assumptions3))
+
+
+
+
+
+# Further reading {#further}
+
+Please read the following material between the workshop sessions. If you have questions
+arising from it please bring them to the subsequent workshop and ask a member of staff there.
+
+
+## Why do regression assumptions matter? 
+
+We saw that regression models make three important assumptions:
+
+1. the 'true' best-fit line is straight (i.e. _not_ curved)
+2. residuals are approximately normal
+3. residuals are of equal size along the regression line
+
+
+There are two main reasons we should be suspicious about linear models that violate these assumptions:
+
+1. Predictions will be systematically wrong in some cases. For example, if the true relationship between predictor and outcome is curved then for some values of the predictor the model will be way-off. We may end up with predictions that are a long way from the true values.
+
+2. Inferences we make from the model (e.g. using *p* values or Bayes Factors --- we will cover these in the next session) assume that the residuals are normally distributed. If this is not the case, then these statistics can be biased. Specifically, we may conclude that we have have more evidence for an effect than is really the case. This will lead us to draw the wrong conclusions from our data and, potentially, make bad decisions.
+
+
+## How bad is 'too bad'? 
+
+Some students ask "how will we know if the assumptions have been violated?". They worry when
+we say "residuals should be *approximately* normal", because they don't know how much divergence from
+normality would be 'too much'.
+
+*In truth, there are no hard and fast criteria to check against for any of these assumptions.
+Sometimes it is obvious that assumptions have been violated, but often it is less clear cut.*
+
+For the moment, don't worry too much because we will make any assumptions-checks 
+for your assessment very clear-cut. You will know right away (using diagnostic plots) 
+if the assumptions of your model have been met.
+
+However, some specific examples are shown below to provide context.
+
+
+### Examples of assumptions violated {#violationexample}
+
+
+```{r, echo=F, include=F}
+library(patchwork)
+# this code makes plots for a model and output ... for convenient examples below
+combineddiagplots <- function(f, thedata){
+  set.seed(123)
+  nrows <- thedata %>% count() %>% pull(n)
+  thedata <- thedata %>% sample_n(min(100, nrows))
+  themodel <- lm(f, data=thedata)
+  x <- as.list(f)[[3]] %>% as.character()
+  y <- as.list(f)[[2]] %>% as.character()
+
+  modeldata <- themodel$model
+  modeldata$x =modeldata[,1]
+  modeldata$y =modeldata[,2]
+  aa <- modeldata %>% 
+    ggplot(aes(x,y)) + geom_jitter(alpha=.5) + 
+    geom_smooth(se=F) +
+    geom_smooth(method=lm, se=F, color="red", size=.4) +
+    labs(x="Predictor", y="Outcome") + ggtitle("Scatterplot")
+  a <- augment(themodel) %>%
+    ggplot(aes(.resid)) +
+    geom_histogram(bins=25)+
+     ggtitle("Distribution")
+  b <- augment(themodel) %>%
+    ggplot(aes(.fitted, .resid)) +
+    geom_hline(yintercept = 0, color="red",  size=.4) +
+    geom_jitter(alpha=.5) +
+    geom_smooth(method = 'gam', formula=y ~ s(x, bs = "cs"), se=F) +
+     ggtitle("Fitted vs. residual")
+  return (aa +a +b + plot_layout(ncol = 3))
+}
+combineddiagplots(f=life_expectancy ~ gdp_per_capita, development)
+
+```
+
+Here we show some *unacceptable* models, which do violate the regression assumptions.
+
+I have made the same types of diagnostic plot shown above using different datasets and variables. 
+I have added red lines showing the *expectcted* trend of the data, if the assumptions had been met
+
+#### Example 1: National income and life expectancy
+
+In this example we use the `development` dataset which contains data about the population and economy of countries around the world. 
+The outcome of our model is the averag life expectancy of each country in years.
+The predictor is the  national income of a country, per capita (in $).
+
+```{r, echo=F, fig.cap="Diagnostics plots from a 'bad' regression model", fig.height=2.5, fig.width=6}
+combineddiagplots(f=life_expectancy ~ gdp_per_capita, psydata::development)
+```
+
+***This model is problematic because***:
+
+- the relationship between national income and life expectancy is not linear (there is a clear curve)
+- the residuals change in size across the range of predicted values 
+
+<br>
+
+*Interpretation*: We should _not_ accept this model, or interpret results from it, because it violates two important
+assumptions of linear regression.
+
+There _are_ possible fixes for these problems (see the [next section](#fixingviolations)), but *all that is required for now* is to:
+
+- identify when violations of assumptions have occurred, and remember that 
+- interpreting models which violate assumptions is inappropriate
+
+
+
+#### Example 2
+
+In this example we use the `diamonds` dataset. 
+The outcome of our model is the price of a diamond in £. The predictor is the size of
+the diamond (measured in carats).
+
+```{r, echo=F, fig.height=2.5, fig.width=6}
+combineddiagplots(f=price ~ carat, diamonds)
+```
+
+
+:::{.exercise}
+
+Given these diagnostic plots, how should we judge the model?
+
+- The relationship looks linear: `r mcq(c("True", answer="False", "Hard to tell"))`
+- The residuals are normally distributed: `r mcq(c("True", answer="False", "Hard to tell"))`
+- The residuals are consistent across the range of fitted values: `r mcq(c("True", answer="False", "Hard to tell"))`
+
+
+`r hide("Show comments and possible solutions")`
+
+*Interpretation*: Here all three assumptions are violated. The relationships looks curved, the residuals are definitely
+not normally-distributed, and the residuals get larger as the prediction increases.
+
+You shouldn't base inferences on a model like this.
+
+`r unhide()`
+
+
+:::
+
+
+
+
+### Example 3
+
+In this example we use the `mtcars` dataset, which contains data on cars. 
+The outcome of our model is the fuel economy of cars in miles per gallon. 
+The predictor is the weight of the car (measured in kg).
+
+
+```{r, echo=F, fig.height=2.5, fig.width=6}
+combineddiagplots(f=mpg ~ wt, mtcars)
+```
+
+
+:::{.exercise}
+
+Given these diagnostic plots, how should we judge the model?
+
+- The relationship looks linear: `r mcq(c("False", answer="Hard to tell"))`
+- The residuals are normally distributed: `r mcq(c("True", "False", answer="Hard to tell"))`
+- The residuals are consistent across the range of fitted values: `r mcq(c("True", answer="False", "Hard to tell"))`
+
+
+`r hide("Show comments and possible solutions")`
+
+*Interpretation*: In this model it is hard to tell whether the true relationship is linear, in part because we only
+have 32 datapoints in the sample. Likewise, it's hard to tell from the histogram if the resduals are normal.
+However the fitted vs residual plot does hint that residuals are not evenly-sized across the range of the 
+fitted values, so it might be worth exploring further (see next section).
+
+`r unhide()`
+
+
+
+:::
+
+
+### Example 4
+
+In this example we use the `iris` dataset, which contains data on the width and length of flower petals for different species.
+The outcome of our model is the length of petals (in mm). 
+The predictor is the width of the petals (mm).
+
+```{r, echo=F, fig.height=2.5, fig.width=6}
+combineddiagplots(f= Petal.Length ~ Petal.Width, iris)
+#combineddiagplots(f= Petal.Length ~ Petal.Width+Species+Sepal.Length, iris)
+```
+
+:::{.exercise}
+
+Given these diagnostic plots, how should we judge the model?
+
+- The relationship looks linear: `r mcq(c(answer="True", "False", "Hard to tell"))`
+- The residuals are normally distributed: `r mcq(c(answer="True", "False", "Too hard to tell"))`
+- The residuals are consistent across the range of fitted values: `r mcq(c("True (probably)", answer="False (probably not)", "Too hard to tell"))`
+
+
+`r hide("Show comments and possible solutions")`
+
+In this case the relationship looks mostly linear, although there is a tendency for the relationship to tail off (curve) at higher values
+of petal width. The residuals are normally distributed, but they don't appear to be consistent across the range of predicted values.
+
+*Interpretation*: Strictly, we shouldn't interpret this model as-is. If possible we should adapt our model, perhaps by adding predictors.
+Nonetheless, plenty of published research _would_ report and base inferences on a model like this.
+
+`r unhide()`
+
+
+:::
+
+
+
+
+
+
+# Extended exercises 
+
+:::{.tip}
+
+*This section is optional and not required for the module assessment.*
+
+Many students will not have time for this additional material. However it is provided as extended learning for those
+who may choose to use regression or related techniques in stage 4.
+
+
+
+:::
+
+## Understanding and fixing violations of assumptions {#fixingviolations}
+
+
+
+
+In an [example above](#violationexample) we saw that a model predicting life expectancy from GDP per-person lead us to violate some assumptions of regression. There are many different techniques which can be used to work around this kind of problem. Here we illustrate just one.
+
+If we look at the data used for the model above, we can see that the relationship between GDP and life expectancy is not linear.
+We can see this because the points are in a curved shape, and so the line cannot get close to them all the way along the range of predictor values.
+This itself violates an assumption of regression. It also caused problems with the residuals, as we saw above.
+
+```{r, echo=F, fig.height=3}
+development %>% 
+  ggplot(aes(gdp_per_capita, life_expectancy)) + geom_point(alpha=.2) + geom_smooth(method=lm, se=F)
+```
+
+To understand why this is the case, we can plot the *distribution* of national incomes:
+
+```{r, echo=F, fig.height=2.5}
+# use a histogram to show the distribution of incomes
+development %>% 
+  ggplot(aes(gdp_per_capita)) + geom_histogram()
+```
+
+Incomes are _not_ normally distributed. 
+In fact, they are very [*right skewed*](https://www.statology.org/left-skewed-vs-right-skewed/): most GDP values are quite low, but there is a long tail on the right hand side (a few countries have very large GDPs relative to the median).  
+
+This is quite typical of incomes data. At the level of countries, and for individuals, wealth is very unequally distributed. 
+Some people are really [a _lot_](https://bezoscalculator.com) richer than the average.
+
+
+### Transforming the outcome
+
+One option in these cases is to *transform* the outcome so that it _is_ more normally distributed.
+
+For example, if we plot the [logarithm](https://www.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:logs/x2ec2f6f830c9fb89:log-intro/v/logarithms) of GDP it becomes (a bit more) normally distributed. 
+
+The log function transforms the data and "squashes" the large values downwards, reducing the skew:
+
+```{r, fig.height=2.5}
+# make a log plot of incomes.. now less skewed
+development %>% 
+  ggplot(aes(log(gdp_per_capita))) + 
+  geom_histogram() 
+```
+
+We can use this transformation to our advantage when we run our models. If we plot $log(gdp)$ rather than $gdp$ as our predictor, we can see that the relationship between the two variables is linear again:
+
+```{r, fig.height=3}
+development %>% 
+  ggplot(aes(log(gdp_per_capita), life_expectancy)) + 
+  geom_point() + 
+  geom_smooth(method=lm, se=F) 
+```
+
+And this means if we use `log(gdp_per_capita)` as the predictor in an `lm` model, the 
+model residuals no longer violate the assumptions (or at least, not too badly):
+
+
+```{r, echo=F, fig.cap="Diagnostics plots from a regression model using a log-transformed outcome.", fig.height=2.5}
+combineddiagplots(life_expectancy ~ log(gdp_per_capita), development)
+```
+
+:::{.exercise}
+
+*Try it for yourself*:
+
+- Use the built in `mtcars` dataset.
+- Make a scatterplot of the `mpg` (miles per gallon) and `hp` (horsepower) variables
+- Add a fitted line using `geom_smooth`
+- Use a `log()` transform on the `hp` variable and make the plot again
+- Do either or both of the plots show a linear relationship? Which would be more suitable to use in a regression model?
+
+
+- If all is going well and you have time, you could try running this model using `lm` and making the diagnostic plots shown above using `augment` and `ggplot`.
+
+
+
+`r hide("Show code")`
+
+```{r}
+# looks non-linear
+mtcars %>% 
+  ggplot(aes(hp, mpg)) + geom_point() + geom_smooth()
+
+# looks more linear
+mtcars %>% 
+  ggplot(aes(log(hp), mpg)) + geom_point() + geom_smooth()
+
+# run the model and make a fitted vs residual plot
+# this isn't perfect, but the residuals look "ok"
+lm(mpg ~ log(hp), mtcars) %>% 
+  augment() %>% 
+  ggplot(aes(.fitted, .resid)) + 
+  geom_point() + 
+  geom_smooth(method=lm, se=F)
+
+```
+
+
+`r unhide()`
+
+:::
+
+
+
 
 
 

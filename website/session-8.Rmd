@@ -1,0 +1,63 @@
+---
+title: 'Reporting results'
+author: 'Ben Whalley, Paul Sharpe, Sonja Heintz'
+bibliography: [references.bib]
+csl: apa.csl
+#biblio-style: apa6
+link-citations: yes
+output:
+  webex::html_clean
+---
+
+
+```{r, include=F, echo=F}
+source('_first_chunk.R')
+```
+
+```{html, child="bs-tab-fix.html"}
+```
+
+```{css, child="video.css"}
+```
+
+
+![](images/reporting.png)
+
+
+
+
+TBC
+
+
+
+<!---
+
+
+
+Bayes for Babies
+https://youtu.be/CcnLnKU26dg
+
+
+
+
+# Overview
+
+XXX
+
+### Techniques covered
+
+XXX
+
+
+
+
+
+
+# Check your knowledge
+
+XXX
+
+
+-->
+
+<!-- # References -->

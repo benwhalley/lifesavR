@@ -32,6 +32,19 @@ source('_first_chunk.R')
 
 <br>
 
+- [Session 6](session-6.html): Making predictions
+- [Session 7](session-7.html): Building models
+- [Session 8](session-8.html): Reporting outcomes
+
+<br>
+
+Supporting topics:
+
+- [Causal models XXX](casual-models.html)
+
+
+<br>
+
 - [Cheat-sheets/reference](https://plymouthpsychology.github.io/cheatR/)
 - [Topic index](#topicindex)
 
@@ -52,12 +65,12 @@ This is a lot like learning R.
 
 - To begin with we show you the basics, but if your data aren't in the right format, or something unexpected happens you can end up getting stuck. You make basic errors of style or form which leave you vulnerable.
 - In this course we aim to teach general principles for working with data. Over time you will develop understanding and expertise that lets you combine techniques to solve new problems. With repeated practice your skills are honed and you gain strength.
-- In stage 4, and if you continue using R in your own work, you might develop mastery and really start to understand the core principles involved, solving problems in creative ways.
+- In later in your degree, and if you continue using R in your own work, you might develop mastery and really start to understand the core principles involved, solving problems in creative ways.
 
 
 ### Practice makes perfect
 
-One final way R and martial arts are similar is that there's no substitute for practice. It's simply not possible to 'fake it'.
+>One final way R and martial arts are similar is that there's no substitute for practice. It's simply not possible to 'fake it'.
 
 In martial arts, a blow to the head is direct and effective feedback that your basic skills like blocking or footwork need practice. In R, error messages and broken code can feel similarly unforgiving. The solution (in both cases) is to use failures constructively: ensure the basics are correct, and continue to train!
 
@@ -66,16 +79,18 @@ In martial arts, a blow to the head is direct and effective feedback that your b
 
 You might ask what you can do to succeed on this course and make the most of your training.
 
-Based on what we've observed in previous cohorts, the following attributes and approaches are
-what seem to us to correlate with success.
+Based on what we've observed in previous cohorts, the following attributes and approaches are what seem to us to correlate with success.
 
-* Go slow, but be steady. Don't move on until you've understood each section. It's not a race or a competition with your peers (even if workshops can feel that way).
+* *Go slow, be steady*. Don't move on until you've understood each section. It's not a race or a competition with your peers (even if workshops can feel that way).
 
-* Be consistent. If you feel you might be slower than other students with this material allocate time to study outside of workshops now. Don't leave work until the end of the year — we will be adding new material each week, so this is a recipe for falling behind.
+* *Be consistent*. If you feel you might be slower than other students with this material allocate time to study outside of workshops now. Don't leave work until the end of the year — we will be adding new material each week, so this is a recipe for falling behind.
 
-* Support each other, but make sure _you_ are doing the work too. It's nice to work as a pair or a group, and it can be great for your own learning to explain teachniques to others. But it's also easy to forget that you must learn the material for yourself. Our advice is to swap partners every week or two to make sure you don't get in a rut.
+* *Support each other*, but make sure _you_ are doing the work too. It's nice to work as a pair or a group, and it can be great for your own learning to explain teachniques to others. But it's also easy to forget that you must learn the material for yourself. Our advice is to swap partners every week or two to make sure you don't get in a rut.
 
-* Persevere. Do all exercises. Re-do parts of a worksheet if you didn't understand them.
+* *Persevere*. Do ***all*** the exercises. Re-do parts of a worksheet if you didn't understand them.
+
+* *Be honest with yourself*. Nobel physicist Richard Feynman once said, ["The first principle is that you must not fool yourself, and you are the easiest person to fool."](https://en.wikiquote.org/wiki/Richard_Feynman) We often find that students move through the material too quickly, skipping over practice exercises because they _think_ they understand the techniques already and want to save time. This is almost always a false economy. If you skip early material you _will_ get stuck later. The course is designed to build progressively: We will often re-use techniques learnt in earlier sessions. Sometimes this means revisiting old material to check your understanding. The [reference worksheets](#cheatsheets) are also useful to check previous content.
+
 
 
 
@@ -154,6 +169,7 @@ This index links to all the important R functions and topics within the course.
   * [colour](session-3.html#colour)
 * [Bayes Factor](session-5.html#fluke){#bf} quantifies evidence for differences or correlations in a dataset
   * [interpreting](session-5.html#bayesinterpreting)
+  * [for multiple regressio](session-7.html#bf_for_multipleregression)
 * [boxplots](session-3.html#boxplots) visualise differences between categories or groups
 * [CSV](session-2.html#loadingdata)  comma separated value (file format)
 * [central tendency](session-4.html#centralspread) the "middle" of a set of values
@@ -178,20 +194,25 @@ This index links to all the important R functions and topics within the course.
   * [adding colour](session-3.html#colour)
 * [`ggplot()`](session-1.html#scatterplots)  function to create plots
   * see also [`aes()`](#aes)
+* [`glance`](session-7.html#r2) to calculate R^2^ and other statistics from a linear model
 * [`glimpse()`](session-1.html#datasets)  function to list columns, plus a few datapoints
 * [`group_by()`](session-3.html#groupby) function to create a grouped `data.frame` (see `summarise()`)
 * [hypotheses](session-5.html#bayest) null and alternative (experimental)
 * [interquartile range](session-3.html#boxplots) central 50% of datapoints
   * see [spread](#spread)
 * [`library()`](session-1.html#packages)  function to load packages
+* [`lm` (linear models)][session-6.html#estimating-the-coefficients] to run a linear model (regression)
 * [`mean()`](session-2.html#summarise)  summarise data using the mean
 * [`median()`](session-2.html#summarise)  summarise data using the median
+* [Multiple regression](session-7.html)
 * [psydata](session-1.html#datasets)  package including datasets used in this module
 * [package](session-1.html#packages)  adds functionality to R
 * [R](session-1.html#cando)  programming language for data science
 * [RMarkdown](session-1.html#interactive)  combine R code with regular text
 * [RStudio](session-1.html#using)  program for writing R and RMarkdown
 * [`read_csv()`](session-2.html#loadingdata)  function to read a CSV file
+* Regression (see `lm`)
+* [Residuals](session-6.html#residuals)
 * [scatterplot](session-1.html#scatterplots)  show the relationship between two continuous variables
   * [plotting relationships](session-4.html#relationships)
 * [spread](session-4.html#centralspread){#spread} the distribution of a set of values
@@ -204,6 +225,12 @@ This index links to all the important R functions and topics within the course.
 * [`tidyverse`](session-1.html#packages)  essential package for this module
 * [variable](session-2.html#variables)  container for storing things in R
 
+
+XXX TODO ADD ITEMS FOR
+
+- `lm` and `lmBF`
+- `predict`
+- `anova`?
 
 
 # Getting support

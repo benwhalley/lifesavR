@@ -6,7 +6,9 @@ bibliography: [references.bib]
 csl: apa.csl
 #biblio-style: apa6
 link-citations: yes
-output: webex::html_clean
+output:
+  webex::html_clean:
+    highlight: tango
 ---
 
 ```{r, include=F, echo=F}

@@ -7,8 +7,24 @@ csl: apa.csl
 #biblio-style: apa6
 link-citations: yes
 output:
-  webex::html_clean
+  webex::html_clean:
+    highlight: tango
 ---
+
+
+
+
+<!-- 
+
+TODO before 2022...
+
+Add some exercises (another blue box) for BF correlation
+
+
+Create a series of revision exercises to scatter through subsequent sessions...
+
+-->
+
 
 ```{r, include=F, echo=F}
 source('_first_chunk.R')
