@@ -30,8 +30,16 @@ setup <- function(delete_existing = FALSE){
       #rstudioapi::filesPaneNavigate(paste0(lifesavrdir, "/exercises"))
       message("Success!")
 
-      # set default for dplyr.summarise.inform
+
+      # PROFLE SETUP
+      # create ~/.Rprofile if doesn't exist
       rprof.fn <- file.path("~", ".Rprofile")
+      if (!file.exists(rprof.fn)){
+        write_file("\n", rprof.fn)
+        message("Creating new .Rprofile because it doesn't exist.")
+      }
+
+      # set default for dplyr.summarise.inform
       opttext <- "\n\noptions(dplyr.summarise.inform = FALSE)\n"
       if(!str_detect(read_file(rprof.fn), "dplyr.summarise.inform")){
         write(opttext,file=file.path("~", ".Rprofile"),append=TRUE)
