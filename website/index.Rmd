@@ -1,5 +1,5 @@
 ---
-title: 'lifesavR'
+title: 'LifesavR 2022'
 author: 'Ben Whalley, Sonja Heinz, Paul Sharpe'
 # date: "April 2021"
 bibliography: [references.bib]
@@ -23,18 +23,19 @@ source('_first_chunk.R')
 
 # Quick links
 
-
-- [Session 1](session-1.html): Getting started
-- [Session 2](session-2.html): Working with R
-- [Session 3](session-3.html): Grouped data
-- [Session 4](session-4.html): Describing patterns, answering questions
-- [Session 5](session-5.html): Quantifying evidence
+- [Prior preparation](#prep)
+- [1. Getting started](session-1.html)
+- [2. Working with R](session-2.html)
+- [3. Grouped data](session-3.html)
+- [4. Describing patterns, answering questions](session-4.html)
+- [5. Quantifying evidence](session-5.html)
 
 <br>
 
-- [Session 6](session-6.html): Making predictions
-- [Session 7](session-7.html): Building models
-- [Session 8](session-8.html): Reporting outcomes
+- [6. Making predictions](session-6.html)
+- [7. Building models](session-7.html)
+- [8. Reporting outcomes](session-8.html)
+
 
 <br>
 
@@ -48,6 +49,12 @@ Supporting topics:
 - [Cheat-sheets/reference](https://plymouthpsychology.github.io/cheatR/)
 - [Topic index](#topicindex)
 
+
+
+
+## Previous versions of this site
+
+- [Academic year 2021/2](2021_2/)
 
 
 # Overview
@@ -94,7 +101,10 @@ Based on what we've observed in previous cohorts, the following attributes and a
 
 
 
-# Using these worksheets
+# Preparation
+
+
+## Using these worksheets
 
 These worksheets are designed based on student feedback over many years.
 
@@ -130,7 +140,7 @@ know this to complete a later task.
 
 
 
-# Access to R
+## Access to R
 
 Throughout the module we use R for data processing and analysis.
 
@@ -139,10 +149,25 @@ examples here is to the school's RStudio Server.
 
 -   [Login to your account on the server here](https://rstudio.plymouth.ac.uk)
 
-
-
 Unless you already  have a lot of experience with R, don't try to install it on
 your own computer. We find this creates unnecessary problems for students. Staff won't help you debug your work unless they are evident when using the school RStudio server.
+
+
+
+:::{.tip}
+
+Try logging into the RStudio server now at <https://rstudio.plymouth.ac.uk>. You should see a login page like this:
+
+![](images/login1.png)
+
+And once logged in, an interface like this:
+
+![](images/login2.png)
+
+
+:::
+
+
 
 
 

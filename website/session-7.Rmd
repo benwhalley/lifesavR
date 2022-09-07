@@ -625,7 +625,7 @@ gone up to 0.82.
 To summarise the results above:
 
 - We predicted fuel economy using `weight` alone (model A) and adjusted  $R^2$
-was 0.74. 
+was 0.75. 
 - We added `cyl` (number of cylinders) in model B. Adjusted  $R^2$
 increased to 0.82.
 
@@ -638,40 +638,35 @@ But, if the increase in $R^2$ is only small we might worry that the difference
 is due to chance — for example, because of random variations in our dataset. The
 final step is to quantify the evidence for each hypothesis.
 
-
+:::
 
 :::
 
 
-:::
 
 
 
+# Strength of the evidence
 
 
-# Strength of the evidence {#bf_for_multipleregression}
 
+`r video("7yCLA9R-VoE")`
 
-`r video("bUhmpyP0NXg")`
-
-`r make_tabs('bUhmpyP0NXg')`
+`r make_tabs('tabstrengthevid')`
 
 :::{.tab-content}
 
-:::{#bUhmpyP0NXg-summary .tab-pane .active}
-
+:::{#tabstrengthevid-summary .tab-pane .active}
 
 Our final task is to *quantify how much evidence* we have that model A is better
 than model B. For this we use a Bayes Factor.
 
 
-
 :::
 
 
 
-:::{#bUhmpyP0NXg-code .tab-pane}
-
+:::{#tabstrengthevid-code .tab-pane}
 
 ```{r, eval=F}
 library(BayesFactor)
@@ -683,20 +678,16 @@ modelB <- lmBF(mpg ~ weight + cyl, data=fuel)
 modelB / modelA
 ```
 
-
-
 :::
 
 
 
-:::{#bUhmpyP0NXg-transcript .tab-pane}
-
+:::{#tabstrengthevid-transcript .tab-pane}
 
 
 As we saw in [session 5](session-5.html), a Bayes Factor always compares two
 hypotheses. It tells us how much more likely one hypothesis is than an
 alternative hypothesis, given the data we collected.
-
 
 We will use Bayes Factors to compare hypotheses A and B, which are represented
 by model A and model B.
@@ -739,6 +730,7 @@ Finally, we divide model B by model A to calculate the Bayes Factor.
 # evidence in favour of model A
 mB / mA
 ```
+
 ```{r, echo=F, include=F}
 bfBA <- (mB/mA) %>% as.data.frame() %>% mutate_if(is.numeric, ~round(.x, 2))
 ```
@@ -763,7 +755,6 @@ collected.
 
 
 
-
 :::
 
 
@@ -773,28 +764,29 @@ collected.
 
 
 
-# Summary
-
-In this example:
-
-- Our outcome was fuel economy
-- We had two predictors, car weight, and the number of cylinders the engine had
-
-- We ran two models (A and B) which represented *different hypotheses*
-  - Hypothesis A said that only weight was needed to predict economy.
-  - Hypothesis B said that both weight and cylinders would be *independent predictors* of fuel economy.
-  
-- We used $R^2$ to estimate how well each model fitted the data (model B fitted better)
-- We calculated a Bayes Factor. This told us that we had 22 times more evidence for model A compared with model B.
 
 
-- We can conclude that both weight and cylinders are independent predictors of fuel economy. 
-Both make a useful contribution when predicting fuel economy.
+
+# Overall synopsis
+
+In the example above our outcome variable was fuel economy and we had two potential predictor variables: the car's weight, and the number of cylinders it had.
+
+We ran two models (A and B) which represented *different hypotheses*:
+
+- Hypothesis A said  only weight was needed to predict fuel economy.
+- Hypothesis B said that both weight and cylinders would be *independent predictors* of fuel economy.
+
+After fitting the models with `lm` we calculated $R^2$ to estimate how well each model fitted the data. $R^2_{adjusted}$ was .75 and .82 for models A and B, which means both models were quite good and explained a large proportion of the variability in fuel economy.
+
+To *compare the models*, we re-fitted them using `lmBF` and calculated a Bayes Factor. This told us that -- although both were quite a good fit to the data -- we had 22 times more evidence for model A compared with model B.
+
+
+From this example we can conclude that both weight and cylinders are *independent* predictors of fuel economy. That is, both variables make a useful contribution when predicting fuel economy.
+
 
 
 
 # Check your knowledge
-
 
 ```{r, include=F}
 smalllargeresid <-c(answer="Smaller", "Larger")
@@ -844,23 +836,29 @@ bfsize <- c(
 
 - A Bayes Factor greater than 10 means we have `r mcq(bfsize)` evidence
 
+<br><br><br><br>
 
 
-
-# Additional examples
-
-## Study habits
+# Additional examples and exercises
 
 To consolidate what we have learned this section asks you to follow the same process using a different dataset.
 
-<br><br><br>
+<br><br>
 
 
-The `studyhabits` dataset (in `psydata`) contains data on students and their study habits:
+## Student study habits
+
+
+![](images/studying.png)
+
+The `studyhabits` dataset (in the `psydata` package) contains data on students and their study habits:
 
 - `work_hours`: How many hours per week the student worked
 - `work_consistently`: A measure of how consistently the student worked each day
 - `grade`: Their assessment grade (%)
+
+
+The tasks below use these data to pose a series of questions to check your understanding, and ask you to run additional analyses to gain confidence in R.
 
 
 
@@ -907,7 +905,7 @@ Based on these plots of the `studyhabits` data:
 Imagine we are interested in *the effect of working consistently each day on grades, adjusting for the total number of hours studyied*.
 That is, we want to know if working consistently helps predict grades, even after we know the total hours spent studying.
 
-Fill in the blanks in the following diagram:
+A. Fill in the blanks in the following diagram:
 
 
 ```{r, echo=F}
@@ -925,7 +923,7 @@ nodesep = .5;
 }', height=200)
 ```
 
-<br>
+<br><br>
 
 
 ```{r, echo=F}
@@ -985,7 +983,7 @@ nodesep = .5;
 
 <br><br>
 
-Which hypothesis do you think is more likely, based on the plots and your own experience?
+B. Which hypothesis do you think is more likely, based on the plots and your own experience?
 
 
 :::
@@ -1044,8 +1042,12 @@ modB <- lmBF(grade ~ work_hours + work_consistently, data=studyhabits)
 
 ```{r, echo=F}
 formodlB <- c(
-  answer = "modB/modA",
-  "modA/modB",
+  "lmBF(grade ~ work_hours)",
+  "lmBF(grade ~ work_hours + work_consistently)",
+  "modA",
+  "modB",
+  answer = "modB / modA",
+  "modA / modB",
   "lmBF(modA, modB)",
   "lmBF(modB, modA)"
 )
@@ -1054,9 +1056,8 @@ bfBA_work <- (modB/modA) %>% as.data.frame() %>% pull(bf) %>% round(2)
 ```
 
 
-- The command to calculate the Bayes Factor in favour of Model B is: `r mcq(formodlB)`
+- The command to display calculate the Bayes Factor in favour of Model B is: `r mcq(formodlB)`
 
-- The Bayes Factor in favour of `modB` is: `r fitb(bfBA_work, tol=.5)`
 
 `r hide("Show answers")`
 
@@ -1073,9 +1074,74 @@ modB / modA
 
 
 
+:::{.exercise}
 
-## Happiness
 
+#### Task 5: Interpret the Bayes Factor output
+
+Imagine you had run the code below:
+
+```{r}
+modA <- lmBF(grade ~ work_hours, data=studyhabits)
+modB <- lmBF(grade ~ work_hours + work_consistently, data=studyhabits)
+```
+
+Interpret the following output:
+
+```{r}
+modB 
+```
+
+```{r, echo=F}
+modelbwhatsizebf <- c(
+  answer="About 6",
+  "Much less than 6",
+  "Much more than 6 "
+)
+
+borabetter <- c(
+  "Model B is much better than for model A",
+  answer="Model B is much better than a model including no predictors",
+  "Model A is much better than for model B"
+)
+```
+
+- We can interpret the Bayes Factor in this output as saying: `r mcq(borabetter)`
+- The Bayes Factor for model B is: `r mcq(modelbwhatsizebf)`
+
+
+
+
+Now interpret the following output:
+
+```{r}
+modB / modA
+```
+
+
+```{r, echo=F}
+abchoice <- c(
+  "Model A is only 0.1% more probable than model B",
+  "Model B is only 0.1% more probable than model A",
+  "Model A is only 91% more probable than model B",
+  "Model B is only 91% more probable than model A",
+  "Model A is only 91 times more probable than model B",
+  answer="Model B is only 91 times more probable than model A"
+)
+```
+
+
+- Which of the following options is true: `r mcq(abchoice)`
+
+
+:::
+
+
+
+## National happiness 
+
+
+![](images/flags.png)
 
 :::{.tip}
 

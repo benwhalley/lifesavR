@@ -5,6 +5,8 @@ library(webex)
 # devtools::install_github("benwhalley/psydata")
 library(psydata)
 
+rmarkdown::find_pandoc(version = "2.19.2")
+
 knitr::opts_chunk$set(
   echo = TRUE,
   collapse = TRUE,

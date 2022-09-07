@@ -26,7 +26,94 @@ source('_first_chunk.R')
 
 
 
-TBC
+# Overview
+
+1. Goals when reporting
+2. What is required
+
+3. Confidence intervals
+4. Regression tables
+
+5. Worked example using cars data
+6. Practice task
+
+
+
+
+
+# What are we trying to do?
+
+In reporting an analysis, we're trying to achieve 5 things:
+
+1. Provide context
+2. Facilitate understanding
+3. Enable replication
+4. Describe the effect
+5. Answer our research question and quantify our certainty
+
+
+An when doing these tasks we aim to be:
+
+- Complete
+- Accurate
+- Concise
+
+
+
+
+# What is required 
+
+Documenting your data analysis falls into three phases:
+
+1. Exploratory/work in progress
+2. Interpreting your results
+3. Documenting for others
+
+
+When exploring and working with your own data you can work in an Rmd file as you
+have before, adding code blocks as required to document everything you do, and
+only removing code which doesn't work or you decide is not relevant.
+
+When interpreting your results, you will begin to organise the analyses into a
+narrative. This should answer the research questions you posed when designing
+the study. You can also respond to additional questions which arise through the
+analyses (e.g., does your model meet the assumptions required in regression). At
+this point you will be able to write the results section of your report or
+article.
+
+Finally, when documenting your analyses for others, you need to create a *new*
+Rmd file which focuses on the analyses required to reproduce the results in your
+manuscript. This simplifies the script for others, making it easier to follow
+along and see how numbers in the paper were calculated.
+
+
+
+### Stick to the plan
+
+Scientific journals are _extremely_ formulaic; study analyses and results are reported in a 
+very consistent way, and this makes it relatively easy to know what to put where in your report.
+
+For example, the journal *Psychological Science* publishes [detailed guidance on
+the content of each section of
+manuscripts](https://www.psychologicalscience.org/publications/ms-structure-guidelines)
+acceptable for publication. There are small differences between journals
+(medical journals in particular can vary a little bit) but you will always need:
+
+- A description of your analytic approach in the methods section
+- A description of the study sample (sometimes as a table)
+- An exact description of the models run
+- A table describing the outputs of the model
+- A description of the direction/pattern of the effects found
+
+
+
+
+
+
+
+
+
+
 
 
 

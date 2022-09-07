@@ -1,0 +1,19 @@
+Package: lifesavr
+Type: Package
+Title: Simplified open/example datasets for teaching R and helper functions.
+Version: 0.1.1
+Author: Ben Whalley
+Maintainer: Ben Whalley <ben.whalley@plymouth.ac.uk>
+Description: Helper funtions for those learning R using the lifesavr workshops
+License: CC0
+Encoding: UTF-8
+LazyData: true
+Depends: 
+    R (>= 2.10)
+Imports:
+    magrittr,
+    arm,
+    dplyr,
+    broom,
+    stringr
+RoxygenNote: 7.1.1
