@@ -27,7 +27,7 @@ setup <- function(delete_existing = FALSE){
       stopifnot(clonedreporesult==0)
 
       message("Switching to the exercises folder.")
-      #rstudioapi::filesPaneNavigate(paste0(lifesavrdir, "/exercises"))
+      rstudioapi::filesPaneNavigate(paste0(lifesavrdir, "/exercises"))
       message("Success!")
 
 
