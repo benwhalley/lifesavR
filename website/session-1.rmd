@@ -79,7 +79,7 @@ video_data <- list(identifier = "before-you-start", yt_id="HqXmNmwumvU")
 1. Click on the **Console** pane.
 1. Copy-paste the following into the console:
 
-`source("https://raw.githubusercontent.com/benwhalley/lifesavR/main/bootstrap.R")`
+`lifesavr::setup()`
 
 Your console should now look like this:
 
@@ -93,7 +93,6 @@ Press <span class="keyshape">↩</span> to run the code. If your console looks l
 
 # Using the workbooks
 
-![](images/haiku.png)
 
 ```{r, echo=F}
 video_data <- list(identifier = "using-the-workbooks",
@@ -108,7 +107,7 @@ video_data <- list(identifier = "using-the-workbooks",
 
 :::{.exercise}
 
-Click on `session-1.rmd` in the **Files** pane.
+Click on `session-1-workbook.rmd` in the **Files** pane.
 
 If you're able to open this file you are now ready to start the rest of the session.
 
