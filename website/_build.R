@@ -15,7 +15,7 @@ rmarkdown::find_pandoc(version = "2.19.2")
 
 # rebuild docs into /docs which is where github serves them from
 rmarkdown::render('index.Rmd', output_dir = "../docs")
-remormarkdown::render('session-1.rmd', output_dir = "../docs")
+rmarkdown::render('session-1.rmd', output_dir = "../docs")
 rmarkdown::render('session-2.rmd', output_dir = "../docs")
 rmarkdown::render('session-3.rmd', output_dir = "../docs")
 rmarkdown::render('session-4.rmd', output_dir = "../docs")
