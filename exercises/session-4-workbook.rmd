@@ -3,6 +3,13 @@ title: "LifesaveR Session 4 Workbook"
 output: html_document
 ---
 
+
+```{r}
+# use this chunk to load all the packages you need
+library(...)
+```
+
+
 This R Markdown document is your workbook for session four of the lifesaveR module.
 
 # Central tendency and spread
@@ -41,6 +48,7 @@ Play "Guess the correlation" in the worksheet.
 # Check your knowledge
 
 Write your answers below each question and save your workbook for later.
+
 
 # Extension exercises
 

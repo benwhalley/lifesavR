@@ -3,6 +3,13 @@ title: "LifesaveR Session 3 Workbook"
 output: html_document
 ---
 
+
+```{r}
+# use this chunk to load all the packages you need
+library(...)
+```
+
+
 This R Markdown document is your workbook for session three of the lifesaveR module.
 
 # Making boxplots

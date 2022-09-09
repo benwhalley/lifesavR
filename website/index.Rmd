@@ -17,24 +17,24 @@ source('_first_chunk.R')
 <meta property="og:description" content="LifesaveR is a short course in statistics and data visualisation using R." />
 
 
-
 > LifesaveR is a short course in statistics and data visualisation using R.
 
 
 # Quick links
 
-- [Prior preparation](#prep)
-- [1. Getting started](session-1.html)
-- [2. Working with R](session-2.html)
-- [3. Grouped data](session-3.html)
-- [4. Describing patterns, answering questions](session-4.html)
-- [5. Quantifying evidence](session-5.html)
+[Prior preparation](#prep)
+
+1. [Getting started](session-1.html)
+2. [Working with R](session-2.html)
+3. [Grouped data](session-3.html)
+4. [Describing patterns, answering questions](session-4.html)
+5. [Quantifying evidence](session-5.html)
 
 <br>
 
-- [6. Making predictions](session-6.html)
-- [7. Building models](session-7.html)
-- [8. Reporting outcomes](session-8.html)
+6. [Making predictions](session-6.html)
+7. [Building models](session-7.html)
+8. [Reporting outcomes](session-8.html)
 
 
 <br>
@@ -59,63 +59,111 @@ Supporting topics:
 
 # Overview
 
-R is a bit like a martial art. Yes, this analogy is clichéd, but we think the parallels are real. Learning a martial art goes something like this:
+Learning R is a bit like learning a martial art. Yes, this analogy is clichéd,
+but we think the parallels are real. Learning a martial art goes something like
+this:
 
-- As a novice you learn basic movements and techniques for self defence. If an attacker behaves as you expect you can block or counter-attack. But if something unexpected happens you might be confused or overwhelmed.
-
-- As you gain expertise you learn general principles of movement and strategies to attack or defend. These let you to respond flexibly — so when things don't unfold as you expect you are able to adapt and make good decisions. As you practice you get stronger and can be more effective.
-
-- Finally, you become a master. You begin to see connections between techniques and can suggest new combinations or patterns to break through even sophisticated defences.
+- As a novice you learn basic movements and techniques for self defence. If an
+attacker behaves as you expect you can block or counter-attack. But if something
+unexpected happens you might be confused or overwhelmed.
+- As you gain expertise you learn general principles of movement and strategies
+to attack or defend. These let you to respond flexibly — so when things don't
+unfold as you expect you are able to adapt and make good decisions. As you
+practice you get stronger and can be more effective.
+- Finally, you become a master. You begin to see connections between techniques
+and can suggest new combinations or patterns to break through even sophisticated
+defences.
 
 
 This is a lot like learning R.
 
-- To begin with we show you the basics, but if your data aren't in the right format, or something unexpected happens you can end up getting stuck. You make basic errors of style or form which leave you vulnerable.
-- In this course we aim to teach general principles for working with data. Over time you will develop understanding and expertise that lets you combine techniques to solve new problems. With repeated practice your skills are honed and you gain strength.
-- In later in your degree, and if you continue using R in your own work, you might develop mastery and really start to understand the core principles involved, solving problems in creative ways.
+- To begin with we show you the basics, but if your data aren't in the right
+format, or something unexpected happens you can end up getting stuck. You make
+basic errors of style or form which leave you vulnerable.
+- In this course we aim to teach general principles for working with data. Over
+time you will develop understanding and expertise that lets you combine
+techniques to solve new problems. With repeated practice your skills are honed
+and you gain strength.
+- In later in your degree, and if you continue using R in your own work, you
+might develop mastery and really start to understand the core principles
+involved, solving problems in creative ways.
 
 
 ### Practice makes perfect
 
->One final way R and martial arts are similar is that there's no substitute for practice. It's simply not possible to 'fake it'.
+>One final way R and martial arts are similar is that there's no substitute for
+practice. It's simply not possible to 'fake it'.
 
-In martial arts, a blow to the head is direct and effective feedback that your basic skills like blocking or footwork need practice. In R, error messages and broken code can feel similarly unforgiving. The solution (in both cases) is to use failures constructively: ensure the basics are correct, and continue to train!
+In martial arts, a blow to the head is direct and effective feedback that your
+basic skills like blocking or footwork need practice. In R, error messages and
+broken code can feel similarly unforgiving. The solution (in both cases) is to
+use failures constructively: ensure the basics are correct, and continue to
+train!
 
 
 ### Mindset matters
 
-You might ask what you can do to succeed on this course and make the most of your training.
+You might ask what you can do to succeed on this course and make the most of
+your training.
 
-Based on what we've observed in previous cohorts, the following attributes and approaches are what seem to us to correlate with success.
+Based on what we've observed in previous cohorts, the following attributes and
+approaches are what seem to us to correlate with success.
 
-* *Go slow, be steady*. Don't move on until you've understood each section. It's not a race or a competition with your peers (even if workshops can feel that way).
+* *Go slow, be steady*. Don't move on until you've understood each section. It's
+not a race or a competition with your peers (even if workshops can feel that
+way).
 
-* *Be consistent*. If you feel you might be slower than other students with this material allocate time to study outside of workshops now. Don't leave work until the end of the year — we will be adding new material each week, so this is a recipe for falling behind.
+* *Be consistent*. If you feel you might be slower than other students with this
+material allocate time to study outside of workshops now. Don't leave work until
+the end of the year — we will be adding new material each week, so this is a
+recipe for falling behind.
 
-* *Support each other*, but make sure _you_ are doing the work too. It's nice to work as a pair or a group, and it can be great for your own learning to explain teachniques to others. But it's also easy to forget that you must learn the material for yourself. Our advice is to swap partners every week or two to make sure you don't get in a rut.
+* *Support each other*, but make sure _you_ are doing the work too. It's nice to
+work as a pair or a group, and it can be great for your own learning to explain
+teachniques to others. But it's also easy to forget that you must learn the
+material for yourself. Our advice is to swap partners every week or two to make
+sure you don't get in a rut.
 
-* *Persevere*. Do ***all*** the exercises. Re-do parts of a worksheet if you didn't understand them.
+* *Persevere*. Do ***all*** the exercises. Re-do parts of a worksheet if you
+didn't understand them.
 
-* *Be honest with yourself*. Nobel physicist Richard Feynman once said, ["The first principle is that you must not fool yourself, and you are the easiest person to fool."](https://en.wikiquote.org/wiki/Richard_Feynman) We often find that students move through the material too quickly, skipping over practice exercises because they _think_ they understand the techniques already and want to save time. This is almost always a false economy. If you skip early material you _will_ get stuck later. The course is designed to build progressively: We will often re-use techniques learnt in earlier sessions. Sometimes this means revisiting old material to check your understanding. The [reference worksheets](#cheatsheets) are also useful to check previous content.
+* *Be honest with yourself*. Nobel physicist Richard Feynman once said, ["The
+first principle is that you must not fool yourself, and you are the easiest
+person to fool."](https://en.wikiquote.org/wiki/Richard_Feynman) We often find
+that students move through the material too quickly, skipping over practice
+exercises because they _think_ they understand the techniques already and want
+to save time. This is almost always a false economy. If you skip early material
+you _will_ get stuck later. The course is designed to build progressively: We
+will often re-use techniques learnt in earlier sessions. Sometimes this means
+revisiting old material to check your understanding. The [reference
+worksheets](#cheatsheets) are also useful to check previous content.
 
 
 
 
-# Preparation
+# Preparation {#prep}
 
 
 ## Using these worksheets
 
 These worksheets are designed based on student feedback over many years.
 
-**They are intended to be used in supported workshops where students work at their own pace, individually or in pairs, with experts on hand to answer questions and resolve problems quickly.** You can also use the worksheets alone, or without support, although we don't recommend this; in the early stages students can often become stuck or demoralised when they are bogged down with lots of simple errors.
-
+**They are intended to be used in supported workshops where students work at
+their own pace, individually or in pairs, with experts on hand to answer
+questions and resolve problems quickly.** You can also use the worksheets alone,
+or without support, although we don't recommend this; in the early stages
+students can often become stuck or demoralised when they are bogged down with
+lots of simple errors.
 Our strategy is to:
 
 - State and show key techniques with the minimum of explanation.
-- Give an expanded explanation in a video (video transcripts are available to read).
-- Ask you to follow along with simple examples (e.g. by copying and pasting code).
-- Pose additional problems to give you opportunities to apply your learning and check your understanding (here, you edit the example code).
+- Give an expanded explanation in a video (video transcripts are available to
+read).
+- Ask you to follow along with simple examples (e.g. by copying and pasting
+code).
+- Pose additional problems to give you opportunities to apply your learning and
+check your understanding (here, you edit the example code).
+
 
 :::{.exercise}
 
@@ -123,7 +171,8 @@ Exercises and problems are presented in Blue boxes, like this.
 
 **It's important to complete all the exercises.**
 
-Sometimes students find it helpful to return to earlier worksheets to repeat tasks to check they understand.
+Sometimes students find it helpful to return to earlier worksheets to repeat
+tasks to check they understand.
 
 For each session there is an accompanying interactive workbook (explained below) **which you should use to organise your work**.
 

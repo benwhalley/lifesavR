@@ -23,13 +23,14 @@ setup <- function(delete_existing = FALSE){
         message("\n\nRemoving existing lifesavr folder")
       }
 
-      clonedreporesult <- system(paste0("git clone https://github.com/benwhalley/lifesavR/ ", lifesavrdir ))
+      # because some big old videos in the history and for speed anyway
+      # https://github.blog/2020-12-21-get-up-to-speed-with-partial-clone-and-shallow-clone/
+      clonedreporesult <- system(paste0("git clone --filter=blob:none https://github.com/benwhalley/lifesavR/ ", lifesavrdir ))
       stopifnot(clonedreporesult==0)
 
       message("Switching to the exercises folder.")
       rstudioapi::filesPaneNavigate(paste0(lifesavrdir, "/exercises"))
       message("Success!")
-
 
       # PROFLE SETUP
       # create ~/.Rprofile if doesn't exist
