@@ -78,12 +78,3 @@ You can re-order the table by changing the order in which you include `gender` a
 
 
 
-### Making a plot
-
-If you want to make a plot of counts, then `stat_count` can be useful:
-
-```{r}
-earnings %>%
-  ggplot(aes(gender)) +
-  stat_count()
-```
