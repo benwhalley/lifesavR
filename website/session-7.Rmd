@@ -10,7 +10,6 @@ output:
     highlight: tango
 ---
 
-
 ```{r, include=F, echo=F}
 source('_first_chunk.R')
 source('tabbed-rmd.R')
@@ -26,42 +25,33 @@ library(broom)
 ```{css, child="video.css"}
 ```
 
-
-
-![](images/building-models.png)
-
-
+![](images/legohouse.jpg)
 
 # Overview
 
-In this workshop we introduce *multiple regression*, that is: regression models which
-include 2 or more predictors. Multiple regression is a core technique in psychology and most other quantitative 
+In this workshop we introduce *multiple regression*, that is: regression models which include 2 or
+more predictors. Multiple regression is a core technique in psychology and most other quantitative
 sciences.
 
-In this workshop we focus on the case where you have one continuous outcome variable, and two continuous 
-predictor variables. The notes emphasise the connection between *graphical models*, that represent hypotheses
-about how the data were generated, with specific linear models. To evaluate multiple regression models we can 
-check their *residuals*, and to compare models we can use a Bayes Factor: both techniques are demonstrated.
-
-
-
+In this workshop we focus on the case where you have one continuous outcome variable, and two
+continuous predictor variables. The notes emphasise the connection between *graphical models*, that
+represent hypotheses about how the data were generated, with specific linear models. To evaluate
+multiple regression models we can check their *residuals*, and to compare models we can use a Bayes
+Factor: both techniques are demonstrated.
 
 ### Learning outcomes
 
-- Add multiple predictors to a linear model
-- Calculate and interpret how much variation a model explains using $R^2$
-- Calculate a Bayes Factor for a model to compare hypotheses
-
+-   Add multiple predictors to a linear model
+-   Calculate and interpret how much variation a model explains using $R^2$
+-   Calculate a Bayes Factor for a model to compare hypotheses
 
 <!-- ### Techniques covered -->
 
 <!-- - Formulas with 2 predictors -->
+
 <!-- - Model fit: $R^2$ -->
+
 <!-- - Model comparison: Bayes Factor -->
-
-
-
-
 
 ```{r, eval=F, include=F}
 # first video code
@@ -139,32 +129,22 @@ mA / mB
 
 ```
 
-
-
 # Using multiple regression
-
-
 
 `r video("Wia2TuH21mQ")`
 
 `r make_tabs('Wia2TuH21mQ')`
 
-:::{.tab-content}
+::: tab-content
+::: {#Wia2TuH21mQ-summary .tab-pane .active}
+We often have multiple possible predictors of an outcome variable. We want to run models which use
+more than one predictor. We also need to compare different models to see which is the best.
 
-:::{#Wia2TuH21mQ-summary .tab-pane .active}
-
-We often have multiple possible predictors of an outcome variable.
-We want to run models which use more than one predictor.
-We also need to compare different models to see which is the best.
-
-This first video explains how to fit multiple regression models which include more than one predictor.
-
+This first video explains how to fit multiple regression models which include more than one
+predictor.
 :::
 
-
-:::{#Wia2TuH21mQ-code .tab-pane}
-
-
+::: {#Wia2TuH21mQ-code .tab-pane}
 ```{r, eval=F}
 # load libraries
 library(psydata)
@@ -190,81 +170,56 @@ modelB <- lm(mpg ~ weight + cyl, data=fuel)
 modelA
 modelB
 ```
-
 :::
 
-
-
-:::{#Wia2TuH21mQ-transcript .tab-pane}
-
-
-The transcript for this video is not available, but the content is largely identical to the next few sections of 
-this worksheet.
-
-
+::: {#Wia2TuH21mQ-transcript .tab-pane}
+The transcript for this video is not available, but the content is largely identical to the next few
+sections of this worksheet.
+:::
 :::
 
-
-
-:::
-
-
-
-
-
-
-
-
-:::{.tip}
-
+::: tip
 ## Fuel Economy Example
 
-The `fuel` dataset contains information about a selection of cars. *Our task*: We want to understand the relationship between fuel economy, the weight of a car, and how many cylinders it has. 
-
+The `fuel` dataset contains information about a selection of cars. *Our task*: We want to understand
+the relationship between fuel economy, the weight of a car, and how many cylinders it has.
 :::
 
-
-We can plot the data to give us some clues. First, we see that as car weight goes up, fuel economy goes down:
-
+We can plot the data to give us some clues. First, we see that as car weight goes up, fuel economy
+goes down:
 
 ```{r, echo=F, fig.height=2.5, fig.width=3.5}
 fuel %>% ggplot(aes(weight, mpg)) + geom_point()
 ```
 
-
 We also see that as the number of cylinders goes up, economy goes down:
-
-
 
 ```{r, echo=F, fig.height=2.5, fig.width=3.5}
 fuel %>% ggplot(aes(cyl, mpg)) + geom_point()
 ```
 
-
-
-We might conclude that both weight and the number of cylinders are important. 
-But we need to be careful! If we plot weight against the number of cylinders, we can
-see that these predictors are also related.
-
+We might conclude that both weight and the number of cylinders are important. But we need to be
+careful! If we plot weight against the number of cylinders, we can see that these predictors are
+also related.
 
 ```{r, echo=F, fig.height=2.5, fig.width=3.5}
 fuel %>% ggplot(aes(cyl, weight)) + geom_point()
 ```
 
-*Our problem*: We don't know which of these predictors (weight or number of cylinders) are important. 
-It's possible that *confounding* is occurring and one of these relationships is *spurious*.
-
-
-
+*Our problem*: We don't know which of these predictors (weight or number of cylinders) are
+important. It's possible that *confounding* is occurring and one of these relationships is
+*spurious*.
 
 # Choosing between hypotheses {#twohypdiag}
 
 We want to distinguish between (at least) two hypotheses. We can represent them visually like this:
 
+::: {.col-8 style="width:740px important!"}
+<table>
 
+<tr>
 
-<div class='col-8' style="width:740px important!"><table><tr><td>
-
+<td>
 
 ```{r, echo=F}
 grViz('
@@ -277,9 +232,9 @@ nodesep = .5;
 }', height=200)
 ```
 
+</td>
 
-</td><td>
-
+<td>
 
 ```{r, echo=F}
 grViz('
@@ -292,98 +247,83 @@ label = "Hypothesis B";
 
 ```
 
+</td>
 
+</tr>
 
-</td></tr>
+<tr>
 
+<td>**Hypothesis A**: Weight predicts fuel economy, and heavier cars tend to have more cylinders
+(weight and number of cylinders are correlated). But the number of cylinders doesn't actually matter
+for economy. Knowing the number of cylinders won't help us predict economy better, *once we know the
+weight of the car*.</td>
 
-<tr><td>
+<td>**Hypothesis B**: Both weight *and* the number of cylinders are *independent* predictors of fuel
+economy. Both provide useful information, and we need to use both variables to make the best
+possible prediction of fuel economy.</td>
 
+</tr>
 
-**Hypothesis A**: 
-  Weight predicts fuel economy, and heavier cars tend to have more cylinders (weight and number of cylinders are correlated). But the number of cylinders doesn't actually matter for economy. Knowing the number of cylinders won't help us predict economy better, *once we know the weight of the car*.
-
-
-
-</td><td>
-
-
-**Hypothesis B**: 
-  Both weight *and* the number of cylinders are *independent* predictors of fuel economy. Both provide useful information, and we need to use both variables to make the best possible prediction of fuel economy.
-
-
-</td></tr>
-
-</table></div>
-
+</table>
+:::
 
 <br>
 
-
-
 # Adding a second predictor
 
+We can think of linear models as representing different hypotheses. In the [diagrams
+above](#twohypdiag):
 
-We can think of linear models as representing different hypotheses. In the [diagrams above](#twohypdiag):
-
-
-- Hypothesis A is a model with a single predictor of fuel economy (`weight`)
-- Hypothesis B is a model with two predictors of fuel economy (`weight` and number of cylinders, `cyl`)
+-   Hypothesis A is a model with a single predictor of fuel economy (`weight`)
+-   Hypothesis B is a model with two predictors of fuel economy (`weight` and number of cylinders,
+    `cyl`)
 
 <br>
 
 Our task is to:
 
-1. Fit both models
-2. Quantify how well each one fits the data
-3. Compare them, and choose the simplest model which fits the data well
-
+1.  Fit both models
+2.  Quantify how well each one fits the data
+3.  Compare them, and choose the simplest model which fits the data well
 
 <br><br><br>
 
-
-In session 5 we saw how to [define the outcome and predictor variables for a simple regression](session-6.html#estimating-the-coefficients).  For example:
-
+In session 5 we saw how to [define the outcome and predictor variables for a simple
+regression](session-6.html#estimating-the-coefficients). For example:
 
 ```{r}
 modelA <- lm(mpg ~ weight, data=fuel)
 ```
 
-
-
-<br> 
+<br>
 
 To add a second predictor to our `lm` model we just use the `+` symbol. For example:
-
 
 ```{r}
 modelB <- lm(mpg ~ weight + cyl, data=fuel)
 ```
 
-
-**Explanation of the code**: To add a second predictor to our model we used the `+` symbol to separate the names of the
-two predictors: `weight + cyl`. This makes R estimate coefficients for both predictor variables.
-
-
+**Explanation of the code**: To add a second predictor to our model we used the `+` symbol to
+separate the names of the two predictors: `weight + cyl`. This makes R estimate coefficients for
+both predictor variables.
 
 ## Additional coefficients in the output
 
-
-If we look at the output from `modelA` and `modelB` we can see that Model A's 
-output looks similar to those we ran before:
-
+If we look at the output from `modelA` and `modelB` we can see that Model A's output looks similar
+to those we ran before:
 
 ```{r}
 modelA
 ```
+
 As before we have two coefficients:
 
-- **`intercept`**, which represents the height of the regression line when the predictors equal zero
-- **`weight`**, which represents the steepness of the slope (i.e. how strongly weight predicts economy)
-
+-   **`intercept`**, which represents the height of the regression line when the predictors equal
+    zero
+-   **`weight`**, which represents the steepness of the slope (i.e. how strongly weight predicts
+    economy)
 
 <br><br>
-
 
 However, the output for model B differs slightly:
 
@@ -391,54 +331,47 @@ However, the output for model B differs slightly:
 modelB
 ```
 
-We have the intercept, and the slope for `weight` as before. But there is an
-extra coefficient, for `cyl`.
+We have the intercept, and the slope for `weight` as before. But there is an extra coefficient, for
+`cyl`.
 
-This is the *change in the outcome* we expect *for each extra cylinder* the 
-engine has, i.e. for each unit increase in the `cyl` variable.
-
-
-
+This is the *change in the outcome* we expect *for each extra cylinder* the engine has, i.e. for
+each unit increase in the `cyl` variable.
 
 ### Making predictions with 2 predictors
 
-If we want to make predictions, we now have to use both `weight` and `cyl`, but the process is very similar.
-Imagine we have a car with 4 cylinders, which weighs 3000kg (so `weight`=3000).
+If we want to make predictions, we now have to use both `weight` and `cyl`, but the process is very
+similar. Imagine we have a car with 4 cylinders, which weighs 3000kg (so `weight`=3000).
 
 Our prediction is:
 
 $intercept + (4 \times cyl) + (3000 \times weight)$
 
-
-:::{.exercise}
-
-So, in this case, our prediction would be: `r fitb(predict(modelB, newdata=tibble(weight=3000, cyl=4)), tol=1)`
+::: exercise
+So, in this case, our prediction would be:
+`r fitb(predict(modelB, newdata=tibble(weight=3000, cyl=4)), tol=1)`
 
 `r hide("See answer")`
 
-
-- The intercept is 39
-- The slope for `weight` is -.007
-- The slope for `cyl` is -1.5
+-   The intercept is 39
+-   The slope for `weight` is -.007
+-   The slope for `cyl` is -1.5
 
 So the calculation is $39 + 3000 \times -.007 + 4 \times -1.5 = `r 39 + 3000 * -.007 + 4 * -1.5`$
 (allowing for rounding errors).
 
-We could also use `augment` to make the prediction, [as we did in the previous session](session-6.html#predictions):
+We could also use `augment` to make the prediction, [as we did in the previous
+session](session-6.html#predictions):
 
 ```{r}
 # the .fitted column is the prediction
 augment(modelB, newdata=tibble(weight=3000, cyl=4))
 ```
 
-`augment` predicts 12.5, but this is because it did not round the coefficients before doing the multiplication. 
-The result is approximately the same (and close enough).
+`augment` predicts 12.5, but this is because it did not round the coefficients before doing the
+multiplication. The result is approximately the same (and close enough).
 
 `r unhide()`
-
 :::
-
-
 
 ## Understanding changes in the coefficients
 
@@ -449,39 +382,31 @@ coefA
 coefB
 ```
 
-
-:::{.tip}
-
+::: tip
 Coefficients can change when adding new predictors.
-
 :::
 
-You  might notice that the `weight` coefficient has changed between the two models.
-In `modelA` it is `r coefA$weight`, but in model B it is
-`r  coefB$weight`
+You might notice that the `weight` coefficient has changed between the two models. In `modelA` it is
+`r coefA$weight`, but in model B it is `r  coefB$weight`
 
 Why did it go down so much?
 
-The coefficients are the change in the outcome for a 1 unit change in the predictor ***IF***
-all the other predictors had stayed at the same value.
+The coefficients are the change in the outcome for a 1 unit change in the predictor ***IF*** all the
+other predictors had stayed at the same value.
 
-We describe this as the effect of additional weight, *adjusting for* 
-how many cylinders the car had.
+We describe this as the effect of additional weight, *adjusting for* how many cylinders the car had.
 
+<br>
 
-<br> 
-
-So, in this example, *once we have adjusted for the number of cylinders*, the 
-remaining or *marginal* effect of weight is reduced (although not eliminated).
-
+So, in this example, *once we have adjusted for the number of cylinders*, the remaining or
+*marginal* effect of weight is reduced (although not eliminated).
 
 <br><br>
 
 It can help to imagine what would happen if we fit a regression:
 
-i. For the whole sample, ignoring the number of cylinders (like in model A)
+i.  For the whole sample, ignoring the number of cylinders (like in model A)
 ii. Separately for cars of 3, 4, 5 ... cylinders.
-
 
 <br>
 
@@ -494,56 +419,49 @@ fuel %>% ggplot(aes(weight, mpg, color=factor(cyl))) +
   geom_smooth(method=lm, se=F,  size=1.2 ) + theme_minimal() + scale_color_discrete("cylinders")
 ```
 
-
-
-The coefficient `weight` in model A is equivalent to the black line.
-The coefficient `weight` in model B, is approximately equivalent to the average of the red, green and blue slopes.
+The coefficient `weight` in model A is equivalent to the black line. The coefficient `weight` in
+model B, is approximately equivalent to the average of the red, green and blue slopes.
 
 <br>
 
-
-We can see that the _average_ slope of the red, green and blue lines is less steep than the black line.
-That is, ***once we have accounted for the number of cylinders, our estimate of the relationship between weight and economy is reduced.***.
-
-
-
+We can see that the *average* slope of the red, green and blue lines is less steep than the black
+line. That is, ***once we have accounted for the number of cylinders, our estimate of the
+relationship between weight and economy is reduced.***.
 
 # *Evaluating* models
 
+<!-- https://youtu.be/QztZKVA9aUQ -->
 
-`r video("EgSUL9TtqgQ")`
+`r video("QztZKVA9aUQ")`
 
-`r make_tabs('EgSUL9TtqgQ')`
+`r make_tabs('evalmodels')`
 
-:::{.tab-content}
+::: tab-content
+::: {#evalmodels-summary .tab-pane .active}
+How do we know which of the two models is the best?
 
-:::{#EgSUL9TtqgQ-summary .tab-pane .active}
+One way is to check the residuals from each model (and plot them). Smaller residuals are better.
 
-How do we know which of the two models is the best? One way is to check the residuals from each model.
+The $R^2$ statistic formalises this somewhat. It is a number from 1 (the model predicts the outcome
+perfectly) to 0 (the model doesn't predict anything).
 
+Always report the 'adjusted $R^2$'.
 :::
 
-:::{#EgSUL9TtqgQ-code .tab-pane}
-
+::: {#evalmodels-code .tab-pane}
 ```{r, eval=F}
 # calculate R squared
 glance(modelA)
 glance(modelB)
 ```
-
 :::
 
-
-:::{#EgSUL9TtqgQ-transcript .tab-pane}
-
-
-
-We saw previously that [residuals represent the *distance between the predicted and 
-observed data*](session-6.html#residuals).  *Larger residuals mean bigger errors in prediction*, and 
-amaller errors are better.
+::: {#evalmodels-transcript .tab-pane}
+We saw previously that [residuals represent the *distance between the predicted and observed
+data*](session-6.html#residuals). *Larger residuals mean bigger errors in prediction*, and amaller
+errors are better.
 
 The plot below shows the *distribution* of residuals from models A and B.
-
 
 ```{r, echo=F, fig.height=4, width=6}
 bind_rows(
@@ -552,42 +470,30 @@ bind_rows(
 ) %>% ggplot(aes(.resid, color=m)) + geom_density() + scale_color_discrete("Hypothesis")
 ```
 
-
-
-:::{.exercise}
-
-Based on the distribution of the residuals, which model seems to make the best predictions? `r mcq(c(answer="Hypothesis B", "Hypothesis A"))`
+::: exercise
+Based on the distribution of the residuals, which model seems to make the best predictions?
+`r mcq(c(answer="Hypothesis B", "Hypothesis A"))`
 
 `r hide("Show an explanation of the answer")`
 
-Model B (representing Hypothesis B) makes better predictions, because more of the residuals are clustered
-around zero. That is, the error in the predictions is smaller.
-
+Model B (representing Hypothesis B) makes better predictions, because more of the residuals are
+clustered around zero. That is, the error in the predictions is smaller.
 
 `r unhide()`
-
 :::
-
-
 
 ## R-squared (*R*^2^) {#r2}
 
-
-:::{.tip}
-
-$R^2$ is the proportion of variance in the 
-outcome explained by the predictor variables.
-
+::: tip
+$R^2$ is the proportion of variance in the outcome explained by the predictor variables.
 :::
 
+$R^2$ summarises how large the residuals are for different models, relative to the residual from a
+model without any predictors.
 
-$R^2$ summarises how large the residuals are for different models, relative to
-the residual from a model without any predictors.   
-
-It ranges from 0 (models which are very poor and have large residuals), to 1
-(models with perfect prediction and zero residuals). Because larger $R^2$ values
-are better, we can use it to compare models with additional predictors.
-
+It ranges from 0 (models which are very poor and have large residuals), to 1 (models with perfect
+prediction and zero residuals). Because larger $R^2$ values are better, we can use it to compare
+models with additional predictors.
 
 <br>
 
@@ -597,14 +503,23 @@ To calculate $R^2$ we use the `glance` command on our saved model result:
 glance(modelA)
 ```
 
-***Explanation of the code***: We use the `glance`, providing our saved result
-for `modelA` as the input.
+***Explanation of the code***: We use the `glance`, providing our saved result for `modelA` as the
+input.
 
-***Explanation of the output***: `glance` produces a dataframe as a result,
-containing columns for `r.squared`, `adj.r.squared`, and some other statistics
-which we don't need for now. The number to focus on here is `adj.r.squared`,
-which is 0.74.
+***Explanation of the output***: `glance` produces a dataframe as a result, containing columns for
+`r.squared`, `adj.r.squared`, and some other statistics which we don't need for now. The number to
+focus on here is `adj.r.squared`, which is 0.74.
 
+::: tip
+Why use the *adjusted* R^2^, and what is the adjustment?
+
+Unadjusted, $R^2$ becomes increasingly over-optimistic as we add extra predictors to our model. The
+adjusted $R^2$ figure corrects for this, reducing the raw $R^2$ as we add extra predictors.
+
+*Always report the adjusted* $R^2$ value.
+
+For more detail, see Field's (2012) textbook, *Discovering Statistics Using R*, p. 273.
+:::
 
 <br><br>
 
@@ -614,60 +529,40 @@ We can repeat the process for `modelB`:
 glance(modelB)
 ```
 
-***Explanation of the output***: This time we calculated `adj.r.squared` for
-`modelB`, which included `cyl` as an extra predictor. Adjusted $R^2$ has now
-gone up to 0.82.
-
+***Explanation of the output***: This time we calculated `adj.r.squared` for `modelB`, which
+included `cyl` as an extra predictor. Adjusted $R^2$ has now gone up to 0.82.
 
 <br><br>
 
-
 To summarise the results above:
 
-- We predicted fuel economy using `weight` alone (model A) and adjusted  $R^2$
-was 0.75. 
-- We added `cyl` (number of cylinders) in model B. Adjusted  $R^2$
-increased to 0.82.
+-   We predicted fuel economy using `weight` alone (model A) and adjusted $R^2$ was 0.75.
+-   We added `cyl` (number of cylinders) in model B. Adjusted $R^2$ increased to 0.82.
 
-Models with higher $R^2$ have smaller residuals and make better predictions.
-This means we should generally prefer model A.
+Models with higher $R^2$ have smaller residuals and make better predictions. This means we should
+generally prefer model A.
 
 <br>
 
-But, if the increase in $R^2$ is only small we might worry that the difference
-is due to chance — for example, because of random variations in our dataset. The
-final step is to quantify the evidence for each hypothesis.
-
+But, if the increase in $R^2$ is only small we might worry that the difference is due to chance ---
+for example, because of random variations in our dataset. The final step is to quantify the evidence
+for each hypothesis.
+:::
 :::
 
-:::
-
-
-
-
-
-# Strength of the evidence
-
-
+# Strength of the evidence {#strengthofevidenceforlm}
 
 `r video("7yCLA9R-VoE")`
 
 `r make_tabs('tabstrengthevid')`
 
-:::{.tab-content}
-
-:::{#tabstrengthevid-summary .tab-pane .active}
-
-Our final task is to *quantify how much evidence* we have that model A is better
-than model B. For this we use a Bayes Factor.
-
-
+::: tab-content
+::: {#tabstrengthevid-summary .tab-pane .active}
+Our final task is to *quantify how much evidence* we have that model A is better than model B. For
+this we use a Bayes Factor.
 :::
 
-
-
-:::{#tabstrengthevid-code .tab-pane}
-
+::: {#tabstrengthevid-code .tab-pane}
 ```{r, eval=F}
 library(BayesFactor)
 
@@ -677,29 +572,22 @@ modelB <- lmBF(mpg ~ weight + cyl, data=fuel)
 
 modelB / modelA
 ```
-
 :::
 
+::: {#tabstrengthevid-transcript .tab-pane}
+As we saw in [session 5](session-5.html), a Bayes Factor always compares two hypotheses. It tells us
+how much more likely one hypothesis is than an alternative hypothesis, given the data we collected.
 
-
-:::{#tabstrengthevid-transcript .tab-pane}
-
-
-As we saw in [session 5](session-5.html), a Bayes Factor always compares two
-hypotheses. It tells us how much more likely one hypothesis is than an
-alternative hypothesis, given the data we collected.
-
-We will use Bayes Factors to compare hypotheses A and B, which are represented
-by model A and model B.
-
+We will use Bayes Factors to compare hypotheses A and B, which are represented by model A and model
+B.
 
 <br>
 
 To calculate the Bayes Factor we need to:
 
-- Load the `BayesFactor` package
-- Re-run our models using the `lmBF` function
-- Divide model B by model A
+-   Load the `BayesFactor` package
+-   Re-run our models using the `lmBF` function
+-   Divide model B by model A
 
 <br>
 
@@ -710,10 +598,8 @@ The complete code is as follows:
 library(BayesFactor)
 ```
 
-
-Next we re-run the models using the `lmBF` function. The only changes is to
-replace `lm` with `lmBF`.
-
+Next we re-run the models using the `lmBF` function. The only changes is to replace `lm` with
+`lmBF`.
 
 ```{r}
 # save model A
@@ -722,7 +608,6 @@ mA <- lmBF(mpg ~ weight, data=fuel)
 # save model B
 mB <- lmBF(mpg ~ weight + cyl, data=fuel)
 ```
-
 
 Finally, we divide model B by model A to calculate the Bayes Factor.
 
@@ -735,56 +620,89 @@ mB / mA
 bfBA <- (mB/mA) %>% as.data.frame() %>% mutate_if(is.numeric, ~round(.x, 2))
 ```
 
-
 ***Explanation of the code***: We divide `mB` by `mA` using the `/` symbol.
 
-***Explanation of the output***:  Our code produces a Bayes Factor showing the
-evidence *in favour of model B*.  The Bayes Factor is `r bfBA$bf`.
-
+***Explanation of the output***: Our code produces a Bayes Factor showing the evidence *in favour of
+model B*. The Bayes Factor is `r bfBA$bf`.
 
 ### Interpreting the Bayes Factor
 
-In [session 5 we learned that a BF > 10 is generally considered **strong**
-evidence in favour of a hypothesis](session-5.html#bayesinterpreting).
+In [session 5 we learned that a BF \> 10 is generally considered **strong** evidence in favour of a
+hypothesis](session-5.html#bayesinterpreting).
 
-In this example the Bayes Factor is `r bfBA$bf`, so we have strong evidence in
-favour of model B, compared with model A.
+In this example the Bayes Factor is `r bfBA$bf`, so we have strong evidence in favour of model B,
+compared with model A.
 
-Put differently model B is 22 times more likely than model A, given the data we
-collected.
-
-
-
+Put differently model B is 22 times more likely than model A, given the data we collected.
+:::
 :::
 
 
-:::
+# Interpreting Bayes Factors
+
+Psychologists love a "line in the sand", so a convention has emerged that we believe an effect is 'real' if the Bayes Factor is greater than 3, and believe there isn't a 'real' effect if the Bayes Factor is less than 0.33. 
+
+In fact though, Bayes Factors are a ***continuous*** measure of the evidence for or against a particular model (hypothesis). 
+
+Several authors, inculding Kass & Raftery (1993), have provided guidelines on
+how to interpret Bayes Factors in this way. They provide labels for Bayes
+Factors of various sizes. This is a more detailed guide than a simple "line in a
+sand" and can prove very useful when comparing multiple studies.
 
 
 
+```{r bayes-factor-table, echo = FALSE, warning = FALSE, message = FALSE}
+# borrowed from https://github.com/ajwills72/rminr/commit/4fd9ca33d7e51cfe9249e864eea064c79d4b5288
+library(viridis)
+library(gt) 
 
+bf <- read_csv("https://raw.githubusercontent.com/ajwills72/rminr/2022-edition/src/bayes_factors.csv") %>% 
+  head(5)
+bf_table <- gt(bf)
+kk <- viridis(nrow(bf), option = "B", begin = 0.3, end = 1, direction = -1)
+
+bf_table %>%
+tab_header(title = md("A rule-of-thumb interpretation of Bayes Factors")) %>%
+tab_options(table.font.size = 14) 
+```
+
+Note that Bayes Factors can also be smaller than 1, but these indicate support for the 
+null hypothesis.  If this is the case, we often find it helpful to reverse the order of 
+division so that the BF is larger than 1 and state explicitly in the text that the
+BF we are reporting indicates the support ***for*** the ***null*** hypotheses.
 
 
 
 
 # Overall synopsis
 
-In the example above our outcome variable was fuel economy and we had two potential predictor variables: the car's weight, and the number of cylinders it had.
+In the example above our outcome variable was fuel economy and we had two potential predictor
+variables: the car's weight, and the number of cylinders it had.
 
 We ran two models (A and B) which represented *different hypotheses*:
 
-- Hypothesis A said  only weight was needed to predict fuel economy.
-- Hypothesis B said that both weight and cylinders would be *independent predictors* of fuel economy.
+-   Hypothesis A said *only weight* was needed to predict fuel economy.
+-   Hypothesis B said that *both weight and cylinders* would be *independent predictors* of fuel
+    economy.
 
-After fitting the models with `lm` we calculated $R^2$ to estimate how well each model fitted the data. $R^2_{adjusted}$ was .75 and .82 for models A and B, which means both models were quite good and explained a large proportion of the variability in fuel economy.
+<br>
 
-To *compare the models*, we re-fitted them using `lmBF` and calculated a Bayes Factor. This told us that -- although both were quite a good fit to the data -- we had 22 times more evidence for model A compared with model B.
+After fitting both models using `lm` we calculated $R^2$ to estimate how well each model fitted the
+data.
 
+$R^2_{adjusted}$ was .75 form model A, and .82 for model B, which means both models were quite good.
+Both explained a large proportion of the variability in fuel economy.
 
-From this example we can conclude that both weight and cylinders are *independent* predictors of fuel economy. That is, both variables make a useful contribution when predicting fuel economy.
+<br>
 
+To *compare the models*, we re-fitted them using `lmBF` and calculated a Bayes Factor. This told us
+that -- although both were quite a good fit to the data -- we had 22 times more evidence for model A
+compared with model B.
 
+<br>
 
+From this example we conclude that *both weight and cylinders are independent predictors of fuel
+economy*. That is, both variables make a useful contribution when predicting fuel economy.
 
 # Check your knowledge
 
@@ -823,47 +741,54 @@ bfsize <- c(
   "overwhelming"
 )
 
+bfsize2 <- c(
+  "inconclusive evidence",
+  "some evidence",
+  "weak evidence",
+  answer="evidence for the null"
+)
+
 ```
 
+-   We prefer models with `r mcq(smalllargeresid)` residuals
 
-- We prefer models with `r mcq(smalllargeresid)` residuals
+-   The $R^2$ statistic ranges from: `r mcq(rsquarerange)`
 
-- The $R^2$ statistic ranges from: `r mcq(rsquarerange)`
+-   It's better for a model to have a `r mcq(rsqlarsm)` $R^2$ value
 
-- It's better for a model to have a `r mcq(rsqlarsm)` $R^2$ value
+-   If we calculate the Bayes Factor for `modelA / modelB` and the result is \> 1, this provides
+    evidence that `r mcq(bfq1)`
 
-- If we calculate the Bayes Factor for `modelA / modelB` and the result is > 1, this provides evidence that `r mcq(bfq1)`
+-   A Bayes Factor of 25 means we have `r mcq(bfsize)` evidence
 
-- A Bayes Factor greater than 10 means we have `r mcq(bfsize)` evidence
+-   A Bayes Factor < 1 means we have `r mcq(bfsize2)`
 
 <br><br><br><br>
 
-
 # Additional examples and exercises
 
-To consolidate what we have learned this section asks you to follow the same process using a different dataset.
+To consolidate what we have learned this section asks you to follow the same process using a
+different dataset.
 
 <br><br>
 
-
 ## Student study habits
 
+![](images/studying.png){width=30%}
 
-![](images/studying.png)
+The `studyhabits` dataset (in the `psydata` package) contains data on students and their study
+habits:
 
-The `studyhabits` dataset (in the `psydata` package) contains data on students and their study habits:
+```
+-   work_hours: How many hours per week the student worked
+-   work_consistently: A measure of how consistently the student worked each day
+-   grade: Their assessment grade (%)
+```
 
-- `work_hours`: How many hours per week the student worked
-- `work_consistently`: A measure of how consistently the student worked each day
-- `grade`: Their assessment grade (%)
+The tasks below use these data to pose a series of questions to check your understanding. 
+They ask you to run additional analyses to built confidence using R.
 
-
-The tasks below use these data to pose a series of questions to check your understanding, and ask you to run additional analyses to gain confidence in R.
-
-
-
-:::{.exercise}
-
+::: exercise
 #### Task 1: Interpret these plots
 
 ```{r, fig.width=7, fig.height=3, echo=F}
@@ -873,6 +798,7 @@ c <- studyhabits %>% ggplot(aes(work_consistently, work_hours)) + geom_point() +
 
 gridExtra::grid.arrange(a,b,c, nrow=1)
 ```
+
 ```{r, echo=F}
 poscorrel <- c(
   answer="Positively correlated",
@@ -884,29 +810,23 @@ hilograde <- c(answer="Higher", "Lower", "About the same")
 lessmoretime <- c(answer="More", "Less", "About the same")
 ```
 
-
 Based on these plots of the `studyhabits` data:
 
-- Hours worked and assessment grades are `r mcq(poscorrel)`
+-   Hours worked and assessment grades are `r mcq(poscorrel)`
 
-- Working consistently is likely to produce `r mcq(hilograde)` grades
+-   Working consistently is likely to produce `r mcq(hilograde)` grades
 
-- Students who work more consistently tend to work for `r mcq(lessmoretime)` time overall
-
-
+-   Students who work more consistently tend to work for `r mcq(lessmoretime)` time overall
 :::
 
-
-
-:::{.exercise}
-
+::: exercise
 #### Task 2: Describe alternative hypotheses
 
-Imagine we are interested in *the effect of working consistently each day on grades, adjusting for the total number of hours studyied*.
-That is, we want to know if working consistently helps predict grades, even after we know the total hours spent studying.
+Imagine we are interested in *the effect of working consistently each day on grades, adjusting for
+the total number of hours studied*. That is, we want to know if working consistently helps predict
+grades, even after we know the total hours spent studying.
 
 A. Fill in the blanks in the following diagram:
-
 
 ```{r, echo=F}
 grViz('
@@ -924,7 +844,6 @@ nodesep = .5;
 ```
 
 <br><br>
-
 
 ```{r, echo=F}
 grViz('
@@ -941,11 +860,7 @@ nodesep = .5;
 }', height=200)
 ```
 
-
-
 `r hide("Show answers")`
-
-
 
 ```{r, echo=F}
 grViz('
@@ -961,7 +876,6 @@ nodesep = .5;
       labelloc="t"
 }', height=200)
 ```
-
 
 ```{r, echo=F}
 grViz('
@@ -980,22 +894,13 @@ nodesep = .5;
 
 `r unhide()`
 
-
 <br><br>
 
 B. Which hypothesis do you think is more likely, based on the plots and your own experience?
-
-
 :::
 
-
-
-
-:::{.exercise}
-
-
+::: exercise
 What is the correct code to run models for each of the hypotheses we described above?
-
 
 ```{r, echo=F}
 hypa <- c(
@@ -1015,22 +920,13 @@ hypb <- c(
 )
 ```
 
+-   Hypothesis A: `r mcq(hypa)`
 
-- Hypothesis A: `r mcq(hypa)`
-
-- Hypothesis B: `r mcq(hypb)`
-
-
+-   Hypothesis B: `r mcq(hypb)`
 :::
 
-
-
-
-
-:::{.exercise}
-
+::: exercise
 #### Task 4: Interpret the Bayes Factor
-
 
 Imagine you have already run the following code:
 
@@ -1038,7 +934,6 @@ Imagine you have already run the following code:
 modA <- lmBF(grade ~ work_hours, data=studyhabits)
 modB <- lmBF(grade ~ work_hours + work_consistently, data=studyhabits)
 ```
-
 
 ```{r, echo=F}
 formodlB <- c(
@@ -1055,9 +950,7 @@ formodlB <- c(
 bfBA_work <- (modB/modA) %>% as.data.frame() %>% pull(bf) %>% round(2)
 ```
 
-
-- The command to display calculate the Bayes Factor in favour of Model B is: `r mcq(formodlB)`
-
+-   The command to display calculate the Bayes Factor in favour of Model B is: `r mcq(formodlB)`
 
 `r hide("Show answers")`
 
@@ -1065,18 +958,10 @@ bfBA_work <- (modB/modA) %>% as.data.frame() %>% pull(bf) %>% round(2)
 modB / modA
 ```
 
-
 `r unhide()`
+:::
 
-
-::::
-
-
-
-
-:::{.exercise}
-
-
+::: exercise
 #### Task 5: Interpret the Bayes Factor output
 
 Imagine you had run the code below:
@@ -1094,9 +979,9 @@ modB
 
 ```{r, echo=F}
 modelbwhatsizebf <- c(
-  answer="About 6",
+  "About 6",
   "Much less than 6",
-  "Much more than 6 "
+  answer="Much more than 6 "
 )
 
 borabetter <- c(
@@ -1106,11 +991,32 @@ borabetter <- c(
 )
 ```
 
-- We can interpret the Bayes Factor in this output as saying: `r mcq(borabetter)`
-- The Bayes Factor for model B is: `r mcq(modelbwhatsizebf)`
+-   We can interpret the Bayes Factor in this output as saying: `r mcq(borabetter)`
+-   The Bayes Factor for model B is: `r mcq(modelbwhatsizebf)`
+
+`r hide("Show explanation")`
+
+In the section above we only look at the output of `modB`. The default in the
+`BayesFactor` package is to give the BF for the comparison against a model with no
+predictors. This is _sometimes_ what you want, but normally you will have to divide 
+one model by another to get the correct Bayes Factor.
+
+
+The BF number is written in scientific notation as `6.627368e+13`
+This means it is roughly $6.627 \times 10^{13}$, so about 66273680000000.
+
+Always double check when you see an `e` in a number in R output. 
+
+Useful: <https://www.calculatorsoup.com/calculators/math/scientific-notation-converter.php>
+
+
+`r unhide()`
+
+:::
 
 
 
+:::{.exercise}
 
 Now interpret the following output:
 
@@ -1118,48 +1024,45 @@ Now interpret the following output:
 modB / modA
 ```
 
-
 ```{r, echo=F}
 abchoice <- c(
   "Model A is only 0.1% more probable than model B",
   "Model B is only 0.1% more probable than model A",
-  "Model A is only 91% more probable than model B",
-  "Model B is only 91% more probable than model A",
-  "Model A is only 91 times more probable than model B",
-  answer="Model B is only 91 times more probable than model A"
+  "Model A is 91% more probable than model B",
+  "Model B is 91% more probable than model A",
+  "Model A is 91 times more probable than model B",
+  answer="Model B is 91 times more probable than model A"
 )
 ```
 
-
-- Which of the following options is true: `r mcq(abchoice)`
-
-
+-   Which of the following options is true: `r mcq(abchoice)`
 :::
 
+## National happiness
 
+![](images/flags.png){width=50%}
 
-## National happiness 
-
-
-![](images/flags.png)
-
-:::{.tip}
-
-This last exercise is not _required_; it is offered as an additional challenge for
-students who have time, or who wish to practice and consolidate skills learned.
-
+::: tip
+This last exercise is not *required*; it is offered as an additional challenge for students who have
+time, or who wish to practice and consolidate skills learned.
 :::
 
-The plots below shows the distribution of and relationship between three 
-variables in the `happy` dataset, in the psydata package.
+The plots below shows the distribution of and relationship between three variables in the `happy`
+dataset, in the psydata package.
 
-These data are a simplified version of the [Gallup World Happiness report](https://worldhappiness.report/ed/2021) (and see more details on the questions asked [here](https://happiness-report.s3.amazonaws.com/2021/Appendix1WHR2021C2.pdf)).
+These data are a simplified version of the [Gallup World Happiness
+report](https://worldhappiness.report/ed/2021) (and see more details on the questions asked
+[here](https://happiness-report.s3.amazonaws.com/2021/Appendix1WHR2021C2.pdf)).
 
-The variables shown are base on the national average of responses to three questions:
+The variables shown are the national average of responses to three questions:
 
-- `happiness`: a measure of subjective well-being, rated on a 1-10 scale
-- `social_support`: responses to the question: "If you were in trouble, do you have relatives or friends you can count on to help you whenever you need them, or not?"
-- `freedom_to_make_life_choices`: responses to "Are you satisfied or dissatisfied with your freedom to choose what you do with your life?"
+```
+-   happiness: a measure of subjective well-being, rated on a 1-10 scale
+-   social_support: responses to the question: "If you were in trouble, do you have relatives or
+    friends you can count on to help you whenever you need them, or not?"
+-   freedom_to_make_life_choices: responses to "Are you satisfied or dissatisfied with your
+    freedom to choose what you do with your life?"
+```
 
 
 ```{r, echo=F, warning=F, message=F}
@@ -1177,30 +1080,21 @@ happy %>% select(happiness, social_support, freedom_to_make_life_choices) %>%
 
 ```
 
-:::{r}
-
+::: {r}
 Using the `happy` data:
 
-- Write code to run linear models to predict `happiness` using the 'social support' and 'freedom' variables.
+-   Write code to run linear models to predict `happiness` using the 'social support' and 'freedom'
+    variables.
 
-- Draw diagrams to describe two alternative hypotheses, similar to those used above.
+-   Draw diagrams to describe two alternative hypotheses, similar to those used above.
 
-- Calculate a Bayes Factor which compares those two alternative hypotheses. Which hypothesis is more likely?
+-   Calculate a Bayes Factor which compares those two alternative hypotheses. Which hypothesis is
+    more likely?
 
-
-
-:::{.tip}
-
-There is no single set of 'correct' answers to these questions. If you would like
-feedback on your work, speak to a member of staff during the workshops.
-
+::: tip
+There is no single set of 'correct' answers to these questions. If you would like feedback on your
+work, speak to a member of staff during the workshops.
 :::
-
-
 :::
-
-
-
-
 
 <!-- # References -->
