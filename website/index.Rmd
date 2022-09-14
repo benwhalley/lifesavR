@@ -243,7 +243,7 @@ This index links to all the important R functions and topics within the course.
   * [colour](session-3.html#colour)
 * [Bayes Factor](session-5.html#fluke){#bf} quantifies evidence for differences or correlations in a dataset
   * [interpreting](session-5.html#bayesinterpreting)
-  * [for multiple regressio](session-7.html#bf_for_multipleregression)
+  * [for multiple regression](session-7.html#bf_for_multipleregression)
 * [boxplots](session-3.html#boxplots) visualise differences between categories or groups
 * [CSV](session-2.html#loadingdata)  comma separated value (file format)
 * [central tendency](session-4.html#centralspread) the "middle" of a set of values
