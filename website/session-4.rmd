@@ -175,7 +175,7 @@ video_data <- list(identifier = "describe-relationships", yt_id="PGV-MZlCoOc")
 **Exercise 4**
 
 1. Load the `corrr` package (use the `library()` function).
-1. Use the `fuel` dataset from the `psydata` package, to calculate the correlation between `power` and `engine_size`?
+1. Use the `fuel` dataset from the `psydata` package, to calculate the correlation between `power` and `engine_size`.
 
 :::
 
