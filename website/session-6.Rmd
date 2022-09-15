@@ -101,7 +101,7 @@ help(mentalh)
 For this session we will mostly focus on:
 
 - `screen_time`: How much time the mothers' spent on screens and
-- `anxiey_score`: the number of anxiety symptoms experienced in the past week
+- `anxiety_score`: the number of anxiety symptoms experienced in the past week
 
 
 
@@ -428,7 +428,7 @@ If these answers don't make sense check back to the previous "check your underst
 
 :::{#v_S39Ozem4JY-summary .tab-pane .active}
 
-`lm` estimates coefficients to odescribe the line of best fit.
+`lm` estimates coefficients to describe the line of best fit.
 
 We can use these coefficients with the linear regression equation to make predictions for new individuals
 using simple arithmetic.
