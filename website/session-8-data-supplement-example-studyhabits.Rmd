@@ -1,0 +1,169 @@
+---
+title: "Example data supplement"
+output: html_document
+authors: "Ben Whalley"
+date: '2022-09-06'
+---
+
+
+
+
+
+### Overview
+
+This document provides the analysis to support for Whalley et al, 2030: *"Disambiguating study duration and study consistency"*.
+
+Each statement in that article requiring statistical analysis is copied below, and
+followed by the necessary R code and output.
+
+This supplement is NOT simply all the code used when analysing the data; it 
+is an edited and selected subset of that. The analyses here are organised so that
+they follow the logic of the paper, making it easier for readers to see where 
+individual numbers in the text came from.
+
+
+
+### Analyses
+
+```{r}
+# this tidies up the output somewhat
+knitr::opts_chunk$set(message = F, warning=F)
+
+library(tidyverse)
+library(BayesFactor)
+library(psydata)
+library(pander)
+```
+
+
+
+```{r}
+#model <- modelA
+require(broom)
+
+regression_table <- function(model, as_text=TRUE){
+  x <- model %>% broom::tidy(conf.int=T) 
+  
+  z <- model %>% arm::standardize() %>% 
+    broom::tidy()
+  
+  znum <- z %>% 
+    mutate(term = str_replace_all(term, "z\\.", "")) %>% 
+    transmute(term=term, β = estimate) %>% 
+    left_join(x, ., by="term") %>% 
+    select(Term=term, Estimate=estimate, `Lower`=conf.low, Upper=conf.high, β, p=p.value)
+  
+  r2 <- model %>% glance() %>% pull(adj.r.squared)
+  znumr2 <- znum %>% 
+    bind_rows(., tibble(Term="Adjusted R sq.", Estimate=r2)) 
+  
+  if(as_text){
+    znumr2 %>% 
+      mutate(`95% CI` = ifelse(!is.na(Lower), 
+        glue::glue("[{sprintf('%.3f', Lower)}, {sprintf('%.3f', Upper)}]"), ""), 
+        .after="Estimate") %>% 
+      mutate_at(c("Estimate"), ~{ifelse(is.na(.x), "", sprintf("%.3f", .x) )}) %>% 
+      mutate_if(is.numeric, ~{ifelse(is.na(.x), "", sprintf("%.2f", .x) )}) %>% 
+      mutate_at(c("p"), ~ifelse(is.na(.x)|.x=="", "", apastats::round.p(.x))) %>% 
+      select(-Lower, -Upper)
+      
+  } else {
+    znumr2 %>% mutate_if(is.numeric, ~round(.x, 3))
+  }
+  
+}
+```
+
+
+
+### Specific results from the article
+
+Data were obtained for 32 cars...
+
+
+```{r}
+# note we are using data from psydata package
+# normally this would be the point at which you read in a csv or other data file
+studyhabits %>% glimpse
+```
+
+
+
+
+Car weights ranged from ...
+
+```{r}
+studyhabits %>% 
+  summarise_if(is.numeric, funs(range, mean, median, sd)) %>% 
+  pivot_longer(everything()) %>% 
+  arrange(name) %>% 
+  pander()
+```
+
+and models in this sample had between ...
+
+```{r}
+fuel %>% count(cyl)
+```
+
+
+
+Figure 2 suggests that both cylinders and weight were related to fuel economy
+
+```{r}
+fuel %>% 
+  select(mpg, weight, cyl) %>% 
+  ggplot(aes(weight, mpg, color=factor(cyl))) + 
+  geom_smooth(method=lm, se=F, aes(group=1), color="black", size=.3) + 
+  geom_point() + labs(color="Cylinders", x="Weight (kg)", y="Fuel Economy (mpg)") + 
+  theme_classic()
+  
+ggsave('ExmapleFigureFromSupplement.png', dpi=300, width=5, height=2.5)
+```
+
+
+To test whether cylinders and weight were independent predictors of fuel economy ...
+we ran two linear regression models. Model A included only weight as a predictor; 
+Model B included both weight and the number of cylinders.
+
+
+```{r}
+# fit lm models
+modelA <- lm(grade ~ work_hours, data=studyhabits)
+modelB <- lm(grade ~ work_hours + work_consistently, data=studyhabits)
+```
+
+
+Results are presented in Table X...
+
+```{r}
+# the regression_table function is in the lifesavr package
+library(lifesavr)
+regression_table(modelA) %>% pander(caption=modelA$call %>% deparse)
+regression_table(modelB) %>% pander(caption=modelA$call %>% deparse)
+
+```
+
+
+Diagnostic plots for model B did not ...
+
+```{r}
+# this is a lazy shortcut to some diagnostics plots and produces more output 
+# than we need; you could also use the techniques taught in the workshop using `augment`
+modelB %>% plot()
+```
+
+
+Given these data—model B was ...
+
+```{r}
+# calculate the BF for model B vs model A
+
+# first refit with lmBF
+modA <- lmBF(grade ~ work_hours, data=studyhabits)
+modB <- lmBF(grade ~ work_hours + work_consistently, data=studyhabits)
+
+# calculate the BF for the comparison
+modB/modA
+```
+

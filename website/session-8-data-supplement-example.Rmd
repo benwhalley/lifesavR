@@ -118,6 +118,7 @@ fuel %>%
   geom_point() + labs(color="Cylinders", x="Weight (kg)", y="Fuel Economy (mpg)") + 
   theme_classic()
   
+ggsave('ExmapleFigureFromSupplement.png', dpi=300, width=5, height=2.5)
 ```
 
 
@@ -136,8 +137,8 @@ modelB <- lm(grade ~ work_hours + work_consistently, data=studyhabits)
 Results are presented in Table X...
 
 ```{r}
-# regression_table function is in the psydata package
-
+# the regression_table function is in the lifesavr package
+library(lifesavr)
 regression_table(modelA) %>% pander(caption=modelA$call %>% deparse)
 regression_table(modelB) %>% pander(caption=modelA$call %>% deparse)
 
@@ -148,7 +149,7 @@ Diagnostic plots for model B did not ...
 
 ```{r}
 # this is a lazy shortcut to some diagnostics plots and produces more output 
-# than we need; you could also use the techniques taught in the workshop using augment
+# than we need; you could also use the techniques taught in the workshop using `augment`
 modelB %>% plot()
 ```
 

@@ -9,7 +9,6 @@ output:
   webex::html_clean
 ---
 
-
 ```{r, include=F, echo=F}
 source('_first_chunk.R')
 ```
@@ -20,121 +19,118 @@ source('_first_chunk.R')
 ```{css, child="video.css"}
 ```
 
-
 ![](images/reporting.png)
-
-
-
 
 # Overview
 
-1. Goals when reporting
-2. What is required
+1.  Goals when reporting
 
-3. Confidence intervals
-4. Regression tables
+2.  What is required
 
-5. Worked example using cars data
-6. Practice task
+3.  Confidence intervals
 
+4.  Regression tables
 
+5.  Worked example using cars data
 
-
+6.  Practice task
 
 # What are we trying to do?
 
 In reporting an analysis, we're trying to achieve 5 things:
 
-1. Provide context
-2. Facilitate understanding
-3. Enable replication
-4. Describe the effect
-5. Answer our research question and quantify our certainty
-
+1.  Provide context
+2.  Facilitate understanding
+3.  Enable replication
+4.  Describe the effect
+5.  Answer our research question and quantify our certainty
 
 An when doing these tasks we aim to be:
 
-- Complete
-- Accurate
-- Concise
+-   Complete
+-   Accurate
+-   Concise
 
-
-
-
-# What is required 
+# What is required
 
 Documenting your data analysis falls into three phases:
 
-1. Exploratory/work in progress
-2. Interpreting your results
-3. Documenting for others
+1.  Exploratory/work in progress
+2.  Interpreting your results
+3.  Documenting for others
+
+#### Exploring
+
+When exploring and working with your own data you can work in an Rmd file as you have before, adding
+code blocks as required to document everything you do, and only removing code which doesn't work or
+you decide is not relevant.
+
+#### Interpreting
+
+When interpreting your results, you will begin to organise the analyses into a narrative. This
+should answer the research questions you posed when designing the study. You can also respond to
+additional questions which arise through the analyses (e.g., does your model meet the assumptions
+required in regression). At this point you will be able to write the results section of your report
+or article.
+
+#### Documenting
+
+Finally, when documenting your analyses for others, you need to create a *new* Rmd file which
+focuses on the analyses required to reproduce the results in your manuscript. This simplifies the
+script for others, making it easier to follow along and see how numbers in the paper were
+calculated.
 
 
-When exploring and working with your own data you can work in an Rmd file as you
-have before, adding code blocks as required to document everything you do, and
-only removing code which doesn't work or you decide is not relevant.
+# The formula
 
-When interpreting your results, you will begin to organise the analyses into a
-narrative. This should answer the research questions you posed when designing
-the study. You can also respond to additional questions which arise through the
-analyses (e.g., does your model meet the assumptions required in regression). At
-this point you will be able to write the results section of your report or
-article.
+Scientific journals are *extremely* formulaic; study analyses and results are reported in a very
+consistent way, and this makes it relatively easy to know what to put where in your report.
 
-Finally, when documenting your analyses for others, you need to create a *new*
-Rmd file which focuses on the analyses required to reproduce the results in your
-manuscript. This simplifies the script for others, making it easier to follow
-along and see how numbers in the paper were calculated.
+For example, the journal *Psychological Science* publishes [detailed guidance on the content of each
+section of manuscripts](https://www.psychologicalscience.org/publications/ms-structure-guidelines)
+acceptable for publication. There are small differences between journals (medical journals in
+particular can vary a little bit) but you will always need:
 
-
-
-### Stick to the plan
-
-Scientific journals are _extremely_ formulaic; study analyses and results are reported in a 
-very consistent way, and this makes it relatively easy to know what to put where in your report.
-
-For example, the journal *Psychological Science* publishes [detailed guidance on
-the content of each section of
-manuscripts](https://www.psychologicalscience.org/publications/ms-structure-guidelines)
-acceptable for publication. There are small differences between journals
-(medical journals in particular can vary a little bit) but you will always need:
-
-- A description of your analytic approach in the methods section
-- A description of the study sample (sometimes as a table)
-- An exact description of the models run
-- A table describing the outputs of the model
-- A description of the direction/pattern of the effects found
-
-
-
-
-
-
-
+-   A statement of your hypotheses [introduction]
+-   A summary of your analytic approach [methods]
+-   A description of the study sample [results]
+-   An *exact* description of the analyses you ran [results]
+-   A table describing the outputs of the model [results]
+-   A description of the direction/pattern of the effects found [results]
+-   A re-statement of what the main finding was [discussion]
 
 
 
+This document [regression-reporting-example.pdf](regression-reporting-example.pdf)* contains a
+worked example, along with an explanation of the different parts of the report.
+
+
+:::{.exercise}
+
+Read the [regression-reporting-example.pdf](regression-reporting-example.pdf) document.
+
+Work with a partner to discuss the document. 
+
+At this point,  there should only be 1 element in that document which you don't
+know how to calculate. These are the confidence intervals (CI) for the model 
+coefficients in Table 1, and this is covered below.
+
+
+`r hide("Show answers")`
 
 
 
-<!---
+`r unhide()`
+
+
+:::
 
 
 
-Bayes for Babies
-https://youtu.be/CcnLnKU26dg
 
 
 
-
-# Overview
-
-XXX
-
-### Techniques covered
-
-XXX
-
+*([Word format](regression-reporting-example.docx))
 
 
 
@@ -145,6 +141,6 @@ XXX
 XXX
 
 
--->
+
 
 <!-- # References -->
