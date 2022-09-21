@@ -13,6 +13,7 @@ output:
 
 ```{r, include=F, echo=F}
 source('_first_chunk.R')
+source('tabbed-rmd.R')
 ```
 
 
@@ -60,13 +61,169 @@ yt_id="DNla39W33II")
 
 # Central tendency and spread{#centralspread}
 
-```{r, echo=F}
-video_data <- list(identifier = "describe-centrantend", yt_id="4mn_XxnSjUQ")
-# makermds(video_data)
+`r video("4mn_XxnSjUQ")`
+`r make_tabs('describe-centrantend')`
+
+:::{.tab-content}
+
+:::{#describe-centrantend-summary .tab-pane .active}
+
+- the *central tendency* of the data describes the "middle" of a set of values
+- the mean and median are the most common measures
+- measures of *spread* or distribution of the data show where most of the values fall (i.e. what range of values are most likely)
+- common measures are the standard deviation or interquartile range
+- we have already seen how to calculate these statistics using `summarise()` and `group_by()`
+
+:::
+
+:::{#describe-centrantend-code .tab-pane .fade}
+```{r}
+# this is a recap of earlier material
+
+# calculate an average
+# typical weight at baseline in the FIT trial
+funimagery %>%
+  summarise(mean(kg1))
+
+# boxplots show the interquartile range (IQR) as the height of the box.
+# The IQR is the range which includes 50% of the data points
+funimagery %>%
+  ggplot(aes(intervention, kg1)) +
+  geom_boxplot() +
+  scale_y_continuous(n.breaks = 10) # this extra line just adds more marks on the y-axis
+```
+:::
+
+
+:::{#describe-centrantend-transcript .tab-pane .fade}
+
+
+If we have a single continous variable — that is, one stored in a numeric column in R —  then can describe a few things about it, including:
+
+1. the *central tendency* of the data: e.g. mean, median ([see here for refresher](https://www.graduatetutor.com/statistics-tutor/measures-of-central-tendency-mean-median-mode/))
+2. the *spread* or distribution of the data: e.g. the standard deviation or interquartile range ([see refresher here](https://www.statisticshowto.com/probability-and-statistics/standard-deviation/#SDD))
+
+It's important to remember that even simple descriptive statistics like the mean or standard deviation enable us to *answer research questions* — you don't always need fancy statistics! For example, if we consider the `funimagery` data describing the RCT of functional imagery training, we could ask:
+
+- *"what was the typical weight of participants at baseline?"* or
+- *"what was the **range** in which most participants' weight fell?"*
+
+In part, you have already seen how techniques like `group_by()` and `summarise()`, or graphs like boxplots, can help calculate and present these *descriptive statistics*.
+
+
+```{r}
+# (this is a recap of earlier material)
+# typical weight at baseline
+funimagery %>%
+  summarise(mean(kg1))
+
+
+# a boxplot showing the IQR as the box. The IQR includes 50% of participants
+# so, we can see 50% of participants weighed between 80 and 100kg at baseline
+funimagery %>%
+  ggplot(aes(intervention, kg1)) +
+  geom_boxplot() +
+  scale_y_continuous(n.breaks = 10) # this extra line just adds more marks on the y-axis
 ```
 
-```{r child = '_content/_video_tabs.rmd'}
+
+
+
+## Describing *differences*
+
+The previous table and boxplot showed patients' weights at the start of the study.
+
+There is also a variable in this dataset called `weight_lost_end_trt`,
+which shows how much weight people lost between starting and completing FIT or MI.
+In a previous session we made a boxplot like this:
+
+```{r, echo=F}
+funimagery %>%
+  ggplot(aes(intervention, weight_lost_end_trt)) +
+  geom_boxplot()
 ```
+
+However, in clinical trials, it's important to measure participants for longer periods to judge whether the effect of a treatment is sustained.
+
+Interventions for obesity and overweight can be successful, but patients may later regain weight [@hall2018maintenance]. And estimating how long weight loss is sustained for is important because it changes the long term prognosis of patients, and so how cost-effective an intervention is.
+
+The `funimagery` data come from a study which followed people for 6 months after completing treatment (12 months after joining the study). The `kg1` column records weights at baseline, and the`kg3` columns
+records observations made at the end of follow-up
+
+
+This means we can calculate weight loss from baseline to follow-up (not just the end of treatment, which has already been done for us).
+
+To do this we need to create a *new column* in our dataset. Let's call this `weight_lost_end_followup`.
+
+To calculate this new column we need to subtract weight at baseline (`kg1`) from weight at the end of follow-up (`kg3`).
+
+In R, we can do this with the `mutate` function:
+
+```{r, eval=T}
+# use `mutate` to create a NEW COLUMN of data
+# this code shows the result just below the code chunk
+funimagery %>%
+  mutate(weight_lost_end_followup = kg3 - kg1)
+```
+
+
+:::{.direction}
+
+- run the code above and show students the result
+- point out that this has not been stored anywhere — just displayed in the RStudio GUI, below the code chunk
+
+:::
+
+
+What mutate does is to make a copy of our dataset, but with a new column in. That
+is, it always gives us back a new dataset.
+
+We almost always want to STORE this new copy of the dataset so we
+can use the new column that was created.
+To do this we assign the result of mutate `funimagery` dataset by *assigning*
+the result of `mutate())` to a new variable (the 'container' type of variable).
+
+The assignment operator is the left hand arrow, `<-`:
+
+```{r}
+funimagery.edited <- funimagery %>%
+  mutate(weight_lost_end_followup = kg3 - kg1)
+```
+
+
+:::{.direction}
+
+- show how a new variable has been created in the ***Environment*** window
+
+:::
+
+
+So the code above:
+
+- takes the `funimagery` data and pipes it to the `mutate()` function, which
+- adds a new column, called `weight_lost_end_followup`
+- this new column is made by subtracting `kg1` (baseline) from `kg3` (end of followup); it then
+- stores this new copy of the dataset (with the extra column) in a new *variable* called `funimagery.edited`:
+
+
+We can then use this new variable, `funimagery.edited`, to do more work, like making a boxplot:
+
+```{r}
+# boxploot of weight lost at end of follow-up using new column
+funimagery.edited %>%
+  ggplot(aes(intervention, weight_lost_end_followup)) +
+  geom_boxplot()
+```
+
+If anything, it looks like the difference between groups is even BIGGER after follow-up than it was at the end of treatment, which is very promising for FIT.
+
+:::
+
+:::
+
+
+
+
 
 :::{#ex1 .exercise}
 
@@ -85,6 +242,9 @@ iris %>%
   group_by(Species) %>%
   summarise(`Mean sepal width` =  sprintf("%.1f", mean(Sepal.Width) )) %>%
   pander()
+
+
+mean(mtcars$mpg)
 ```
 
 Your plot should look like this:

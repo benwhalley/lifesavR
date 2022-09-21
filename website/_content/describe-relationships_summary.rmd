@@ -4,7 +4,7 @@
   - Correlations (using `correlate()` and `correlationBF`)
 - For correlations, the relationship must be *linear* (check with plot)
 - Correlations describe the ***strength of the relationship*** (< 0.3 is weak; >.7 is strong)
-- A Bayes Factor describes the ***strength of the evidence*** (>3 is considered good)
+- A Bayes Factor describes the ***strength of the evidence*** (>3 is considered moderate evidence)
 - If we collect lots of data we could have *strong* evidence for a *weak*
 relationship. With a small dataset we might only have weak evidence for a strong
 relationship.
