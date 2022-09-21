@@ -48,14 +48,66 @@ This session is all about describing and visualising patterns in the data to ans
 - [The *frequency* of responses](#responsefrequency)
 - [Relationships](#relationships)
 
-```{r, echo=F}
-video_data <- list(identifier = "describe-overview", showcode = F,
-yt_id="DNla39W33II")
-# makermds(video_data)
-```
 
-```{r child = '_content/_video_tabs.rmd'}
+`r video("DNla39W33II")`
+`r make_tabs('describeoverviewtabs')`
+
+:::{.tab-content}
+
+:::{#describeoverviewtabs-summary .tab-pane .active}
+
+- We collect data to ***answer questions***
+- The first step is to describe and visualise pattens in our data
+- Common descriptions include measures of:
+  - *central tendency* and *spread* of continuous variables (and of *differences* in these values)
+  - the *frequency* of categorical responses
+  - the *relationships* between variables (correlation)
+- After that, we can quantify our confidence (see next workshop)
+- Visualisation is an undervalued method for understanding data
+
+:::
+
+:::{#describeoverviewtabs-code .tab-pane .fade}
+```{r}
+# no code shown
 ```
+:::
+
+
+:::{#describeoverviewtabs-transcript .tab-pane .fade}
+
+
+An important task for researchers is to ***answer questions using data***.
+We can often divide this activity into:
+
+1. **Describing patterns in the data**
+2. **Quantifying how *sure* we are about those patterns**
+
+
+This session is all about describing and visualising patterns in the data to answer
+research questions.
+
+In this session we will cover four techniques psychologists use to answer research questions.
+
+1. summarising numeric variables by *central tendency* and *spread*
+3. calculating the *frequency* of categorical responses
+2. calculating *differences* between scores or groups
+3. describing *relationship* between two variables
+
+
+In the past psychologists have often neglected the first part (spotting and describing patterns) and jumped straight to the second --- for example, they have been very keen to run hypothesis tests and calculate *p* values...
+
+More recently, researchers have placed much more emphasis on describing and visualising the data — to really get a feel for the patterns they see — *before* trying to quantify the evidence it provides or make inferences from it.
+
+We have already seen how to implement some of these techniques in R (e.g. using `summarise()`) and with ggplot.
+
+However, more important than any specific technique in R, is this idea that we ***collect data to answer questions*** (not just for it's own sake!).
+
+
+:::
+
+:::
+
 
 
 
@@ -293,13 +345,135 @@ funimagery.edited %>%
 # The *frequency* of responses{#responsefrequency}
 
 
-```{r, echo=F}
-video_data <- list(identifier = "describe-frequency", yt_id = "XB-b454apj4")
-# makermds(video_data)
+`r video("XB-b454apj4")`
+`r make_tabs('describefrequencytabs')`
+
+:::{.tab-content}
+
+:::{#describefrequencytabs-summary .tab-pane .active}
+
+- We can't calculate a mean or SD for Categorical variables
+- We still want to describe the pattern of responses
+- We can use `count()` and `group_by()` to make a *frequency table*
+- This is common in journal results sections (e.g. to describe characteristics of the sample like gender or education)
+
+:::
+
+:::{#describefrequencytabs-code .tab-pane .fade}
+```{r}
+# this gives us the total number of rows
+earnings %>% count()
+
+# numbers of men and women
+earnings %>%
+  count(gender)
+
+
+# We can do arithmetic on these numbers
+# calculate percentage
+2353 / 4483 * 100
+
+
+# counts for multiple subgroups
+earnings %>%
+  count(job, gender)
+
+
+# making a plot
+earnings %>%
+  ggplot(aes(gender)) +
+  stat_count()
 ```
 
-```{r child = '_content/_video_tabs.rmd'}
+:::
+
+
+:::{#describefrequencytabs-transcript .tab-pane .fade}
+
+With categorical data it's not possible to calculate things like an average;
+what would the average of 3 apples and 4 oranges be, for example?
+
+Nonetheless, it is still useful to be able to describe the data and spot patterns.
+
+For example, if we were thinking about the `earnings` dataset we might
+ask things like:
+
+- *"How many men and women were included in the sample?"*
+- *"What proportion of participants worked in the public sector?"*
+- *"Was this proportion similar for men and women?*"
+
+
+The earnings data contained variables called `gender` and `job`, which give us
+information to answer these questions:
+
+
+```{r}
+earnings %>% glimpse
 ```
+
+
+### Using `count()`
+
+
+To count the frequency of different responses we can use the `count` function, which
+is again from the tidyverse package. [load tidyverse now]
+
+For example, the following statement counts the total number of responses in our sample:
+
+
+```{r}
+# this gives us the total number of rows
+earnings %>% count()
+```
+
+However, we often want to count the number of observations by-group. For example, if we write:
+
+```{r}
+# numbers of men and women
+earnings %>%
+  count(gender)
+```
+
+Here we added `gender` inside `count()` so R knows to count the responses from each group separately.
+
+
+Note, this does the same thing as writing this, although one line shorter:
+
+```{r}
+earnings %>%
+  group_by(gender) %>%
+  count()
+```
+
+
+
+We can do arithmetic on these numbers to get the percentage of women in the sample:
+
+```{r}
+2353 / 4483 * 100
+```
+
+Later on you'll find ways to create a new column containing percentages (using mutate), but this is fine for now.
+
+
+### Multiple subgroups
+
+What's neat about `count()` is that we can add more than one variable at once, and we get a count for each sub-grouping that is formed. For example:
+
+```{r}
+earnings %>%
+  count(job, gender)
+```
+
+You can re-order the table by changing the order in which you include `gender` and `job`.
+
+
+:::
+
+:::
+
+
+
 
 
 :::{.exercise}
@@ -321,13 +495,188 @@ funcounts <- funimagery %>% count(intervention, gender)
 
 # Relationships {#relationships}
 
-```{r, echo=F}
-video_data <- list(identifier = "describe-relationships", yt_id="PGV-MZlCoOc")
-# makermds(video_data)
+
+
+`r video("PGV-MZlCoOc")`
+`r make_tabs('describerelationshipstabs')`
+
+:::{.tab-content}
+
+:::{#describerelationshipstabs-summary .tab-pane .active}
+
+- With 2 continuous variables we can also describe a *relationships* between them:
+  - Scatterplots (using `geom_point()`)
+  - Correlations (using `correlate()` and `correlationBF`)
+- For correlations, the relationship must be *linear* (check with plot)
+- Correlations describe the ***strength of the relationship*** (< 0.3 is weak; >.7 is strong)
+- A Bayes Factor describes the ***strength of the evidence*** (>3 is considered moderate evidence)
+- If we collect lots of data we could have *strong* evidence for a *weak*
+relationship. With a small dataset we might only have weak evidence for a strong
+relationship.
+
+:::
+
+:::{#describerelationshipstabs-code .tab-pane .fade}
+```{r}
+# load the libraries
+library(corrr)
+library(psydata)
+
+# select weight at baseline and follow-up in the funimagery study
+# and correlate them
+funimagery %>%
+  select(kg1, kg2, kg3) %>%
+  correlate()
+
 ```
 
-```{r child = '_content/_video_tabs.rmd'}
+:::
+
+
+:::{#describerelationshipstabs-transcript .tab-pane .fade}
+
+When we have 2 or more continuous variables, we can also describe the *relationships* between them.
+
+We have already seen how to use scatterplots to show the relationship between variables. For example,
+using the trial data again, we can show the relationship between weight at baseline and end of treatment:
+
+```{r, echo=F}
+# show the relationship between weight at baseline and end of treatment
+funimagery %>%
+  ggplot(aes(kg1, kg2)) +
+  geom_point() + coord_equal()
 ```
+
+
+The scatterplot shows there is a ***strong, postive relationship*** between participants' weights at
+baseline and after treatment.
+
+Even though participants' weight does change in the trial, it is not by much.
+We can see this by the way the points for each participant line up close to the diagonal: if their weight
+stayed exactly the same we would see all the points in a line at 45 degrees from the graph origin.
+
+***The scatterplot is a powerful description of the data in its own right***. Psychologists have tended to undervalue data visualisation, so it's important to make plots like this with your own data.
+
+
+However, we do sometimes want to summarise the relationship further and describe the strength of the relationship in a single number. For this we use correlation.
+
+
+## Correlation
+
+A *correlation* is a single number which describes *how related* two continuous variables are.
+
+For a correlation to work the relationship between the variables must be ***linear***. That is, the line on the graph has to be (fairly) straight (as it is in the example above).
+
+
+To calculate a correlation we use the `correlate()` function in the `corrr` library.
+
+First we load the library:
+
+```{r}
+library(corrr)
+
+```
+
+
+Next we need to select the columns we want to correlate. In this case we want to use `kg1`, `kg2`, and `kg3` in the `funimagery` dataset.
+
+We can use `select()` to choose only these columns, and then use another pipe to send just those columns to `correlate()`:
+
+
+:::{.direction}
+
+- show selecting part of the code below
+- ie. select and run just the line up to `select()`
+- show how R spits out two columns of data below the chunk, rather than the whole dataset
+
+:::
+
+
+```{r, message=F}
+# select weight at baseline and follow-up an correlate them
+funimagery %>%
+  select(kg1, kg2, kg3) %>%
+  correlate()
+```
+
+The result of `correlate()` is a new dataset.
+
+It has one column for each of the variables we selected, plus an extra column called `term` for the variable
+being correlated.
+
+The numbers represent the **correlation coefficient** for each pair of variables.
+The correlation between a variable and itself is always perfect, so the numbers on
+the diagonal of the table are not shown (they are `NA`).
+
+
+:::{.direction}
+
+- show and talk through some of the values in the table at this point
+
+:::
+
+
+We can see here that the correlations are all above 0.9, which is very high.
+
+This isn't surprising though. Even when trying to lose weight if we
+measure the same person twice these observations are likely to be quite closely related.
+
+
+
+
+### Interpreting correlation coefficients
+
+A *correlation coefficient* (the number) can be between -1 and 1. It is never outside this range.
+
+The plot below shows examples of positive an negative correlations:
+
+```{r, echo=F, message=F}
+library(lavaan)
+f <- '
+y ~~ 1*y
+a ~~ 1*a
+b ~~ 1*b
+c ~~ 1*c
+y ~ 0*a
+y ~ 1*b
+y ~ -1*c
+'
+set.seed(1245)
+cordata <- simulateData(f, sample.nobs = 100, standardized = T)
+correlate(cordata)
+cordata %>%
+  rename(`Zero correlation`=a, `Positive (0.6)`=b, `Negative (-0.6)`=c) %>%
+  pivot_longer(-y) %>%
+  ggplot(aes(value, y)) + geom_point() + facet_wrap(~name) + coord_fixed()
+
+ggsave('correlation-examples.png')
+```
+
+However to get a real feel for what correlations of different values look like, you can play this game:
+
+:::{.direction}
+
+- Demo http://guessthecorrelation.com
+
+:::
+
+![](images/guessthecorrelation.png)
+
+
+
+
+# Summary
+
+***Both plots and descriptive statistics are valuable ways of answering questions from the data.***
+Psychologists sometimes neglect them (especially plots) but they are important steps in developing
+understanding.
+
+- Boxplots are useful for describing the differences between groups
+- Scatterplots and smoothed-line plots help describe relationships
+
+:::
+
+:::
 
 
 
