@@ -1,8 +1,0 @@
-```{r, eval=F}
-# pipe mtcars into head()
-mtcars %>% head()
-
-# store first few rows of mtcars
-mtcars_head <- mtcars %>%
-  head()
-```

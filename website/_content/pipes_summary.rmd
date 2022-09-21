@@ -1,5 +1,0 @@
-- The **pipe** passes data from one piece of code to another
-- The pipe looks like this: `%>%`
-- Type `Ctrl + Shift + M` to add a pipe  (use `⌘` on Macs)
-- A **pipeline** is a list of operations, joined by pipes
-- Store the pipe output in a variable (using `<-`)

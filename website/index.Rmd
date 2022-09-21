@@ -195,7 +195,6 @@ This index links to all the important R functions and topics within the course.
     -   [interpreting](session-5.html#bayesinterpreting)
     -   [for multiple regressio](session-7.html#bf_for_multipleregression)
 -   [boxplots](session-3.html#boxplots) visualise differences between categories or groups
--   [CSV](session-2.html#loadingdata) comma separated value (file format)
 -   [central tendency](session-4.html#centralspread) the "middle" of a set of values
 -   [`count()`](session-4.html#responsefrequency){#count} function to count frequencies in
     categorical data
@@ -208,7 +207,6 @@ This index links to all the important R functions and topics within the course.
     -   see [`correlate()`](#correlate)
     -   see [Bayes Factor](#bf)
 -   [dataset](session-1.html#datasets) grid of data values (rows and columns)
-    -   [loading from elsewhere](session-2.html#loadingdata)
 -   [data type](session-3.html#datatypes) format used by R to store data (factor, text, numeric,
     logical, etc.)
 -   errors
@@ -243,7 +241,6 @@ This index links to all the important R functions and topics within the course.
 -   [R](session-1.html#cando) programming language for data science
 -   [RMarkdown](session-1.html#interactive) combine R code with regular text
 -   [RStudio](session-1.html#using) program for writing R and RMarkdown
--   [`read_csv()`](session-2.html#loadingdata) function to read a CSV file
 -   Regression (see `lm`)
 -   [Residuals](session-6.html#residuals)
 -   [scatterplot](session-1.html#scatterplots) show the relationship between two continuous
