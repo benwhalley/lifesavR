@@ -45,7 +45,7 @@ In reporting an analysis, we're trying to achieve 5 things:
 4.  Describe the effect
 5.  Answer our research question and quantify our certainty
 
-An when doing these tasks we aim to be:
+And when doing these tasks we aim to be:
 
 -   Complete
 -   Accurate
