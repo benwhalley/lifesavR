@@ -1,5 +1,0 @@
-- Access RStudio at <https://rstudio.plymouth.ac.uk>
-- Use the latest version of the [Chrome web browser](https://www.google.co.uk/chrome/)
-- Tell R what to do in the `Console` pane
-- See the `Environment` pane for stored data
-- Use the `Files` pane to open code and data from a folder on the server

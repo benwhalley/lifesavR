@@ -1,2 +1,0 @@
-No R code shown in this video — it is all about using
-Markdown to format text *outside* of the code chunks.

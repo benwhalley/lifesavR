@@ -1,9 +1,0 @@
-
-To get everyone off to the same start we have created a script that copies
-some files into your home folder on the RStudio server.
-
-To run this script, we just copy and paste the following line into the Console:
-
-```{r, eval=F}
-source("https://raw.githubusercontent.com/benwhalley/lifesavR/main/bootstrap.R")
-```

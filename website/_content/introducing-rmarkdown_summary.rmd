@@ -1,8 +1,0 @@
-- RMarkdown documents combine 'chunks' of R code with regular text
-- This means you can keep notes and explanations right next to where you process and anayse data
-- RMarkdown files end with "`.rmd`" or "`.Rmd`"
-- Make a new chunk: `Ctrl + Alt + I` or `⌘ + Alt + I` (Mac)
-
----
-
-Finding backticks: ![](images/backticksboth.png)

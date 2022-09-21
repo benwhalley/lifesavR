@@ -51,7 +51,7 @@ The following chunk adds together three numbers:
 
 1. Create a new chunk below these instructions.
 2. Load the `psydata` package (if you haven't already).
-3. Show the first 10 rows of the `development` data using `head()`.
+3. Show the first 6 rows of the `development` data using `head()`.
 
 # Scatterplots
 

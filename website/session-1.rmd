@@ -13,6 +13,7 @@ output:
 
 ```{r, include=F, echo=F}
 source("_first_chunk.R")
+source('tabbed-rmd.R')
 ```
 
 ```{html, child="bs-tab-fix.html"}
@@ -49,30 +50,108 @@ the activities in the blue boxes.**
 
 # Using the RStudio interface {#using}
 
-```{r, echo=F}
-video_data <- list(identifier = "using-r-studio-interface",
-                   showcode=F,
-                   yt_id = "E0Lvfzp1F7s")
-# makermds(video_data)
+
+<!-- https://youtu.be/EE3mANH29_g -->
+`r video("EE3mANH29_g")`
+`r make_tabs('using-r-studio-interfacetabs')`
+
+:::{.tab-content}
+
+:::{#using-r-studio-interfacetabs-summary .tab-pane .active}
+- Access RStudio at <https://psyrstudio.plymouth.ac.uk>
+- SSO stands for "Single Sign On"
+- Use your standard University login details
+- Use the latest version of the [Chrome web browser](https://www.google.co.uk/chrome/), or Firefox
+- Tell R what to do in the `Console` pane
+- See the `Environment` pane for stored data
+- Use the `Files` pane to open code and data from a folder on the server
+
+:::
+
+:::{#using-r-studio-interfacetabs-code .tab-pane .fade}
+```{r}
+# in the video I enter this simple calculation in the console and R computes the result
+2 + 2
 ```
+:::
 
 
+:::{#using-r-studio-interfacetabs-transcript .tab-pane .fade}
 
-```{r child = '_content/_video_tabs.rmd'}
-```
+- Using a web browser to access [the RStudio Server at Plymouth University](https://psyrstudio.plymouth.ac.uk).
+
+:::{.tip}
+If you're using Windows or an older Mac we strongly recommend [downloading Chrome](https://www.google.co.uk/chrome/) or Firefox and using that.  If you have any issues with RStudio this is likely the first suggestion we will make.
+
+- [Install Chrome now](https://www.google.co.uk/chrome/)
+:::
+
+When you login to RStudio, you'll be greeted with a screen that looks something like the image below.
+
+![RStudio on first opening](images/rstudio-new.png)
+
+You can see three parts:
+
+1. The **Console** - This is the large rectangle on the left. It is where you tell R what to do, and where R prints the answers to your questions.
+
+2. The **Environment** - This is the rectangle on the top right. It is where R keeps a list of the data it knows about. It's empty at the moment, because we haven't given R any data yet.
+
+3. The **Files** - This is the rectangle on the bottom right. It's a bit like the _File Explorer_ in Windows, or the _Finder_ on a Mac. It shows you what files and folders R can see.
+
+You should also be able to see that the two rectangles on the right have a number of other "tabs". These work like tabs on a web browser.  
+
+The top rectangle has the tabs **Environment** and **History**. The **History** tab keeps a record of what you've recently typed into the **Console**. This can sometimes be useful.
+
+The bottom rectangle has the tabs **Files**, **Plots**, **Packages**, **Help**, and **Viewer**. We'll cover what these other tabs do later on.
+
+
+:::
+
+:::
+
+
 
 
 
 # Before you start
 
-```{r, echo=F}
-video_data <- list(identifier = "before-you-start", yt_id="HqXmNmwumvU")
-# makermds(video_data)
+
+<!-- https://youtu.be/RaYd2ryUIaA -->
+`r video("RaYd2ryUIaA")`
+`r make_tabs('beforeyoustarttabs')`
+
+:::{.tab-content}
+
+:::{#beforeyoustarttabs-summary .tab-pane .active}
+- Before starting you must run some R code to get set up.
+- **See the code tab or the exercise below and follow the instructions.**
+:::
+
+:::{#beforeyoustarttabs-code .tab-pane .fade}
+```{r, eval=F}
+# run this to get copies of all the exercises in your account
+lifesavr::setup()
+```
+:::
+
+
+:::{#beforeyoustarttabs-transcript .tab-pane .fade}
+
+To get everyone off to the same start we have created a script that copies
+some files into your home folder on the RStudio server.
+
+To run this script, we just copy and paste the following line into the Console:
+
+```{r, eval=F}
+lifesavr::setup()
 ```
 
-```{r child = '_content/_video_tabs.rmd'}
+:::
 
-```
+:::
+
+
+
 
 :::{.exercise}
 
@@ -91,72 +170,381 @@ Press <span class="keyshape">↩</span> to run the code. If your console looks l
 
 
 
-# Using the workbooks
+
+# Introducing RMarkdown {#interactive}
 
 
-```{r, echo=F}
-video_data <- list(identifier = "using-the-workbooks",
-                   showcode = F,
-                   yt_id = "t359FSOPEnw")
-# makermds(video_data)
+`r video("YOUTUBEID")`
+`r make_tabs('introducingrmarkdown')`
+
+:::{.tab-content}
+
+:::{#introducingrmarkdown-summary .tab-pane .active}
+
+- RMarkdown documents combine 'chunks' of R code with regular text
+- This means you can keep notes and explanations right next to where you process and anayse data
+- RMarkdown files end with "`.rmd`" or "`.Rmd`"
+- Make a new chunk: `Ctrl + Alt + I` or `⌘ + Alt + I` (Mac)
+
+---
+
+Finding backticks: ![](images/backticksboth.png)
+
+:::
+
+:::{#introducingrmarkdown-code .tab-pane .fade}
+```{r}
+# No code shown
 ```
+:::
 
-```{r child = '_content/_video_tabs.rmd'}
 
-```
+:::{#introducingrmarkdown-transcript .tab-pane .fade}
 
-:::{.exercise}
+So far you have seen some of the RStudio interface.
+Now we're going to encounter RMarkdown documents.
 
-Click on `session-1-workbook.rmd` in the **Files** pane.
+RMarkdown documents are a good way to use R which we can use in RStudio to make
+our lives easier.
 
-If you're able to open this file you are now ready to start the rest of the session.
+RMarkdown is a file format which combines R code (chunks) with regular text. This means
+RMarkdown can combine data analysis and graphs with explanatory text, which makes it easier for you to work, keep notes, and communicate your work to others.
+
+
+Once the document is ready there iss an extra step called 'knitting' in
+which the R code in your file is run, and the results are interspersed
+with your text to make a file you can share with others.
+Typically that's an html file (i.e. a web page) or sometimes a pdf.
+
+This allows us to make high quality reports, research papers, dissertations or books,
+and is becoming very popular as part of the general move to encourage reproducibility in psychological research.
+
+-----------------------------------
+
+Because it's such a powerful tool, this module provides an early introduction to RMarkdown.
+We don't use all it's features just yet, though.
+
+For the moment, we'll only *be using Rmd document as an interactive interface for running code and looking at the results R produces*.
+
+
+### Using RMarkdown
+
+A neat feature of `.Rmd` files is that, when you open them in RStudio, they
+make it easy to organise and run R code, and see the outputs.
+
+Provided you have already run the bootstrap script, click on the `lifesavr` folder in the **Files** pane of RStudio,
+
+:::{.direction}
+
+- Click on files then lifesavr, then exercises folders
+
+:::
+
+You'll notice that some files have the extension `.rmd`. These are R Markdown files.
+
+:::{.direction}
+
+- Highlight file extension by selecting or pointing with mouse
+
+:::
+
+The file extension `.rmd` (or .`Rmd`) is important, because this is how R Studio knows that the files contain a mixture of R code and regular text.
+
+If you don't save files with the right extension, R has trouble knowing what to do with it.
+
+
+
+:::{.direction}
+
+- Open the `simplest-rmarkdown-example.rmd` file
+
+:::
+
+
+### Code chunks
+
+RMarkdown makes a distinction between R code and regular, narrative text.
+
+This tells RStudio how to treat each part of your document — whether to display
+it as text, or format it as code (and give us warnings when there are errors and so on).
+
+This is done by putting the code inside some special
+characters, called backticks, creating a  ***code chunk***.
+
+A chunk is opened using the symbols `` ```{r} ``, and closed using
+the symbols `` ``` ``. This is what a chunk looks like in RStudio:
+
+![A code chunk in the RMarkdown editor](images/r-code-chunk.png)
+
+---------
+
+
+_NOTE:_ The symbols which start and end a chunk are _backticks_, not single quotes. The difference is quite subtle.
+
+
+Backticks are on your keyboard here if you're on Windows:
+
+![On windows](images/backtick-windows-uk.png)
+
+Or here if you're on a Mac:
+
+![On a Mac](images/backtick-mac-uk.png)
+
+
+
+
+
+
+
+
+
+### Running R code inside chunks
+
+<!-- TODO: re-record VIDEO of running code in a chunk -->
+
+In the picture of a chunk above you might have noticed that we had both some code (`2+2`) and the
+result from that code was shown beneath the chunk (`4`!). To show the result of our code, we first need to ***run*** it.
+
+
+
+There are three ways to run R code within a chunk:
+
+- Run a whole chunk at once (can include multiple statements)
+- Run one or more related lines, called a ***statement***
+- Select and run just part of a statement
+
+
+#### Running the whole chunk
+
+:::{.direction}
+
+- Show the green play button in action
 
 :::
 
 
 
+#### Running a statement
+
+The most common case is when we have given R an instruction (written a *statement*) and we want to run
+just that new code.
+
+A statement is cometimes one line of code, but it can include multiple lines that are related — we'll see more of that
+later.
+
+For now, you can see we have a code chunk here:
+
+
+```{r}
+# some arithmetic in R
+
+2 + 4 + 8
+
+```
+
+:::{.direction}
+
+1. Show cursor interacting with this code chunk
+1. Place cursor anywhere on the line
+1. Run statement using Ctrl + Enter
+
+:::
+
+You can see that we put the cursor in the middle of this line of numbers that we wanted to add up.
+Then I pressed <span class="keyshape">Ctrl</span> + <span class="keyshape">↵</span>  (this would be the `Cmd` key on a Mac).
+
+This runs or *executes* the whole line, and the result is shown *below* the code chunk.
+
+
+#### Code chunks with multiple statements
+
+We might want to add some extra calculations to our chunk.
+
+```{r}
+# some arithmetic in R
+
+2 + 2 + 8 + 16
+
+42 * 42
+
+2 +
+  4 +
+  8 +
+  16
+
+```
+
+Now we have 2 statements: `2 + 4 + 8 + 16` and `42 * 42` (the star means multiply).
+We can run either of the statements in the same way: by putting the cursor anywhere on the line
+and pressing `Ctrl/Cmd + Enter`
+
+
+:::{.direction}
+
+- Demonstrate doing this in rstudio show that the cursor can be anywhere on the line and also
+- That if we execute a second statement the result of the first one disappears
+- Also point out that I did separate all the statements with a blank line to make it easier for myself to read (but R doesn t care about this and can work out whether the lines are related by itself)
+
+:::
+
+:::
+
+:::
+
+
+
+
+
+
+
 # What can R do? {#cando}
 
-```{r, echo=F}
-video_data <- list(identifier = "what-can-r-do", yt_id="zFBw6OuOX9k")
+`r video("zFBw6OuOX9k")`
+`r make_tabs('whatcanrdotabs')`
+
+:::{.tab-content}
+
+:::{#whatcanrdotabs-summary .tab-pane .active}
+- R is a multi-purpose tool
+- It is a text-based computer language
+- RStudio is an *interface* to that language; it organises your work and makes R easier to use
+
+
+- R can do simple arithmetic, load data, make plots etc.
+- It can also run any statistical analysis you like
+- You need to tell R *exactly* what to do, by providing precise instructions
+- These instructions (code) provide a *reproducible record* of your work
+:::
+
+:::{#whatcanrdotabs-code .tab-pane .fade}
+```{r}
+# multiply two numbers
+2 * 221
+
+# generate some random numbers with a normal distribution
+rnorm(10, 0,1)
+
+# histogram plot of random numbers
+hist(rnorm(100, 0,1))
+```
+:::
+
+
+:::{#whatcanrdotabs-transcript .tab-pane .fade}
+R is a computer language for data analysis and visualisation.
+
+RStudio is a user interface to R; it helps you organise your work.
+
+R is a text-based language. You interact with it by typing commands and running (also called 'executing') them.
+
+R can do everything from simple arithmetic and plotting to complex data analysis.
+
+For example, you can do simple arithmetic like
+
+[`2 * 221`]
+
+We could generate some random numbers with a [normal distribution](https://www.khanacademy.org/math/statistics-probability/modeling-distributions-of-data/normal-distributions-library/a/normal-distributions-review)
+
+```{r}
+rnorm(10, 0,1)
 ```
 
-```{r child = '_content/_video_tabs.rmd'}
 
+And we could plot random numbers using a histogram
+
+```{r}
+hist(rnorm(100, 0,1))
 ```
 
+------------
+
+You should think of R as a robot.
+
+The robot is extremely fast, powerful and tireless; but it’s also literal-minded, and
+won’t think for itself or take the initiative. You need to tell it *exactly* what to do, by providing very precise
+instructions.
+
+The advantage of writing detailed instructions is that you have a detailed, reproducible
+version of all your analyses.
+
+Reproducibility is a key topic in psychology and other natural sciences — learning R (or something like it)
+is an important skill for new psychologists.
+
+:::
+
+:::
 
 
-# Introducing RMarkdown {#interactive}
 
-```{r, echo=F}
-video_data <- list(identifier = "introducing-rmarkdown", yt_id = "TfkL_b92r_E", showcode=F)
-# makermds(video_data)
+
+
+
+# Using the workbooks
+
+
+<!-- https://youtu.be/7Gb5EWL35Vo -->
+
+
+`r video("7Gb5EWL35Vo")`
+`r make_tabs('usingtheworkbooks')`
+
+:::{.tab-content}
+
+:::{#usingtheworkbooks-summary .tab-pane .active}
+- Each session has an associated "workbook" file
+- They end with the file extension `".rmd"`
+- These were copied to your home folder by the setup script (above)
+- Use them to complete the exercises in the worksheet
+
+:::
+
+:::{#usingtheworkbooks-code .tab-pane .fade}
+```{r}
+# No code shown in this video
 ```
+:::
 
-```{r child = '_content/_video_tabs.rmd'}
 
-```
+:::{#usingtheworkbooks-transcript .tab-pane .fade}
+
+Each session has an associated "workbook" file which you will use to complete the exercises in the worksheet. The file
+you need for this session is called `session-1-workbook.rmd`.
+
+If you click on the file it opens the workbook in a tab of a new pane, called the **Source** pane. It's called the
+**Source** pane because statements writting in the R language are often referred to as 'R code', which is shorthand for 'R source code'. The **source** pane allows you to write R code and explore your data.
+
+:::
+
+:::
+
+
+
 
 :::{.exercise}
 
 **Exercise 1**
 
-1. Locate the first chunk in `session-1.rmd` (you find this in the **Files** pane).
+Click on `session-1-workbook.rmd` in the **Files** pane to open it
+
+1. Locate the first code chunk
 1. Place your cursor (anywhere) on the line of R code.
 1. Run the code by pressing <span class="keyshape">Ctrl</span> + <span class="keyshape">↵</span> (Windows, Linux) or
    <span class="keyshape">⌘</span> + <span class="keyshape">↩</span> (Mac).
 
 You should see the result of the sum appear below the chunk:
 
-```{r diamonds-plot, echo=FALSE}
+```{r runchunkexample}
 10 + 12 + 20
 ```
 
-:::
 
 Congratulations! You have just run your first line of R. You can also run part of a line by highlighting just the code
 you want to run, as you'll see in the next exercise.
+
+
+:::
+
+
 
 :::{.exercise}
 
@@ -170,6 +558,7 @@ This adds up two of the three numbers:
 ![Example of running highlighted code](images/add.png)
 
 :::
+
 
 :::{.exercise}
 
@@ -190,13 +579,74 @@ The output from the chunk should look like this:
 
 # Packages {#packages}
 
-```{r, echo=F}
-video_data <- list(identifier = "loading-packages", yt_id = "tG875lqOVN4")
-# makermds(video_data)
+
+`r video("tG875lqOVN4")`
+`r make_tabs('loadingpackagestabs')`
+
+:::{.tab-content}
+
+:::{#loadingpackagestabs-summary .tab-pane .active}
+
+- Loading a ***package*** adds functionality to R
+- Some packages (like `tidyverse` and `psydata`) also include example datasets
+- To load tidyverse write `library(tidyverse)`
+- **Load `tidyverse` and `psydata` before each session**
+
+:::
+
+:::{#loadingpackagestabs-code .tab-pane .fade}
+```{r}
+# load the tidyverse package which includes the ggplot function
+# (this also loads the diamonds example dataset, and some others)
+library(tidyverse)
+# make a plot using new functions available to us
+diamonds %>%
+  ggplot(aes(carat, price)) +
+  geom_point()
+```
+:::
+
+
+:::{#loadingpackagestabs-transcript .tab-pane .fade}
+By loading 'packages', you can add extra functions and datasets to R.
+
+Packages are a powerful feature which allow R to be extended. This means you can run almost
+any analysis, or make any type of plot.
+
+Packages are loaded using the `library()` function.
+
+The command `library(tidyverse)` loads some additional functions and data which will allow us to make a scatter plot.
+
+**The `tidyverse` package is so fundamental to this course that `library(tidyverse)` is
+likely to be the first line of R code, in the first chunk, in all your RMarkdown files.**
+
+It's a good idea to start your documents with a chunk which loads any packages you need. This makes it easy to see which
+have been loaded, and avoids loading them twice which is occasionally a problem.
+
+You also need to remember to actually **run** the lines of code to load the libraries.
+Beginners often forget to do this — but it's an easy error to fix.
+
+:::{.direction}
+* Demonstrate error when running following plot if `tidyverse` hasn't been loaded
+:::
+
+```{r, eval=F}
+library(tidyverse)
+diamonds %>%
+  ggplot(aes(carat, price)) +
+  geom_point()
 ```
 
-```{r child = '_content/_video_tabs.rmd'}
-```
+:::{.direction}
+1. Load `tidyverse`
+1. Re-run example plot to show that it now works
+:::
+
+:::
+
+:::
+
+
 
 :::{.tip}
 
@@ -229,14 +679,195 @@ that beginners encounter. They normally mean that you have
 
 # Datasets {#datasets}
 
-```{r, echo=F}
-video_data <- list(identifier = "built-in-datasets", yt_id = "NNiApHNKl18")
-# makermds(video_data)
+
+`r video("NNiApHNKl18")`
+`r make_tabs('datasetstabs')`
+
+:::{.tab-content}
+
+:::{#datasetstabs-summary .tab-pane .active}
+### Datasets are like spreadsheets. They have have:
+
+- multiple rows, with one row per *observation*
+- multiple columns; each column has a name.
+- columns also (sometimes) get called *variables*; this can be confusing
+
+
+### Where are datasets?
+
+- R has some built-in datasets as learning examples
+- The `psydata` package includes datasets used in this course
+- Later on, we will import data from files (e.g. actual spreadsheets)
+
+
+### Exploring and checking data
+
+- View a whole dataset by typing its name and running it in a code chunk
+- `glimpse()` shows a list of all the columns, plus a few of the datapoints
+- The **Environment** pane shows a spreadsheet-like view of the data
+
+:::
+
+:::{#datasetstabs-code .tab-pane .fade}
+
+```{r}
+# always load the tidyverse first
+library(tidyverse)
+
+# the psydata package contains datasets for this course
+library(psydata)
+
+# display the `fuel` dataset, by typing the name
+# and running this in a code chunk
+fuel
+
+# show only the first 6 rows of the `fuel` data
+head(fuel)
+
+# shows a list of columns in the `development` dataset
+# plus the first few datapoints (as many as will fit)
+glimpse(development)
 ```
 
-```{r child = '_content/_video_tabs.rmd'}
+:::
 
+
+:::{#datasetstabs-transcript .tab-pane .fade}
+
+
+When we say "dataset" or "data", we mean something like a spreadsheet:
+In R, datasets contain values are organised into columns and rows.
+
+One distinction to make though is that by *dataset* we mean data that has
+been loaded into R--- data *files* are different thing.
+
+In R, datasets are normally stored in a container called a `data.frame`. They can also be stored in a `tibble` (these are basically the same thing).
+
+
+
+### Packaged datasets
+
+Some datasets are built into R packages as examples for beginners.
+
+For this course, we created a package called [`psydata`](https://github.com/benwhalley/psydata/) which includes the data we need for teaching.
+
+This is installed on the RStudio server. To load it we run:
+
+```{r}
+library(psydata)
 ```
+
+We can see from the loading message that one of the datasets is called `fuel`. This contains data about cars --- things like weight, fuel economy, engine size.
+
+Let's display this data in using a new chunk.  If we type the word `fuel`, select this variable name with our cursor, and 'execute' it, we can see the data it contains:
+
+```{r}
+fuel
+```
+
+
+By default this shows the first ten rows and columns of the data. You can see other rows using the `Next`,
+`Previous` and number buttons below the data.
+
+If your browser window is very narrow you may need to view some of the columns by using the arrow next to the final, right-hand column.
+
+
+
+You can get information about the columns in all these example datasets by typing:
+`help(name_of_the_dataset_you_want_to_know_about)`. For example:
+
+```{r}
+help(fuel)
+```
+
+
+
+### Columns
+
+Each column in a dataset has a name.
+
+We sometimes call the columns *variables*, because each column will often relate to
+a variable in our study.
+
+However, this can be a bit confusing because --- in R --- variables can actually contain whole datasets.
+`fuel`, for example, is the name of a variable which contains an example dataset, provided by the `psydata` package.
+
+:::{.direction}
+
+- Show `library(psydata)` and then the `fuel` dataset
+
+:::
+
+
+But these words are used flexibly and interchangeably, so we'll just have to get used to it.
+It's normally clear which type of variable we mean from the context.
+
+
+### Rows
+
+Each row in a dataset represents an *observation*.
+
+In different datasets an observation might correspond to an individual participant, a whole country, or even just a single button press in an experiment.
+
+
+
+
+### Exploring and checking data
+
+There are a two ways we recommend you use inspect and check data you are using.
+
+1. Typing the name of the dataset, and running that as code
+2. The `glimpse()` function, which shows a list of all the columns and some of the data
+
+To use glimpse:
+
+```{r}
+fuel
+glimpse(fuel)
+```
+
+`glimpse` shows a list of all the columns in the dataset, the type of data stored in each column, and as many observations (datapoonts) as will fit on a single line.
+
+`glimpse` is a really useful view to check which columns are available in a dataset before using them.
+
+
+
+
+### Why are we talking about cars and flowers and not psychology?
+
+In this course we mostly use very simple datasets, and some of them aren't even about psychology.
+
+Some students ask why we don't always use psychological examples. If this hasn't troubled
+you then you could skip to the next section, but we thought we should explain:
+
+
+We think the `fuel` dataset (and others, like `iris`, and `development`) have a number of benefits.
+
+First, they are either built into R, loaded in common packages, or available in the `psydata` package.
+This makes them easily available for everyone.
+
+Second, these data relate to concrete, easy to understand phenemena (e.g. weight, length, number of gears).
+This means you don't have to hold in mind any complex psychological/theoretical ideas for the examples to make sense.
+
+Third, the relationships in these datasets are clear, and there aren't too many data points. Real data are
+often more messy because many psychological constructs are hard to measure.
+
+Our experience is that, when learning R, it pays to keep everything as simple as it possibly can be.
+The skills and concepts involved in analysing these data are the same though.
+
+R --- and the techniques and statistics we teach --- are used right across the natural sciences
+
+
+If you're still not convinced — don't worry ... we do include some clinical examples, and we will
+be collecting our own psychological data soon enough and analysing that.
+
+
+:::
+
+:::
+
+
+
 
 :::{.exercise}
 
@@ -289,14 +920,147 @@ Our student pilot-testers suggested that now would be a good time for a short br
 
 # Scatterplots {#scatterplots}
 
-```{r, echo=F}
-video_data <- list(identifier = "scatterplots", yt_id = "RoK0ToZzwI0")
-# makermds(video_data)
+`r video("RoK0ToZzwI0")`
+`r make_tabs('scatterplotstabs')`
+
+:::{.tab-content}
+
+:::{#scatterplotstabs-summary .tab-pane .active}
+
+- A scatterplot shows the *relationship* between two *continuous* variables (columns)
+- Each observation (row) must have at least two values (so we need two columns)
+- These define the position of a point on the x and y axes of the plot
+- Use `ggplot()`
+- `aes(x = ..., y = ...)` chooses the x and y data *columns* and creates the axes
+- `geom_point()` adds the points
+
+:::
+
+:::{#scatterplotstabs-code .tab-pane .fade}
+
+```{r}
+# if you have not already, load these packages
+library(tidyverse)
+library(psydata)
+
+# make a scatterplot from the fuel dataset
+fuel %>%
+  ggplot(aes(x=weight, y=mpg)) + # selects the columns to use
+    geom_point()                 # adds the points to the plot
+
+# the same plot, this time we left out x= and y= in
+# the aes code. These are implicit from the order of weight and mpg
+# (the x-axis comes first)
+fuel %>%
+  ggplot(aes(weight, mpg)) +
+    geom_point()         
+
+```
+:::
+
+
+:::{#scatterplotstabs-transcript .tab-pane .fade}
+A scatterplot shows the *relationship* between two variables by plotting their values as points on the x-axis (the
+left-right position) and the y-axis (up-down).
+
+This code chunk creates a scatterplot using the `fuel` dataset.
+
+:::{.direction}
+- Create chunk and type code
+:::
+
+```{r}
+library(tidyverse)
+library(psydata)
+fuel %>%
+  ggplot(aes(x = weight, y = mpg)) +
+    geom_point()
 ```
 
-```{r child = '_content/_video_tabs.rmd'}
+:::{.direction}
+- select the pipe with the cursor to highlight
+:::
 
+The `%>%` symbol is special, it's called a 'pipe'. We'll cover the pipe in a later session, but for now you just need to
+know that it sends the `fuel` data on to the next line of code — like it's passing it down a pipe.
+
+The second line receives the data. The `ggplot()` function means we're making a plot.
+
+The plot is built in two steps:
+
+The first step 
+
+:::{.direction}
+- select `ggplot(aes(weight, mpg))`
+:::
+
+selects columns in our dataset to use for the x and y axes. In this case, the x-axis is `weight`, which is the weight of
+the cars in kg. And `mpg` is miles per gallon, or fuel efficiency. This will be the y-axis.
+
+:::{.direction}
+- select `weight` in the code - highlight it is the x-axis
+- same for `mpg` and y-axis
+:::
+
+
+We can see the plot if we run this statement using the keyboard shortcut — `Ctrl` or `Cmd` (Mac) + `Enter`
+
+:::{.direction}
+- run the code and show the resulting plot
+- emphasise this is shown below the code chunk when using RMarkdown
+:::
+
+
+### Building plots in layers
+
+A useful thing to know is that `ggplot` works by building up plots in multiple layers.
+
+If we run just this part of the code, we can see the plot with just the axes, and no data shown.
+
+
+:::{.direction}
+1. run just the first two lines of code by selecting and pressing `ctrl+enter`
+2. emphasise the axes are there but no data shown
+3. rerun all code to plot points
+:::
+
+
+So, conceptually, we make plots by:
+
+1. *selecting* data
+2. *defining* the axes, and then
+3. *drawing* the data points
+
+Each part of the plot is separated by a `+` symbol and goes on a new line.
+
+RStudio is smart and knows all this is part of the same statement.
+This means it automatically indents the code.
+
+### Cutting corners
+
+There's just one final thing to explain:  In the previous code we wrote `x = weight` and `y = mpg`.
+
+This makes things explicit, which is nice, but takes longer to type. You can also write the plot this way:
+
+```{r, eval=F}
+fuel %>%
+  ggplot(aes(weight, mpg)) +
+    geom_point()         
 ```
+
+R assumes that the first column is the x-axis and the second is the y-axis.
+
+:::{.direction}
+- select x-axis and y-axis in turn when describing
+:::
+
+We normally drop the `x =` and `y =` in these guides, and you should too.
+
+:::
+
+:::
+
+
 
 
 :::{.tip}
@@ -330,14 +1094,58 @@ fuel %>%
 
 # Working interactively {#rmarkdown-recap}
 
-```{r, echo=F}
-video_data <- list(identifier = "working-interactively-in-r", yt_id="KUUOqO7uZwE", showcode=F)
-# makermds(video_data)
+
+`r video("KUUOqO7uZwE")`
+`r make_tabs('workinginteractivelytabs')`
+
+:::{.tab-content}
+
+:::{#workinginteractivelytabs-summary .tab-pane .active}
+
+- A ***statement*** is one of more lines of code which R knows are linked
+- Run a statement: `Ctrl + ↵` (or `⌘ + ↩` Mac)
+- Run the whole chunk: `Shift + Ctrl + ↵` (or `Shift + ⌘ + ↩` Mac)
+
+:::
+
+:::{#workinginteractivelytabs-code .tab-pane .fade}
+```{r}
+# No new code shown in this video
+```
+:::
+
+
+:::{#workinginteractivelytabs-transcript .tab-pane .fade}
+
+In an earlier video we introduced RMarkdown. In this clip, we recap on some useful things
+to know when using RMarkdown files in RStudio. It's intended as a kind of reference
+for later on.
+
+- Running just part of a statement
+- Run a whole chunk using `Cmd+Shift+Enter` or `Ctrl+Shift+Enter` (Windows)
+- How R knows where statements start and end
+- The importance of blank lines
+- Loading packages first
+
+
+
+Running parts of statements:
+
+```{r}
+happy %>%
+  filter(year==2018) %>%
+  ggplot(aes(gdp_per_capita, happiness)) +
+  geom_point()
 ```
 
-```{r child = '_content/_video_tabs.rmd'}
 
-```
+- Demonstrate selecting each part in turn again
+- Point out that we can check what data has been sent to the plot and amend if necessary
+- Demonstrate making an error where column is misspelled
+
+:::
+
+:::
 
 
 

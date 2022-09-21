@@ -1,6 +1,6 @@
 ---
 title: 'LifesavR 2022'
-author: 'Ben Whalley, Sonja Heinz, Paul Sharpe'
+author: 'Ben Whalley, Sonja Heinz, Chris Berry, Paul Sharpe'
 # date: "April 2021"
 bibliography: [references.bib]
 biblio-style: apa6
@@ -33,11 +33,6 @@ source('_first_chunk.R')
 7.  [Building models](session-7.html)
 8.  [Reporting outcomes](session-8.html)
 
-<br>
-
-Supporting topics:
-
--   [Causal models XXX](casual-models.html)
 
 <br>
 

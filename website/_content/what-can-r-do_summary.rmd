@@ -1,9 +1,0 @@
-- R is a multi-purpose tool
-- It is a text-based computer language
-- RStudio is an *interface* to that language; it organises your work and makes R easier to use
-
-
-- R can do simple arithmetic, load data, make plots etc.
-- It can also run any statistical analysis you like
-- You need to tell R *exactly* what to do, by providing precise instructions
-- These instructions (code) provide a *reproducible record* of your work

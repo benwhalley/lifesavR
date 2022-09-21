@@ -1,4 +1,0 @@
-
-- A ***statement*** is one of more lines of code which R knows are linked
-- Run a statement: `Ctrl + ↵` (or `⌘ + ↩` Mac)
-- Run the whole chunk: `Shift + Ctrl + ↵` (or `Shift + ⌘ + ↩` Mac)

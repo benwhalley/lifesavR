@@ -9,10 +9,14 @@ rmarkdown::find_pandoc(version = "2.19.2")
 
 knitr::opts_chunk$set(
   echo = TRUE,
-  collapse = TRUE,
+  collapse = F,
   comment = NA,
   cache = FALSE,
-  message = FALSE
+  message = FALSE,
+  class.output  = "bg-success",
+  class.message = "bg-info text-info",
+  class.warning = "bg-warning text-warning",
+  class.error   = "bg-danger text-danger"
 )
 options(dplyr.summarise.inform = FALSE)
 
