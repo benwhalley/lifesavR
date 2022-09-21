@@ -62,13 +62,116 @@ to make tables of descriptive statistics which you will need in your coursework 
 
 # Making boxplots {#boxplots}
 
-```{r, echo=F}
-video_data <- list(identifier = "boxplot-introduction", yt_id = "2FXgGkfXtXw")
-# makermds(video_data)
+`r video("2FXgGkfXtXw")`
+`r make_tabs('makingboxplotstabs')`
+
+:::{.tab-content}
+
+:::{#makingboxplotstabs-summary .tab-pane .active}
+
+- Boxplots are useful for comparing categorised data
+- Use `aes()` with `ggplot()` to choose a categorical column as the x-axis
+- `geom_boxplot()` draws boxes and whiskers for each category
+- The box describes the [*interquartile range*](https://www.bbc.co.uk/bitesize/guides/zx7rk7h/revision/2)
+- The midpoint is the *median*
+- Individual points show *outliers* in the data
+
+:::
+
+:::{#makingboxplotstabs-code .tab-pane .fade}
+```{r}
+iris %>%
+  ggplot(aes(x=Species, y=Petal.Length)) +  # specify dataset columns 
+  geom_boxplot()                            # add the boxes
+```
+:::
+
+
+:::{#makingboxplotstabs-transcript .tab-pane .fade}
+Boxplots are useful for visualising differences between categories or groups.
+
+Using `ggplot()`, making a boxplot is similar to a scatterplot.
+
+If we haven't already done it, we'd need to load the `tidyverse`:
+
+```{r, echo=T, warning=F, message=F}
+library(tidyverse)
 ```
 
-```{r child = '_content/_video_tabs.rmd'}
+----------------------------------------------------------------------------------------------------
+
+To make the plot, we first choose the data we want to plot and add a pipe to the end of the line to
+send this data to the next command:
+
+::: direction
+-   From the code below select only first line
+-   Also show selecting/executing just the name of the dataset and how this displays the data
+-   Emphaise the importance of breaking code down and running sub-steps separately
+:::
+
+Next we use `ggplot()` and `aes(x = ..., y = ...)` to select the columns we want to use in the data.
+`aes` is short for *aesthetics* which means 'something you can see'. So the `aes()` function defines
+what will be able to see on the plot --- the axes, and other features like colour.
+
+This time we have chosen `Species` for the x-axis, because it is a *categorical* variable.
+
+```{r}
+iris %>%
+  ggplot(aes(x = Species, y = Petal.Length))
 ```
+
+::: direction
+-   Demonstrate running code above
+-   Also show using autocomplete in RStudio when writing the code above
+:::
+
+You'll notice that I used the RStudio autocomplete feature to write function and column names from
+our dataset. This makes things much easier --- especially for column names. If you type column names
+by hand it's easy to make spelling errors or typos, and this leads to errors in R.
+
+If we run the code so far, `ggplot()` draws the plot axes, but doesn't add the data yet:
+
+::: direction
+Run the code so far
+:::
+
+So far we have said *what* we want to show on our plot, but not *how* it should be shown.
+
+To finish, we add `geom_boxplot()` which actually draws the boxes:
+
+```{r}
+iris %>%
+  ggplot(aes(x = Species, y = Petal.Length)) +
+  geom_boxplot()
+```
+
+Note that I used a `+` symbol to add the boxplot layer to our graph.
+
+So, now we have a boxplot, with one box drawn for each value of `Species`.
+
+### Interpreting boxplots
+
+In a boxplot:
+
+-   The thick line across the middle of the box is the *median* or midpoint of the data
+
+-   The height of the box indicates the [*interquartile
+    range*](https://www.bbc.co.uk/bitesize/guides/zx7rk7h/revision/2) (IQR). This means the box
+    contains 50% of the datapoints. A wider IQR indicates greater variation (spread) in a dataset.
+
+-   The meaning of the "whiskers" (the lines above the top, and below the bottom of the box) varies
+    a little bit depending on the software you use --- but they always show the range/spread of the
+    data. The default in `ggplot()` are whiskers with lengths covering data points no more, or less
+    than 1.5 times the IQR.
+
+-   Any data point outside the range of the whiskers is described as an 'outlying point' or
+    'outlier'. Each outlier is plotted individually as a dot.
+
+:::
+
+:::
+
+
 
 :::{.exercise}
 **Exercise 1**
@@ -87,13 +190,95 @@ iris %>%
 
 # Adding colour to a plot {#colour}
 
-```{r, echo=F}
-video_data <- list(identifier = "scatterplot-colour", yt_id = "wzjGY-Yn2g8")
-# makermds(video_data)
+
+`r video("wzjGY-Yn2g8")`
+`r make_tabs('scatterplotcolortabs')`
+
+:::{.tab-content}
+
+:::{#scatterplotcolortabs-summary .tab-pane .active}
+
+- The points of a scatterplot can be coloured based on a third column of data
+- We can colour points using categorical ***or*** continuous data
+- The ` aes(..., colour=column_name)` option selects the column to use (change `column_name` to the name of *your* column)
+
+:::
+
+:::{#scatterplotcolortabs-code .tab-pane .fade}
+```{r}
+# scatterplot of engine size (displ) against highway fuel efficiency (hwy)
+mpg %>%
+  ggplot(aes(displ, hwy)) +
+  geom_point()
+
+# colour each point; different colour for each type of transmission
+# front, rear and four wheel drive
+mpg %>%
+  ggplot(aes(displ, hwy, colour=drv)) +
+  geom_point()
+```
+:::
+
+
+:::{#scatterplotcolortabs-transcript .tab-pane .fade}
+As we saw before, scatterplots show the relationship between two variables.
+
+Using the `mpg` data, we could plot the size of car engines (`displ`, short for displacement)
+against their fuel efficiency on the highway in miles per gallon (`hwy`):
+
+```{r, eval=F}
+mpg %>%
+  ggplot(aes(displ, hwy)) +
+  geom_point()
 ```
 
-```{r child = '_content/_video_tabs.rmd'}
+::: direction
+-   Run code to generate plot
+:::
+
+*NOTE: This first plot is not shown here to save space, but is shown in the video.*
+
+We can add colour to distinguish the points in this plot --- for example, what kind of car each
+point represents.
+
+So far, you've used the `aes()` function to define which variable is plotted on the x and y axes.
+The `aes()` function is short for 'aesthetics' (what we can see) and *connects columns in our data
+to visual aspects of a plot*, like the x and y axes.
+
+The `colour=...` option adds to this, and says which column is used to colour the points.
+
+In the `mpg` data, the `drv` column contains one of three values. The value categorises cars based
+on which wheels are driven the engine. An `f` in `drv` means a front wheel drive car, `r` means rear
+wheel drive, and `4` means four wheel drive.
+
+We can write `colour=drv` to tell R to colour each point, depending on which wheels are driven:
+
+::: direction
+1.  Add `colour=drv`
+2.  Run code to generate plot
+:::
+
+```{r, eval=T}
+# colour each point; different colour for each type of transmission
+# front, rear and four wheel drive
+mpg %>%
+  ggplot(aes(displ, hwy, colour=drv)) +
+  geom_point()
 ```
+
+Notice that `ggplot()` automatically adds a key to the plot, mapping the colour of the points to the
+categories in `drv`.
+
+This is an example of using a *categorical* variable to colour our points.
+
+:::
+
+:::
+
+
+
+
+
 
 :::{.exercise}
 **Exercise 2**
@@ -114,15 +299,265 @@ development %>%
 ```
 :::
 
+
+
+
 # Using different types of data and visual scales{#datatypes}
 
-```{r, echo=F}
-video_data <- list(identifier = "types-scales", yt_id="RrIRNof4mzM")
-# makermds(video_data)
+
+`r video("RrIRNof4mzM")`
+`r make_tabs('typesscalestabs')`
+
+:::{.tab-content}
+
+:::{#typesscalestabs-summary .tab-pane .active}
+
+- Continuous, categorical and text data are all common in psychology
+- Internally, R stores columns of data using different *data types*.
+- R uses data types as a clue to set *defaults* (e.g. for graphs)
+- Sometimes we need to convert between types
+- For example, sometimes categorical data is (wrongly) stored as a numeric column
+
+:::
+
+:::{#typesscalestabs-code .tab-pane .fade}
+```{r}
+# always load the libraries we need first
+library(tidyverse)
+library(psydata)
+
+# see a list of columns in the dataset, and their types
+iris %>% glimpse
+
+# make a scatter plot with two continous axes
+# both wt and mpg are numeric variables
+# so this works well
+fuel %>%
+  ggplot(aes(weight, mpg)) +
+    geom_point()   
+
+# try and make a boxplot with `am` as the x-axis
+# but because `cyl` is stored as a numeric variable
+# (not categorical) the scale of the x-axis is wrong
+fuel %>%
+  ggplot(aes(cyl, mpg)) +
+  geom_boxplot()
+
+# re-draw the plot, but converting `cyl` to a factor/categorical
+# variable first. Now the x-axis looks correct
+fuel %>%
+  ggplot(aes(factor(cyl), mpg)) +
+  geom_boxplot()
+```
+:::
+
+
+:::{#typesscalestabs-transcript .tab-pane .fade}
+```{=html}
+<!--
+TODO - have a ppt of the first explanatory part of this instead of a blank screen
+ -->
+```
+Ok this is a slightly longer video. In the first bit we introduce some background to the term
+variable, and the way in which R stores different types of data. In the final part we see why this
+is important when we're making plots (and running other analyses).
+
+I'm especially going to talk about:
+
+-   the different types of variable we may have in our study (e.g. continuous, categorical, text)
+-   the way R stores these different data (e.g. as numeric, factor or character data) and
+-   the way that `ggplot()` presents these different data types
+
+These might seem like small details --- but having some understanding of what is happening will help
+later on: you will be able to control how your data are presented in tables and plots. It will also
+help you make sure your data are in the right format for other statistical tests.
+
+### Columns vs variables
+
+::: tip
+This is really important. Make sure you are clear on the different meanings of the word 'variable'
+:::
+
+The word *variable* gets used in at least 4 different ways in quantitative research, and this
+confuses a lot of people.
+
+We can't avoid all ambiguity because these different usages are common in the field, but it helps to
+know about them in advance. The main usages are:
+
+-   *variables in a theoretical model*. That is, things or constructs we think exist, and which
+    *cause* other things to happen. An example might be "empathy", or "working memory". These are
+    psychological constructs which many theories include, and those theories say these constructs
+    play a causal role in how we behave or perform on certain tasks.
+
+-   *variables in a study design*. An example here might an experimental group allocation, or an
+    attribute of participants like their age or gender.
+
+-   *variables in a dataset*. Sometimes people want to refer to a column of numbers in a dataset
+    (e.g. a spreadsheet), where the column has a name, and use the term variable again. This usage
+    overlaps with the previous two, but it doesn't *have* to. For example, we might have a column of
+    numbers recording the date and time participants' completed an empathy questionnaire. Analysed a
+    certain way these timestamps *might* tell us something useful, but the column of timestamps
+    isn't a variable in our theoretical model, and they might not be used as a variable in our
+    experiment.
+
+[ Finally, we have ]
+
+-   *variables in R and computer programs*: This type of variable is a *general purpose container*
+    which can store anything. Variables in R *can* contain columns of numbers, but they can also
+    contain whole datasets, or graphs, or the results of statistical tests. **A variable in R often
+    isn't the same thing as an experimental variable or a column in a dataset**.
+
+**In this short course use *variable* to mean either an experimental/theoretical variable or an R
+container.**
+
+**When we mean a column of data in a dataset we will use the word *column* instead.**
+
+### Types of variable
+
+OK so let's focus for a minute on *variables in a study design*.
+
+There are a few main *types* of these variable to consider. You might be familiar with some of these
+terms already:
+
+-   *categorical* or *nominal* variables (sometimes also called *factors*): e.g. gender, education
+    status
+
+-   *binary* variables (a special category that is either `TRUE` or `FALSE`): e.g. smoker/non-smoker
+
+-   *ordinal* variables (categorical responses where the order is important): e.g. a 1-7 response on
+    a Likert-style question
+
+-   *interval* or *continuous* variables: e.g. weight in kg, time in milliseconds
+
+-   *count* variables (a frequency, measured in whole numbers): e.g. the number of social contacts
+    per week
+
+-   *text* variables: e.g. free text responses to open-ended questionnaire items
+
+### Types of column
+
+OK, so those are the types of variable.
+
+We can also think about the types of column that our dataset stores.
+
+Datasets have multiple columns, each with a unique name.
+
+In R, every column has a *data type*. These data types are normally determined by the type of
+variable. But there is some overlap, and different data types could be used to store the same
+variable.
+
+We sometimes need to convert between data types.
+
+There are four data types you need to know about in R: factors, text, numeric and logical columns.
+
+-   *Factors*, which are used for categorical data (and sometimes ordinal data too)
+-   *Text*, also called *character* or *string* data.
+-   *Numeric* columns can called be either *integer* or *double*. Double is computer speak for
+    'double-precision number', which just means decimals and really big numbers are allowed
+-   *Logical*, which can be used to store values that can only be either True or False.
+
+The important thing to know is that--- although different types of variable are usually stored in
+different types of column in R--- *this isn't always the case*.
+
+Sometimes data can be stored as the wrong type---e.g. categorical data could end up stored as
+numeric data --- and in these cases we need to convert from one format to another.
+
+You can see which data type is used to store a variable when using the `glimpse()` command
+introduced in Session 1 (see [here](session-1.html#exploring)).
+
+```{r}
+iris %>% glimpse()
 ```
 
-```{r child = '_content/_video_tabs.rmd'}
+In the output you can see the variable names listed on the left, followed by text in angle brackets,
+e.g.: `<dbl>` which is the abbreviated name of data type.
+
+In this built-in dataset, most of the data is numeric (`dbl`), but the `Species` variable is
+categorical, and stored as a factor (`fct`).
+
+It's possible to convert columns from one type to another, to suit our needs. We'll see more of this
+later.
+
+| Data/column type | Useful for           | Abbreviations used/subtypes | Often need to convert from |
+|------------------|----------------------|-----------------------------|----------------------------|
+| Factor           | categorical, ordinal | `fct`, `ord`                | text                       |
+| Text             | text, categorical    | `chr`                       | categorical                |
+| Numeric          | continuous, ordinal  | `int`, `dbl`                | categorical; text          |
+| Logical          | binary (boolean)     | `lgl`                       | numeric                    |
+
+### Column types determine the scales on graphs
+
+If we look at the `fuel` data (from `psydata`) we can see that most of the columns are stored as
+numeric data (`dbl`):
+
+```{r}
+fuel %>% glimpse()
 ```
+
+This is fine if we want to make a scatter plot.
+
+In the example below we have 'miles per gallon' vs the weight of cars in the `fuel` dataset (in
+`psydata`):
+
+```{r}
+fuel %>%
+  ggplot(aes(weight, mpg)) +
+    geom_point()       
+```
+
+In this example of a scatterplot both the x and y axes are ***continuous***. That is, we expect them
+to be real numbers, and they are stored as numeric columns.
+
+However, if we want to make a boxplot of the `mpg` column using `cyl` (number of cylinders) as the
+`x` axis then we have a problem:
+
+```{r}
+fuel %>%
+  ggplot(aes(cyl, mpg)) +
+  geom_boxplot()
+```
+
+The warning message says `Continuous x aesthetic -- did you forget aes(group=...)?`. This is a clue
+as to what has gone wrong.
+
+We might have expected to see;
+
+-   miles per gallon on the $y$ axis
+-   three separate boxes, one each for 4, 6 and 8 cylinders
+
+It didn't work as expected though.
+
+R spots that `cyl` is *stored* as numeric data, and because it doesn't know better it creates a
+\_continuous scale) on the $x$ axis.
+
+Only one box is drawn at the midpoint of all the values of `cyl`; because `cyl` ranges from 4 to 6
+the box appears at 6.
+
+Although R often has good defaults, it isn't smart --- if it doesn't behave as we expect we need to
+be more specific.
+
+Here we want to use `cyl` as a categorical variable, so we need to give R precise instructions. We
+should convert `cyl` to a `factor` explictly. Then our plot will work properly.
+
+We can use the command `factor(cyl)` to tell R that the $x$-axis is a factor:
+
+```{r}
+fuel %>%
+  ggplot(aes(factor(cyl), mpg)) +
+  geom_boxplot()
+```
+
+This gives us the boxplot we were expecting.
+
+The only change was to replace `cyl` with `factor(cyl)`. This tells R to convert the variable `cyl`
+to a factor, and `ggplot()` can then set the scale of the x-axis correctly.
+
+:::
+
+:::
+
+
+
 
 :::{.exercise}
 **Exercise 3**
@@ -159,15 +594,273 @@ Remember that you will need to *change* the type of the `gear` variable for this
 
 :::
 
+
+
+
+
 # Using `group_by()` to make a summary table and compare groups{#groupby}
 
-```{r, echo=F}
-video_data <- list(identifier = "group-by", yt_id = "dBfkA3-j3dU")
-# makermds(video_data)
+`r video("dBfkA3-j3dU")`
+`r make_tabs('groupbytabs')`
+
+:::{.tab-content}
+
+:::{#groupbytabs-summary .tab-pane .active}
+
+- Datasets often contain categorical variables
+- We often want to compare statistics (like averages) *between* categories
+- The `group_by()` function is a quick way to combine filtering and summarising
+- `group_by()` creates a *grouped* `data.frame`
+- Adding `group_by()` to a pipeline runs the subsequent steps *once for each group*.
+- The result is always a new `data.frame`
+
+:::
+
+:::{#groupbytabs-code .tab-pane .fade}
+```{r}
+# check the columns in the funimagery dataset
+# results of an RCT of functional imagery training for weight loss
+# conducted at the University of Plymouth
+funimagery %>% glimpse
+
+# boxplot to compare the intervention groups
+funimagery %>%
+  ggplot(aes(intervention, weight_lost_end_trt)) +
+  geom_boxplot()
+
+
+# calculate mean weight loss in each group in a laborious way
+funimagery %>%
+  filter(intervention=="MI") %>%
+  summarise(mean(weight_lost_end_trt))
+
+funimagery %>%
+  filter(intervention=="FIT") %>%
+  summarise(mean(weight_lost_end_trt))
+
+
+# use group_by to split the data and summarise each group
+funimagery %>%
+  group_by(intervention) %>%
+  summarise(mean(weight_lost_end_trt))
+
+# store the result (also a data.frame) in a new variable
+average_weight_loss <- funimagery %>%
+                          group_by(intervention) %>%
+                          summarise(mean(weight_lost_end_trt))
+
+
+# example of grouping by two columns at once
+funimagery %>%
+  group_by(gender, intervention) %>%
+  summarise(mean(weight_lost_end_trt))
+
+
+
+# calculate the mean and SD in one go
+funimagery %>%
+  group_by(intervention) %>%
+  summarise(
+    mean(weight_lost_end_trt),
+    sd(weight_lost_end_trt)
+  )
+
+
+# how to give your new summary columns a name
+# (this is good practice)
+funimagery %>%
+  group_by(intervention) %>%
+  summarise(
+    mean_weight_lost_end_trt = mean(weight_lost_end_trt),
+    sd_weight_lost_end_trt = sd(weight_lost_end_trt)
+  )
+```
+:::
+
+
+:::{#groupbytabs-transcript .tab-pane .fade}
+
+In this video we'll use the `funimagery` dataset, which is part of the `psydata` package. This
+contains data from a randomised controlled trial run in Plymouth [@solbrig2019functional].
+
+The study compared two treatments for weight loss: Functional Imagery Training (FIT) and
+Motivational Interviewing (MI).
+
+We can see the columns in the dataset using `glimpse()`:
+
+::: direction
+-   Run code
+:::
+
+```{r}
+funimagery %>% glimpse
 ```
 
-```{r child = '_content/_video_tabs.rmd'}
+Weight was measured three times, and these measurements are in the columns called `kg1`, `kg2` and
+`kg3`.
+
+-   The first measurment (`kg1`) was taken at *baseline*, when participants joined the study
+-   The second measurement (`kg2`) was taken at the end of treatment, which was 6 months after
+    baseline
+-   The final measurement (`kg3`) was made 12 months after baseline
+
+The `weight_lost_end_trt` column is the *difference* between `kg1` and `kg2` -- i.e. how much weight
+the participant lost after their treatment.
+
+We have already seen a that a boxplot can compare scores between categories:
+
+::: direction
+-   Generate plot
+:::
+
+```{r}
+funimagery %>%
+  ggplot(aes(intervention, weight_lost_end_trt)) +
+  geom_boxplot()
 ```
+
+This plot is helpful, and makes the differences really clear. But what if we want the actual numbers
+in a table, or to report in the text of our paper?
+
+### Using `filter()` and `summarise()`
+
+One option would be to filter our data first and then summarise each subset in turn:
+
+::: direction
+-   Run code
+:::
+
+```{r}
+funimagery %>%
+  filter(intervention=="MI") %>%
+  summarise(mean(weight_lost_end_trt))
+```
+
+This output shows us the mean for the MI group. We then have to repeat that code for the FIT group:
+
+::: direction
+-   Run code
+:::
+
+```{r}
+funimagery %>%
+  filter(intervention=="FIT") %>%
+  summarise(mean(weight_lost_end_trt))
+```
+
+This is a bit repetitive, and would worse if there were lots of categories. Imagine doing something
+similar for each continent in the `development` data, for example.
+
+### Using `group_by()`
+
+Instead of using `filter()`, we can use `group_by()` to split our dataset into multiple groups,
+summarising each one separately:
+
+::: direction
+-   Run code
+:::
+
+```{r}
+funimagery %>%
+  group_by(intervention) %>%
+  summarise(mean(weight_lost_end_trt))
+```
+
+Using `group_by()` before `summarise()` splits up the data, in thise case depending on which
+`intervention` the participant received.
+
+::: direction
+-   Highlight `group_by()`
+:::
+
+The `summarise()` function calculates the mean for each group separately.
+
+::: direction
+-   Highlight `summarise()`
+:::
+
+The result is a new `data.frame` with two columns: The name of the `intervention`, and the average
+weight lost. We could save this in a new variable for use later, if we liked:
+
+```{r}
+average_weight_losses <- funimagery %>%
+                          group_by(intervention) %>%
+                          summarise(mean(weight_lost_end_trt))
+```
+
+You can see the new variable in the **Environment**, so it's stored for later.
+
+### Nested groups
+
+Sometimes we might want to group by more than one variable at once.
+
+Imagine we wanted to see if men and women responded differently to the two treatments?
+
+With `group_by()` this is really easy: just add the name of another column to group on (`gender`),
+separated with a comma:
+
+```{r}
+funimagery %>%
+  group_by(gender, intervention) %>%
+  summarise(mean(weight_lost_end_trt))
+```
+
+It looks like women lost a bit more weight on average
+
+::: direction
+-   Highlight `f` rows
+:::
+
+but both ment and women lost more weight after FIT relative to MI.
+
+::: direction
+-   Highlight `MI` and `FIT` rows for `f`, then `m`
+:::
+
+### Multiple statistics
+
+With `summarise()` we can calculate multiple statistics at once for each of the groups:
+
+::: direction
+-   Run code
+:::
+
+```{r}
+funimagery %>%
+  group_by(intervention) %>%
+  summarise(mean(weight_lost_end_trt), sd(weight_lost_end_trt))
+```
+
+Here, we've calculated both the mean and standard deviation for each intervention.
+
+### Give your new variables a name
+
+R gives the new columns a name based on the function we use to `summarise()` them.
+
+For example, if we use `mean()` on the `weight_lost_end_trt` variable then the new column is called
+`mean(weight_lost_end_trt)`.
+
+::: direction
+-   Rerun code above and highlight where the name of the variable comes from
+:::
+
+Unfortunately, these new variable names contain parentheses and (sometimes) spaces which makes them
+harder to work with. It's much better to give the new column a specific name like this:
+
+```{r}
+funimagery %>%
+  group_by(intervention) %>%
+  summarise(mean_weight_lost_end_trt = mean(weight_lost_end_trt), sd_weight_lost_end_trt = sd(weight_lost_end_trt))
+```
+
+Remember, the column names you use shouldn't include spaces or other 'special' characters.
+
+:::
+
+:::
+
+
+
 
 
 
@@ -234,6 +927,8 @@ The standard deviation of chicks fed on sunflower was `r fitb('48.84', tol=1)`g.
 
 :::
 
+
+
 # Check your knowledge
 
 Write an answer to each of these questions in the `Check your knowledge` section of your workbook. The answers will be revealed in Session 4.
@@ -250,7 +945,7 @@ Write an answer to each of these questions in the `Check your knowledge` section
 # Extension exercises
 
 
-```{r, child="_content/extension-exercises-premable.rmd"}
+```{r, child="extension-exercises-premable.rmd"}
 ```
 
 

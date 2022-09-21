@@ -1,5 +1,0 @@
-```{r, eval=F}
-iris %>%
-  ggplot(aes(x=Species, y=Petal.Length)) +  # specify dataset columns 
-  geom_boxplot()                            # add the boxes
-```

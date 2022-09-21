@@ -1,6 +1,0 @@
-
-```{r}
-# code with comments
-2+2
-```
-

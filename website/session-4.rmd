@@ -725,7 +725,7 @@ revealed in Session 5.
 # Extension exercises
 
 
-```{r, child="_content/extension-exercises-premable.rmd"}
+```{r, child="extension-exercises-premable.rmd"}
 ```
 
 

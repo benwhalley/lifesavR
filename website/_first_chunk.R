@@ -21,17 +21,6 @@ knitr::opts_chunk$set(
 options(dplyr.summarise.inform = FALSE)
 
 
-makermds <- function(video_data){
-  identifier <- video_data$identifier
-  fs::file_create(paste0("_content/", identifier, "_code.rmd"))
-  fs::file_create(paste0("_content/", identifier, "_transcript.rmd"))
-  fs::file_create(paste0("_content/", identifier, "_summary.rmd"))
-
-  rstudioapi::navigateToFile(paste0("_content/", identifier, "_summary.rmd"))
-}
-
-
-
 # see https://stackoverflow.com/questions/26705554/extend-geom-smooth-in-a-single-direction
 lm_left <- function(formula,data,...){
   mod <- lm(formula,data)

@@ -1,6 +1,0 @@
-- In R, a **variable** is the name for a *container*
-- Variables can contain anything — not just data
-- ***Columns*** in a dataset sometimes get called variables too (sorry)
-- Create variables with **`<-`** (called the ***assignment operator***)
-- The order is: `name_of_variable <- stuff_being_stored`
-- Use short, descriptive names. Don't use spaces or capitals

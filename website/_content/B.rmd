@@ -1,5 +1,0 @@
-```{r, echo=FALSE, results='asis'}
-
-cat("- Hello world \n- secomd ")
-
-```
