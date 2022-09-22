@@ -31,7 +31,8 @@ source('_first_chunk.R')
 
 6.  [Making predictions](session-6.html)
 7.  [Building models](session-7.html)
-8.  [Reporting outcomes](session-8.html)
+8.  Reporting outcomes 
+<!-- ](session-8.html) -->
 
 
 <br>
