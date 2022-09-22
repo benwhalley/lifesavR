@@ -612,7 +612,7 @@ mB <- lmBF(mpg ~ weight + cyl, data=fuel)
 Finally, we divide model B by model A to calculate the Bayes Factor.
 
 ```{r}
-# evidence in favour of model A
+# evidence in favour of model B
 mB / mA
 ```
 
@@ -638,38 +638,59 @@ Put differently model B is 22 times more likely than model A, given the data we 
 :::
 
 
-# Interpreting Bayes Factors
+# Interpreting Bayes Factors {#interpretbayesfactors2}
 
-Psychologists love a "line in the sand", so a convention has emerged that we believe an effect is 'real' if the Bayes Factor is greater than 3, and believe there isn't a 'real' effect if the Bayes Factor is less than 0.33. 
+We [previously said](session-5.html#interpretbayesfactors1) that:
 
-In fact though, Bayes Factors are a ***continuous*** measure of the evidence for or against a particular model (hypothesis). 
+- BF's > 3 are *moderate* evidence *for* a hypothesis, and 
+- BF < 0.33 ($\tfrac{1}{3}$) are moderate evidence *against* a hypothesis.
 
-Several authors, inculding Kass & Raftery (1993), have provided guidelines on
+Psychologists love a "line in the sand", so a convention has emerged that we 
+believe an effect is 'real' if the Bayes Factor is greater than 3, and believe 
+there isn't a 'real' effect if the Bayes Factor is less than 0.33. 
+
+---------------------
+
+In fact though, Bayes Factors are a ***continuous measure of the evidence*** 
+for or against a particular model (hypothesis). 
+
+Several authors, including @kass1995bayes, have written guidelines on
 how to interpret Bayes Factors in this way. They provide labels for Bayes
-Factors of various sizes. This is a more detailed guide than a simple "line in a
-sand" and can prove very useful when comparing multiple studies.
+Factors of various sizes. This is a more useful than a simple "line in a
+sand", especially when comparing multiple studies.
 
 
 
-```{r bayes-factor-table, echo = FALSE, warning = FALSE, message = FALSE}
-# borrowed from https://github.com/ajwills72/rminr/commit/4fd9ca33d7e51cfe9249e864eea064c79d4b5288
-library(viridis)
-library(gt) 
+Bayes Factor    Interpretation
+--------------  ---------------------------
+> 100           Extreme evidence for the hypothesis tested
+30 - 100        Very strong evidence for the hypothesis tested
+10 - 30         Strong evidence for the hypothesis tested
+3 - 10          Moderate evidence for the hypothesis tested
+1 - 3           Anecdotal evidence for the hypothesis tested
 
-bf <- read_csv("https://raw.githubusercontent.com/ajwills72/rminr/2022-edition/src/bayes_factors.csv") %>% 
-  head(5)
-bf_table <- gt(bf)
-kk <- viridis(nrow(bf), option = "B", begin = 0.3, end = 1, direction = -1)
+Table:  A rule-of-thumb interpretation of Bayes Factors
 
-bf_table %>%
-tab_header(title = md("A rule-of-thumb interpretation of Bayes Factors")) %>%
-tab_options(table.font.size = 14) 
-```
 
-Note that Bayes Factors can also be smaller than 1, but these indicate support for the 
-null hypothesis.  If this is the case, we often find it helpful to reverse the order of 
+
+**Bayes Factors can also be smaller than 1, but these indicate support for the 
+null hypothesis.**  If this is the case, we often find it helpful to reverse the order of 
 division so that the BF is larger than 1 and state explicitly in the text that the
-BF we are reporting indicates the support ***for*** the ***null*** hypotheses.
+BF we are reporting indicates the support ***for*** the ***null*** hypothesis.
+
+
+
+:::{.exercise}
+
+
+Imagine we are comparing two regression models, A and B. 
+In the R output we see that the Bayes Factor for model A is 22, 
+and the Bayes Factor for Model B is 56.
+
+
+- Which model is more probable? `r mcq(c(answer="A", "B", "Inconclusive"))`
+- The BF in favour of model B is: `r mcq(c("22", "56", answer="2.5", "0.4", "3.6"))`
+- The BF in favour of model A is: `r fitb(22/56, tol=.5)`
 
 
 
@@ -1097,4 +1118,6 @@ work, speak to a member of staff during the workshops.
 :::
 :::
 
-<!-- # References -->
+
+
+### References
