@@ -7,7 +7,7 @@ video <- function(yt_id, protocol="http"){
 <div class="videowrapper">
 
 <div class="videowrapper-video">
-<iframe width="800" height="500" src="{{{protocol}}}://www.youtube.com/embed/{{yt_id}}"
+<iframe width="800" height="500" src="{{{protocol}}}://www.youtube-nocookie.com/embed/{{yt_id}}?rel=0"
 frameborder="0" allow="autoplay; encrypted-media" allowfullscreen data-external="1"></iframe>
 
 </div>
