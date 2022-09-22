@@ -1382,7 +1382,8 @@ Factor completely depends on which hypotheses we compare.</p>
 <li><a href="#fluke">Is this pattern a fluke?</a></li>
 <li><a href="#bayest">Do it: Bayesian t test</a></li>
 <li><a href="#bayescor">Do it: Bayes Factor for correlations</a></li>
-<li><a href="#bayesinterpreting">Interpreting Bayes Factors</a></li>
+<li><a href="#interpretbayesfactors1">Interpreting Bayes
+Factors</a></li>
 </ul>
 </div>
 </div>
@@ -1390,7 +1391,7 @@ Factor completely depends on which hypotheses we compare.</p>
 <h1>Is this pattern a fluke?</h1>
 <div class="videowrapper">
 <div class="videowrapper-video">
-<iframe width="800" height="500" src="http://www.youtube.com/embed/gefYqIPIjJQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen data-external="1">
+<iframe width="800" height="500" src="http://www.youtube-nocookie.com/embed/gefYqIPIjJQ?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen data-external="1">
 </iframe>
 </div>
 </div>
@@ -1497,7 +1498,7 @@ fluke)</li>
 <h1>Do it: Bayesian t test</h1>
 <div class="videowrapper">
 <div class="videowrapper-video">
-<iframe width="800" height="500" src="http://www.youtube.com/embed/BRKrSC5AjKg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen data-external="1">
+<iframe width="800" height="500" src="http://www.youtube-nocookie.com/embed/BRKrSC5AjKg?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen data-external="1">
 </iframe>
 </div>
 </div>
@@ -1640,7 +1641,7 @@ weight at baseline (you will need the <code>group_by</code>,
 these averages)</li>
 <li>Use <code>ttestBF()</code> with a formula to calculate the Bayes
 Factor for the difference in these weights. The resulting Bayes Factor
-is: <span id="Q701456" class="webex-fitb"><input class="solveme  nospaces" data-tol="0.05" data-digits="4" size="17" style="width:17em;" data-answer="[&quot;0.229469527213349&quot;,&quot;.229469527213349&quot;]"></input><span class="solvedme"></span></span></li>
+is: <span id="Q884077" class="webex-fitb"><input class="solveme  nospaces" data-tol="0.05" data-digits="4" size="17" style="width:17em;" data-answer="[&quot;0.229469527213349&quot;,&quot;.229469527213349&quot;]"></input><span class="solvedme"></span></span></li>
 </ol>
 </div>
 </div>
@@ -1648,7 +1649,7 @@ is: <span id="Q701456" class="webex-fitb"><input class="solveme  nospaces" data-
 <h1>Do it: Bayes Factor for correlations</h1>
 <div class="videowrapper">
 <div class="videowrapper-video">
-<iframe width="800" height="500" src="http://www.youtube.com/embed/kUqabfExu2Q" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen data-external="1">
+<iframe width="800" height="500" src="http://www.youtube-nocookie.com/embed/kUqabfExu2Q?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen data-external="1">
 </iframe>
 </div>
 </div>
@@ -1790,7 +1791,7 @@ the pattern we see is not simply due to chance.</p>
 </div>
 </div>
 </div>
-<div id="bayesinterpreting" class="section level1">
+<div id="interpretbayesfactors1" class="section level1">
 <h1>Interpreting Bayes Factors</h1>
 <p>The size of a Bayes Factor is mostly dependent on three things:</p>
 <ul>
@@ -1801,17 +1802,20 @@ from each group overlap)</li>
 <li><em>How much data</em> we collect (more data lets us be more
 confident; data quality also matters)</li>
 </ul>
-<p>We return to this topic later but for now just remember that:</p>
+<p>We <a href="session-7.html#interpretbayesfactors2">return to this
+topic later</a> but common interpretations of Bayes Factors are
+that:</p>
 <ul>
-<li>A Bayes Factor of 1 means each hypothesis is equally likely</li>
-<li>A Bayes factor &gt; 3 is a common threshold for thinking an effect
-is ‘real’ (although this threshold is arbitrary)</li>
-<li>A Bayes Factor of <span class="math inline">\(&lt;
-\frac{1}{3}\)</span> is evidence <em>against</em> the effect being
-real</li>
-<li>If the Bayes Factor is <span class="math inline">\(&gt;
-\frac{1}{3}\)</span> but <span class="math inline">\(&lt; 3\)</span>
-then we say the result is <strong><em>inconclusive</em></strong>.</li>
+<li><p>A Bayes Factor of 1 means each hypothesis is <em>equally
+likely</em></p></li>
+<li><p>A Bayes factor &gt; 3 is <em>moderate</em> evidence for the
+hypothesis being tested</p></li>
+<li><p>A Bayes Factor of <span class="math inline">\(&lt;
+\tfrac{1}{3}\)</span> is moderate evidence <em>against</em> the
+hypothesis</p></li>
+<li><p>A Bayes Factor is <span class="math inline">\(&gt;
+\tfrac{1}{3}\)</span> and <span class="math inline">\(&lt; 3\)</span> is
+considered <strong><em>inconclusive</em></strong></p></li>
 </ul>
 </div>
 <div id="check-your-knowledge" class="section level1">
@@ -1850,7 +1854,8 @@ is 2.1? How about if it was 0.21, or 210?</li>
         test</a></li>
         <li><a href="#bayescor" id="toc-bayescor">Do it: Bayes Factor
         for correlations</a></li>
-        <li><a href="#bayesinterpreting" id="toc-bayesinterpreting">Interpreting Bayes Factors</a></li>
+        <li><a href="#interpretbayesfactors1" id="toc-interpretbayesfactors1">Interpreting Bayes
+        Factors</a></li>
         <li><a href="#check-your-knowledge" id="toc-check-your-knowledge">Check your knowledge</a></li>
         </ul>
       </div>
