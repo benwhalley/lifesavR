@@ -173,8 +173,41 @@ modelB
 :::
 
 ::: {#Wia2TuH21mQ-transcript .tab-pane}
-There is no transcript here, but the following sections explain the content of 
-the video step by step
+
+This video provides an overview of multiple regression, and does a
+rapid walk-through of fitting two models which represent
+***different hypotheses*** about how the `fuel` dataset was generated.
+
+In the rest of this workshop we breakdown the techniques used, and so 
+the code is not explained in detail in this transcript; work through the 
+explanations and examples below for full details.
+
+However, some key ideas to take away are:
+
+- Multiple regression includes more than one predictor of an outcome
+- By comparing models with *different* predictors we are testing different hypotheses about the data
+
+
+In the example, there are three variables in the `fuel` dataset that we use, 
+recording attributes of various cars: `weight` (the car's weight in kg), `cyl` 
+(the number of cylinders the engine has), and `mpg` (how many miles per gallon
+the car can drive).
+
+
+Before modeling, I plot the data, and add a best-fit line to the scatterplot. 
+
+I run a model where `mpg` is predicted by weight, which I call `modelA`.
+
+I then add `cyl` to the model formula, to say that `mpg` is predicted by 
+`weight` and `cyl`. The formula is `mpg ~ weight + cyl`. 
+
+In the video we check the output of the model and see that there is an 
+extra coefficient (more on this in the notes below). 
+
+We notice also that the coefficient for `weight` changes when we add `cyl`. This
+is also to be expected and is explained further below.
+
+
 :::
 :::
 
@@ -692,6 +725,22 @@ and the Bayes Factor for Model B is 56.
 - The BF in favour of model B is: `r mcq(c("22", "56", answer="2.5", "0.4", "3.6"))`
 - The BF in favour of model A is: `r fitb(22/56, tol=.5)`
 
+
+`r hide("See explanation")`
+
+
+- For the BF in favour of model A, we calculate $BF_{A} / BF_{B}$ = 22/56 = 0.4
+
+- For the BF in favour of model B, we calculate $BF_{B} / BF_{A}$ = 56/22 = 2.5
+
+
+Note that $1 / 0.4 = 2.5$. We can use this trick ([taking the reciprocal](https://www.cliffsnotes.com/cliffsnotes/subjects/math/in-math-what-does--i-reciprocal-i-mean)) to 'reverse' any Bayes Factor that is < 1 
+so that it expresses evidence in favour of the other hypothesis.
+
+
+`r unhide()`
+
+:::
 
 
 

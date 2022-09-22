@@ -339,6 +339,25 @@ funimagery.edited %>%
   geom_boxplot()
 ```
 
+
+`r hide("Show the correct code")`
+
+This code would produce the plot above:
+
+```{r, eval=F}
+funimagery.edited <- funimagery %>%
+  mutate(weight_lost_trt_followup = kg3 - kg2)
+
+funimagery.edited %>%
+  ggplot(aes(intervention, weight_lost_trt_followup)) +
+  geom_boxplot()
+```
+
+
+
+`r unhide()`
+
+
 :::
 
 
@@ -630,7 +649,7 @@ A *correlation coefficient* (the number) can be between -1 and 1. It is never ou
 
 The plot below shows examples of positive an negative correlations:
 
-```{r, echo=F, message=F}
+```{r, echo=F, include=F}
 library(lavaan)
 f <- '
 y ~~ 1*y
@@ -644,25 +663,14 @@ y ~ -1*c
 set.seed(1245)
 cordata <- simulateData(f, sample.nobs = 100, standardized = T)
 correlate(cordata)
+```
+
+```{r, echo=F}
 cordata %>%
   rename(`Zero correlation`=a, `Positive (0.6)`=b, `Negative (-0.6)`=c) %>%
   pivot_longer(-y) %>%
   ggplot(aes(value, y)) + geom_point() + facet_wrap(~name) + coord_fixed()
-
-ggsave('correlation-examples.png')
 ```
-
-However to get a real feel for what correlations of different values look like, you can play this game:
-
-:::{.direction}
-
-- Demo http://guessthecorrelation.com
-
-:::
-
-![](images/guessthecorrelation.png)
-
-
 
 
 # Summary
@@ -683,14 +691,35 @@ understanding.
 :::{.exercise}
 **Exercise 4**
 
+```{r, include=F}
+pwreng.cor <- fuel %>% select(power, engine_size) %>% corrr::correlate() %>% pull(engine_size) %>% first()
+```
+
+
 1. Load the `corrr` package (use the `library()` function).
-1. Use the `fuel` dataset from the `psydata` package, to calculate the correlation between `power` and `engine_size`.
+1. Use the `fuel` dataset from the `psydata` package, to calculate the correlation between `power` and `engine_size`. The correlation between these variables is: `r fitb(pwreng.cor, tol=.05)`
+1. This means that as engine size increases, power `r mcq(c(answer="Increases", "Decreases", "Stays the same"))`
+
+
+`r hide("Show the code")`
+
+```{r}
+library(corrr)
+fuel %>% 
+  select(power, engine_size) %>% 
+  correlate()
+```
+
+
+`r unhide()`
 
 :::
 
 
 :::{.exercise}
 **Exercise 5**
+
+![](images/guessthecorrelation.png){width=40%}
 
 It's helpful to get a feel for what the data would look like for different correlation coefficients.
 <http://guessthecorrelation.com> is a game designed to help with this.

@@ -61,12 +61,12 @@ By the end of this session you will be able to:
 
 ### Topics covered
 
-- Revision for scatter plots
-- Adding straight lines to scatter plots
-- Explanation of the regression equation (describing a straight line in numbers)
-- The regression line as a *prediction*
-- Residuals as the *error in prediction*
-- Three *assumptions* regression makes
+- [Revision for scatter plots](#scatterplotrevision)
+- [Adding straight lines to scatter plots](#bestfitlines)
+- [Explanation of the regression equation (describing a straight line in numbers)](#equationforline)
+- [The regression line as a *prediction*](#predictions)
+- [Residuals as the *error in prediction*](#residuals)
+- [Three *assumptions* regression makes](#assumptions3)
 
 
 
@@ -107,7 +107,7 @@ For this session we will mostly focus on:
 
 # Scatterplots
 
-## Showing relationships
+## Showing relationships {#scatterplotrevision}
 
 In [session 1 we learned how to make a scatterplot](session-1.html#scatterplots), using `ggplot` and `geom_point`.
 If we plot the `mentalh` data, we end up with something like this:
@@ -151,7 +151,7 @@ mentalh %>%
 
 
 
-## Adding best fit lines with `geom_smooth()`
+## Adding best fit lines with `geom_smooth()` {#bestfitlines}
 
 `r video("O3G3m-iZKbg")`
 
@@ -266,7 +266,7 @@ Now the blue line is the ***best linear fit*** between the predictor and the out
 
 
 
-# Equation for a straight line
+# Equation for a straight line {#equationforline}
 
 
 The line we draw using `method="lm"` is a simple linear regression.
@@ -623,7 +623,7 @@ The expected anxiety score for someone who watched screens for 30 hours is: `r f
 
 
 
-# Residuals
+# Residuals {#residuals}
 
 
 `r video("ceUMrPhpZ-0")`

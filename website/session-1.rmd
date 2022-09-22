@@ -184,7 +184,7 @@ Press <span class="keyshape">↩</span> to run the code. If your console looks l
 - RMarkdown documents combine 'chunks' of R code with regular text
 - This means you can keep notes and explanations right next to where you process and anayse data
 - RMarkdown files end with "`.rmd`" or "`.Rmd`"
-- Make a new chunk: `Ctrl + Alt + I` or `⌘ + Alt + I` (Mac)
+- Make a new chunk: `Ctrl + Alt + I` or `⌘ + ⌥ + I` (Mac)
 
 ---
 

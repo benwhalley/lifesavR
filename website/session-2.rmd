@@ -750,6 +750,7 @@ To the nearest kilo, the mean car weight is `r fitb(round(mean(fuel$weight), 0),
 
 
 :::{.exercise}
+
 **Exercise 10**
 
 ```{r, echo=FALSE, eval=T}
@@ -762,10 +763,11 @@ mubig <- fuel %>%
   summarise(x = mean(mpg)) %>% pull(x)
 
 ```
-Use `filter()` and `summarise()` together to calculate the answers to these questions **to 1 decimal place**:
+Use `filter()` and `summarise()` together to calculate the following numbers:
 
 - the mean `mpg` of cars with engine size > 3000:  `r fitb(mubig, tol=.1)`
 - the standard deviation of `mpg` in cars with 6 cylinders: `r fitb(sd6, tol=.1)`
+
 :::
 
 # How to fix code errors{#fixing}
