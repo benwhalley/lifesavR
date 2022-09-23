@@ -204,14 +204,14 @@ Finding backticks: ![](images/backticksboth.png)
 So far you have seen some of the RStudio interface.
 Now we're going to encounter RMarkdown documents.
 
-RMarkdown documents are a good way to use R which we can use in RStudio to make
+RMarkdown documents allow us to use R within RStudio in a way that makes
 our lives easier.
 
 RMarkdown is a file format which combines R code (chunks) with regular text. This means
 RMarkdown can combine data analysis and graphs with explanatory text, which makes it easier for you to work, keep notes, and communicate your work to others.
 
 
-Once the document is ready there iss an extra step called 'knitting' in
+Once the document is ready there is an extra step called 'knitting' in
 which the R code in your file is run, and the results are interspersed
 with your text to make a file you can share with others.
 Typically that's an html file (i.e. a web page) or sometimes a pdf.
