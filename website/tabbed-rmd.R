@@ -30,7 +30,7 @@ tab <-function(section_id, title, active=c(T,F,F)){
 
 # tab("aaa", "sss", T)
 
-make_tabs <- function(section_id=paste0("tab_", runif(1, 1e4,1e5)), titles=c("Summary", "Code", "Transcript"), tab_ids=NA){
+make_tabs <- function(section_id=paste0("tab_", runif(1, 1e4,1e5)), titles=c("Summary", "Code", "Explanation"), tab_ids=NA){
   tablist <- map2(titles, c(T,F,F), tab, section_id=section_id) %>% paste0(., collapse="\n\n")
   tab(section_id, titles, active=c(T,F,F)) %>% paste0(., collapse="\n\n")
   return(whisker.render('<ul class="nav nav-tabs" role="tablist">{{{tablist}}}</ul>'))
