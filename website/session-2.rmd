@@ -220,8 +220,8 @@ Your **Environment** should now look like this:
 
 # Passing data with pipes `%>%` {#pipe}
 
-
-`r video("YOUTUBEID")`
+<!-- https://youtu.be/APFXK-xoxR0 -->
+`r video("APFXK-xoxR0")`
 `r make_tabs('usingpipestabs')`
 
 :::{.tab-content}
