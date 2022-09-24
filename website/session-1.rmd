@@ -204,13 +204,24 @@ Finding backticks: ![](images/backticksboth.png)
 
 So, so far, we've seen a little bit of the RStudio interface and now we're going to encounter our markdown document. So our markdown documents are a good way to use R and RStudio they help us organize our code and our text and explanations. And we can work with multiple analyses at once on screen and do things like comparing different ways of summarizing the same data or different graphs of the same data.
 
-So it's a really powerful tool and we introduce it here. And we'll use it more throughout the course. RMarkdown is a file format and it combines our code with regular text. So that means rmarkdown can combine data analysis and graphs with explanatory texts, and that makes it easier to communicate with other people.
+So it's a really powerful tool and we introduce it here. And we'll use it more throughout the course. RMarkdown is a file format and it combines our code with regular text. 
+
+So that means rmarkdown can combine data analysis and graphs with explanatory text, and that makes it easier to communicate with other people.
+
 
 Because it's such a powerful tool this module introduces rmarkdown early on, but we won't use all its features just yet. And in this video, I'm just going to introduce the bare bones and show you how you can use rmarkdown as an interactive interface for running our code and looking at the results it produces.
 
 So if you've already run the bootstrap script which is described in the previous video your RStudio interface should look something like this, and you should have a folder called lifesaver and then the current year. So if we click that and then click into the exercises folder, you should see that there are a bunch of different files in here, all of which have this dot RMD file extension.
 
+
 So the file is, is a name plus full stop. And then R M D. So a neat feature of our markdown files or RMD files is that when you open in our them in RStudio, RStudio knows what they are and can highlight the text and the code separately and can make the music to work with. But to do that, it really needs to know that it's an, rmarkdown file and the way that we tell it that is to give it this file extension. So always save your R mark down files with this RMD file extension. 
+
+Once the document is ready there is an extra step called 'knitting' in
+which the R code in your file is run, and the results are interspersed
+with your text to make a file you can share with others.
+Typically that's an html file (i.e. a web page) or sometimes a pdf.
+
+
 
 If I open this file here called simplest markdown example we can have a look at kind of what an, rmarkdown file looks like. And I can show you sort of the basics of how, how it works. So our markdowns, a plain text format. Which means that although R is using a little bit of color here to, to highlight different parts of the document, effectively the font is all the same size and same weight. So we don't have bold and italics in the text itself, but we can use some simple markup commands to tell R, that different parts of the text are either headings or that they're R code and it needs to be interpreting that separately. So we can see at the top of the document, we've got this title block that allows us to store some options and information about our file. But more importantly, we can see that we have this hash symbol and then some text, which is actually a heading. 
 
