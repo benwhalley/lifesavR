@@ -345,8 +345,8 @@ For now, you can see we have a code chunk here:
 :::{.direction}
 
 1. Show cursor interacting with this code chunk
-1. Place cursor anywhere on the line
-1. Run statement using Ctrl + Enter
+1. Click anywhere on the line (this moves your cursor there, highlighting it)
+1. Run the statement using Ctrl + Enter
 
 :::
 

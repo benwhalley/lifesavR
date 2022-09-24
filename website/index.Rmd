@@ -1,6 +1,6 @@
 ---
 title: 'LifesavR 2022'
-author: 'Ben Whalley, Sonja Heinz, Chris Berry, Paul Sharpe'
+author: 'Ben Whalley, Chris Berry, Sonja Heinz, Paul Sharpe, Andy Wills'
 # date: "April 2021"
 bibliography: [references.bib]
 biblio-style: apa6
