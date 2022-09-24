@@ -183,9 +183,11 @@ Press <span class="keyshape">↩</span> to run the code. If your console looks l
 :::{#introducingrmarkdown-summary .tab-pane .active}
 
 - RMarkdown documents combine 'chunks' of R code with regular text
-- This means you can keep notes and explanations right next to where you process and anayse data
+- This means you can keep notes and explanations right next to where you process and analyse data
 - RMarkdown files end with "`.rmd`" or "`.Rmd`"
 - Make a new chunk: `Ctrl + Alt + I` or `⌘ + ⌥ + I` (Mac)
+- Run a line of code `Ctrl + Enter` or `Cmd + Enter` (Mac)
+- You can select part of a statement and run that in the same way
 
 ---
 
@@ -194,71 +196,32 @@ Finding backticks: ![](images/backticksboth.png)
 :::
 
 :::{#introducingrmarkdown-code .tab-pane .fade}
-```{r}
-# No code shown
+```{r, eval=F}
+# some arithmetic in R used to show how
+# we can run all or part of a statement
+
+2 + 2 + 8 + 16
+
+42 * 42
+
+2 +
+  4 +
+  8 +
+  16
 ```
 :::
 
 
 :::{#introducingrmarkdown-explanation .tab-pane .fade}
 
-So, so far, we've seen a little bit of the RStudio interface and now we're going to encounter our markdown document. So our markdown documents are a good way to use R and RStudio they help us organize our code and our text and explanations. And we can work with multiple analyses at once on screen and do things like comparing different ways of summarizing the same data or different graphs of the same data.
 
-So it's a really powerful tool and we introduce it here. And we'll use it more throughout the course. RMarkdown is a file format and it combines our code with regular text. 
+Rmarkdown documents are a good way to use R and RStudio. 
+They help us organize our code alongside explanatory text and notes.
 
-So that means rmarkdown can combine data analysis and graphs with explanatory text, and that makes it easier to communicate with other people.
+We can work interactively with multiple analyses at once on screen, 
+and do things like comparing different ways of summarizing the same data or different graphs of the same data.
 
-
-Because it's such a powerful tool this module introduces rmarkdown early on, but we won't use all its features just yet. And in this video, I'm just going to introduce the bare bones and show you how you can use rmarkdown as an interactive interface for running our code and looking at the results it produces.
-
-So if you've already run the bootstrap script which is described in the previous video your RStudio interface should look something like this, and you should have a folder called lifesaver and then the current year. So if we click that and then click into the exercises folder, you should see that there are a bunch of different files in here, all of which have this dot RMD file extension.
-
-
-So the file is, is a name plus full stop. And then R M D. So a neat feature of our markdown files or RMD files is that when you open in our them in RStudio, RStudio knows what they are and can highlight the text and the code separately and can make the music to work with. But to do that, it really needs to know that it's an, rmarkdown file and the way that we tell it that is to give it this file extension. So always save your R mark down files with this RMD file extension. 
-
-Once the document is ready there is an extra step called 'knitting' in
-which the R code in your file is run, and the results are interspersed
-with your text to make a file you can share with others.
-Typically that's an html file (i.e. a web page) or sometimes a pdf.
-
-
-
-If I open this file here called simplest markdown example we can have a look at kind of what an, rmarkdown file looks like. And I can show you sort of the basics of how, how it works. So our markdowns, a plain text format. Which means that although R is using a little bit of color here to, to highlight different parts of the document, effectively the font is all the same size and same weight. So we don't have bold and italics in the text itself, but we can use some simple markup commands to tell R, that different parts of the text are either headings or that they're R code and it needs to be interpreting that separately. So we can see at the top of the document, we've got this title block that allows us to store some options and information about our file. But more importantly, we can see that we have this hash symbol and then some text, which is actually a heading. 
-
- The next bit of text in the document is this line, which is just explanatory a narrative text. It doesn't do anything, but it allows you to explain the code. So it allows you to keep notes and document what you're doing as you go. And that's a really good habit to get into. 
-
-The next part here is probably the most important bit, and that is a code chunk. So we can see it's a code chunk because it's highlighted separately in gray and it's denoted with these three backtick symbols here, a curly brace, and then the letter 'r', so that might seem a bit fiddly, but I'll show you a shortcut in a minute to type those letters and to create new code chunks.
-
-The code chunk is ended with three more backticks. So R knows that anything between these two sets of backticks is actually R code and can be executed and run. So we can do calculations in between those two sets of backticks. 
-
-So this chunk is already written, but if we want to add another chunk we can just introduce some new space in the document. And what I would typically do is use the keyboard shortcut, which is, on a Mac, option command and I, but on a PC, it would be control alt and I, and those keyboard shortcuts are in the notes to this session. And that has just automatically inserted these letters for us here, but we could do it manually too. We could type backticks, three times the letter R inside curly braces and then three more back ticks. And that has the same effect. So R now knows that anything we write within this this section here is, is R code. So we can write simple calculations two plus four, and we can select that and we can run that code here.
-
-So if we press the green run button here, that'll run everything inside the code. And the, the result is shown just below the chunk here. So the, the number six is obviously the result of that. 
-
-So I've just show you how to run all of the code in a chunk. But it's worth known that there are, there are actually a few different ways of running code in a chunk. And I'll show you those now. 
-
-So if we move down to this part of the file is another example of a code chunk in which we've actually got three separate calculations that we might want to do. And obviously in the future, this might be to do data analysis or to, to make plots. 
-
-So if we press the green play button here, we see all three of those calculations get done and we see the results here. So 30, 1764, and 30, again. 
-
-But often what we want to do is just to run parts of our code. So what we can do there is to put our cursor anywhere on the line that we want to run and then use the keyboard shortcut of on a Mac control and enter on a PC sorry, command an enter on a PC control and enter.
-
-And that will run one line at a time and move our cursor down to the next line. So  that's calculated the first result. If I do it again, press command and, enter or control, enter that calculates the second result. And now our cursor was moved down onto line 37 here, and I can do it again. And that will give us the, the third result and I could have 32 and, and rerun this.
-
-I can put my cursor anywhere in this section and it  press command and enter and it will run and calculate that result. So that's really useful because it means we can step through our code, running it line by line, and we don't have to run everything all at. The final thing to say is that we can actually run even part of a line at once.
-
-So if we wanted to just run part of a calculation and check the results of that, we can select that part of the line and use the same keyboard, shortcut of command or control and enter. And that will calculate just parts of the line. So here we got 24 and we can do it anyway, so we can do it here too.
-
-And that's a really useful technique to get into the habit of, because it allows you to break down your code and just run different parts to check sort of sub elements of whatever you are doing. Final thing to say is that art is, and RStudio are quite smart about working out, which parts of code go together.
-
-So you'll see here that we have two and then a plus symbol, and then the calculation actually continues on the next line and we don't need to select all of this manually. If I put my line anywhere on any of these lines and press commander, our nose to run all of that part together. And that's again, quite useful because it means you don't have to use the mouse to select it.
-
-You can just put your cursor anywhere, press command and enter, and it will run that section of the code. 
-
-So that's it for now have a about the exercises to create a new code chunk for yourself and do some simple calculations. In the exercise you'll note that you are asked to do those calculations in this session one RMD file, which is in the lifesaver exercises folder.
-
-
-:::
+At this point, it's probably best to just watch the video for a demo of what RMarkdown can do.
 
 
 ### Code chunks
@@ -293,18 +256,12 @@ Or here if you're on a Mac:
 
 
 
-
-
-
-
-
 ### Running R code inside chunks
 
 <!-- TODO: re-record VIDEO of running code in a chunk -->
 
 In the picture of a chunk above you might have noticed that we had both some code (`2+2`) and the
 result from that code was shown beneath the chunk (`4`!). To show the result of our code, we first need to ***run*** it.
-
 
 
 There are three ways to run R code within a chunk:
@@ -329,13 +286,12 @@ There are three ways to run R code within a chunk:
 The most common case is when we have given R an instruction (written a *statement*) and we want to run
 just that new code.
 
-A statement is cometimes one line of code, but it can include multiple lines that are related — we'll see more of that
-later.
+A statement is sometimes one line of code, but it can include multiple lines that are related — we'll see more of that later.
 
 For now, you can see we have a code chunk here:
 
 
-```{r}
+```{r, eval=F}
 # some arithmetic in R
 
 2 + 4 + 8
@@ -343,6 +299,8 @@ For now, you can see we have a code chunk here:
 ```
 
 :::{.direction}
+
+In the video we: 
 
 1. Show cursor interacting with this code chunk
 1. Click anywhere on the line (this moves your cursor there, highlighting it)
@@ -360,7 +318,7 @@ This runs or *executes* the whole line, and the result is shown *below* the code
 
 We might want to add some extra calculations to our chunk.
 
-```{r}
+```{r, eval=F}
 # some arithmetic in R
 
 2 + 2 + 8 + 16
@@ -381,9 +339,11 @@ and pressing `Ctrl/Cmd + Enter`
 
 :::{.direction}
 
+In the video we:
+
 - Demonstrate doing this in rstudio show that the cursor can be anywhere on the line and also
 - That if we execute a second statement the result of the first one disappears
-- Also point out that I did separate all the statements with a blank line to make it easier for myself to read (but R doesn t care about this and can work out whether the lines are related by itself)
+- Also point out that I did separate all the statements with a blank line to make it easier for myself to read (but R doesn't care about this and can work out whether the lines are related by itself)
 
 :::
 
