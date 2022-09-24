@@ -1530,7 +1530,7 @@ scatter plot.</p>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span>lm, <span class="at">se=</span>F) <span class="co"># makes straight line with no shading</span></span></code></pre></div>
 </div>
-<div id="O3G3m-iZKbg-transcript" class="tab-pane fade">
+<div id="O3G3m-iZKbg-explanation" class="tab-pane fade">
 <p>We can make a scatterplot as we have done previously:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>mentalh <span class="sc">%&gt;%</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(screen_time, anxiety_score)) <span class="sc">+</span></span>
@@ -1748,7 +1748,7 @@ prediction from the results of <code>lm</code>.</p>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co"># make predictions for our new dataframe (i.e. for screentime = 10)</span></span>
 <span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(simple1, <span class="at">newdata=</span>new_data)</span></code></pre></div>
 </div>
-<div id="v_S39Ozem4JY-transcript" class="tab-pane fade">
+<div id="v_S39Ozem4JY-explanation" class="tab-pane fade">
 <div id="making-a-prediction-by-hand" class="section level2">
 <h2>Making a prediction by hand</h2>
 <p>To recap, we have seen that:</p>
@@ -1926,7 +1926,7 @@ between the individual data points and the fitted line.</p>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># use augment to get predictions and residuals for the original dataset</span></span>
 <span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(simple1)</span></code></pre></div>
 </div>
-<div id="residuals-transcript" class="tab-pane fade">
+<div id="residuals-explanation" class="tab-pane fade">
 <p>We draw the line of best fit as close to the data as we can, but
 unless the model is <em>perfect</em> there will always be some distance
 between the individual data points and the fitted line.</p>
@@ -2074,7 +2074,7 @@ covered this in previous sessions, and in the content above.</p></li>
 <span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
 <span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()  </span></code></pre></div>
 </div>
-<div id="checkingassumptions-transcript" class="tab-pane fade">
+<div id="checkingassumptions-explanation" class="tab-pane fade">
 <blockquote>
 <p>NOTE: I have added a few extra points not mentioned in the video to
 the end of this transcript section</p>

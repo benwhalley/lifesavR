@@ -199,7 +199,7 @@ mentalh %>%
 :::
 
 
-:::{#O3G3m-iZKbg-transcript .tab-pane .fade}
+:::{#O3G3m-iZKbg-explanation .tab-pane .fade}
 
 
 We can make a scatterplot as we have done previously:
@@ -463,7 +463,7 @@ augment(simple1, newdata=new_data)
 :::
 
 
-:::{#v_S39Ozem4JY-transcript .tab-pane .fade}
+:::{#v_S39Ozem4JY-explanation .tab-pane .fade}
 
 ## Making a prediction by hand
 
@@ -663,7 +663,7 @@ augment(simple1)
 :::
 
 
-:::{#residuals-transcript .tab-pane .fade}
+:::{#residuals-explanation .tab-pane .fade}
 
 
 We draw the line of best fit as close to the data as we can, but unless the model is *perfect* there will always be some distance
@@ -877,7 +877,7 @@ augment(simple1) %>%
 :::
 
 
-:::{#checkingassumptions-transcript .tab-pane .fade}
+:::{#checkingassumptions-explanation .tab-pane .fade}
 
 
 

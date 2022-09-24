@@ -89,7 +89,7 @@ next_year <- current_year + 1
 :::
 
 
-:::{#makingvariables-transcript .tab-pane .fade}
+:::{#makingvariables-explanation .tab-pane .fade}
 
 Each instruction we give R produces a result.
 
@@ -252,7 +252,7 @@ fuel_head
 :::
 
 
-:::{#usingpipestabs-transcript .tab-pane .fade}
+:::{#usingpipestabs-explanation .tab-pane .fade}
 We often need to link a few commands together which modify data before analysing it.
 
 For example, if we're working with a big dataset we might only want analyse part of the data. We could do this in stages by selecting only the columns we want to analyse, filtering out any rows we don't want to analyse, and then calculating some descriptive statistics for the data that's left.
@@ -405,7 +405,7 @@ development.europe %>%
 :::
 
 
-:::{#usingfiltertabs-transcript .tab-pane .fade}
+:::{#usingfiltertabs-explanation .tab-pane .fade}
 
 Some datasets are very large. We often want to work with a subset of the data, and `filter()` makes this possible.
 
@@ -627,7 +627,7 @@ development %>%
 :::
 
 
-:::{#usingsummarisetabs-transcript .tab-pane .fade}
+:::{#usingsummarisetabs-explanation .tab-pane .fade}
 Patterns within a dataset are often easier to see after the data is summarised.
 
 Summarising data means reducing lots of numbers to a smaller number.
@@ -809,7 +809,7 @@ development %>%
 :::
 
 
-:::{#fixingcodetabs-transcript .tab-pane .fade}
+:::{#fixingcodetabs-explanation .tab-pane .fade}
 We said earlier that R is a bit like an obedient robot; it will do exactly what you tell it to do.
 
 This means that you need to be very precise when writing R code.

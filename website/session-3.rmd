@@ -87,7 +87,7 @@ iris %>%
 :::
 
 
-:::{#makingboxplotstabs-transcript .tab-pane .fade}
+:::{#makingboxplotstabs-explanation .tab-pane .fade}
 Boxplots are useful for visualising differences between categories or groups.
 
 Using `ggplot()`, making a boxplot is similar to a scatterplot.
@@ -220,7 +220,7 @@ mpg %>%
 :::
 
 
-:::{#scatterplotcolortabs-transcript .tab-pane .fade}
+:::{#scatterplotcolortabs-explanation .tab-pane .fade}
 As we saw before, scatterplots show the relationship between two variables.
 
 Using the `mpg` data, we could plot the size of car engines (`displ`, short for displacement)
@@ -352,7 +352,7 @@ fuel %>%
 :::
 
 
-:::{#typesscalestabs-transcript .tab-pane .fade}
+:::{#typesscalestabs-explanation .tab-pane .fade}
 ```{=html}
 <!--
 TODO - have a ppt of the first explanatory part of this instead of a blank screen
@@ -678,7 +678,7 @@ funimagery %>%
 :::
 
 
-:::{#groupbytabs-transcript .tab-pane .fade}
+:::{#groupbytabs-explanation .tab-pane .fade}
 
 In this video we'll use the `funimagery` dataset, which is part of the `psydata` package. This
 contains data from a randomised controlled trial run in Plymouth [@solbrig2019functional].

@@ -76,7 +76,7 @@ the activities in the blue boxes.**
 :::
 
 
-:::{#using-r-studio-interfacetabs-transcript .tab-pane .fade}
+:::{#using-r-studio-interfacetabs-explanation .tab-pane .fade}
 
 - Using a web browser to access [the RStudio Server at Plymouth University](https://psyrstudio.plymouth.ac.uk).
 
@@ -136,7 +136,7 @@ lifesavr::setup()
 :::
 
 
-:::{#beforeyoustarttabs-transcript .tab-pane .fade}
+:::{#beforeyoustarttabs-explanation .tab-pane .fade}
 
 To get everyone off to the same start we have created a script that copies
 some files into your home folder on the RStudio server.
@@ -200,7 +200,7 @@ Finding backticks: ![](images/backticksboth.png)
 :::
 
 
-:::{#introducingrmarkdown-transcript .tab-pane .fade}
+:::{#introducingrmarkdown-explanation .tab-pane .fade}
 
 So, so far, we've seen a little bit of the RStudio interface and now we're going to encounter our markdown document. So our markdown documents are a good way to use R and RStudio they help us organize our code and our text and explanations. And we can work with multiple analyses at once on screen and do things like comparing different ways of summarizing the same data or different graphs of the same data.
 
@@ -430,7 +430,7 @@ hist(rnorm(100, 0,1))
 :::
 
 
-:::{#whatcanrdotabs-transcript .tab-pane .fade}
+:::{#whatcanrdotabs-explanation .tab-pane .fade}
 R is a computer language for data analysis and visualisation.
 
 RStudio is a user interface to R; it helps you organise your work.
@@ -505,7 +505,7 @@ is an important skill for new psychologists.
 :::
 
 
-:::{#usingtheworkbooks-transcript .tab-pane .fade}
+:::{#usingtheworkbooks-explanation .tab-pane .fade}
 
 Each session has an associated "workbook" file which you will use to complete the exercises in the worksheet. The file
 you need for this session is called `session-1-workbook.rmd`.
@@ -607,7 +607,7 @@ diamonds %>%
 :::
 
 
-:::{#loadingpackagestabs-transcript .tab-pane .fade}
+:::{#loadingpackagestabs-explanation .tab-pane .fade}
 By loading 'packages', you can add extra functions and datasets to R.
 
 Packages are a powerful feature which allow R to be extended. This means you can run almost
@@ -732,7 +732,7 @@ glimpse(development)
 :::
 
 
-:::{#datasetstabs-transcript .tab-pane .fade}
+:::{#datasetstabs-explanation .tab-pane .fade}
 
 
 When we say "dataset" or "data", we mean something like a spreadsheet:
@@ -959,7 +959,7 @@ fuel %>%
 :::
 
 
-:::{#scatterplotstabs-transcript .tab-pane .fade}
+:::{#scatterplotstabs-explanation .tab-pane .fade}
 A scatterplot shows the *relationship* between two variables by plotting their values as points on the x-axis (the
 left-right position) and the y-axis (up-down).
 
@@ -1115,7 +1115,7 @@ fuel %>%
 :::
 
 
-:::{#workinginteractivelytabs-transcript .tab-pane .fade}
+:::{#workinginteractivelytabs-explanation .tab-pane .fade}
 
 In an earlier video we introduced RMarkdown. In this clip, we recap on some useful things
 to know when using RMarkdown files in RStudio. It's intended as a kind of reference

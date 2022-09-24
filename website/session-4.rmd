@@ -74,7 +74,7 @@ This session is all about describing and visualising patterns in the data to ans
 :::
 
 
-:::{#describeoverviewtabs-transcript .tab-pane .fade}
+:::{#describeoverviewtabs-explanation .tab-pane .fade}
 
 
 An important task for researchers is to ***answer questions using data***.
@@ -147,7 +147,7 @@ funimagery %>%
 :::
 
 
-:::{#describe-centrantend-transcript .tab-pane .fade}
+:::{#describe-centrantend-explanation .tab-pane .fade}
 
 
 If we have a single continous variable — that is, one stored in a numeric column in R —  then can describe a few things about it, including:
@@ -407,7 +407,7 @@ earnings %>%
 :::
 
 
-:::{#describefrequencytabs-transcript .tab-pane .fade}
+:::{#describefrequencytabs-explanation .tab-pane .fade}
 
 With categorical data it's not possible to calculate things like an average;
 what would the average of 3 apples and 4 oranges be, for example?
@@ -552,7 +552,7 @@ funimagery %>%
 :::
 
 
-:::{#describerelationshipstabs-transcript .tab-pane .fade}
+:::{#describerelationshipstabs-explanation .tab-pane .fade}
 
 When we have 2 or more continuous variables, we can also describe the *relationships* between them.
 

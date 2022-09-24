@@ -88,7 +88,7 @@ The important thing to remember about Bayes Factors is that they ***compare two 
 :::
 
 
-:::{#bayes-fluke-transcript .tab-pane .fade}
+:::{#bayes-fluke-explanation .tab-pane .fade}
 Whenever we collect data, there is some element of chance. If the data we have are limited, it's
 possible that any patterns have only occurred by chance. We need to be able to quantify how much
 information our data provide --- that is, how much more or less confident about the patterns we are
@@ -214,7 +214,7 @@ ttestBF(formula = weight_lost_end_trt ~ intervention, data=funimagery)
 :::
 
 
-:::{#doitbayesianttest-transcript .tab-pane .fade}
+:::{#doitbayesianttest-explanation .tab-pane .fade}
 A 'Bayesian t-test' is a procedure which calculates the Bayes Factor for a difference between
 groups.
 
@@ -356,7 +356,7 @@ with(happy.2019,  correlationBF(happiness, perceptions_of_corruption))
 :::
 
 
-:::{#bayes-corr-transcript .tab-pane .fade}
+:::{#bayes-corr-explanation .tab-pane .fade}
 
 
 A Bayes Factor for a correlation compares the two hypotheses that either:

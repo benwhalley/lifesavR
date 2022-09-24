@@ -172,7 +172,7 @@ modelB
 ```
 :::
 
-::: {#Wia2TuH21mQ-transcript .tab-pane}
+::: {#Wia2TuH21mQ-explanation .tab-pane}
 
 This video provides an overview of multiple regression, and does a
 rapid walk-through of fitting two models which represent
@@ -489,7 +489,7 @@ glance(modelB)
 ```
 :::
 
-::: {#evalmodels-transcript .tab-pane}
+::: {#evalmodels-explanation .tab-pane}
 We saw previously that [residuals represent the *distance between the predicted and observed
 data*](session-6.html#residuals). *Larger residuals mean bigger errors in prediction*, and amaller
 errors are better.
@@ -607,7 +607,7 @@ modelB / modelA
 ```
 :::
 
-::: {#tabstrengthevid-transcript .tab-pane}
+::: {#tabstrengthevid-explanation .tab-pane}
 As we saw in [session 5](session-5.html), a Bayes Factor always compares two hypotheses. It tells us
 how much more likely one hypothesis is than an alternative hypothesis, given the data we collected.
 
