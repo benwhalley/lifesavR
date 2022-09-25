@@ -12,12 +12,17 @@ library(...)
 
 This R Markdown document is your workbook for session three of the lifesaveR module.
 
+
+
 # Making boxplots
 
 ## Exercise 1
 
 Use the `iris` dataset to create a boxplot with `Species` on the x-axis and `Sepal.Width` on the y-axis (sepals are the
 leaves that encase an iris flower).
+
+
+
 
 # Using colour
 
@@ -28,6 +33,9 @@ leaves that encase an iris flower).
    on the y-axis.
 3. Add colour to this scatterplot: make each `continent` a different colour.
 4. Run the chunk of code.
+
+
+
 
 # Using different types of data and visual scales
 
@@ -47,6 +55,9 @@ exercises).
 
 Use the `fuel` dataset to make a boxplot showing miles per gallon on the y-axis, and number of gears (`gear`) on the
 x-axis.
+
+
+
 
 # Using `group_by()` to make a summary table and compare groups
 
@@ -73,9 +84,13 @@ The built-in dataset `chickwts` contains weights of chicks (in grams) fed on dif
 
 Use the output to answer the questions in the worksheet.
 
+
+
+
 # Check your knowledge
 
 Write your answers below each question and save your workbook for later.
+
 
 ## Which functions are needed to make a boxplot?
 
@@ -92,6 +107,9 @@ Write your answers below each question and save your workbook for later.
 ## How would you calculate the mean for all levels of a factor (e.g. for continent in the `development` dataset)?
 
 ## How would you calculate means and standard deviations for all combinations of levels in two factors?
+
+
+
 
 # Extension exercises
 

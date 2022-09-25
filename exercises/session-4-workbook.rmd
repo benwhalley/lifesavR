@@ -12,6 +12,7 @@ library(...)
 
 This R Markdown document is your workbook for session four of the lifesaveR module.
 
+
 # Central tendency and spread
 
 ## Exercise 1
@@ -27,12 +28,18 @@ In the video you saw how to use `mutate()` to create a new column which is the d
 followup.
 2. Make a boxplot of these data.
 
+
+
+
 # The *frequency* of responses
 
 ## Exercise 3
 
 1. Using the `funimagery` data and `count()` to count how many participants there were in each intervention group.
 2. How many men were in the FIT group?
+
+
+
 
 # Relationships
 
@@ -45,9 +52,14 @@ followup.
 
 Play "Guess the correlation" in the worksheet.
 
+
+
+
 # Check your knowledge
 
 Write your answers below each question and save your workbook for later.
+
+
 
 
 # Extension exercises

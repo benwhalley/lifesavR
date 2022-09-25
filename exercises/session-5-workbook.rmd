@@ -16,9 +16,11 @@ This R Markdown document is your workbook for session five of the lifesaveR modu
 > 4. Use ttestBF()` to calculate the Bayes Factor for this difference.
 
 
+
 # Check your knowledge
 
 Write your answers below each question and save your workbook for later.
+
 
 ## What hypotheses are being compared when we calculate a Bayes Factor for a correlation?
 

@@ -3,7 +3,13 @@ title: "LifesaveR Session 6 Workbook: Regression"
 output: html_document
 ---
 
-This R Markdown document is your workbook for session 6 of the lifesaveR course
+This R Markdown document is your workbook for session 6 of the lifesaveR course.
+
+It is less structured than previous workbooks because you now have a working 
+knowledge of Rmarkdown and will be able to organise your own work.
+
+Remember to add a chunk to import the necessary packages.
+
 
 
 # Do it: make a scatter plot
@@ -17,13 +23,13 @@ This R Markdown document is your workbook for session 6 of the lifesaveR course
 
 # Do it: Adding best fit lines 
 
-ADD YOUR OWN WORK HERE
+[ADD YOUR OWN WORK HERE]
 
 
 
 # Do it: ...
 
-Add additional sections for each of the exercises in the session.
+[Add additional sections for each of the exercises in the session.]
 
 
 

@@ -6,15 +6,16 @@ output: html_document
 This R Markdown document is your workbook for session 8 of the lifesaveR course
 
 
-# Do it: XXX
+# Do it: [X]
 
 ## Exercise 1
 
-XXX
+TO COMPLETE
+
+
+
 
 # Check your knowledge
 
 Write your answers below each question and save your workbook for later.
-
-## Q1
 
