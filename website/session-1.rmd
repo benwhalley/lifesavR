@@ -69,7 +69,7 @@ the activities in the blue boxes.**
 :::
 
 :::{#using-r-studio-interfacetabs-code .tab-pane .fade}
-```{r}
+```{r, eval=F}
 # in the video I enter this simple calculation in the console and R computes the result
 2 + 2
 ```
@@ -78,13 +78,21 @@ the activities in the blue boxes.**
 
 :::{#using-r-studio-interfacetabs-explanation .tab-pane .fade}
 
-- Using a web browser to access [the RStudio Server at Plymouth University](https://psyrstudio.plymouth.ac.uk).
+*The following is not a verbatim transcript of the video, but summarises the main points covered:*
+
+To access R we use a web browser, go to [the RStudio Server at Plymouth University](https://psyrstudio.plymouth.ac.uk).
+
+This gives us access to the R software, without having to install it on our own computer.
+
 
 :::{.tip}
 If you're using Windows or an older Mac we strongly recommend [downloading Chrome](https://www.google.co.uk/chrome/) or Firefox and using that.  If you have any issues with RStudio this is likely the first suggestion we will make.
 
 - [Install Chrome now](https://www.google.co.uk/chrome/)
 :::
+
+
+-----------------------
 
 When you login to RStudio, you'll be greeted with a screen that looks something like the image below.
 
@@ -138,14 +146,22 @@ lifesavr::setup()
 
 :::{#beforeyoustarttabs-explanation .tab-pane .fade}
 
-To get everyone off to the same start we have created a script that copies
-some files into your home folder on the RStudio server.
+To get everyone off to the same start we have created an R script that copies
+some files into your home folder on the RStudio server, and sets up some preferences
+for you.
 
 To run this script, we just copy and paste the following line into the Console:
 
 ```{r, eval=F}
 lifesavr::setup()
 ```
+
+
+You will see various messages about copiyng files. 
+
+R will then change the directory shown in the "files" pane. You will see
+a list of "workbooks". These are documents we have created for you to use
+to record your work during the course.
 
 :::
 
@@ -219,19 +235,21 @@ Rmarkdown documents are a good way to use R and RStudio.
 They help us organize our code alongside explanatory text and notes.
 
 We can work interactively with multiple analyses at once on screen, 
-and do things like comparing different ways of summarizing the same data or different graphs of the same data.
+and do things like comparing different ways of summarizing the same data or 
+different graphs of the same data.
 
-At this point, it's probably best to just watch the video for a demo of what RMarkdown can do.
+(At this point, it's probably best to watch the video for a demo of what 
+RMarkdown can do.)
 
 
 ### Code chunks
 
-RMarkdown makes a distinction between R code and regular, narrative text.
+RMarkdown makes a distinction between R code and regular text.
 
-This tells RStudio how to treat each part of your document — whether to display
+Markers in the document tell RStudio how to treat each part of your work — whether to display
 it as text, or format it as code (and give us warnings when there are errors and so on).
 
-This is done by putting the code inside some special
+To mark something as code, we put it inside some special
 characters, called backticks, creating a  ***code chunk***.
 
 A chunk is opened using the symbols `` ```{r} ``, and closed using
@@ -377,7 +395,7 @@ In the video we:
 :::
 
 :::{#whatcanrdotabs-code .tab-pane .fade}
-```{r}
+```{r, eval=F}
 # multiply two numbers
 2 * 221
 
@@ -401,9 +419,12 @@ R can do everything from simple arithmetic and plotting to complex data analysis
 
 For example, you can do simple arithmetic like
 
-[`2 * 221`]
+```{r eval=F}
+2 * 221
+```
 
-We could generate some random numbers with a [normal distribution](https://www.khanacademy.org/math/statistics-probability/modeling-distributions-of-data/normal-distributions-library/a/normal-distributions-review)
+
+Or, we could generate some random numbers with a [normal distribution](https://www.khanacademy.org/math/statistics-probability/modeling-distributions-of-data/normal-distributions-library/a/normal-distributions-review)
 
 ```{r}
 rnorm(10, 0,1)
@@ -423,6 +444,8 @@ You should think of R as a robot.
 The robot is extremely fast, powerful and tireless; but it’s also literal-minded, and
 won’t think for itself or take the initiative. You need to tell it *exactly* what to do, by providing very precise
 instructions.
+
+### Aids reproducibility
 
 The advantage of writing detailed instructions is that you have a detailed, reproducible
 version of all your analyses.
@@ -444,7 +467,6 @@ is an important skill for new psychologists.
 
 <!-- https://youtu.be/7Gb5EWL35Vo -->
 
-
 `r video("7Gb5EWL35Vo")`
 `r make_tabs('usingtheworkbooks')`
 
@@ -459,7 +481,7 @@ is an important skill for new psychologists.
 :::
 
 :::{#usingtheworkbooks-code .tab-pane .fade}
-```{r}
+```{r, eval=F}
 # No code shown in this video
 ```
 :::
@@ -491,7 +513,8 @@ Click on `session-1-workbook.rmd` in the **Files** pane to open it
 1. Run the code by pressing <span class="keyshape">Ctrl</span> + <span class="keyshape">↵</span> (Windows, Linux) or
    <span class="keyshape">⌘</span> + <span class="keyshape">↩</span> (Mac).
 
-You should see the result of the sum appear below the chunk:
+You should see the result of the sum appear below the chunk, something like this 
+(although the colours will be different):
 
 ```{r runchunkexample}
 10 + 12 + 20
@@ -532,6 +555,12 @@ This adds up two of the three numbers:
 The output from the chunk should look like this:
 
 ![Result from Exercise 3](images/ex4.png)
+
+
+1. If you typed the backticks to make the code chunk by hand, try making a new 
+chunk using the keyboard shortcut. On a PC that's `Ctrl + Alt + I` and on a Mac
+it's  `Command + Option + I`.
+
 :::
 
 
@@ -555,7 +584,7 @@ The output from the chunk should look like this:
 :::
 
 :::{#loadingpackagestabs-code .tab-pane .fade}
-```{r}
+```{r, eval=F}
 # load the tidyverse package which includes the ggplot function
 # (this also loads the diamonds example dataset, and some others)
 library(tidyverse)
@@ -670,7 +699,7 @@ that beginners encounter. They normally mean that you have
 
 :::{#datasetstabs-code .tab-pane .fade}
 
-```{r}
+```{r, eval=F}
 # always load the tidyverse first
 library(tidyverse)
 
@@ -898,7 +927,7 @@ Our student pilot-testers suggested that now would be a good time for a short br
 
 :::{#scatterplotstabs-code .tab-pane .fade}
 
-```{r}
+```{r, eval=F}
 # if you have not already, load these packages
 library(tidyverse)
 library(psydata)
@@ -1069,7 +1098,7 @@ fuel %>%
 :::
 
 :::{#workinginteractivelytabs-code .tab-pane .fade}
-```{r}
+```{r, eval=F}
 # No new code shown in this video
 ```
 :::
@@ -1163,9 +1192,6 @@ Make a scatterplot which shows the relationships between petal widths and length
 :::
 
 
-# Congratulations!
-
-You've completed all the exercises for this session, and are well on the way to working fluently in R. Well done!
 
 
 

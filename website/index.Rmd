@@ -15,11 +15,16 @@ source('_first_chunk.R')
 
 <meta property="og:description" content="LifesaveR is a short course in statistics and data visualisation using R." />
 
-> LifesaveR is a short course in statistics and data visualisation using R.
+**LifesaveR is a short course in statistics and data visualisation using R.**
+
+
+![](images/lifering.gif){width=20%}
 
 # Quick links
 
-[Prior preparation](#prep)
+The list below are links to each of the workshops. Read below, though, for an introduction to the course.
+
+<!-- [Prior preparation](#prep) -->
 
 1.  [Getting started](session-1.html)
 2.  [Working with R](session-2.html)
@@ -37,12 +42,12 @@ source('_first_chunk.R')
 
 <br>
 
--   [Cheat-sheets/reference](https://plymouthpsychology.github.io/cheatR/)
--   [Topic index](#topicindex)
+[Cheat-sheets/reference](https://plymouthpsychology.github.io/cheatR/) <br>
+[Topic index](#topicindex)
 
-## Previous versions of this site
+<!-- ## Previous versions of this site -->
 
--   [Academic year 2021/2](2021_2/)
+<!-- -   [Academic year 2021/2](2021_2/) -->
 
 # Overview
 
@@ -70,17 +75,17 @@ This is a lot like learning R.
 -   In later in your degree, and if you continue using R in your own work, you might develop mastery
     and really start to understand the core principles involved, solving problems in creative ways.
 
-### Practice makes perfect
+## Practice makes perfect
 
-> One final way R and martial arts are similar is that there's no substitute for practice. It's
-> simply not possible to 'fake it'.
+One final way R and martial arts are similar is that there's no substitute for practice. It's
+simply not possible to 'fake it'.
 
 In martial arts, a blow to the head is direct and effective feedback that your basic skills like
 blocking or footwork need practice. In R, error messages and broken code can feel similarly
 unforgiving. The solution (in both cases) is to use failures constructively: ensure the basics are
 correct, and continue to train!
 
-### Mindset matters
+## Mindset matters
 
 You might ask what you can do to succeed on this course and make the most of your training.
 
@@ -118,7 +123,7 @@ seem to us to correlate with success.
 
 These worksheets are designed based on student feedback over many years.
 
-**They are intended to be used in supported workshops where students work at their own pace,
+**They are intended to be used in supported workshops, where students work at their own pace,
 individually or in pairs, with experts on hand to answer questions and resolve problems quickly.**
 You can also use the worksheets alone, or without support, although we don't recommend this; in the
 early stages students can often become stuck or demoralised when they are bogged down with lots of
@@ -237,7 +242,7 @@ This index links to all the important R functions and topics within the course.
 -   [`mean()`](session-2.html#summarise) summarise data using the mean
 -   [`median()`](session-2.html#summarise) summarise data using the median
 -   [Multiple regression](session-7.html)
--   [psydata](session-1.html#datasets) package including datasets used in this module
+-   [`psydata`](session-1.html#datasets) package including datasets used in this module
 -   [package](session-1.html#packages) adds functionality to R
 -   [R](session-1.html#cando) programming language for data science
 -   [RMarkdown](session-1.html#interactive) combine R code with regular text
@@ -256,22 +261,21 @@ This index links to all the important R functions and topics within the course.
     groups
     -   see [Bayes Factor](#bf)
 -   [`tidyverse`](session-1.html#packages) essential package for this module
--   [variable](session-2.html#variables) container for storing things in R
+-   [variable](session-2.html#variables), a container for storing things (in R)
 
-# Getting support
+
+# Troubleshooting
 
 If you are having trouble with the RStudio interface, please do make sure you are running a new
 version of your browser. Google Chrome is recommended by the University, although if you are
 (rightly) concerned about your privacy [Firefox](https://www.mozilla.org/en-GB/firefox/new/) also
 works well.
 
-Plymouth psychology students should always seek help - in the first instance - on the Discourse
-Forum. The RStudio/Statistics category has lots of posts answering common questions and solutions
-for common bugs:
+Andy Wills hosts a helpful guide to common errors students face here: <http://www.andywills.info/rminr/common-errors.html>
 
-[https://discourse.psy.plymouth.ac.uk/c/rstudio/](https://discourse.psy.plymouth.ac.uk/c/rstudio/21)
+
 
 # License
 
-All content on this site distributed under a [Creative Commons](https://creativecommons.org/)
+Unless otherwise noted, all content on this site distributed under a [Creative Commons](https://creativecommons.org/)
 licence. CC-BY-SA 4.0.
