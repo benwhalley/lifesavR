@@ -157,7 +157,7 @@ lifesavr::setup()
 ```
 
 
-You will see various messages about copiyng files. 
+You will see various messages about copying files. 
 
 R will then change the directory shown in the "files" pane. You will see
 a list of "workbooks". These are documents we have created for you to use
