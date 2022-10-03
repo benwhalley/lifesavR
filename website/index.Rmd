@@ -72,7 +72,7 @@ This is a lot like learning R.
 -   In this course we aim to teach general principles for working with data. Over time you will
     develop understanding and expertise that lets you combine techniques to solve new problems. With
     repeated practice your skills are honed and you gain strength.
--   In later in your degree, and if you continue using R in your own work, you might develop mastery
+-   Later in your degree, and if you continue using R in your own work, you might develop mastery
     and really start to understand the core principles involved, solving problems in creative ways.
 
 ## Practice makes perfect
