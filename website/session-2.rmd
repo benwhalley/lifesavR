@@ -240,11 +240,11 @@ Your **Environment** should now look like this:
 library(tidyverse)
 library(psydata)
 
-# pipe mtcars into head()
+# pipe fuel into head()
 fuel %>% head()
 
-# store first few rows of mtcars
-fuel_head <- mtcars %>% head()
+# store first few rows of fuel as a new variable
+fuel_head <- fuel %>% head()
 
 # see the stored subset
 fuel_head
@@ -267,7 +267,7 @@ It looks like this `%>%`.
 
 Press `Ctrl + Shift + M` (Windows/Linux) or `⌘ + Shift + M` (Mac) to add a pipe.
 
-In session 1, you used the following code to "pipe" the `mtcars` dataset into `head()`, which shows just the first few rows:
+In session 1, you used the following code to "pipe" the `fuel` dataset into `head()`, which shows just the first few rows:
 
 ```{r}
 fuel %>% head()
@@ -283,16 +283,16 @@ Visual reminder that the `tidyverse` package needs loading first
 You can think of your data as flowing along lengths of pipe, joined by functions which do things to the data, step by
 step, until the result you want plops out at the end.
 
-Each `%>%` should be read as the word "then", e.g. "pipe the `mtcars` dataset, *then* `head()` it".
+Each `%>%` should be read as the word "then", e.g. "pipe the `fuel` dataset, *then* `head()` it".
 
 The `>` in the pipe function reminds you of the direction in which your data is flowing (it only works left to right).
 
 It's important to know that the pipe *doesn't store the results* of these steps.
 
-Sometimes that's OK. In our first example we just wanted to look at the first few rows of the `mtcars` data.
+Sometimes that's OK. In our first example we just wanted to look at the first few rows of the `fuel` data.
 
 But, you will usually want to save the result of a pipeline in a new variable.  
-For example, if we wanted to save the first few rows of the `mtcars` data  to a *new* variable we would write:
+For example, if we wanted to save the first few rows of the `fuel` data  to a *new* variable we would write:
 
 ```{r}
 fuel_head <- fuel %>% head()
@@ -302,8 +302,8 @@ Here we combine *assignment* with a *pipeline*.
 
 Remember that it is the final result of the commands on the right hand side of the `<-` that are assigned to the variable.
 
-The result of the pipeline (a `data.frame` containing the first few rows of `mtcars`) is saved to a
-new variable called `mtcars_head`.
+The result of the pipeline (a `data.frame` containing the first few rows of `fuel`) is saved to a
+new variable called `fuel_head`.
 
 You can explore your variables using the **Environment** pane. A `data.frame` will have an icon that looks like a
 spreadsheet. If you click on the icon, the `data.frame` is displayed in a new tab in the **Source** pane.

@@ -1584,7 +1584,7 @@ pipes</li>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psydata)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># pipe mtcars into head()</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># pipe fuel into head()</span></span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>fuel <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
 <pre class="bg-success"><code>   mpg cyl engine_size power weight gear automatic
 1 21.0   6        2620   110   1188    4      TRUE
@@ -1593,18 +1593,18 @@ pipes</li>
 4 21.4   6        4230   110   1458    3     FALSE
 5 18.7   8        5900   175   1560    3     FALSE
 6 18.1   6        3690   105   1569    3     FALSE</code></pre>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># store first few rows of mtcars</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>fuel_head <span class="ot">&lt;-</span> mtcars <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># store first few rows of fuel as a new variable</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>fuel_head <span class="ot">&lt;-</span> fuel <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># see the stored subset</span></span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>fuel_head</span></code></pre></div>
-<pre class="bg-success"><code>                   mpg cyl disp  hp drat    wt  qsec vs am gear carb
-Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
-Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
-Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
-Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
-Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
-Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
+<pre class="bg-success"><code>   mpg cyl engine_size power weight gear automatic
+1 21.0   6        2620   110   1188    4      TRUE
+2 21.0   6        2620   110   1304    4      TRUE
+3 22.8   4        1770    93   1052    4      TRUE
+4 21.4   6        4230   110   1458    3     FALSE
+5 18.7   8        5900   175   1560    3     FALSE
+6 18.1   6        3690   105   1569    3     FALSE</code></pre>
 </div>
 <div id="usingpipestabs-explanation" class="tab-pane fade">
 <p>We often need to link a few commands together which modify data
@@ -1624,8 +1624,8 @@ another way to link together multiple instructions.</p>
 <p>Press <code>Ctrl + Shift + M</code> (Windows/Linux) or
 <code>⌘ + Shift + M</code> (Mac) to add a pipe.</p>
 <p>In session 1, you used the following code to “pipe” the
-<code>mtcars</code> dataset into <code>head()</code>, which shows just
-the first few rows:</p>
+<code>fuel</code> dataset into <code>head()</code>, which shows just the
+first few rows:</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>fuel <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
 <pre class="bg-success"><code>   mpg cyl engine_size power weight gear automatic
 1 21.0   6        2620   110   1188    4      TRUE
@@ -1642,7 +1642,7 @@ first</p>
 by functions which do things to the data, step by step, until the result
 you want plops out at the end.</p>
 <p>Each <code>%&gt;%</code> should be read as the word “then”,
-e.g. “pipe the <code>mtcars</code> dataset, <em>then</em>
+e.g. “pipe the <code>fuel</code> dataset, <em>then</em>
 <code>head()</code> it”.</p>
 <p>The <code>&gt;</code> in the pipe function reminds you of the
 direction in which your data is flowing (it only works left to
@@ -1650,19 +1650,19 @@ right).</p>
 <p>It’s important to know that the pipe <em>doesn’t store the
 results</em> of these steps.</p>
 <p>Sometimes that’s OK. In our first example we just wanted to look at
-the first few rows of the <code>mtcars</code> data.</p>
+the first few rows of the <code>fuel</code> data.</p>
 <p>But, you will usually want to save the result of a pipeline in a new
 variable.<br />
 For example, if we wanted to save the first few rows of the
-<code>mtcars</code> data to a <em>new</em> variable we would write:</p>
+<code>fuel</code> data to a <em>new</em> variable we would write:</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>fuel_head <span class="ot">&lt;-</span> fuel <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
 <p>Here we combine <em>assignment</em> with a <em>pipeline</em>.</p>
 <p>Remember that it is the final result of the commands on the right
 hand side of the <code>&lt;-</code> that are assigned to the
 variable.</p>
 <p>The result of the pipeline (a <code>data.frame</code> containing the
-first few rows of <code>mtcars</code>) is saved to a new variable called
-<code>mtcars_head</code>.</p>
+first few rows of <code>fuel</code>) is saved to a new variable called
+<code>fuel_head</code>.</p>
 <p>You can explore your variables using the <strong>Environment</strong>
 pane. A <code>data.frame</code> will have an icon that looks like a
 spreadsheet. If you click on the icon, the <code>data.frame</code> is
@@ -1698,7 +1698,7 @@ assign the results to a variable called <code>fuel_head</code>.</li>
 <code>fuel_head</code>.</li>
 </ol>
 <p>The engine size of the vehicle with the highest miles per gallon was
-<span id="Q48315" class="webex-fitb"><input class="solveme  nospaces" data-digits="4" size="4" style="width:4em;" data-answer="[&quot;1770&quot;]"></input><span class="solvedme"></span></span>cc.</p>
+<span id="Q732982" class="webex-fitb"><input class="solveme  nospaces" data-digits="4" size="4" style="width:4em;" data-answer="[&quot;1770&quot;]"></input><span class="solvedme"></span></span>cc.</p>
 </div>
 </div>
 <div id="filter" class="section level1">
@@ -2196,22 +2196,22 @@ write:</p>
 <li>Note that <code>fuel</code> stores <code>weight</code> in
 kilos.</li>
 </ol>
-<p>The median car weight is <span id="Q746788" class="webex-fitb"><input class="solveme  nospaces calculator" data-tol="0.1" data-digits="4" size="4" style="width:4em;" data-answer="[&quot;1508&quot;]"></input><span class="solvedme"></span></span> kg.</p>
+<p>The median car weight is <span id="Q629528" class="webex-fitb"><input class="solveme  nospaces calculator" data-tol="0.1" data-digits="4" size="4" style="width:4em;" data-answer="[&quot;1508&quot;]"></input><span class="solvedme"></span></span> kg.</p>
 <p><strong>Exercise 9</strong></p>
 <ol style="list-style-type: decimal">
 <li>Amend the code to also calculate the mean and standard deviation of
 <code>weight</code>.</li>
 </ol>
-<p>To the nearest kilo, the mean car weight is <span id="Q419314" class="webex-fitb"><input class="solveme  nospaces calculator" data-tol="0.1" data-digits="4" size="4" style="width:4em;" data-answer="[&quot;1459&quot;]"></input><span class="solvedme"></span></span> kg, and the standard deviation is <span id="Q582144" class="webex-fitb"><input class="solveme  nospaces calculator" data-tol="0.1" data-digits="4" size="3" style="width:3em;" data-answer="[&quot;444&quot;]"></input><span class="solvedme"></span></span> kg.</p>
+<p>To the nearest kilo, the mean car weight is <span id="Q155501" class="webex-fitb"><input class="solveme  nospaces calculator" data-tol="0.1" data-digits="4" size="4" style="width:4em;" data-answer="[&quot;1459&quot;]"></input><span class="solvedme"></span></span> kg, and the standard deviation is <span id="Q474225" class="webex-fitb"><input class="solveme  nospaces calculator" data-tol="0.1" data-digits="4" size="3" style="width:3em;" data-answer="[&quot;444&quot;]"></input><span class="solvedme"></span></span> kg.</p>
 </div>
 <div class="exercise">
 <p><strong>Exercise 10</strong></p>
 <p>Use <code>filter()</code> and <code>summarise()</code> together to
 calculate the following numbers:</p>
 <ul>
-<li>the mean <code>mpg</code> of cars with engine size &gt; 3000: <span id="Q830734" class="webex-fitb"><input class="solveme  nospaces calculator" data-tol="0.1" data-digits="4" size="8" style="width:8em;" data-answer="[&quot;15.68125&quot;]"></input><span class="solvedme"></span></span></li>
+<li>the mean <code>mpg</code> of cars with engine size &gt; 3000: <span id="Q435187" class="webex-fitb"><input class="solveme  nospaces calculator" data-tol="0.1" data-digits="4" size="8" style="width:8em;" data-answer="[&quot;15.68125&quot;]"></input><span class="solvedme"></span></span></li>
 <li>the standard deviation of <code>mpg</code> in cars with 6 cylinders:
-<span id="Q13531" class="webex-fitb"><input class="solveme  nospaces calculator" data-tol="0.1" data-digits="4" size="16" style="width:16em;" data-answer="[&quot;1.45356704106042&quot;]"></input><span class="solvedme"></span></span></li>
+<span id="Q155638" class="webex-fitb"><input class="solveme  nospaces calculator" data-tol="0.1" data-digits="4" size="16" style="width:16em;" data-answer="[&quot;1.45356704106042&quot;]"></input><span class="solvedme"></span></span></li>
 </ul>
 </div>
 </div>
@@ -2520,13 +2520,13 @@ numeric column?</li>
 <p><strong><em>Please remember that these extension exercises are
 <em>not</em> required to pass the course.</em></strong> We include them
 because some students work through these materials much more quickly
-than others — perhaps because they have more previous experience with
+than others — often because they have more previous experience with
 programming — and we aim to give all students the opportunity to stretch
 their skills.</p>
-<p>If you do find you have extra time, however, these exercises are
-intended to provide additional practice in the techniques taught here,
-and to be useful preparation for using R independently in a stage 4 or
-MSc research project.</p>
+<p>If you do find you have extra time these exercises are intended to
+provide additional practice in the techniques covered and to be useful
+preparation for using R independently in a stage 4 or MSc research
+project.</p>
 <div class="exercise">
 <p><strong>Extension exercise 1</strong></p>
 <p>This output uses the <code>fuel</code> dataset to show vehicles with
@@ -2549,7 +2549,7 @@ MSc research project.</p>
 <p>Filter and summarise the <code>iris</code> dataset in order to answer
 the following question <strong>to 2 decimal places</strong>:</p>
 <p>The mean petal width of the <code>versicolor</code> species of iris
-is <span id="Q11522" class="webex-fitb"><input class="solveme  nospaces calculator" data-tol="0.2" data-digits="4" size="4" style="width:4em;" data-answer="[&quot;1.33&quot;]"></input><span class="solvedme"></span></span>cm.</p>
+is <span id="Q833137" class="webex-fitb"><input class="solveme  nospaces calculator" data-tol="0.2" data-digits="4" size="4" style="width:4em;" data-answer="[&quot;1.33&quot;]"></input><span class="solvedme"></span></span>cm.</p>
 </div>
 </div>
 <div id="additional-resources" class="section level1">

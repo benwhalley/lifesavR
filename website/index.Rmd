@@ -26,18 +26,18 @@ The list below are links to each of the workshops. Read below, though, for an in
 
 <!-- [Prior preparation](#prep) -->
 
-1.  [Getting started](session-1.html)
-2.  [Working with R](session-2.html)
-3.  [Grouped data](session-3.html)
-4.  [Describing patterns, answering questions](session-4.html)
-5.  [Quantifying evidence](session-5.html)
+- Session 1: [Getting started](session-1.html)
+- Session 2: [Working with R](session-2.html)
+- Session 3:  [Grouped data](session-3.html)
+- Session 4:  [Describing patterns, answering questions](session-4.html)
+- Session 5:  [Quantifying evidence](session-5.html)
 
 <br>
 
-6.  [Making predictions](session-6.html)
-7.  [Building models](session-7.html)
-8.  Reporting outcomes 
-<!-- ](session-8.html) -->
+- Session 6:  [Making predictions](session-6.html)
+- Session 7:  [Building models](session-7.html)
+- Session 8:  Reporting outcomes 
+
 
 
 <br>
