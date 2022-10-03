@@ -55,17 +55,7 @@ next_year <- current_year + 1
 
 
 
-
-# Loading data from elsewhere
-
-## Exercise 5
-
-1. Use your web browser to download
-[https://raw.githubusercontent.com/benwhalley/lifesavR/main/website/data/world-happiness-report-2021.csv](https://raw.githubusercontent.com/benwhalley/lifesavR/main/website/data/world-happiness-report-2021.csv) to your computer.
-2. Upload `world-happiness-report-2021.csv` to the server.
-3. Create a new chunk.
-4. Read `world-happiness-report-2021.csv` into a variable with a descriptive name.
-
+[Exercise 5 has been removed (we now cover it later on)]
 
 
 
