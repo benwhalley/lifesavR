@@ -811,7 +811,7 @@ It looks like women lost a bit more weight on average
 -   Highlight `f` rows
 :::
 
-but both ment and women lost more weight after FIT relative to MI.
+but both men and women lost more weight after FIT relative to MI.
 
 ::: direction
 -   Highlight `MI` and `FIT` rows for `f`, then `m`
