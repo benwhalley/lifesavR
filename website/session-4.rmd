@@ -647,7 +647,7 @@ measure the same person twice these observations are likely to be quite closely 
 
 A *correlation coefficient* (the number) can be between -1 and 1. It is never outside this range.
 
-The plot below shows examples of positive an negative correlations:
+The plot below shows examples of positive and negative correlations:
 
 ```{r, echo=F, include=F}
 library(lavaan)
