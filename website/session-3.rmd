@@ -248,7 +248,7 @@ to visual aspects of a plot*, like the x and y axes.
 The `colour=...` option adds to this, and says which column is used to colour the points.
 
 In the `mpg` data, the `drv` column contains one of three values. The value categorises cars based
-on which wheels are driven the engine. An `f` in `drv` means a front wheel drive car, `r` means rear
+on which wheels drive the engine. An `f` in `drv` means a front wheel drive car, `r` means rear
 wheel drive, and `4` means four wheel drive.
 
 We can write `colour=drv` to tell R to colour each point, depending on which wheels are driven:
@@ -811,7 +811,7 @@ It looks like women lost a bit more weight on average
 -   Highlight `f` rows
 :::
 
-but both ment and women lost more weight after FIT relative to MI.
+but both men and women lost more weight after FIT relative to MI.
 
 ::: direction
 -   Highlight `MI` and `FIT` rows for `f`, then `m`
