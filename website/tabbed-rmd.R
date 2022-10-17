@@ -18,7 +18,7 @@ frameborder="0" allow="autoplay; encrypted-media" allowfullscreen data-external=
 
 tab <-function(section_id, title, active=c(T,F,F)){
   identifier <- str_replace_all(title, " ", "_") %>% tolower()
-  if ((active)) { active <- " active " }else { active <- ""}
+  if (any(active)) { active <- " active " }else { active <- ""}
   return (
     whisker.render('
     <li class="nav-item {{{active}}}">
@@ -38,7 +38,7 @@ make_tabs <- function(section_id=paste0("tab_", runif(1, 1e4,1e5)), titles=c("Su
   return(whisker.render('<ul class="nav nav-tabs" role="tablist">{{{tablist}}}</ul>'))
 }
 
-make_tabs()
+# make_tabs()
 
 
 start_content_tab <- function(title){
@@ -47,7 +47,7 @@ start_content_tab <- function(title){
 }
 
 
-start_content_tab("A")
+# start_content_tab("A")
 
 end_content_tab <- function(){
   return('</div>')

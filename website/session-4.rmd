@@ -17,6 +17,9 @@ source('tabbed-rmd.R')
 ```
 
 
+<!-- THIS SESSION IS A BIT LIGHT... PERHAPS ADD SOME MORE EXTENSION EXERCISES -->
+
+
 
 ```{html, child="bs-tab-fix.html"}
 ```
@@ -294,9 +297,6 @@ iris %>%
   group_by(Species) %>%
   summarise(`Mean sepal width` =  sprintf("%.1f", mean(Sepal.Width) )) %>%
   pander()
-
-
-mean(mtcars$mpg)
 ```
 
 Your plot should look like this:
