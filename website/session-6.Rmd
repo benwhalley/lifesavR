@@ -37,12 +37,12 @@ knitr::opts_chunk$set(
 
 > When doing regression in R, the relationship between an **_outcome_** and one
 > or more **_predictors_** is described using a **_formula_**. When a model is
-> '**_fitted_**' to a sample it becomes tool to make **_predictions_** for
+> '**_fitted_**' to a sample it becomes a tool to make **_predictions_** for
 > future samples. It also allows us to quantify our **_uncertainty_** about
 > those predictions.
 
 > **_Coefficients_** are numbers telling us how strong the relationships between
-> predictors and outcomes are. But the meaning of coefficients depend entirely
+> predictors and outcomes are. But the meaning of coefficients depends entirely
 > on the **_design_** of our study, and the **_assumptions_** we are prepared
 > to make. Causal diagrams (as you
 > [drew in the first session](causes.html)) can help us decide how
@@ -79,7 +79,7 @@ These data are available in the `psydata` package, in the `mentalh` dataset.
 
 :::{.exercise}
 
-Open the data and have a list the variables in the `mentalh` dataset:
+Open the data and list the variables in the `mentalh` dataset:
 
 `r hide("Show me")`
 
@@ -100,7 +100,7 @@ help(mentalh)
 
 For this session we will mostly focus on:
 
-- `screen_time`: How much time the mothers' spent on screens and
+- `screen_time`: How much time the mothers spent on screens, and
 - `anxiety_score`: the number of anxiety symptoms experienced in the past week
 
 
@@ -331,7 +331,7 @@ egdata %>%
 
 `r hide("Show answers")`
 
-1. The expected value is `r egdata.model.coefs[1] %>% sprintf("%.2f",.)`. This is intercept.
+1. The expected value is `r egdata.model.coefs[1] %>% sprintf("%.2f",.)`. This is the intercept.
 
 2. We would expect the outcome to increase by `r egdata.model.coefs[2] %>% sprintf("%.2f",.)`. This is equal to the slope coefficient for the predictor.
 
@@ -450,7 +450,7 @@ The video covers both the manual and automatic methods of making a prediction fr
 simple1 <- lm(anxiety_score ~ screen_time, data = mentalh)
 
 # the tibble function makes a new data frame
-new_data <- tibble(screen_time = 10 )
+new_data <- tibble(screen_time = 10)
 
 # broom contains the augment function
 library(broom)
@@ -903,7 +903,7 @@ mentalh %>%
 - the first assumption of linear regression has been met.
 
 
-Note, it can be hard to tell if the relationship is linear or curved, especially when data are noisy (like here) or we only hve a few samples. However, if the plot isn't clear then assuming linearity is a good default.
+Note, it can be hard to tell if the relationship is linear or curved, especially when data are noisy (like here) or we only have a few samples. However, if the plot isn't clear then assuming linearity is a good default.
 
 
 
@@ -1187,7 +1187,7 @@ I have added red lines showing the *expectcted* trend of the data, if the assump
 #### Example 1: National income and life expectancy
 
 In this example we use the `development` dataset which contains data about the population and economy of countries around the world. 
-The outcome of our model is the averag life expectancy of each country in years.
+The outcome of our model is the average life expectancy of each country in years.
 The predictor is the  national income of a country, per capita (in $).
 
 ```{r, echo=F, fig.cap="Diagnostics plots from a 'bad' regression model", fig.height=2.5, fig.width=6}
