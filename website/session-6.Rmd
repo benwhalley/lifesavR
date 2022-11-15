@@ -15,7 +15,7 @@ source('_first_chunk.R')
 source('tabbed-rmd.R')
 library(broom)
 knitr::opts_chunk$set(
-  cache = T
+  cache = F
 )
 ```
 
@@ -373,7 +373,7 @@ lm(anxiety_score ~ screen_time, data = mentalh)
 
 -   The 'Call' we made (i.e. what inputs we gave, so we can remember how we did it later on; this is line 4 and 5)
 -   The ***coefficients*** of the model. These are the **numbers which represent the line on the
-    graph** we saw above. The coefficient values are on line 9.
+    graph** we saw above. 
 
 
 
@@ -1163,11 +1163,11 @@ combineddiagplots <- function(f, thedata){
     geom_smooth(se=F) +
     geom_smooth(method=lm, se=F, color="red", size=.4) +
     labs(x="Predictor", y="Outcome") + ggtitle("Scatterplot")
-  a <- augment(themodel) %>%
+  a <- augment(themodel, newdata=thedata) %>%
     ggplot(aes(.resid)) +
     geom_histogram(bins=25)+
      ggtitle("Distribution")
-  b <- augment(themodel) %>%
+  b <- augment(themodel, newdata=thedata) %>%
     ggplot(aes(.fitted, .resid)) +
     geom_hline(yintercept = 0, color="red",  size=.4) +
     geom_jitter(alpha=.5) +
@@ -1262,7 +1262,7 @@ combineddiagplots(f=mpg ~ wt, mtcars)
 
 Given these diagnostic plots, how should we judge the model?
 
-- The relationship looks linear: `r mcq(c("False", answer="Hard to tell"))`
+- The relationship looks linear: `r mcq(c("True", "False", answer="Hard to tell"))`
 - The residuals are normally distributed: `r mcq(c("True", "False", answer="Hard to tell"))`
 - The residuals are consistent across the range of fitted values: `r mcq(c("True", answer="False", "Hard to tell"))`
 
@@ -1424,7 +1424,7 @@ mtcars %>%
 # run the model and make a fitted vs residual plot
 # this isn't perfect, but the residuals look "ok"
 lm(mpg ~ log(hp), mtcars) %>% 
-  augment() %>% 
+  augment(newdata=mtcars) %>% 
   ggplot(aes(.fitted, .resid)) + 
   geom_point() + 
   geom_smooth(method=lm, se=F)
