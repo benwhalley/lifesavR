@@ -723,7 +723,7 @@ In the R output we see that the Bayes Factor for model A is 22,
 and the Bayes Factor for Model B is 56.
 
 
-- Which model is more probable? `r mcq(c(answer="A", "B", "Inconclusive"))`
+- Which model is more probable? `r mcq(c("A", answer="B", "Inconclusive"))`
 - The BF in favour of model B is: `r mcq(c("22", "56", answer="2.5", "0.4", "3.6"))`
 - The BF in favour of model A is: `r fitb(22/56, tol=.5)`
 
