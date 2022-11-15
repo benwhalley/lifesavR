@@ -421,7 +421,7 @@ Another way to say it is, *"given the data we have collected, how much more like
 We want to check the relationship of two variables in the `happy` dataset, which is based on the [Gallup World Happiness Report 2021](https://worldhappiness.report/ed/2021/):
 
 - `happiness` (a national measure of average life satisfaction)
-`- `perceptions_of_corruption` (a national measure of how corrupt their think their society is)
+- `perceptions_of_corruption` (a national measure of how corrupt they think their society is)
 
 The first thing to do is to plot the data, to check that the relationship between these variables
 is approximately linear (a straight line). Here I have used `filter` to select only the data from 2019.

@@ -178,7 +178,7 @@ This video provides an overview of multiple regression, and does a
 rapid walk-through of fitting two models which represent
 ***different hypotheses*** about how the `fuel` dataset was generated.
 
-In the rest of this workshop we breakdown the techniques used, and so 
+In the rest of this workshop we break down the techniques used, and so 
 the code is not explained in detail in this transcript; work through the 
 explanations and examples below for full details.
 
