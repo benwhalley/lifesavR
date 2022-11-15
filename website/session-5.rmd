@@ -483,10 +483,10 @@ That means we can be ***very*** confident that the pattern we see is not simply 
 
 # Interpreting Bayes Factors{#interpretbayesfactors1}
 
-The size of a Bayes Factor is mostly dependent on three things:
+No matter what the Bayes Factor is testing (correlation, difference etc), the size of a Bayes Factor is mostly dependent on three things:
 
 - *How large* the effect is (how big is the group difference or how steep is the slope)
-- *How clear* the difference is (e.g., how much do the scores from each group overlap)
+- *How clear* the effect is (e.g., how much do the scores from each group overlap)
 - *How much data* we collect (more data lets us be more confident; data quality also matters)
 
 
