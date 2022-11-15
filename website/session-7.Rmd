@@ -1051,7 +1051,7 @@ modB
 modelbwhatsizebf <- c(
   "About 6",
   "Much less than 6",
-  answer="Much more than 6 "
+  answer="Much more than 6"
 )
 
 borabetter <- c(
