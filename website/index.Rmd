@@ -5,8 +5,6 @@ author: 'Ben Whalley, Chris Berry, Sonja Heinz, Paul Sharpe, Andy Wills'
 bibliography: [references.bib]
 biblio-style: apa6
 link-citations: yes
-output:
-  webex::html_clean
 ---
 
 ```{r, include=F, echo=F, message=F}
@@ -293,12 +291,12 @@ licence. CC-BY-SA 4.0.
 ##
 ## WARNING: Requires a TeX environment suitable for rendering some special characters as HTML
 ## WARNING: Check console warnings and docs/*.html for potential breakage of teaching materials before pushing
-
+source('_first_chunk.R')
 
 # set current path to where this is running from
 # do it manually if not running in RStudio
 setwd(dirname(rstudioapi::getSourceEditorContext()$path))
-rmarkdown::find_pandoc(version = "2.19.2")
+rmarkdown::find_pandoc(version = "2.19")
 
 
 # rebuild docs into /docs which is where github serves them from as well as local directory 
@@ -314,9 +312,9 @@ rmarkdown::render('session-5.rmd', output_dir = "../docs")
 rmarkdown::render('session-6.rmd', output_dir = "../docs")
 rmarkdown::render('session-7.rmd', output_dir = "../docs")
 rmarkdown::render('session-8.rmd', output_dir = "../docs")
-rmarkdown::render('teachers-notes.rmd', output_dir = "../docs")
+# rmarkdown::render('teachers-notes.rmd', output_dir = "../docs")
 
-devtools::install_github('benwhalley/psydata')
+#devtools::install_github('benwhalley/psydata')
 
 ```
 

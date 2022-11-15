@@ -4,9 +4,6 @@ author: 'Ben Whalley, Paul Sharpe, Sonja Heintz, Chris Berry'
 bibliography: [references.bib]
 csl: apa.csl
 link-citations: yes
-output:
-  webex::html_clean:
-    highlight: tango
 ---
 
 

@@ -3,13 +3,7 @@ title: 'Building models'
 author: 'Ben Whalley, Paul Sharpe, Sonja Heintz'
 bibliography: [references.bib]
 csl: apa.csl
-#biblio-style: apa6
 link-citations: yes
-output:
-  webex::html_clean:
-    highlight: tango
-    mathjax: "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML.js"
-
 ---
 
 ```{r, include=F, echo=F}
@@ -18,8 +12,11 @@ source('tabbed-rmd.R')
 library(DiagrammeR)
 library(ggdag)
 library(broom)
-
 ```
+
+
+
+
 
 ```{html, child="bs-tab-fix.html"}
 ```
@@ -30,6 +27,8 @@ library(broom)
 ![](images/legohouse.jpg)
 
 # Overview
+
+$R^2$
 
 In this workshop we introduce *multiple regression*, that is: regression models which include 2 or
 more predictors. Multiple regression is a core technique in psychology and most other quantitative
@@ -546,7 +545,7 @@ input.
 focus on here is `adj.r.squared`, which is 0.74.
 
 ::: tip
-Why use the *adjusted* R^2^, and what is the adjustment?
+Why use the *adjusted* $R^2$, and what is the adjustment?
 
 Unadjusted, $R^2$ becomes increasingly over-optimistic as we add extra predictors to our model. The
 adjusted $R^2$ figure corrects for this, reducing the raw $R^2$ as we add extra predictors.
