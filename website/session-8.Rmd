@@ -1,9 +1,8 @@
 ---
 title: 'Reporting results'
-author: 'Ben Whalley, Paul Sharpe, Sonja Heintz'
+author: 'Ben Whalley, Sonja Heintz'
 bibliography: [references.bib]
 csl: apa.csl
-#biblio-style: apa6
 link-citations: yes
 output:
   webex::html_clean
@@ -23,62 +22,242 @@ source('_first_chunk.R')
 
 # Overview
 
-1.  Goals when reporting
+This worksheet will make most sense if you caught the mini-lecture at the start. If you are coming to this later, try to
+catch up with the recording of that part on Panopto.
 
-2.  What is required
 
-3.  Confidence intervals
+1.  Loose ends (in R)
 
-4.  Regression tables
+2.  How to report regression
 
-5.  Worked example using cars data
+3.  Practice task
 
-6.  Practice task
 
-# What are we trying to do?
 
-In reporting an analysis, we're trying to achieve 5 things:
+# Loose ends
 
-1.  Provide context
-2.  Facilitate understanding
-3.  Enable replication
-4.  Describe the effect
-5.  Answer our research question and quantify our certainty
+To present our regression models, I covered a few loose ends in the workshop. In particular we talked about:
 
-And when doing these tasks we aim to be:
+- using `summarise` to calculate summary statistics
+- confidence intervals
+- standardized coefficients
+- printing numbers nicely (avoiding scientific notation)
 
--   Complete
--   Accurate
--   Concise
 
-# What is required
+The following section documents the code needed for those techniques:
 
-Documenting your data analysis falls into three phases:
 
-1.  Exploratory/work in progress
-2.  Interpreting your results
-3.  Documenting for others
 
-#### Exploring
+## Calculating summary statistics
 
-When exploring and working with your own data you can work in an Rmd file as you have before, adding
-code blocks as required to document everything you do, and only removing code which doesn't work or
-you decide is not relevant.
+We have already covered this in some detail in [session 3](session-3.html), on grouped data, so some of this code should be familiar.
 
-#### Interpreting
 
-When interpreting your results, you will begin to organise the analyses into a narrative. This
-should answer the research questions you posed when designing the study. You can also respond to
-additional questions which arise through the analyses (e.g., does your model meet the assumptions
-required in regression). At this point you will be able to write the results section of your report
-or article.
+We already know how to calculate summary statistics like this:
 
-#### Documenting
+```{r}
+studyhabits %>% 
+  summarise(mean(work_hours), mean(work_consistently), mean(grade))
+```
 
-Finally, when documenting your analyses for others, you need to create a *new* Rmd file which
-focuses on the analyses required to reproduce the results in your manuscript. This simplifies the
-script for others, making it easier to follow along and see how numbers in the paper were
-calculated.
+In the workshop I showed a short-cut technique to summarise multiple variables at once. This isn't strictly necessary, but can be a time saver.
+
+```{r}
+studyhabits %>% 
+  select(-unique_id) %>% 
+  summarise_all(list(Mean=mean, SD=sd)) %>% 
+  pivot_longer(everything()) %>% 
+  arrange(name)
+```
+
+**Explanation of the code** We can break this down, line by line:
+
+- First we take the `studyhabits` data, and remove the `unique_id` column using the `select` function.
+- Next we use the `summarise_all` function to calculate statistics on all of these variables in one go.
+- The part which says `list(Mean=mean, SD=sd)` tells R which functions to use. We could add the median by writing `list(Mean=mean, Median=median, SD=sd)`
+- `pivot_longer(everything())` reshapes the result from a very thin/wide table to a long-form one
+- `arrange(name)` sorts the result
+
+
+:::{.exercise}
+
+- Try running each step of the code for yourself. See what happens at each stage.
+
+:::
+
+Another trick I showed was counting the number of responses to each option of a question. For example:
+
+```{r}
+studyhabits %>% 
+  group_by(work_consistently) %>% 
+  count()
+```
+
+
+**Explanation of the code**: We `group_by` the different 'levels' or options of the `work_consistently` question. The options ranged from 1-5, so the `count()` function
+then tells us how many of each response there were.
+
+:::{.exercise}
+
+- Try this for yourself
+
+- Adjust the `group_by` to see the figures for men and women separately
+
+
+`r hide("Show answer")`
+
+This code breaks down the table by gender:
+
+```{r}
+studyhabits %>% 
+  group_by(female, work_consistently) %>% 
+  count()
+```
+
+`r unhide()`
+
+
+
+:::
+
+
+
+## Confidence intervals
+
+Once we have run a regression model, we may want confidence intervals for each coefficient.
+We can obtain these with `tidy()` in the `broom` package:
+
+```{r}
+library(broom)
+
+m1 <- lm(grade ~ work_hours, data=studyhabits)
+m1 %>% tidy(conf.int=TRUE)
+```
+
+**Explanation of the output**: 
+
+- We add the `conf.int=TRUE` option to include confidence intervals
+- The `estimate` column is the coefficient value, as you would see in the normal `lm` output 
+- The columns `conf.low` and `conf.high` represent the lower and upperbounds of the confidence interval for each coefficient. 
+- Ignore the other columns (`p.value` etc).
+
+
+
+
+## Standardized coefficients
+
+The easiest way to standardize the coefficients from the model is to use the `arm::standardize()` function (in the `arm` package).
+
+First we fit the model as usual:
+
+```{r}
+m1 <- lm(grade ~ work_hours, data=studyhabits)
+```
+
+Then we have 2 options:
+
+1. Standardize the predictors
+2. Standardize the predictors AND the outcome
+
+
+### Option 1: Standardize only the predictors
+
+This code refits out model, but standardizes the predictor variable:
+
+```{r}
+m1 %>% arm::standardize()
+```
+
+**Explanation of the output**: The output of our model changes subtly: Instead of `work_hours` our coefficient is now called
+`z.work_hours`.
+
+**Explanation of the standardized coefficients marked with "`z.`"**  
+
+- We can interpret the value, $8.208$ as *the change in grade % we would see for a 1 standard-deviation
+change in work_hours*. 
+- The standard deviation of `work_hours` is `r studyhabits$work_hours %>% sd %>% round(2)`. 
+- This means that we expect an grade increase of 8.2% for every 4.9 hour increase in work.
+- Our predictions remain the same — only the units the coefficients are expressed in have changed
+
+
+
+### Option 2: Standardize both the predictors AND the outcome
+
+This code refits our model, but standardizes both the predictor variable AND the outcome:
+
+```{r}
+m1 %>% arm::standardize(standardize.y=TRUE)
+```
+
+**Explanation of the output**: The output of our model again changes subtly: This time we have both `z.work_hours` and `z.grade` named in the model. As a reminder, the `z` refers to '*z-scores*', which is another term for standardised scores.
+
+**Explanation of the standardized coefficient**:  
+
+- We can interpret the value, `4.287e-01` as $0.4287$ (it's in scientific notation)
+- This is now the number of standard-deviation changes in grades we expect for a 1 standard-deviation change in work_hours. 
+- The SD of `work_hours` is `r studyhabits$work_hours %>% sd %>% round(2)`. 
+- The SD of `grade` is `r studyhabits$grade %>% sd %>% round(2)`
+- This means that we expect an grade increase of $9.57 \times 0.4287$ for every 4.9 hours increase in work.
+
+
+### Which type is better?
+
+Neither is better/worse. In psychology it's common to standardize both predictors and outcomes, and to report these standardized coeffients as '*betas*', or use the greek $\Beta$ symbol.
+
+
+## Printing numbers nicely (avoiding scientific notation)
+
+In calculating the standardized coefficients, R reported the answers using scientific notation. This can be annoying.
+
+To fix this we can use the `scipen` option:
+
+```{r}
+options(scipen=20)
+m1 %>% 
+  arm::standardize(standardize.y=TRUE) 
+```
+
+**Explanation of the option name**: `scipen` is short for `scientific notation penalty`. It only allows R to use scientific notation if a number is really _very_ small, or _very_ large. If we set `scipen=20`, that means a number would have to have 20 significant digits (either before or after the decimal place) before R would use the `e+20` type notation. 
+
+
+This change persists, so you may also want to set R back to normal afterwards:
+
+```{r}
+options(scipen=0)
+```
+
+
+
+
+
+<!--- 
+
+[Extension technique]
+
+An advanced solution here is to use the `tidy`, `mutate_if` and `sprintf` functions:
+
+```{r}
+library(pander)
+library(broom)
+m1 %>% 
+  arm::standardize(standardize.y=TRUE) %>% 
+  tidy() %>% 
+  mutate_if(is.numeric, sprintf, fmt="%.3f") %>% 
+  pander()
+```
+**Explanation of the code**:
+
+- First, we load the `pander` and `broom` packages
+- Next repeat the code to standardize the coefficients
+- Call `tidy()` to make a dataframe of our model coefficients
+- Use `mutate_if` to apply a function to each of the numeric columns
+- The function we apply is `sprintf` which takes a `fmt` (format)
+- The `fmt` is `"%.3f"`, which means, "only ever show 3 numbers after the decimal place".
+
+
+--->
+
+
 
 
 # The formula
@@ -100,47 +279,48 @@ particular can vary a little bit) but you will always need:
 -   A re-statement of what the main finding was [discussion]
 
 
-
-This document [regression-reporting-example.pdf](regression-reporting-example.pdf)* contains a
+This document [regression-reporting-example.pdf](regression-reporting-example.pdf) contains a
 worked example, along with an explanation of the different parts of the report.
+
 
 
 :::{.exercise}
 
-Read the [regression-reporting-example.pdf](regression-reporting-example.pdf) document.
+Read the [regression-reporting-example-studyhabits.pdf](regression-reporting-example-studyhabits.pdf) document.
 
 Work with a partner to discuss the document. 
 
-At this point,  there should only be 1 element in that document which you don't
-know how to calculate. These are the confidence intervals (CI) for the model 
-coefficients in Table 1, and this is covered below.
+- Collect all the R code you would need to calculate each of the numbers in this document (it should all be contained in this or previous worksheets). You might also like to use the [cheat-sheets/reference guides here](https://plymouthpsychology.github.io/cheatR/).
 
+- Make a new `Rmd` file for this code. Include comments and extra text to explain each part.
 
-`r hide("Show answers")`
-
-
-
-`r unhide()`
-
+- Try pressing the `knit` button to convert your `rmd` to and html file. You may need to debug errors in the code to make this work, so ask the TARAs for support here if needed.
 
 :::
 
 
 
+# Exercise
+
+:::{.exercise}
+
+Use the following variables from the `mentalh` dataset in the `psydata` package
+
+```{r}
+mentalh %>% 
+  select(anxiety_score, tv, computer) %>% 
+  glimpse()
+```
+
+- Run analyses to answer the question: "does both time spent on the computer and watching tv predict anxiety scores, in this sample?"
+
+- Report your results in a format which matches the example given for `studyhabits` as closely as possible.
+
+- Document all of your calculations in a new `Rmd` document.
+
+- Include comments and explanations in this document as needed. Imagine yourself returning to the project in 6 months time: would it be easy to pick up where you left-off? If not, help your future self out!
 
 
-
-*([Word format](regression-reporting-example.docx))
-
-
-
-
-
-# Check your knowledge
-
-XXX
-
-
-
+:::
 
 <!-- # References -->

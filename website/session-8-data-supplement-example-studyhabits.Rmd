@@ -78,8 +78,7 @@ regression_table <- function(model, as_text=TRUE){
 
 ### Specific results from the article
 
-Data were obtained for 32 cars...
-
+Data were obtained for 300 students.
 
 ```{r}
 # note we are using data from psydata package
@@ -89,43 +88,39 @@ studyhabits %>% glimpse
 
 
 
-
-Car weights ranged from ...
+Desxcriptive statistics for students:
 
 ```{r}
 studyhabits %>% 
-  summarise_if(is.numeric, funs(range, mean, median, sd)) %>% 
-  pivot_longer(everything()) %>% 
-  arrange(name) %>% 
+  pivot_longer(c(-unique_id, -female)) %>% 
+  group_by(name) %>% 
+  summarise_at("value", list(M=mean, Median = median, SD=sd, Min=min, Max=max)) %>% 
+  rename(Name = name) %>% 
+  mutate(Name = snakecase::to_title_case(Name))
   pander()
 ```
 
-and models in this sample had between ...
 
 ```{r}
-fuel %>% count(cyl)
+studyhabits %>% 
+  group_by(work_consistently) %>% count()
+```
+
+
+```{r}
+studyhabits %>% 
+  pivot_longer(c(work_hours, work_consistently)) %>% 
+  ggplot(aes(value, grade)) + geom_jitter(alpha=.5) + geom_smooth(se=F) +
+  facet_wrap(~snakecase::to_title_case(name), scales="free") + theme_minimal() + 
+  labs(x="Score/Hours", y="Grade")
+
+ggsave('studyhabs.pdf', width=4, height=2.5)
 ```
 
 
 
-Figure 2 suggests that both cylinders and weight were related to fuel economy
-
-```{r}
-fuel %>% 
-  select(mpg, weight, cyl) %>% 
-  ggplot(aes(weight, mpg, color=factor(cyl))) + 
-  geom_smooth(method=lm, se=F, aes(group=1), color="black", size=.3) + 
-  geom_point() + labs(color="Cylinders", x="Weight (kg)", y="Fuel Economy (mpg)") + 
-  theme_classic()
-  
-ggsave('ExmapleFigureFromSupplement.png', dpi=300, width=5, height=2.5)
-```
-
-
-To test whether cylinders and weight were independent predictors of fuel economy ...
-we ran two linear regression models. Model A included only weight as a predictor; 
-Model B included both weight and the number of cylinders.
-
+To test whether hours and consistency were independent predictors of grades, and to estimate the strength of these relationships… 
+…we ran two linear regression models. Model A included only study hours as a predictor; Model B included both hours and the consistency. 
 
 ```{r}
 # fit lm models
@@ -133,37 +128,44 @@ modelA <- lm(grade ~ work_hours, data=studyhabits)
 modelB <- lm(grade ~ work_hours + work_consistently, data=studyhabits)
 ```
 
-
 Results are presented in Table X...
 
-```{r}
-# the regression_table function is in the lifesavr package
-library(lifesavr)
-regression_table(modelA) %>% pander(caption=modelA$call %>% deparse)
-regression_table(modelB) %>% pander(caption=modelA$call %>% deparse)
 
+```{r}
+modelA %>% tidy %>% pander(digits=3)
+modelA %>% glance %>% pander(digits=3)
+modelA %>% confint %>% pander(digits=3)
+modelA %>% arm::standardize(standardize.y=T) %>% pander(digits=3)
 ```
 
 
-Diagnostic plots for model B did not ...
-
 ```{r}
-# this is a lazy shortcut to some diagnostics plots and produces more output 
-# than we need; you could also use the techniques taught in the workshop using `augment`
-modelB %>% plot()
+modelB %>% tidy %>% pander(digits=3)
+modelB %>% glance %>% pander(digits=3)
+modelB %>% confint %>% pander(digits=3)
+modelB %>% arm::standardize(standardize.y=T) %>% pander(digits=3)
 ```
 
 
-Given these data—model B was ...
+Given these data...
 
 ```{r}
 # calculate the BF for model B vs model A
 
 # first refit with lmBF
-modA <- lmBF(grade ~ work_hours, data=studyhabits)
-modB <- lmBF(grade ~ work_hours + work_consistently, data=studyhabits)
+modelAbf <- lmBF(grade ~ work_hours, data=studyhabits)
+modelBbf <- lmBF(grade ~ work_hours + work_consistently, data=studyhabits)
 
 # calculate the BF for the comparison
-modB/modA
+modelAbf
+modelBbf/modelAbf
+```
+
+
+```{r}
+library(rstanarm)
+
+
+
 ```
 

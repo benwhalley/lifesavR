@@ -34,7 +34,7 @@ The list below are links to each of the workshops. Read below, though, for an in
 
 - Session 6:  [Making predictions](session-6.html)
 - Session 7:  [Building models](session-7.html)
-- Session 8:  Reporting outcomes 
+- Session 8:  [Reporting outcomes](session-8.html)
 
 
 
