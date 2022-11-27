@@ -1213,13 +1213,21 @@ intervals</li>
 <li>The <code>estimate</code> column is the coefficient value, as you
 would see in the normal <code>lm</code> output</li>
 <li>The columns <code>conf.low</code> and <code>conf.high</code>
-represent the lower and upperbounds of the confidence interval for each
+represent the lower and upper bounds of the confidence interval for each
 coefficient.</li>
 <li>Ignore the other columns (<code>p.value</code> etc).</li>
 </ul>
 </div>
 <div id="standardized-coefficients" class="section level2">
 <h2>Standardized coefficients</h2>
+<p>As discussed in the introduction, <em>standardizing</em> coefficients
+can be helpful to enable us to compare:</p>
+<ul>
+<li>Different predictors in the same model, and</li>
+<li>The same predictors in different models (e.g. when the outcome
+measure changes)</li>
+</ul>
+<hr />
 <p>The easiest way to standardize the coefficients from the model is to
 use the <code>arm::standardize()</code> function (in the
 <code>arm</code> package).</p>
@@ -1227,12 +1235,12 @@ use the <code>arm::standardize()</code> function (in the
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(grade <span class="sc">~</span> work_hours, <span class="at">data=</span>studyhabits)</span></code></pre></div>
 <p>Then we have 2 options:</p>
 <ol style="list-style-type: decimal">
-<li>Standardize the predictors</li>
-<li>Standardize the predictors AND the outcome</li>
+<li>Standardize the predictor variables only</li>
+<li>Standardize the predictors AND the outcome variable</li>
 </ol>
 <div id="option-1-standardize-only-the-predictors" class="section level3">
 <h3>Option 1: Standardize only the predictors</h3>
-<p>This code refits out model, but standardizes the predictor
+<p>This code refits our model, but standardizes the predictor
 variable:</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="sc">%&gt;%</span> arm<span class="sc">::</span><span class="fu">standardize</span>()</span></code></pre></div>
 <pre class="bg-success"><code>
@@ -1271,25 +1279,28 @@ Coefficients:
   -1.281e-16     4.287e-01  </code></pre>
 <p><strong>Explanation of the output</strong>: The output of our model
 again changes subtly: This time we have both <code>z.work_hours</code>
-and <code>z.grade</code> named in the model. As a reminder, the
-<code>z</code> refers to ‘<em>z-scores</em>’, which is another term for
-standardised scores.</p>
-<p><strong>Explanation of the standardized coefficient</strong>:</p>
+and <code>z.grade</code> named in the model. The <code>z</code> is a
+reference to ‘<em>z-scores</em>’, which is another term for standardized
+scores.</p>
+<p><strong>Explanation of the standardized coefficients</strong>:</p>
 <ul>
-<li>We can interpret the value, <code>4.287e-01</code> as <span class="math inline">\(0.4287\)</span> (it’s in scientific notation)</li>
-<li>This is now the number of standard-deviation changes in grades we
-expect for a 1 standard-deviation change in work_hours.</li>
+<li>We can interpret the value, <code>4.287e-01</code> as <span class="math inline">\(0.4287\)</span> (it was in scientific
+notation)</li>
+<li>This is the number of standard-deviation changes in
+<code>grade</code> we expect for a 1 standard-deviation change in
+<code>work_hours</code>.</li>
 <li>The SD of <code>work_hours</code> is 4.9.</li>
 <li>The SD of <code>grade</code> is 9.57</li>
 <li>This means that we expect an grade increase of <span class="math inline">\(9.57 \times 0.4287\)</span> for every 4.9 hours
 increase in work.</li>
 </ul>
 </div>
-<div id="which-type-is-better" class="section level3">
-<h3>Which type is better?</h3>
+<div id="which-type-of-standardizing-is-better" class="section level3">
+<h3>Which type of standardizing is better?</h3>
 <p>Neither is better/worse. In psychology it’s common to standardize
 both predictors and outcomes, and to report these standardized
-coeffients as ‘<em>betas</em>’, or use the greek <span class="math inline">\(\Beta\)</span> symbol.</p>
+coeffients as ‘<em>betas</em>’, or use the greek symbol
+<strong>β</strong>.</p>
 </div>
 </div>
 <div id="printing-numbers-nicely-avoiding-scientific-notation" class="section level2">
@@ -1355,18 +1366,17 @@ m1 %>%
 --->
 </div>
 </div>
-<div id="the-formula" class="section level1">
-<h1>The formula</h1>
+<div id="the-reporting-formula" class="section level1">
+<h1>The reporting “formula”</h1>
 <p>Scientific journals are <em>extremely</em> formulaic; study analyses
-and results are reported in a very consistent way, and this makes it
+and results are reported in a very consistent way. This makes it
 relatively easy to know what to put where in your report.</p>
 <p>For example, the journal <em>Psychological Science</em> publishes <a href="https://www.psychologicalscience.org/publications/ms-structure-guidelines">detailed
 guidance on the content of each section of manuscripts</a> acceptable
-for publication. There are small differences between journals (medical
-journals in particular can vary a little bit) but you will always
-need:</p>
+for publication. There are small differences between journals but you
+will always need:</p>
 <ul>
-<li>A statement of your hypotheses [introduction]</li>
+<li>A statement of your hypotheses [in the introduction]</li>
 <li>A summary of your analytic approach [methods]</li>
 <li>A description of the study sample [results]</li>
 <li>An <em>exact</em> description of the analyses you ran [results]</li>
@@ -1376,8 +1386,8 @@ need:</p>
 <li>A re-statement of what the main finding was [discussion]</li>
 </ul>
 <p>This document <a href="regression-reporting-example.pdf">regression-reporting-example.pdf</a>
-contains a worked example, along with an explanation of the different
-parts of the report.</p>
+contains a simplified worked example, along with an explanation of the
+different parts of the report.</p>
 <div class="exercise">
 <p>Read the <a href="regression-reporting-example-studyhabits.pdf">regression-reporting-example-studyhabits.pdf</a>
 document.</p>
@@ -1396,8 +1406,8 @@ needed.</p></li>
 </ul>
 </div>
 </div>
-<div id="exercise" class="section level1">
-<h1>Exercise</h1>
+<div id="practice" class="section level1">
+<h1>Practice</h1>
 <div class="exercise">
 <p>Use the following variables from the <code>mentalh</code> dataset in
 the <code>psydata</code> package</p>
@@ -1411,10 +1421,10 @@ $ tv            &lt;dbl&gt; 1.2142860, 0.7857143, 1.5000000, 4.5000000, 8.571428
 $ computer      &lt;dbl&gt; 1.3571430, 0.6428572, 2.7142860, 2.7857140, 10.0000000, …</code></pre>
 <ul>
 <li><p>Run analyses to answer the question: “does both time spent on the
-computer and watching tv predict anxiety scores, in this
+computer and time spent watching tv predict anxiety scores, in this
 sample?”</p></li>
-<li><p>Report your results in a format which matches the example given
-for <code>studyhabits</code> as closely as possible.</p></li>
+<li><p>Report your results in a format which matches the example
+provided as closely as possible.</p></li>
 <li><p>Document all of your calculations in a new <code>Rmd</code>
 document.</p></li>
 <li><p>Include comments and explanations in this document as needed.
@@ -1445,9 +1455,8 @@ out!</p></li>
        <li><a href="#printing-numbers-nicely-avoiding-scientific-notation" id="toc-printing-numbers-nicely-avoiding-scientific-notation">Printing
        numbers nicely (avoiding scientific notation)</a></li>
        </ul></li>
-       <li><a href="#the-formula" id="toc-the-formula">The
-       formula</a></li>
-       <li><a href="#exercise" id="toc-exercise">Exercise</a></li>
+       <li><a href="#the-reporting-formula" id="toc-the-reporting-formula">The reporting “formula”</a></li>
+       <li><a href="#practice" id="toc-practice">Practice</a></li>
        </ul>
      </div>
         </div>

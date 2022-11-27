@@ -138,13 +138,21 @@ m1 %>% tidy(conf.int=TRUE)
 
 - We add the `conf.int=TRUE` option to include confidence intervals
 - The `estimate` column is the coefficient value, as you would see in the normal `lm` output 
-- The columns `conf.low` and `conf.high` represent the lower and upperbounds of the confidence interval for each coefficient. 
+- The columns `conf.low` and `conf.high` represent the lower and upper bounds of the confidence interval for each coefficient. 
 - Ignore the other columns (`p.value` etc).
 
 
 
 
 ## Standardized coefficients
+
+As discussed in the introduction, *standardizing* coefficients can be helpful to enable us to compare:
+
+- Different predictors in the same model, and
+- The same predictors in different models (e.g. when the outcome measure changes)
+
+---
+
 
 The easiest way to standardize the coefficients from the model is to use the `arm::standardize()` function (in the `arm` package).
 
@@ -156,13 +164,13 @@ m1 <- lm(grade ~ work_hours, data=studyhabits)
 
 Then we have 2 options:
 
-1. Standardize the predictors
-2. Standardize the predictors AND the outcome
+1. Standardize the predictor variables only
+2. Standardize the predictors AND the outcome variable
 
 
 ### Option 1: Standardize only the predictors
 
-This code refits out model, but standardizes the predictor variable:
+This code refits our model, but standardizes the predictor variable:
 
 ```{r}
 m1 %>% arm::standardize()
@@ -189,20 +197,20 @@ This code refits our model, but standardizes both the predictor variable AND the
 m1 %>% arm::standardize(standardize.y=TRUE)
 ```
 
-**Explanation of the output**: The output of our model again changes subtly: This time we have both `z.work_hours` and `z.grade` named in the model. As a reminder, the `z` refers to '*z-scores*', which is another term for standardised scores.
+**Explanation of the output**: The output of our model again changes subtly: This time we have both `z.work_hours` and `z.grade` named in the model. The `z` is a reference to '*z-scores*', which is another term for standardized scores.
 
-**Explanation of the standardized coefficient**:  
+**Explanation of the standardized coefficients**:  
 
-- We can interpret the value, `4.287e-01` as $0.4287$ (it's in scientific notation)
-- This is now the number of standard-deviation changes in grades we expect for a 1 standard-deviation change in work_hours. 
+- We can interpret the value, `4.287e-01` as $0.4287$ (it was in scientific notation)
+- This is the number of standard-deviation changes in `grade` we expect for a 1 standard-deviation change in `work_hours`. 
 - The SD of `work_hours` is `r studyhabits$work_hours %>% sd %>% round(2)`. 
 - The SD of `grade` is `r studyhabits$grade %>% sd %>% round(2)`
 - This means that we expect an grade increase of $9.57 \times 0.4287$ for every 4.9 hours increase in work.
 
 
-### Which type is better?
+### Which type of standardizing is better?
 
-Neither is better/worse. In psychology it's common to standardize both predictors and outcomes, and to report these standardized coeffients as '*betas*', or use the greek $\Beta$ symbol.
+Neither is better/worse. In psychology it's common to standardize both predictors and outcomes, and to report these standardized coeffients as '*betas*', or use the greek symbol **β**.
 
 
 ## Printing numbers nicely (avoiding scientific notation)
@@ -260,17 +268,16 @@ m1 %>%
 
 
 
-# The formula
+# The reporting "formula"
 
 Scientific journals are *extremely* formulaic; study analyses and results are reported in a very
-consistent way, and this makes it relatively easy to know what to put where in your report.
+consistent way. This makes it relatively easy to know what to put where in your report.
 
 For example, the journal *Psychological Science* publishes [detailed guidance on the content of each
 section of manuscripts](https://www.psychologicalscience.org/publications/ms-structure-guidelines)
-acceptable for publication. There are small differences between journals (medical journals in
-particular can vary a little bit) but you will always need:
+acceptable for publication. There are small differences between journals but you will always need:
 
--   A statement of your hypotheses [introduction]
+-   A statement of your hypotheses [in the introduction]
 -   A summary of your analytic approach [methods]
 -   A description of the study sample [results]
 -   An *exact* description of the analyses you ran [results]
@@ -280,7 +287,7 @@ particular can vary a little bit) but you will always need:
 
 
 This document [regression-reporting-example.pdf](regression-reporting-example.pdf) contains a
-worked example, along with an explanation of the different parts of the report.
+simplified worked example, along with an explanation of the different parts of the report.
 
 
 
@@ -300,7 +307,7 @@ Work with a partner to discuss the document.
 
 
 
-# Exercise
+# Practice
 
 :::{.exercise}
 
@@ -312,9 +319,9 @@ mentalh %>%
   glimpse()
 ```
 
-- Run analyses to answer the question: "does both time spent on the computer and watching tv predict anxiety scores, in this sample?"
+- Run analyses to answer the question: "does both time spent on the computer and time spent watching tv predict anxiety scores, in this sample?"
 
-- Report your results in a format which matches the example given for `studyhabits` as closely as possible.
+- Report your results in a format which matches the example provided as closely as possible.
 
 - Document all of your calculations in a new `Rmd` document.
 
