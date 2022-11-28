@@ -286,8 +286,7 @@ acceptable for publication. There are small differences between journals but you
 -   A re-statement of what the main finding was [discussion]
 
 
-This document [regression-reporting-example.pdf](regression-reporting-example.pdf) contains a
-simplified worked example, along with an explanation of the different parts of the report.
+This document [regression-reporting-example-studyhabits.pdf](regression-reporting-example-studyhabits.pdf) contains a simplified worked example, along with an explanation of the different parts of the report.
 
 
 
