@@ -184,6 +184,92 @@ Press <span class="keyshape">↩</span> to run the code. If your console looks l
 
 
 
+# What can R do? {#cando}
+
+`r video("zFBw6OuOX9k")`
+`r make_tabs('whatcanrdotabs')`
+
+:::{.tab-content}
+
+:::{#whatcanrdotabs-summary .tab-pane .active}
+- R is a multi-purpose tool
+- It is a text-based computer language
+- RStudio is an *interface* to that language; it organises your work and makes R easier to use
+
+
+- R can do simple arithmetic, load data, make plots etc.
+- It can also run any statistical analysis you like
+- You need to tell R *exactly* what to do, by providing precise instructions
+- These instructions (code) provide a *reproducible record* of your work
+:::
+
+:::{#whatcanrdotabs-code .tab-pane .fade}
+```{r, eval=F}
+# multiply two numbers
+2 * 221
+
+# generate some random numbers with a normal distribution
+rnorm(10, 0,1)
+
+# histogram plot of random numbers
+hist(rnorm(100, 0,1))
+```
+:::
+
+
+:::{#whatcanrdotabs-explanation .tab-pane .fade}
+R is a computer language for data analysis and visualisation.
+
+RStudio is a user interface to R; it helps you organise your work.
+
+R is a text-based language. You interact with it by typing commands and running (also called 'executing') them.
+
+R can do everything from simple arithmetic and plotting to complex data analysis.
+
+For example, you can do simple arithmetic like
+
+```{r eval=F}
+2 * 221
+```
+
+
+Or, we could generate some random numbers with a [normal distribution](https://www.khanacademy.org/math/statistics-probability/modeling-distributions-of-data/normal-distributions-library/a/normal-distributions-review)
+
+```{r}
+rnorm(10, 0,1)
+```
+
+
+And we could plot random numbers using a histogram
+
+```{r}
+hist(rnorm(100, 0,1))
+```
+
+------------
+
+You should think of R as a robot.
+
+The robot is extremely fast, powerful and tireless; but it’s also literal-minded, and
+won’t think for itself or take the initiative. You need to tell it *exactly* what to do, by providing very precise
+instructions.
+
+### Aids reproducibility
+
+The advantage of writing detailed instructions is that you have a detailed, reproducible
+version of all your analyses.
+
+Reproducibility is a key topic in psychology and other natural sciences — learning R (or something like it)
+is an important skill for new psychologists.
+
+:::
+
+:::
+
+
+
+
+
 # Introducing RMarkdown {#interactive}
 
 
@@ -285,14 +371,6 @@ There are three ways to run R code within a chunk:
 - Select and run just part of a statement
 
 
-#### Running the whole chunk
-
-:::{.direction}
-
-- Show the green play button in action
-
-:::
-
 
 
 #### Running a statement
@@ -361,97 +439,21 @@ In the video we:
 
 :::
 
+
+
+#### Running the whole chunk
+
+To run the whole chunk at once you can either:
+
+- press the green "play" button at the top of the chunk
+- press Ctrl+Shift+Enter (Cmd+Shift+Enter on a mac)
+
+
 :::
 
 :::
 
 
-
-
-
-
-
-# What can R do? {#cando}
-
-`r video("zFBw6OuOX9k")`
-`r make_tabs('whatcanrdotabs')`
-
-:::{.tab-content}
-
-:::{#whatcanrdotabs-summary .tab-pane .active}
-- R is a multi-purpose tool
-- It is a text-based computer language
-- RStudio is an *interface* to that language; it organises your work and makes R easier to use
-
-
-- R can do simple arithmetic, load data, make plots etc.
-- It can also run any statistical analysis you like
-- You need to tell R *exactly* what to do, by providing precise instructions
-- These instructions (code) provide a *reproducible record* of your work
-:::
-
-:::{#whatcanrdotabs-code .tab-pane .fade}
-```{r, eval=F}
-# multiply two numbers
-2 * 221
-
-# generate some random numbers with a normal distribution
-rnorm(10, 0,1)
-
-# histogram plot of random numbers
-hist(rnorm(100, 0,1))
-```
-:::
-
-
-:::{#whatcanrdotabs-explanation .tab-pane .fade}
-R is a computer language for data analysis and visualisation.
-
-RStudio is a user interface to R; it helps you organise your work.
-
-R is a text-based language. You interact with it by typing commands and running (also called 'executing') them.
-
-R can do everything from simple arithmetic and plotting to complex data analysis.
-
-For example, you can do simple arithmetic like
-
-```{r eval=F}
-2 * 221
-```
-
-
-Or, we could generate some random numbers with a [normal distribution](https://www.khanacademy.org/math/statistics-probability/modeling-distributions-of-data/normal-distributions-library/a/normal-distributions-review)
-
-```{r}
-rnorm(10, 0,1)
-```
-
-
-And we could plot random numbers using a histogram
-
-```{r}
-hist(rnorm(100, 0,1))
-```
-
-------------
-
-You should think of R as a robot.
-
-The robot is extremely fast, powerful and tireless; but it’s also literal-minded, and
-won’t think for itself or take the initiative. You need to tell it *exactly* what to do, by providing very precise
-instructions.
-
-### Aids reproducibility
-
-The advantage of writing detailed instructions is that you have a detailed, reproducible
-version of all your analyses.
-
-Reproducibility is a key topic in psychology and other natural sciences — learning R (or something like it)
-is an important skill for new psychologists.
-
-:::
-
-:::
 
 
 
@@ -490,6 +492,9 @@ you need for this session is called `session-1-workbook.rmd`.
 
 If you click on the file it opens the workbook in a tab of a new pane, called the **Source** pane. It's called the
 **Source** pane because statements writting in the R language are often referred to as 'R code', which is shorthand for 'R source code'. The **source** pane allows you to write R code and explore your data.
+
+
+**Remember to save your workbooks regularly to avoid losing work.**
 
 :::
 
@@ -1087,6 +1092,8 @@ fuel %>%
 
 :::{#workinginteractivelytabs-summary .tab-pane .active}
 
+Note: most of this section is a recap of the content above.
+
 - A ***statement*** is one of more lines of code which R knows are linked
 - Run a statement: `Ctrl + ↵` (or `⌘ + ↩` Mac)
 - Run the whole chunk: `Shift + Ctrl + ↵` (or `Shift + ⌘ + ↩` Mac)
@@ -1101,6 +1108,8 @@ fuel %>%
 
 
 :::{#workinginteractivelytabs-explanation .tab-pane .fade}
+
+Note: most of this section is a recap of the content above.
 
 In an earlier video we introduced RMarkdown. In this clip, we recap on some useful things
 to know when using RMarkdown files in RStudio. It's intended as a kind of reference
