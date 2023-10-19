@@ -217,11 +217,12 @@ groups.
 That is, we get a Bayes Factor which tells us how likely the difference we see is 'real', rather
 than a fluke or due to sampling variation.
 
-Specifically, the Bayes Factor from a Bayesian t-test says how probable it is that two groups have a
-*different average score* for a *continuous variable*. This probability is *relative* to an
-alternative hypothesis that the average of each group is actually the same.
+Specifically, the Bayes Factor from a Bayesian t-test says how much more likely it is that two groups have a
+*different average score* for a *continuous variable*, versus the possibility that there is no difference. 
 
-Some people call these the *experimental* and *null* hypotheses, or H1 and H0.
+Some people call these the *experimental* and *null* hypotheses, or H1 and H0. H1 is the hypothesis that there *is* a difference. H0 is the hypothesis that there is zero difference.
+
+The Bayes Factor is the ratio of the probabilities of H1 and H0. If H1 is highly probable and H0 improbable then the Bayes Factor will be large (and vice versa).
 
 As we saw above, we can look at a boxplot and get an intuition for whether we think the difference
 is real by looking at how much the *distributions* of the two groups overlap.
@@ -312,6 +313,29 @@ ttA.bf <- ttA %>% as_tibble() %>% pull(bf) %>% first()
 
 
 :::
+
+
+
+
+# Interpreting Bayes Factors{#interpretbayesfactors1}
+
+No matter what the Bayes Factor is testing (correlation, difference etc), the size of a Bayes Factor is mostly dependent on three things:
+
+- *How large* the effect is (how big is the group difference or how steep is the slope)
+- *How clear* the effect is (e.g., how much do the scores from each group overlap)
+- *How much data* we collect (more data lets us be more confident; data quality also matters)
+
+
+We [return to this topic later](session-7.html#interpretbayesfactors2) but common interpretations 
+of Bayes Factors are that:
+
+- A Bayes Factor of 1 means each hypothesis is *equally likely*
+- A Bayes factor > 3 is *moderate* evidence for the hypothesis being tested. BF > 10 is considered strong evidence.
+- A Bayes Factor of $< \tfrac{1}{3}$ is moderate evidence *against* the hypothesis.
+
+
+- A Bayes Factor is $> \tfrac{1}{3}$ and $< 3$ is considered ***inconclusive***
+
 
 
 
@@ -477,24 +501,71 @@ That means we can be ***very*** confident that the pattern we see is not simply 
 
 
 
-# Interpreting Bayes Factors{#interpretbayesfactors1}
+:::{.exercise}
 
-No matter what the Bayes Factor is testing (correlation, difference etc), the size of a Bayes Factor is mostly dependent on three things:
-
-- *How large* the effect is (how big is the group difference or how steep is the slope)
-- *How clear* the effect is (e.g., how much do the scores from each group overlap)
-- *How much data* we collect (more data lets us be more confident; data quality also matters)
+**Exercise 2** 
 
 
-We [return to this topic later](session-7.html#interpretbayesfactors2) but common interpretations 
-of Bayes Factors are that:
+- Use the `attitude` dataset which is built into R.
+- Use the `correlate` function in the `corrr` library to find the largest correlation between any of the variables in that dataset.
+- Calculate the BF for this correlation. Do we have strong evidence for it?
 
-- A Bayes Factor of 1 means each hypothesis is *equally likely*
-- A Bayes factor > 3 is *moderate* evidence for the hypothesis being tested
-- A Bayes Factor of $< \tfrac{1}{3}$ is moderate evidence *against* the hypothesis
+- Now, repeat the process for the smallest correlation between the variables.
+- Do we have evidence *against* this correlation?
 
 
-- A Bayes Factor is $> \tfrac{1}{3}$ and $< 3$ is considered ***inconclusive***
+`r hide("Show answers")`
+
+
+
+We expected students to find the largest and smallest correlations by looking at the output from this function:
+
+```{r, eval=F}
+attitude %>% corrr::correlate()
+```
+
+
+A trick to get the highest and lowest value is shown in the code below. If you're interested in how it works, you can follow along with [an extension worksheet here](https://benwhalley.github.io/datafluency/data-wrangling1.html#pivotlonger), although this is not required.
+
+
+
+```{r}
+attitude %>% corrr::correlate() %>% 
+  pivot_longer(-term) %>% 
+  arrange(-abs(value)) %>% 
+  filter(!is.na(value)) %>% 
+  select(var1=term, var2=name, r=value) %>% 
+  slice(c(1, n())) %>% 
+  pander("The largest and smallest correlations in the attitude dataset")
+```
+
+
+
+
+Having found the largest/smallest values, we can use `correlationBF` to compute the Bayes Factor for each one, as shown above.
+
+We have very strong evidence for the largest correlation, BF > 1000.
+
+
+```{r}
+with(attitude,  correlationBF(rating, complaints))
+```
+
+
+Because the BF is less than 1, we have anecdotal very weak *against* the weakest correlation (BF = 0.47). 
+However because the value is between 0.33 and 3 we would consider this evidence inconclusive --- we cannot be confident either way.
+
+
+```{r}
+with(attitude,  correlationBF(learning, critical))
+```
+
+
+`r unhide()`
+
+
+
+:::
 
 
 
