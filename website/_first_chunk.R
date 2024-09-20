@@ -4,6 +4,17 @@ pacman::p_install_gh("benwhalley/webex")
 pacman::p_load(webex)
 pacman::p_install_gh("benwhalley/psydata")
 pacman::p_load(psydata)
+pacman::p_load(corrr)
+pacman::p_load(lavaan)
+pacman::p_load(BayesFactor)
+pacman::p_load(broom)
+pacman::p_install(patchwork)
+pacman::p_install(DiagrammeR)
+pacman::p_install(ggdag)
+pacman::p_install(GGally)
+pacman::p_install(arm)
+
+pacman::p_install_gh("jvcasillas/untidydata")
 
 rmarkdown::find_pandoc(version = "2.19.2")
 knitr::opts_chunk$set(

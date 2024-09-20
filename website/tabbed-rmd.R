@@ -1,4 +1,4 @@
-library(whisker)
+pacman::p_load(whisker)
 
 
 
@@ -52,3 +52,4 @@ start_content_tab <- function(title){
 end_content_tab <- function(){
   return('</div>')
 }
+

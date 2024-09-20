@@ -1146,8 +1146,9 @@ lowerFn <- function(data, mapping, method = "lm", ...) {
   p
 }
 
-happy %>% select(happiness, social_support, freedom_to_make_life_choices) %>%
-  GGally::ggpairs(lower=list(continuous = lowerFn),upper=NULL)
+psydata::happy %>% 
+  select(happiness, social_support, freedom_to_make_life_choices) %>%
+    GGally::ggpairs(lower=list(continuous = lowerFn),upper=NULL)
 
 ```
 

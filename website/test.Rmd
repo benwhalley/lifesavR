@@ -1,0 +1,35 @@
+---
+title: 'Building models'
+author: 'Ben Whalley, Paul Sharpe, Sonja Heintz'
+bibliography: [references.bib]
+csl: apa.csl
+link-citations: yes
+---
+
+```{r, include=F, echo=F}
+source('_first_chunk.R')
+source('tabbed-rmd.R')
+```
+
+
+
+
+
+```{html, child="bs-tab-fix.html"}
+```
+
+```{css, child="video.css"}
+```
+
+
+
+
+$R^2$
+
+
+`r hide("Here")`
+
+HERE
+
+`r unhide()`
+
