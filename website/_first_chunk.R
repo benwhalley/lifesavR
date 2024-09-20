@@ -1,12 +1,11 @@
-library(tidyverse)
-library(pander)
-library(webex)
-
-# devtools::install_github("benwhalley/psydata")
-library(psydata)
+pacman::p_load(tidyverse)
+pacman::p_load(pander)
+pacman::p_install_gh("benwhalley/webex")
+pacman::p_load(webex)
+pacman::p_install_gh("benwhalley/psydata")
+pacman::p_load(psydata)
 
 rmarkdown::find_pandoc(version = "2.19.2")
-
 knitr::opts_chunk$set(
   echo = TRUE,
   collapse = F,

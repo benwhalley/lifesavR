@@ -314,8 +314,6 @@ rmarkdown::render('session-7.rmd', output_dir = "../docs")
 rmarkdown::render('session-8.rmd', output_dir = "../docs")
 # rmarkdown::render('teachers-notes.rmd', output_dir = "../docs")
 
-#devtools::install_github('benwhalley/psydata')
-
 ```
 
 
