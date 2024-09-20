@@ -874,7 +874,12 @@ be collecting our own psychological data soon enough and analysing that.
 
 The output should look something like this:
 
-![The `fuel` dataset](images/s1_ex5-1.png)
+
+![Using `glimpse` on the fuel dataset](images/glimpsefuel.png)
+
+
+![Displaying `fuel` dataset and using the navigation buttons](images/displayfuel.gif)
+
 
 ![Columns in the `development` dataset](images/s1_ex5-2.png)
 
