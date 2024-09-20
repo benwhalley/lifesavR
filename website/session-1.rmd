@@ -1194,6 +1194,25 @@ Use `glimpse()` to get a list of the column names.
 
 Make a scatterplot which shows the relationships between petal widths and lengths.
 
+
+`r hide("Show me")`
+
+
+```{r, echo=T}
+iris %>% glimpse()
+
+iris %>% 
+  ggplot(aes(Petal.Width, Petal.Length)) + 
+  geom_point()
+```
+
+`r unhide()`
+
+
+
+
+
+
 :::
 
 
