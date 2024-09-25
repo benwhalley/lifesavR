@@ -1132,7 +1132,7 @@ for later on.
 Running parts of statements:
 
 ```{r}
-happy %>%
+psydata::happy %>%
   filter(year==2018) %>%
   ggplot(aes(gdp_per_capita, happiness)) +
   geom_point()
