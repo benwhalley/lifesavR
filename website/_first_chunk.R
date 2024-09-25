@@ -11,7 +11,6 @@ pacman::p_load(broom)
 pacman::p_load(patchwork)
 pacman::p_load(DiagrammeR)
 pacman::p_load(ggdag)
-pacman::p_load(GGally)
 pacman::p_load(arm)
 
 pacman::p_load_gh("benwhalley/psydata")
