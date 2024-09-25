@@ -283,9 +283,10 @@ is an important skill for new psychologists.
 - RMarkdown documents combine 'chunks' of R code with regular text
 - This means you can keep notes and explanations right next to where you process and analyse data
 - RMarkdown files end with "`.rmd`" or "`.Rmd`"
-- Make a new chunk: `Ctrl + Alt + I` or `⌘ + ⌥ + I` (Mac)
+- Make a new chunk: `Ctrl + Alt + i` or `⌘ + ⌥ + i`(Mac)
 - Run a line of code `Ctrl + Enter` or `Cmd + Enter` (Mac)
 - You can select part of a statement and run that in the same way
+- On Windows, if you get an accented í when using the `Ctrl + Alt + i` shortcut, try to switch your keyboard to "English (US)": go to the Windows settings > Time & Language > Language > Preferred Languages > Add a language > English (United States) > Next > Install. Once installation finishes, press the shortcut `Win + space` to switch to the newly installed 'English (United States)' keyboard, and try the `Ctrl + Alt + i` shortcut again. If this doesn't work, you will have to enter the code chunks manually.
 
 ---
 
