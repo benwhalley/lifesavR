@@ -3,7 +3,6 @@ pacman::p_load(tidyverse)
 pacman::p_load(pander)
 pacman::p_load_gh("benwhalley/webex")
 pacman::p_load(webex)
-pacman::p_load_gh("benwhalley/psydata")
 pacman::p_load(psydata)
 pacman::p_load(corrr)
 pacman::p_load(lavaan)
@@ -14,6 +13,9 @@ pacman::p_load(DiagrammeR)
 pacman::p_load(ggdag)
 pacman::p_load(GGally)
 pacman::p_load(arm)
+
+pacman::p_load_gh("benwhalley/psydata")
+
 
 pacman::p_load_gh("jvcasillas/untidydata")
 rmarkdown::find_pandoc(version = "2.19.2")
