@@ -1,3 +1,4 @@
+pacman::p_load(MASS)
 pacman::p_load(tidyverse)
 pacman::p_load(pander)
 pacman::p_load_gh("benwhalley/webex")
