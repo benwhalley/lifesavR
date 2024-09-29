@@ -292,29 +292,29 @@ development %>%
 ```
 
 
+
 ## Session 4
 
-
-## What functions in R describe the central tendency of a variable?
+### What functions in R describe the central tendency of a variable?
 
 `mean` or `median`
 
-## What type of column can we use with `mean`?
+### What type of column can we use with `mean`?
 
 Numeric columns (i.e. those stored as `dbl` or `int`).
 
-## How might you describe patterns in a categorical variable?
+### How might you describe patterns in a categorical variable?
 
 Using frequencies (counts).
 
 Use the `count()` function to calculate these.
 
-## What function did we use to create a new column in the `funinmagery` dataset?
+### What function did we use to create a new column in the `funinmagery` dataset?
 
 `mutate()`
 
 
-## In the `funimagery` data, How much weight did FIT participants lose AFTER the end of treatment?
+### In the `funimagery` data, How much weight did FIT participants lose AFTER the end of treatment?
 
 ```{r}
 funimagery %>%
@@ -325,19 +325,19 @@ funimagery %>%
 
 
 
-## What type of plot describes the relationship between two variables?
+### What type of plot describes the relationship between two variables?
 
 Scatter plots, optionally with an added line.
 
 
-## What function do we use to make a plot that shows a relationship between two variables in `ggplot`?
+### What function do we use to make a plot that shows a relationship between two variables in `ggplot`?
 
 `geom_scatter()`
 
 
 
 
-### Session 5
+## Session 5
 
 ### What hypotheses are being compared when we calculate a Bayes Factor for a correlation?
 
