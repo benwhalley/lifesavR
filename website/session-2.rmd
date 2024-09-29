@@ -207,7 +207,7 @@ Your **Environment** should now look like this:
 **Exercise 3**
 
 1. Create a new chunk below the `Exercise 3` heading in your workbook.
-1. Use R to calculate your age in the year 2051.
+1. Use R to calculate your age in the year 2051 (subtract your year of birth from 2051).
 1. Save the result in a variable _with a descriptive name_.
 :::
 
@@ -544,6 +544,8 @@ Your results should look like this:
 development %>% filter(population > 100000000)
 ```
 
+![Output of filtering the development dataset for population over 100 million](images/Session2_Exercise7_PopulationOver100million.png)
+
 :::
 
 :::{.exercise}
@@ -559,6 +561,8 @@ development %>%
   filter(population > 100000000) %>%
   filter(life_expectancy > 70)
 ```
+
+![Output of filtering the development dataset for population over 100 million and life expectancy over 70](images/Session2_Exercise7_PopulationOver100millionExpectancyOver70.png)
 
 :::
 
@@ -1103,14 +1107,13 @@ revealed in Session 3.
 
 **Extension exercise 1**
 
-This output uses the `fuel` dataset to show vehicles with 8 cylinders and an engine size greater than 5 litres.
-
 ```{r, echo=FALSE}
 guzzle <- fuel %>%
   filter(cyl == 8) %>%
   filter(engine_size > 5000)
 guzzle
 ```
+![This output uses the `fuel` dataset to show vehicles with 8 cylinders and an engine size greater than 5 litres.](images/Session2_ExtensionExercise1.png)
 
 In a new chunk, write the R code to produce this `data.frame`.
 
