@@ -116,7 +116,8 @@ current_year <- 2021
 ```
 
 :::{.direction}
-* Run variable assignment
+
+In the video we run the line with variable assignment.
 :::
 
 And we now have a variable called `current_year` which contains the number `2021`.
@@ -136,7 +137,7 @@ The names of variables are shown in the column on the left, and their values in 
 
 :::{.direction}
 
-- Point at variable name and value in **Environment**
+In the video we point at a variable name and value in the **Environment** pane.
 
 :::
 
@@ -153,9 +154,6 @@ variable called `next_year`:
 next_year <- current_year + 1
 ```
 
-:::{.direction}
-* Run variable assignment
-:::
 
 ### Variable names
 
@@ -271,7 +269,7 @@ fuel %>% head()
 
 :::{.direction}
 
-Visual reminder that the `tidyverse` package needs loading first
+In the video we highlight the visual reminder that the `tidyverse` package needs loading first
 
 :::
 
@@ -307,7 +305,7 @@ spreadsheet. If you click on the icon, the `data.frame` is displayed in a new ta
 
 :::{.direction}
 
-- click on the `fuel_head` icon
+In the video we click on the `fuel_head` icon.
 
 :::
 
@@ -409,9 +407,6 @@ Some datasets are very large. We often want to work with a subset of the data, a
 
 The following chunk filters the `development` dataset (from `psydata`) to include only rows where the `country` column equals "Kenya".
 
-:::{.direction}
-* Enter and run code
-:::
 
 ```{r}
 library(psydata)
@@ -451,16 +446,14 @@ The code above filters rows where `year` is greater than 2000, showing us the re
 The opposite of the `>` operator is the `<` operator. This filters numeric columns which are *less than* a value.
 
 :::{.direction}
-* Change `>` to `<` and run code
+
+In the video we change `>` to `<` and run the code.
 :::
 
 ### Combined filters
 
 You can combine filters in a pipeline to filter rows using multiple operators.
 
-:::{.direction}
-* Enter and run code
-:::
 
 ```{r}
 development %>%
@@ -481,10 +474,6 @@ The key step is to ***assign your filtered data to a new variable***.
 
 For example:
 
-:::{.direction}
-* Enter and run code
-:::
-
 ```{r}
 development.europe <- development %>%
   filter(continent == "Europe") %>%
@@ -498,19 +487,10 @@ Importantly, it also stores this data in a *new variable*, called `development.e
 We can look at this new subset of the data by typing and running its name, or by looking in the **Envrionment** pane.
 
 
-:::{.direction}
-
-- Demonstrate evaluating data subset and exploring this using the environment pane.
-
-:::
-
-
 Now that it is stored in a new variable, we can use these data in other code, for example to
 make a plot:
 
-:::{.direction}
-* Enter and run code
-:::
+
 
 ```{r}
 development.europe %>%
@@ -681,12 +661,6 @@ You can also use `summarise()` with more than one summary function.
 
 Seperate each summary function with a comma:
 
-:::{.direction}
-
-
-- Highlight comma in `summarise()`.
-
-:::
 
 
 ```{r}
@@ -694,11 +668,7 @@ fuel_summary <- fuel %>%
   summarise(m = mean(mpg), sd = sd(mpg))
 ```
 
-:::{.direction}
 
-- Show `fuel_summary` in **Environment**
-
-:::
 
 Remember, the out from `summarise()` (in this case `fuel_summary`) is a `data.frame` that you could do more processing
 on in extra steps if needed.
@@ -824,7 +794,7 @@ Here's a chunk of code with various errors which we'll correct one by one.
 
 :::{.direction}
 
-1. Open `broken.rmd`
+In the video we open `broken.rmd`
 
 :::
 
@@ -842,7 +812,7 @@ If we try to run this line, we get a red bar next to the code, and some errors i
 
 :::{.direction}
 
-- Run code to show that it doesn't work
+In the video we run the code to show that it doesn't work.
 
 :::
 
@@ -852,7 +822,7 @@ If you hover your pointer over the triangle, you will see a list of errors which
 
 :::{.direction}
 
-- Hover over yellow triangle to show two warnings
+In the video we hover over yellow triangle to show two warnings.
 
 :::
 
@@ -860,22 +830,24 @@ The language used in these suggestions can be a bit confusing, but you can proba
 
 If we correct this, the warning goes away.
 
-:::{.direction}
+<!-- :::{.direction}
 
-1. Fix error in function name
-1. Point out yellow triangle gone
+In the video we 
 
-:::
+1. Fix the error in the function name
+1. Point out that the yellow triangle has gone
+
+::: -->
 
 You'll also notice that the function name `library` is now blue. This is another way to check that your functions have the correct spelling.
 
 If we run the code again, we now get a different error in the **Console**.
 
-:::{.direction}
+<!-- :::{.direction}
 
 - Run code to show that it still doesn't work
 
-:::
+::: -->
 
 This error message is quite helpful. It tells us that "there is no package called ‘todyverse’".
 
@@ -885,9 +857,11 @@ This line of code now works.
 
 :::{.direction}
 
-1. Fix error in package name
-1. Execute line
-1. Point out green bar
+In the video we:
+
+1. Fix the error in the package name
+1. Execute the line with the `library` command.
+1. Point out the green bar.
 
 :::
 
@@ -911,11 +885,11 @@ library(psydata
 
 Hovering over the cross gives you a clue about what the error is.
 
-:::{.direction}
+<!-- :::{.direction}
 
 - Hover over red circle
 
-:::
+::: -->
 
 R Studio doesn't always correctly identify the correct way to resolve an error.
 
@@ -923,11 +897,11 @@ Here, the suggestion is that we've missed a comma. In actual fact, we've forgott
 
 Notice happens when we fix this error.
 
-:::{.direction}
+<!-- :::{.direction}
 
-- Add missing close parenthesis
+In the video we add the missing closing parenthesis.
 
-:::
+::: -->
 
 Not only does the cross on this line disappear, but a number of other crosses on subsequent lines also disappear, because they were also due to the missing close parenthesis.
 
@@ -939,11 +913,11 @@ The other symbol you may see is a blue circle with a white "i".
 
 Your code will still work if this symbol is present, but it suggests something that will make it easier for you (and others) to read the code.
 
-:::{.direction}
+<!-- :::{.direction}
 
-- Hover over blue 'i'
+In the video we hover the cursor over blue 'i'.
 
-:::
+::: -->
 
 In this case, adding spaces around `%>%` makes the code easier to read.
 
@@ -957,39 +931,19 @@ For example, we have a useful comment here which says that the next code selects
 
 Whilst this code does run ...
 
-:::{.direction}
-
-- Run `filter()` code
-
-:::
 
 ... all of the rows in the the output have values for `year` which are *less than* 1990.
 
 This is a clue that we've made a logical error, and used `<` where we meant `>`.
 
-:::{.direction}
-
-- Run `filter()` code
-
-:::
 
 The code to filter out non-Asian countries also runs, but doesn't return any rows.
-
-:::{.direction}
-
-- Run corrected `filter()` code
-
-:::
 
 This is an example of a data-driven error. The column containing "Asia" is `continent` not `country`.
 
 If we fix this error then the code does what we expect.
 
-:::{.direction}
 
-- Run corrected `filter()` code
-
-:::
 
 Remember, if you have a pipeline with multiple steps, you may need to select and execute just part of the pipeline to
 detect an error.

@@ -434,9 +434,9 @@ and pressing `Ctrl/Cmd + Enter`
 
 In the video we:
 
-- Demonstrate doing this in rstudio show that the cursor can be anywhere on the line and also
-- That if we execute a second statement the result of the first one disappears
-- Also point out that I did separate all the statements with a blank line to make it easier for myself to read (but R doesn't care about this and can work out whether the lines are related by itself)
+- Demonstrate doing this in Rstudio and show that the cursor can be anywhere on the line
+- Also, that if we execute a second statement the result of the first one disappears.
+- Also we show that if we separate all the statements with a blank line they are easier to read (but that R doesn't care about this, and can work out whether the lines are related).
 
 :::
 
@@ -618,7 +618,9 @@ You also need to remember to actually **run** the lines of code to load the libr
 Beginners often forget to do this — but it's an easy error to fix.
 
 :::{.direction}
-* Demonstrate error when running following plot if `tidyverse` hasn't been loaded
+
+In the video we demonstrate an error when running plot code if `tidyverse` hasn't been loaded
+
 :::
 
 ```{r, eval=F}
@@ -629,8 +631,12 @@ diamonds %>%
 ```
 
 :::{.direction}
+
+In the video we:
+
 1. Load `tidyverse`
-1. Re-run example plot to show that it now works
+1. Re-run the example plot to show that it now works.
+
 :::
 
 :::
@@ -785,7 +791,7 @@ However, this can be a bit confusing because --- in R --- variables can actually
 
 :::{.direction}
 
-- Show `library(psydata)` and then the `fuel` dataset
+In the video we show `library(psydata)` and then the `fuel` dataset.
 
 :::
 
@@ -962,7 +968,9 @@ left-right position) and the y-axis (up-down).
 This code chunk creates a scatterplot using the `fuel` dataset.
 
 :::{.direction}
-- Create chunk and type code
+
+In the video we create a new code chunk and type code into it.
+
 :::
 
 ```{r}
@@ -973,9 +981,12 @@ fuel %>%
     geom_point()
 ```
 
+<!-- 
 :::{.direction}
-- select the pipe with the cursor to highlight
-:::
+
+In the video we select the "pipe" with the cursor to highlight it.
+
+::: -->
 
 The `%>%` symbol is special, it's called a 'pipe'. We'll cover the pipe in a later session, but for now you just need to
 know that it sends the `fuel` data on to the next line of code — like it's passing it down a pipe.
@@ -987,13 +998,20 @@ The plot is built in two steps:
 The first step 
 
 :::{.direction}
+
+In the video we:
+
 - select `ggplot(aes(weight, mpg))`
+
 :::
 
 selects columns in our dataset to use for the x and y axes. In this case, the x-axis is `weight`, which is the weight of
 the cars in kg. And `mpg` is miles per gallon, or fuel efficiency. This will be the y-axis.
 
 :::{.direction}
+
+In the video we:
+
 - select `weight` in the code - highlight it is the x-axis
 - same for `mpg` and y-axis
 :::
@@ -1002,8 +1020,12 @@ the cars in kg. And `mpg` is miles per gallon, or fuel efficiency. This will be 
 We can see the plot if we run this statement using the keyboard shortcut — `Ctrl` or `Cmd` (Mac) + `Enter`
 
 :::{.direction}
+
+In the video we:
+
 - run the code and show the resulting plot
 - emphasise this is shown below the code chunk when using RMarkdown
+
 :::
 
 
@@ -1015,9 +1037,13 @@ If we run just this part of the code, we can see the plot with just the axes, an
 
 
 :::{.direction}
-1. run just the first two lines of code by selecting and pressing `ctrl+enter`
-2. emphasise the axes are there but no data shown
-3. rerun all code to plot points
+
+In the video we:
+
+1. Run just the first two lines of code by selecting and pressing `ctrl+enter`.
+2. Emphasise the axes are there, but no data shown yet.
+3. Rerun all code to plot  points for each row in the data.
+
 :::
 
 
@@ -1046,9 +1072,11 @@ fuel %>%
 
 R assumes that the first column is the x-axis and the second is the y-axis.
 
-:::{.direction}
-- select x-axis and y-axis in turn when describing
-:::
+<!-- :::{.direction}
+
+In the video we select the x-axis and y-axis in turn when describing them.
+
+::: -->
 
 We normally drop the `x =` and `y =` in these guides, and you should too.
 

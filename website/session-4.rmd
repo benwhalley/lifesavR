@@ -220,7 +220,9 @@ funimagery %>%
 
 :::{.direction}
 
-- run the code above and show students the result
+In the video we:
+
+- run the code above and show the result.
 - point out that this has not been stored anywhere — just displayed in the RStudio GUI, below the code chunk
 
 :::
@@ -244,7 +246,7 @@ funimagery.edited <- funimagery %>%
 
 :::{.direction}
 
-- show how a new variable has been created in the ***Environment*** window
+In the video we show how a new variable has been created in the ***Environment*** window
 
 :::
 
@@ -601,9 +603,12 @@ We can use `select()` to choose only these columns, and then use another pipe to
 
 :::{.direction}
 
+
+In the video we 
+
 - show selecting part of the code below
 - ie. select and run just the line up to `select()`
-- show how R spits out two columns of data below the chunk, rather than the whole dataset
+- show how R spits out two columns of data below the chunk, rather than the whole dataset.
 
 :::
 
@@ -627,7 +632,7 @@ the diagonal of the table are not shown (they are `NA`).
 
 :::{.direction}
 
-- show and talk through some of the values in the table at this point
+In the video we show and talk through some of the values in the table at this point.
 
 :::
 
