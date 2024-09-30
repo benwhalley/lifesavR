@@ -1224,8 +1224,9 @@ Let’s call this <code>weight_lost_end_followup</code>.</p>
 <span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>funimagery <span class="sc">%&gt;%</span></span>
 <span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">weight_lost_end_followup =</span> kg3 <span class="sc">-</span> kg1)</span></code></pre></div>
 <div class="direction">
+<p>In the video we:</p>
 <ul>
-<li>run the code above and show students the result</li>
+<li>run the code above and show the result.</li>
 <li>point out that this has not been stored anywhere — just displayed in
 the RStudio GUI, below the code chunk</li>
 </ul>
@@ -1242,10 +1243,8 @@ variable).</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>funimagery.edited <span class="ot">&lt;-</span> funimagery <span class="sc">%&gt;%</span></span>
 <span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">weight_lost_end_followup =</span> kg3 <span class="sc">-</span> kg1)</span></code></pre></div>
 <div class="direction">
-<ul>
-<li>show how a new variable has been created in the
-<strong><em>Environment</em></strong> window</li>
-</ul>
+<p>In the video we show how a new variable has been created in the
+<strong><em>Environment</em></strong> window</p>
 </div>
 <p>So the code above:</p>
 <ul>
@@ -1577,11 +1576,12 @@ in the <code>funimagery</code> dataset.</p>
 then use another pipe to send just those columns to
 <code>correlate()</code>:</p>
 <div class="direction">
+<p>In the video we</p>
 <ul>
 <li>show selecting part of the code below</li>
 <li>ie. select and run just the line up to <code>select()</code></li>
 <li>show how R spits out two columns of data below the chunk, rather
-than the whole dataset</li>
+than the whole dataset.</li>
 </ul>
 </div>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="co"># select weight at baseline and follow-up an correlate them</span></span>
@@ -1597,10 +1597,8 @@ for each pair of variables. The correlation between a variable and
 itself is always perfect, so the numbers on the diagonal of the table
 are not shown (they are <code>NA</code>).</p>
 <div class="direction">
-<ul>
-<li>show and talk through some of the values in the table at this
-point</li>
-</ul>
+<p>In the video we show and talk through some of the values in the table
+at this point.</p>
 </div>
 <p>We can see here that the correlations are all above 0.9, which is
 very high.</p>

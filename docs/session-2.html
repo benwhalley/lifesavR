@@ -1097,9 +1097,7 @@ assigned (stored) in the variable named on the left hand side.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co"># assign the current year to a variable</span></span>
 <span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>current_year <span class="ot">&lt;-</span> <span class="dv">2021</span></span></code></pre></div>
 <div class="direction">
-<ul>
-<li>Run variable assignment</li>
-</ul>
+<p>In the video we run the line with variable assignment.</p>
 </div>
 <p>And we now have a variable called <code>current_year</code> which
 contains the number <code>2021</code>.</p>
@@ -1115,10 +1113,8 @@ cases, variables you create are stored in what’s called the
 <p>The names of variables are shown in the column on the left, and their
 values in the column on the right.</p>
 <div class="direction">
-<ul>
-<li>Point at variable name and value in
-<strong>Environment</strong></li>
-</ul>
+<p>In the video we point at a variable name and value in the
+<strong>Environment</strong> pane.</p>
 </div>
 <hr />
 <p>Once stored, we can use variables as the <em>input</em> to new
@@ -1128,11 +1124,6 @@ storing the result in another variable called
 <code>next_year</code>:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="co"># do a calculation to create a new variable from an existing one</span></span>
 <span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>next_year <span class="ot">&lt;-</span> current_year <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div>
-<div class="direction">
-<ul>
-<li>Run variable assignment</li>
-</ul>
-</div>
 <div id="variable-names" class="section level3">
 <h3>Variable names</h3>
 <p>Giving variables sensible names is more important than you might
@@ -1263,8 +1254,8 @@ another way to link together multiple instructions.</p>
 first few rows:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>fuel <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
 <div class="direction">
-<p>Visual reminder that the <code>tidyverse</code> package needs loading
-first</p>
+<p>In the video we highlight the visual reminder that the
+<code>tidyverse</code> package needs loading first</p>
 </div>
 <p>You can think of your data as flowing along lengths of pipe, joined
 by functions which do things to the data, step by step, until the result
@@ -1296,9 +1287,7 @@ pane. A <code>data.frame</code> will have an icon that looks like a
 spreadsheet. If you click on the icon, the <code>data.frame</code> is
 displayed in a new tab in the <strong>Source</strong> pane.</p>
 <div class="direction">
-<ul>
-<li>click on the <code>fuel_head</code> icon</li>
-</ul>
+<p>In the video we click on the <code>fuel_head</code> icon.</p>
 </div>
 <p>This tab shows you the same information as printing the
 <code>data.frame</code>, such as the number of rows and columns, but it
@@ -1326,7 +1315,7 @@ assign the results to a variable called <code>fuel_head</code>.</li>
 <code>fuel_head</code>.</li>
 </ol>
 <p>The engine size of the vehicle with the highest miles per gallon was
-<span id="Q983350" class="webex-fitb"><input class="solveme  nospaces" data-digits="4" size="4" style="width:4em;" data-answer="[&quot;1770&quot;]"></input><span class="solvedme"></span></span>cc.</p>
+<span id="Q364877" class="webex-fitb"><input class="solveme  nospaces" data-digits="4" size="4" style="width:4em;" data-answer="[&quot;1770&quot;]"></input><span class="solvedme"></span></span>cc.</p>
 </div>
 </div>
 <div id="filter" class="section level1">
@@ -1409,11 +1398,6 @@ the data, and <code>filter()</code> makes this possible.</p>
 <p>The following chunk filters the <code>development</code> dataset
 (from <code>psydata</code>) to include only rows where the
 <code>country</code> column equals “Kenya”.</p>
-<div class="direction">
-<ul>
-<li>Enter and run code</li>
-</ul>
-</div>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">library</span>(psydata)</span>
 <span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>development <span class="sc">%&gt;%</span></span>
@@ -1448,20 +1432,14 @@ columns. For example, <code>year</code> is a column in the
 <code>&lt;</code> operator. This filters numeric columns which are
 <em>less than</em> a value.</p>
 <div class="direction">
-<ul>
-<li>Change <code>&gt;</code> to <code>&lt;</code> and run code</li>
-</ul>
+<p>In the video we change <code>&gt;</code> to <code>&lt;</code> and run
+the code.</p>
 </div>
 </div>
 <div id="combined-filters" class="section level3">
 <h3>Combined filters</h3>
 <p>You can combine filters in a pipeline to filter rows using multiple
 operators.</p>
-<div class="direction">
-<ul>
-<li>Enter and run code</li>
-</ul>
-</div>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>development <span class="sc">%&gt;%</span></span>
 <span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">&quot;Kenya&quot;</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">&gt;</span> <span class="dv">2000</span>)</span></code></pre></div>
@@ -1477,11 +1455,6 @@ also make a plot.</p>
 <p>The key step is to <strong><em>assign your filtered data to a new
 variable</em></strong>.</p>
 <p>For example:</p>
-<div class="direction">
-<ul>
-<li>Enter and run code</li>
-</ul>
-</div>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>development.europe <span class="ot">&lt;-</span> development <span class="sc">%&gt;%</span></span>
 <span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>  <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">&quot;Europe&quot;</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">&gt;</span> <span class="dv">1980</span>)</span></code></pre></div>
@@ -1491,19 +1464,8 @@ after 1980.</p>
 called <code>development.europe</code>.</p>
 <p>We can look at this new subset of the data by typing and running its
 name, or by looking in the <strong>Envrionment</strong> pane.</p>
-<div class="direction">
-<ul>
-<li>Demonstrate evaluating data subset and exploring this using the
-environment pane.</li>
-</ul>
-</div>
 <p>Now that it is stored in a new variable, we can use these data in
 other code, for example to make a plot:</p>
-<div class="direction">
-<ul>
-<li>Enter and run code</li>
-</ul>
-</div>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>development.europe <span class="sc">%&gt;%</span></span>
 <span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(gdp_per_capita, life_expectancy)) <span class="sc">+</span></span>
 <span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
@@ -1653,18 +1615,8 @@ easy to avoid if you follow these simple rules:</p>
 <p>You can also use <code>summarise()</code> with more than one summary
 function.</p>
 <p>Seperate each summary function with a comma:</p>
-<div class="direction">
-<ul>
-<li>Highlight comma in <code>summarise()</code>.</li>
-</ul>
-</div>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>fuel_summary <span class="ot">&lt;-</span> fuel <span class="sc">%&gt;%</span></span>
 <span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">m =</span> <span class="fu">mean</span>(mpg), <span class="at">sd =</span> <span class="fu">sd</span>(mpg))</span></code></pre></div>
-<div class="direction">
-<ul>
-<li>Show <code>fuel_summary</code> in <strong>Environment</strong></li>
-</ul>
-</div>
 <p>Remember, the out from <code>summarise()</code> (in this case
 <code>fuel_summary</code>) is a <code>data.frame</code> that you could
 do more processing on in extra steps if needed.</p>
@@ -1693,22 +1645,22 @@ write:</p>
 <li>Note that <code>fuel</code> stores <code>weight</code> in
 kilos.</li>
 </ol>
-<p>The median car weight is <span id="Q388319" class="webex-fitb"><input class="solveme  nospaces calculator" data-tol="0.1" data-digits="4" size="4" style="width:4em;" data-answer="[&quot;1508&quot;]"></input><span class="solvedme"></span></span> kg.</p>
+<p>The median car weight is <span id="Q355052" class="webex-fitb"><input class="solveme  nospaces calculator" data-tol="0.1" data-digits="4" size="4" style="width:4em;" data-answer="[&quot;1508&quot;]"></input><span class="solvedme"></span></span> kg.</p>
 <p><strong>Exercise 9</strong></p>
 <ol style="list-style-type: decimal">
 <li>Amend the code to also calculate the mean and standard deviation of
 <code>weight</code>.</li>
 </ol>
-<p>To the nearest kilo, the mean car weight is <span id="Q229245" class="webex-fitb"><input class="solveme  nospaces calculator" data-tol="0.1" data-digits="4" size="4" style="width:4em;" data-answer="[&quot;1459&quot;]"></input><span class="solvedme"></span></span> kg, and the standard deviation is <span id="Q623298" class="webex-fitb"><input class="solveme  nospaces calculator" data-tol="0.1" data-digits="4" size="3" style="width:3em;" data-answer="[&quot;444&quot;]"></input><span class="solvedme"></span></span> kg.</p>
+<p>To the nearest kilo, the mean car weight is <span id="Q93496" class="webex-fitb"><input class="solveme  nospaces calculator" data-tol="0.1" data-digits="4" size="4" style="width:4em;" data-answer="[&quot;1459&quot;]"></input><span class="solvedme"></span></span> kg, and the standard deviation is <span id="Q303195" class="webex-fitb"><input class="solveme  nospaces calculator" data-tol="0.1" data-digits="4" size="3" style="width:3em;" data-answer="[&quot;444&quot;]"></input><span class="solvedme"></span></span> kg.</p>
 </div>
 <div class="exercise">
 <p><strong>Exercise 10</strong></p>
 <p>Use <code>filter()</code> and <code>summarise()</code> together to
 calculate the following numbers:</p>
 <ul>
-<li>the mean <code>mpg</code> of cars with engine size &gt; 3000: <span id="Q136540" class="webex-fitb"><input class="solveme  nospaces calculator" data-tol="0.1" data-digits="4" size="8" style="width:8em;" data-answer="[&quot;15.68125&quot;]"></input><span class="solvedme"></span></span></li>
+<li>the mean <code>mpg</code> of cars with engine size &gt; 3000: <span id="Q301520" class="webex-fitb"><input class="solveme  nospaces calculator" data-tol="0.1" data-digits="4" size="8" style="width:8em;" data-answer="[&quot;15.68125&quot;]"></input><span class="solvedme"></span></span></li>
 <li>the standard deviation of <code>mpg</code> in cars with 6 cylinders:
-<span id="Q967469" class="webex-fitb"><input class="solveme  nospaces calculator" data-tol="0.1" data-digits="4" size="16" style="width:16em;" data-answer="[&quot;1.45356704106042&quot;]"></input><span class="solvedme"></span></span></li>
+<span id="Q366263" class="webex-fitb"><input class="solveme  nospaces calculator" data-tol="0.1" data-digits="4" size="16" style="width:16em;" data-answer="[&quot;1.45356704106042&quot;]"></input><span class="solvedme"></span></span></li>
 </ul>
 </div>
 </div>
@@ -1780,9 +1732,7 @@ you will find it to spot errors which creep into your code.</p>
 <p>Here’s a chunk of code with various errors which we’ll correct one by
 one.</p>
 <div class="direction">
-<ol style="list-style-type: decimal">
-<li>Open <code>broken.rmd</code></li>
-</ol>
+<p>In the video we open <code>broken.rmd</code></p>
 </div>
 <p>The first errors are in this line:</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="fu">liibrary</span>(todyverse)</span></code></pre></div>
@@ -1793,40 +1743,38 @@ is something wrong with this code.</p>
 <p>If we try to run this line, we get a red bar next to the code, and
 some errors in the console.</p>
 <div class="direction">
-<ul>
-<li>Run code to show that it doesn’t work</li>
-</ul>
+<p>In the video we run the code to show that it doesn’t work.</p>
 </div>
 <p>It’s best to fix errors that produce the yellow triangle before going
 any further.</p>
 <p>If you hover your pointer over the triangle, you will see a list of
 errors which R Studio has detected in the code.</p>
 <div class="direction">
-<ul>
-<li>Hover over yellow triangle to show two warnings</li>
-</ul>
+<p>In the video we hover over yellow triangle to show two warnings.</p>
 </div>
 <p>The language used in these suggestions can be a bit confusing, but
 you can probably work out that R Studio is warning you that there’s
 <code>no symbol named &#39;liibrary&#39; in scope</code>, because of a simple
 typing error in the <code>library()</code> function.</p>
 <p>If we correct this, the warning goes away.</p>
-<div class="direction">
-<ol style="list-style-type: decimal">
-<li>Fix error in function name</li>
-<li>Point out yellow triangle gone</li>
-</ol>
-</div>
+<!-- :::{.direction}
+
+In the video we 
+
+1. Fix the error in the function name
+1. Point out that the yellow triangle has gone
+
+::: -->
 <p>You’ll also notice that the function name <code>library</code> is now
 blue. This is another way to check that your functions have the correct
 spelling.</p>
 <p>If we run the code again, we now get a different error in the
 <strong>Console</strong>.</p>
-<div class="direction">
-<ul>
-<li>Run code to show that it still doesn’t work</li>
-</ul>
-</div>
+<!-- :::{.direction}
+
+- Run code to show that it still doesn't work
+
+::: -->
 <p>This error message is quite helpful. It tells us that “there is no
 package called ‘todyverse’”.</p>
 <p>If you haven’t spotted the problem already, the error message gives
@@ -1834,10 +1782,11 @@ you a clue. It should be enough for us to realise that we meant to type
 ‘tidyverse’.</p>
 <p>This line of code now works.</p>
 <div class="direction">
+<p>In the video we:</p>
 <ol style="list-style-type: decimal">
-<li>Fix error in package name</li>
-<li>Execute line</li>
-<li>Point out green bar</li>
+<li>Fix the error in the package name</li>
+<li>Execute the line with the <code>library</code> command.</li>
+<li>Point out the green bar.</li>
 </ol>
 </div>
 <div id="the-editchangeexecute-loop" class="section level3">
@@ -1860,22 +1809,22 @@ errors and have the code which does exactly what you expect.</p>
 an error is the red circle with a white cross.</p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="fu">library</span>(psydata</span></code></pre></div>
 <p>Hovering over the cross gives you a clue about what the error is.</p>
-<div class="direction">
-<ul>
-<li>Hover over red circle</li>
-</ul>
-</div>
+<!-- :::{.direction}
+
+- Hover over red circle
+
+::: -->
 <p>R Studio doesn’t always correctly identify the correct way to resolve
 an error.</p>
 <p>Here, the suggestion is that we’ve missed a comma. In actual fact,
 we’ve forgotten to close the parentheses to the <code>library()</code>
 function.</p>
 <p>Notice happens when we fix this error.</p>
-<div class="direction">
-<ul>
-<li>Add missing close parenthesis</li>
-</ul>
-</div>
+<!-- :::{.direction}
+
+In the video we add the missing closing parenthesis.
+
+::: -->
 <p>Not only does the cross on this line disappear, but a number of other
 crosses on subsequent lines also disappear, because they were also due
 to the missing close parenthesis.</p>
@@ -1887,11 +1836,11 @@ errors in the order they appear in your code.</p>
 <p>Your code will still work if this symbol is present, but it suggests
 something that will make it easier for you (and others) to read the
 code.</p>
-<div class="direction">
-<ul>
-<li>Hover over blue ‘i’</li>
-</ul>
-</div>
+<!-- :::{.direction}
+
+In the video we hover the cursor over blue 'i'.
+
+::: -->
 <p>In this case, adding spaces around <code>%&gt;%</code> makes the code
 easier to read.</p>
 </div>
@@ -1903,35 +1852,15 @@ or data types.</p>
 <p>For example, we have a useful comment here which says that the next
 code selects only years after 1990.</p>
 <p>Whilst this code does run …</p>
-<div class="direction">
-<ul>
-<li>Run <code>filter()</code> code</li>
-</ul>
-</div>
 <p>… all of the rows in the the output have values for <code>year</code>
 which are <em>less than</em> 1990.</p>
 <p>This is a clue that we’ve made a logical error, and used
 <code>&lt;</code> where we meant <code>&gt;</code>.</p>
-<div class="direction">
-<ul>
-<li>Run <code>filter()</code> code</li>
-</ul>
-</div>
 <p>The code to filter out non-Asian countries also runs, but doesn’t
 return any rows.</p>
-<div class="direction">
-<ul>
-<li>Run corrected <code>filter()</code> code</li>
-</ul>
-</div>
 <p>This is an example of a data-driven error. The column containing
 “Asia” is <code>continent</code> not <code>country</code>.</p>
 <p>If we fix this error then the code does what we expect.</p>
-<div class="direction">
-<ul>
-<li>Run corrected <code>filter()</code> code</li>
-</ul>
-</div>
 <p>Remember, if you have a pipeline with multiple steps, you may need to
 select and execute just part of the pipeline to detect an error.</p>
 </div>
@@ -2036,7 +1965,7 @@ project.</p>
 <p>Filter and summarise the <code>iris</code> dataset in order to answer
 the following question <strong>to 2 decimal places</strong>:</p>
 <p>The mean petal width of the <code>versicolor</code> species of iris
-is <span id="Q515072" class="webex-fitb"><input class="solveme  nospaces calculator" data-tol="0.2" data-digits="4" size="4" style="width:4em;" data-answer="[&quot;1.33&quot;]"></input><span class="solvedme"></span></span>cm.</p>
+is <span id="Q883747" class="webex-fitb"><input class="solveme  nospaces calculator" data-tol="0.2" data-digits="4" size="4" style="width:4em;" data-answer="[&quot;1.33&quot;]"></input><span class="solvedme"></span></span>cm.</p>
 </div>
 </div>
 <div id="additional-resources" class="section level1">
