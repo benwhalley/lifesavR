@@ -1,17 +1,31 @@
 ---
-title: "LifesaveR Session 7 Workbook: Multiple Regression"
+title: "lifesavR Session 7 Workbook: Multiple Regression"
 output: html_document
 ---
 
-This R Markdown document is your workbook for session 7 of the lifesaveR course
+This RMarkdown document is your workbook for session 7 of the lifesavR course.
+
+Remember to add a chunk to import the necessary packages.
 
 
-# Do it: [X]
+# Student study habits
 
-## Exercise 1
+## Task 1: Interpret these plots
 
-TO COMPLETE
+## Task 2: Describe alternative hypotheses
 
+## Task 3: Write the model code
+
+## Task 4: Calculate the Bayes Factor
+
+## Task 5: Interpret the Bayes Factor output
+
+## Task 6: Interpret the Bayes Factor comparing two models
+
+
+# National happiness
+
+## Task 7: National happiness (optional)
 
 
 
@@ -19,3 +33,14 @@ TO COMPLETE
 
 Write your answers below each question and save your workbook for later.
 
+## 1. Do we prefer models with smaller or larger residuals?
+
+## 2. What range of values can the $R^2$ statistic take?
+
+## 3. Is it better for a model to have a smaller or larger $R^2$ value?
+
+## 4. If we calculate the Bayes Factor for `modelA / modelB` and the result is > 1, what does this provide evidence for?
+
+## 5. What does a Bayes Factor of 25 mean?
+
+## 6. What does a Bayes Factor of 0.05 mean?

@@ -1,5 +1,5 @@
 ---
-title: "LifesaveR Session 4 Workbook"
+title: "lifesavR Session 4 Workbook"
 output: html_document
 ---
 
@@ -10,7 +10,7 @@ library(...)
 ```
 
 
-This R Markdown document is your workbook for session four of the lifesaveR module.
+This RMarkdown document is your workbook for session four of the lifesavR course.
 
 
 # Central tendency and spread
@@ -25,7 +25,7 @@ This R Markdown document is your workbook for session four of the lifesaveR modu
 In the video you saw how to use `mutate()` to create a new column which is the difference between values in two other columns.
 
 1. Using the `funimagery` dataset, create a column representing weight lost between end of treatment and at the end of
-followup.
+followup (remember that weight lost will be a negative number).
 2. Make a boxplot of these data.
 
 
@@ -35,7 +35,7 @@ followup.
 
 ## Exercise 3
 
-1. Using the `funimagery` data and `count()` to count how many participants there were in each intervention group.
+1. Use the `funimagery` data and `count()` to count how many participants there were in each intervention group.
 2. How many men were in the FIT group?
 
 
@@ -46,7 +46,7 @@ followup.
 ## Exercise 4
 
 1. Load the `corrr` package (use the `library()` function).
-2. Use the `fuel` dataset from the `psydata` package, to calculate the correlation between `power` and `engine_size`?
+2. Use the `fuel` dataset from the `psydata` package, to calculate the correlation between `power` and `engine_size`.
 
 ## Exercise 5
 
@@ -60,6 +60,20 @@ Play "Guess the correlation" in the worksheet.
 Write your answers below each question and save your workbook for later.
 
 
+## What functions in R describe the central tendency of a variable?
+
+## What type of column can we use with `mean()`?
+
+## How might you describe patterns in a categorical variable?
+
+## What function did we use to create a new column in the `funimagery` dataset?
+
+## In the `funimagery` data, what was the mean change in weight (`kg3 - kg2`) for FIT participants AFTER the end of treatment? (Remember that a negative number means weight was lost.)
+
+## What type of plot describes the relationship between two variables?
+
+## What function do we use to make a plot that shows a relationship between two variables in `ggplot()`?
+
 
 
 # Extension exercises
@@ -70,4 +84,4 @@ Correlations require that there is a *linear relationship* between the two varia
 scatterplot should be fairly close to a straight line.
 
 1. Plot pairs of variables from the `fuel` dataset.
-2. Which pairs would be NOT be suitable for calculating a correlation?
+2. Which pairs would NOT be suitable for calculating a correlation?

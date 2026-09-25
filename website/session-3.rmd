@@ -9,6 +9,7 @@ link-citations: yes
 
 ```{r, include=F, echo=F}
 source('_first_chunk.R')
+source('tabbed-rmd.R')
 ```
 
 
@@ -27,11 +28,11 @@ development %>%
   xlab("") + ylab("") +theme(axis.title.x=element_blank(),
         axis.text.x=element_blank(),
         axis.ticks.x=element_blank(),axis.text.y=element_blank(),
-        axis.ticks.y=element_blank()) +guides(colour=F) + theme(
+        axis.ticks.y=element_blank()) +guides(colour="none") + theme(
           panel.background = element_rect(fill = "transparent", colour = NA),
     plot.background = element_rect(fill = "transparent", colour = NA),
     plot.margin = unit(c(0, 0, 0, 0), "null"),
-    panel.margin = unit(c(0, 0, 0, 0), "null"))
+    panel.spacing = unit(c(0, 0, 0, 0), "null"))
 
 ```
 
@@ -43,7 +44,7 @@ As researchers, we often collect data from two or more groups.
 Group allocations are *categorical* variables. They are stored in a special way by R, which makes it easier to display
 them on graphs and use them in analyses.
 
-In this workshop we learn to how to use categorical variables in boxplots, to add colour to scatterplots, and
+In this workshop we learn how to use categorical variables in boxplots, to add colour to scatterplots, and
 to make tables of descriptive statistics which you will need in your coursework and project reports.
 
 
@@ -97,12 +98,12 @@ library(tidyverse)
 ----------------------------------------------------------------------------------------------------
 
 To make the plot, we first choose the data we want to plot and add a pipe to the end of the line to
-send this data to the next command:
+send this data to the next function:
 
 ::: direction
 -   From the code below select only first line
 -   Also show selecting/executing just the name of the dataset and how this displays the data
--   Emphaise the importance of breaking code down and running sub-steps separately
+-   Emphasise the importance of breaking code down and running sub-steps separately
 :::
 
 Next we use `ggplot()` and `aes(x = ..., y = ...)` to select the columns we want to use in the data.
@@ -172,7 +173,7 @@ In a boxplot:
 :::{.exercise}
 **Exercise 1**
 
-1. Open `session-3.rmd` using the **Files** pane. This is the workbook you will be using in this session.
+1. Open `session-3-workbook.rmd` (in the `exercises` folder) using the **Files** pane. This is the workbook you will be using in this session.
 1. Use the `iris` dataset to create a boxplot with `Species` on the x-axis and `Sepal.Width` on the y-axis (sepals are the leaves that encase an iris flower).
 
 Your boxplot should look like this:
@@ -323,16 +324,16 @@ library(tidyverse)
 library(psydata)
 
 # see a list of columns in the dataset, and their types
-iris %>% glimpse
+iris %>% glimpse()
 
-# make a scatter plot with two continous axes
-# both wt and mpg are numeric variables
+# make a scatter plot with two continuous axes
+# both weight and mpg are numeric variables
 # so this works well
 fuel %>%
   ggplot(aes(weight, mpg)) +
     geom_point()   
 
-# try and make a boxplot with `am` as the x-axis
+# try and make a boxplot with `cyl` as the x-axis
 # but because `cyl` is stored as a numeric variable
 # (not categorical) the scale of the x-axis is wrong
 fuel %>%
@@ -385,25 +386,25 @@ know about them in advance. The main usages are:
     psychological constructs which many theories include, and those theories say these constructs
     play a causal role in how we behave or perform on certain tasks.
 
--   *variables in a study design*. An example here might an experimental group allocation, or an
+-   *variables in a study design*. An example here might be an experimental group allocation, or an
     attribute of participants like their age or gender.
 
 -   *variables in a dataset*. Sometimes people want to refer to a column of numbers in a dataset
     (e.g. a spreadsheet), where the column has a name, and use the term variable again. This usage
     overlaps with the previous two, but it doesn't *have* to. For example, we might have a column of
-    numbers recording the date and time participants' completed an empathy questionnaire. Analysed a
+    numbers recording the date and time participants completed an empathy questionnaire. Analysed a
     certain way these timestamps *might* tell us something useful, but the column of timestamps
     isn't a variable in our theoretical model, and they might not be used as a variable in our
     experiment.
 
-[ Finally, we have ]
+Finally, we have:
 
 -   *variables in R and computer programs*: This type of variable is a *general purpose container*
     which can store anything. Variables in R *can* contain columns of numbers, but they can also
     contain whole datasets, or graphs, or the results of statistical tests. **A variable in R often
     isn't the same thing as an experimental variable or a column in a dataset**.
 
-**In this short course use *variable* to mean either an experimental/theoretical variable or an R
+**In this short course we use *variable* to mean either an experimental/theoretical variable or an R
 container.**
 
 **When we mean a column of data in a dataset we will use the word *column* instead.**
@@ -448,7 +449,7 @@ There are four data types you need to know about in R: factors, text, numeric an
 
 -   *Factors*, which are used for categorical data (and sometimes ordinal data too)
 -   *Text*, also called *character* or *string* data.
--   *Numeric* columns can called be either *integer* or *double*. Double is computer speak for
+-   *Numeric* columns can be either *integer* or *double*. Double is computer speak for
     'double-precision number', which just means decimals and really big numbers are allowed
 -   *Logical*, which can be used to store values that can only be either True or False.
 
@@ -458,17 +459,17 @@ different types of column in R--- *this isn't always the case*.
 Sometimes data can be stored as the wrong type---e.g. categorical data could end up stored as
 numeric data --- and in these cases we need to convert from one format to another.
 
-You can see which data type is used to store a variable when using the `glimpse()` command
-introduced in Session 1 (see [here](session-1.html#exploring)).
+You can see which data type is used to store a column when using the `glimpse()` function
+introduced in Session 1 (see [here](session-1.html#datasets)).
 
 ```{r}
 iris %>% glimpse()
 ```
 
-In the output you can see the variable names listed on the left, followed by text in angle brackets,
+In the output you can see the column names listed on the left, followed by text in angle brackets,
 e.g.: `<dbl>` which is the abbreviated name of data type.
 
-In this built-in dataset, most of the data is numeric (`dbl`), but the `Species` variable is
+In this built-in dataset, most of the data is numeric (`dbl`), but the `Species` column is
 categorical, and stored as a factor (`fct`).
 
 It's possible to convert columns from one type to another, to suit our needs. We'll see more of this
@@ -513,7 +514,7 @@ fuel %>%
   geom_boxplot()
 ```
 
-The warning message says `Continuous x aesthetic -- did you forget aes(group=...)?`. This is a clue
+The warning message includes `Continuous x aesthetic -- did you forget aes(group=...)?`. This is a clue
 as to what has gone wrong.
 
 We might have expected to see;
@@ -524,18 +525,18 @@ We might have expected to see;
 It didn't work as expected though.
 
 R spots that `cyl` is *stored* as numeric data, and because it doesn't know better it creates a
-\_continuous scale) on the $x$ axis.
+*continuous scale* on the $x$-axis.
 
-Only one box is drawn at the midpoint of all the values of `cyl`; because `cyl` ranges from 4 to 6
+Only one box is drawn at the midpoint of all the values of `cyl`; because `cyl` ranges from 4 to 8
 the box appears at 6.
 
 Although R often has good defaults, it isn't smart --- if it doesn't behave as we expect we need to
 be more specific.
 
 Here we want to use `cyl` as a categorical variable, so we need to give R precise instructions. We
-should convert `cyl` to a `factor` explictly. Then our plot will work properly.
+should convert `cyl` to a `factor` explicitly. Then our plot will work properly.
 
-We can use the command `factor(cyl)` to tell R that the $x$-axis is a factor:
+We can use the function `factor(cyl)` to tell R that the $x$-axis is a factor:
 
 ```{r}
 fuel %>%
@@ -545,7 +546,7 @@ fuel %>%
 
 This gives us the boxplot we were expecting.
 
-The only change was to replace `cyl` with `factor(cyl)`. This tells R to convert the variable `cyl`
+The only change was to replace `cyl` with `factor(cyl)`. This tells R to convert the column `cyl`
 to a factor, and `ggplot()` can then set the scale of the x-axis correctly.
 
 :::
@@ -567,10 +568,11 @@ Work with a friend: Describe the 4 ways in which quantitative researchers might 
 :::{.exercise}
 **Exercise 4**
 
-Use `glimpse()` to check the data types of the `mpg` and the `diamonds` datasets.
+Use `glimpse()` to check the data types of the `mpg` and the `diamonds` datasets. (Hint: in the `glimpse()` output,
+`<int>` means integer and `<dbl>` means double.)
 
-- The data type of the 4th variable in the `mpg` data is `r mcq(c("double", "factor", "character", answer=typeof(mpg[[4]])))`
-- The data type of the 5th variable in the `diamonds` data is `r mcq(c("date","character", "factor", answer=typeof(diamonds[[5]])))`
+- The data type of the 4th column in the `mpg` data is `r mcq(c("double", "factor", "character", answer=typeof(mpg[[4]])))`
+- The data type of the 5th column in the `diamonds` data is `r mcq(c("date","character", "factor", answer=typeof(diamonds[[5]])))`
 
 :::
 
@@ -586,7 +588,7 @@ fuel %>%
   geom_boxplot()
 ```
 
-Remember that you will need to *change* the type of the `gear` variable for this to work.
+Remember that you will need to *change* the type of the `gear` column for this to work.
 
 :::
 
@@ -606,9 +608,9 @@ Remember that you will need to *change* the type of the `gear` variable for this
 - Datasets often contain categorical variables
 - We often want to compare statistics (like averages) *between* categories
 - The `group_by()` function is a quick way to combine filtering and summarising
-- `group_by()` creates a *grouped* `data.frame`
+- `group_by()` creates a *grouped* data frame
 - Adding `group_by()` to a pipeline runs the subsequent steps *once for each group*.
-- The result is always a new `data.frame`
+- The result is always a new data frame
 
 :::
 
@@ -617,7 +619,7 @@ Remember that you will need to *change* the type of the `gear` variable for this
 # check the columns in the funimagery dataset
 # results of an RCT of functional imagery training for weight loss
 # conducted at the University of Plymouth
-funimagery %>% glimpse
+funimagery %>% glimpse()
 
 # boxplot to compare the intervention groups
 funimagery %>%
@@ -640,7 +642,7 @@ funimagery %>%
   group_by(intervention) %>%
   summarise(mean(weight_lost_end_trt))
 
-# store the result (also a data.frame) in a new variable
+# store the result (also a data frame) in a new variable
 average_weight_loss <- funimagery %>%
                           group_by(intervention) %>%
                           summarise(mean(weight_lost_end_trt))
@@ -689,21 +691,22 @@ We can see the columns in the dataset using `glimpse()`:
 :::
 
 ```{r}
-funimagery %>% glimpse
+funimagery %>% glimpse()
 ```
 
 Weight was measured three times, and these measurements are in the columns called `kg1`, `kg2` and
 `kg3`.
 
--   The first measurment (`kg1`) was taken at *baseline*, when participants joined the study
+-   The first measurement (`kg1`) was taken at *baseline*, when participants joined the study
 -   The second measurement (`kg2`) was taken at the end of treatment, which was 6 months after
     baseline
 -   The final measurement (`kg3`) was made 12 months after baseline
 
-The `weight_lost_end_trt` column is the *difference* between `kg1` and `kg2` -- i.e. how much weight
-the participant lost after their treatment.
+The `weight_lost_end_trt` column is the *difference* between `kg1` and `kg2` (it's calculated as
+`kg2 - kg1`). This means that **weight lost is a negative number**: a participant who went from
+100kg to 95kg has a value of -5. So *lower* (more negative) values mean *more* weight was lost.
 
-We have already seen a that a boxplot can compare scores between categories:
+We have already seen that a boxplot can compare scores between categories:
 
 ::: direction
 -   Generate plot
@@ -744,7 +747,7 @@ funimagery %>%
   summarise(mean(weight_lost_end_trt))
 ```
 
-This is a bit repetitive, and would worse if there were lots of categories. Imagine doing something
+This is a bit repetitive, and would be worse if there were lots of categories. Imagine doing something
 similar for each continent in the `development` data, for example.
 
 ### Using `group_by()`
@@ -762,7 +765,7 @@ funimagery %>%
   summarise(mean(weight_lost_end_trt))
 ```
 
-Using `group_by()` before `summarise()` splits up the data, in thise case depending on which
+Using `group_by()` before `summarise()` splits up the data, in this case depending on which
 `intervention` the participant received.
 
 ::: direction
@@ -775,7 +778,7 @@ The `summarise()` function calculates the mean for each group separately.
 -   Highlight `summarise()`
 :::
 
-The result is a new `data.frame` with two columns: The name of the `intervention`, and the average
+The result is a new data frame with two columns: The name of the `intervention`, and the average
 weight lost. We could save this in a new variable for use later, if we liked:
 
 ```{r}
@@ -801,6 +804,9 @@ funimagery %>%
   summarise(mean(weight_lost_end_trt))
 ```
 
+In RStudio you will also see a message like `` `summarise()` has grouped output by 'gender'. You can
+override using the `.groups` argument. `` This is just information, not an error --- you can ignore it.
+
 It looks like women lost a bit more weight on average
 
 ::: direction
@@ -824,7 +830,10 @@ With `summarise()` we can calculate multiple statistics at once for each of the 
 ```{r}
 funimagery %>%
   group_by(intervention) %>%
-  summarise(mean(weight_lost_end_trt), sd(weight_lost_end_trt))
+  summarise(
+    mean(weight_lost_end_trt),
+    sd(weight_lost_end_trt)
+  )
 ```
 
 Here, we've calculated both the mean and standard deviation for each intervention.
@@ -846,7 +855,10 @@ harder to work with. It's much better to give the new column a specific name lik
 ```{r}
 funimagery %>%
   group_by(intervention) %>%
-  summarise(mean_weight_lost_end_trt = mean(weight_lost_end_trt), sd_weight_lost_end_trt = sd(weight_lost_end_trt))
+  summarise(
+    mean_weight_lost_end_trt = mean(weight_lost_end_trt),
+    sd_weight_lost_end_trt = sd(weight_lost_end_trt)
+  )
 ```
 
 Remember, the column names you use shouldn't include spaces or other 'special' characters.
@@ -864,7 +876,7 @@ Remember, the column names you use shouldn't include spaces or other 'special' c
 
 **Exercise 6**
 
-Replace the `?` in the code below to to calculate the `median` weight lost for men and women undergoing FIT and MI in the
+Replace the `?` in the code below to calculate the `median` weight lost for men and women undergoing FIT and MI in the
 `funimagery` dataset.
 
 ```{r, eval=F}
@@ -966,6 +978,11 @@ diamonds %>%
 Interpret your plot: Which category of diamond `clarity` has the steepest rise in price as
 size (carat) increases?
 
+`r hide('show answer')`
+The best clarity, `IF` (shown in yellow). For the same increase in carat, price rises most steeply
+for `IF` diamonds and least steeply for the lowest clarity, `I1`.
+`r unhide()`
+
 :::
 
 :::{.exercise}
@@ -982,7 +999,12 @@ fuel %>%
 ```
 `r unhide()`
 
-Interpret your plot: Which type of car (auto or manal) sees the strongest relationship between engine size and fuel economy?
+Interpret your plot: Which type of car (auto or manual) sees the strongest relationship between engine size and fuel economy?
+
+`r hide('show answer')`
+Automatic cars (`automatic` is `TRUE`). For both types, cars with bigger engines do fewer miles per gallon, but mpg
+drops more steeply as engine size increases for automatic cars.
+`r unhide()`
 :::
 
 :::{.exercise}

@@ -41,8 +41,7 @@ knitr::opts_chunk$set(
 > **_Coefficients_** are numbers telling us how strong the relationships between
 > predictors and outcomes are. But the meaning of coefficients depends entirely
 > on the **_design_** of our study, and the **_assumptions_** we are prepared
-> to make. Causal diagrams (as you
-> [drew in the first session](causes.html)) can help us decide how
+> to make. Causal diagrams can help us decide how
 > to interpret our results.
 
 
@@ -76,7 +75,9 @@ These data are available in the `psydata` package, in the `mentalh` dataset.
 
 :::{.exercise}
 
-Open the data and list the variables in the `mentalh` dataset:
+**Exercise 1**
+
+Open the data and list the columns in the `mentalh` dataset:
 
 `r hide("Show me")`
 
@@ -120,6 +121,8 @@ mentalh %>%
 :::{.exercise}
 
 
+**Exercise 2**
+
 *Do it: make a scatter plot*
 
 1. As a refresher, make the plot shown above for yourself using:
@@ -127,7 +130,7 @@ mentalh %>%
 - the `mentalh` dataset
 - the `ggplot` and `geom_point` functions
 - the `screen_time` and `anxiety_score` columns
-- remember to use the `aes` function to select which variable appears on each axis
+- remember to use the `aes` function to select which column appears on each axis
 
 2. Describe the relationship between these two variables in no more than 2 or 3 sentences.
 
@@ -164,15 +167,15 @@ between one *outcome* variable and one *predictor* variable
 
 - The *outcome* is what we want to predict or explain (e.g., anxiety scores)
 
-- The *predictor* is what we use to predict the outcome variable (e.g., average hours of screen time per week)
+- The *predictor* is what we use to predict the outcome variable (e.g., average hours of screen time per day)
 
-- Both the outcome and predictor variable must be *continuous* variables
+- The outcome must be a *continuous* variable. In this session the predictor is continuous too (later you'll see that predictors can also be categorical)
 
 
 In this session we stick to drawing **straight lines** 
 because they represent the simplest-possible relationship.
 
-The best way to 'see' a simple linear regression is to use the `geom_smooth()`. 
+The best way to 'see' a simple linear regression is to use the `geom_smooth()` function. 
 This adds a line of best fit to our existing scatter plot.
 
 
@@ -188,7 +191,7 @@ library(tidyverse)
 mentalh %>%
   ggplot(aes(screen_time, anxiety_score)) +
   geom_point() +
-  geom_smooth(method=lm, se=F) # makes straight line with no shading
+  geom_smooth(method="lm", se=F) # makes straight line with no shading
 ```
 
 
@@ -208,7 +211,7 @@ mentalh %>%
 ```
 
 
-It's common that we place variables that we consider outcomes on the y axis of the plot
+It's common that we place variables that we consider outcomes on the y-axis of the plot
 and predictors on the x-axis, as here.
 
 
@@ -229,13 +232,13 @@ It's often quite useful to see the curve because it shows the trend in the relat
 However in this case we want to see the best *linear* fit, because that will correspond with the 
 simple linear regression we want to run.
 
-To do that we just add `method=lm` to `geom_smooth`:
+To do that we just add `method="lm"` to `geom_smooth`:
 
 ```{r, fig.height=3}
 mentalh %>%
   ggplot(aes(screen_time, anxiety_score)) +
   geom_point() +
-  geom_smooth(method=lm)
+  geom_smooth(method="lm")
 ```
 
 Now the blue line is the ***best linear fit*** between the predictor and the outcome.
@@ -250,9 +253,11 @@ Now the blue line is the ***best linear fit*** between the predictor and the out
 
 :::{.exercise}
 
-1. Recreate the plot  in the video with `screen_time` and the predictor, `anxiety_score` as the outcome, and with the line of best fit (using `geom_smooth(method=lm)`)           
+**Exercise 3**
 
-2. Make two version: one with `method="lm"`, and one without. The lines look different — but which do you think is the "best"? How would we decide? (We will return to this topic later)
+1. Recreate the plot in the video with `screen_time` as the predictor, `anxiety_score` as the outcome, and with the line of best fit (using `geom_smooth(method="lm")`)           
+
+2. Make two versions: one with `method="lm"`, and one without. The lines look different — but which do you think is the "best"? How would we decide? (We will return to this topic later)
 
 ---
 
@@ -283,7 +288,7 @@ These numbers are called **coefficients**  (this is the statistical term for a n
 
 You can see the intercept and slope highlighted in the graph below:
 
-```{r, echo=F}
+```{r, echo=F, warning=F}
 set.seed(111)
 egdata <- tibble(predictor = rnorm(100, 0,5), outcome=10+rnorm(100, 0, 10)+6.2*predictor) %>% 
   filter(outcome>0&predictor>0&outcome<60 &predictor<5)
@@ -318,6 +323,8 @@ egdata %>%
 ```
 
 :::{.exercise}
+
+**Exercise 4**
 
 **Check your understanding.** Using the numbers shown in the plot above, answer the following questions:
 
@@ -359,7 +366,7 @@ lm(anxiety_score ~ screen_time, data = mentalh)
 
 **Explanation of the code**  
 
-- The command on line 2 tells R to use the `lm` function. 
+- The statement on line 2 tells R to use the `lm` function. 
 - The first argument passed to `lm` is known as a **model formula**
 - The `~` symbol (called a 'tilde') means "*is predicted by*". So you can read the formula as saying
 *"anxiety score is predicted by screen time"*. 
@@ -368,7 +375,7 @@ lm(anxiety_score ~ screen_time, data = mentalh)
 
 **Explanation of the output**. When we use `lm`, the output displays:
 
--   The 'Call' we made (i.e. what inputs we gave, so we can remember how we did it later on; this is line 4 and 5)
+-   The 'Call' we made (i.e. what inputs we gave, so we can remember how we did it later on; these are the first lines of the output)
 -   The ***coefficients*** of the model. These are the **numbers which represent the line on the
     graph** we saw above. 
 
@@ -380,6 +387,8 @@ lm(anxiety_score ~ screen_time, data = mentalh)
 simple1 <- lm(anxiety_score ~ screen_time, data = mentalh)
 s1coef <- simple1 %>% coef() %>% round(4)
 ```
+
+**Exercise 5**
 
 **Check your understanding again** 
 
@@ -433,8 +442,8 @@ using simple arithmetic.
 However, it's more convenient to get R to make the predictions for us. To do this we need to:
 
 1. Re-run the model, and store the results
-2. Make a new dataframe, with the values of the predictor we will predict-for
-3. Use the `augment` command to make the predictions
+2. Make a new data frame, with the values of the predictor we will predict-for
+3. Use the `augment` function to make the predictions
 
 The video covers both the manual and automatic methods of making a prediction from the results of  `lm`.
 
@@ -452,7 +461,7 @@ new_data <- tibble(screen_time = 10)
 # broom contains the augment function
 library(broom)
 
-# make predictions for our new dataframe (i.e. for screentime = 10)
+# make predictions for our new data frame (i.e. for screentime = 10)
 augment(simple1, newdata=new_data)
 
 ```
@@ -474,14 +483,14 @@ we didn't collect data for using basic arithmetic.
 
 To do this we plug our coefficients back into the equation we saw above:
 
-$\rm{Anxiety\ score} = `r s1coef[1]` + (`r s1coef[2]` \times \rm{Predictor})$
+$\rm{Anxiety\ score} = `r s1coef[1]` + (`r s1coef[2]` \times \rm{Screen\ time})$
 
 
 <br>
 
 So, for a person who had 10 hours on a screen, we calculate an anxiety score as follows:
 
-$\rm{Anxiety\ score} =  `r s1coef[1]` + (`r s1coef[2]` \times 10) = `r s1coef[1] + s1coef[2]*10` \rm{hours}$
+$\rm{Anxiety\ score} =  `r s1coef[1]` + (`r s1coef[2]` \times 10) = `r s1coef[1] + s1coef[2]*10`$
  
 <br>
 <br>
@@ -510,8 +519,8 @@ it's more convenient to get R to make the predictions for us.
 To do this we need to:
 
 1. Re-run the `lm`, and store the results
-2. Make a new dataframe, with the values of the predictor we will predict-for
-3. Use the **`augment`** command to make the predictions
+2. Make a new data frame, with the values of the predictor we will predict-for
+3. Use the **`augment`** function to make the predictions
 
 
 ### Step 1: re-run the model and save the results
@@ -521,13 +530,13 @@ To do this we need to:
 simple1 <- lm(anxiety_score ~ screen_time, data = mentalh)
 ```
 
-We can check this is the same model by using the name we stored it under as an R command:
+We can check this is the same model by using the name we stored it under as an R statement:
 
 ```{r}
 simple1
 ```
 
-### Step 2: Make a new dataframe, with the values of the predictor we will predict-for
+### Step 2: Make a new data frame, with the values of the predictor we will predict-for
 
 ```{r}
 # the tibble function makes a new data frame
@@ -541,10 +550,10 @@ new_data
 ```
 
 
-**Explanation of the output**: We have a new dataframe, called `new_data`, which contains 1 row and 1 column (`screen_time`).
+**Explanation of the output**: We have a new data frame, called `new_data`, which contains 1 row and 1 column (`screen_time`).
 
 
-### Step 3. Use the `augment` command to make the predictions.
+### Step 3. Use the `augment` function to make the predictions.
 
 The `augment` function is in the `broom` package, so we need to load that first:
 
@@ -552,13 +561,13 @@ The `augment` function is in the `broom` package, so we need to load that first:
 library(broom)
 ```
 
-Then we can use `augment` with the stored model (`simple1`), and the new dataframe (`new_data`): 
+Then we can use `augment` with the stored model (`simple1`), and the new data frame (`new_data`): 
 
 ```{r}
 augment(simple1, newdata=new_data)
 ```
 
-**Explanation of the output**: The `augment` added new columns to the `new_data` dataframe. The predicted `anxiety_score` is in the `.fitted` column and is 6.91. The `.se.fit` column is the *standard error* of the predicted values (don't worry about this for now).
+**Explanation of the output**: The `augment` added new columns to the `new_data` data frame. The predicted `anxiety_score` is in the `.fitted` column and is 6.91.
 
 
 
@@ -574,13 +583,15 @@ augment(simple1, newdata=new_data)
 
 :::{.exercise}
 
+**Exercise 6**
+
 *Check your understanding: Coefficients*
 
 Using the coefficients in the `lm` output above, answer the following questions:
 
 1. What is the expected anxiety score for a person who watched a screen for 2 hours? `r fitb(s1coef[1] + s1coef[2]*2, tol=.1)`
 
-2. What is the expected anxiety score for a person who watched a screen for 24 hours? `r fitb(s1coef[1] + s1coef[2]*24, tol=.5)`
+2. What is the expected anxiety score for a person who watched a screen for 5 hours? `r fitb(s1coef[1] + s1coef[2]*5, tol=.1)`
 
 
 
@@ -588,7 +599,7 @@ Using the coefficients in the `lm` output above, answer the following questions:
 
 
 ```{r, echo=F}
-augment(simple1, newdata = tibble(screen_time = c(2, 24))) %>% 
+augment(simple1, newdata = tibble(screen_time = c(2, 5))) %>% 
   pull(.fitted) %>% round(3) %>% 
   pandoc.list()
 ```
@@ -600,20 +611,22 @@ augment(simple1, newdata = tibble(screen_time = c(2, 24))) %>%
 
 :::{.exercise}
 
+**Exercise 7**
+
 *Try it: Making a prediction with augment*
 
 In your workbook:
 
 1. Re-run the `lm` model which predicts anxiety from screen time
 2. Save this model (give it a name like `simple1` or `model1`)
-3. Make a new dataframe so that you can predict `anxiety_score` for someone who watched screens for 30 hours
+3. Make a new data frame so that you can predict `anxiety_score` for someone who watched screens for 8 hours
 4. Use `augment` to make the predictions
 
 ```{r, include=F, echo=F}
-person30hrs <- augment(simple1, newdata=tibble(screen_time=30)) %>% pull(.fitted) %>% first()
+person8hrs <- augment(simple1, newdata=tibble(screen_time=8)) %>% pull(.fitted) %>% first()
 ```
 
-The expected anxiety score for someone who watched screens for 30 hours is: `r fitb(person30hrs, tol=.1)`
+The expected anxiety score for someone who watched screens for 8 hours is: `r fitb(person8hrs, tol=.1)`
 
 :::
 
@@ -673,7 +686,7 @@ actual data we collected.
 
 We can see the residuals visualised in the plot below:
 
-```{r, echo=F, include=T}
+```{r, echo=F, include=T, warning=F}
 
 egdata.model.resid <- residuals(egdata.model)
 
@@ -720,12 +733,12 @@ residplot
 To calculate the residuals by hand we would subtract the *predicted* value (the point on the line) from the actual data point we 
 observed: so we can say: 
 
-$residual =  fitted - observed$.
+$residual = observed - fitted$.
 
 However, a more convenient way to calculate the residuals (as it was for [predictions, above](#predictions)), is to use `augment`.
 
 ```{r}
-augment(simple1) %>%  # augment returns a dataframe of predictions and residuals
+augment(simple1) %>%  # augment returns a data frame of predictions and residuals
   head() %>%  # take only first 6 rows
   select(anxiety_score, screen_time, .fitted, .resid) # show only the columns we need
 ```
@@ -735,7 +748,7 @@ augment(simple1) %>%  # augment returns a dataframe of predictions and residuals
 
 - We used `augment` without a `newdata` input. This meant it made a prediction and 
 calculated the residual for every row in the original data file. 
-- We used the `head` function to show only he 
+- We used the `head` function to show only the 
 first few rows and 
 - used the `select` function to hide extra columns we are not interested in.
 - The output contains the prediction and residual for every row in the original dataset.
@@ -750,6 +763,7 @@ first few rows and
 
 :::{.exercise}
 
+**Exercise 8**
 
 *Check your understanding*
 
@@ -778,7 +792,7 @@ residwhichscale <- c(
 ```
 
 - The residual is the `r mcq(residmcq)`
-- Residuals can be calculated which which R function? `r mcq(whichrresdid)`
+- Residuals can be calculated with which R function? `r mcq(whichrresdid)`
 - Residuals will be on the same scale as the: `r mcq(residwhichscale)`
 
 <br>
@@ -890,7 +904,7 @@ to check that the relationship between predictor and outcome is broadly linear. 
 mentalh %>% 
   ggplot(aes(screen_time, anxiety_score)) + 
   geom_jitter() + 
-  geom_smooth(method=lm, se=F)
+  geom_smooth(method="lm", se=F)
 ```
 
 
@@ -927,7 +941,7 @@ augment(simple1) %>%
 We also hope that the residuals are roughly the same all the way along the fitted line.  
 This is sometimes called  *homogeneity of variance*. 
 
-To check this we use another scatterplot with the *predictor* on the $x$ axis, and *predicted values* (the points on the line) on the $y$ axis.
+To check this we use another scatterplot with the *fitted values* (the predictions, i.e. the points on the line) on the $x$-axis, and the *residuals* on the $y$-axis.
 It's nice to add a smoothed line to this plot, again using `geom_smooth`, to see the any trends more clearly.
 
 In the output of `augment`, the `.fitted` column is the prediction (i.e. the points on the line), so we can plot them like this:
@@ -951,7 +965,7 @@ augment(simple1) %>%
 
 **Extra things I didn't say in the video**
 
-In the example, we have far more data for people who watched < 10 hours of screen time than for people who watched more. This means that in the residuals plots shown, there are more residuals in the left hand side of the plot, and things are more sparse on the right. This _doesn't_ cause a problem for the *homogeneity of variance* assumption. For that, all we care about is the vertical spacing  — how far the points are above/below the regression line -- and that this spacing is equal across the range of screen time.
+In the example, we have far more data for people who watched < 10 hours of screen time than for people who watched more. This means that in the residuals plots shown, there are more residuals in the left hand side of the plot, and things are more sparse on the right. This _doesn't_ cause a problem for the *homogeneity of variance* assumption. For that, all we care about is the vertical spacing  — how far the points are above/below the regression line — and that this spacing is equal across the range of screen time.
 
 
 :::
@@ -962,6 +976,8 @@ In the example, we have far more data for people who watched < 10 hours of scree
 
 
 :::{.exercise}
+
+**Exercise 9**
 
 *Try it: Checking assumptions*
 
@@ -985,7 +1001,7 @@ simple1.augment %>%
 simple1.augment %>% 
   ggplot(aes(.fitted, .resid)) + 
   geom_point() + 
-  geom_smooth(method=lm)
+  geom_smooth()
 
 ```
 
@@ -1088,13 +1104,14 @@ whatfuncrespred <-  c(
 ```
 
 
-- What is an intercept? `r mcq(whatintercept)`
-- What is the slope? `r mcq(whatslope)`
-- What is a residual? `r mcq(whatresid)`
-- Which function fits a regression model? `r mcq(whatfuncmodel)`
-- Which function calculates residuals and predictions from a saved `lm` model? `r mcq(whatfuncrespred)`
+Write an answer to each of these questions in the `Check your knowledge` section of your workbook. The answers will be revealed in Session 7.
 
-- What are the three assumptions of regression introduced in this session?  (Make a note of your answers, then [check them here](#assumptions3))
+1. What is an intercept? `r mcq(whatintercept)`
+1. What is the slope? `r mcq(whatslope)`
+1. What is a residual? `r mcq(whatresid)`
+1. Which function fits a regression model? `r mcq(whatfuncmodel)`
+1. Which function calculates residuals and predictions from a saved `lm` model? `r mcq(whatfuncrespred)`
+1. What are the three assumptions of regression introduced in this session?  (Make a note of your answers, then [check them here](#assumptions3))
 
 
 
@@ -1119,7 +1136,7 @@ There are two main reasons we should be suspicious about linear models that viol
 
 1. Predictions will be systematically wrong in some cases. For example, if the true relationship between predictor and outcome is curved then for some values of the predictor the model will be way-off. We may end up with predictions that are a long way from the true values.
 
-2. Inferences we make from the model (e.g. using *p* values or Bayes Factors --- we will cover these in the next session) assume that the residuals are normally distributed. If this is not the case, then these statistics can be biased. Specifically, we may conclude that we have have more evidence for an effect than is really the case. This will lead us to draw the wrong conclusions from our data and, potentially, make bad decisions.
+2. Inferences we make from the model (e.g. Bayes Factors, which we will use with regression models in the next session) assume that the residuals are normally distributed. If this is not the case, then these statistics can be biased. Specifically, we may conclude that we have more evidence for an effect than is really the case. This will lead us to draw the wrong conclusions from our data and, potentially, make bad decisions.
 
 
 ## How bad is 'too bad'? 
@@ -1147,18 +1164,19 @@ library(patchwork)
 combineddiagplots <- function(f, thedata){
   set.seed(123)
   nrows <- thedata %>% count() %>% pull(n)
-  thedata <- thedata %>% sample_n(min(100, nrows))
+  thedata <- thedata %>% slice_sample(n=min(100, nrows))
   themodel <- lm(f, data=thedata)
   x <- as.list(f)[[3]] %>% as.character()
   y <- as.list(f)[[2]] %>% as.character()
 
   modeldata <- themodel$model
-  modeldata$x =modeldata[,1]
-  modeldata$y =modeldata[,2]
+  # model.frame puts the outcome in the first column
+  modeldata$x =modeldata[,2]
+  modeldata$y =modeldata[,1]
   aa <- modeldata %>% 
     ggplot(aes(x,y)) + geom_jitter(alpha=.5) + 
     geom_smooth(se=F) +
-    geom_smooth(method=lm, se=F, color="red", size=.4) +
+    geom_smooth(method="lm", se=F, color="red", linewidth=.4) +
     labs(x="Predictor", y="Outcome") + ggtitle("Scatterplot")
   a <- augment(themodel, newdata=thedata) %>%
     ggplot(aes(.resid)) +
@@ -1166,7 +1184,7 @@ combineddiagplots <- function(f, thedata){
      ggtitle("Distribution")
   b <- augment(themodel, newdata=thedata) %>%
     ggplot(aes(.fitted, .resid)) +
-    geom_hline(yintercept = 0, color="red",  size=.4) +
+    geom_hline(yintercept = 0, color="red",  linewidth=.4) +
     geom_jitter(alpha=.5) +
     geom_smooth(method = 'gam', formula=y ~ s(x, bs = "cs"), se=F) +
      ggtitle("Fitted vs. residual")
@@ -1179,7 +1197,7 @@ combineddiagplots(f=life_expectancy ~ gdp_per_capita, development)
 Here we show some *unacceptable* models, which do violate the regression assumptions.
 
 I have made the same types of diagnostic plot shown above using different datasets and variables. 
-I have added red lines showing the *expectcted* trend of the data, if the assumptions had been met
+I have added red lines showing the *expected* trend of the data, if the assumptions had been met
 
 #### Example 1: National income and life expectancy
 
@@ -1211,7 +1229,7 @@ There _are_ possible fixes for these problems (see the [next section](#fixingvio
 #### Example 2
 
 In this example we use the `diamonds` dataset. 
-The outcome of our model is the price of a diamond in £. The predictor is the size of
+The outcome of our model is the price of a diamond in US dollars. The predictor is the size of
 the diamond (measured in carats).
 
 ```{r, echo=F, fig.height=2.5, fig.width=6}
@@ -1220,6 +1238,8 @@ combineddiagplots(f=price ~ carat, diamonds)
 
 
 :::{.exercise}
+
+**Exercise 10**
 
 Given these diagnostic plots, how should we judge the model?
 
@@ -1243,11 +1263,11 @@ You shouldn't base inferences on a model like this.
 
 
 
-### Example 3
+#### Example 3
 
 In this example we use the `mtcars` dataset, which contains data on cars. 
 The outcome of our model is the fuel economy of cars in miles per gallon. 
-The predictor is the weight of the car (measured in kg).
+The predictor is the weight of the car (measured in 1000s of pounds).
 
 
 ```{r, echo=F, fig.height=2.5, fig.width=6}
@@ -1256,6 +1276,8 @@ combineddiagplots(f=mpg ~ wt, mtcars)
 
 
 :::{.exercise}
+
+**Exercise 11**
 
 Given these diagnostic plots, how should we judge the model?
 
@@ -1267,9 +1289,10 @@ Given these diagnostic plots, how should we judge the model?
 `r hide("Show comments and possible solutions")`
 
 *Interpretation*: In this model it is hard to tell whether the true relationship is linear, in part because we only
-have 32 datapoints in the sample. Likewise, it's hard to tell from the histogram if the resduals are normal.
-However the fitted vs residual plot does hint that residuals are not evenly-sized across the range of the 
-fitted values, so it might be worth exploring further (see next section).
+have 32 datapoints in the sample. Likewise, it's hard to tell from the histogram if the residuals are normal.
+However, the fitted vs residual plot shows a clear U-shaped trend: residuals are mostly positive at low and high
+fitted values and mostly negative in the middle. The residuals are not consistent across the range of fitted values
+(this also suggests the true relationship may be slightly curved), so it would be worth exploring further (see next section).
 
 `r unhide()`
 
@@ -1278,11 +1301,11 @@ fitted values, so it might be worth exploring further (see next section).
 :::
 
 
-### Example 4
+#### Example 4
 
 In this example we use the `iris` dataset, which contains data on the width and length of flower petals for different species.
-The outcome of our model is the length of petals (in mm). 
-The predictor is the width of the petals (mm).
+The outcome of our model is the length of petals (in cm). 
+The predictor is the width of the petals (cm).
 
 ```{r, echo=F, fig.height=2.5, fig.width=6}
 combineddiagplots(f= Petal.Length ~ Petal.Width, iris)
@@ -1290,6 +1313,8 @@ combineddiagplots(f= Petal.Length ~ Petal.Width, iris)
 ```
 
 :::{.exercise}
+
+**Exercise 12**
 
 Given these diagnostic plots, how should we judge the model?
 
@@ -1334,7 +1359,7 @@ who may choose to use regression or related techniques in stage 4.
 
 
 
-In an [example above](#violationexample) we saw that a model predicting life expectancy from GDP per-person lead us to violate some assumptions of regression. There are many different techniques which can be used to work around this kind of problem. Here we illustrate just one.
+In an [example above](#violationexample) we saw that a model predicting life expectancy from GDP per-person led us to violate some assumptions of regression. There are many different techniques which can be used to work around this kind of problem. Here we illustrate just one.
 
 If we look at the data used for the model above, we can see that the relationship between GDP and life expectancy is not linear.
 We can see this because the points are in a curved shape, and so the line cannot get close to them all the way along the range of predictor values.
@@ -1342,7 +1367,7 @@ This itself violates an assumption of regression. It also caused problems with t
 
 ```{r, echo=F, fig.height=3}
 development %>% 
-  ggplot(aes(gdp_per_capita, life_expectancy)) + geom_point(alpha=.2) + geom_smooth(method=lm, se=F)
+  ggplot(aes(gdp_per_capita, life_expectancy)) + geom_point(alpha=.2) + geom_smooth(method="lm", se=F)
 ```
 
 To understand why this is the case, we can plot the *distribution* of national incomes:
@@ -1360,9 +1385,10 @@ This is quite typical of incomes data. At the level of countries, and for indivi
 Some people are really [a _lot_](https://bezoscalculator.com) richer than the average.
 
 
-### Transforming the outcome
+### Transforming the predictor
 
-One option in these cases is to *transform* the outcome so that it _is_ more normally distributed.
+One option in these cases is to *transform* the predictor. Predictors don't need to be normally
+distributed, but a very skewed predictor like this often has a curved relationship with the outcome.
 
 For example, if we plot the [logarithm](https://www.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:logs/x2ec2f6f830c9fb89:log-intro/v/logarithms) of GDP it becomes (a bit more) normally distributed. 
 
@@ -1381,25 +1407,27 @@ We can use this transformation to our advantage when we run our models. If we pl
 development %>% 
   ggplot(aes(log(gdp_per_capita), life_expectancy)) + 
   geom_point() + 
-  geom_smooth(method=lm, se=F) 
+  geom_smooth(method="lm", se=F) 
 ```
 
 And this means if we use `log(gdp_per_capita)` as the predictor in an `lm` model, the 
 model residuals no longer violate the assumptions (or at least, not too badly):
 
 
-```{r, echo=F, fig.cap="Diagnostics plots from a regression model using a log-transformed outcome.", fig.height=2.5}
+```{r, echo=F, fig.cap="Diagnostics plots from a regression model using a log-transformed predictor.", fig.height=2.5}
 combineddiagplots(life_expectancy ~ log(gdp_per_capita), development)
 ```
 
 :::{.exercise}
 
+**Exercise 13**
+
 *Try it for yourself*:
 
-- Use the built in `mtcars` dataset.
-- Make a scatterplot of the `mpg` (miles per gallon) and `hp` (horsepower) variables
+- Use the built-in `mtcars` dataset.
+- Make a scatterplot of the `mpg` (miles per gallon) and `hp` (horsepower) columns
 - Add a fitted line using `geom_smooth`
-- Use a `log()` transform on the `hp` variable and make the plot again
+- Use a `log()` transform on the `hp` column and make the plot again
 - Do either or both of the plots show a linear relationship? Which would be more suitable to use in a regression model?
 
 
@@ -1424,7 +1452,7 @@ lm(mpg ~ log(hp), mtcars) %>%
   augment(newdata=mtcars) %>% 
   ggplot(aes(.fitted, .resid)) + 
   geom_point() + 
-  geom_smooth(method=lm, se=F)
+  geom_smooth(se=F)
 
 ```
 

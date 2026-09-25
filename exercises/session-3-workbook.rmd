@@ -1,5 +1,5 @@
 ---
-title: "LifesaveR Session 3 Workbook"
+title: "lifesavR Session 3 Workbook"
 output: html_document
 ---
 
@@ -10,7 +10,7 @@ library(...)
 ```
 
 
-This R Markdown document is your workbook for session three of the lifesaveR module.
+This RMarkdown document is your workbook for session three of the lifesavR course.
 
 
 
@@ -63,8 +63,8 @@ x-axis.
 
 ## Exercise 6
 
-Replace the `?` in the code below to to calculate the `median` weight lost for men and women undergoing FIT and MI in the
-`funimagery` dataset.
+Replace the `?` in the code below to calculate the `median` weight lost for men and women undergoing FIT and MI in the
+`funimagery` dataset. (This chunk will give an error until you have replaced every `?`.)
 
 ```{r}
 ? %>%
@@ -127,7 +127,7 @@ Make a scatterplot of the `fuel` dataset. Show `mpg` on the y-axis, engine size 
 transmission (auto/manual) to colour the points. Try to produce your plot before comparing it against the answer in the
 worksheet.
 
-Interpret your plot: Which type of car (auto or manal) sees the strongest relationship between engine size and fuel economy?
+Interpret your plot: Which type of car (auto or manual) sees the strongest relationship between engine size and fuel economy?
 
 ## Extension exercise 3
 

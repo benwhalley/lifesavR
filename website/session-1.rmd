@@ -222,7 +222,7 @@ R is a computer language for data analysis and visualisation.
 
 RStudio is a user interface to R; it helps you organise your work.
 
-R is a text-based language. You interact with it by typing commands and running (also called 'executing') them.
+R is a text-based language. You interact with it by typing code and running (also called 'executing') it.
 
 R can do everything from simple arithmetic and plotting to complex data analysis.
 
@@ -314,7 +314,7 @@ Finding backticks: ![](images/backticksboth.png)
 :::{#introducingrmarkdown-explanation .tab-pane .fade}
 
 
-Rmarkdown documents are a good way to use R and RStudio. 
+RMarkdown documents are a good way to use R and RStudio. 
 They help us organize our code alongside explanatory text and notes.
 
 We can work interactively with multiple analyses at once on screen, 
@@ -425,8 +425,9 @@ We might want to add some extra calculations to our chunk.
 
 ```
 
-Now we have 2 statements: `2 + 4 + 8 + 16` and `42 * 42` (the star means multiply).
-We can run either of the statements in the same way: by putting the cursor anywhere on the line
+Now we have 3 statements: `2 + 2 + 8 + 16`, `42 * 42` (the star means multiply), and a third which
+adds `2 + 4 + 8 + 16` but is spread over several lines.
+We can run any of the statements in the same way: by putting the cursor anywhere on the statement
 and pressing `Ctrl/Cmd + Enter`
 
 
@@ -434,7 +435,7 @@ and pressing `Ctrl/Cmd + Enter`
 
 In the video we:
 
-- Demonstrate doing this in Rstudio and show that the cursor can be anywhere on the line
+- Demonstrate doing this in RStudio and show that the cursor can be anywhere on the line
 - Also, that if we execute a second statement the result of the first one disappears.
 - Also we show that if we separate all the statements with a blank line they are easier to read (but that R doesn't care about this, and can work out whether the lines are related).
 
@@ -492,7 +493,7 @@ Each session has an associated "workbook" file which you will use to complete th
 you need for this session is called `session-1-workbook.rmd`.
 
 If you click on the file it opens the workbook in a tab of a new pane, called the **Source** pane. It's called the
-**Source** pane because statements writting in the R language are often referred to as 'R code', which is shorthand for 'R source code'. The **source** pane allows you to write R code and explore your data.
+**Source** pane because statements written in the R language are often referred to as 'R code', which is shorthand for 'R source code'. The **source** pane allows you to write R code and explore your data.
 
 
 **Remember to save your workbooks regularly to avoid losing work.**
@@ -552,7 +553,7 @@ This adds up two of the three numbers:
 1. Find the instructions for Exercise 3 in your workbook.
 1. Create a new chunk below the instructions.
 1. Inside the chunk, write a line of code which adds together the numbers 9, 4, 55 and 2.
-1. Run the the line of code you have written.
+1. Run the line of code you have written.
 
 The output from the chunk should look like this:
 
@@ -606,7 +607,7 @@ any analysis, or make any type of plot.
 
 Packages are loaded using the `library()` function.
 
-The command `library(tidyverse)` loads some additional functions and data which will allow us to make a scatter plot.
+Running `library(tidyverse)` loads some additional functions and data which will allow us to make a scatterplot.
 
 **The `tidyverse` package is so fundamental to this course that `library(tidyverse)` is
 likely to be the first line of R code, in the first chunk, in all your RMarkdown files.**
@@ -652,15 +653,15 @@ anything else.
 
 
 You can't use the functions provided by `tidyverse`
-until you've run the command: `library(tidyverse)`. And the data in `psydata` is not available until
+until you've run the code: `library(tidyverse)`. And the data in `psydata` is not available until
 after you load that package.
 
 
-For example, if you tried to produce a scatter plot before loading `tidyverse` you'd see an error like this in the
+For example, if you tried to produce a scatterplot before loading `tidyverse` you'd see an error like this in the
 console pane:
 
 <pre style="color:red">
-Error in diamonds %>% ggplot(aes(carat, price, colour = clarity)) :
+Error in diamonds %>% ggplot(aes(carat, price)) :
   could not find function "%>%"
 </pre>
 
@@ -683,7 +684,7 @@ that beginners encounter. They normally mean that you have
 :::{.tab-content}
 
 :::{#datasetstabs-summary .tab-pane .active}
-### Datasets are like spreadsheets. They have have:
+### Datasets are like spreadsheets. They have:
 
 - multiple rows, with one row per *observation*
 - multiple columns; each column has a name.
@@ -701,7 +702,7 @@ that beginners encounter. They normally mean that you have
 
 - View a whole dataset by typing its name and running it in a code chunk
 - `glimpse()` shows a list of all the columns, plus a few of the datapoints
-- The **Environment** pane shows a spreadsheet-like view of the data
+- Data from packages like `psydata` don't appear in the **Environment** pane; it only lists data you have created yourself
 
 :::
 
@@ -733,12 +734,12 @@ glimpse(development)
 
 
 When we say "dataset" or "data", we mean something like a spreadsheet:
-In R, datasets contain values are organised into columns and rows.
+In R, datasets contain values which are organised into columns and rows.
 
 One distinction to make though is that by *dataset* we mean data that has
-been loaded into R--- data *files* are different thing.
+been loaded into R--- data *files* are a different thing.
 
-In R, datasets are normally stored in a container called a `data.frame`. They can also be stored in a `tibble` (these are basically the same thing).
+In R, datasets are normally stored in a container called a data frame. They can also be stored in a `tibble` (these are basically the same thing).
 
 
 
@@ -811,7 +812,7 @@ In different datasets an observation might correspond to an individual participa
 
 ### Exploring and checking data
 
-There are a two ways we recommend you use inspect and check data you are using.
+There are two ways we recommend you inspect and check data you are using.
 
 1. Typing the name of the dataset, and running that as code
 2. The `glimpse()` function, which shows a list of all the columns and some of the data
@@ -823,7 +824,7 @@ fuel
 glimpse(fuel)
 ```
 
-`glimpse` shows a list of all the columns in the dataset, the type of data stored in each column, and as many observations (datapoonts) as will fit on a single line.
+`glimpse` shows a list of all the columns in the dataset, the type of data stored in each column, and as many observations (datapoints) as will fit on a single line.
 
 `glimpse` is a really useful view to check which columns are available in a dataset before using them.
 
@@ -843,7 +844,7 @@ We think the `fuel` dataset (and others, like `iris`, and `development`) have a 
 First, they are either built into R, loaded in common packages, or available in the `psydata` package.
 This makes them easily available for everyone.
 
-Second, these data relate to concrete, easy to understand phenemena (e.g. weight, length, number of gears).
+Second, these data relate to concrete, easy to understand phenomena (e.g. weight, length, number of gears).
 This means you don't have to hold in mind any complex psychological/theoretical ideas for the examples to make sense.
 
 Third, the relationships in these datasets are clear, and there aren't too many data points. Real data are
@@ -870,8 +871,9 @@ be collecting our own psychological data soon enough and analysing that.
 
 **Exercise 4**
 
-1. Open your workbook for this workshop (called `session-1.rmd`).
+1. Open your workbook for this workshop (called `session-1-workbook.rmd`).
 1. Create a new chunk below the `Exercise 4` instructions.
+1. Load the `tidyverse` package.
 1. Load the `psydata` package.
 1. Look at the fuel data using the `glimpse()` function.
 1. Display the `fuel` dataset and try out the navigation buttons.
@@ -896,13 +898,13 @@ The output should look something like this:
 
 **Exercise 5**
 
-In your workbook (`session-1.rmd`):
+In your workbook (`session-1-workbook.rmd`):
 
 1. Create a new chunk below the `Exercise 5` instructions.
 1. Load the `psydata` package (if you haven't already).
 1. Show the first 6 rows of the `development` data using `head()`.
 
-Use the output to answer the following question. After entering your answer, click outside the box. The border will turn turn blue when the answer is correct.
+Use the output to answer the following question. After entering your answer, click outside the box. The border will turn blue when the answer is correct.
 
 The population of Afghanistan in 1967 was: `r fitb('11537966')`.
 
@@ -1128,7 +1130,7 @@ fuel %>%
 
 Note: most of this section is a recap of the content above.
 
-- A ***statement*** is one of more lines of code which R knows are linked
+- A ***statement*** is one or more lines of code which R knows are linked
 - Run a statement: `Ctrl + ↵` (or `⌘ + ↩` Mac)
 - Run the whole chunk: `Shift + Ctrl + ↵` (or `Shift + ⌘ + ↩` Mac)
 
@@ -1264,4 +1266,4 @@ Strongly suggested:
 Extended material:
 
 - _Scatterplots and visualisation_: [Fundamentals of Data Visualization](https://clauswilke.com/dataviz/) is an excellent resource for data visualisation in R. 
-- This chapter: <https://clauswilke.com/dataviz/visualizing-associations.html> shows many examples of plots which display relationships between variables (including scatter plots) which would extend the material covered above.
+- This chapter: <https://clauswilke.com/dataviz/visualizing-associations.html> shows many examples of plots which display relationships between variables (including scatterplots) which would extend the material covered above.

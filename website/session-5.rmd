@@ -9,15 +9,6 @@ link-citations: yes
 
 
 
-<!-- 
-
-TODO before 2022...
-
-Add some exercises (another blue box) for BF correlation
-
--->
-
-
 ```{r, include=F, echo=F}
 source('_first_chunk.R')
 source('tabbed-rmd.R')
@@ -41,7 +32,7 @@ library(corrr)
 # Overview
 
 In the [previous workshop](session-4.html) we learned techniques to describe and summarise data.
-Now we take the next step quantify how *sure* we are that the patterns are real, using the *Bayes Factor*.
+Now we take the next step and quantify how *sure* we are that the patterns are real, using the *Bayes Factor*.
 
 The Bayes Factor (BF) is a single number which allows us to choose between different *possible* hypotheses (explanations) of how our data were generated, based on which is most probable.
 
@@ -52,8 +43,8 @@ The important thing to remember about Bayes Factors is that they ***compare two 
 
 - [Is this pattern a fluke?](#fluke)
 - [Do it: Bayesian t test](#bayest)
-- [Do it: Bayes Factor for correlations](#bayescor)
 - [Interpreting Bayes Factors](#interpretbayesfactors1)
+- [Do it: Bayes Factor for correlations](#bayescor)
 
 
 
@@ -70,7 +61,7 @@ The important thing to remember about Bayes Factors is that they ***compare two 
 - In all data there is *sampling error* or *'noise'*
 - Patterns caused by noise will not replicate (i.e., we would not achieve the same result if we repeated the experiment)
 - Bayes Factors quantify the evidence for patterns
-- We ***compare the probability*** of two scenarios:
+- We ***compare how well the data fit*** two scenarios:
   i) the difference we see is 'real', and
   ii) any difference is a 'fluke'
 - By convention, large Bayes Factors mean the pattern is 'real'
@@ -110,9 +101,11 @@ funimagery %>%
 fitdiff <- funimagery %>% group_by(intervention) %>% summarise(m=mean(weight_lost_end_trt)) %>% pull(m) %>% diff %>% round(1) %>% abs
 ```
 
-This boxplot shows the *median* and *interquartile range* for each treatment group. It's immediately
-obvious that --- *in this sample* --- there is a difference between the two groups (`r fitdiff` kg,
-in fact), and that --- *in this sample* --- FIT helped people lose more weight than MI.
+This boxplot shows the *median* and *interquartile range* for each treatment group. Weight lost is
+calculated as weight at the end of treatment minus weight at baseline, so negative numbers mean
+participants lost weight. It's immediately obvious that --- *in this sample* --- there is a difference
+between the two groups (the difference in their means is `r fitdiff` kg), and that --- *in this
+sample* --- FIT helped people lose more weight than MI.
 
 For many purposes this plot is enough.
 
@@ -214,15 +207,17 @@ ttestBF(formula = weight_lost_end_trt ~ intervention, data=funimagery)
 A 'Bayesian t-test' is a procedure which calculates the Bayes Factor for a difference between
 groups.
 
-That is, we get a Bayes Factor which tells us how likely the difference we see is 'real', rather
-than a fluke or due to sampling variation.
+That is, we get a Bayes Factor which tells us how strong the evidence is that the difference we see is
+'real', rather than a fluke or due to sampling variation.
 
-Specifically, the Bayes Factor from a Bayesian t-test says how much more likely it is that two groups have a
-*different average score* for a *continuous variable*, versus the possibility that there is no difference. 
+Specifically, the Bayes Factor from a Bayesian t-test compares two possibilities: that two groups
+have a *different average score* for a *continuous variable*, or that there is no difference. 
 
 Some people call these the *experimental* and *null* hypotheses, or H1 and H0. H1 is the hypothesis that there *is* a difference. H0 is the hypothesis that there is zero difference.
 
-The Bayes Factor is the ratio of the probabilities of H1 and H0. If H1 is highly probable and H0 improbable then the Bayes Factor will be large (and vice versa).
+The Bayes Factor tells us how many times more likely *the data we collected* would be if H1 were
+true, compared with if H0 were true. If the data fit H1 much better than H0 then the Bayes Factor
+will be large; if they fit H0 better it will be small (less than 1).
 
 As we saw above, we can look at a boxplot and get an intuition for whether we think the difference
 is real by looking at how much the *distributions* of the two groups overlap.
@@ -272,12 +267,12 @@ The important part of the code here is where we write: `weight_lost_end_trt ~ in
 tells R which column to use as the *outcome* and which to use as the group *predictor*. The tilde
 symbol, `~`, just means "is predicted by".
 
-```{r}
+```{r, echo=F}
 fitbf <- ttestBF(formula = weight_lost_end_trt ~ intervention, data=funimagery) %>%
-  as_tibble() %>% pull(bf) %>% .[1]
+  as_tibble() %>% pull(bf) %>% first()
 ```
 
-The number `r fitbf` is our Bayes Factor. This is very large, so we have strong evidence that the
+The number `r format(round(fitbf), big.mark=",")` is our Bayes Factor. This is very large, so we have strong evidence that the
 difference in means is real.
 
 We explain how to interpret Bayes Factors in more detail in the section below, but large numbers are
@@ -303,10 +298,10 @@ ttA.bf <- ttA %>% as_tibble() %>% pull(bf) %>% first()
 ```
 
 
-1. Open `session-5.rmd` using the **Files** pane. This is the workbook you will be using in this session.
+1. Open `session-5-workbook.rmd` (in the `exercises` folder) using the **Files** pane. This is the workbook you will be using in this session.
 1. Use the `funimagery` dataset
 1. Plot participants' weights at baseline (`kg1`) in each intervention group
-1. Use `summarise()` to calculate each group's average weight at baseline (you will need the `group_by`, `summarise` and `mean` functions to calculate these averages)
+1. Use `summarise()` to calculate each group's average weight at baseline (you will need the `group_by()`, `summarise()` and `mean()` functions to calculate these averages)
 1. Use `ttestBF()` with a formula to calculate the Bayes Factor for the difference in these weights. The resulting Bayes Factor is: `r fitb(ttA.bf, tol=.05, calculator=F)`
 
 
@@ -329,12 +324,10 @@ No matter what the Bayes Factor is testing (correlation, difference etc), the si
 We [return to this topic later](session-7.html#interpretbayesfactors2) but common interpretations 
 of Bayes Factors are that:
 
-- A Bayes Factor of 1 means each hypothesis is *equally likely*
-- A Bayes factor > 3 is *moderate* evidence for the hypothesis being tested. BF > 10 is considered strong evidence.
-- A Bayes Factor of $< \tfrac{1}{3}$ is moderate evidence *against* the hypothesis.
-
-
-- A Bayes Factor is $> \tfrac{1}{3}$ and $< 3$ is considered ***inconclusive***
+- A Bayes Factor of 1 means the data fit each hypothesis *equally well*: we have no evidence either way
+- A Bayes Factor > 3 is *moderate* evidence for the hypothesis being tested. BF > 10 is considered strong evidence.
+- A Bayes Factor $< \tfrac{1}{3}$ is moderate evidence *against* the hypothesis. BF $< \tfrac{1}{10}$ is considered strong evidence against.
+- A Bayes Factor between $\tfrac{1}{3}$ and $3$ is considered ***inconclusive***
 
 
 
@@ -389,14 +382,14 @@ Another way to think about it is to imagine we have a set of data points like th
 
 ```{r, echo=F, message=F, warning=F, fig.width=4}
 set.seed(12)
-df <- tibble(y=rnorm(30, 0, 1), x=.75*y+rnorm(30, 0, 1)) %>% mutate_all(scale)
+df <- tibble(y=rnorm(30, 0, 1), x=.75*y+rnorm(30, 0, 1)) %>% mutate(across(everything(), scale))
 correlate(df)
 p1 <- df %>%
   ggplot(aes(x, y)) +
   # scale_x_continuous(expand = c(0,0) , limits = c(0,2)) +
   # scale_y_continuous(expand = c(0,0) , limits = c(-1,1)) +
   coord_fixed(xlim=c(-2,2), ylim=c(-2,2)) +
-  guides(alpha=F) + theme_minimal()
+  guides(alpha="none") + theme_minimal()
 
 p1 +  geom_point()
 ```
@@ -417,8 +410,8 @@ dd %>%
   ggplot(aes()) +
   coord_fixed(xlim=c(-2,2), ylim=c(-2,2)) +
   geom_point(data=df, aes(x=x,y=y), size=.2) +
-  guides(colour=F) + theme_minimal() +
-  geom_abline(data=dd, aes(intercept=0, slope=s, 1 , colour=cc)) +
+  guides(colour="none") + theme_minimal() +
+  geom_abline(data=dd, aes(intercept=0, slope=s, colour=cc)) +
   facet_wrap(~factor(s, levels=unique(s), labels = paste("r = ", s)), ncol=7) + theme(axis.title.x=element_blank(),
         axis.text.x=element_blank(),
         axis.ticks.x=element_blank(),
@@ -430,9 +423,9 @@ dd %>%
 The Bayes Factor tells us: *"Are ANY of the red lines a better fit than the blue line?"*
 
 
-The Bayes Factor is comparing the change that ANY of the red lines (where $r > 0$ or $r < 0$) are a better fit than the blue line, where $r = 0$.
+The Bayes Factor is comparing the chance that ANY of the red lines (where $r > 0$ or $r < 0$) are a better fit than the blue line, where $r = 0$.
 
-Another way to say it is, *"given the data we have collected, how much more likely is it that the correlation is non-zero, than actually being zero?"*
+Another way to say it is, *"how much more likely are the data we collected if the correlation is non-zero, than if it is actually zero?"*
 
 
 
@@ -447,7 +440,7 @@ The first thing to do is to plot the data, to check that the relationship betwee
 is approximately linear (a straight line). Here I have used `filter` to select only the data from 2019.
 
 
-```{r, echp=F}
+```{r}
 happy %>% 
   filter(year==2019) %>% 
   ggplot(aes(perceptions_of_corruption, happiness)) + 
@@ -457,7 +450,7 @@ happy %>%
 
 
 
-The plot suggests a fairly strong negative correlation, as you might expect.
+The plot suggests a moderate negative correlation, as you might expect.
 
 We can check the correlation using `select` and `correlate()`:
 
@@ -506,12 +499,11 @@ That means we can be ***very*** confident that the pattern we see is not simply 
 **Exercise 2** 
 
 
-- Use the `attitude` dataset which is built into R.
-- Use the `correlate` function in the `corrr` library to find the largest correlation between any of the variables in that dataset.
-- Calculate the BF for this correlation. Do we have strong evidence for it?
-
-- Now, repeat the process for the smallest correlation between the variables.
-- Do we have evidence *against* this correlation?
+1. Use the `attitude` dataset which is built into R.
+1. Use the `correlate()` function in the `corrr` package to find the largest correlation between any of the columns in that dataset.
+1. Calculate the BF for this correlation. Do we have strong evidence for it?
+1. Now, repeat the process for the smallest correlation (the one smallest in size, i.e. closest to zero) between the columns.
+1. Do we have evidence *against* this correlation?
 
 
 `r hide("Show answers")`
@@ -552,8 +544,9 @@ with(attitude,  correlationBF(rating, complaints))
 ```
 
 
-Because the BF is less than 1, we have anecdotal very weak *against* the weakest correlation (BF = 0.47). 
-However because the value is between 0.33 and 3 we would consider this evidence inconclusive --- we cannot be confident either way.
+Because the BF is less than 1, the data fit 'no correlation' slightly better, but this is only very
+weak evidence *against* a correlation (BF = 0.47). Because the value is between 1/3 and 3 we would
+consider this evidence inconclusive --- we cannot be confident either way.
 
 
 ```{r}
@@ -573,14 +566,16 @@ with(attitude,  correlationBF(learning, critical))
 
 # Check your knowledge
 
-- What hypotheses are being compared when we calculate a Bayes Factor for a correlation?
-- Which function do we recommend to calculate correlation coefficients?
-- Which function calculates the Bayes Factor for a correlation?
-- Which function calculates the Bayes Factor for a difference in the average of two groups?
-- What direction slope does a correlation of -0.5 imply? What would the scatterplot look like?
-- What conclusion should we draw if the Bayes Factor for a correlation is 2.1? How about if it was 0.21, or 210?
-- What conclusion should we draw if the Bayes Factor for a t test is 0.8? How about if it were > 10?
-- What is the difference between `ttestBF` and `correlationBF`?
+Write an answer to each of these questions in the `Check your knowledge` section of your workbook. The answers will be revealed in Session 6.
+
+1. What hypotheses are being compared when we calculate a Bayes Factor for a correlation?
+1. Which function do we recommend to calculate correlation coefficients?
+1. Which function calculates the Bayes Factor for a correlation?
+1. Which function calculates the Bayes Factor for a difference in the average of two groups?
+1. What direction slope does a correlation of -0.5 imply? What would the scatterplot look like?
+1. What conclusion should we draw if the Bayes Factor for a correlation is 2.1? How about if it was 0.21, or 210?
+1. What conclusion should we draw if the Bayes Factor for a t test is 0.8? How about if it were > 10?
+1. What is the difference between `ttestBF()` and `correlationBF()`?
 
 
 

@@ -1,5 +1,5 @@
 ---
-title: "LifesaveR Session 2 Workbook"
+title: "lifesavR Session 2 Workbook"
 output: html_document
 ---
 
@@ -8,7 +8,10 @@ output: html_document
 library(...)
 ```
 
-This R Markdown document is your workbook for session two of the lifesaveR module.
+This RMarkdown document is your workbook for session two of the lifesavR module.
+
+Note: the chunk above will give an error until you replace the `...` with the name of a package
+(e.g. `tidyverse`), so the workbook won't knit until you do this.
 
 
 # Storing data in variables
@@ -19,7 +22,7 @@ Run this chunk:
 
 ```{r, eval=F}
 # assign the current year to a variable
-current_year <- 2021
+current_year <- 2026
 
 # print the variable we created
 # (it should display below the chunk, or in the console pane)
@@ -54,38 +57,33 @@ next_year <- current_year + 1
 4. Use the **Environment** pane to open `fuel_head`.
 
 
-
-[Exercise 5 has been removed (we now cover it later on)]
-
-
-
 # Selecting rows with `filter()`
+
+## Exercise 5
+
+Filter the `development` dataset to show the rows where a country's population was greater than 100 million.
 
 ## Exercise 6
 
-Filter the `development` dataset to show countries with a population greater than 100 million.
-
-## Exercise 7
-
-Show countries with a population greater than 100 million and life expectancy greater than 70.
+Show the rows where a country's population was greater than 100 million and life expectancy was greater than 70.
 
 
 
 
 # Summarising data using `summarise()`
 
-## Exercise 8
+## Exercise 7
 
 1. Copy the code in the worksheet which calculates the median miles per gallon.
 2. Paste the code into a new chunk.
 3. Amend the code to calculate the median weight.
 4. Note that `fuel` stores `weight` in kilos.
 
+## Exercise 8
+
+Amend the code in Exercise 7 to also calculate the mean and standard deviation of `weight`.
+
 ## Exercise 9
-
-Amend the code in Exercise 8 to also calculate the mean and standard deviation of `weight`.
-
-## Exercise 10
 
 Using the `fuel` dataset, `filter()` and `summarise()`, calculate:
 
@@ -97,11 +95,13 @@ Using the `fuel` dataset, `filter()` and `summarise()`, calculate:
 
 # How to fix code errors
 
-## Exercise 11
+## Exercise 10
 
-1. Select the R Studio menu option `Session > Restart R`.
+1. Select the RStudio menu option `Session > Restart R`.
 2. Ensure that the **Environment** pane is empty (see worksheet for how to do this).
 3. Correct all of the errors in the chunk below.
+
+Note: this chunk contains deliberate errors, so the workbook won't knit until you have fixed them all.
 
 ```{r}
 libary(Tidyverse)
@@ -142,7 +142,7 @@ Write your answers below each question and save your workbook for later.
 
 ## Which summary function would you use to calculate the mean of a numeric column?
 
-## How would you calculate the median of a subset of rows in a `data.frame`?
+## How would you calculate the median of a subset of rows in a data frame?
 
 
 
@@ -151,7 +151,7 @@ Write your answers below each question and save your workbook for later.
 
 ## Extension exercise 1
 
-In a new chunk, write the R code to produce the `data.frame` shown in the worksheet.
+In a new chunk, write the R code to produce the data frame shown in the worksheet.
 
 ## Extension exercise 2
 

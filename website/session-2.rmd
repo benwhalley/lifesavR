@@ -30,14 +30,12 @@ Here we introduce extra tricks for working
 with RStudio that are important to build confidence and make you productive.
 
 At the end of the session, you will have used variables to store the result of your calculations,
-loaded data into R from a file, and used commands to select and summarise
-subsets of the data. These are important building blocks for later sessions.
+and used functions to select and summarise subsets of the data. These are important building blocks for later sessions.
 
 # Techniques covered
 
 - [Storing data in variables](#variables)
 - [Passing data with pipes `%>%`](#pipe)
-- [Loading data from elsewhere](#loadingdata)
 - [Selecting rows with `filter()`](#filter)
 - [Summarising data using `summarise()`](#summarise)
 - [How to fix code errors](#fixing)
@@ -73,7 +71,7 @@ subsets of the data. These are important building blocks for later sessions.
 :::{#makingvariables-code .tab-pane .fade}
 ```{r}
 # assign the current year to a variable
-current_year <- 2021
+current_year <- 2026
 
 # print the variable we created
 # (it should display below the chunk, or in the console pane)
@@ -101,7 +99,7 @@ calculations, datasets, tables, plots, or even statistical models.
 
 To make variables we use the assignment operator, which looks like this `<-`.
 
-It looks like an arrow that points to the left, but it's made up of an left angle bracket (`<`) and a hyphen (`-`),
+It looks like an arrow that points to the left, but it's made up of a left angle bracket (`<`) and a hyphen (`-`),
 placed next to each other.
 
 The arrow is a reminder that the value on the right hand
@@ -112,7 +110,7 @@ For example, we can write this:
 
 ```{r}
 # assign the current year to a variable
-current_year <- 2021
+current_year <- 2026
 ```
 
 :::{.direction}
@@ -120,9 +118,9 @@ current_year <- 2021
 In the video we run the line with variable assignment.
 :::
 
-And we now have a variable called `current_year` which contains the number `2021`.
+And we now have a variable called `current_year` which contains the number `2026`.
 
-The simplest way to check what a variable contains is to write it's name, and then
+The simplest way to check what a variable contains is to write its name, and then
 run that line of code:
 
 ```{r}
@@ -176,7 +174,7 @@ Use the underscore `_` if you need to create a variable made up of more than one
 **Exercise 1**
 
 1. Open `session-2-workbook.rmd` using the **Files** pane. This is the workbook you will be using in this session.
-1. Run the first chunk in the workbook.
+1. Run the chunk under the `Exercise 1` heading in the workbook.
 
 The output should look like this:
 
@@ -190,7 +188,7 @@ Your **Environment** pane should look like this:
 :::{.exercise}
 **Exercise 2**
 
-1. Create a new chunk below the `Exercise 2` heading in your workbook (`session-2.rmd`).
+1. Create a new chunk below the `Exercise 2` heading in your workbook (`session-2-workbook.rmd`).
 1. Assign the results of the calculation `2 * 35` to the variable `seventy`
 1. Run the chunk
 
@@ -247,7 +245,7 @@ fuel_head
 
 
 :::{#usingpipestabs-explanation .tab-pane .fade}
-We often need to link a few commands together which modify data before analysing it.
+We often need to link a few functions together which modify data before analysing it.
 
 For example, if we're working with a big dataset we might only want analyse part of the data. We could do this in stages by selecting only the columns we want to analyse, filtering out any rows we don't want to analyse, and then calculating some descriptive statistics for the data that's left.
 
@@ -261,7 +259,7 @@ It looks like this `%>%`.
 
 Press `Ctrl + Shift + M` (Windows/Linux) or `⌘ + Shift + M` (Mac) to add a pipe.
 
-In session 1, you used the following code to "pipe" the `fuel` dataset into `head()`, which shows just the first few rows:
+In session 1, you used `head(fuel)` to show just the first few rows of the `fuel` dataset. Using a pipe, we can instead "pipe" the `fuel` dataset into `head()`:
 
 ```{r}
 fuel %>% head()
@@ -294,13 +292,13 @@ fuel_head <- fuel %>% head()
 
 Here we combine *assignment* with a *pipeline*.
 
-Remember that it is the final result of the commands on the right hand side of the `<-` that are assigned to the variable.
+Remember that it is the final result of the functions on the right hand side of the `<-` that are assigned to the variable.
 
-The result of the pipeline (a `data.frame` containing the first few rows of `fuel`) is saved to a
+The result of the pipeline (a data frame containing the first few rows of `fuel`) is saved to a
 new variable called `fuel_head`.
 
-You can explore your variables using the **Environment** pane. A `data.frame` will have an icon that looks like a
-spreadsheet. If you click on the icon, the `data.frame` is displayed in a new tab in the **Source** pane.
+You can explore your variables using the **Environment** pane. A data frame will have an icon that looks like a
+spreadsheet. If you click on the icon, the data frame is displayed in a new tab in the **Source** pane.
 
 
 :::{.direction}
@@ -310,7 +308,7 @@ In the video we click on the `fuel_head` icon.
 :::
 
 
-This tab shows you the same information as printing the `data.frame`, such as the number of rows and columns, but it
+This tab shows you the same information as printing the data frame, such as the number of rows and columns, but it
 also provides tools for exploring the data interactively.
 
 * The arrows next to the column names allow you to arrange the rows in ascending or descending order based on the column
@@ -383,15 +381,15 @@ development %>%
 
 # assign filtered data to a new variable for re-use later on
 # if you don't store the data, it is displayed but then lost
-development.europe <- development %>% 
+development_europe <- development %>% 
   filter(continent == "Europe") %>% 
   filter(year > 1980)
 
 # show the stored subset
-development.europe
+development_europe
 
 # make a plot with the subset
-development.europe %>% 
+development_europe %>% 
     ggplot(aes(gdp_per_capita, life_expectancy)) + 
   geom_point()
 
@@ -420,7 +418,7 @@ The `==` is called an "operator". It compares values from the column on the left
 
 The value we are filtering for *must* match the column type.
 
-The value `"Kenya"` was in quotes because the country column is a factor (not numeric), and we need to
+The value `"Kenya"` was in quotes because the country column is a factor (a column type R uses to store categories, like country names), not numeric,, and we need to
 match the text of the name of the country.
 
 It's important to be accurate when matching text. Capitalisation, punctuation and spaces all matter, so you need to be precise. Copy and paste wherever you can. For example:
@@ -475,16 +473,16 @@ The key step is to ***assign your filtered data to a new variable***.
 For example:
 
 ```{r}
-development.europe <- development %>%
+development_europe <- development %>%
   filter(continent == "Europe") %>%
   filter(year > 1980)
 ```
 
 This code filters rows leaving us with data for European countries after 1980.
 
-Importantly, it also stores this data in a *new variable*, called `development.europe`.
+Importantly, it also stores this data in a *new variable*, called `development_europe`.
 
-We can look at this new subset of the data by typing and running its name, or by looking in the **Envrionment** pane.
+We can look at this new subset of the data by typing and running its name, or by looking in the **Environment** pane.
 
 
 Now that it is stored in a new variable, we can use these data in other code, for example to
@@ -493,7 +491,7 @@ make a plot:
 
 
 ```{r}
-development.europe %>%
+development_europe %>%
     ggplot(aes(gdp_per_capita, life_expectancy)) +
   geom_point()
 ```
@@ -514,9 +512,10 @@ short but descriptive names so you know what they are.
 
 
 :::{.exercise}
-**Exercise 6**
+**Exercise 5**
 
-Filter the `development` dataset to show countries with a population greater than 100 million.
+Filter the `development` dataset to show the rows where a country's population was greater than 100 million.
+(Each row is one country in one year, so some countries appear more than once.)
 
 Your results should look like this:
 
@@ -528,9 +527,9 @@ development %>% filter(population > 100000000)
 
 :::{.exercise}
 
-**Exercise 7**
+**Exercise 6**
 
-Show countries with a population greater than 100 million and life expectancy greater than 70.
+Show the rows where a country's population was greater than 100 million and life expectancy was greater than 70.
 
 The results should look like this:
 
@@ -565,7 +564,7 @@ development %>%
 :::{#usingsummarisetabs-code .tab-pane .fade}
 ```{r}
 # use function mean() to summarise mpg column
-# the result is a data.frame with a single column named 'mean_mpg'
+# the result is a data frame with a single column named 'mean_mpg'
 fuel %>%
   summarise(mean_mpg = mean(mpg))
 
@@ -597,7 +596,7 @@ fuel_summary
 # combining filter() and summarise()
 development %>% 
   filter(continent=="Asia") %>% 
-  summarise(Average_life_expectancy = mean(life_expectancy))
+  summarise(average_life_expectancy = mean(life_expectancy))
 
 ```
 :::
@@ -618,7 +617,7 @@ For example, the `mean()` summary function calculates the mean of some data valu
 fuel %>%
   summarise(mean_mpg = mean(mpg))
 ```
-The result is a `data.frame` with a single column named `mean_mpg` (`mean_mpg =` defined the column name).
+The result is a data frame with a single column named `mean_mpg` (`mean_mpg =` defined the column name).
 
 If you don't assign the result of the summary function to a column name, it is named after the summary function:
 
@@ -659,7 +658,7 @@ Errors caused by invalid characters can be confusing, but they're easy to avoid 
 
 You can also use `summarise()` with more than one summary function.
 
-Seperate each summary function with a comma:
+Separate each summary function with a comma:
 
 
 
@@ -670,7 +669,7 @@ fuel_summary <- fuel %>%
 
 
 
-Remember, the out from `summarise()` (in this case `fuel_summary`) is a `data.frame` that you could do more processing
+Remember, the output from `summarise()` (in this case `fuel_summary`) is a data frame that you could do more processing
 on in extra steps if needed.
 
 ### Using `filter` with `summarise`
@@ -698,7 +697,7 @@ development %>%
 
 
 :::{.exercise}
-**Exercise 8**
+**Exercise 7**
 
 1. Copy the code for calculating the median miles per gallon.
 1. Paste this code into a new chunk your workbook.
@@ -707,7 +706,7 @@ development %>%
 
 The median car weight is `r fitb(median(fuel$weight), tol=.1)` kg.
 
-**Exercise 9**
+**Exercise 8**
 
 1. Amend the code to also calculate the mean and standard deviation of `weight`.
 
@@ -717,7 +716,7 @@ To the nearest kilo, the mean car weight is `r fitb(round(mean(fuel$weight), 0),
 
 :::{.exercise}
 
-**Exercise 10**
+**Exercise 9**
 
 ```{r, echo=FALSE, eval=T}
 sd6 <- fuel %>%
@@ -746,7 +745,7 @@ Use `filter()` and `summarise()` together to calculate the following numbers:
 
 :::{#fixingcodetabs-summary .tab-pane .active}
 
-- R Studio has features to help you spot errors
+- RStudio has features to help you spot errors
 - Start by correcting errors that produce the yellow triangle, or red circle with white cross
 - The blue circle suggests ways to make your code more readable
 - Detect errors methodically by running mini "experiments" in which you change and re-run parts of your code
@@ -759,7 +758,7 @@ Use `filter()` and `summarise()` together to calculate the following numbers:
 ```{r, eval=FALSE}
 # code chunk containing various errors - try fixing them!
 
-liibrary(tidyverse)
+liibrary(todyverse)
 
 library(psydata
 
@@ -785,10 +784,10 @@ what you want it to.
 
 It's natural to make one or two mistakes, especially when you're first learning to use R. This video gives you some tips for avoiding and correcting errors in your R code.
 
-The more you practice, the less mistakes you will make and the easier you will find it to spot errors which creep into
+The more you practice, the fewer mistakes you will make and the easier you will find it to spot errors which creep into
 your code.
 
-R Studio has some features which can help you spot errors.
+RStudio has some features which can help you spot errors.
 
 Here's a chunk of code with various errors which we'll correct one by one.
 
@@ -818,7 +817,7 @@ In the video we run the code to show that it doesn't work.
 
 It's best to fix errors that produce the yellow triangle before going any further.
 
-If you hover your pointer over the triangle, you will see a list of errors which R Studio has detected in the code.
+If you hover your pointer over the triangle, you will see a list of errors which RStudio has detected in the code.
 
 :::{.direction}
 
@@ -826,7 +825,7 @@ In the video we hover over yellow triangle to show two warnings.
 
 :::
 
-The language used in these suggestions can be a bit confusing, but you can probably work out that R Studio is warning you that there's `no symbol named 'liibrary' in scope`, because of a simple typing error in the `library()` function.
+The language used in these suggestions can be a bit confusing, but you can probably work out that RStudio is warning you that there's `no symbol named 'liibrary' in scope`, because of a simple typing error in the `library()` function.
 
 If we correct this, the warning goes away.
 
@@ -860,7 +859,7 @@ This line of code now works.
 In the video we:
 
 1. Fix the error in the package name
-1. Execute the line with the `library` command.
+1. Execute the line with the `library()` function.
 1. Point out the green bar.
 
 :::
@@ -877,7 +876,7 @@ By repeating these "experiments" you should eventually resolve all errors and ha
 
 ## Red circle with white cross
 
-Another symbol that R Studio uses to tell you that your code contains an error is the red circle with a white cross.
+Another symbol that RStudio uses to tell you that your code contains an error is the red circle with a white cross.
 
 ```{r, eval=F}
 library(psydata
@@ -891,11 +890,11 @@ Hovering over the cross gives you a clue about what the error is.
 
 ::: -->
 
-R Studio doesn't always correctly identify the correct way to resolve an error.
+RStudio doesn't always correctly identify the correct way to resolve an error.
 
 Here, the suggestion is that we've missed a comma. In actual fact, we've forgotten to close the parentheses to the `library()` function.
 
-Notice happens when we fix this error.
+Notice what happens when we fix this error.
 
 <!-- :::{.direction}
 
@@ -919,11 +918,11 @@ In the video we hover the cursor over blue 'i'.
 
 ::: -->
 
-In this case, adding spaces around `%>%` makes the code easier to read.
+For example, it might suggest adding spaces around operators like `%>%` or `==`, which makes the code easier to read.
 
-### Errors which R Studio can't detect
+### Errors which RStudio can't detect
 
-Although your code my run, it may still not do what you expect.
+Although your code may run, it may still not do what you expect.
 
 This is normally because your code contains errors relating to logic or data types.
 
@@ -968,9 +967,9 @@ You may also find this [more extensive list of common R errors](https://www.andy
 
 
 :::{.exercise}
-**Exercise 11**
+**Exercise 10**
 
-1. Select the R Studio menu option `Session > Restart R`
+1. Select the RStudio menu option `Session > Restart R`
 1. Ensure that the **Environment** pane is empty ([see here for how to do this](#clearenv))
 1. Correct all of the errors in the chunk below
 
@@ -991,6 +990,8 @@ development
 ggplot(aes(year, lifeExp, colour=continent)) %>%
   geom_scatterplot()
 ```
+
+(In the last plot, `colour=continent` inside `aes()` colours each point according to its continent; we cover this properly in a later session.)
 
 :::
 
@@ -1043,7 +1044,7 @@ revealed in Session 3.
 1. How would you select rows where values in a numeric column are between 10 and 20?
 1. Which function is used to summarise data?
 1. Which summary function would you use to calculate the mean of a numeric column?
-1. How would you calculate the median of a subset of rows in a `data.frame`?
+1. How would you calculate the median of a subset of rows in a data frame?
 
 
 # Extension exercises
@@ -1057,7 +1058,7 @@ revealed in Session 3.
 
 **Extension exercise 1**
 
-This output uses the `fuel` dataset to show vehicles with 8 cylinders and an engine size greater than 5 litres.
+This output uses the `fuel` dataset to show vehicles with 8 cylinders and an engine size greater than 5 litres (`engine_size` is measured in cc, so that's 5000cc).
 
 ```{r, echo=FALSE}
 guzzle <- fuel %>%
@@ -1066,7 +1067,7 @@ guzzle <- fuel %>%
 guzzle
 ```
 
-In a new chunk, write the R code to produce this `data.frame`.
+In a new chunk, write the R code to produce this data frame.
 
 :::
 
@@ -1084,15 +1085,7 @@ correct <- iris %>%
 
 ```
 
-The mean petal width of the `versicolor` species of iris is `r fitb(correct, tol=.2)`cm.
+The mean petal width of the `versicolor` species of iris is `r fitb(correct, tol=.01)`cm.
 
 :::
 
-
-
-# Additional resources
-
-
-## How to save as CSV in Excel {#saveascsv}
-
-`r video("_c37nEV65Os")`

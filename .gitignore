@@ -15,3 +15,12 @@ hadley video tidy.mp4
 docs/.DS_Store
 docs/2021_2/.DS_Store
 .DS_Store
+
+# local-only: marks, scratch screenshots, review notes
+marksandcomments.xlsx
+/*.png
+website/xx.png
+review-*.md
+# scratch experiments
+handouts/effect-size.rmd
+website/untidy_to_tidy_examples.Rmd

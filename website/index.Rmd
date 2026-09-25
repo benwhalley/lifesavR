@@ -1,7 +1,7 @@
 ---
-title: 'LifesavR 2024'
-author: 'Ben Whalley, Chris Berry, Sonja Heinz, Paul Sharpe, Andy Wills, Julien Besle'
-# date: "September 2024"
+title: 'lifesavR 2026'
+author: 'Ben Whalley, Chris Berry, Sonja Heintz, Paul Sharpe, Andy Wills, Julien Besle'
+# date: "September 2026"
 bibliography: [references.bib]
 biblio-style: apa6
 link-citations: yes
@@ -11,9 +11,9 @@ link-citations: yes
 source('_first_chunk.R')
 ```
 
-<meta property="og:description" content="LifesaveR is a short course in statistics and data visualisation using R." />
+<meta property="og:description" content="lifesavR is a short course in statistics and data visualisation using R." />
 
-**LifesaveR is a short course in statistics and data visualisation using R.**
+**lifesavR is a short course in statistics and data visualisation using R.**
 
 
 ![](images/lifering.gif){width=20%}
@@ -34,7 +34,6 @@ The list below are links to each of the workshops. Read below, though, for an in
 
 - Session 6:  [Making predictions](session-6.html)
 - Session 7:  [Building models](session-7.html)
-<!-- - Session 8:  [Reporting outcomes](session-8.html) -->
 
 
 
@@ -98,7 +97,7 @@ seem to us to correlate with success.
     be adding new material each week, so this is a recipe for falling behind.
 
 -   *Support each other*, but make sure *you* are doing the work too. It's nice to work as a pair or
-    a group, and it can be great for your own learning to explain teachniques to others. But it's
+    a group, and it can be great for your own learning to explain techniques to others. But it's
     also easy to forget that you must learn the material for yourself. Our advice is to swap
     partners every week or two to make sure you don't get in a rut.
 
@@ -134,7 +133,7 @@ simple errors. Our strategy is to:
     understanding (here, you edit the example code).
 
 ::: exercise
-Exercises and problems are presented in Blue boxes, like this.
+Exercises and problems are presented in blue boxes, like this.
 
 **It's important to complete all the exercises.**
 
@@ -155,12 +154,12 @@ later task.
 
 Throughout the module we use R for data processing and analysis.
 
-If you are taking this course at Plymouth University, the easiest way to run the code examples here
-is to the [school's RStudio Server](https://psyrstudio.plymouth.ac.uk).
+If you are taking this course at the University of Plymouth, the easiest way to run the code examples here
+is to use the [school's RStudio Server](https://psyrstudio.plymouth.ac.uk).
 
 Unless you already have a lot of experience with R, don't try to install it on your own computer. We
-find this creates unnecessary problems for students. Staff won't help you debug your work unless
-they are evident when using the school RStudio server.
+find this creates unnecessary problems for students. Staff can only help you debug problems
+that also happen on the school RStudio server.
 
 ::: tip
 Try logging into the RStudio server now at <https://psyrstudio.plymouth.ac.uk>. You should see a
@@ -196,8 +195,8 @@ This index links to all the important R functions and topics within the course.
     -   [colour](session-3.html#colour)
 -   [Bayes Factor](session-5.html#fluke){#bf} quantifies evidence for differences or correlations in
     a dataset
-    -   [interpreting](session-5.html#bayesinterpreting)
-    -   [for multiple regressio](session-7.html#bf_for_multipleregression)
+    -   [interpreting](session-5.html#interpretbayesfactors1)
+    -   [for multiple regression](session-7.html#strengthofevidenceforlm)
 -   [boxplots](session-3.html#boxplots) visualise differences between categories or groups
 -   [central tendency](session-4.html#centralspread) the "middle" of a set of values
 -   [`count()`](session-4.html#responsefrequency){#count} function to count frequencies in
@@ -236,7 +235,7 @@ This index links to all the important R functions and topics within the course.
 -   [`lm` (linear models)](session-6.html#estimating-the-coefficients) to run a linear model
     (regression)
 -   [`lmBF`](session-7.html#strengthofevidenceforlm) to calculate a Bayes Factor for two linear
-    models. Also see see [Bayes Factor](#bf)
+    models. Also see [Bayes Factor](#bf)
 -   [`mean()`](session-2.html#summarise) summarise data using the mean
 -   [`median()`](session-2.html#summarise) summarise data using the median
 -   [Multiple regression](session-7.html)
@@ -269,7 +268,7 @@ version of your browser. Google Chrome is recommended by the University, althoug
 (rightly) concerned about your privacy [Firefox](https://www.mozilla.org/en-GB/firefox/new/) also
 works well.
 
-Andy Wills hosts a helpful guide to common errors students face here: <http://www.andywills.info/rminr/common-errors.html>
+Andy Wills hosts a helpful guide to common errors students face here: <https://www.andywills.info/rminr/common-errors.html>
 
 
 
@@ -302,8 +301,12 @@ rmarkdown::find_pandoc(version = "2.19")
 # rebuild docs into /docs which is where github serves them from as well as local directory 
 # for testing
 
-rmarkdown::render('index.Rmd', output_dir = "../docs")
 
+```
+
+
+```{r include=F, eval=F, echo=F}
+rmarkdown::render('index.Rmd', output_dir = "../docs")
 rmarkdown::render('session-1.rmd', output_dir = "../docs")
 rmarkdown::render('session-2.rmd', output_dir = "../docs")
 rmarkdown::render('session-3.rmd', output_dir = "../docs")
@@ -311,7 +314,6 @@ rmarkdown::render('session-4.rmd', output_dir = "../docs")
 rmarkdown::render('session-5.rmd', output_dir = "../docs")
 rmarkdown::render('session-6.rmd', output_dir = "../docs")
 rmarkdown::render('session-7.rmd', output_dir = "../docs")
-rmarkdown::render('session-8.rmd', output_dir = "../docs")
 # rmarkdown::render('teachers-notes.rmd', output_dir = "../docs")
 
 ```

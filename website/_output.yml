@@ -1,7 +1,7 @@
 webex::html_clean:
   self_contained: true
   highlight: tango
-  clean: true
+  # clean: true
   lightbox: false
   thumbnails: false
   gallery: false

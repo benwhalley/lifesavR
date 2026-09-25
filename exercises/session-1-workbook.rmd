@@ -1,10 +1,10 @@
 ---
-title: "LifesaveR Session 1 Workbook"
+title: "lifesavR Session 1 Workbook"
 output: html_document
 ---
 
 This is an RMarkdown document. We will use a document like this as a workbook for
-each of the sessions in the LifesaveR course.
+each of the sessions in the lifesavR course.
 
 What to do:
 
@@ -39,7 +39,7 @@ The following chunk adds together three numbers:
 
 1. Create a chunk below these instructions.
 2. Inside the chunk, write a line of code which adds together the numbers 9, 4, 55 and 2.
-3. Run the the line of code you have written.
+3. Run the line of code you have written.
 
 
 
@@ -49,9 +49,11 @@ The following chunk adds together three numbers:
 ## Exercise 4
 
 1. Create a new chunk below these instructions.
-2. Load the `psydata` package.
-3. Display the `fuel` dataset and try out the navigation buttons.
-4. Write a line of code which makes a list of columns in the `development` dataset.
+2. Load the `tidyverse` package.
+3. Load the `psydata` package.
+4. Look at the fuel data using the `glimpse()` function.
+5. Display the `fuel` dataset and try out the navigation buttons.
+6. Write a line of code which makes a list of columns in the `development` dataset.
 
 ## Exercise 5
 
@@ -90,7 +92,7 @@ Write your answers below each question and save your workbook for later.
 
 ## What is the 5th column in the `development` dataset?
 
-## Which function makes a plot? (there are many, but we mean the one shown above)
+## Which function makes a plot? (there are many, but we mean the one shown in the worksheet)
 
 ## Which function chooses the columns of data used in the plot?
 

@@ -1,0 +1,549 @@
+---
+title: lifesavR 'Check your knowledge' questions and answers
+author: 'Ben Whalley'
+output: 
+  powerpoint_presentation:
+    incremental: true
+---
+
+```{r, include=F, echo=F}
+source('../website/_first_chunk.R')
+```
+
+# Check your knowledge Q and A
+
+## Teachers' notes
+
+
+Each week we pose 'check your knowledge' questions.
+
+This presentation includes the answers to each question, designed to be used as
+a group Q/A exercise in-class.
+
+
+
+
+
+# Session 1
+
+
+## How do you run part of a line of R code using the keyboard short cut?
+
+---
+
+Select just that part, and press `ctrl+Enter`
+
+
+
+## Which library will you always need to load in your first RMarkdown chunk?
+
+---
+
+`tidyverse`, loaded with `library(tidyverse)` (and often also `library(psydata)`)
+
+
+
+## What is `psydata`?
+
+---
+
+A package we provide which includes example datasets.
+
+
+
+## How would you look at/inspect a whole dataset?
+
+---
+
+Just type the name of the dataset and 'run' it. In RStudio this provides a data-viewer window.
+
+
+
+## What does `glimpse()` do and when is it useful?
+
+---
+
+It provides a preview of all the columns in a dataset, showing the type and first few values of
+each.
+
+It's useful when you have a lot of columns in a dataset which would otherwise be
+too wide to view on screen.
+
+
+
+## What is the 5th column in the `development` dataset?
+
+---
+
+```{r}
+psydata::development %>% names %>% .[5] %>% pander::pandoc.verbatim()
+```
+
+
+
+
+## Which function makes a plot? (there are many, but we mean the one shown in the worksheet)
+
+---
+
+`ggplot`
+
+
+
+## Which function chooses the columns of data used in the plot?
+
+---
+
+The `aes()` function allows us to choose which variables are used for each axis
+on the plot.
+
+
+
+# Session 2
+
+
+
+## What is the `<-` symbol called and what does it do?
+
+---
+
+This is the **assignment operator**. It stores the result from its right-hand side in the variable
+named on the left.
+
+
+
+## What is the `%>%` symbol called and what does it do?
+
+---
+
+`%>%` is the pipe. 
+
+It passes the data on its left-hand side to the function on the right.
+
+
+
+## Which function would you pipe a dataset into if you wanted to see the first few rows?
+
+---
+
+`head`
+
+
+
+## Which function is used to select rows from a dataset?
+
+---
+
+`filter`
+
+
+
+## How would you select rows where values in a numeric column are between 10 and 20?
+
+---
+
+```
+dataset %>% 
+  filter(column > 9 & column < 21)
+```
+
+If you wrote `dataset %>% filter(column > 10 & column < 20)` this is almost right, but you would be
+excluding values of 10 and 20. 
+
+Normally when we say 'between' 10 and 20 we would include 10 and 20.
+
+`filter(column >= 10 & column <= 20)` also works, and works for non-integer values too.
+
+
+
+## Which function is used to summarise data?
+
+---
+
+`summarise`
+
+
+
+## Which summary function would you use to calculate the mean of a numeric column?
+
+---
+
+`summarise(mean(columnname))`
+
+
+
+## How would you calculate the median of a subset of rows in a data frame?
+
+---
+
+    dataset %>%
+      filter(SOMETHING HERE) %>%
+      summarise(median(columnname))
+
+# Session 3
+
+
+
+## Which functions are needed to make a boxplot?
+
+---
+
+As a minimum, in this example we need the `ggplot`, `aes` and `geom_boxplot` functions
+
+<br><br>
+
+
+```{r}
+fuel %>% 
+  ggplot(aes(automatic, weight)) + geom_boxplot()
+```
+
+
+
+## What is the difference between a `dbl` and a `fct` or `ord`?
+
+---
+
+A `dbl` is a 'double precision floating point number'
+
+(that's just 'a number' to you and me).
+
+A `fct` is a 'factor', so a categorical variable. 
+
+An `ord` is an 'ordinal' variable, which is a factor
+in which the categories have an ordering.
+
+
+
+## Which data types are used for continuous variables?
+
+---
+
+`dbl` or `int` (short for integer).
+
+
+
+## Give an example of why the difference between `dbl` and `fct` matters when making a plot (include code examples for this if you can)
+
+---
+
+
+One example would be this plot: In a boxplot we need the x axis to be a categorical variable, but in
+the `fuel` data the `cyl` variable is an integer, so we only get one box rather than 3.
+
+<br><br>
+
+```{r}
+fuel %>% 
+  ggplot(aes(x=cyl, weight)) + geom_boxplot()
+```
+
+
+---
+
+
+```{r}
+fuel %>% 
+  ggplot(aes(x=factor(cyl), weight)) + geom_boxplot()
+```
+
+
+
+## How can you convert a variable from a `dbl` to a `fct`?
+
+---
+
+```
+dataset %>% 
+  mutate(myvar_as_factor = factor(myvar))
+```
+
+
+
+## How could you calculate the mean for one level of a factor?
+
+---
+
+```{r}
+development %>% 
+  filter(continent=="Africa") %>% 
+  summarise(mean(population))
+```
+
+
+
+## How would you calculate the mean for all levels of a factor (e.g. for continent in the `development` dataset)?
+
+---
+
+```{r}
+development %>% 
+  group_by(continent) %>% 
+  summarise(mean(population))
+```
+
+
+
+## How would you calculate means and standard deviations for all combinations of levels in two factors?
+
+---
+
+```{r}
+development %>% 
+  filter(year < 1960) %>% 
+  group_by(continent, year) %>% 
+  summarise(M=mean(population), 
+            SD=sd(population))
+```
+
+# Session 4
+
+
+
+## What functions in R describe the central tendency of a variable?
+
+---
+
+`mean()` or `median()`.
+
+
+
+## What type of column can we use with `mean()`?
+
+---
+
+Numeric (`dbl` or `int`).
+
+
+
+## How might you describe patterns in a categorical variable?
+
+---
+
+Making a frequency table (or using a plot).
+
+
+
+## What function did we use to create a new column in the `funimagery` dataset?
+
+---
+
+`mutate()`
+
+
+
+## In the `funimagery` data, what was the mean change in weight (`kg3 - kg2`) for FIT participants AFTER the end of treatment? (Remember that a negative number means weight was lost.)
+
+---
+
+```{r}
+funimagery %>% 
+  filter(intervention=="FIT") %>% 
+  summarise(mean(kg3 - kg2))
+```
+
+The mean change was -2.34 kg: because the number is negative, FIT participants lost (on average) a
+further 2.34 kg after the end of treatment.
+
+
+
+## What type of plot describes the relationship between two variables?
+
+---
+
+Scatterplot.
+
+
+
+## What function do we use to make a plot that shows a relationship between two variables in `ggplot()`?
+
+---
+
+`geom_point()` (or `geom_jitter()`).
+
+# Session 5
+
+
+
+## What hypotheses are being compared when we calculate a Bayes Factor for a correlation?
+
+---
+
+H1
+:   There is a correlation between x and y
+
+H0
+:   There is NO correlation between x and y
+
+The Bayes Factor tells us how many times more likely the data are under H1 than under H0.
+
+
+
+## Which function do we recommend to calculate correlation coefficients?
+
+---
+
+`correlate()` in the `corrr` package.
+
+
+
+## Which function calculates the Bayes Factor for a correlation?
+
+---
+
+`correlationBF()`
+
+
+
+## Which function calculates the Bayes Factor for a difference in the average of two groups?
+
+---
+
+`ttestBF()`
+
+
+
+## What direction slope does a correlation of -0.5 imply? What would the scatterplot look like?
+
+---
+
+A negative relationship: the slope goes down. As x increases, y tends to decrease, so the points
+slope downwards from left to right.
+
+
+
+## What conclusion should we draw if the Bayes Factor for a correlation is 2.1? How about if it was 0.21, or 210?
+
+---
+
+-   2.1 is inconclusive (it is between 1/3 and 3)
+
+-   0.21 is moderate evidence against the correlation (i.e. for the null hypothesis), because
+    $1 / 0.21 = 4.76$: the data are about 4.8 times more likely under H0 than H1
+
+-   210 is strong evidence in favour of the correlation
+
+
+
+## What conclusion should we draw if the Bayes Factor for a t test is 0.8? How about if it were > 10?
+
+---
+
+-   0.8 is inconclusive
+
+-   \>10 is strong evidence for a difference
+
+
+
+## What is the difference between `ttestBF()` and `correlationBF()`?
+
+---
+
+`ttestBF()` calculates the BF for a difference between two groups; `correlationBF()` calculates the
+BF for a correlation between two continuous variables.
+
+# Session 6
+
+
+
+## What is an intercept?
+
+---
+
+The expected value of the outcome when the predictor is equal to zero.
+
+
+
+## What is the slope?
+
+---
+
+The increase in the outcome for a unit change in the predictor.
+
+
+
+## What is a residual?
+
+---
+
+The distance between an observed outcome value and the value predicted by the best fit line.
+
+
+
+## Which function fits a regression model?
+
+---
+
+`lm()`
+
+
+
+## Which function calculates residuals and predictions from a saved `lm` model?
+
+---
+
+`augment()` (from the `broom` package). It adds the `.fitted` and `.resid` columns.
+
+
+
+## What are the three assumptions of regression introduced in this session?
+
+---
+
+1. The 'true' best-fit line is straight (i.e. _not_ curved)
+2. Model residuals are approximately normal
+3. The residuals are of equal size along the regression line
+
+# Session 7
+
+
+
+## We prefer models with smaller or larger residuals?
+
+---
+
+Smaller.
+
+
+
+## The $R^2$ statistic ranges from ...?
+
+---
+
+0 to 1.
+
+
+
+## It's better for a model to have a smaller or larger $R^2$ value?
+
+---
+
+Larger.
+
+
+
+## If we calculate the Bayes Factor for `modelA / modelB` and the result is > 1, this provides evidence that ...?
+
+---
+
+We have more evidence for model A than model B: the data are more likely under model A than under
+model B.
+
+
+
+## A Bayes Factor of 25 means we have ... evidence?
+
+---
+
+Strong evidence.
+
+
+
+## A Bayes Factor of 0.05 means we have ...?
+
+---
+
+Strong evidence for the other hypothesis (e.g. the null).
+
+Taking the reciprocal, $1 / 0.05 = 20$: the data are 20 times more likely under the other
+hypothesis.

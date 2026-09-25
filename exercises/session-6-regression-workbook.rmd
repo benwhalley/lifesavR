@@ -1,35 +1,64 @@
 ---
-title: "LifesaveR Session 6 Workbook: Regression"
+title: "lifesavR Session 6 Workbook: Regression"
 output: html_document
 ---
 
-This R Markdown document is your workbook for session 6 of the lifesaveR course.
+This RMarkdown document is your workbook for session 6 of the lifesavR course.
 
-It is less structured than previous workbooks because you now have a working 
-knowledge of Rmarkdown and will be able to organise your own work.
+It is less structured than previous workbooks because you now have a working
+knowledge of RMarkdown and will be able to organise your own work.
 
 Remember to add a chunk to import the necessary packages.
 
 
 
-# Do it: make a scatter plot
+# Scatterplots
 
-> 1. As a refresher, make the plot shown above for yourself ...
+## Exercise 1
+
+List the columns in the `mentalh` dataset.
+
+## Exercise 2
+
+> 1. As a refresher, make a scatterplot of the `mentalh` dataset, with `screen_time` on the x-axis and `anxiety_score` on the y-axis.
 
 
-> 2. Describe the relationship between these two variables in no more than 2 or 3 sentences.
+> 2. Describe the relationship between these two columns in no more than 2 or 3 sentences.
 
 
 
-# Do it: Adding best fit lines 
+# Adding best fit lines
+
+## Exercise 3
 
 [ADD YOUR OWN WORK HERE]
 
 
 
-# Do it: ...
+# Predictions
 
-[Add additional sections for each of the exercises in the session.]
+## Exercise 7
+
+[ADD YOUR OWN WORK HERE]
+
+
+
+# Residuals
+
+## Exercise 8
+
+[ADD YOUR OWN WORK HERE]
+
+
+
+# Checking assumptions
+
+## Exercise 9
+
+[ADD YOUR OWN WORK HERE]
+
+
+[Add additional sections for any other exercises in the session.]
 
 
 
@@ -37,3 +66,14 @@ Remember to add a chunk to import the necessary packages.
 
 Write your answers below each question and save your workbook for later.
 
+## 1. What is an intercept?
+
+## 2. What is the slope?
+
+## 3. What is a residual?
+
+## 4. Which function fits a regression model?
+
+## 5. Which function calculates residuals and predictions from a saved `lm` model?
+
+## 6. What are the three assumptions of regression introduced in this session?
